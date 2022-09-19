@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\title{Lecture 3}
+\author{niceguy}
+\usepackage{../../template}
+
+\begin{document}
+\maketitle
+
+\section{Double Integrals in Polar Coordinates}
+It is sometimes more convenient to integrate in polar coordinates instead of cartesian coordinates. The relevant equations are
+
+\begin{align*}
+x &= r\cos\theta \\
+y &= r\sin\theta \\
+\end{align*}
+
+and
+
+\begin{align*}
+r &= \sqrt{x^2 + y^2} \\
+\theta &= \text{arctan}\left(\frac{y}{x}\right) \\
+\end{align*}
+
+Since the area of a sector is given by $$\Delta A = \frac{1}{2} \Delta\theta r^2$$ the area between two curves is given by
+$$\frac{1}{2} \Delta\theta (2r + \Delta r) \Delta r \approx r \Delta\theta \Delta r$$
+Alternatively, one can use the Jacobian. Using that, the double integral for $f(x,y) = g(r,\theta)$ can be written as
+$$\iint f(x,y) dA = \iint g(r,\theta) r dr d\theta$$
+
+\begin{ex}
+Evaluate the integral of $3x + 4y^2$ in teh region in the upper half-plane bounded by the circles $x^2 + y^2 = 1$ and $x^2 + y^2 = 4$.
+
+\begin{align*}
+I &= \int_0^\pi \int_1^2 (3r\cos \theta + 4r^2\sin^2\theta) r dr d\theta \\
+&= \int_0^\pi \int_1^2 3r^2\cos\theta + 4r^3\sin^2\theta dr d\theta \\
+&= \int_0^\pi r^3\cos\theta + r^4\sin^2\theta \Big |_1^2 d\theta \\
+&= \int_0^\pi 7\cos\theta + 15\sin^2\theta d\theta \\
+&= 7\sin\theta \Big |_0^\pi + \frac{15}{2}\int_0^\pi 1 - \cos2\theta d\theta \\
+&= \frac{15}{2} \left(\theta - \frac{\sin2\theta}{2}\right) \Big |_0^\pi \\
+&= \frac{15}{2} \pi \\
+\end{align*}
+\end{ex}
+
+\begin{ex}
+Find the volume of the solid bounded by the $z = 0$ plane and the paraboloid $z = 1 - x^2 - y^2$.
+
+\begin{align*}
+I &= \int_0^{2\pi} \int_0^1 (1 - r^2) r dr d\theta \\
+&= \int_0^{2\pi} \int_0^1 r - r^3 dr d\theta \\
+&= \int_0^{2\pi} \frac{r^2}{2} - \frac{r^4}{4} \Big |_0^1 d\theta \\
+&= \int_0^{2\pi} \frac{1}{4} d\theta \\
+&= \frac{\pi}{2} \\
+\end{align*}
+
+If we do this using cartesian coordinates,
+
+$$\int_{-1}^1 \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} 1 - x^2 - y^2 dydx$$
+
+which is more difficult to solve.
+\end{ex}
+
+\begin{ex}
+Find the area enclosed by one petal of the rose given by $r = \cos 3\theta$. \\
+
+\begin{align*}
+I &= \int_{-\frac{\pi}{6}}^{\frac{\pi}{6}} \int_0^{3\cos\theta} rdrd\theta \\
+&= \int_{-\frac{\pi}{6}}^{\frac{\pi}{6}} \frac{r^2}{2} \Big |_0^{3\cos\theta} d\theta \\
+&= \int_{-\frac{\pi}{6}}^{\frac{\pi}{6}} \frac{1}{2} \cos^23\theta d\theta \\
+&= \frac{1}{4} \int_{-\frac{\pi}{6}}^{\frac{\pi}{6}} \cos6\theta + 1 d\theta \\
+&= \frac{1}{4} \left(\frac{\sin6\theta}{6} + \theta \right) \Big |_{-\frac{\pi}{6}}^{\frac{\pi}{6}} \\
+&= \frac{\pi}{12} \\
+\end{align*}
+\end{ex}
+
+\begin{ex}
+Find the volume trapped between the cone $z = \sqrt{x^2 + y^2}$ and the sphere $x^2 + y^2 + z^2 = 1$ \\
+First we find their intersection. Substituting $z$, we have $r = \frac{1}{\sqrt{2}}$.
+
+\begin{align*}
+I &= \int_0^{2\pi} \int_0^{\frac{1}{\sqrt{2}}} (\sqrt{1 - r^2} - r)rdrd\theta \\
+&= \int_0^{2\pi} \int_0^{\frac{1}{\sqrt{2}}} r\sqrt{1-r^2} - r^2 dr d\theta \\
+&= \int_0^{2\pi} -\frac{1}{3} (1-r^2)^{\frac{3}{2}} - \frac{r^3}{3} \Big |_0^{\frac{1}{\sqrt{2}}} d\theta \\
+&= \int_0^{2\pi} -\frac{1}{3} \times \frac{1}{2\sqrt{2}} + \frac{1}{3} - \frac{1}{6\sqrt{2}} d\theta \\
+&= \frac{1}{3} \left(1 - \frac{1}{\sqrt{2}}\right) \\
+\end{align*}
+\end{ex}
+
+\section{Centre of Mass of a Plate}
+
+Recall that moment can be expressed as $$M = mx$$
+where $M$ denotes the moment, $m$ denotes mass, and $x$ denotes distance from axis. Adding the individual moments of all particles using integrals give us
+
+$$M_x = \iint_R y\rho(x,y)dA$$
+and
+$$M_y = \iint_R x\rho(x,y)dA$$
+where $\rho(x,y)$ denotes the density at $(x,y)$. \\
+Denote the centre of mass as $(\bar{x},\bar{y})$. The moments at the centre of mass should be equal to the moments of the plate as a whole, so
+$$\bar{x} = \frac{\iint_Rx\rho(x,y)dA}{\iint_R\rho(x,y)dA}$$
+and
+$$\bar{y} = \frac{\iint_Ry\rho(x,y)dA}{\iint_R\rho(x,y)dA}$$
+It is the centre of mass since when balanced at that point, it will not flip as there is no net moment in either direction.
+
+\begin{ex}
+Find the centre of mass of the following plate with density function $\rho(x,y) = x+y$. The region is bounded by $x = 0$, $y = 0$ and $y = \sqrt{x}$. \\
+Then the mass is given by
+\begin{align*}
+m &= \int_0^1 \int_0^{\sqrt{x}} x + y dydx \\
+&= \int_0^1 xy + \frac{y^2}{2} \Big |_0^{\sqrt{x}} dx \\
+&= \int_0^1 x^{\frac{3}{2}} + \frac{x}{2} dx \\
+&= \frac{2}{5} x^{\frac{5}{2}} + \frac{x^2}{4} \Big |_{0}^1 \\
+&= \frac{13}{20} \\
+\end{align*}
+The moment about the $y$ axis is
+\begin{align*}
+M_y &= \int_0^1 \int_0^{\sqrt{x}} x^2 + xy dydx \\
+&= \int_0^1 x^2y + \frac{xy^2}{2} \Big |_0^{\sqrt{x}} dx \\
+&= \int_0^1 x^{\frac{5}{2}} + \frac{x^2}{2} dx \\
+&= \frac{2}{7} x^{\frac{7}{2}} + \frac{x^3}{6} \Big |_0^1 \\
+&= \frac{19}{42} \\
+\end{align*}
+Hence $\bar{x} = \frac{190}{273}$ \\
+The moment about the $x$ axis is
+\begin{align*}
+M_x &= \int_0^1 \int_0^{\sqrt{x}} xy + y^2 dydx \\
+&= \int_0^1 \frac{xy^2}{2} + \frac{y^2}{2} \Big |_0^{\sqrt{x}} dx \\
+&= \int_0^1 \frac{x^2}{2} + \frac{x}{2} dx \\
+&= \frac{x^3}{6} + \frac{x^2}{4} \Big |_0^1 \\
+&= \frac{5}{12} \\
+\end{align*}
+Hence $\bar{y} = \frac{25}{39}$
+\end{ex}
+
+\section{Moment of Intertia}
+
+From physics, we know $$v = r\omega$$ and $$\text{KE} = \frac{1}{2}mv^2$$
+Expanding this
+$$\text{KE} = \frac{1}{2} \sum_i m_iv_i^2 = \frac{1}{2} \left(\sum_i m_ir_i^2\right)\omega^2 = \frac{1}{2}I\omega^2$$
+where $I$ is defined as above. \\
+It is easy to turn this into an integral.
+$$I = \iint_R \rho(x,y) [r(x,y)]^2 dydx$$
+where $r$ is the distance between $(x,y)$ and the axis. For example,
+$$I_x = \iint_R \rho(x,y) y^2 dydx$$
+and
+$$I_y = \iint_R \rho(x,y) x^2 dydx$$
+The moment of inertial about a point is hence $I_x + I_y$ where the $x$ and $y$ axis are translated to intersect at the point, e.g. $I_{x=3}$ and $I_{y=4}$.
+\end{document}

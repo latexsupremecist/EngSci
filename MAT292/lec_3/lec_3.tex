@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 3}
+\author{niceguy}
+\begin{document}
+\maketitle
+\section{Questions from last lecture}
+
+\subsection{What if integral curves intersect?}
+
+If we lack uniqueness, the IVP is ill-posed, usually because the model is incorrect.
+
+\begin{ex}
+$$\frac{du}{dt} = u^{\frac{2}{3}}, u(0) = 0$$
+Both $u(t) = 0$ and $u(t) = \left(\frac{t}{3}\right)^3$ are solutions.
+\end{ex}
+
+\subsection{Initial values are imposed on higher derivatives instead of the dependent variable}
+
+$$u'' = -u$$
+The solution is in the form of
+$$u = C_0\sin(t) + C_1\cos(t)$$
+If initial conditions are imposed on $u$, there may not be a solution, e.g.
+$$\begin{cases} u(0) = 0 & \\ u(\pi) = 1 & \\ \end{cases}$$
+
+\section{Global and Local solutions}
+
+\begin{ex}
+$$\frac{du}{dt} = 1 + u^2, u(0) = 0$$
+We know that $\tan(t)$ is a solution, but it cannot be global, as it diverges at $\pm \frac{\pi}{2}$.
+\end{ex}
+
+\section{Direction (Slope) Fields}
+$$\frac{du}{dt} = f(t,u)$$
+$f$ is the slope of $u$. By plotting a $t-u$ plane, and drawing out the slopes $f$, we get adirection field of the ODE. In fact, if the equation is autonomous, the plot is independent of $t$, which simplifies it.
+
+\subsection{Slope Fields vs Integral Curves}
+You do not need to solve for the general solution when drawing slope fields. However, they are less "accurate", as they are only a first order Taylor approximation (cooler way of saying "tangent").
+
+\section{Equilibrium}
+
+\begin{defn}
+Consider the first order ODE $$\frac{du}{dt} = f(u)$$
+Equilibrium solutions are those satisfying $$f(u) = 0$$
+Stable equilibria are when solutions "near" it tend towards them. \\
+Unstable equilibria are when solutions "near" it tend away from them.
+\end{defn}
+
+\begin{ex}
+$$\frac{du}{dt} = \cos(u)$$
+Then at $u = \frac{\pi}{2}$, solutions slightly below will increase (positive slope) and those above will decrease (negative slope), so it is a stable equilibrium. Conversely, $u = \frac{3\pi}{2}$ is an unstable equilibrium.
+\end{ex}
+
+There are asymptomatically stable equilibrium points, unstable equilibrium points, and two types of semistable equilibrium points, where solutions tend to increase/decrease (type i and ii) when they are "near" the equilibrium.
+
+\begin{ex}
+An ODE with a semistable equilibrium point (type i): $$\frac{du}{dt} = u^2$$
+An ODE with a semistable equilibrium point (type ii): $$\frac{du}{dt} = -u^2$$
+An ODE with infinitely many semistable equilibrium points (type i): $$\frac{du}{dt} = \sin(u) + 1$$
+An ODE with infinitely many semistable equilibrium points (type ii): $$\frac{du}{dt} = \sin(u) - 1$$
+\end{ex}
+\end{document}

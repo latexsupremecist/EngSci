@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{defn}
+ A differential equation is an equation that relates a function with its derivatives.
+\end{defn}
+
+\begin{ex}
+ ODEs:
+ 
+\begin{itemize}
+ \item $y'(t) = y(t)$ \\
+ \item $y''(t) = 6y'(t) + 2y(t) + 8$ \\
+ \item $y'''(t) = [y'(t)]^2$ \\
+\end{itemize}
+
+\begin{itemize}
+ \item $u_t(t,x,y,z) = u_{xx} + u_{yy} + u_{zz}$ \\
+\end{itemize}
+\end{ex}
+
+Differential equations can be used to model physical phenomenons, such as weather forecasting, pricing financial derivatives, population dynamics, etc.
+
+\section{Newton's Law of Cooling}
+
+Form a \textit{simple} model for the temperature of a cup of coffee sitting in a room. We let $u(t)$ be the temperature of coffee at time $t$, and $T$ be the (constant) ambient temperature. \\
+First model:
+$$\frac{du}{dt} = -(u(t) - T)$$
+
+where the temperature of the cup tends to the ambient temperature at a rate proportional to the difference in temperatures. \\
+Second model:
+$$\frac{du}{dt} = -k(u(t) - T), k > 0$$
+
+where $k$ is a transmission coefficient, representing factors such as the thermal conductivity of the cup. \\
+
+\subsection{Question of Interest}
+\begin{enumerate}
+ \item Existence of a solution \\
+ \item Uniqueness \\
+\end{enumerate}
+
+First assume $u \neq T$. Then division gives us
+\begin{align*}
+ \frac{1}{u - T} \frac{du}{dt} &= -k \\
+ \frac{1}{u - T} du &= -kdt \\
+ \ln |u - T| &= -kt + C \\
+ u - T &= \pm e^Ce^{-kt} \\
+\end{align*}
+
+Hence $u(t) = \tilde{C}e^{-kt} + T, \tilde{C} \in \mathbb{R} \backslash \{0\}$ \\
+
+If $u = T$, then there is an equilibrium. \\
+All solutions can be written in the general form of
+$$u(t) = \tilde{C}e^{-kt} + T, \tilde{C} \in \mathbb{R}$$
+
+To verify this, we can differentiate $u(t)$ as given by the solution
+ $$u'(t) = -\tilde{C}ke^{-kt} = -k(u(t) - T)$$
+ 
+Uniqueness: \\
+
+Giving just an ODE will not be enough for a unique solution. Initial conditions must be given. \\
+
+Question: given a differential equation and initial conditions is it easy to see if the solution will be unique or even exist? \\
+Answer: No. \\
+\end{document}  

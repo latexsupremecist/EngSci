@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 4}
+\begin{document}
+\maketitle
+
+\section{Applications of Double Integrals}
+
+\begin{ex}
+	A rectangular plate of mass $m$, length $L$ and width $W$ rotate about the y axis lying on the left edge of the plate. Find the moment of intertia of the plate about that line: \\
+	\begin{enumerate}
+		\item given that the plate has uniform density \\
+		\item given that the density at a point on the plate is directly proportional to the square of the distance from the rightmost side.
+	\end{enumerate}
+	\begin{align*}
+		I_y &= \frac{m}{LW} \iint_R \rho r^2 dydx \\
+		    &= \frac{m}{LW} \int_0^L \int_0^W x^2 dydx \\
+		    &= \frac{m}{LW} int_0^L Wx^2 dx \\
+		    &= \frac{m}{LW} \frac{WL^3}{3} \\
+		    &= \frac{mL^2}{3} \\
+	\end{align*}
+
+	and
+
+	\begin{align*}
+		I_y &= \iint_R \rho r^2 dydx \\
+		      &= k \int_0^L \int_0^W (1-x)^2x^2 dydx \\
+		      &= kW \int_0^L x^4 - 2x^3 + x^2 dydx \\
+		      &= kW \left(\frac{L^5}{5} - \frac{L^4}{2} + \frac{L^3}{3}\right) \\
+		      &= \frac{kWL^3(6L^2 - 15L + 10)}{30} \\
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Same plate, with constant density. Calculate its rotation about the centre.
+	\begin{align*}
+		I_0 &= \iint_R \rho r^2 dydx \\
+		    &= \int_{-\frac{W}{2}}^{\frac{W}{2}} \int_{-\frac{L}{2}}^{\frac{L}{2}} x^2 + y^2 dydx \\
+		    &= \int_{-\frac{W}{2}}^{\frac{W}{2}} Lx^2 + \frac{L^3}{12} dx \\
+		    &= \frac{LW^3}{12} + \frac{WL^3}{12} \\
+		    &= \frac{WL(L^2 + W^2)}{12} \\
+	\end{align*}
+\end{ex}
+
+\section{Surface Area}
+
+The area can be considered as the sum of small parallelograms projected from the $xy$ plane. The new vectors $\vec{x'}$ and $\vec{y'}$ can be expressed as
+$$\vec{x'} = \Delta x \hat{i} + f_x \Delta x \hat{k}$$
+$$\vec{y'} = \Delta y \hat{j} + f_y \Delta y \hat{k}$$
+And the area is the magnitude of their cross products, which is the magnitude of
+$$-f_x \Delta x \Delta y \hat{i} - f_y \Delta x \Delta y \hat{j} + \Delta x \Delta y \hat{k}$$
+which is
+$$\sqrt{f_x^2 + f_y^2 + 1}\Delta x \Delta y$$
+Hence the surface area is given by
+$$S = \iint_R \sqrt{f_x^2 + f_y^2 + 1} dA$$
+
+\begin{ex}
+	Find the surface area of a sphere $x^2 + y^2 + z^2 = a^2$. \\
+	Using symmetry, we consider the first octant only.
+	\begin{align*}
+	V &= 8 \iint_R \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2} dA \\
+	  &= 8 \iint_R \sqrt{1 + \left(\frac{-x}{\sqrt{a^2-x^2-y^2}}\right)^2 + \left(\frac{-y}{\sqrt{a^2-x^2-y^2}}\right)^2} dA \\
+	  &= 8 \iint_R \sqrt{\frac{a^2}{a^2-x^2-y^2}} dA \\
+	  &= 8a \iint_R \frac{dA}{\sqrt{a^2-x^2-y^2}} \\
+	  &= 8a \int_0^{\frac{\pi}{2}} \int_0^a \frac{rdrd\theta}{\sqrt{a^2-r^2}} \\
+	  &= -8a \int_0^{\frac{\pi}{2}} \sqrt{a^2-r^2} \Big |_0^a d\theta \\
+	  &= -8a \int_0^{\frac{\pi}{2}} -a d\theta \\
+	  &= 4a^2\pi \\
+\end{align*}
+Where polar coordinates were used to simplify $dA$.
+\end{ex}
+
+\begin{ex}
+	Let $R$ be the triangular region $(0,0,0), (0,1,0), (1,1,0)$. Find the surface area of $z = 3x + y^2$ that lies over $R$.
+	\begin{align*}
+		A &= \int_0^1 \int_0^y \sqrt{1 + 9 + 4y^2} dxdy \\
+		  &= \int_0^1 y\sqrt{10+4y^2} dy \\
+		  &= \frac{1}{12} (10+4y^2)^{\frac{3}{2}} \Big |_0^1 \\
+		  &= \frac{1}{12}\left(14^{\frac{3}{2}} - 10^{\frac{3}{2}}\right) \\
+		  &\approx 1.7 \\
+	\end{align*}
+\end{ex}
+\end{document}

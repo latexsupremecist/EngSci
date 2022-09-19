@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 2}
+\begin{document}
+\maketitle
+
+\section{Definitions and Terminology}
+
+\begin{defn}
+The order of a differential equation is the order of the highest derivative, ordinary or partial, in the equation.
+\end{defn}
+
+\begin{ex}
+$$ay''' + by'' = f(t)$$
+This is a 3$^{\text{rd}}$ order ODE.
+\end{ex}
+
+\begin{ex}
+$$u_t = \frac{d}{dx}(u_x + y_y + u_z)$$
+This is a 1$^{\text{st}}$ order PDE.
+\end{ex}
+
+\begin{defn}
+$u^{(n)}$ refers to the n$^{\text{th}}$ derivative of $u$.
+\end{defn}
+
+The most general equation of an n$^{\text{th}}$ order derivative ODE is:
+$$F[t, u, u', u'', \dots, u^{(n)}] = 0$$
+
+\begin{defn}
+We say an n$^{\text{th}}$ order ODE is linear if it can be expressed as
+$$a_0(t)u(t) + a_1(t)u'(t) + \dots + a_n(t)u^{(n)}(t) = g(t)$$
+If $g(t) = 0$ for all $t$, the equation is homogeneous, otherwise it is nonhomogeneous.
+\end{defn}
+
+\begin{ex}
+Are the following differntial equations linear? If so, are they homogeneous or not?
+\begin{itemize}
+\item $t\sin(t^3) u + 56u''' + t^4 = 0$ \\
+\item $t^3u''' + et^2u'' + 4u = 0$ \\
+\item $tu + 5\sqrt{u'} + 10\sin(u) = 0$ \\
+\end{itemize}
+The first equation is linear nonhomogeneous, due to the $t^4$ term. The second equation is linear homogeneous, and the third equation is non linear, due to the second and third terms.
+\end{ex}
+
+How could we extend these definitions to PDEs? \\
+Consider $$a_0(x,y) u_x + a_1(x,y) u_y + a_2(x,y) u_{xx} + a_3(x,y) u_{xy} + a_4(x,y) u_{yx} + a_5(x,y)u_{yy} + a_6(x,y)u = g(x,y)$$
+This is a linear equation. If $g(x,y) = 0 \forall x,y$, it is homogeneous.
+
+\begin{defn}
+An ODE is \textit{autonomous} if it does not explicitly depend on the independent variable.
+\end{defn}
+
+\begin{ex}
+\begin{itemize}
+\item $\frac{dy}{dt} = \sin(y) + y^3\ln(y) + e^y$ \\
+\item $\frac{dy}{dt} = y'\cos(y) + \frac{y^2}{1 + e^y}$ \\
+\end{itemize}
+\end{ex}
+
+Does there exist a linear autonomous nonhomogeneous ODE? \\
+Consider $$y + y' = 1$$
+For it to be nonhomogeneous, a $g(t)$ must exist. It must be independent of $t$, so it can only be a constant (since $g'(t)$ must be 0).
+
+\begin{defn}
+A first order ODE is separable if it can be expressed as
+$$\frac{du}{dt} = f(u)g(t)$$
+\end{defn}
+
+\begin{ex}
+Which of the following equations are separable?
+\begin{itemize}
+\item $\frac{dx}{dt} = t^2 + \frac{\text{arccos}(t)}{\ln(t)}$ \\
+\item $u'' = ut^2e^t$ \\
+\item $\frac{dv}{dt} = tv + t^2$ \\
+\item $\frac{du}{dt} = \frac{1}{2}\left(\sin(u+t) - \sin(u-t)\right) + \sin(t)$ \\
+\end{itemize}
+Yes, no (second order), no, yes (trig identity).
+\end{ex}
+
+\section{Systems of Differential Equations}
+This occurs when two or more dependent variables interact with one another.
+
+\begin{ex}
+The Lotka-Volterra equations for a predator-prey model. \\
+The assumptions are that the prey will only die when eaten, and predators either naturally die or relocate.
+
+$$u_1(t): \text{Population count of prey}$$
+$$u_2(t): \text{Population count of predator}$$
+
+Considering the birth and death of prey,
+
+$$\frac{du_1}{dt} = \alpha u_1 - \beta u_1u_2$$
+
+Considering the birth and death of predators,
+
+$$\frac{du_2}{dt} = \gamma u_1u_2 - \delta u_2$$
+
+Intuition tells us that this should be a system of periodic functions, with $u_2$ lagging behind $u_1$.
+\end{ex}
+
+\section{Initial Value Problems}
+
+In general, is one initial value enough? \\
+No, it depends on the order. E.g. a second order ODE requires 2 initial values.
+
+\begin{ex}
+Consider $$\frac{d^2u}{dt^2} = 0$$
+Integrating both sides with respect to $t$, we have
+$$\frac{du}{dt} = C_0$$
+and integrating again gives us
+$$u = C_0t + C_1$$
+Therefore, two initial values are required to solve for the two constants.
+\end{ex}
+
+\begin{defn}
+An initial value problem for an n$^{\text{th}}$ order ODE consists of the ODE itself and $n$ initial conditions.
+$$u(t_0) = a_0, u'(t_0) = a_1, \dots, u^{(n-1)}(t_0) = a_{n-1}$$
+\end{defn}
+
+\end{document}

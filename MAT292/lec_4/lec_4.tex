@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 4}
+
+\begin{document}
+\maketitle
+
+\section{Review}
+
+\subsection{Solving Separable Equations}
+
+Consider $$\frac{du}{dt} = f(u)g(t)$$
+This is solved by
+\begin{align*}
+	\frac{1}{f(u)} \frac{du}{dt} &= g(t) \\
+	\int \frac{1}{f(u)} du &= \int g(t)dt + C, C \in \R \\
+\end{align*}
+
+Note: it might not be possible to find an explicit expression for $u$.
+
+\begin{ex}
+	$$\frac{du}{dt} = u^2, u(1) = -1$$
+	\begin{align*}
+		\frac{1}{u^2} \frac{du}{dt} &= 1 \\
+		\int \frac{1}{u^2} du &= \int 1 dt \\
+		-\frac{1}{u} &= t + C \\
+		u &= -\frac{1}{t+C}, C \in \R \\
+	\end{align*}
+	where $u(1) = -1 \Rightarrow C = 0, u = -\frac{1}{t}$. This is a local solution, as the interval $(-\infty, 0)$ is not included. Consider
+	$$f(t) = \begin{cases} -\frac{1}{t} & t \in (0,\infty) \\ -\frac{1}{2+t} & t \in (-\infty, 0] \\ \end{cases}$$
+	There is no unique solution for that interval.
+\end{ex}
+
+\section{First Order Linear Equations}
+$$a_0(t)u(t) + a_1(t)u'(t) = h(t)$$
+Assuming $a_1(t) \neq 0$, it can be rearranged as
+$$u'(t) + p(t)u(t) = q(t)$$
+where $p(t)$ and $q(t)$ are the quotients. \\
+Using the product rule, we have
+$$\frac{d}{dt} \mu(t)u(t) = \mu'(t)u(t) + \mu(t)u'(t)$$
+Factoring $/mu(t)$ out, we have
+$$\mu(t)\left(\frac{\mu'(t)}{\mu(t)}u(t) + u'(t)\right)$$
+If $\frac{\mu'(t)}{\mu(t)} = p(t)$ and $\mu(t) \neq 0$, this can be solved conveniently. \\
+Assuming this is true,
+$$\frac{d}{dt} (\mu(t)u(t)) = \mu(t)g(t)$$
+Integrating both sides, we can solve for $u$ by
+$$u(t) = \frac{\int \mu(t)g(t)dt + C}{\mu(t)}$$
+What remains is to solve for $\mu(t)$.
+\begin{align*}
+	\frac{1}{\mu} \frac{d\mu}{dt} &= p(t) \\
+	\int \frac{1}{\mu} d\mu &= \int p(t) dt \\
+	\ln|\mu| &= \int p(t) dt \\
+	\mu &= \pm e^{\int p(t)dt} \\
+\end{align*}
+	Note that the $\pm$ term and $C$ terms are constants that are on both sides. Therefore, they can be ignored. In addition, it is an exponential, so it can never be $0$. \\
+Hence, defining $\mu(t) = e^{\int p(t)dt}$, the solution is given by
+$$u(t) = \frac{1}{\mu(t)} \left(\int_{t_0}^t \mu(s) q(s) ds + C\right)$$
+$\mu(t)$ is called the \textbf{integrating factor}.
+
+\begin{ex}
+	$$(t^2-1)u' + 2tu = t, u(0) = 1$$
+	Putting this into standard form,
+	$$u' + \frac{2t}{t^2-1} u = \frac{t}{t^2-1}$$
+	The integrating factor is given by
+	$$\mu(t) = t^2 - 1$$
+	Then
+	$$(t^2-1)u(t) = \frac{t^2}{2} + C$$
+	And rearranging gives us
+	$$u(t) = \frac{t^2}{2(t^2-1)} + \frac{C}{t^2-1}$$
+	Substituting the initial conditions,
+	$$u(t) = \frac{t^2}{2(t^2-1)} - \frac{1}{t^2-1}$$
+\end{ex}
+\end{document}

@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 2}
+\begin{document}
+\maketitle
+
+\section{Formal Definition of Double Integrals}
+We consider the function $z = f(x,y)$ defined on $R = \{(x,y) | a \leq x \leq b, c \leq y \leq d\}$, assume $f(x,y) \geq 0$ over $R$.
+\subsection{Formal Definition 1}
+
+Similar to the case for integrals,
+
+$$V \approx \sum_{i=1}^N f(x_i^*,y_i^*) \Delta A_i$$
+
+where $\Delta A_i$ is a partition of $R$. \\
+The Riemann sum is bounded by
+
+$$\sum_{i=1}^N m_i \Delta x_i \Delta y_i \leq \sum_{i=1}^N f(x_i^*, y_i^*) \Delta x_i \Delta y_i \leq \sum_{i=1}^N M_i \Delta x_i \Delta y_i$$
+
+The definition then follows similar to the case for integrals.
+
+\subsection{Formal Definition 2}
+
+We use a double sum
+
+$$V \approx \sum_{j=1}^m \sum_{i=1}^n f(x_{ij}^*, y_{ij}^*) \Delta x_i \Delta y_j$$
+
+and similarly
+
+$$ \sum_{j=1}^m \sum_{i=1}^n m_{ij} \Delta x_i \Delta y_j \leq \sum_{j=1}^m \sum_{i=1}^n f(x_{ij}^*, y_{ij}^*) \Delta x_i \Delta y_j \leq \sum_{j=1}^m \sum_{i=1}^n M_{ij} \Delta x_i \Delta y_j$$
+
+\begin{ex}
+ Estimate the volume of the solid that lies above the square $R = [0,2] \times [0,2]$ and below the elliptic paraboloid $z = 16 - x^2 - 2y^2$. Divide $R$ into four equal squares and choose the sample point to be the upper corner of each square. \\
+ $$\text{Area} = 13 + 10 + 7 + 4 = 34$$
+ 
+ The exact integral is
+ 
+ 
+\begin{align*}
+ V &= \int_0^2 \int _0^2 16 - x^2 - 2y^2 dydx \\
+ &= \int_0^2 16y - x^2y - \frac{2y^3}{3} \Big |_0^2 dx \\
+ &= \int_0^2 32 - 2x^2 - \frac{16}{3} dx \\
+ &= 32x - \frac{2x^3}{3} - \frac{16x}{3} \Big |_0^2 \\
+ &= 64 - \frac{16}{3} - \frac{32}{3} \\
+ &= 48 \\
+\end{align*}
+\end{ex}
+
+\subsection{Double Integrals over Non- rectangular Regions}
+
+Approximate the region $R$ with its upper and lower bounds (corresponding to upper and lower Riemann sums). 
+
+$$V \approx \sum_{i=1}^N f(x_i^*, y_i^*) \Delta A_i$$
+
+and
+
+$$ \sum_{i=1}^N m_i \Delta A_i \leq V \leq \sum_{i=1}^N M_i \Delta A_i$$
+
+Alternatively, consider the region itself as an integral. Replace the Riemann sum above with a double sum such as
+
+$$V \approx \sum_{j=1}^m \sum_{i=1}^n f(x_{ij}^*, y_{ij}^*) \Delta x_i \Delta y_j$$
+
+and take the limit.
+
+\end{document}  
