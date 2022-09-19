@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 5}
+
+\begin{document}
+\maketitle
+
+\section{Review}
+Solving a first order ODE
+\begin{enumerate}
+	\item Put it into standarm form \\
+	\item Integrate $p(t)$ \\
+	\item The integrating factor is the exponential of the integral of $p(t)$ \\
+	\item Plug in the formula \\
+\end{enumerate}
+
+\textbf{Why does the +C term not matter?} \\
+When taking the exponential, it results in a nonzero constant coefficient, which is cancelled out on both sides of the equation.
+
+\begin{ex}
+	$$y' + 2ty = t$$
+	This is in the right form, so the integrating factor could be immediately found as $e^{t^2}$.
+	\begin{align*}
+		ye^{t^2} &= \int te^{t^2} dt \\
+		ye^{t^2} &= \frac{1}{2} e^{t^2} + C \\
+		y &= Ce^{-t^2} + \frac{1}{2}, C \in \R \\
+	\end{align*}
+\end{ex}
+
+\section{Mathematical Modelling: Rocket Ship}
+Assumptions: air resistance is negligible. \\
+We start with the equations
+$$F = ma$$
+and
+$$w(x) = -\frac{mgR^2}{(R+x)^2}$$
+Where $w(x)$ is the gravitational force at height $x$, and $R$ is Earth's radius. \\
+Equating both sides,
+$$m\frac{dv}{dt} = -\frac{mgR^2}{(R+x)^2}$$
+There are too many variables! \\
+Using chain rule, we can rewrite
+$$\frac{dv}{dt} = \frac{dv}{dx} \frac{dx}{dt} = v \frac{dv}{dx}$$
+So
+$$mv \frac{dv}{dx} = -\frac{mgR^2}{(R+x)^2}$$
+This is separable, so
+\begin{align*}
+	v \frac{dv}{dx} &= -\frac{gR^2}{(R+x)^2} \\
+	\int vdv &= -gR^2 \int \frac{dx}{(R+x)^2} \\
+	\frac{1}{2} v^2 &= \frac{gR^2}{R+x} + C \\
+\end{align*}
+The initial condition of $v(0) = v_0$ gives us the constant $C = \frac{1}{2} v_0^2 - gR$. The solution is then by
+$$v = \pm \sqrt{\frac{2gR^2}{R+x} + v_0^2 - 2gR}$$
+\subsection{Maximum Altitude}
+The maximum altitude is when $v = 0$, or
+\begin{align*}
+	\frac{2gR^2}{R+x} + v_0^2 - 2gR &= 0 \\
+	2gR^2 + (R+x)(v_0^2-2gR) &= 0 \\
+	R+x &= -\frac{2gR^2}{v_0^2-2gR} \\
+	R+x &= \frac{2gR^2}{2gR-v_0^2} \\
+	x &= \frac{Rv_0^2}{2gR-v_0^2} \\
+\end{align*}
+
+\subsection{Required initial speed to reach a maximal height of $\xi$.}
+\begin{align*}
+	\frac{2gR^2}{R+\xi} + v_0^2 - 2gR &= 0 \\
+	v_0 &= \pm \sqrt{2gR - \frac{2gR^2}{R+\xi}} \\
+	    &= \pm \sqrt{\frac{2gR\xi}{R+\xi}} \\
+\end{align*}
+
+\subsection{Exit Velocity}
+Say we are trying to determine the speed needed to never return to EngSci. We then want to reach a maximal height of "$\infty$", or more formally, as $\xi \rightarrow \infty$. We get
+$$v_0 = \sqrt{2gR}$$
+
+\section{Existance and Uniqueness}
+
+\begin{thm}
+	Consider the first order IVP
+	$$\begin{cases} u'+p(t)u = g(t) & \\ u(t_0) = u_0 & \\ \end{cases}$$
+	and an open interval $I = (\alpha, \beta)$. If $t_0 \in I$, $g(t)$ and $p(t)$ are both continuous on $I$, then this IVP has a unique solution defined on $I$.
+\end{thm}
+
+Proof Sketch: \\
+Let $F(t)$ be the antiderivative of $p(t)$. Since $p$ is continuous, $F(t)$ is continuous and differentiable over $I$. Letting $\mu(t) = e^{F(t)}$, $\mu$ is also defined and continous over $I$, so the following equation holds $\forall t \in I$.
+$$\frac{d}{dt}(\mu(t)u(t)) = \mu(t)g(t)$$
+Since $\mu$ and $g$ are continous, their product is continuous and hence integrable. So we can integrate both sides to get $\mu(t)u(t) = G(t) + C$ where $C \in \R$ and $G(t)$ is the antiderivative of the right hand side. Since $\mu \neq 0$ (it is an exponential, we can conclude that
+$$u(t) = \frac{G(t) + C}{\mu(t)}$$
+
+\begin{thm}
+	Consider the first-order IVP:
+	$$\begin{cases} u'=f(t,u) & \\ u(t_0) = u_0 & \\ \end{cases}$$
+	and the open rectangle $(\alpha, \beta) \times (\gamma, \delta)$. If $(t_0, u_0) \in (\alpha, \beta) \times (\gamma, \delta)$, $f$ is continuous on the rectangle, and $f_u$ is continuous on the rectangle, then this IVP has a unique solution defined on some subinterval $(t_0-h, t_0+h) \subset (\alpha, \beta)$.
+\end{thm}
+\end{document}
