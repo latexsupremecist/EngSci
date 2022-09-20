@@ -1,0 +1,113 @@
+\documentclass[answers]{exam}
+\usepackage{amsmath}
+\author{niceguy}
+\title{Problem Set 1}
+\begin{document}
+\maketitle
+\begin{questions}
+	\question{Consider a particle moving along $x$ direction according to the function $x(t) = -0.25t^3+1.5t^2+2t-1$, where $t \geq 0$ and is measured in seconds and $x$ is measured in meters.}
+
+\begin{parts}
+	\part{Determine the initial position, velocity, and acceleration of the particle.}
+	\begin{solution}
+		\\Initial Position:
+		$$x(0) = -1$$
+		Initial Velocity:
+		$$x'(t) = -0.75t^2 + 3t + 2 \Rightarrow x'(0) = 2$$
+		Initial Acceleration:
+		$$x''(t) = -1.5t + 3 \Rightarrow x''(0) = 3$$
+	\end{solution}
+	\part{Determine the time at which the particle stops}
+	\begin{solution}
+		\begin{align*}
+			x'(t) &= 0 \\
+			-0.75t^2 + 3t + 2 &= 0 \\
+			t &= 4.58 \\
+		\end{align*}
+		if we ignore the negative solution.
+	\end{solution}
+	\part{Determine the time at which the particle experiences zero acceleration.}
+	\begin{solution}
+		\begin{align*}
+			x''(t) &= 0 \\
+			-1.5t + 3 &= 0 \\
+			t &= 2 \\
+		\end{align*}
+	\end{solution}
+\end{parts}
+
+\question{A uniform bar of length $L$ and mass $M$ is placed along $y$ axis, starting at $y = \frac{L}{9}$ and ending at $y = -\frac{8}{9}L$, as shown in the picture.}
+
+\begin{parts}
+	\part{Using parallel axis theorem, show that the moment of inertia of the bar about the origin is $\frac{19}{81}ML^2$.}
+	\begin{solution}
+		$$I = \frac{1}{12}ML^2 + M\left(\frac{4.5-1}{9}\right)^2L^2 = \frac{19}{81}ML^2$$
+	\end{solution}
+	\part{The bar is pivoted at the origin as lifted to the right so that it makes an angle of 30$^\circ$ with the $y$ axis. What is the gravitational torque (moment) exerted on teh bar?}
+	\begin{solution}
+		$$\frac{8M}{9}g\sin30^\circ \times \frac{4L}{9} - \frac{M}{9} g\sin30^\circ \times \frac{L}{18} = \frac{7}{36}MgL$$
+		in the clockwise direction.
+	\end{solution}
+	\part{What is the potential energy of the bar in this position. Assume $U(y=0) = 0$.}
+	\begin{solution}
+		$$\frac{7L}{18}\left(1 - \cos30^\circ\right)Mg$$
+	\end{solution}
+	\part{The bar is released. What is its speed of the bar as it passes through its vertical position if no energy was lost during the motion?}
+	\begin{solution}
+		\begin{align*}
+			\frac{1}{2}mv^2 &= \frac{7}{18}\left(1 - \cos\left(\frac{\pi}{6}\right)\right)MgL \\
+			v^2 &= \frac{7}{9}\left(1-\cos\left(\frac{\pi}{6}\right)\right)\frac{g}{L} \\
+			v &= \sqrt{\frac{7}{9}\left(1-\cos\left(\frac{\pi}{6}\right)\right)\frac{g}{L}} \\
+	\end{align*}
+	\end{solution}
+\end{parts}
+
+\question{An oscillator consists of a mass $m$ attached to two springs with spring constants $k_1$ and $k_2$, as shown in the picture. At time $t = 0$s the oscillator is displaced distance $x = -x_0$ from equilibrium position and is stationary.}
+
+\begin{parts}
+	\part{Draw a free body diagram for the mass. Indicate all possible (reasonable) forces.}
+	\part{Write Newton's Second Law equations from the mass in $x$ and $y$ direction assuming there is no friction. Assume $x$ direction to be horizontal.}
+	\begin{solution}
+		$$m\ddot{x} + (k_1 + k_2) x = 0$$
+		$$mg = N$$
+	\end{solution}
+	\part{If the period of oscillation is equal to $T$, what is the first time that the mass is passing the equilibrium?}
+	\begin{solution}
+		$$\frac{T}{4}$$
+	\end{solution}
+	\part{What is the direction of the mass' velocity at that instance?}
+	\begin{solution}
+			$+x$
+	\end{solution}
+	\part{What is the second time that the mass is passing through the equilibrium?}
+	\begin{solution}
+		$$\frac{3T}{4}$$
+	\end{solution}
+\end{parts}
+
+\question{Consider a function $$x(\theta) = 2.0\sin\left(3\theta + \frac{\pi}{3}\right)$$ where $\theta$ is measured in radians.}
+
+\begin{parts}
+	\part{What is the smallest positive value of $\theta$ for which $x(\theta)$ is at positive, maximum value?}
+	\begin{solution}
+		\begin{align*}
+			3\theta + \frac{\pi}{3} &= \frac{\pi}{2} \\
+			\theta &= \frac{\pi}{18} \\
+		\end{align*}
+	\end{solution}
+	\part{What are the first two, smallest, positive values of $\theta$ for which $x(\theta) = 0$?}
+	\begin{solution}
+		\\First solution:
+		\begin{align*}
+			3\theta + \frac{\pi}{3} &= \pi \\
+			\theta &= \frac{2\pi}{9} \\
+		\end{align*}
+		Second solution:
+		\begin{align*}
+			3\theta + \frac{\pi}{3} &= 2\pi \\
+			\theta &= \frac{5\pi}{9} \\
+		\end{align*}
+	\end{solution}
+\end{parts}
+\end{questions}
+\end{document}
