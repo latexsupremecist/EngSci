@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 6}
+\begin{document}
+\maketitle
+
+\section{Review}
+A general first order IVP $u' = f(t,u)$ defined on an open rectangle with continuous $f$ and $f_u$ has a unique solution on some $S_h(t_0)$ where $t_0$ is the location of the initial value.
+
+\section{Picard's Iterations}
+Define a sequence of functions
+$$\begin{cases} u_0(x) = y_0 & \\ u_{n+1}(x) = y_0 + \int_{y_0}^x f(t, u_n(t)) dt & \\ \end{cases}$$
+It can be shown that given the assumptions above, $\exists u: \R \rightarrow \R$ such that
+$$\lim_{n \rightarrow \infty} u_n = u$$
+This $u$ will then be the solution.
+
+\section{Applications of Existence and Uniqueness}
+$$\begin{cases} u' = \frac{3t^2 + 4t + 2}{2(u - 1)} & \\ u(0) = -1 & \\ \end{cases}$$
+We have that $(t_0, u_0) = (0, -1)$. Noting that
+$$f_u = -\frac{3t^2 + 4t + 2}{2(u - 1)^2}$$
+Both $f$ and $f_u$ are continuous everywhere at $u \neq 1$, so we can choose
+$$(\alpha, \beta) \times (\gamma, \delta) = (-\infty, \infty) \times (-\infty 1)$$
+We can then conclude a unique solution exists on some interval $(t_0 - h, t_0 + h)$. \\
+To solve this explicitly,
+\begin{align*}
+	2(u-1) \frac{du}{dt} &= 3t^2 + 4t + 2 \\
+	(u-1)^2 &= t^3 + 2t^2 + 2t + C \\
+	u &= 1 \pm \sqrt{t^3 + 2t^2 + 2t + C} \\
+\end{align*}
+
+Putting the initial value in,
+$$u(0) = 1 \pm \sqrt{C} = -1 \rightarrow C = 4$$
+and that the negative sign is taken. Hence
+$$u(t) = 1 - \sqrt{t^3 + 2t^2 + 2t + 4}$$
+The domain is where the square root is non-negative, i.e. $(-2, \infty)$. To show this, note that the polynomial inside the square root has a positive derivative ($3t^2 + 4t + 2$ has no real roots and is positive at $t=0$, so it must always be positive), so it intersects the $x$ axis at most one point. Trial and error tells us the square root is 0 at $t = -2$, hence the domain. \\
+Now consider
+$$\begin{cases} u' = \frac{u\sin t}{t^2 + 1} + \cos t & \\ u(0) = 1 & \\ \end{cases}$$
+
+We have $g(t) = \cos t$ and $p(t) = -\frac{\sin t}{t^2 + 1}$. Both are continuous $\forall t \in \R$, so we can choose
+$$(\alpha, \beta) = (-\infty, \infty)$$
+
+Now consider a similar problem as above.
+$$\begin{cases} u' = \frac{3t^2 + 4t + 2}{2(u - 1)} & \\ u(0) = 1 & \\ \end{cases}$$
+The initial value is given at where $u'$ and $f_u$ are not defined! Therefore, the theorem tells us nothing (there are no rectangles containing $t_0$ where $f_u$ is continuous). If we use the general solution, there will be 2 solutions!
+$$u(t) = 1 \pm \sqrt{t^3 + 2t^2 + 2t}$$
+
+\section{Nonlinear Cases}
+A global solution is not guaranteed. Why? Consider
+$$\begin{cases} u' = 1 + u^2 & \\ u(0) = 0 & \\ \end{cases}$$
+We have already found the solution $$u(t) = \tan(t)$$
+But this has a domain of $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$. And it is not immediately obvious that the solution is only defined on a proper subset of $\R$.
+
+\section{Continuity of $f_u$}
+The continuity of $f$ alone is enough to guarantee existance. Uniqueness is guaranteed by the continuity of $f_u$. \\
+Consider
+$$\begin{cases} u' = u^{\frac{2}{3}} & \\ u(0) = 0 & \\ \end{cases}$$
+$$f_u = \frac{2}{3}u^{-\frac{1}{3}}$$
+Which is not continuous at $u = 0$. $f$ is obviously continuous. However, both
+$$u(t) = 0$$
+and
+$$u(t) = \left(\frac{t}{3}\right)^3$$
+are solutions, meaning we do have existence, but not uniqueness.
+\end{document}
