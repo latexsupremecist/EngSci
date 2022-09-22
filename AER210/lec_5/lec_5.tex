@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 5}
+\begin{document}
+\maketitle
+
+\section{Triple Integrals}
+$$\iiint f(x,y,z)dV$$
+Given a continuous $w = f(x,y,z)$ over a region $Q$ with a volume $V$, one can break$V$ into $n$ subintervals ($\Delta V_i$'s). $\forall$ sample point $P_i(x_i^*, y_i^*, z_i^*) \in \Delta V_i$, the upper and lower limits can be defined using the maximum $M_i$ and minimum $m_i$ of $f$ in $\Delta V_i$.
+$$\text{Lower Sum: } \sum_{i=1}^n m_i \Delta V_i$$
+$$\text{Upper Sum: } \sum_{i=1}^n M_i \Delta V_i$$
+If $f$ is continuous in $V$,
+$$\lim_{||P|| \rightarrow 0} \sum_{i=1}^n f(x_i^*, y_i^*, z_i^*) \Delta V_i = \iiint_Q f(x,y,z) dV$$
+In rectangular coordinates, we have
+$$\Delta V_i = \Delta x_i \Delta y_i \Delta z_i$$
+so
+$$\iiint_Q f(x,y,z) dV = \iiint_Q f(x,y,z)dxdydz$$
+
+\begin{ex}
+	Suppose $f(x,y,z)$ is a continuous function defined on the box region $Q$, given by
+	$$Q = \{(x,y,z) | a \leq x \leq b, c \leq y \leq d, r \leq z \leq s\}$$
+	The limits can then be written as
+	$$\iiint_Q f(x,y,z) dV = \int_r^s \int_c^d \int_a^b dxdydz$$
+\end{ex}
+
+\begin{ex}
+	Same as above, but
+	$$Q = \{(x,y,z)|(x,y) \in \R \text{ and } g_1(x,y) \leq z \leq g_2(x,y)\}$$
+	The limits can then be written as
+	$$\iiint_Q f(x,y,z) dV = \int_c^d \int_a^b \int_{g_1(x,y)}^{g_2(x,y)} f(x,y,z)dzdxdy$$
+\end{ex}
+
+\begin{ex}
+	Evaluate $\iiint_Q 6xydV$ where $Q$ is the tetrahedron bounded by the planes $x=0$, $y=0$, $z=0$ and $2x+y+z=4$.
+	\begin{align*}
+		\iiint_Q 6xydV &= \int_0^2 \int_0^{4-2x} \int_0^{4-2x-y} 6xy dzdydx \\
+			       &= \int_0^2 \int_0^{4-2x} 24xy - 12x^2y - 6xy^2 dydx \\
+			       &= \int_0^2 48x^3 - 192x^2 + 192x - 24x^4 + 96x^3 - 96x^2 + 16x^4 - 96x^3 + 192x^2 - 128x dx \\
+			       &= \int_0^2 -8x^4 + 48x^3 - 96x^2 + 64x dx \\
+			       &= -8 \times \frac{2^5}{5} + 12 \times 16 - 32 \times 8 + 32 \times 4 \\
+			       &= \frac{64}{5} \\
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Evaluate the same integral, but integrate with respect to $x$ first.
+	\begin{align*}
+		\iiint_Q 6xydV &= \int_0^4 \int_0^{4-z} \int_0^{2-\frac{y}{2} - \frac{z}{2}} 6xy dxdydz \\
+			       &= \frac{64}{5} \\
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Using a triple integral, find the volume of the solid bounded by the surface $z = 4-y^2$ and planes given by $x + y = 4$, $x = 0$ and $y = 0$.
+	\begin{align*}
+		\iiint_Q dV &= \int_{-2}^2 \int_0^{4-y^2} \int_0^{4-z} dxdzdy \\
+			    &= \int_{-2}^2 \int_0^{4-y^2} 4-z dzdy \\
+			    &= \int_{-2}^2 16 - 4y^2 - \frac{y^4}{2} + 4y^2 - 8 dy \\
+			    &= 64 - \frac{32}{5} - 32 \\
+			    &= \frac{128}{5} \\
+	\end{align*}
+	It is less convenient to integrate with respect to $z$ first, or else the region will have to be spit in 2.
+\end{ex}
+
+\begin{ex}
+	Change the order of integration in the following triple iterated integral such that the integrations are performed in the order $x, y, z$ with appropriate limits.
+	$$\int_{-1}^1 \int_{x^2}^1 \int_0^{1-y} f(x,y,z) dzdydx = \int_0^1 \int_0^{z-1} \int_{-\sqrt{y}}^{\sqrt{y}} f(x,y,z) dxdydz$$
+\end{ex}
+
+\section{Applications of Triple Integrals}
+
+\subsection{Mass}
+Total mass of a volume is given by
+$$m = \iiint_Q \rho(x,y,z) dV$$
+where $\rho$ is the density.
+
+\subsection{Centre of Mass}
+$$\overline{x} = \frac{\iiint_Q x\rho(x,y,z)dV}{m}$$
+$$\overline{y} = \frac{\iiint_Q y\rho(x,y,z)dV}{m}$$
+$$\overline{z} = \frac{\iiint_Q z\rho(x,y,z)dV}{m}$$
+
+\subsection{Centroid}
+$$x_c = \frac{\iiint_Q xdV}{V}$$
+$$y_c = \frac{\iiint_Q ydV}{V}$$
+$$z_c = \frac{\iiint_Q zdV}{V}$$
+
+\subsection{Moment of inertia}
+$$I = \iiint_Q \rho(x,y,z) [r(x,y,z)]^2 dV$$
+
+\begin{ex}
+	Find the centre of mass of a solid of constant density that is bounded by the parabolic cylinder $x=y^2$ and the planes $x=z$, $z=0$, and $x=1$.
+	\begin{align*}
+		m &= \iiint_Q \rho dV \\
+		  &= \rho \int_{-1}^1 \int_{y^2}^1 \int_0^x dzdxdy \\
+		  &= \rho \int_{-1}^1 \int_{y^2}^1 xdxdy \\
+		  &= \rho \int_{-1}^1 \frac{1}{2} - \frac{y^4}{2} dy \\
+		  &= \rho \left(1 - \frac{1}{5}\right) \\
+		  &= \frac{4}{5}\rho \\
+	\end{align*}
+	\begin{align*}
+		\overline{x} &= \frac{1}{m} \int_{-1}^1 \int_{y^2}^1 \int_0^x xdzdxdy \\
+		  &= \frac{1}{m} \int_{-1}^1 \int_{y^2}^1 x^2 dxdy \\
+		  &= \frac{1}{m} \int_{-1}^1 \frac{1}{3} - \frac{y^6}{3} dy \\
+		  &= \frac{1}{m} \left( \frac{2}{3} - \frac{2}{21}\right) \\
+		  &= \frac{5}{7\rho} \\
+	\end{align*}
+	Due to symmetry, $\overline{y}=0$.
+	\begin{align*}
+		\overline{z} &= \frac{1}{m} \int_{-1}^1 \int_{y^2}^1 \int_0^x zdzdxdy \\
+			     &= \frac{1}{m} \int_{-1}^1 \int_{y^2}^1 \frac{x^2}{2} dxdy \\
+			     &= \frac{1}{m} \int_{-1}^1 \frac{1}{6} - \frac{y^6}{6} dx \\
+			     &= \frac{1}{m} \left(\frac{1}{3} - \frac{1}{21}\right) \\
+			     &= \frac{5}{14\rho} \\
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Find the moment of inertia of a cylinder about its axis, given the density $\rho$ is a constant.
+	\begin{align*}
+		I_z &= 4\int_0^a \int_0^{\sqrt{a^2-x^2}} \int_0^h \rho(x^2+y^2)dzdydx \\
+		    &= 4\int_0^a \int_0^{\sqrt{a^2-x^2}} h\rho(x^2+y^2)dydx \\
+		    &= 4 \int_0^{2\pi} \int_0^a h\rho r^3 drd\theta \\
+		    &= \int_0^{2\pi} h\rho a^4 d\theta \\
+		    &= 2\pi h\rho a^4 \\
+		    &= 2ma^2 \\
+	\end{align*}
+\end{ex}
+\end{document}
