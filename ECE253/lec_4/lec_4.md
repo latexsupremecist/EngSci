@@ -1,43 +1,43 @@
 ## Lecture 4
 
-#### Announcements
+### Announcements
 - Tuesday lectures in SF1101
 - Practicals start on 23/9 or 26/9
 
-#### Logic Gates
+### Logic Gates
 ![Symbols for different logic gates](../Images/logicgates.png)
 
-#### Truth Gates
+### Truth Gates
 
-| x<sub>1</sub> | x<sub>2</sub> | AND |
+| $x_1$ | $x_2$ | AND |
 | --- | --- | ------- |
 | 0 | 0 | 0 |
 | 0 | 1 | 0 |
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-| x<sub>1</sub> | x<sub>2</sub> | OR |
+| $x_1$ | $x_2$ | OR |
 | --- | --- | ------- |
 | 0 | 0 | 0 |
 | 0 | 1 | 1 |
 | 1 | 0 | 1 |
 | 1 | 1 | 1 |
 
-##### Design Example:
+#### Design Example:
 Switches x and y and a light L. L is off if both x and y are on or off.
 
 Truth table:
 
-| x<sub>1</sub> | x<sub>2</sub> | NOR |
+| $x_1$ | $x_2$ | NOR |
 | --- | --- | ------- |
 | 0 | 0 | 0 |
 | 0 | 1 | 1 |
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
 
-##### Additional Gates:
+#### Additional Gates:
 
-| x<sub>1</sub> | x<sub>2</sub> | NAND |
+| $x_1$ | $x_2$ | NAND |
 | --- | --- | ------- |
 | 0 | 0 | 1 |
 | 0 | 1 | 1 |
@@ -46,7 +46,7 @@ Truth table:
 
 NAND (not and) gates are used because they are cheaper to produce than combining NOT and AND (4 vs 6 transistors). They are **functionally complete**, ie they can implement all logic functions.
 
-| x<sub>1</sub> | x<sub>2</sub> | NOR |
+| $x_1$ | $x_2$ | NOR |
 | --- | --- | ------- |
 | 0 | 0 | 1 |
 | 0 | 1 | 0 |
@@ -55,7 +55,7 @@ NAND (not and) gates are used because they are cheaper to produce than combining
 
 NOR (not or) gates are also **functionally complete**. Similarly, NOR is cheaper to build than OR (4 vs 6 transistors).
 
-#### Sum of Products
+### Sum of Products
 - Literal: any variable or its complement
 - Product Term: synonym for AND
 - Sum Term: synonym for OR
@@ -65,7 +65,7 @@ NOR (not or) gates are also **functionally complete**. Similarly, NOR is cheaper
 
 Example:
 
-| x<sub>1</sub> | x<sub>2</sub> | x<sub>3</sub> | Minterm |
+| $x_1$ | $x_2$ | $x_3$ | Minterm |
 | --- | --- | --- | ------- |
 | 0 | 0 | 0 | $\overline{x_1}\overline{x_2}\overline{x_3}$ |
 | 0 | 0 | 1 | $\overline{x_1}\overline{x_2}x_3$ |

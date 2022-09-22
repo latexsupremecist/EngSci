@@ -1,9 +1,9 @@
 ## Lecture 7
 
-#### System Verilog  
+### System Verilog  
 Note: updated from Verilog
 
-#### Common Hardware Blocks  
+### Common Hardware Blocks  
 
 Note: what we've looked so far is "Combinational Logic"
 	- Current input used to calculate output

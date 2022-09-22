@@ -1,19 +1,19 @@
 ## Lecture 5
 
-#### Announcements
+### Announcements
 First practical: 23/9 and 26/9
 - Lab 1 posted
 - pre lab quiz due 09:00 on first practical day
 - Demonstrate working circuits in lab
 - Online submission
 
-#### Product of Sums
+### Product of Sums
 - Maxterms
 	- Each maxterm includes $$\begin{cases} x_i & x_i = 0 \\ \text{if } \overline{x_i} & \text{if } x_i = 1 \\ \end{cases}$$
 	- $f$ is equal to the product of the maxterms
 - Both approaches work and are equivalent
 
-#### Boolean Algebra
+### Boolean Algebra
 - Axioms
 	- $0 \cdot 0 = 1$
 	- $1 \cdot 1 = 1$
