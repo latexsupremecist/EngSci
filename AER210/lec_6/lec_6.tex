@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 6}
+\begin{document}
+\maketitle
+
+\section{Triple Integrals in Cylindrical and Spherical Coordinates}
+
+\begin{defn}
+	Cylindrical Coordinates $(r,\theta,z)$ \\
+	Where $r$ is the (non-negative) distance between the origin and the point projected on the $xy$ plane, $\theta$ is the angle between the horizontal and the $r$ vector, and $z$ is the same as that defined in Cartesian coordinates. \\
+\end{defn}
+To convert from Cartesian coordinates to Cylindrical coordinates,
+\begin{align*}
+	r &= \sqrt{x^2+y^2} \\
+	\theta &= \arctan\left(\frac{x}{y}\right) \\
+	z &= z \\
+\end{align*}
+To convert from Cylindrical coordinates to Cartesian coordinates,
+\begin{align*}
+	x &= r\cos\theta \\
+	y &= r\sin\theta \\
+	z &= z \\
+\end{align*}
+We usually define the region as
+$$Q = \{(x,y,z)|(x,y) \in\R, u_1(x,y) \leq z \leq u_2(x,y)\}$$
+where
+$$R = \{(r,\theta)|\alpha \leq \theta \leq \beta, h_1(\theta) \leq r \leq h_2(\theta)\}$$
+Assuming $f(x,y,z)$ is continuous over $Q$,
+\begin{align*}
+	\iiint_Q f(x,y,z)dV &= \iint_R \left[\int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z)dz\right]dA \\
+			    &= \int_\alpha^\beta \int_{R_1(\theta)}^{R_2(\theta)} \int_{u_1(r\cos\theta,r\sin\theta)}^{u_2(r\cos\theta,r\sin\theta)} f(r\cos\theta,r\sin\theta,z)rdzdrd\theta \\
+\end{align*}
+
+\begin{ex}
+	Evaluate the following triple integral
+	$$\int_{-2}^2 \int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}} \int_{\sqrt{x^2+y^2}}^2 (x^2+y^2)dzdydx$$
+	It is very difficult to evaluate this integral in cartesian coordinates. Therefore we convert it to cylindrical coordinates. From the $x$ and $y$ limits, we can see that the region on the $xy$ plane is a circle centred at the origin with radius 2. Substituting the cylindrical limits,
+	\begin{align*}
+		I &= \int_0^{2\pi} \int_0^2 \int_r^2 r^3 dzdrd\theta \\
+		  &= \int_0^{2\pi} \int_0^2 2r^3 - r^4 drd\theta \\
+		  &= \int_0^{2\pi} 8 - \frac{32}{5} d\theta \\
+		  &= \frac{16}{5}\pi \\
+	\end{align*}
+\end{ex}
+
+\subsection{Triple Integrals in Spherical Coordinates}
+
+\begin{defn}
+	Sperical Coordinates. \\
+	$\rho$ denotes the (non-negative) distance from the origin to the point. $\theta$ denotes the angle between the horizontal and the $\rho$ vector projected on the $xy$ plane. $\phi$ denotes the angle between the $z$ axis and the $\rho$ vector.
+\end{defn}
+To convert from spherical to cartesian coordinates,
+\begin{align*}
+	x &= \rho\sin\phi\cos\theta \\
+	y &= \rho\sin\phi\sin\theta \\
+	z &= \rho\cos\phi \\
+\end{align*}
+To convert from cartesian to spherical coordinates,
+\begin{align*}
+	\rho &= \sqrt{x^2+y^2+z^2} \\
+	\theta &= \arctan\left(\frac{y}{x}\right) \\
+	\phi &= \arctan\left(\frac{\sqrt{x^2+y^2}}{z}\right) \\
+\end{align*}
+Approximating a small sperical segment as a cuboid, its base area is $\rho\Delta\theta \times \rho\sin\phi\Delta\phi$, while its height is $\Delta \rho$, so
+$$dV = \rho^2\sin\phi d\rho d\theta d\phi$$
+
+\begin{ex}
+	Find the mass of a half sphere of radius $a$ that has a density $k(2a-\rho)$, where $k$ is a constant and $\rho$ is the distance from the coordinate origin to a point (i.e., the first coordinate of the spherical coordinate system). \\
+	We let the density be
+	$$\lambda = k(2a-\rho)$$
+	Then
+	\begin{align*}
+		m &= \iiint_V \lambda dV \\
+		  &= \int_0^{2\pi} \int_0^{\frac{\pi}{2}} \int_0^a k(2a-\rho)\rho^2\sin\phi d\rho d\phi d\theta \\
+		  &= \int_0^{2\pi} \int_0^{\frac{\pi}{2}} \frac{2ak\rho^3\sin\phi}{3} - \frac{k\rho^4\sin\phi}{4} \Big |_0^a d\phi d\theta \\
+		  &- \int_0^{2\pi} \int_0^{\frac{\pi}{2}} \frac{5}{12}ka^4\sin\phi d\phi d\theta \\
+		  &= k\int_0^{2\pi} \frac{15}{12} a^4\left(-\cos\frac{\pi}{2} + \cos 0 \right)d\theta \\
+		  &= \frac{5}{6}\pi ka^4 \\
+	\end{align*}
+\end{ex}
+\end{document}
