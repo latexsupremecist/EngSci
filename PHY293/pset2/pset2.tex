@@ -1,0 +1,214 @@
+\documentclass[answers]{exam}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\author{niceguy}
+\title{Problem Set 2}
+\begin{document}
+\maketitle
+\begin{questions}
+	\question{The head on an electric toothbrush oscillates in simple harmonic motion with frequency $f=300$Hz and amplitude $A = 2.00$mm. What is the maximum speed of the toothbrush head?}
+	\begin{solution}
+		$$x = A\cos(\omega t + \phi)$$
+		Taking the derivative,
+		$$v = -A\omega\sin(\omega t + \phi)$$
+		So the maximum velocity is given by $A\omega$. Substituting the values in,
+		$$v = 2\times10^{-3} \times 2\pi \times 300 = 3.77 \text{ ms}^{-1}$$
+	\end{solution}
+
+	\question{A rotating cam in a car engine opens a valve once per rotation. The cam displacement can be written as
+		$$y(t) = 40 + 2\cos(\omega t + \phi_0)$$
+	and the valve is open whenever $y(t) > 41$mm. During what fraction of each cycle is the valve open?}
+	\begin{solution}
+		From the diagram, the valve is open between the two solutions where $y(t) = 41$, which can be simplified as $\cos(\omega t) = 0.5$. The two solutions are $\pm \frac{\pi}{3}$. Therefore the fraction is $\frac{2\pi}{3} \div 2\pi = \frac{1}{3}$.
+	\end{solution}
+
+	\question{At time $t=0$s a particle of mass $m=0.21$kg is moving through a position $x(0)=0.110$m with a velocity $v=0.330$ms$^{-1}$. The particle passes through the same position with the same velocity $\Delta t = 1.25$s later.}
+	\begin{parts}
+		\part{Determine the amplitude of the oscillation}
+		\part{Determine the phase constant of the motion}
+	\end{parts}
+	\begin{solution}
+		Since the particle passes through the same position with the same velocity, a period (or several) must have passed, or
+		$$1.25 = \frac{2k\pi}{\omega}, k \in \mathbb{N}$$
+		We know that the position of the particle is given by
+		$$x(t) = A\cos(\omega t + \phi)$$
+		Substituting initial conditions,
+		$$0.11 = A\cos\phi$$
+		$$0.33 = -A\omega\sin\phi$$
+		Dividing the second equation by the first equation,
+		$$-\omega\tan\phi = 3$$
+		The only way to solve for $\phi$ is by assuming $k=1$, i.e. the particle does not pass through the same position with the same velocity for $t \in (0,1.25)$. Substituting $\omega = \frac{2\pi}{T}$ yields
+		$$\phi = -0.538$$
+		Considering $v(0) > 0$, we have
+		$$\phi = 5.74 \text{ rad}$$
+		The amplitude can then be solved from the initial equations
+		$$A = 0.128 \text{ m}$$
+	\end{solution}
+	\question{A simple harmonic oscillator consists of a block of mass 2.00 kg attached to a spring of spring constant 50.0 N/m. The amplitude of the oscillation is measured to be $A = 0.12$m. At time $t=0$s the position of the particle is measured to be $x(0)=00.040$m with the particle moving to the right.}
+	\begin{parts}
+		\part{Determine the angular frequency of the oscillation}
+		\begin{solution}
+			\begin{align*}
+				\omega &= \sqrt{\frac{k}{m}} \\
+				       &= \sqrt{\frac{50}{2}} \\
+				       &= 5 \text{ rad s}^{-1} \\
+			\end{align*}
+		\end{solution}
+		\part{Determine the total mechanical energy of the system}
+		\begin{solution}
+			\begin{align*}
+				E &= \frac{1}{2} kA^2 \\
+				  &= \frac{1}{2} \times 50 \times 0.12^2 \\
+				  &= 0.36 \text{ J} \\
+			\end{align*}
+		\end{solution}
+		\part{Determine the velocity of the particle at $t=0$s.}
+		\begin{solution}
+			$$x(t) = 0.12\cos(5t + \phi)$$
+			Putting $x(0)=-0.04$ and considering $v(0) > 0$,
+			$$\phi = 4.37 \text{ rad}$$
+			Differentiation gives us
+			$$v(t) = -0.6\sin(5t + \phi)$$
+			and substituting $t=0$ yields
+			$$v(0) = 0.566 \text{ ms}^{-1}$$
+		\end{solution}
+		\part{Determine the initial phase constant of this oscillation. Express your answer in radians, as a value between 0 and $2\pi$.}
+		\begin{solution}
+			This was solved for above.
+			$$\phi = 4.37 \text{ rad}$$
+		\end{solution}
+		\part{Determine the times when particle is at $x=0.040$m for the first and for the second time.}
+		\begin{solution}
+			\begin{align*}
+				0.04 &= 0.12\cos(5t+\phi) \\
+				\cos(5t+\phi) &= \frac{1}{3} \\
+			\end{align*}
+			The two smallest $\theta > \phi$ such that $\cos\theta = \frac{1}{3}$ are 5.05 and 7.51, giving the times
+			$$t = 0.136 \text{ s and } t = 0.628 \text{ s}$$
+		\end{solution}
+	\end{parts}
+
+	\question{Figure 1 below shows the velocity as a function of time for first five oscillations of a mass undergoing simple harmonic motion. Determine the initial phase constant of this oscillation}
+	\begin{solution}
+		From the figure,
+		$$-2\sin\phi = -1$$
+		Considering initial velocity is negative,
+		$$\phi = \frac{5\pi}{6}$$
+	\end{solution}
+
+	\question{A mass $m=2.0$kg is placed on a spring balance, displacing the balance by $\Delta l = 3.0$cm. the damping mechanism allows the balance to return to equilibrium in teh shortest possible time. What is the required coefficient $b$ in a damping force $F = -bv$?}
+	\begin{solution}
+		$$k = \frac{F}{\Delta l} = \frac{mg}{\Delta l} = 654 \text{ Nm}^{-1}$$
+		For the balance to return to equilibrium in the shortest possible time, there must be critical damping, i.e.
+		$$\gamma = 2\omega_0 = 2\sqrt{\frac{k}{m}} = 36.2$$
+		We also know that $\gamma = \frac{b}{m}$, which gives us
+		$$b = 72.3 \text{ kgs}^{-1}$$
+	\end{solution}
+
+	\question{Figure 2 shows a graph of displacement $x$ as a function of time $t$ for a damped harmonic oscillator. Estimate the quality factor $Q$ of the oscillator.}
+	\begin{solution}
+		I'll do this later.
+	\end{solution}
+
+	\question{The energy of simple harmonic oscillator reduces by a factor of 3 after 20 complete cycles.}
+	\begin{parts}
+		\part{By what factor will it reduce after 100 complete cycles?}
+		\begin{solution}
+			$$3^5 = 243$$
+		\end{solution}
+		\part{How many cycles are required to reduce the amplitude of the oscillator by a factor of 3}
+		\begin{solution}
+			$$20 \times 2 = 40$$
+		\end{solution}
+	\end{parts}
+
+	\question{Figure 3 shows three systems of mass $m$ attached to the light springs that all oscillate with the same frequency $\omega$. Show that the spring constant of the springs for the three systems, $k_a:k_b:k_c = 1:\frac{1}{2}:2$.}
+	\begin{solution}
+		$$k_a = \omega^2m$$
+		In the second system,
+		$$F = -k_bx-k_bx$$
+		Letting $k_1 = 2k_b$, we have
+		$$k_b = \frac{1}{2}k_1 = \frac{1}{2}\omega^2m = \frac{1}{2}k_a$$
+		In the third system, let $x_a$ and $x_b$ denote the deformations of both springs. Then
+		$$F = k_cx_a = k_cx_b$$
+		This gives us $x_a=x_b$. Since their sum is $x$, we have
+		$$F = \frac{k_c}{2} x$$
+		Letting $k_2 = \frac{k_c}{2}$,
+		$$k_c = 2k_2 = 2\omega^2m = 2k_a$$
+		This gives us the required ratio.
+	\end{solution}
+
+	\question{A mass stands on a platform which executes SHM in the vertical direction at a frequency $f=2.5Hz$. Show that teh mass loses contact with the platform when the amplitude of the displacement exceeds 4.0cm.}
+	\begin{solution}
+		This happens when the vertical acceleration is greater than gravity.
+		\begin{align*}
+			x(t) &= A\cos(\omega t + \phi) \\
+			v(t) &= -A\omega\sin(\omega t + \phi) \\
+			a(t) &= -A\omega^2\cos(\omega t + \phi) \\
+		\end{align*}
+		So the maximum value of acceleration is when $x$ is at a maximum, which causes the mass to lose contact. Solving for angular frequency,
+		$$\omega = 2\pi f = 5\pi$$
+		Hence
+		$$A \times 25\pi^2 = 9.81 \Rightarrow A = 0.040 \text{ m} = 4.0 \text{ cm}$$
+	\end{solution}
+	
+	\question{An electrical current has the form $$I_1(t) = 10\cos(\omega t + 1)$$ To synchronize this current with an external power source, and additional current $I_2(t)$ is added to $I_1(t)$, so that the combined current has a phase constant of zero: $$I(t) = I_1(t) + I_2(t) = I_0\cos(\omega t)$$}
+	\begin{parts}
+		\part{Show that for the amplitude $|I|$ of the final current $I(t)$ to be also 10.0A, the magnitude of current $|I_2|$ has to be 9.52A.}
+		\begin{solution}
+			$I_2(t)$ must also have the same frequency, as $I_2 = I - I_1$, where the left hand side is a periodic function with angular frequency $\omega$. Hence we have
+			$$10\cos(\omega t + 1) + A\cos(\omega t + \phi) = 10 \cos\omega$$
+			Expanding, we have
+			$$10\cos\omega t\cos1 - 10\sin\omega t\sin1 + A\cos\omega t\cos\phi - A\sin\omega t\sin\phi = 10\cos\omega t$$
+			We know that $\omega \neq 0$, so putting $t=0$ tells us that the $\sin\omega t$ and $\cos\omega t$ terms are independent, which gives
+			$$10\cos1 + A\cos\phi = 10$$
+			and
+			$$-10\sin1 - A\sin\phi = 0$$
+			Rearranging and dividing the second equation by the first gives us
+			$$\tan\phi = -1.83$$
+			The second equation tells us $\sin\phi$ must be negative, meaning the only solution for $\phi$ is 5.21 rad. Substitution into the second equation again gives us $A=9.59$.
+		\end{solution}
+		\part{Show the smallest possible current amplitude $|I_2|$ that can be added to $I_1(t)$ to create a final current $I(t)$ with zero initial phase constant is $|I_2| = 8.41$A.}
+		\begin{solution}
+			We use the same approach as above, but substituting $B$ for the unknown amplitude of $I$. We will still obtain
+			$$-10\sin1 - A\sin\phi = 0$$
+			Considering $A$ must be positive, and the maximum absolute value of $\sin\phi$ is 1, we have
+			$$A = 10\sin1 = 8.41$$
+		\end{solution}
+	\end{parts}
+
+	\question{The potential energy $U(x)$ between two atoms in a diatomic molecule can be (approximately) expressed as $$U(x) = -\frac{a}{x^6} + \frac{b}{x^{12}}$$ where $x$ is the separation between the atoms and $a$ and $b$ are constants.}
+	\begin{parts}
+		\part{Write an expression for the forces.}
+		\begin{solution}
+			\begin{align*}
+				F &= -\frac{dU}{dx} \\
+				  &= -\frac{6a}{x^7} + \frac{12b}{x^{13}} \\
+			\end{align*}
+		\end{solution}
+		\part{Show that the equilibrium separation $x_0$ of the atoms is $x_0 = \left(\frac{2b}{a}\right)^{\frac{1}{6}}$.}
+		\begin{solution}
+			At equilibrium, there is no net force, so $F = 0$, or
+			\begin{align*}
+				\frac{6a}{x^7} &= \frac{12b}{x^{13}} \\
+				ax^6 &= 2b \\
+				x &= \left(\frac{2b}{a}\right)^{\frac{1}{6}} \\
+			\end{align*}
+		\end{solution}
+		\part{Show that the system will oscillate with SHM when slightly displaced from equilibrium with angular frequency $\sqrt{\frac{k}{m}}$ where $k=36a\left(\frac{a}{2b}\right)^{\frac{4}{3}}$.}
+		\begin{solution}
+			$$F'(x) = \frac{42a}{x^8} - \frac{156b}{x^{14}}$$
+			The first degree taylor approximation is then
+			\begin{align*}
+				F_{\text{approx}} &= F(x_0) + F'(x_0)(x-x_0) \\
+						  &= 0 + \left(\frac{21a^2}{b} \times x_0^{-2} - \frac{39a^2}{b} \times x_0^{-2}\right) (x-x_0) \\
+						  &= -18 \frac{a^2}{b} \times \left(\frac{a}{2b}\right)^{\frac{1}{3}} \\
+			\end{align*}
+			In our SHM model, $F(x) = -kx$, so $F(0) = 0$. By substituting $x' = x-x_0$, the equation is in the form $F(x') = -kx'$, and we have
+			$$k = 18 \frac{a^2}{b} \left(\frac{a}{2b}\right)^{\frac{1}{3}} = 36\left(\frac{a}{2b}\right)^{\frac{4}{3}}$$
+		\end{solution}
+	\end{parts}
+			
+
+\end{questions}
+\end{document}
