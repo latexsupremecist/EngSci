@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 7}
+\begin{document}
+\maketitle
+
+\section{Existence and Uniqueness}
+
+\begin{ex}
+	$$\frac{du}{dt} + \frac{1}{t}u = \frac{1}{t-1}$$
+	The points of issue are $t=0,t=1$, so we want to separate $\R$ into $(-\infty,0)\cup(0,1)\cup(1,\infty)$ and remove those points. \\
+	$u(-1) = 1$: \\
+	A unique solution exists. Since $g$ and $p$ are only discountinuous at $t=0$ and $t=1$, $(-\infty,0)$ is the largest interval containing $t_0=-1$, so by the theorem, it is the domain. \\
+	$u(0) = 2$: \\
+	This is inconclusive, as the theorem does not tell us anything ($p$ is discontinuous at $t_0=0$). \\
+	Similarly, a unique solution and corresponding domains exists for $u(2)=2$ and $u(0.5)=3$. \\
+\end{ex}
+
+\section{Cane Toad Example}
+
+Assumptions: Cane Toads have no natural predators. Most importantly, they are immortal. \\
+The first model would then be
+$$\frac{dp}{dt} = rp$$
+Problems with this model
+\begin{enumerate}
+	\item Population does not go to infinity in real life, due to limited resources \\
+	\item It is expected that population will stabilise eventually at a certain point $K$ \\
+\end{enumerate}
+To modify this model, we can change the rate of growth to depend on the current population, i.e.
+$$r \rightarrow rh(p)$$
+We want $h(K) = 0$, and the sign of $h(p)$ to be the opposite of $p-K$. We also want $h$ to be close to 1 when $p$ is small. Our candidate is
+$$h(p) = 1 - \frac{p}{K}$$
+This gives us
+$$\frac{dp}{dt} = r\left(1 - \frac{p}{K}\right)p$$
+We want to plot the slope fields in more detail, so we need the points of inflection.
+\begin{align*}
+	\frac{dp}{dt} &= r\left(1 - \frac{p}{K}\right)p \\
+	\frac{d^2p}{dt^2} &= r\left(p' - \frac{2pp'}{K}\right) \\
+			  &= r^2p \left(1 - \frac{p}{K}\right)\left(1 - \frac{2p}{k}\right) \\
+\end{align*}
+So the points of inflection are at $p=0$, $\frac{p=k}{2}$, $p=k$. \\
+The general solution is
+\begin{align*}
+	\frac{1}{p} \frac{dp}{dt} &= r\left(\frac{k-p}{k}\right) \\
+	\frac{dp}{p(k-p)} &= \frac{r}{k} dt \\
+	- \frac{\ln\left| \frac{k}{p} - 1\right|}{k} = \frac{rt}{k} + C \\
+	-\ln\left| \frac{k}{p} - 1 \right| &= rt + C \\
+	p &= \frac{k}{C'e^{-rt}+1} \\
+\end{align*}
+
+Putting $p(0) = p_0$, we have $C' = \frac{k}{p_0} - 1$. Substituting into the general solution,
+$$p = frac{p_0k}{(k-p_0)e^{-rt}+p_0}$$
+
+But in fact, there is a threshold level $T$ where the cane toads will tend towards extinction if population drops below $T$. Therefore, instead of the rate of change being $r$, we would like a rate of change of $rg(p)$ where
+\begin{itemize}
+	\item $g(p) < 0$ if $p < T$ \\
+	\item $g(p) > 0$ if $p > T$ \\
+	\item $g(p) \approx -1$ if $p \approx 0$ \\
+\end{itemize}
+Candidate:
+$$g(p) = \frac{p}{T} - 1$$
+This gives us our third proposal
+$$\frac{dp}{dt} = r\left(\frac{p}{T} - 1\right)p$$
+Using a similar approach as above, we can solve for $p$ in terms of its initial condition $p(0) = p_0$
+$$p(t) = \frac{p_0T}{p_0 + (T-p_0)e^{rt}}$$
+The problem is, if $p_0 > T$, population explodes to infinity in finite time.
+\begin{align*}
+	p_0 + (T-p_0)e^{rt} &= 0 \\
+	(T-p_0)e^{rt} &= -p_0 \\
+	e^{rt} &= \frac{p_0}{p_0-T} \\
+	rt &= \ln\left|\frac{p_0}{p_0-T}\right| \\
+	t &= \ln\left(\frac{p_0}{p_0-T}\right) \\
+\end{align*}
+
+We would therefore like a final model where
+$$\frac{dp}{dt} = rq(p)p$$
+Where $\exists T < K$ such that
+$$\begin{cases}
+	q(p) < 0 & \text{if } p < T \\
+	q(p) > 0 & \text{if } T < p < K \\
+	q(p) < 0 & \text{if } p > K \\
+\end{cases}$$
+A simple solution is
+$$\frac{dp}{dt} = r\left(1-\frac{p}{K}\right)\left(\frac{p}{T}-1\right)p$$
+\end{document}
