@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 8}
+\begin{document}
+\maketitle
+
+\section{Examples on Change of Variables}
+
+\begin{ex}
+	Change the variables of a double integral from rectangular to polar coordinates.
+	$$x = r\cos\theta$$
+	$$y = r\sin\theta$$
+	Differentiating,
+	$$x_r = \cos\theta$$
+	$$x_\theta = -r\sin\theta$$
+	$$y_r = \sin\theta$$
+	$$y_\theta = r\cos\theta$$
+	The Jacobian is
+	$$x_ry_\theta - x_\theta r_y = r\cos^2\theta+r\sin^2\theta = r$$
+	Hence $dxdy = rdrd\theta$.
+\end{ex}
+
+\begin{ex}
+	Evaluate the integral $\iint_R(x^2+2xy)dA$ where $R$ is the region bounded by the lines $y=2x+3$, $y=2x+1$, $y=5$, $y=2-x$. \\
+	Let $u=y-2x$ and $v = x+y$. Then
+	$$x = \frac{v-u}{3}$$
+	$$y = \frac{u+2v}{3}$$
+	$$x_u = -\frac{1}{3}$$
+	$$x_v = \frac{1}{3}$$
+	$$y_u = \frac{1}{3}$$
+	$$y_v = \frac{2}{3}$$
+	$$J = |x_uy_v - x_vy_u| = \frac{1}{3}$$
+	The integral is given by
+	\begin{align*}
+	I &= \int_2^5 \int_1^3 \frac{v^2-2vu+u^2+4v^2-2vu-2u^2}{9} \frac{1}{3}dudv \\
+		  &= \frac{1}{27} \int_2^5 \int_1^3 5v^2 - 4vu - u^2 dudv \\
+		  &= \frac{1}{27} \int_2^5 10v^2 - 16v - \frac{26}{3} dv \\
+		  &= \frac{1}{27} (390 - 168 - 26) \\
+		  &= \frac{196}{27}
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Evaluate $\\int_Rxydxdy$ where $R$ is the first quadrant region bounded by the curves: $x^2+y^2=4$, $x^2+y^2=9$, $x^2-y^2=1$,$x^2-y^2=4$. \\
+	Define
+	$$u = x^2+y^2$$
+	$$v = x^2-y^2$$
+	Then
+	$$x = \sqrt{\frac{u+v}{2}}$$
+	$$y = \sqrt{\frac{u-v}{2}}$$
+	$$x_u = x_v = \frac{1}{2\sqrt{2(u+v)}}$$
+	$$y_u = \frac{1}{2\sqrt{2(u-v)}}$$
+	$$y_v = -\frac{1}{2\sqrt{2(u-v)}}$$
+	The Jacobian is then
+	$$J = |x_uy_v - x_vy_u| = \frac{1}{4\sqrt{(u+v)(u-v)}}$$
+	And the integral is given by
+	\begin{align*}
+		I &= \int_1^4\int_4^9 \frac{\sqrt{(u+v)(u-v)}}{2} \times \frac{1}{4\sqrt{(u+v)(u-v)}} dudv \\
+		  &= \int_1^4\int_4^9 \frac{1}{8} dudv \\
+		  &= \frac{15}{8}
+	\end{align*}
+\end{ex}
+
+\section{More on Jacobians}
+
+\subsection{In 3 Dimensions}
+
+The Jacobian with 3 variables is similar to that of 2 variables, where
+$$J = \frac{\partial(x,y,z)}{\partial(u,v,w)} = \text{det} \begin{bmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \\ \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w} \end{bmatrix}$$
+
+\subsection{Inverses of Jacobians}
+Let $R$ be a region on the $xy$ plane, $S$ be the equivalent on the $uv$ plane and $T$ be the equivalent on the $pq$ plane. Considering
+$$dxdy = J_{R \rightarrow S} dudv$$
+and similar equations between $R$, $S$, and $T$, it is obvious that
+$$J_{R \rightarrow S} = J_{R\rightarrow T} \times J_{T \rightarrow S}$$
+In other words, Jacobians behave like fractions
+$$\frac{\partial(x,y)}{\partial(u,v)} = \frac{\partial(x,y)}{\partial(p,q)} \times \frac{\partial(p,q)}{\partial(u,v)}$$
+Similarly, it follows that
+$$\frac{\partial(x,y)}{\partial(u,v)} = \frac{\partial(u,v)}{\partial(x,y)}$$
+\end{document}
