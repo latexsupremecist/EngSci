@@ -1,0 +1,73 @@
+\documentclass[answers]{exam}
+\usepackage{amsmath}
+\author{niceguy}
+\title{Problem Set 3}
+\begin{document}
+\maketitle
+\begin{questions}
+
+	\question{A 2.00 kg object attached to the spring moves without friction and is driven by the external force given by teh expression $f = 3.00\sin(2\pi t)$ where $F$ is in newtons and $t$ is in seconds. The force constant on the spring is 20.0 N/m. Find:}
+	\begin{parts}
+		\part{The resonant frequency of the system}
+		\begin{solution}
+			\begin{align*}
+				\omega_0 &= \sqrt{\frac{k}{m}} \\
+					 &= \sqrt{\frac{20}{2}} \\
+					 &\approx 3.16 \text{ rads}^{-1} \\
+			\end{align*}
+		\end{solution}
+		\part{The angular frequency of the driven system}
+		\begin{solution}
+			$$\omega = 2\pi \approx 6.28 \text{ rads}^{-1}$$
+		\end{solution}
+		\part{The amplitude of the motion}
+		\begin{solution}
+			\begin{align*}
+				A &= \frac{a\omega_0^2}{\sqrt{(\omega_0^2-\omega^2)^2 + (\gamma\omega)^2}} \\
+				  &= \frac{\frac{3}{20} \times 10}{\sqrt{(10-4\pi^2)^2}} \\
+				  &= 0.0509 \text{ m} \\
+			\end{align*}
+		\end{solution}
+	\end{parts}
+
+	\question{A series RLC circuit has $R = 425\Omega$, $L = 1.25$H, and $C = 3.50\mu$C. It is connected to an AC source with $f=60.0$Hz and $\Delta V_{\text{max}} 150$V.}
+	\begin{parts}
+		\part{What is the maximum current that can be observed in the circuit?}
+		\begin{solution}
+			\begin{align*}
+				Z &= \sqrt{\left(\frac{1}{\omega C} - \omega L\right)^2 + R^2} \\
+			  	&= 513 \\
+			\end{align*}
+			Current is then voltage divided by impedance, or
+			$$\frac{150}{513} \approx 0.293 \text{ A}$$
+		\end{solution}
+		\part{What is the phase angle $\delta$ between the voltage applied by the power supply and the observed current?}
+		\begin{solution}
+			Substituting $\gamma = \frac{R}{L}$, $\omega_0 = \sqrt{\frac{1}{LC}}$,
+			\begin{align*}
+				\tan\delta &= \frac{\frac{R\omega}{L}}{\omega_0^2-\omega^2} \\
+					   &= 1.88 \\
+				\delta &= 1.08 \\
+			\end{align*}
+		\end{solution}
+	\end{parts}
+
+	\question{What is the angular frequency at which the resonance occurs for the driven oscillator witth a $Q$ factor of:}
+	\begin{parts}
+		\part{Q=1}
+		\part{Q = 10}
+		\part{Q = 100}
+		\part{What is the maximum amplitude observed in each of these cases if the amplitude of the driver is $xi_0$?}
+		\begin{solution}
+			$$\omega_{\text{max}} = \omega_0\sqrt{1-\frac{\gamma^2}{2\omega_0^2}} = \omega_0\sqrt{1-\frac{1}{2Q^2}}$$
+			Hence the answers are $\frac{\omega_0}{\sqrt{2}}$, $0.997\omega_0$, and $1.00\omega_0$. \\
+			Simplifying amplitude in terms of the Q factor and $\xi_0$,
+			$$\omega^2 = \omega_0^2 - \frac{\omega_0^2}{2Q^2}$$
+			Hence
+			$$A(Q) = 
+		\end{solution}
+
+
+\end{questions}
+
+\end{document}
