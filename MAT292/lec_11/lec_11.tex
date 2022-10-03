@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 11}
+\begin{document}
+\maketitle
+\section{Behaviour of System: One Positive One Negative Eigenvalue}
+$$\frac{d\vec{x}}{dt} = \begin{pmatrix} 1 & 1 \\4 & 1\end{pmatrix}\vec{x}$$
+Solving for the eigenvalues and eigenvectors, the general solution is
+$$\vec{\phi}(t) = c_1e^{3t}\begin{pmatrix} 1 \\2\end{pmatrix} + c_2e^{-t}\begin{pmatrix} 1 \\ -2\end{pmatrix}$$
+As $t\rightarrow\infty$, the solution would behave like $c_1e^{3t}\begin{pmatrix} 1 \\ 2 \end{pmatrix}$, and as $t\rightarrow -\infty$, it would behave like $c_2e^{-t}\begin{pmatrix} 1 \\ -2 \end{pmatrix}$. In both cases, the solution diverges. Considering the first term only, the vector lies on a straight line from the origin to top right. Considering the second term only, we get a straight line from bottom right to the origin. The general solution is therefor a combination of both vectors. For $c_1, c_2 > 0$, it goes from bottom right (negative values) to $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ ($t=0$) to top right (positive values). The other cases are drawn similarly. \\
+
+Consider
+$$\frac{d\vec{x}}{dt} = \begin{pmatrix} -2 & 8 \\ 1 & -4 \end{pmatrix} \vec{x}$$
+The general solution is
+$$\vec{\phi}(x) = c_1\begin{pmatrix} 4 \\ 1 \end{pmatrix} + c_2e^{-6t} \begin{pmatrix} -2 \\ 1 \end{pmatrix}$$
+Since the first term is a constant, we get a parallel series of lines from top left to bottom right which point inwards to the origin.
+
+\section{Complex Eigenvalues}
+
+If the characteristic polynomial
+$$\lambda^2 + b\lambda + c$$
+gives us complex roots, ie
+$$b^2 < 4c$$
+\begin{align*}
+	A\vec{v_1} &= \lambda_1\vec{v_1} \\
+	\overline{A\vec{v_1}} &= \overline{\lambda_1\vec{v_1}} \\
+	A\vec{v_2} &= \lambda_2\vec{v_2} \\
+\end{align*}
+So $\lambda_1$ and $\lambda_2$ are conjugates of each other. Letting $\lambda_1 = \mu + i\nu$ and $\vec{v_1} + \vec{a} + i\vec{b}$, we have
+\begin{align*}
+	\vec{\phi_1}(t) &= e^{\mu t}e^{i\nu t}(\vec{a} + i\vec{b}) \\
+			&= e^{\mu t}(\cos(\nu t) + i\sin(\nu t))(\vec{a} + i\vec{b}) \\
+\end{align*}
+Which gives us
+$$\vec{\phi_1}(t) = \vec{u}(t) + i\vec{w}(t)$$
+where
+$$\vec{u}(t) = e^{\mu t}(\vec{a}\cos(\nu t) - \vec{b}\sin(\nu t))$$
+and
+$$\vec{w}(t) = e^{\mu t}(\vec{a}\sin(\nu t) + \vec{b}\cos(\nu t))$$
+In fact, $\vec{u}$ and $\vec{w}$ are linearly independent solutions to the ODE! Readers can verify this an an exercise. (Hint: they are linearly independent as the Wronskian is given by the determinant of $\vec{v_1} \vec{v_2}$, which are conjugates).
+
+Consider the following system
+$$\vec{x}' = \begin{pmatrix} 2 & -5 \\ 8 & -2 \end{pmatrix} \vec{x}$$
+The eigenvalues and eigenvectors are
+\begin{align*}
+	\lambda_1 &= 6i \\
+	\vec{v_1} &= \begin{pmatrix} 5 \\ 2-6i \end{pmatrix} \\
+	\lambda_2 &= -6i \\
+	\vec{v_2} &= \begin{pmatrix} 5 \\ 2+6i \end{pmatrix} \\
+\end{align*}
+
+Using our previous notation,
+$$\vec{u}(t) = \left(\cos(6t) \begin{pmatrix} 5 \\ 2 \end{pmatrix} - \sin(6t) \begin{pmatrix} 0 \\ -6 \end{pmatrix}\right)$$
+and
+$$\vec{w}(t) \left(\sin(6t) \begin{pmatrix} 5 \\ 2 \end{pmatrix} + \cos(6t) \begin{pmatrix} 0 \\ -6 \end{pmatrix}\right)$$
+\end{document}
