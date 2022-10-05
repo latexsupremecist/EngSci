@@ -28,10 +28,12 @@ $$f = \overline{xy} + \overline{z}$$
 - Prime Implicant: an implicant for which is it not possible to remove any literal and still have a valid implicant
 	- e.g. $\overline{z}$ in the above example is a prime implicant, but $\overline{xz}$ is not ($\overline{x}$ can be removed)
 - Cover: any set of implicants that include all minterms of a function. Consider
+
 |$x_3$\\$x_1x_2$ | 00 | 01 | 11 | 10 |
 | --- | --- | --- | --- | --- |
 | 0 | 0 | 0 | 1 | 1 |
 | 1 | 1 | 0 | 0 | 1 |
+
 All prime implicants are $x_1\overline{x_3}, x_1\overline{x_2}, \overline{x_2}x_3$. The **minimum** cost cover, however, is
 $$f = x_1\overline{x_3} + \overline{x_2}x_3$$
 - Essential prime implicant: prime implicant that covers at least one minterm not covered by any other prime implicant
