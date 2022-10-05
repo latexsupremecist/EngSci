@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 12}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Behaviour of System: Complex Eigenvalue, Zero Real Part}
+Consider
+$$\frac{d\vec{x}}{dt} = \begin{pmatrix} 2 & -5 \\ 8 & -2 \end{pmatrix}$$
+The real part of the eigenvalue is 0. The phase potrait is hence composed of "circles" centred at 0, as $\vec{x}(t)$ is periodic. Substituting (e.g.) $\vec{x} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ gives us the slope $\begin{pmatrix} -5 \\ -2 \end{pmatrix}$, which means the direction is counterclockwise.
+
+\begin{ex}
+	Consider
+	$$\frac{d\vec{x}}{dt} = \begin{pmatrix} -1 & 2 \\ -2 & -1 \end{pmatrix} \vec{x}$$
+	The eigenvalues are $-1 \pm 2i$. \\
+	The solutions all have a coefficient of $e^{-t}$, so they spiral towards the origin.
+\end{ex}
+
+\begin{ex}
+	Consider
+	$$\frac{d\vec{x}}{dx} = \begin{pmatrix} 3 & -2 \\ 4 & -1 \end{pmatrix}\vec{x}$$
+	Where the eigenvalues and eigenvalues are given by $1 \pm 2i$ and $\begin{pmatrix} 1 \\ 1-i \end{pmatrix}$. We then have
+	$$\vec{u}(t) = e^t\left(\cos(2t)\begin{pmatrix} 1 \\ 1\end{pmatrix} - \sin(2t)\begin{pmatrix} 0 \\ -1\end{pmatrix}\right)$$
+	and
+	$$\vec{w}(t) = e^t\left(\sin(2t)\begin{pmatrix} 1 \\ 1 \end{pmatrix} + \sin(2t) \begin{pmatrix} 0 \\ -1 \end{pmatrix}\right)$$
+	The phase potrait is hence a spiral from the origin. Substituting $\vec{x} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ tells us that the spiral is counterclockwise.
+\end{ex}
+
+\section{Repeated Eigenvalues, Distinct Eigenvectors}
+Consider
+$$\frac{d\vec{x}}{dt} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \vec{x}$$
+And the solution is then
+$$\vec{\phi}(t) = c_1e^t\begin{pmatrix} 1 \\ 0 \end{pmatrix} + c_2e^t\begin{pmatrix} 0 \\ 1 \end{pmatrix}$$
+The behaviour of the phase potrait depends on which coefficient dominates.
+
+\begin{ex}
+	$$\frac{d\vec{x}}{dt} = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \vec{x}$$
+	The eigenvalue is 1, and the eigenvector is $\begin{pmatrix} 1 \\ 0\end{pmatrix}$. However, if we write the system out explicitly,
+	$$x_1'(t) = x_1(t) + 2x_2(t)$$
+	and
+	$$x_2'(t) = x_2(t)$$
+	One can directly solve for the second equation, which gives us enough information to solve the first equation.
+	$$x_2(t) = c_2e^t$$
+	Substituting,
+	$$x_1'(t) = x_1(t) + 2c_2e^t$$
+	This is a first order linear ODE
+	\begin{align*}
+		e^{-t}x_1(t) &= \int 2c_2 dt \\
+		e^{-t}x_1(t) &= 2c_2t + c_1 \\
+		x_1(t) &= 2c2te^t + c_1e^t \\
+	\end{align*}
+	Then simplifying $\vec{\phi_2}(t)$ gives us
+	$$\vec{\phi_2}(t) = \vec{\phi_1}(t) + c_2e^t \left(t\begin{pmatrix} 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ \frac{1}{2}\end{pmatrix}\right)$$
+	Droppint the $\vec{\phi_1}(t)$ term gives us
+	$$\vec{\phi_2}(t) = te^t\vec{v_1} + e^t\vec{w}$$
+\end{ex}
+
+We want to generalise this. We try the ansatz $\vec{x}(t) = te^{\lambda t}\vec{v_1} + e^{\lambda t}\vec{w}$. Substituting into
+$$\frac{d\vec{x}}{dt} = A\vec{x}$$
+\begin{align*}
+	\text{LHS} &= \frac{d}{dt} \left(te^{\lambda t}\vec{v_1} + e^{\lambda t}\vec{w}\right) \\
+		   &= e^{\lambda t}\vec{v_1} + \lambda te^{\lambda t}\vec{v_1} + \lambda e^{\lambda t}\vec{w} \\
+		   &= e^{\lambda t} \left((\lambda t + 1) \vec{v_1} + \lambda\vec{w}\right) \\
+\end{align*}
+
+\begin{align*}
+	\text{RHS} &= A\vec{x} \\
+		   &= A\left(te^{\lambda t}\vec{v_1} + e^{\lambda t}\vec{w}\right) \\
+		   &= e^t\left(\lambda t\vec{v_1} + A\vec{w}\right) \\
+\end{align*}
+Comparing like terms,
+$$A\vec{w} + \lambda t \vec{v_1} = \lambda \vec{w} + (\lambda t + 1) \vec{v_1} \Rightarrow (A-\lambda I)\vec{w} = \vec{v_1}$$
+What remains is to verify linear independence by computing the Wronskian. Factoring out $e^{\lambda t}$, we have
+$$\text{det} \begin{bmatrix} \vec{v_1} & t\vec{v_1}+\vec{w} \end{bmatrix}$$
+We can remove the constant multiple of $\vec{v_1}$ on the right hand side, yielding
+$$\text{det} \begin{bmatrix} \vec{v_1} & \vec{w}\end{bmatrix}$$
+This is nonzero because $\vec{v_1}$ and $\vec{w}$ must be linearly independent. If not,
+\begin{align*}
+	\vec{v_1} &= k\vec{w} \\
+	(A-\lambda I) \vec{w} &= k\vec{w} \\
+	(A - (\lambda + k)I) \vec{w} &= 0 \\
+\end{align*}
+If $k\neq0$, there is a second eigenvalue $\lambda + k$, which is a contradiction. If $k=0$, $\vec{v_1}=0$, which is also a contradiction.
+\end{document}
