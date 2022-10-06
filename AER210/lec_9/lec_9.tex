@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 9}
+\begin{document}
+\maketitle
+
+\section{Examples on the Change of Variables in Multiple Integrals}
+
+\begin{ex}
+	Evaluate $\\int_R e^{(x+y)/(x-y)}dA$ where $R$ is the trapezoidal region with vertices $(1,0), (2,0), (0,-2)$, and $(0,-1)$. \\
+	If we let
+	\begin{align*}
+		u &= x+y \\
+		v &= x-y
+	\end{align*}
+	The boundaries will be $v$ from 1 to 2, and $u$ from $-v$ to $v$. The Jacobian is then
+	\begin{align*}
+		J &= \text{det} \begin{bmatrix} x_u & x_v \\ y_u & y_v \end{bmatrix} \\
+		  &= \text{det} \begin{bmatrix} u_x & u_y \\ v_x & v_y \end{bmatrix}^{-1} \\
+		  &= \text{det} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}^{-1} \\
+		  &= (-2)^{-1} \\
+		  &= -\frac{1}{2}
+	\end{align*}
+	Then the integral is given by
+	\begin{align*}
+		I &= \iint_S e^{\frac{u}{v}} \times \frac{1}{2} dudv \\
+		  &= \int_1^2 \int_{-v}^v \frac{1}{2} e^{\frac{u}{v}} dudv \\
+		  &= \frac{1}{2} \int_1^2 v(e-e^{-1})dv \\
+		  &= \frac{1}{2}(e-e^{-1})
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Evaluate $\iint_R(x^2-y^2)e^{xy}dxdy$, where the region $R$ is the region in the first quadrant bounded by the hyperbolas $xy=1$ and $xy=2$ and the lines $y=x$ and $y=x+2$. \\
+	Note that substitution for $x^2-y^2$ and $xy$ doesn't work (try it!). Instead, we use
+	\begin{align*}
+		u &= xy \\
+		v &= y-x
+	\end{align*}
+	The Jacobian is given by
+	\begin{align*}
+		J &= \text{det} \begin{bmatrix} u_x & u_y \\ v_x & v_y \end{bmatrix}^{-1} \\
+		  &= \text{det} \begin{bmatrix} y & x \\ -1 & 1 \end{bmatrix}^{-1} \\
+		  &= \frac{1}{x+y}
+	\end{align*}
+	The integral is then
+	\begin{align*}
+		I &= \int_0^2 \int_1^4 (x^2-y^2)e^{xy} \times \frac{1}{x+y}dudv \\
+		  &= \int_0^2 \int_1^4 (x-y)e^{xy} dudv \\
+		  &= \int_0^2 \int_1^4 -ve^u dudv \\
+		  &= \int_0^2 v(e-e^4) dv \\
+		  &= 2(e-e^4)
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Find the volume of the region bounded by the hyperbolic cylinders $xy=1, xy=9, xz=4, xz=36, yz=25,yz=49$. We then let $u=xy, v=xz, w=yz$. The Jacobian is then
+	\begin{align*}
+		J &= \text{det} \begin{bmatrix} u_x & u_y & u_z \\ v_x & v_y & v_z \\ w_x & w_y & w_z \end{bmatrix}^{-1} \\
+		  &= \text{det} \begin{bmatrix} y & x & 0 \\ z & 0 & x \\ 0 & z & y \end{bmatrix}^{-1} \\
+		  &= -\frac{1}{2xyz} \\
+		  &= -\frac{1}{2\sqrt{uvw}}
+	\end{align*}
+The integral is then given by
+\begin{align*}
+	I &= \int_{25}^{49} \int_4^{36} \int_1^9 \frac{dudvdw}{2\sqrt{uvw}} \\
+	  &= 4(7-5)(6-2)(3-1) \\
+	  &= 64
+\end{align*}
+\end{ex}
+
+\section{Line Integrals}
+
+We can integrate along lines (not necessarily straight lines) by
+$$\int_C f(x,y)ds$$
+This can be evaluated by parametrisation
+$$\begin{cases} x = x(t) & t \in [a,b] \\ y = y(t) & t \in [a,b]\end{cases}$$
+We assume that $f(x,y)$ is continuous over $C$ and that $C$ is smooth, or $\vec{r}'(t)$ is continuous and $\vec{r}(t)\neq\vec{0}$ except at the endpoints. We can then express $ds$ as
+$$ds = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}dt$$
+Note that the direction of integration does not matter if $f$ is a scalar function, unlike single integration.
+\begin{ex}
+	Find the centre of mass of a semi-circular length of wire $y = \sqrt{a^2-x^2}, a > 0$. Length density is constant. \\
+	By symmetry, $\overline{x}=0$. \\
+	Paramatrisation gives us $x(t) = a\cos t$ and $y(t) = a\sin t$. Then
+	$$ds = \sqrt{(-a\sin t)^2 + (a\cos t)^2}dt = adt$$
+	\begin{align*}
+		m\overline{y} &= \int_C y\rho ds \\
+		a\pi\overline{y} &= \int_0^\pi a\sin t \times adt \\
+		\overline{y} &= \frac{a}{\pi} \times 2 \\
+			     &= \frac{2a}{\pi}
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	In the special case where $C$ is parallel to the $x$ axis, e.g. from $(a,0)$ to $(b,0)$, this can be integrated normally, as $ds = dx$.
+\end{ex}
+
+\subsection{3 Dimensional Case}
+As expected, $ds$ is now expressed as
+$$ds = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} dt$$
+
+\begin{ex}
+	Find the mass of a spring in the shape of the circular helix defined parametrically by $x2\cos t$, $y=t$, $z=2\sin t$ for $t \in [0,6\pi]$ with density of $\rho(x,y,z) = 2y$.
+	$$ds = \sqrt{(-2\sin t)^2 + 1^2 + (2\cos t)^2}dt = \sqrt{5}dt$$
+	The mass is then given by
+	\begin{align*}
+		m &= \int_C \rho ds \\
+		  &= \int_C 2yds \\
+		  &= \int_0^{6\pi} 2t \times \sqrt{5} dt \\
+		  &= 36\sqrt{5}\pi^2
+	\end{align*}
+\end{ex}
+
+\subsection{Piecewise smooth curves}
+Our curve is now
+$$C = \bigcup_i C_i$$
+where $C$ may not be smooth but $C_i$ is always smooth. Then
+$$\int_C fds = \sum_i \int_{C_i} fds$$
+
+\subsection{Line Integrals of Vector Fields}
+$$\vec{F}(x,y,z) = P(x,y,z)\hat{i} + Q(x,y,z)\vec{j} + R(x,y,z)\vec{k}$$
+This can be rewritten as
+$$\vec{F}(x,y,z) = \vec{F}(\vec{r})$$
+
+\begin{ex}
+	Physical Examples
+	$$W = \vec{F} \cdot \vec{d}$$
+	where $W$ stands for work done. Then
+	$$W = \int \vec{F} \cdot d\vec{s} = \int \vec{F} \cdot \vec{r}' dt$$
+	This can also be written as
+	\begin{align*}
+		\int_C \vec{F} \cdot d\vec{r} &= \int_a^b (P\hat{i} + Q\hat{j} + R\hat{k}) \cdot \left(\frac{dx}{dt}\hat{i} + \frac{dy}{dt}\hat{j} + \frac{dz}{dt}\hat{k}\right)dt \\
+					      &= \int_C Pdx + Qdy + Zdt
+	\end{align*}
+\end{ex}
+\end{document}
