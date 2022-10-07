@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 10}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Line Integrals with Vector Fields}
+
+\begin{ex}
+	Given a force field $\vec{F} = y\hat{i} -x\hat{j}$, find the amount of work done in moving a particle from $(1,0)$ to $(0,-1)$ along the straight line segment joining these points, and $\frac{3}{4}$ of the circle of unit radius centred at the origin and traveled counterclockwise. \\
+	Along the straight line segment, we have
+	$$\vec{r}(t) = (1-t)\hat{i} - t\hat{j}$$
+	Then
+	\begin{align*}
+		I &= \int_0^1 \vec{F} \cdot \vec{r'}(t) dt \\
+		  &= \int_0^1 (-t\hat{i}-(1-t)\hat{j})\cdot(-\hat{i}-\hat{j}) dt \\
+		  &= \int_0^1 t + 1 - t dt \\
+		  &= 1
+	\end{align*}
+	Along the circle, we have
+	$$\vec{r}(t) = \cos t\hat{i} + \sin t\hat{j}$$
+	Then
+	\begin{align*}
+		I &= \int_0^{\frac{3\pi}{2}} (\sin t\hat{i} - \cos t\hat{j}) \cdot (-\sin t\hat{i} + \cos t\hat{j}) dt \\
+		  &= \int_0^{\frac{3\pi}{2}} -\sin^2t - \cos^2t dt \\
+		  &= \int_0^{\frac{3\pi}{2}} -1 dt \\
+		  &= -\frac{3\pi}{2}
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Let $\vec{F}(x,y) = y\hat{i} + x\hat{j}$. Evaluate the line integral $\int_C \vec{F}\cdot d\vec{r}$ from $(0,0)$ to $(1,1)$ along the straight line $y=x$ and the curve $y=x^2$. \\
+	Along the straight line,
+	$$\vec{r}(t) = t\hat{i} + t\hat{j}$$
+	Then
+	\begin{align*}
+		I &= \int_0^1 (t\hat{i} + t\hat{j}) \cdot (\hat{i} + \hat{j}) dt \\
+		  &= \int_0^1 2tdt \\
+		  &= 1
+	\end{align*}
+	Along the curve,
+	$$\vec{r}(t) = t\hat{i} + t^2\hat{j}$$
+	Then
+	\begin{align*}
+		I &= \int_0^1 (t^2\hat{i} + t\hat{j}) \cdot (\hat{i} + 2t\hat{j}) dt \\
+		  &= \int_0^1 t^2 + 2t^2 dt \\
+		  &= 1
+	\end{align*}
+\end{ex}
+
+\section{Fundamental Theorem for Line Integrals}
+
+\begin{defn}
+	A vector field $\vec{F}$ is called a conservative vector field if it is the gradient of some scalar $f$. In this situation, the scalar function is called a potential function of $\vec{F}$.
+	$$\vec{F} = \vec{\nabla}f$$
+\end{defn}
+
+Suppose 
+$$\vec{f}(x,y,z) = \vec{\nabla}f(x,y,z)$$
+Let $C$ be a smooth curve given by
+$$\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}$$
+where
+$$\int_C\vec{F}(x,y,z)\cdot d\vec{r} = \int_C\vec{\nabla}f(x,y,z)\cdot d\vec{r} = \int_a^b \vec{\nabla}f(\vec{r}(t))\cdot\vec{r'}(t)dt$$
+Then
+\begin{align*}
+	\vec{\nabla}f(\vec{r}(t))\cdot \vec{r'}(t) &= \left(\frac{\partial f}{\partial x}\hat{i} + \frac{\partial f}{\partial y}\hat{j} + \frac{\partial f}{\partial z}\hat{k}\right) \cdot \left(\frac{dx}{dt}\hat{i} + \frac{dy}{dt}\hat{j} + \frac{dz}{dt}\hat{k}\right) \\
+						   &= \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt} + \frac{\partial f}{\partial z}\frac{dz}{dt} \\
+						   &= \frac{df}{dt}
+\end{align*}
+So
+$$\int_a^b\vec{\nabla}f(\vec{r'}(t))dt = \int_a^b\frac{d}{dt}(f(\vec{r'}(t)))dt = f(\vec{r}(b))-f(\vec{r}(a))$$
+The integral is path independent!
+$$\int_C\vec{F}\cdot d\vec{r} = \int_C\vec{\nabla}f\cdot d\vec{r} = f(\vec{r}(b))-f(\vec{r}(a))$$
+\end{document}
