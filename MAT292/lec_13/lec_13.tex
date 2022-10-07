@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 13}
+\begin{document}
+\maketitle
+
+\section{Review}
+
+\subsection{Repeated Eigenvalues \& Non Diagonalisable}
+
+$$\frac{d\vec{x}}{dt} = A\vec{x}$$
+Where $A$ only has one eigenvalue $\lambda$ and eigenvector $\vec{v_1}$. We get our second solution by using the ansatz
+$$\vec{\phi_2}(t) = te^{\lambda t}\vec{v_1} + e^{\lambda t}\vec{w}$$
+Plugging into the solution (and using the facts $e^t \neq 0$ and $A\vec{v_1} = \lambda\vec{v_1}$) yields the relation
+$$(A-\lambda I)\vec{w} = \vec{v_1}$$
+We call $\vec{w}$ a \textbf{generalised eigenvector} corresponding to the eigenvalue $\lambda$.
+
+\section{General Techniques}
+\begin{enumerate}
+	\item Deduce general properties about the solutions of the ODE
+	\item Use ansatz to find specific solutions
+	\item Arrive at a general solution from these
+\end{enumerate}
+
+\section{Generalised Eigenvalues}
+There are only 2 possibilities, an "S" or an inverted "S", with arrows pointing outwards in both cases. Consider our previous example
+$$\frac{d\vec{x}}{dt} = \begin{pmatrix} 1 & 2 \\ 0 & 1\end{pmatrix}$$
+Where the general solution is
+$$\vec{\phi}(t) = c_1e^t\begin{pmatrix} 1 \\ 0\end{pmatrix} + c_2\left[te^t\begin{pmatrix} 1 \\ 0\end{pmatrix} + e^t\begin{pmatrix} 0 \\ \frac{1}{2}\end{pmatrix}\right]$$
+As $t\rightarrow\infty$, the dominating term becomes $c_2te^t\begin{pmatrix}1 \\ 0\end{pmatrix}$. \\
+As $t\rightarrow -\infty$, the function tends to zero. Note that $te^t$ tends to zero.
+
+\begin{ex}
+	$$\frac{d\vec{x}}{dt} = \begin{pmatrix} 1 & -1 \\ 1 & 3\end{pmatrix}\vec{x}$$
+	The only eigenvalue is $\lambda=2$, and the only eigenvector is given by $\vec{v_1} = \begin{pmatrix} 1 \\ -1\end{pmatrix}$. The generalised eigenvector is given by
+	$$\begin{pmatrix} -1 & -1 \\ 1 & 1\end{pmatrix}\begin{pmatrix}w_1 \\ w_2\end{pmatrix} = \begin{pmatrix} 1 \\ -1\end{pmatrix}$$
+	A solution is $\vec{w} = \begin{pmatrix} -1 \\ 0\end{pmatrix}$. Finally, all of these can be combined to form the general solution
+	$$\vec{\phi}(t) = c_1e^{2t}\begin{pmatrix} 1 \\ -1\end{pmatrix} + c_2\left[te^{2t}\begin{pmatrix} 1 \\ -1\end{pmatrix} + e^{2t}\begin{pmatrix}-1 \\ 0\end{pmatrix}\right]$$
+	Trying the derivative at $\begin{pmatrix} 1 \\ 0\end{pmatrix}$ tells us the phase potrait is in the shape on an inverted "S".
+\end{ex}
+
+\section{Solving First Order Lienar Systems in General}
+If there are two real eigenvalues, the solution is
+$$\vec{phi}(t) = c_1e^{\lambda_1 t}\vec{v_1} + c_2e^{\lambda_2 t}\vec{v_2}$$
+If there are two complex eigenvalues, the solution is
+$$\vec{\phi}(t) = c_1e^{\mu t}\left[\vec{a}\cos(t\nu)-\vec{b}\sin(t\nu)\right] + c_2e^{\mu t}\left[\vec{a}\sin(t\nu)+\vec{b}\cos(t\nu)\right]$$
+where $\lambda_1 = \mu+i\nu$ and $\vec{v_1} = \vec{a}+i\vec{b}$. \\
+If there is a repeated eigenvalue and two eigenvectors, the solution is given by
+$$\vec{\phi}(t) = c_1e^{\lambda t}\vec{v_1} + c_2e^{\lambda t}\vec{v_2}$$
+If there is only one eigenvector, the general solution is 
+$$\vec{\phi}(t) = c_1e^{\lambda t}\vec{v_1} + c_2\left[te^{\lambda t}\vec{v_1} + e^{\lambda t}\vec{w}\right]$$
+where $\vec{w}$ is any vector that satisfies
+$$(A-\lambda I)\vec{w} = \vec{v_1}$$
+
+\section{Phase Portraits}
+With two distinct real eigenvalues, draw both eigenvectors and see which dominates at different $t$ based on eigenvalues. \\
+With two distinct complex eigenvalues, the solution is a spiral (or circle) that goes from or to the origin based on the sign of the real part of the eigenvalues. \\
+With a repated eigenvalue but two distinct eigenvectors, the solution is straight lines either from or to the origin, based on the sign of the eigenvalue. \\
+If there is only one eigenvector, it is either an "S" or an inverted "S", going from or to the origin based on the sign of the eigenvalue.
+
+
+\end{document}
