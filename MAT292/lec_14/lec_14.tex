@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\usepackage{hyperref}
+\author{niceguy}
+\title{Lecture 14}
+\begin{document}
+\maketitle
+
+\section{Numerical Methods}
+
+$$\frac{dy}{dt} = f(t,y)$$
+where $f$ is continuously differentiable. Existance and uniqueness theorems give us a unique solution for every $(t_0, y_0)$ pair. \\
+Unfortunately, most ODEs cannot be solved analytically, so we must use numerical methods.
+
+\begin{ex}
+	Ricatti Equations
+	$$y'(x) = q_0(x) + q_0(x)y + q_2(x)y^2$$
+	We consider the specific equation
+	$$\frac{dy}{dt} = 1 + 2y + ty^2, y(0) = -1$$
+	This is technically solvable \url{https://math.stackexchange.com/a/244533}, and you are encouraged to memorise this for coming midterms and finals. However, this can also be done using \textbf{Euler's Method}, which makes use of direction fields (they can be sketched without solving the ODE). The smaller the step size, the more accurate the approximation.
+\end{ex}
+
+\subsection{Euler's Method}
+
+We form a partition of $[t_0, T]$ by
+$$t_0 < t_1 < t_2 < \dots < t_N = T$$
+First, we form an approximation of the solution between $[t_0, t_1]$ using linear interpolation, where
+$$y(t_1) = y(t_0) + f(t_0, y_0)(t_1-t_0)$$
+Similarly, $y(t_2), y(t_3), \dots, y(t_N) = y(T)$ can also be approximated successively, using the previous approximations. \\
+Potential issues
+\begin{itemize}
+	\item Length of arrows (Does it depend on the ODE?)
+	\item Accuracy (Are there ODEs where Euler's Method is just bad?)
+\end{itemize}
+
+Euler's method "jumps between" different solution curves, so it is more accurate when solutions converge.
+\end{document}
