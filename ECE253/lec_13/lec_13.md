@@ -20,7 +20,7 @@
 - Register: a synonym for flip flop
 
 ### Verilog for D-latch
-```
+```sv
 module D-latch(input logic D, clk, output logic Q);
 	always_latch
 		if (clk == 1)
@@ -30,7 +30,7 @@ endmodule
 In this case, latch stores `Q` when `clk` is not 1.
 
 ### Verilog code for flip flops
-```
+```sv
 module D_FF(input logic D, clk, output logic Q);
 	always_ff @(posedge clk)
 		Q <= D;
@@ -40,7 +40,7 @@ endmodule
 
 ### Verilog for register
 8 bit input plus clock, 8 bit output
-```
+```sv
 module reg8(input logic[7:0]D, input logic clk, output logic[7:0]Q);
 	always_ff @(posedge clk)
 		Q <= D;
@@ -50,7 +50,7 @@ endmodule
 ### Resets
 - Synchronous: dependent on the clock edge
 	- Replace D with reset AND D
-```
+```sv
 module D_FF(input logic D, clk, resetn, output logic Q);
 	always_ff @(posedge clk)
 		if(resetn == 0)
@@ -62,4 +62,3 @@ endmodule
 - Asynchronous: independent on the clock edge
 	- Case 1: If `clk == 0`, `resetn == 0`, gives `Q = 0`
 	- Case 2: If `clk == 1`, `resetn == 0`...
-
