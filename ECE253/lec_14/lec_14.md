@@ -51,3 +51,17 @@ $$Q_1(t+1) = Q_1(t) \text{ XOR } Q_0(t)$$
 $$Q_2(t+1) = Q_2(t) \text{ XOR } (Q_0(t)Q_1(t))$$
 
 - To pause the counter, one can use an Enable input, so if E = 0, the flip flops cannot change
+
+```sv
+module upcount(input logic [3:0] R, resetn, clock, E, L, output logic [3:0] Q);
+	always_ff @(posedge clock, negedge resetn)
+	begin
+		if (!resetn)
+			Q <= 4'b0;
+		elseif (L)
+			Q <= R
+		elseif (E)
+			Q <= Q + 1;
+	end
+endmodule
+```
