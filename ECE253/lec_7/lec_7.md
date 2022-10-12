@@ -13,7 +13,7 @@ Modules:
 - A block of hardware with inputs and outputs  
 
 ```
-module basic\_logic(input logic a, b, output logic w, x, y, z)  
+module basic_logic(input logic a, b, output logic w, x, y, z);
 	assign w = a & b;  
 	assign x = a | b;  
 	assign y = ~a;  
@@ -34,7 +34,7 @@ endmodule
 	- Mux with 2 bit inputs x, y
 - Verilog code  
 ```
-module mux2to1-2bit(input logic[1:0]x,y, inut logic s, output logic[1:0] f)  
+module mux2to1-2bit(input logic[1:0]x,y, input logic s, output logic[1:0] f)  
 	assign f[1] = (~s & x[1]) | (s & y[1]);  
 	assign f[0] = (~s & x[0]) | (s & y[0]);  
 endmodule

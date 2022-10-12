@@ -24,6 +24,7 @@ endmodule
 ### Hierarchical Verilog Code
 - A module composed of simpler modules
 - Makes code easier to read and reuse
+
 ### Example 1
 ```
 module adder3(input logic [2:0] A, B, input logic cin, output logic [2:0] S, output logic cout);
