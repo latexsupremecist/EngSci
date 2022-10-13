@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 11}
+\begin{document}
+\maketitle
+
+\section{Fundamental Theorem for Line Integrals}
+If $\vec{F}$ is a gradient of a scalar function $f$, then
+$$\int_a^b \vec{F} \cdot d\vec{r} = f(\vec{r_b}) - f(\vec{r_a})$$. If $C = \bigcup_i C_i$ and $C' = \bigcup_i C_i'$ where both share the same endpoints, we can see that
+$$\int_C \vec{F} \cdot d\vec{r} = \int_{C'} \vec{f} \cdot d\vec{r}$$
+In fact, if the curve starts and ends at the same point, we call this a \emph{closed} integral where
+$$\oint \vec{F} \cdot d\vec{r} \equiv 0$$
+Conversely, if this is true for any closed curve $C$, we know that it must be path independent. (Consider two paths $C_1$ and $C_2$ with the same endpoints. Then their difference is a closed curve which is zero, implying they are equal). \\
+To sum up, the following statements are equal
+\begin{enumerate}
+	\item $\vec{F}$ is conservative
+	\item the integral of $\vec{F} \cdot d\vec{r}$ is path independent
+	\item $\oint \vec{F} \cdot d\vec{r} \equiv 0$
+\end{enumerate}
+
+Consider $\vec{F} = P(x,y)\hat{i} + Q(x,y)\hat{j}$. If we assume $P(x,y) = \frac{\partial f}{\partial x}$ and $Q(x,y) = \frac{\partial f}{\partial y}$, we have
+$$\frac{\partial P}{y} = \frac{\partial Q}{x}$$
+assuming mixed partials commute. Hence the above equation can be used to verify if $\vec{F}$ is conservative or not (proof not given).
+
+\begin{ex}
+	$$\vec{F}(x,y) = y\hat{i} - x\hat{j}$$
+	$\vec{F}$ is not conservative, as the mixed partials are not equal.
+\end{ex}
+
+\begin{ex}
+	$$\vec{f}(x,y) = y\hat{i} + x\hat{j}$$
+	$\vec{F}$ is conservative, as the mixed partials are equal. Integrating $P$ and $Q$ and using $g(y)$ and $g(x)$ as "constant" functions, we get $f = xy + C$ where $g(x) = g(y) = C$ by comparison. 
+\end{ex}
+
+\section{Green's Theorem}
+
+\subsection{Terminology}
+
+\begin{itemize}
+	\item Simple curve: a curve that does not intersect itself except at endpoints \\
+	\item Orientation: orientation is positive when curve goes counterclockwise, vice versa
+\end{itemize}
+
+\subsection{Theorem and Proof}
+
+\begin{thm}
+	Let $ $ be a positively oriented, piecewise-smooth, simple closed curve in the plane, and let $R$ be the region bounded by $C$. If $P(x,y)$ and $Q(x,y)$ are continuous and have continuous first partial derivatives throughout the region $R$, then
+	$$\oint_C P(x,y)dx + Q(x,y)dy = \iint_R \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dxdy$$
+\end{thm}
+
+Proof: \\
+We can express the region as $C = C_1 \cup C_2$ or $C = C_3 \cup C_4$ where
+$$R = \{(x,y)| a \leq x \leq b, y_1(x) \leq y \leq y_2(x)\}$$
+and
+$$R = \{(x,y)| x_1(y) \leq x \leq x_2(y), c \leq y \leq d\}$$
+where $a, b$ are the left and right endpoints, and $c, d$ are the top and bottom endpoints. We can write
+\begin{align*}
+	\oint_C P(x,y)dx &= \int_{C_1}P(x,y)dx + \int_{C_2}P(x,y)dx \\
+			 &= \int_a^bP(x,y_1(x))dx + \int_b^aP(x,y_2(x))dx \\
+			 &= -\int_a^bP(x,y_2(x))-P(x,y_1(x))dx \\
+			 &= -\int_a^b P(x,y) \Big |_{y=y_1(x)}^{y=y_2(x)}dx \\
+			 &= -\int_a^b \int_{y_1(x)}^{y_2(x)} \frac{\partial P}{\partial y} dydx \\
+\end{align*}
+Similarly,
+\begin{align*}
+	\oint_C Q(x,y)dy &= \int_{C_3}Q(x,y)dy + \int_{C_4}Q(x,y)dy \\
+			 &= \int_d^cQ(x_1(y),y)dy + \int_c^dQ(x_2(y),y)dy \\
+			 &= \int_c^d Q(x_2(y),y) - Q(x_1(y),y)dy \\
+			 &= \int_c^d Q(x,y) \Big |_{x=x_1(y)}^{x=x_2(y)} dy \\
+			 &= \int_c^d \int_{x_1(y)}^{x_2(y)} \frac{\partial Q}{\partial x} dxdy \\
+\end{align*}
+Summing both gives us
+$$\oint Pdx + Qdy = \iint_R \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dxdy$$
+
+\subsection{Examples}
+
+\begin{ex}
+	Verify Green's Theorem for the integral $\oint_Cydx - xdy$ where $C$ is the circle $C:x^2+y^2=1$ traversed counterclockwise. \\
+	The left hand side gives
+	\begin{align*}
+		I &= \oint \vec{F} \cdot d\vec{r} \\
+		  &= \int_0^{2\pi} (\sin t\hat{i}-\cos t\hat{j})\cdot(-\sin t\hat{i}+\cos t\hat{j})dt \\
+		  &= \int_0^{2\pi} -\sin^2 t - \cos^2 t dt \\
+		  &= -2\pi
+	\end{align*}
+	The right had side gives
+	\begin{align*}
+		I &= \iint_R\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA \\
+		  &= \iint_R -2dA \\
+		  &= -2\pi
+	\end{align*}
+	as the area of a unit circle is $\pi$. 
+\end{ex}
+
+\begin{ex}
+	$$I = \oint_C \left(4-e^{\sqrt{x}}\right)dx + \left(\sin y + 3x^2\right)dy$$
+	where $C$ goes counter clockwise around the disk bounded by $a \leq r \leq b$ in the first quadrant.
+	\begin{align*}
+		\oint_C \left(4-e^{\sqrt{x}}\right)dx + \left(\sin y + 3x^2\right)dy &= \iint_R 6x dA \\
+										     &= \int_0^{\frac{\pi}{2}} \int_a^b 6r\cos \theta rdrd\theta \\
+										     &= \int_0^{\frac{\pi}{2}} 2(b^3-a^3) \cos\theta d\theta \\
+										     &= 2(b^3-a^3)
+	\end{align*}
+\end{ex}
+
+\section{Parametric Surfaces and their Surface Areas}
+
+Just as how a curve can be parametrised by one variable, a surface can be parametrised by two variables, where
+$$\vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$$
+The simplest way to do this is by $S: z = f(x,y)$ where $u=x$ and $v=y$.
+
+\begin{ex}
+	Parametrise an upper hemisphere given by the equation $x^2 + y^2 + z^2 = a^2$. \\
+	Rearranging, we have
+	$$z = \sqrt{a^2-x^2-y^2}$$
+	so we have
+	$$\vec{r}(u,v) = u\hat{i} + v\hat{j} + \sqrt{a^2-u^2-v^2}\hat{k}$$
+	We can also use spherical coordinates which gives
+	$$\vec{r}(u,v) = a\vec{r} + u\hat{\theta} + v\hat{\phi}$$
+	where $u \in [0,2\pi], v \in \left[0,\frac{\pi}{2}\right]$.
+\end{ex}
+
+\section{Tangent Planes}
+
+Let $S$ be a surface parametrised by the differentiable vector function
+$$\vec{r}(u,v) = (u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$$
+where $(u,v) \in D$. \\
+Then the tangent plane at $(u_0,v_0)$ is spanned by
+$$\vec{r_v}(u) = \frac{\partial \vec{r}}{\partial v} \Big |_{u_0,v_0}$$
+and
+$$\vec{r_u}(v) = \frac{\partial \vec{r}}{\partial u} \Big |_{u_0,v_0}$$
+
+\begin{defn}
+	A surface is \emph{smooth} if for every point,
+	$$\vec{r_v}(u) \times \vec{r_u}(v) \neq 0$$
+\end{defn}
+\end{document}
