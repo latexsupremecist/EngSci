@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 12}
+\begin{document}
+\maketitle
+
+\section{Surface Integrals}
+
+If a surface is parametrised as
+$$\vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$$
+a small section of the surface area $dA$ is given by
+$$dA \approx ||(\vec{r}(u+\delta u,v)-\vec{r}(u,v)) \times (\vec{r}(u,v+\delta v)-\vec{r}(u,v))|| \approx \left|\left|\frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v}\right|\right|\Delta u \Delta v$$
+Thus the surface area is given by
+$$S = \iint_D ||\vec{r_u}\times\vec{r_v}||dudv$$
+
+\begin{ex}
+	Find the surface area of a sphere of radius $a$. \\
+	We parametrise the sphere as
+	\begin{align*}
+		x &= a\sin\phi\cos\theta \\
+		y &= a\sin\phi\sin\theta \\
+		z &= a\cos\phi
+	\end{align*}
+	The cross product is
+	\begin{align*}
+		\vec{r_\phi}\times\vec{r_\theta} &= (a\cos\phi\cos\theta\hat{i} + a\cos\phi\sin\theta\hat{j} - a\sin\phi\hat{k}) \times (-a\sin\phi\sin\theta\hat{i} + a\sin\phi\cos\theta\hat{j}) \\
+						 &= a^2\sin^2\phi\cos\theta\hat{i} + a^2\sin^2\phi\sin\theta\hat{j} + a^2\sin\phi\cos\phi\hat{k} \\
+	\end{align*}
+	And its magnitude is $$a^2\sin\phi$$
+	Thus the surface area is
+	\begin{align*}
+		I &= \int_0^{2\pi} \int_0^\pi a^2\sin\phi d\phi d\theta \\
+		  &= 2a^2 \int_0^{2\pi} d\theta \\
+		  &= 4\pi a^2
+	\end{align*}
+\end{ex}
+
+In the special case where $z = f(x,y)$, we have
+\begin{align*}
+	\vec{r_x} &= \hat{i} + f_x\hat{k} \\
+	\vec{r_y} &= \hat{j} + f_y\hat{k} \\
+\end{align*}
+And the magnitude of their cross product is
+\begin{align*}
+	||\vec{r_x} \times \vec{r_y}|| &= ||(\hat{i} + f_x\hat{k}) \times (\hat{j} + f_y\hat{k})|| \\
+				       &= ||-f_x\hat{i} -f_y\hat{j} + \hat{k}|| \\
+				       &= \sqrt{f_x^2 + f_y^2 + 1}
+\end{align*}
+So
+$$S = \iint_D \sqrt{\left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2 + 1}$$
+which corresponds with our previously derived equations.
+
+\section{Surface Integrals of Scalar Functions}
+Using what we derived above, the surface integral of a scalar function $f(x,y,z)$ is
+$$\iint_S fdS = \iint_S f(x(u,v),y(u,v),z(u,v))||\vec{r_u}\times\vec{r_v}||dudv$$
+
+\begin{ex}
+	Evaluate $\int_S\sqrt{x^2+y^2+1}dS$ where $S$ is the surface given parametrically by $\vec{r}(u,v) = (u\cos v,u\sin v,v)$ where $u\in[0,1],v\in[0,2\pi]$.
+	\begin{align*}
+		\iint_S\sqrt{x^2+y^2+1}dS &= \int_0^{2\pi}\int_0^1 \sqrt{u^2\cos^2v+u^2\sin^2v+1}||(\cos v\hat{i} + \sin v\hat{j}) \\
+					  &\text{ } \times (-u\sin v\hat{i} + u\cos v\hat{j} + \hat{k})|| dudv \\
+					  &= \int_0^{2\pi}\int_0^1 \sqrt{u^2+1}||\sin v\hat{i} - \cos v\hat{j} + u\hat{k}|| dudv \\
+					  &= \int_0^{2\pi}\int_0^1 \sqrt{u^2+1}\sqrt{u^2+1} dudv \\
+					  &= \int_0^{2\pi} \frac{4}{3} dv \\
+					  &= \frac{8\pi}{3}
+	\end{align*}
+\end{ex}
+
+If $S$ is a piecewise smooth surface
+$$S = \bigcup_i S_i$$
+we can add up the integrals
+$$I = \sum_i \iint_{S_i} fdS$$
+\end{document}
