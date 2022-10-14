@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 15}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Euler's Method}
+If we partition $[t_0,T]$ such that the distance between adjacent points are constant, we can let that distance be $h = t_{n+1} - t_n$, and approximations are given by
+$$y_{n+1} = y_n + hf(t_n,y_n)$$
+
+\subsection{Euler's Method as an Integral Approximation}
+\begin{align*}
+	y'(t) &= f(y,t) \\
+	\int_{t_n}^{t_{n+1}} y'(t) dt &= \int_{t_n}^{t_{n+1}} f(y,t) dt \\
+	y(t_{n+1}) - y(t_n) &= \int_{t_n}^{t_{n+1}} f(y,t) dt \\
+	y(t_{n+1}) &\approx y(t_n) + hf(y_n,t_n)
+\end{align*}
+where we use the approximation
+$$f(y,t) \approx f(y_n,t_n)$$
+in the range $[t_n,t_{n+1}]$. More formally, we define
+$$y_{n+1} = y_n + hf(y_n,t_n)$$
+and use the approximation
+$$y(t_{n+1}) \approx y_{n+1}$$
+
+\subsection{Euler's Method as an Integral Approximation}
+Assuing $y$ has a Taylor series, we can approximate $y$ using its first order Taylor polynomial
+$$y(t) \approx y(t_n) + y'(t_n)(t-t_n)$$
+which is equivelant to Euler's Method.
+
+\subsection{Improving Euler's method}
+If we treat it as a forward difference quotient, this can be improved by taking a better approximation of the derivative, which gives us the \textbf{Runge-Kutta method}. \\
+If we treat it as an integral approximation, we can use better integral approximations, which gives us the \textbf{Improved Euler Method}. \\
+If we treat it as a Taylor Polynomial, we can improve it by taking more terms, which gives us the \textbf{Power Series Solution}.
+
+\section{Sources of Errors}
+
+\subsection{Global Truncation Error}
+$$E_n = y(t_n) - y_n$$
+The error stacks, as we use $y_n$ and not $y(t_n)$ for our next approximation.
+
+\subsection{Local Truncation Error}
+When calculating $e_{n+1}$, we use $y(t_n)$ instead of $y_n$ to calculate the error. This is the error due to linear approximation.
+
+\subsection{Error Bounding}
+Taylor's Remainder Theorem is
+$$y(t) = y(t_n) + y'(t_n)(t-t_n) + \frac{y''(\xi)}{2}(t-t_n)^2$$
+where $t \in [t_n,t_n+h]$. To calculate for $e_{n+1}$, we substitute $t = t_{n+1}$ to get
+\begin{align*}
+	y(t_{n+1}) &= y(t_n) + y'(t_n)(t_{n+1}-t_n) + \frac{y''(\xi)}{2}(t_{n+1}-t_n)^2 \\
+	y(t_{n+1}) &= y_{t_{n+1}} + \frac{y''(\xi)}{2}h^2 \\
+	|e_{n+1}| &= \frac{y''(\xi)}{2}h^2 \\
+		  &= \frac{M}{2}h^2
+\end{align*}
+where $M$ is chosen such that
+$$|y''(t)| \leq M \forall t\in[t_n,t_{n+1}]$$
+\begin{align*}
+	y' &= f(t,y) \\
+	y'' &= f_t(t,y(t)) + f_y(t,y(t))\times y'(t) \\
+	    &= f_t(t,y) + f_y(t,y)f(t,y) \\
+\end{align*}
+What remains is to bound this expression. \\
+Our assumptions are that $y$ is twice continuously differentiable, and $f_t, f_y, f$ are continuous functions. \\
+Even if we don't have access to the solution, a bound may still be obtained.
+
+\begin{ex}
+	$$y'(t) = \arctan(y) + e^{-t}, y(0) = 1$$
+	for $t\in[0,4]$. Then
+	\begin{align*}
+		f &= \arctan(y) + e^{-t} \\
+		f_t &= -e^{-t} \\
+		f_y &= \frac{1}{1+y^2}
+	\end{align*}
+	As the arctan function is bounded, ad $e^{-t}$ is obviously bounded in the region, $f$ is bounded, $f_t$ is bounded, and $f_y$ is bounded (it is always smaller than or equal to 1). Therefore $\exists$ an upper bound $M$.
+\end{ex}
+\end{document}
