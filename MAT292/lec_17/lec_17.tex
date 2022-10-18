@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 17}
+\begin{document}
+\maketitle
+
+\section{Adaptive Step Sizes}
+
+\subsection{Recap}
+We want our local truncation error $e_{n+1}$ to be less than a limit $\epsilon > 0$. We can estimate the local truncation error with
+$$e_{n+1} = |y_{n+1} - z_{n+1}|$$
+where $z$ is a better approximation method. However, in reality, a worse approximation method is used instead.
+
+\subsection{New Step Size}
+$$e_{n+1} \approx |y_{n+1} - z_{n+1}| \approx \frac{|y''(\xi)|}{2}h^2$$
+We want to scale $h$ to $h'$ such that
+$$\frac{|y''(\xi)|}{2}h'^2 = \epsilon \Rightarrow h' = \sqrt{\epsilon \times \frac{2}{|y''(\xi)|}}$$
+Therefore
+\begin{align*}
+	\frac{2}{|y''(\xi)|} &\approx \frac{h^2}{|e_{n+1}|} \\
+	h' &\approx h\sqrt{\frac{\epsilon}{e_{n+1}}}
+\end{align*}
+
+Therefore,
+\begin{enumerate}
+	\item User passes in $\epsilon, h$
+	\item Approximate local truncation error if we were to take a step-size of $h$
+	\item Calculate using step 2 a new step-size $h'$ that ensures our local truncation error is roughly $\epsilon$
+	\item Take an Euler step with step-size h'
+\end{enumerate}
+
+\section{Linear Systems in General}
+
+We consider the n$^{\text{th}}$ dimension case without the constraint of constant coefficients.
+
+\begin{thm}
+	$$x'(t) = P(t)\vec{x} + \vec{g}(t), \vec{x}(t_0) = \vec{x_0}$$
+	Assume $P(t)$ and $\vec{g}(t)$ are continuous on an open interval $I = (\alpha, \beta)$. If $t_0 \in I$, $\exists$ a unique solution in $(\alpha, \beta)$.
+\end{thm}
+
+For the remainder of this lecture, we shall assume homogeneousity, i.e. $\vec{g}(t) = 0$.
+
+\subsection{Superposition Principle}
+
+\begin{align*}
+	\frac{d}{dt} \left[\sum_{i=1}^n c_i\vec{x_i}(t)\right] &= \sum_{i=1}^n c_i \vec{x_i}'(t) \\
+							       &= \sum_{i=1}^n c_iP(t)\vec{x_i}(t) \\
+							       &= P(t)\left(\sum_{i=1}^nc_i\vec{x_i}(t)\right)
+\end{align*}
+
+The superposition principle still holds. Thus
+
+\begin{thm}
+	Superposition Principle \\
+	$$\vec{x}' = P(t)\vec{x}$$
+	Assume $\vec{x_1}(t), \vec{x_2}(t), \dots, \vec{x_n}(t)$ are solutions. Then
+	$$\sum_{i=1}^nc_i\vec{x_i}(t)$$
+	is also a solution $\forall c_i \in \mathbb{F}$.
+\end{thm}
+
+\begin{defn}
+	Functions $\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}$ are linearly independent on an interval $I$ if the only constants $c_1, c_2, \dots, c_n$ such that
+	$$\sum_{i=1}^n c_i\vec{x_i}(t) = \vec{0}$$
+	$\forall t \in I$ are
+	$$c_1 = c_2 = \dots = c_n = 0$$
+\end{defn}
+
+Suppose we have $\vec{x_1}(t), \vec{x_2}(t), \dots, \vec{x_n}(t)$ as solutions to the ODE. Now we need a set of constants that would make $\vec{x}(t_0) = \vec{x_0}$. This means we want to solve for
+$$\begin{bmatrix} \vec{x_1}(t_0) & \vec{x_2}(t_0) & \dots & \vec{x_n}(t_0) \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ d_n \end{bmatrix} = \vec{x_0}$$
+We are guaranteed a unique solution of $\vec{x_1}(t_0), \vec{x_2}(t_0), \dots, \vec{x_n}(t_0)$ are linearly independent. Therefore, we have linear independence if the individual vectors at any time $t$ are linearly independent. This is a stronger statement than the above definition, which allows for nonzero coefficients at certain proper subsets of $I$.
+\end{document}
