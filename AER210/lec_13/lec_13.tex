@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 13}
+\begin{document}
+\maketitle
+
+\section{Surface Integrals of Vector Fields}
+
+\begin{defn}
+	An \emph{orientable} surface is one that is \textbf{two-sided}.
+\end{defn}
+
+\begin{ex}
+	A plane is orientable. A M\"obius strip is non-orientable.
+\end{ex}
+
+Given the surface
+$$S: \vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$$
+
+We construct a normal vector to the surface by
+$$\vec{N} = \vec{r_u} \times \vec{r_v}$$
+The unit normal is then
+$$\vec{n} = \frac{\vec{N}}{||\vec{N}||} = \frac{\vec{r_u} \times \vec{r_v}}{||\vec{r_u} \times \vec{r_v}||}$$
+
+\begin{ex}
+	Imagine a fluid with density $\rho(x,y,z)$ and velocity field $\vec{V}(x,y,z)$. Then the mass flow rate passing through that surface is
+	$$\iint_S \rho\vec{V}\cdot\vec{n}dS$$
+	We define flux as $\vec{F} = \rho\vec{V}$, which gives us the mass flow rate as
+	$$\iint_S \vec{F}\cdot\vec{n}dS = \iint_S \vec{F} \cdot d\vec{S}$$
+	This can be simplified as
+	$$\vec{n}dS = \frac{\vec{r_u}\times\vec{r_v}}{||\vec{r_u}\times\vec{r_v}||} \times ||\vec{r_u}\times\vec{r_v}dudv = \vec{r_u}\times\vec{r_v}dudv$$
+	so
+	$$\iint_S \vec{F}\cdot d\vec{S} = \iint_D \vec{F}\cdot(\vec{r_u}\times\vec{r_v})dudv$$
+\end{ex}
+
+\begin{ex}
+	Calculate the flux of the vector field $\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}$ for the closed cylindrical surface $S$, given by $x^2+y^2=a^2, -h\leq z\leq h$. \\
+	The lateral component can be parameterised by $\theta, z$, which gives
+	\begin{align*}
+		I &= \int_{-h}^h \int_0^{2\pi} (a\cos\theta\hat{i} + a\sin\theta\hat{j} + z\hat{k})\cdot(a\cos\theta\hat{i} + a\sin\theta\hat{j})d\theta dz \\
+		  &= \int_{-h}^h \int_0^{2\pi} a^2d\theta dz \\
+		  &= 4\pi a^2h
+	\end{align*}
+	The top and bottom surfaces are more trivial, as the $\hat{k}$ component is constant. Hence
+	\begin{align*}
+		I &= \int_0^{2\pi}\int_0^a (a\cos\theta\hat{i} + a\sin\theta\hat{j} + h\hat{k}) \cdot \hat{k} rdrd\theta \\
+		  &= \int_0^{2\pi}\int_0^a hrdrd\theta \\
+		  &= \pi a^2h
+	\end{align*}
+	This is for the top surface. For the bottom surface, both $h$ and $\hat{k}$ become negative, which cancels out, giving a total flux of $6\pi a^2h$.
+\end{ex}
+
+\begin{ex}
+	Find the flux of $\vec{F} = \frac{2x\hat{i}+2y\hat{j}}{x^2+y^2} + \hat{k}$ through the surface $S$ defined parametrically as
+	$$\vec{r} = u\cos\theta\hat{i} + u\sin\theta\hat{j} + u\hat{k}, 0\leq u\leq1, 0\leq \theta\leq2\pi$$
+	taking the downwards face as positive. Then we have
+	\begin{align*}
+		\vec{r_u} \times \vec{r_\theta} &= (\cos\theta\hat{i} + \sin\theta\hat{j} + \hat{k}) \times (-u\sin\theta\hat{i} + u\cos\theta\hat{j}) \\
+						&= -u\cos\theta\hat{i} -u\sin\theta\hat{j} + u\hat{k} \\
+	\end{align*}
+	Using the downwards direction, we have
+	\begin{align*}
+		I &= \int_0^{2\pi}\int_0^1 \left(\frac{2\cos\theta}{u}\hat{i} + \frac{2\sin\theta}{u}\hat{j} + \hat{k}\right) \cdot (u\cos\theta\hat{i} + u\sin\theta\hat{j} -u\hat{k}) dud\theta \\
+		  &= \int_0^{2\pi}\int_0^1 2\cos^2\theta + 2\sin^2\theta - u dud\theta \\
+		  &= \int_0^{2\pi} 2\cos^2\theta + 2\sin^2\theta - \frac{1}{2} d\theta \\
+		  &= 3\pi
+	\end{align*}
+	So the net outflow is $3\pi$.
+\end{ex}
+
+\section{Divergence and Curl}
+
+\begin{defn}
+	$$\vec{\nabla} \equiv \frac{\partial}{\partial x}\hat{i} + \frac{\partial}{\partial y}\hat{j} + \frac{\partial}{\partial z}\hat{k}$$
+\end{defn}
+
+Gradient operations are then
+
+\begin{defn}
+The \emph{gradient} of a scalar function is
+	$$\vec{\nabla}f \equiv \frac{\partial f}{\partial x}\hat{i} + \frac{\partial f}{\partial y}\hat{j} + \frac{\partial f}{\partial z}\hat{k}$$
+\end{defn}
+
+\begin{defn}
+	The \emph{divergence} of a vector function $\vec{f} = P\hat{i} + Q\hat{j} + R\hat{k}$ is
+	$$\vec{\nabla}\cdot \vec{f} \equiv \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+\end{defn}
+
+Physically, the divergence of a vector function is the measure of how much a function "sinks" into or "flows" from a point.
+
+\begin{defn}
+	The \emph{curl} of a vector function $\vec{f} = P\hat{i} + Q\hat{j} + R\hat{k}$ is
+	$$\vec{\nabla}\times \vec{f} \equiv \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\hat{i} + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\hat{j} + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\hat{k}$$
+\end{defn}
+
+Fun fact: the divergence of a curl or the curl of a gradient is always zero! (Proof left to reader as exercise)
+
+\begin{defn}
+	The Laplace operator is defined as
+	$$\nabla^2 = \nabla\cdot\nabla = \frac{\partial}{\partial x} + \frac{\partial}{\partial y} + \frac{\partial}{\partial z}$$
+\end{defn}
+
+\section{Stokes' Theorem}
+Stokes' Theorem is a 3D version of Green's Theorem.
+\begin{thm}
+	Let $S$ be an orientable, piecewise-smooth surface that is bounded by a simple, closed, piecewise-smooth boundary curve $C$ having positive orientation. If $\vec{F}$ is a vector field with continuous first partial derivatives over $S$ then
+	$$\oint_C \vec{F}\cdot d\vec{r} = \iint_S\left(\vec{\nabla}\times\vec{F}\right)\cdot\vec{n}dS$$
+\end{thm}
+
+If $\vec{F} = \vec{V}$ (ie velocity), we have
+$$\oint_C \vec{V}\cdot\vec{T}ds = \iint_S \vec{w}\cdot\vec{n}dS$$
+where $\vec{T}$ is the unit tangent vector and $\vec{w}$ is as defined.
+
+\begin{ex}
+	Let $S$ be the part of the paraboloid $z=9-x^2-y^2$ such that $z\geq0$, and let $c$ be the trace of $S$ on the $xy$-plane. Verify the Stokes' theorem for the vector field $\vec{F} = 3z\hat{i} + 4x\hat{j} + 2y\hat{k}$.
+	\begin{align*}
+		\oint_C\vec{F}\cdot d\vec{r} &= \int_0^{2\pi} (12\cos t\hat{j} + 6\sin t\hat{k})\cdot (-3\sin t\hat{i} + 3\cos t\hat{j}) dt \\
+					     &= \int_0^{2\pi} 36\cos^2t dt \\
+					     36\pi
+	\end{align*}
+	And
+	$$\vec{\nabla}\times\vec{F} = 2\hat{i} + 3\hat{j} + 4\hat{k}$$
+	so
+	\begin{align*}
+		I &= \iint (2\hat{i} + 3\hat{j} + 4\hat{k}) \cdot ((\hat{i} - 2x\hat{k}) \times (\hat{j} - 2y\hat{k})) dxdy \\
+		  &= \iint (2\hat{i} + 3\hat{j} + 4\hat{k}) \cdot (2x\hat{i} + 2y\hat{j} + \hat{k}) dxdy \\
+		  &= \iint 4x + 6y + 4 dxdy \\
+		  &= \int_0^{2\pi} \int_0^3 4r^2\cos\theta + 6r^2\sin\theta + 4r drd\theta \\
+		  &= \int_0^{2\pi} 36\cos\theta + 36\sin\theta + 18 d\theta \\
+		  &= 36\pi
+	\end{align*}
+\end{ex}
+\end{document}
