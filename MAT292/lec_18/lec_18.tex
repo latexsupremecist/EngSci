@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 18}
+\begin{document}
+\maketitle
+
+\section{Superposition Principle}
+
+A: $\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}$ is linearly dependent iff $\exists t_0\in I$ such that the only solution for
+$$\sum_ic_i\vec{x_i} = 0$$
+is $c_i = 0$ \\
+B: $\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}$ is linearly dependent iff $\forall t_0\in I$, the only solution for
+$$\sum_ic_i\vec{x_i} = 0$$
+is $c_i = 0$
+
+\begin{thm}
+	Let $\vec{x_1}(t), \vec{x_2}(t), \dots, \vec{x_n}(t)$ be solutions to
+	$$\frac{d\vec{x}}{dt} = P(t)\vec{x}$$
+	Where $P(t) \in \R^{n\times n}$ is continuous with respect to $t$ on an interval of $I$. Then
+	$$W[\vec{x_1}(t),\vec{x_2}(t),\dots,\vec{x_n}(t)] \neq 0$$
+	iff $\vec{x_1}(t), \vec{x_2}(t), \dots, \vec{x_n}(t)$ are linearly independent.
+\end{thm}
+
+Proof: \\
+$\Leftarrow$: \\
+Proof by contradiction. If the Wronskian is zero, the  column vectors $\vec{x_i}(t_0)$ are linearly independent, so $\exists$ nontrivial $c_i$ such that
+$$\sum_i c_i\vec{x_i}(t_0) = 0$$
+Define
+$$\vec{y}(t) = \sum_i c_i\vec{x_i}(t)$$
+Since it is a nontrivial linear combination of linearly independent vectors, $\vec{y}(t)$ cannot be the 0 function. Plugging this into the system (as $\vec{y}(t)$ is a solution by superposition), we realise this is a solution for the initial value $\vec{x}(t_0) = 0$. However, the 0 function is also a solution, so this contradicts uniqueness. \\
+$\Rightarrow$: \\
+Proof by Contradiction: if the vectors are not linearly independent, the Wronskian would obviously be 0 (using the same linear operation on the determinant would yield a 0 column).
+
+\begin{defn}
+	The fundamental matrix is defined as
+	$$X(t) = \begin{bmatrix} \vec{x_1}(t) & \vec{x_2}(t) & \dots & \vec{x_n}(t)\end{bmatrix}$$
+		where $\vec{x_i}(t)$ form a basis of the solution space.
+\end{defn}
+
+Then
+$$P(t)X(t) = X'(t)$$
+
+\begin{defn}
+	Given $\frac{d\vec{x}}{dt} = P(t)\vec{x}$ we call $X(t)$ the special fundamental matrix for $t_0\in I$ if $X(t)$ is a fundamental matrix and $X(t_0) = \mathbb{I}$.
+\end{defn}
+
+If $P(t) = A$, then $X'(t) = AX(t)$, so through the magical power of abuse of notation, the solution is obviously
+$$X(t) = e^{At}$$
+where the definition for the exponention of a matrix is
+
+\begin{defn}
+	$$e^A := \sum_{k=0}^\infty \frac{A^k}{k!}$$
+	This converges $\forall A, t$.
+\end{defn}
+
+Then
+
+\begin{align*}
+	X'(t) &= \frac{d}{dt}\left[e^{At}\right] \\
+	      &= \frac{d}{dt} \left[\sum_{k=0}^\infty \frac{A^k}{k!}t^k\right] \\
+	      &= \sum_{k=0}^\infty\left[\frac{d}{dt} \frac{A^k}{k!}t^k\right] \\
+	      &= \sum_{k=1}^\infty\left[\frac{A^k}{k!}dt^{k-1}\right] \\
+	      &= A\sum_{k=0}^\infty \frac{A^k}{k!}t^k \\
+	      &= Ae^{At} \\
+	      &= AX(t)
+\end{align*}
+
+A general solution is then given by
+$$\vec{x}(t) = X(t)\begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_n\end{bmatrix}$$
+Substituting the initial condition,
+$$\vec{x}(t_0) = X(t_0)\begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_n\end{bmatrix} = \vec{x_0}$$
+As $X(t_0) = \mathbb{I}$. Therefore
+$$\vec{x(t)} = X(t)\vec{x_0} = e^{At}\vec{x_0}$$
+\end{document}
