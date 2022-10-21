@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 14}
+\begin{document}
+\maketitle
+
+\section{Stokes' Theorem}
+
+Using the previous example from the last lecture, we observe that Stokes' Theorem guarantees that the integral is the same for different surfaces, as long as they are bounded by the same curve. Therefore, we try the surface on the $xy$ plane.
+
+\begin{align*}
+	I &= \iint_{S'} (2\hat{i} + 3\hat{j} + 4\hat{k})\cdot\hat{k}dS \\
+	  &= 4\iint_{S'}dS \\
+	  &= 4\pi3^2 \\
+	  &= 36\pi
+\end{align*}
+
+\section{Divergence Theorem}
+
+\begin{thm}
+	Suppose $E$ is a solid region bounded by the closed surface $S$ with positive (outward) orientation. Let $\vec{F}$ be a vector field whose component functions have continuous first partial derivatives in $E$, then
+	$$\iint_S\vec{f}\cdot\vec{n}dS = \iiint_E\left(\vec{\nabla}\cdot\vec{F}\right)dV$$
+\end{thm}
+
+\begin{ex}
+	Compute the flux of the vector field
+	$$\vec{F}(x,y,z) = z\hat{i} + y\hat{j} + x\hat{k}$$
+	over the unit sphere $x^2+y^2+z^2=1$ using the divergence theorem.
+	\begin{align*}
+		\iint_S \vec{F}\cdot\vec{n}dS &= \iiint_V\left(\vec{\nabla}\cdot\vec{F}\right)dV \\
+					      &= \iiint_VdV \\
+					      &= \frac{4}{3}\pi
+	\end{align*}
+\end{ex}
+
+\section{Fluid Mechanics}
+
+\textbf{Calculus is over!}
+
+Liquids and gases called \emph{fluids}, as they deform easily without permanent changes. Under an external load,
+\begin{itemize}
+	\item A solid changes in shape and eventually comes to a stop when it reaches the angle of deformation
+	\item Fluid in contact with a solid boundary sticks to it
+\end{itemize}
+The second property is called the \textbf{NO SLIP CONDITION}.
+
+\begin{defn}
+	A fluid is a substance that deforms continuously under the application of a tangential force.
+\end{defn}
+
+There are 2 approaches to studying fluid mechanics, which is the statistical or continuum approach. The continuum approach is more conventinal, and depends on the Knudsen number
+$$\frac{\text{microscopic length scale}}{\text{macroscopic length scale}} << 1$$
+
+The continuum assumption does not hold for
+\begin{itemize}
+	\item Tiny passages, e.g. blood flow in micro-vessels
+	\item Granular flow, e.g. flow of salt grains
+	\item Spacecraft entering Earth's atmosphere
+	\item Flows with shock waves, e.g. supersonic bullet
+\end{itemize}
+
+Force on fluid particles include
+\begin{itemize}
+	\item Body Forces: developed without physical contact, e.g. gravity
+	\item Surface Forces: developed with physical contact, e.g. friction
+\end{itemize}
+
+The stress tensor is denoted as $\sigma_{xy}$ where $x$ is the surface of application and $y$ is the direction of action.
+\end{document}
