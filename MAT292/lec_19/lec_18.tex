@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 19}
+\begin{document}
+\maketitle
+
+\section{System of Linear Equations}
+
+From the previous lecture, since we have $X(0) = \mathbb{I}$, we know that each column vector is linearly independent, so $X$ contains all solutions. We also have some matrix exponential properties
+
+\begin{itemize}
+	\item $e^{0t} = \mathbb{I}$
+	\item $e^{A(t+\tau)} = e^{At}e^{A\tau}$
+	\item $Ae^{At} = e^{At}A$
+	\item $\left(e^{-At}\right)^{-1} = e^{-At}$
+	\item $e^{(A+B)t} = e^{At}e^{Bt}$ if $AB = BA$
+\end{itemize}
+
+To prove the last identity, we first observe $e^{(A+B)t}$ satisfies
+$$X'(t) = (A+B)X(t)$$
+However,
+\begin{align*}
+	\frac{d}{dt} e^{At}e^{Bt} &= Ae^{At}e^{Bt} + e^{At}Be^{Bt} \\
+				  &= Ae^{At}e^{Bt} + Be^{At}e^{Bt} \\
+				  &= (A+B)e^{At}e^{Bt}
+\end{align*}
+Moreover, obviously $e^{A0}e^{B0} = \mathbb{I}$, so by existence and uniqueness, we can demonstrate they are equal. Note that we have
+$$e^{At}B = Be^{At}$$
+since $e^{At}$ is a polynomial with $A^k$ terms. One can easily show through mathematical induction that $A^kB = BA^k$ if we have $AB = BA$. \\
+To compute $A^k$, if it is diagonalisable, then
+$$A = VDV^{-1} \Rightarrow A^k = VD^kV^{-1}$$
+so
+\begin{align*}
+	e^{At} &= \sum_{k=0}^\infty \frac{A^k}{k!}t^k \\
+	       &= V\left(\sum_{k=0}^\infty \frac{D^k}{k!}t^k\right)V^{-1} \\
+	       &= V\begin{bmatrix} e^{\lambda_1t} & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & e^{\lambda_nt}\end{bmatrix}V^{-1}
+\end{align*}
+
+\section{Second Order differential Equations}
+
+\begin{ex}
+	\text{ }\\
+	\begin{itemize}
+		\item Spring-Mass System
+			$$my''(t) + \gamma y'(t) + ky(t) + F(t)$$
+		\item Linearised Pendulum
+			$$\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega^2\theta = 0$$
+		\item Airy Equation
+			$$y''(t) = ty(t)$$
+	\end{itemize}
+\end{ex}
+
+
+
+\begin{defn}
+	A second order ODE
+	$$y''(t) = f(t,y,y')$$
+	is linear if it can be written as
+	$$y''(t) + p(t)y'(t) + q(t)y(t) = g(t)$$
+	It is homogeneous if $g(t)=0$, and it has constant coefficients if $p(t)$ and $q(t)$ are constants.
+\end{defn}
+
+\begin{defn}
+	An initial value probem for a second order ODE on an interval $I = (\alpha,\beta)$ is
+	$$y''(t)=f(t,y,y'), y(t_0) = y_0, y'(t_0) = y_1$$
+	where $t_0\in(\alpha,\beta)$ and $y_0,y_1\in\R$.
+\end{defn}
+
+If we define $x_1(t) = y(t), x_2(t) = y'(t)$, the ODE can be reexpressed as
+$$\frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & 1 \\ -q(t) & -p(t) \end{bmatrix} \vec{x} + \begin{bmatrix} 0 \\ g(t)\end{bmatrix}$$
+where
+$$\vec{x}(t) = \begin{bmatrix} x_1(t) \\ x_2(t)\end{bmatrix}$$
+Therefore, a second order ODE is equivalent to a first order ODE! Using the existance and uniqueness theorem for linear systems, the specific theorem for second order ODEs is
+
+\begin{thm}
+	For a second order ODE, if
+	\begin{itemize}
+		\item $q(t), p(t)$ are continuous on $I$
+		\item $g(t)$ is continuous on $I$
+		\item $t_0 \in I$
+	\end{itemize}
+	Then there exists a unique solution in the interval $(\alpha,\beta)$.
+\end{thm}
+
+If we consider the homogeneous case ($g(t)=0$), the same theory applies, so we have the
+\begin{itemize}
+	\item Superposition Principle
+	\item Linear Independence
+	\item Wronskian
+\end{itemize}
+
+\end{document}
