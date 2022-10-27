@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 15}
+\begin{document}
+\maketitle
+
+\section{Viscosity}
+
+\begin{defn}
+	Viscosity is the measure of fluid's internal resistance to deformation under shear stress.
+\end{defn}
+
+\begin{defn}
+	Shear strain is defined as $\Delta \alpha$, which is the angle of deformation.
+\end{defn}
+
+As a result,
+$$\tau \propto \frac{d\alpha}{dt}$$
+If we let $u$ be the horizontal velocity and $y$ be the height, we have
+$$\tau \propto \frac{du}{dy}$$
+using the Second Fundamental Theorem of Physics
+$$\tan \theta = \theta$$
+
+For Newtonian fluids
+$$\tau = \mu\frac{d\alpha}{dt} = \mu\frac{du}{dy}$$
+For non-Newtonian fluids,
+\begin{itemize}
+	\item Shear Thinning: viscosity decreases with shear, e.g. paints, blood, cookie dough
+	\item Shear thickening: viscosity increases with shear, e.g. cornstarch-water mixture
+	\item Bingham plastic: rate of deformation is 0 until a certain stress is reached
+\end{itemize}
+
+For liquids, viscosity depends on intermolecular forces, so it decreases with temperature. For sollids, viscosity depends on collisions, so it increases with temperature.
+
+\begin{defn}
+	Kinematic Viscosity is defined as
+	$$v = \frac{\mu}{\rho}$$
+\end{defn}
+
+\begin{defn}
+	Bulk Modulus is defined as
+	$$E_V = -\frac{dP}{\frac{dV}{V}} = \frac{dP}{\frac{d\rho}{\rho}}$$
+\end{defn}
+
+\section{Hydrostatics}
+
+Hydrostatics is split into fluids at rest and fluids in rigid body motion. We classify the forces as body forces and surface forces, which is further split into normal and shear forces (does not exist in hydrostatics).
+
+\begin{defn}
+	Pressure is the result of molecular collisions on a real or imaginary surface.
+\end{defn}
+
+As a corollary, we have Gauss' Law, which states that the pressure at a point is the same in all directions, assuming there is no body forces. We can prove this by considering a right angled triangle with a vertical $a$, horizontal $b$ and hypotenuse $c$. Then by equilibrium in forces along the $x$ direction,
+$$aP_x = cP_s\sin \theta = cP_s \times \frac{a}{c} = aP_s$$
+where $\theta$ is the angle between $b$ and $c$, and $P_s$ is the pressure perpendicular to the hypotenuse. Similarly, we have $P_s = P_y$. As the angle $\theta$ is not specified, the pressure in all directions along a 2D plane is the same. Applying this twice gives equality of pressure in any two directions in 3D.
+
+\begin{ex}
+	Consider a cube in a water tank that travels with an acceleration $a$ along $x$. Then the surface forces along $x$ are
+	$$\left(p \pm \frac{\partial p}{\partial x}\frac{\delta x}{2}\right) \delta y\delta z$$
+	The total surface force is then
+	$$\frac{\sum\vec{F_s}}{\delta x\delta y\delta z} = -\vec{\nabla}p$$
+Body forces are obviously
+$$\frac{\sum\vec{F_b}}{\delta x\delta y\delta z} = -\rho g\hat{k}$$
+
+Differentiating Newton's Third Law
+$$\sum\delta\vec{F} = \delta m\vec{a}$$
+we have
+$$-\vec{\nabla}p-\rho g\hat{k} = \rho \vec{a}$$
+with the assumption that there are no shear forces. \\
+If the fluid is at rest, $\vec{a}=0$, so
+$$\vec{\nabla}p + \rho g\hat{k} = 0$$
+And using a bit of imagination, we get
+$$p = -\rho gz + C$$
+\end{ex}
+
+\end{document}
