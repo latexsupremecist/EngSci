@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 21}
+\begin{document}
+\maketitle
+
+\section{Nonhomogeneous ODE with constant coefficients}
+
+Consider
+$$ay''(t) + by'(t) + cy(t) = g(t)$$
+where $g(t) \neq 0$. \\
+If $g(t) = C$, this can be reduced to
+$$\begin{bmatrix} x_1'(t) \\ x_2'(t)\end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -\frac{c}{a} & -\frac{b}{a}\end{bmatrix} \begin{bmatrix} x_1(t) \\ x_2(t)\end{bmatrix} + \begin{bmatrix} 0 \\ \frac{g}{a}\end{bmatrix}$$
+
+The particular solution is
+$$\vec{x_{eq}} = -A^{-1}\vec{b}$$
+where $$\vec{b} = \begin{bmatrix} 0 \\ \frac{g}{a}\end{bmatrix}$$
+The solution is then
+$$\vec{x}(t) = \vec{x_h}(t) + \vec{x_{eq}}(t)$$
+
+If the nonhomogeneous term is not constant, $\vec{x_{eq}}$ must be a particular solution to the nonhomogeneous system. Then the general solution is just
+$$\vec{x}(t) = \vec{x_h}(t) + \vec{x_p}(t)$$
+Proof:
+\begin{align*}
+	\frac{d\vec{x}}{dt} &= \frac{d}{dt}\left(\vec{x_h}(t) + \vec{x_p}(t)\right) \\
+			    &= A\vec{x_h}(t) + A\vec{x_p}(t) + \vec{g}(t) \\
+			    &= A\left(\vec{x_h}(t) + \vec{x_p}(t)\right) + \vec{g}(t) \\
+			    &= A\vec{x}(t) + \vec{g}(t)
+\end{align*}
+
+\begin{thm}
+	If $\vec{x_1}(t), \vec{x_2}(t)$ are linearly independent solutions to the homogeneous system
+	$$\frac{d\vec{x}}{dt} = A\vec{x}(t)$$
+	and $\vec{x_p}(t)$ is a particular solution to the nonhomogeneous system
+	$$\frac{d\vec{x}}{dt} = A\vec{x}(t) + \vec{g}(t)$$
+	Then
+	$$\vec{x}(t) = c_1\vec{x_1}(t) + c_2\vec{x_2}(t) + \vec{x_p}(t)$$
+	forms a general solution to the nonhomogeneous system
+	$$\frac{d\vec{x}}{dt} = A\vec{x}(t) + \vec{g}(t)$$
+\end{thm}
+
+Proof: \\
+Given a solution $\vec{x}(t)$, we want $c_1,c_2\in\R$ such that
+$$\vec{x}(t) = c_1\vec{x_1}(t) + c_2\vec{x_2}(t) + \vec{x_p}(t)$$
+which is equivalent to
+$$\vec{x}(t) - \vec{x_p}(t) = c_1\vec{x_1}(t) + c_2\vec{x_2}(t)$$
+for some $c_1,c_2\in\R$. \\
+Note that the right hand side is the general solution to the homogeneous equation. Differentiating the left hand side,
+\begin{align*}
+	\frac{d}{dt}\left(\vec{x}(t)-\vec{x_p}(t)\right) &= \frac{d}{dt}\vec{x}(t) - \frac{d}{dt}\vec{x_p}(t) \\
+							 &= A\vec{x}(t) + \vec{g}(t) - A\vec{x_p}(t) - \vec{g}(t) \\
+							 &= A\left(\vec{x}(t)-\vec{x_p}(t)\right)
+\end{align*}
+We have that the left hand side is a solution to the homogeneous equation, so $\exists c_1,c_2\in\R$ that represents it. Rearranging yields the result we want. We know how to find the general solution to the homogeneous solution from the last lecture. What is left is to find a particular solution.
+
+\subsection{Particular Solutions}
+Unfortunately, there is no general methodical way to find particular solutions. We need ans\"atzen.
+
+\begin{ex}
+	$$y''(t) - 3y'(t) - 4y(t) = 3e^{2t}$$
+	Solving the quadratic, the general solution is
+	$$c_1e^{-t} + c_2e^{4t}$$
+	In this case, the ansatz is intuitively $Ae^{2t}$, where substitution in the left hand side yields $-6A = 3 \Rightarrow A = -0.5$.
+\end{ex}
+\end{document}
