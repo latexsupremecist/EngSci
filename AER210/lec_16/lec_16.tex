@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 16}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Incompressible Fluid at Rest}
+$\rho$ is a constant for incompressible fluids. Then from
+$$\frac{dp}{dz} = -\rho g$$
+we get
+$$p_2-p_1 = -\rho g(z_2-z_1)$$
+as derived in the previous lecture. 
+
+\begin{defn}
+	The specific weight is defined as
+	$$\gamma := \rho g$$
+\end{defn}
+
+We define specific weight as it appears often in fluid dynamics. It is the weight per unit volume of the fluid. Moreover, since liquids are usually much denser than gases
+
+\begin{align*}
+	\rho_g &<< \rho_f \\
+	\rho_g g &<< \rho_f g \\
+	\left|\left(\frac{dp_g}{dz}\right)\right| &<< \left|\left(\frac{dp_f}{dz}\right)\right|
+\end{align*}
+
+Therefore, for small distances $\Delta h \approx 0$, we can take gas pressure to be constant.
+
+\begin{ex}
+	Find the pressure-elevation relationship for isothermal perfect gas.
+	$$p = \rho RT$$
+	Then
+	\begin{align*}
+		\frac{dp}{dz} &= -\rho g \\
+		\frac{dp}{dz} &= -\frac{p}{RT} g \\
+		\frac{dp}{p} &= -\frac{g}{RT}dz \\
+	\ln\frac{p_2}{p_1} &= -\frac{g}{RT}(z_2-z_1) \\
+	p_2 &= p_1e^{-\frac{g}{RT}(z_2-z_1)}
+\end{align*}
+\end{ex}
+
+As a summary, assuming no shear,
+$$-\vec{nabla}p + \rho\vec{g} = \rho\vec{a}$$
+where $\vec{g}$ is a body force. If it is gravity, we have
+$$-\vec{nabla}p - \rho g\hat{k} = \rho\vec{a}$$
+If the fluid is also at rest, we have
+$$\frac{dp}{dz} = -\rho g$$
+For incompressible fluids at rest,
+$$p_2 = p_1+\rho gh$$
+and for compressible fluids at rest,
+$$\int dp = \int \rho gdz$$
+which simplifies to a constant $p$ for small ranges $\Delta h$.
+
+\begin{ex}
+	For an incompressible fluid at rest, in a gravitational field acting in the $-z$ direction, show that the free surface is horizontal. \\
+	Given the conditions, we have
+	$$p = -\rho gz + C$$
+	We know $p = p_{atm}$ at $z = z_s$, so
+	$$p_{atm} = -\rho gz_s+C$$
+	Rearranging yields
+	$$z_s = \frac{C-p_{atm}}{\rho g}$$
+	which is an expression of constants. The $z$ component of the surface is a constant, hence the surface is horizontal.
+\end{ex}
+
+\section{Measurements of Pressure}
+Pressure values are stated with respect to a reference level. The gage pressure is measured with a local atmospheric reference, while absolute pressure is compared with a vacuum reference. Hence
+$$p_{abs} = p_{gage} + p_{atm}$$
+Several instruments for measuring pressure including
+\begin{itemize}
+	\item Mercury Barometer: $P_a = \rho gh$
+	\item Piezometer: $P_a = \rho gh$
+	\item U-tube manometer: $P_a = \gamma_2h_2 - \gamma_1h_1$
+\end{itemize}
+
+\begin{ex}
+	A closed tank contains air and water. A piezometer is connected to the tank as shown. The column height are $h_1=1m$,$h_2=0.5m$. If the pressure gage reading of the compressed air shows 10kPa, determine the height $h$ of the water in teh piezometer. \\
+	$$\gamma(h-1) = 10000 \Rightarrow h = 2$$
+\end{ex}
+\end{document}
