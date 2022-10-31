@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 22}
+\begin{document}
+\maketitle
+
+\section{Finding Particular Solutions}
+
+\begin{tabular}{|c|c|}
+	\hline
+	$g(t)$ & Ansatz \\
+	\hline\hline
+	$\alpha e^{kt}$ & $Ae^{kt}$ \\
+	\hline
+	$a\sin kt$ or $a\cos kt$ & $A\sin(kt) + B\cos(kt)$ \\
+	\hline
+\end{tabular}
+
+\section{Superposition Principle}
+
+\begin{thm}
+	Supposed $y_1(t)$ is a solution to
+	$$ay''(t) + by'(t) + cy(t) = g_1(t)$$
+	and $y_2(t)$ is a solution to
+	$$ay''(t) + by'(t) + cy(t) = g_2(t)$$
+	Then $y(t) = y_1(t) + y_2(t)$ is a solution to
+	$$ay''(t) + by'(t) + cy(t) = g(t)$$
+\end{thm}
+
+The proof is trivial. We then can split the nohomogeneous term.
+
+\begin{ex}
+	$$y'' - 3y' - 4y = 3e^{2t} + 2\sin t$$
+	We split this into equations
+	\begin{equation}\label{a}
+		y'' - 3y' - 4y = 3e^{2t}
+	\end{equation}
+	and
+	\begin{equation}\label{b}
+		y'' - 3y' - 4y = 2\sin t
+	\end{equation}
+	Let the particular solution for equation ($n$) be $y_n(t)$, then the particular solution for the equation is
+	$$y(t) = y_1(t) + y_2(t)$$
+\end{ex}
+
+\begin{ex}
+	$$y'' - 3y' - 4y = 2e^{-t}$$
+	If we try the particular solution $y_p(t) = Ae^{-t}$, we get
+	\begin{align*}
+		Ae^{-t} + 3Ae^{-t} - 4Ae^{-t} &= 2e^{-t} \\
+		0 &= 2e^{-t}
+	\end{align*}
+	which is bad. One can try $y(t) = Ate^{-t}$ by consulting the solution manual. Therefore, a different ansatz is needed if it happens to be the general solution.
+\end{ex}
+
+\section{Variation of Parameters}
+The method of undetermined coefficients is not a general approach, as ansatz are needed for every case, yet not every case is covered, and ans\"atze do not work if they happen to be the general solution. \\
+Now consider
+$$\frac{d\vec{x}}{dt} = P(x)\vec{x}(t) + \vec{g}(t)$$
+and assume we have linearly independent vectors $\vec{x_1}(t), \vec{x_2}(t)$ that are solutions to the homogeneous equation. Then our guess of a particular funtion is
+$$\vec{x}(t) = u_1(t)\vec{x_1}(t) + u_2(t)\vec{x_2}(t) = X(t)\vec{u}(t)$$
+This is similar to the general solution for the homogeneous equation, but only with functions instead of constants as coefficients. Plugging into the ODE,
+\begin{align*}
+	\frac{d\vec{x}}{t} &= P(t)\vec{x}(t) + \vec{g}(t) \\
+	X'(t)\vec{u}(t) + X(t)\vec{u}'(t) &= P(t)X(t)\vec{u}(t) + \vec{g}(t) \\
+	P(t)X(t)\vec{u}(t) + X(t)\vec{u}'(t) &= P(t)X(t)\vec{u}(t) + \vec{g}(t) \\
+	X(t)\vec{u}'(t) &= \vec{g}(t) \\
+	\vec{u}'(t) &= X^{-1}(t)\vec{g}(t)
+\end{align*}
+Note that on the third line, we substitute the first term back into the homogeneous equation, and on the last line, $X(t)$ is invertible as its determiant is nonzero $\forall t$. Integrating, we then have
+$$\vec{u}(t) = \vec{c} + \int X^{-1}(t)\vec{g}(t)dt$$
+and then
+$$\vec{x}(t) = X(t)\vec{c} + X(t)\int X^{-1}(t)\vec{g}(t)dt$$
+The first term is just the general solution, so the particular solution can be reduced to the second term.
+
+\begin{ex}
+	$$\frac{d\vec{x}}{t} = \begin{bmatrix} 1 & -4 \\ 2 & -5\end{bmatrix}\vec{x}(t) + \begin{bmatrix} 10\cos t \\ 2e^{-t}\end{bmatrix}$$
+	The general solution is spanned by
+	$$\vec{x}_1(t) = e^{-t}\begin{bmatrix} 2 \\ 1\end{bmatrix}$$
+	and
+	$$\vec{x}_2(t) = e^{-3t}\begin{bmatrix} 1 \\ 1\end{bmatrix}$$
+	The inverse matrix is
+	$$X^{-1}(t) = \begin{bmatrix} e^t & -e^t \\ -e^{3t} & 2e^{3t}\end{bmatrix}$$
+	So
+	\begin{align*}
+		\vec{x}_p(t) &= X(t)\int X^{-1}(t)\vec{g}(t)dt \\
+			     &= X(t)\int\begin{bmatrix} e^t & -e^t \\ -e^{3t} & 2e^{3t}\end{bmatrix}\begin{bmatrix} 10\cos t \\ 2e^{-t}\end{bmatrix}dt \\
+			     &= \begin{bmatrix}7\cos t + 9\sin t + 2(1-2t)e^{-t} \\ 2\cos t + 4\sin t + 2(1-t)e^{-t}\end{bmatrix}
+	\end{align*}
+	Note that some steps were skipped.
+\end{ex}
+
+This can be applied to second order ODEs, as they are but special cases of linear first order ODEs. Then for
+$$ay''(t) + by'(t) + cy(t) = g(t)$$
+and solutions $y_1(t), y_2(t)$,
+$$X(t) = \begin{bmatrix} y_1 & y_2 \\ y_1' & y_2'\end{bmatrix}$$
+\end{document}
