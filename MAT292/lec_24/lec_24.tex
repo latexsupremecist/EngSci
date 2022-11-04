@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 24}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integral Tansforms}
+
+\begin{ex}
+	Suppose you are playing minecraft. Points A and B are separated by 10000 blocks, with a base speed on 4.317 blocks per second. 38.61 minutes of real life is needed. Is there an alternative to save time? \\
+	Consider the nether, where moving 1 block there is equivalent to moving 8 blocks on the surface.
+\end{ex}
+
+The same can be done with ODEs. We can transform to a new space, where it is easier to solve, then transform back.
+
+\section{Laplace Transform}
+
+\begin{defn}
+	Let $f$ be a function defined on $[0,\infty)$. The Laplace transform is defined by
+
+	$$F(s) = \int_0^\infty e^{-st}f(t)dt$$
+	The domain of $F$ are the values of $s$ is where the integral is defined and convergent. We also denote $F$ as $\mathcal{L}\{f\}$.
+\end{defn}	
+
+It is technically a change of basis.
+
+\begin{ex}
+	$$\mathcal{L}\{1\}, t \geq 0$$
+	\begin{align*}
+		\mathcal{L}\{1\} &= \int_0^\infty e^{-st}dt \\
+				 &= -\frac{1}{s}e^{-st} \Big |_0^\infty \\
+				 &= \frac{1}{s}
+	\end{align*}
+	only where $s > 0$.
+\end{ex}
+
+\begin{ex}
+	$$\mathcal{L}\{e^{at}\}, t\geq 0$$
+	\begin{align*}
+		\mathcal{L}\{e^{at}\} &= \int_0^\infty e^{-(s-a)t}dt \\
+				      &= \frac{1}{s-a}
+	\end{align*}
+	as above. Again, this only holds where $s-a>0$.
+\end{ex}
+
+\begin{ex}
+	$$\mathcal{L}\{e^{(a+bi)t}\}, t\geq 0$$
+	\begin{align*}
+		\mathcal{L}\{e^{(a+bi)t}\} &= \int_0^\infty e^{-(s-a-bi)t} dt \\
+					   &= \frac{1}{s-a-bi}
+	\end{align*}
+	Again, this only holds where $s-a>0$. This is because the complex exponential can be split into the product of the real and imaginary exponential, where the former requires $s-a>0$ to converge to 0 and the latter is bounded and oscillates.
+\end{ex}
+
+\begin{thm}
+	Linearity of Laplace Transform. \\
+	Suppose $\mathcal{L}\{f_1\}$ is defined for $s\geq s_1$ and $\mathcal{L}\{f_2\}$ is defined for $s\geq s_2$. Then
+	$$\mathcal{L}\{c_1f_1 + c_2f_2\} = c_1\mathcal{L}\{f_1\} + c_2\mathcal{L}\{f_2\}$$
+	defined for $s\geq\text{max}(s_1,s_2)$
+\end{thm}
+
+\begin{ex}
+	$$\mathcal{L}\{\sin t\}, t\geq 0$$
+	\begin{align*}
+		\mathcal{L}\{\sin t\} &= \mathcal{L}\left\{\frac{e^{it} - e^{-it}}{2i}\right\} \\
+				      &= \frac{1}{2i}\mathcal{L}\left\{e^{it}\right\} - \frac{1}{2i}\mathcal{L}\left\{e^{-it}\right\} \\
+				      &= \frac{1}{2i}\left(\frac{1}{s-i} - \frac{1}{s+i}\right) \\
+				      &= \frac{1}{s^2+1}
+	\end{align*}
+\end{ex}
+
+For the Laplace transform to exist on $(a,\infty)$, the integrand has to be integrable and the improper integral has to converge.
+
+\begin{defn}
+	A function $f$ is \emph{piecewise continuous} if its domain can be partitioned into intervals where on each interval
+	\begin{itemize}
+		\item $f$ is continuous on the open subinterval
+		\item $f$ has a finite limit at the endpoints of each interval when approached from inside the interval
+	\end{itemize}
+\end{defn}
+
+Heuristically, $f$ can grow at most exponentially fast.
+
+\begin{defn}
+	A function $f(t)$ is of \emph{exponential order} if there exists real constants $M\geq0$, $K>0$, and $a$ such that
+	$$|f(t)| \leq Ke^{at} \forall t \geq M$$
+\end{defn}
+
+\begin{thm}
+	The Laplace transform $\mathcal{L}\{f\}(s)$ exists for $s>a$ if
+	\begin{itemize}
+		\item $f$ is piecewise continuous on the interval $t \in [0,A]$ for any positive $A$
+		\item $f$ is of exponential order
+	\end{itemize}
+\end{thm}
+
+We can use the comparison test to prove this.
+\end{document}
