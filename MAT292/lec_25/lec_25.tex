@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 25}
+\begin{document}
+\maketitle
+
+\section{Laplace Transform}
+
+Recall
+$$F(s) = \int_0^\infty e^{-st}f(t)dt$$
+Given the Laplace Transform of $f(t)$, how does it change when $f(t)$ itself is changed?
+\begin{ex}
+	$$f(t) \rightarrow e^{ct}f(t)$$
+	Then
+	\begin{align*}
+		\mathcal{L}\{e^{ct}f(t)\}(s) &= \int_0^\infty e^{-st}e^{ct}f(t)dt \\
+					  &= \int_0^\infty e^{-(s-c)t}f(t)dt \\
+					  &= F(s-c)
+	\end{align*}
+	Which is defined when $s>a+c$.
+\end{ex}
+
+\begin{ex}
+	$$f(t) \rightarrow f'(t)$$
+	Then
+	\begin{align*}
+		\mathcal{L}\{f'(t)\}(s) &= \int_0^\infty e^{-st}f'(t)dt \\
+					&= e^{-st}f(t) \Big |_0^\infty + s\int_0^\infty e^{-st}f(t)dt \\
+					&= sF(s) - f(0)
+	\end{align*}
+	assuming $f$ and $f'$ are of exponential order.
+\end{ex}
+
+Doing this twice,
+$$\mathcal{L}\{f''(t)\}(s) = s^2F(s) - sf(0) - f'(0)$$
+assuming $f$, $f'$ and $f''$ are of exponential order, and are defined on $[0,\infty)$. Furthermore, using induction, one can show
+
+$$\mathcal{L}\{f^{(n)}(s)\} = s^nF(s) - \sum_{i=0}^{n-1} s^if^{(n-1-i)}(0)$$
+
+\begin{ex}
+	$$f(t) \rightarrow t^nf(t)$$
+	Then
+	\begin{align*}
+		\mathcal{L}\{f(t)\}(s) &= \int_0^\infty e^{-st}f(t)dt \\
+		\frac{d^n}{ds^n}\mathcal{L}\{f(t)\}(s) &= \int_0^\infty (-1)^nt^ne^{-st}f(t)dt \\
+		(-1)^n\mathcal{L}\{t^nf(t)\}(s) &= F^{(n)}(s) \\
+		\mathcal{L}\{t^nf(t)\}(s) &= (-1)^nF^{(n)}(s)
+	\end{align*}
+\end{ex}
+
+Putting $f(t) = 1$, we get
+\begin{align*}
+	\mathcal{L}\{t^n\} &= (-1)^n\frac{d^n}{ds^n} \frac{1}{s} \\
+			   &= \frac{n!}{s^{n+1}}
+\end{align*}
+
+\section{Applications of the Laplace Transform}
+
+\begin{ex}
+	$$y'' + 2y' + 5y = e^{-t}, y(0) = 1, y'(0) = -3$$
+	Applying the Laplace Transform on both sides,
+	\begin{align*}
+		s^2Y(s) - s + 3 + 2sY(s) - 2 + 5Y(s) &= \frac{1}{s+1} \\
+		Y(s) &= \frac{s^2}{(s+1)(s^2+2s+5)}
+	\end{align*}
+\end{ex}
+\end{document}
