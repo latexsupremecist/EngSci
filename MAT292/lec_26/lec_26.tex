@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 26}
+\begin{document}
+\maketitle
+
+\section{Applications of the Laplac Transform}
+
+\begin{ex}
+	$$y'' + 2y' + 5y = e^{-t}$$
+	Then
+	$$Y(s) = \frac{s^2}{(s+1)(s^2+2s+5)}$$
+	from last lecture. What remains is to "undo" the transform to give us $y(t)$.
+\end{ex}
+Limitations of the Laplace Transform: we need the initial values, and we need to transform to be defined in the first place.
+
+\begin{ex}
+	Consider the Laplace Transform of both functions
+	$$f(t) = 0, g(t) = \begin{cases} 0 & t \neq 5 \\ 1 & t = 5\end{cases}$$
+	However, the Laplace Transform of both are equal to 0. It is not injective!
+\end{ex}
+
+For the cases above, the "nicer" functions can be picked, as it is differentiable, so this is not a big issue.
+
+\begin{thm}
+	If $f(t)$ and $g(t)$ are piecewise continuous and of exponential order on $[0,\infty)$ and $f=G$ where $F = \mathcal{L}\{f\}$ and $G = \mathcal{L}\{G\}$ then $f(t) = g(t)$ at all points where both $f$ and $g$ are continuous.
+\end{thm}
+
+Then if $f$ and $g$ differ on an interval of positive length, there is a subinterval where both $f$ and $g$ are continuous, which leads to a contradiction.
+
+\begin{defn}
+	If $f(t)$ is a piecewise continuous and of exponential order and $\mathcal{L}\{f(t)\} = F(s)$, then we call $f$ the inverse Laplace Transform of $F$, and denote it by
+	$$f = \mathcal{L}^{-1}\{F\}$$
+\end{defn}
+
+Where any 2 inverses differ at most at finite points.
+
+\begin{thm}
+	If $f_1 = \mathcal{L}\{F_1\}$ and $f_2 = \mathcal{L}\{F_2\}$ are piecewise continuous and of exponential order, then for any constants $c_1$ and $c_2$,
+	$$\mathcal{L}^{-1}\{c_1F_1 + c_2F_2\} = c_1\mathcal{L}^{-1}\{F_1\} + c_2\mathcal{L}^{-1}\{F_2\} = c_1f_1 + c_2f_2$$
+\end{thm}
+
+There is a formula for inverse Laplace Transforms, namely
+
+$$\mathcal{L}^{-1}\{F\} = \lim_{T \rightarrow \infty} \frac{1}{2\pi i} \int_{\gamma-iT}^{\gamma+iT} e^{st}F(s)ds$$
+
+In practice a lookup table and partial fractions are easier.
+
+\begin{ex}
+	In the previous example,
+	$$Y(s) = \frac{s^2}{(s+1)(s^2+2s+5)}$$
+	Decomposing into partial fractions,
+	\begin{align*}
+		\frac{s^2}{(s+1)(s^2+2s+5)} &= \frac{s^2}{(s+1)[(s+1)^2+4]} \\
+					    &= \frac{A}{s+1} + \frac{B(s+1)}{(s+1)^2+4} + \frac{2C}{(s+1)^2+4}
+	\end{align*}
+	This gives $A = \frac{1}{4}, B = \frac{3}{4}, C = -1$, so
+	$$Y(s) = \frac{1}{4(s+1)} + \frac{3(s+1)}{4[(s+1)^2+4]} - \frac{2}{(s+1)^2+4}$$
+	From the lookup table,
+	$$y(t) = \frac{1}{4}e^{-t} + \frac{3}{4}e^{-t}\cos(2t) - e^{-t}\sin(2t)$$
+\end{ex}
+\end{document}
