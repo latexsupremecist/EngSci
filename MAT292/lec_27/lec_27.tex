@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 27}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Fun Functions}
+
+\begin{defn}
+	The Heaviside step function is defined as
+	$$u(t) = \begin{cases} 0 & t < 0 \\ 1 & t \geq 0\end{cases}$$
+\end{defn}
+This can be shifted to form
+$$u_c(t) = \begin{cases} 0 & t < c \\ 1 & t \geq c\end{cases}$$
+It can be used to turn things "on" and "off". If we want a function that turns on from $c$ to $d$, ie
+$$u_{cd}(t) = \begin{cases} 1 & t \in[c,d) \\ 0 & \text{else}\end{cases}$$
+it is trivial that
+$$f(t) = u_c(t) - u_d(t)$$
+A triangular pulse can be drawn as e.g.
+$$h(t) = (t-1)u_{12}(t) + (3-t)u_{23}(t)$$
+where $u$ is defined as above. Expanding yields
+$$h(t) = (t-1)u_1(t) - 2(t-2)u_2(t) + (t-3)u_3(t)$$
+The Laplace of the step function is
+\begin{align*}
+	\mathcal{L}\{u_c(t)\}(s) &= \int_0^\infty e^{-st}u_c(t)dt \\
+				 &= \int_c^\infty e^{-st}dt \\
+				 &= \frac{1}{s}e^{-sc}, s > 0
+\end{align*}
+Similarly,
+$$\mathcal{L}\{u_{cd}(t)\}(s) = \frac{1}{s}\left(e^{-sc} - e^{-sd}\right)$$
+Note: if we shift a function defined only on $[0,\infty)$ by $c$ to the right, we assume the function has a value of 0 for $t \in [0,c)$. In other words, the function $f$ shifted by $c$ becomes
+$$g(t) = u_c(t)f(t-c)$$
+We sometimes do this even if $f$ is defined for negative numbers.
+
+\begin{thm}
+	If $F(s) = \mathcal{L}\{f(t)\}$ exists for $s > a \geq 0$, and if $c$ is a nonnegative constant, then
+	$$\mathcal{L}\{u_c(t)f(t-c)\} = e^{-cs}\mathcal{L}\{f(t)\} = e^{-cs}F(s), s > a$$
+	Conversely, if $f(t) = \mathcal{L}^{-1}\{F(s)\}$, then
+	$$\mathcal{L}^{-1}\{e^{-cs}F(s)\} = u_c(t)f(t-c)$$
+\end{thm}
+
+Proof:
+\begin{align*}
+	\mathcal{L}\{u_c(t)f(t-c)\} &= \int_0^\infty e^{-st}u_c(t)f(t-c)dt \\
+				    &= \int_c^\infty e^{-st}f(t-c)dt \\
+				    &= \int_0^\infty e^{-s(\tau + c)} f(\tau)d\tau \\
+				    &= e^{-sc} \int_0^\infty e^{-s\tau}f(\tau)d\tau \\
+				    &= e^{-sc}F(s)
+\end{align*}
+
+\begin{ex}
+	Find the Laplace Transform of the triangular pulse.
+	\begin{align*}
+		\mathcal{L}\{h(t)\} &= \mathcal{L}\{(t-1)u_1(t)\} - 2\mathcal{L}\{(t-2)u_2(t)\} + \mathcal{L}\{(t-3)u_3(t)\} \\
+				    &= e^{-s}\mathcal{L}\{t\} - 2e^{-2s}\mathcal{L}\{t\} + e^{-3s}\mathcal{L}\{t\} \\
+				    &= \frac{e^{-s}-2e^{-2s}+e^{-3s}}{s^2}
+	\end{align*}
+\end{ex}
+
+\begin{defn}
+	A function $f$ is periodic with period $T > 0$ if
+	$$f(t+T) = f(t) \forall t$$
+\end{defn}
+
+To observe the 1st period, we define the window function to be
+
+\begin{defn}
+	The window function $f_T(t)$ is
+	$$f_T(t) = f(t)[1-u_T(t)]$$
+\end{defn}
+\end{document}
