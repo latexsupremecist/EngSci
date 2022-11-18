@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 20}
+\begin{document}
+\maketitle
+
+\section{Lagrangian Description}
+Identify a small mass of luid called a fluid particle. Then we describe its motion with time.
+$$\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}$$
+Velocity is then
+$$\vec{V}(t) = u(t)\hat{i} + v(t)\hat{j} + w(t)\hat{k}$$
+where $u$, $v$, $w$ are defined as the derivatives of $x$, $y$, $z$ respectively.
+
+\section{Eulerian Description}
+Imagine an array of "windows" in the flow field. We have information for the velocity of fluid particles that pass through each window for all times.
+$$\vec{V} = \vec{V}(x,y,z,t)$$
+
+\section{Flow Visualisation}
+
+\subsection{Streamlines}
+A line drawn tangent to the velocity vector at every point along that line at a given instant. By construction, there is no flow across streamlines, or else the streamline is not a tangent. They can be determined experimentally using Particle Image Velocimetry (PIV) technique.
+\begin{defn}
+	A streamtube is formed when streamlines pass through all points of a closed curve. Similarly, fluid cannot cross the boundary of a streamtube.
+\end{defn}
+\begin{defn}
+	A steram filament is a streamtube in which the cross-sectional area is small enough to have a constant velocity over the area of the filament.
+\end{defn}
+
+\subsection{Pathlines}
+A pathline is the path a particle takes as it moves. This can be drawn by taking images with a long exposure time.
+
+\subsection{Streakline}
+A line that connects all the fluid particles that have passed through the same point in sapce at a previous time. This can be visualised by injecting dye/smoke into a fluid flow at a particular point.
+
+\section{Some Distinctions}
+\subsection{Flow}
+Steady flow is when fluid properties at a given point is independent of time. Unsteady flow is the opposite.
+\subsection{Viscosity}
+There are viscous and inviscid flow regions. Viscous regions are where the frictional effects are significant, and inviscid regions are where viscous forces are relatively negligible. This is when shear forces are negligible.
+\subsection{Dimensionality}
+There is 1, 2 and 3 dimensional flow, where $\vec{V}(t)$ is a function of 2, 3, and 4 variables respectively (plus time).
+\subsection{Flow Types}
+\begin{defn}
+	A flow is laminar when there is highly ordered fluid motion characterised by smooth layers.
+\end{defn}
+\begin{defn}
+	A flow is turbulent when there is highly disordered fluid motion that typically occurs at high velocities and is characterised by velocity fluctuations.
+\end{defn}
+\begin{defn}
+	A flow is transitional when it alternates between laminar and turbulent.
+\end{defn}
+
+The Reynolds Number is defined as
+$$\text{Re} = \frac{\rho VL}{\mu}$$
+A high Reynolds number corresponds to more turbulent flow, and a low Reynolds number corresponds to more laminar flow.
+
+\end{document}
