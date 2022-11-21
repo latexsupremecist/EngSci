@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 28}
+\begin{document}
+\maketitle
+
+\section{Window Functions}
+
+The first $n$ periods of a periodic function is then
+
+$$f_{nT}(t) = \sum_{k=0}^{n-1} f_T(t-kT)u_{kT}(t)$$
+
+Now $f(t)$ can be represented as
+
+$$f(t) = \sum_{k=0}^\infty f_T(t-kT)u_{kT}(t)$$
+
+\begin{thm}
+	If $f$ is periodic with period $T$ and is piecewise continuous on $[0,T]$, and $F_T(s) = \mathcal{L}\{f_T\}$ is the Laplace Transform of the window function. Then
+	$$\mathcal{L}\{f(t)\} = \frac{F_T(s)}{1-e^{-sT}} = \frac{\int_0^Te^{-st}f(t)dt}{1-e^{-sT}}$$
+\end{thm}
+
+\begin{ex}
+	The sawtooth waveform is given by
+	$$f(t) = \begin{cases} t, & t \in [0,1) \\ 0, & t \in [1,2)\end{cases}$$
+	and $f(t)$ has period 2. Find the Laplace Transform of $f(t)$.
+	\begin{align*}
+		\mathcal{L}\{f(t)\}(s) &= \frac{\int_0^1e^{-st}tdt}{1-e^{-sT}} \\
+				       &= \frac{-\frac{1}{s}e^{_st}t \Big |_{t=0}^{t=1} + \int_0^1 \frac{1}{s}e^{-st}dt}{1-e^{-2s}} \\
+				       &= \frac{-\frac{1}{s}e^{_s}-\frac{1}{s^2}e^{-st} \Big |_{t=0}^{t=1}}{1-e^{-2s}} \\
+				       &= \frac{-\frac{1}{s}e^{-s}-\frac{1}{s^2}e^{-s}+\frac{1}{s^2}}{1-e^{-2s}}
+	\end{align*}
+\end{ex}
+
+\section{Forcing Functions}
+
+Visualising an ODE as a physical description, where
+
+$$a(t)y'' + b(t)y' + c(t)y = g(t)$$
+
+we call $g(t)$ the forcing function. Now we attempt to solve the ODE where the forcing function is not differentiable. Existence and Uniqueness does not guarantee a solution, but a solution may still exist.
+
+\begin{ex}
+	$$y'' + 4y = g(t), y(0) = 0, y'(0) = 0$$
+	where
+	$$g(t) = \begin{cases} 0, & t \in [0,5) \\ \frac{1}{5}(t-5), t \in [5,10) \\ 1, & t \in [10,\infty)\end{cases}$$
+	We decompose the intial value problem into the 3 intervals defined for $g$. In the first interval, obviously $y(t) = 0$. For the second interval,
+	$$y(t) = c_1\cos(2t) + c_2\sin(2t) + \frac{t}{20} - \frac{1}{4}$$
+	For the third interval,
+	$$y(t) = c_1\cos(2) + c_2\sin(2t) + \frac{1}{4}$$
+	Solving for the solution using the Laplace Transform, we first note that
+	\begin{align*}
+		g(t) = \frac{1}{5}(t-5)u_{5,10}(t) + u_{10}(t) \\
+		&= \frac{1}{5}(t-5)[u_5(t) - u_{10}(t)] + u_{10}(t) \\
+		&= \frac{1}{5}[(t-5)u_5(t) - (t-10u_{10}(t)]
+	\end{align*}
+	Then
+	\begin{align*}
+		\mathcal{L}\{g(t)\} &= \frac{1}{5}[e^{-5s}\mathcal{L}\{t\} - e^{-10s}\mathcal{L}\{t\}] \\
+				    &= \frac{e^{-5s} - e^{-10s}}{5s^2} \\
+		\mathcal{L}\{y''(t) + 4y\} &= \mathcal{L}\{y''(t)\} + 4\mathcal{L}\{y(t)\} \\
+					   &= s^2Y(s) - sy(0) - y'(0) + 4Y(s) \\
+					   &= (s^2+4)Y(s) \\
+		Y(s) &= \frac{e^{-5s}-e^{-10s}}{5s^2(s^2+4)} \\
+		     &= \frac{1}{5}\left(\frac{1}{4s^2}-\frac{1}{4(s^2+4)}\right)\left(e^{-5s} - e^{-10s}\right) \\
+		     &= \frac{1}{5}\left(u_5(t)h(t-5) + u_{10}(t)h(t-10)\right)
+	\end{align*}
+	Where $h$ is the inverse Laplace of the partial fractions, i.e.
+	$$h(t) = \frac{1}{4}t - \frac{1}{8}\sin(2t)$$
+\end{ex}
+\end{document}
