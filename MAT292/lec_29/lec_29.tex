@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 29}
+\begin{document}
+\maketitle
+
+\section{Discontinuous Forcing Functions}
+
+\begin{ex}
+	$$y''(t) + \pi^2y(t) = f(t), y'(0) = 0, y''(0) = 0$$
+	where $f(t)$ is the square wave. \\
+	Note that the window function of $f(t)$ is
+	$$f_2(t) = \begin{cases} 1, & t \in[0,1) \\ 0, t \in [1,2) \end{cases}$$
+	Applying the Laplace Transform,
+	\begin{align*}
+		\mathcal{L}\{f(t)\} &= \frac{\mathcal{L}\{f_2(t)\}}{1-e^{-2s}} \\
+				    &= \frac{\int_0^2e^{-st}f_2(t)dt}{1-e^{-2s}} \\
+				    &= \frac{\int_0^1e^{-st}dt}{1-e^{-2s}} \\
+				    &= \frac{1}{s(1+e^{-s})} \\
+		\mathcal{L}\{y''(t) + \pi^2y(t)\} &= s^2Y(s) - sy(0) - y'(0) + \pi^2Y(s) \\
+						  &= s^2Y(s) + \pi^2Y(s) \\
+		Y(s) &= \frac{1}{s(s^2+\pi^2)(1+e^{-s})}
+	\end{align*}
+	Define
+	$$H(s) = \frac{1}{s(s^2+\pi^2)}$$
+	Using partial fractions,
+	$$H(s) = \frac{1}{\pi^2}\left(\frac{1}{s} - \frac{s}{s^2+\pi^2}\right)$$
+	Using the lookup table,
+	$$h(t) := \mathcal{L}^{-1}\{H(s)\} = \frac{1}{\pi^2}(1-\cos\pi t)$$
+	We know that
+	$$\frac{1}{1-x} = \sum_{n=0}^\infty x^n$$
+	Therefore
+	$$\frac{1}{1+e^{-s}} = \sum_{k=0}^\infty(-1)^ke^{-ks}$$
+	Therefore
+	\begin{align*}
+		\mathcal{L}^{-1}\{Y(s)\} &= \mathcal{L}^{-1}\left\{\frac{H(s)}{1+e^{-s}}\right\} \\
+					 &= \mathcal{L}^{-1}\left\{\sum_{k=0}^\infty(-1)^kH(s)e^{-Ks}\right\} \\
+					 &= \sum_{k=0}^\infty(-1)^k\mathcal{L}^{-1}\left\{e^{-ks}H(s)\right\} \\
+					 &= \sum_{k=0}^\infty(-1)^ku_k(t)h(t-K) \\
+					 &= \frac{1}{\pi^2}\sum_{k=0}^\infty(-1)^k[1-\cos(\pi(t-k))]u_k(t)
+	\end{align*}
+	Plugging natural numbers,
+	$$y(n) = \begin{cases} -\frac{n}{\pi^2}, & n \text{ is even} \\ \frac{n+1}{\pi^2}, & n \text{ is odd}\end{cases}$$
+	This is an oscillating function whose amplitude increases linearly.
+\end{ex}
+
+\section{Impulse Function}
+
+Consider
+
+$$\delta_\epsilon(t) = \frac{u_0(t) - u_\epsilon(t)}{\epsilon} = \begin{cases} \frac{1}{\epsilon}, & t \in [0,\epsilon) \\ 0, & t \in (-\infty, 0) \cup [\epsilon, \infty) \end{cases}$$
+We want to take the limit as $\epsilon \rightarrow 0$. Note that this is not a function.
+
+\begin{ex}
+	$$y'' + y = \alpha\delta_\epsilon(t), y(0) = 0, y'(0) = 0$$
+	Using the Laplace Transform,
+	\begin{align*}
+		\mathcal{L}\{\alpha\delta_\epsilon\} &= \alpha \int_0^\epsilon e^{-st} \times \frac{1}{\epsilon}dt \\
+						     &= \frac{\alpha}{\epsilon} \times \frac{1-e^{-\epsilon s}}{s} \\
+		Y(s) &= \frac{\alpha}{\epsilon}\left(\frac{1-e^{-\epsilon s}}{(s^2+1)s}\right)
+	\end{align*}
+	Using the lookup table,
+	$$y_\epsilon = \frac{\alpha}{\epsilon}[u_0(t)(1-\cos t) - u_\epsilon(t)(1-\cos(t-\epsilon)] = \begin{cases} 0, & t \in (-\infty, 0) \\ \frac{\alpha}{\epsilon}(1-\cos t), & t \in [0,\epsilon) \\ \frac{\alpha}{\epsilon}(\cos(t-\epsilon) - \cos t), & t \in [\epsilon, \infty) \end{cases}$$
+	Taking the limit as $\epsilon \rightarrow 0$, the second and third cases go to 0.
+\end{ex}
+
+We then define the Direc Delta function $\delta_0(t)$.
+
+\begin{defn}
+	The Dirac Delta function is the "function" where
+	$$\delta_0(t-t_0) = 0 \forall t \neq t_0$$
+	and $\forall f$ continuous on the interval $[a,b]$ containing $t_0$,
+	$$\int_a^b f(t)\delta_0(t-t_0)dt = f(t_0)$$
+\end{defn}
+
+The intuition behind the second property is that
+
+\begin{align*}
+	\lim_{\epsilon \rightarrow 0} \int_0^\infty f(t)\delta_\epsilon(t-t_0)dt &= \lim_{\epsilon \rightarrow 0} \int_0^\epsilon f(t)\delta_\epsilon(t-t_0)dt \\
+										 &= \lim_{\epsilon \rightarrow 0} \int_0^\epsilon \frac{f(t)}{\epsilon} dt \\
+										 &= \lim_{\epsilon \rightarrow 0} \int_0^\epsilon \frac{f(\epsilon)}{\epsilon} dt \\
+										 &= \lim_{\epsilon \rightarrow 0} f(\epsilon) \\
+										 &= f(0)
+\end{align*}
+
+\begin{ex}
+	Find the Laplace Transforms of the Dirac Delta function.
+	\begin{align*}
+		\mathcal{L}\{\delta_0(t)\} &= \int_0^\infty e^{-st}\delta_0(t)dt \\
+					   &= e^0 \\
+					   &= 1 \\
+		\mathcal{L}\{\delta_0(t-t_0)\} &= e^{-st_0}
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	Solve the IVP
+	$$2y''(t) + y'(t) + 2y(t) = \delta_0(t-5), y(0) = 0, y'(0) = 0$$
+	\begin{align*}
+		\mathcal{L}\{\delta_0(t-5)\} &= e^{-5s} \\
+		\mathcal{L}\{2y'' + y' + 2y\} &= 2s^2Y(s) + sY(s) + 2Y(s) \\
+		Y(s) &= \frac{e^{-5s}}{2s+2+s+2} \\
+		     &= \frac{e^{-5s}}{2}\times\frac{1}{\left(\frac{s+1}{4}\right)^2 + \frac{15}{16}}
+	\end{align*}
+\end{ex}
+\end{document}
