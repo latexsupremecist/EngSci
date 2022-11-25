@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 30}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Decomposing for the Impact of the Forcing Function}
+
+Consider
+$$ay''(t) + by'(t) + cy(t) = g(t), y(0) = y_0, y'(0) = y_1$$
+Applying the Laplace Transform,
+$$as^2Y(s) - asy(0) - ay'(0) + bsY(s) - by(0) + cY(s) = G(s)$$
+Rearranging, we have
+$$Y(s) = \frac{y_0(as+b) + ay_1}{as^2 + bs + c} + \frac{G(s)}{as^2 + bs + c}$$
+Defining $H(s)$ as the denominator,
+$$Y(s) = H(s)[y_0(as+b)+ay_1] + H(s)G(s)$$
+The forcing function is contributing to $H(s)G(s)$. If the forcing function were $0$, that term also goes to $0$. The homogeneous equation then contributes to the first term.
+
+\begin{defn}
+	The \emph{transfer function} is the ratio of the forced response to the input in the s-domain, or $H(s)$ in this case.
+\end{defn}
+
+In time domain, the free response is the homogeneous term, and the forced response is the particular solution. However, the forced response is not the particular solution we obtained. This is because $\mathcal{L}\{H(s)G(s)\}^{-1}$ is unique, but $y_p(t)$ is not.
+
+\section{Convolutions}
+
+\begin{defn}
+	Let $f(t)$ and $g(t)$ be piecewise continuou function on $[0,\infty)$. The convolution of $f$ and $g$ is defined to bhe the function
+	$$h(t) = \int_0^\infty f(t-\tau)g(\tau)d\tau$$
+	We will use (f*g)(t) to denote the convolution of $f$ and $g$.
+\end{defn}
+
+Convolutions are
+\begin{itemize}
+	\item Commutative: $f*g = g*f$
+	\item Distributive: $f*(g_1+g_2) = f*g_1 + f*g_2$
+	\item Associative: $f*g*h = f*(g*h)$
+	\item Zero: $f*0 = 0*f = 0$
+\end{itemize}
+
+\begin{thm}
+	If $F(s)=\mathcal{L}\{f(t)\}$ and $G(s)=\mathcal{L}\{g(t)\}$ both exist for $s>a\geq0$, then
+	$$H(s) = F(s)G(s) = \mathcal{L}\{h(t)\}$$
+	where
+	$$h(t) = \int_0^t f(t-\tau)g(\tau)d\tau = \int_0^t f(\tau)g(t-\tau)d\tau$$
+\end{thm}
+
+This means
+$$\mathcal{L}^{-1}\{H(s)G(s)\} = \mathcal{L}^{-1}\{H(s)\}\mathcal{L}^{-1}\{G(s)\} = h(t)*g(t)$$
+
+\section{Impulse}
+For $y(0) = y'(0) = 0$, if the input is $g(t) = \delta_0(t)$, the total response is
+$$H(s)\mathcal{L}\{\delta_0(t)\} = H(s)$$
+
+\begin{ex}
+	$$y'' + 2y' + 5y = g(t)$$
+	\begin{align*}
+		\mathcal{L}\{y'' + 2y' + 5y\} &= s^2Y(s) - sy(0) - y'(0) + 2sY(s) - 2y(0) + 5Y(s) \\
+					      &= G(s)
+	\end{align*}
+	One can observe that
+	$$H(s) = \frac{1}{s^2 + 2s + 5}$$
+	which gives the transfer function. \\
+	The impulse response is
+	$$\mathcal{L}^{-1}\{H(s)\} = \frac{1}{2}e^{-t}\sin(2t)$$
+	using the lookup table.
+\end{ex}
+\end{document}
