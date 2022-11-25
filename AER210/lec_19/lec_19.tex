@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 19}
+\begin{document}
+\maketitle
+
+\section{Buoyancy and Stability}
+
+\subsection{Derivation of Archimedes' Principle and Buoyancy}
+Consider an underwater cylinder with its primary axis normal to the vertical axis. By symmetry, all the forces normal to the vertical axis cancel out. Therefore, net force has to be vertical. We also know that pressure at height $z$ is
+$$p = p_0 - \rho gz$$
+where $z=0$ at the surface. The force acting on a small area $dA$ is then
+$$d\vec{F}_p = -pdA\hat{n} = (\rho gR\sin\theta-p_0)\cos\theta LRd\theta\hat{j} + (\rho gR\sin\theta-p_0)\sin\theta LRd\theta\hat{k}$$
+Integrating,
+\begin{align*}
+	\vec{F}_p &= \left(\rho gR^2L\int_0^{2\pi}\sin\theta\cos\theta d\theta - p_0LR\int_0^{2\pi}\cos\theta d\theta\right)\hat{j} \\
+		  &+ \left(\rho gR^2L\int_0^{2\pi}\sin^2\theta d\theta - p_0LR\int_0^{2\pi}\sin\theta d\theta\right)\hat{k} \\
+		  &= \rho g\pi R^2L\hat{k} \\
+		  &= \rho gV\hat{k}
+\end{align*}
+Archimedes Principle: the buoyant force acting on a submerged body is equal to the weight of the fluid displaced by the solid body.
+
+\subsection{Floating Bodies}
+At equilibrium, the buoyant force should be equal to the weight of the object, so
+\begin{align*}
+	F_B &= F_g \\
+	\rho_f g V_{sub} &= \rho_o g V_o \\
+	\frac{V_{sub}}{V_o} &= \frac{\rho_o}{\rho_f}
+\end{align*}
+
+\begin{ex}
+	Consider a cube with density 500 kgm$^{-3}$ inside water. Find how much of it will be submerged in water.
+	\begin{align*}
+		\frac{V_{sub}}{V_o} &= \frac{500}{1000} \\
+				    &= \frac{1}{2}
+	\end{align*}
+\end{ex}
+
+Therefore, if a body has a lower density that the fluid, it floats. If it has an equal density, it is suspended, and if it has a larger density, it sinks. In fact if you place a stone on a boat, the water displaced has a larger volume than the stone (as the stone has a greater density). If it sinks, the water displaced has an equal volume. So throwing a stone from a floating boat would actually lower the water level.
+
+\subsection{Stability of Immersed and Floating Bodies}
+$\vec{F}_B$ acts throught the centroid of the volume, but $\vec{W}$ acts through the center of gravity of the object. If the lines do not coincide, there will be a couple! (only couple engineers know of)
+
+\section{Derivation of the Equation of Hydrostatics Using Integration}
+
+We assume that there is no shear. Then considering a small $dV$,
+\begin{align*}
+	F_{\text{body}} &= \iiint_V \rho \vec{g}dV \\
+	F_{\text{surface}} &= -\iint_S p\hat{n}dS
+\end{align*}
+
+Then considering the sum of forces,
+
+\begin{align*}
+	\iiint_V \rho \vec{g}dV - \iint_S p\hat{n}dS &= \iiint_V \rho \vec{a}dV \\
+	\iiint_V\rho \vec{g}dV - \iiint_V\vec{\nabla}pdV &= \iiint_V \rho \vec{a}dV \\
+	\rho \vec{g} - \vec{\nabla}p &= \rho\vec{a}
+\end{align*}
+
+\section{Fluids in Rigid Body Motion}
+
+Consider a container partially filled with liquid, moving on a straight path with constant acceleration. Determine the shape of the free surface. Then
+
+\begin{align*}
+	-\vec{\nabla}p - \rho g\hat{k} &= \rho\vec{a} \\
+	-\left(\frac{\partial p}{\partial x}\hat{i} + \frac{\partial p}{\partial y}\hat{j} + \frac{\partial p}{\partial z}\hat{k}\right) -\rho g\hat{k} &= a_x\hat{i} + a_y\hat{j} + a_z\hat{k}
+\end{align*}
+
+We know $a_x = 0$, $a_y$ is constant and $a_z$ comes from gravity. Comparing like terms,
+$$dp = -\rho a_ydy - \rho(g + a_z)dz$$
+
+Integrating,
+$$p = -\rho a_yy - \rho(g+a_z)z + C$$
+The boundary condition is $p = p_{\text{atm}}$, so
+\begin{align*}
+	z &= \frac{C-p_{\text{atm}}}{\rho(g+a_z)} - \frac{a_y}{\rho(g+a_z)}y \\
+	  &= C_1 - \frac{a_y}{\rho(g+a_z)}y
+\end{align*}
+
+which is a straight line in the form $y = mx + c$. This can also be interpreted as $dp = 0$ along a line of constant pressure.
+
+\subsection{Fluids in Rotational Rigil-Body Motion}
+Consider a cylindrical container partially filled with liquid. It is rotated about its axis at aconstant angular velocity. Again, we assume no shear.
+
+\begin{align*}
+	-\vec{\nabla}p - \rho g\hat{k} &= \rho \vec{a} \\
+	-\left(\frac{\partial p}{\partial r}\hat{r} + \frac{1}{r}\frac{\partial p}{\partial\theta}\hat{\theta} + \frac{\partial p}{\partial z}\hat{k}\right) -\rho g\hat{k} &= \rho (-r\omega^2)\hat{r}
+\end{align*}
+Again comparing like terms,
+$$dp = \rho r\omega^2dr - \rho gdz$$
+Integrating,
+$$p = \frac{1}{2}\rho r^2\omega^2 - \rho gz + C$$
+Along the free surface,
+$$z = \frac{w^2}{2g}r^2 + \frac{C - p_{\text{atm}}}{\rho g}$$
+which simplifies to
+$$z = \frac{w^2}{2g}r^2 + C_1$$
+
+\section{Important Note}
+There was something about volume being constant, but I thought that was trivial, so it is not included in the notes.
+
+\end{document}
