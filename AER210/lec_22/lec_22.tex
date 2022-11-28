@@ -3,6 +3,49 @@
 \author{niceguy}
 \title{Lecture 22}
 \begin{document}
+
 \maketitle
+
+\section{Reynolds Transport Theorem}
+
+Derivation: Consider a one dimensional flow with one inlet and one outlet. \\
+At time $t$,
+$$B_\mathrm{sys}(t) = B_\mathrm{cv}(t)$$
+As both the system and control volume are equivalent. \\
+At time $t+\Delta t$,
+$$B_\mathrm{sys}(t+\Delta t) = B_\mathrm{cv}(t+\Delta t) + \Delta B_\mathrm{out} - \Delta B_\mathrm{in}$$
+As $B_\mathrm{sys}(t+\Delta t)$ contains some $B$ which has left the control volume, but it does not contain the new $B$ that has entered it. Then
+\begin{align*}
+	\frac{dB_\mathrm{sys}}{dt} &= \lim_{\Delta t \rightarrow 0} \frac{B_\mathrm{sys}(t+\Delta t) - B_\mathrm{sys}(t)}{\Delta t} \\
+				   &= \lim_{\Delta t \rightarrow 0} \frac{B_\mathrm{cv}(t+\Delta t) + \Delta B_\mathrm{out} - \Delta B_\mathrm{in} - B_\mathrm{cv}(t)}{\Delta t} \\
+				   &= \lim_{\Delta t \rightarrow 0} \frac{B_\mathrm{cv}(t+\Delta t)-B_\mathrm{cv}(t)}{\Delta t} + \dot{B}_\mathrm{out} - \dot{B}_\mathrm{in} \\
+				   &= \frac{dB_\mathrm{cv}}{dt} + \dot{B}_\mathrm{out} - \dot{B}\mathrm{in}
+\end{align*}
+
+Derivation: General Case with multiple inlets and outlets, $\rho, V, b$ may not be unform across the inlet and outlet parts, and $\vec{v}$ may not be normal to the inlet and outlet cross-sections. \\
+We define
+$$d\vec{A} := dA\hat{n}$$
+Then
+$$dm = \rho\vec{v}\cdot d\vec{A}$$
+so
+$$\dot{B}_\mathrm{net} = \dot{B}_\mathrm{out} - \dot{B}_\mathrm{in} = \oiint_{cs} \rho b\vec{v}\cdot d\vec{A}$$
+and finally
+$$\frac{dB_\mathrm{sys}}{dt} = \frac{dB_\mathrm{cv}}{dt} + \oiint_{cs}\rho b\vec{v}\cdot d\vec{A}$$
+
+\begin{ex}
+	Derive the conservation of mass equation in Eulerian form using the RTT. \\
+	In Lagrangian form: $\frac{dm_\mathrm{sys}}{dt} = 0$ \\
+	In Eulerian form:
+	$$\frac{dm_\mathrm{cs}}{dt} + \dot{m}_\mathrm{out}-\dot{m}_\mathrm{in} = 0$$
+	Which can be rewritten as
+	$$\frac{d}{dt} \iiint_{cv}\rho dV + \oiint_{cs}\rho\vec{v}\cdot d\vec{A} = 0$$
+\end{ex}
+
+\section{Momentum Equation}
+
+Derivation: In Lagrangian form,
+$$\sum \vec{F}_\mathrm{sys} = \frac{d}{dt}\vec{M} = \frac{d}{dt} \int_\mathrm{sys} \vec{v}\rho dV$$
+Substituting RTT,
+$$\sum \vec{F}_\mathrm{sys} = \frac{d}{dt}\vec{M}_\mathrm{cv} + \dot{\vec{M}}_\mathrm{net} = \frac{d}{dt} \iiint_\mathrm{cv} \vec{v}\rho dV + \oiint_\mathrm{cv} \vec{v}\left(\rho\vec{v}\cdot d\vec{A}\right)$$
 
 \end{document}
