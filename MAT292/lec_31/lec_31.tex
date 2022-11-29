@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 31}
+\begin{document}
+\maketitle
+
+\section{Wrap Up}
+\begin{ex}
+	$$y'' + 2y' + 5y = g(t)$$
+	The impulse response is
+	$$\mathcal{L}^{-1}\{H(s)\} = \frac{1}{2}e^{-t}\sin(2t)$$
+	by the lookup table. \\
+	The homogeneous solution is
+	$$y_h(t) = c_1e^{-t}\cos(2t) + c_2e^{-t}\sin(2t)$$
+	The particular solution depends on the forced response
+	\begin{align*}
+		\mathcal{L}^{-1}\{H(s)G(s)\} &= h*g(t) \\
+					     &= \int_0^th(t-\tau)g(\tau)d\tau
+	\end{align*}
+	The particular solution is hence
+	$$y_p(t) = \int_0^t\frac{1}{2}e^{-(t-\tau)}\sin(2(t-\tau))g(\tau)d\tau$$
+	Combining, the general solution is
+	$$y(t) = c_1e^{-t}\cos(2t) + c_2e^{-t}\sin(2t) + \int_0^t\frac{1}{2}e^{-(t-\tau)}\sin(2(t-\tau))g(\tau)d\tau$$
+	Given $y(0)=1,y'(0)=-3$, we need to find $c_1$ and $c_2$ that satisfy the above. \\
+	The first substitution gives $c_1 = 1$. Differentiating the integral yields the sum of a zero term and an integral from $0$ to $t$, which also vanishes at $t=0$. Thus
+	$$y'(0) = -c_1 + 2c_2$$
+	giving
+	$$c_2 = -1$$
+	The general solution is then
+	$$y(t) = e^{-t}\cos(2t) - e^{-t}\sin(2t) + \int_0^t\frac{1}{2}e^{-(t-\tau)}\sin(2(t-\tau))g(\tau)d\tau$$
+	The forced response if $g(t) = t$ is given by the integral
+	$$\int_0^t\frac{1}{2}e^{-(t-\tau)}\sin(2(t-\tau))\tau d\tau$$
+	This is left as an exercise to the reader.
+\end{ex}
+
+\section{Fourier Transform}
+
+Suppose we have a complex vector space $V$. An inner product on $\langle\cdot,\cdot\rangle:V \times V \rightarrow \C$ is a function that satisfies
+\begin{itemize}
+	\item $\langle x,y\rangle = \overline{\langle y, x\rangle}$
+	\item $\langle ax+by,z\rangle = a\langle x,z\rangle + b\langle y, z\rangle$
+	\item $\langle x,x\rangle \geq 0$ with equality only when $x=0$
+\end{itemize}
+
+We call $(V,\langle\cdot,\cdot\rangle)$ an inner product space. $x$ and $y$ are orthogonal if their inner product is $0$. \\
+The vector space we are considering is
+$$PC([-L,L]) = f:[-L,L]\rightarrow\R: f \text{ is piecewise continuous}$$
+And the inner product is defined as
+$$\langle f,g\rangle = \int_{-L}^L f(t)\overline{g(t)}dt$$
+We know that $PC([-L,L])$ is a vector space, and the inner product is actually an inner product. \\
+Proof: trust me bro. \\
+
+\begin{defn}
+	A Hamel basis is a basis $\mathcal{B}$ such that
+	\begin{itemize}
+		\item For every finite subset of $\mathcal{B}$, all elements are linearly independent
+		\item every vector can be represented as a finite linear combination of vectors in $\mathcal{B}$
+	\end{itemize}
+\end{defn}
+All vector spaces have a Hamel basis if we assume AC.
+
+\begin{defn}
+	A Schauder Basis is a sequence of vectors $\{v_n\} \subseteq V$ such that for any vector $v\in V$, there exists unique coefficients $\{a_n\} \subseteq \R$ such that
+$$v = \sum_{n=1}^\infty a_nv_n$$
+\end{defn}1
+
+\begin{thm}
+	Suppose $f$ is periodic with period $2L$ and both $f,f'$ belong in $PC([-L,L])$. Then $f$ has a Fourier Series
+	$$f(x) = \frac{a_0}{2} + \sum_{m=1}^\infty \left(a_m\cos\frac{m\pi x}{L} + b_m\sin\frac{m\pi x}{L}\right)$$
+	where the Fourier coefficients are
+	$$a_0 = \frac{1}{L}\int_{-L}^L f(x)dx$$
+	$$a_m = \frac{1}{L}\int_{-L}^L f(x)\cos\frac{m\pi x}{L}dx$$
+	$$b_m = \frac{1}{L}\int_{-L}^L f(x)\sin\frac{m\pi x}{L}dx$$
+	The Fourier series of $f(x)$ converges to $f$ at all points of continuity and to the midpoint of the left and right limit where $f$ is discontinuous.
+\end{thm}
+
+\begin{thm}
+	The set
+	$$\left\{\frac{1}{2}, \sin\frac{m\pi x}{L}, \cos\frac{m\pi x}{L}, m \in \N-\{0\}\right\}$$
+	is an orthogonal family and is a Schauder basis for $PC([-L,L])$.
+\end{thm}
+
+Given
+$$\vec{v} = \sum_{i=1}^\infty a_i\vec{v}_i$$
+We can use the inner product to retrieve the coordinates, i.e.
+$$a_k = \frac{\langle \vec{v},\vec{v}_k\rangle}{||v_k||^2}$$
+
+To find the coefficient of $\cos\frac{m\pi x}{L}$, the norm is given by
+$$\int_{-L}^L\cos^2\frac{m\pi x}{L}dx = L$$
+
+The coefficient is then
+$$\frac{1}{L}\int_{-L}^{L}f(x)\cos\frac{m\pi x}{L}dx$$
+\end{document}
