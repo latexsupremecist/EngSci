@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 32}
+\begin{document}
+\maketitle
+
+\section{Fourier Series}
+
+\begin{ex}
+	Find the Fourier Series of the square wave
+	$$f(x) = \begin{cases} -1 & x \in [-\pi,0) \\ 1 & x \in [0,\pi)\end{cases}$$
+	which is in $PC([-\pi,\pi])$. Then
+	$$a_0 = \frac{1}{\pi}\int_{-\pi}^\pi f(x)dx = \frac{1}{\pi}(-\pi+\pi) = 0$$
+	$$a_m = \frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos mxdx = 0$$
+	as we are integrating an odd function.
+	$$b_m = \frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin mxdx = \frac{2}{\pi}\int_0^\pi\sin mxdx = \frac{2}{m\pi}(-\cos(m\pi)+1)$$
+	As $m$ is a natural number, it is either odd or even, so
+	$$b_m = \begin{cases} 0 & m \text{ is even} \\ \frac{4}{m\pi} & m \text{ is odd}\end{cases}$$
+\end{ex}
+
+\section{Fourier Transform}
+Suppose we have
+$$f(x) = \frac{a_0}{2} + \sum_{m=1}^\infty\left(a_m\cos\frac{m\pi x}{L} + b_m\sin\frac{m\pi x}{L}\right)$$
+Using the identities
+$$\cos x = \frac{e^{ix}+e^{-ix}}{2},\sin x = \frac{e^{ix}-e^{-ix}}{2i}$$
+We let $\xi = \frac{m\pi x}{L}$, so
+\begin{align*}
+	f(x) &= \frac{a_0}{2} + \sum_{m=1}^\infty\left(a_m\left(\frac{e^{i\xi}+e^{-i\xi}}{2}\right) + b_m\left(\frac{e^{i\xi}-e^{-i\xi}}{2}\right)\right) \\
+	     &= \frac{a_0}{2} + \sum_{m=1}^\infty\left(\frac{a_m-ib_m}{2}e^{i\xi}+\frac{a_m+ib_m}{2}e^{-i\xi}\right) \\
+	     &= \frac{a_0}{2} + \sum_{m=1}^\infty\left(\frac{a_m-ib_m}{2}e^{\frac{m\pi xi}{2}} + \frac{a_m+ib_m}{2}e^{\frac{-m\pi xi}{L}}\right) \\
+	     &= \frac{a_0}{2} + \sum_{k\in\Z -\{0\}} c_ke^{\frac{k\pi xi}{L}}
+\end{align*}
+Where
+$$c_k = \begin{cases} \frac{a_k-ib_k}{2} & k > 0 \\ \frac{a_{-k} + ib_{-k}}{2} & k < 0\end{cases}$$
+
+It can be verified that $e^{\frac{k\pi xi}{L}}$ is orthogonal for different $k$, and its norm for the same $k$ is $\frac{1}{2L}$. Thus
+$$c_k = \frac{1}{2L}\langle f(x), e^{\frac{k\pi xi}{L}}\rangle = \frac{1}{2L}\int_{-L}^L f(t)e^{\frac{k\pi ti}{L}}dt$$
+
+The problem with this approach is that the Fourier series is limited to periodic functions. We use the heuristic that we can use an uncountable sum. The "period" of the function is $(-\infty,\infty)$.
+
+\begin{defn}
+	The Fourier Transform of a function $f$ is defined to be
+	$$\hat{f}(\xi) = \int_{-\infty}^\infty f(x)e^{-i\xi t}dt$$
+	where $\xi\in\R$
+\end{defn}
+There are other forms with coefficients of $\frac{1}{2\pi}$.
+
+\begin{ex}
+	Find the Fourier Transform of
+	$$f(t) = e^{-a|t|}$$
+	Then
+	\begin{align*}
+		\hat{f}(\xi) &= \int_{-\infty}^\infty e^{-a|t|}e^{-i\xi t}dt \\
+			     &= \int_{-\infty}^0 e^{(a-i\xi)t}dt + \int_0^\infty e^{-(a+i\xi)t}dt \\
+			     &= \frac{1}{a-i\xi} + \frac{1}{a+i\xi} \\
+			     &= \frac{2a}{a^2 + \xi^2}
+	\end{align*}
+\end{ex}
+
+\subsection{Differentiation Properties of the Fourier Transform}
+
+\begin{ex}
+	Express $\mathcal{F}\{f'(t)\}$ in terms of the Fourier transform of $f$.
+	\begin{align*}
+		\mathcal{F}\{f'(t)\} &= \int_{-\infty}^\infty f'(t)e^{-i\xi t}dt \\
+				      &= f(t)e^{-i\xi t} \Big |_{t=-\infty}^{t=\infty} + i\xi \int_{-\infty}^\infty f(t)e^{-i\xi t}dt \\
+				      &= i\xi\hat{f}(\xi)
+	\end{align*}
+	Where the last equality comes from the assumption that $f(x) \rightarrow 0$ for $x \rightarrow \pm\infty$.
+\end{ex}
+Extending this, we have
+$$\mathcal{F}\{f^{(n)}(t)\} = (i\xi)^n\hat{f}(\xi)$$
+under the same assumption.
+\end{document}
