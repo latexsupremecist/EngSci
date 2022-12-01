@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 23}
+\begin{document}
+\maketitle
+
+\section{Applications of the Momentum Equation}
+
+In solid mechanics,
+$$\sum\vec{F}_\mathrm{sys} = m\vec{a}_\mathrm{sys}$$
+
+In fluid mechanics,
+$$\sum\vec{F}_\mathrm{cv} = \frac{d}{dt} \vec{M}_\mathrm{CV} + \dot{\vec{M}}_\mathrm{out} - \dot{\vec{M}}_\mathrm{in}$$
+
+\begin{ex}
+	Consider upwards flow inside a vertical cylindrical pipe. Selecting the region $z \in [z_0,z_0+\Delta z]$, we can analyse the forces involved. Considering pressure forces, weight, and shear forces,
+	$$\sum\vec{F}_\mathrm{CV} = \left[(p_z-p_{z+\Delta z})\frac{\pi D^2}{4} - \tau\pi DL - \rho g\frac{\pi D^2}{4}L\right]\hat{k}$$
+	If the pipe itself is part of the control volume, let $F_\mathrm{net}$ be the net force on the pipe segment from the rest of the pipe, then
+	$$\sum\vec{F}_\mathrm{CV} = \left[(p_z-p_{z+\Delta z})\frac{\pi D^2}{4} - \tau\pi DL - \rho g\frac{\pi D^2}{4}L + F_\mathrm{net} - W_\mathrm{pipe}\right]\hat{k}$$
+\end{ex}
+
+when expressing the pressure forces acting on the control surfaces, we ignore the effect of $p_\mathrm{atm}$. This is because atmospheric pressure cancels itself out.
+$$\sum\vec{F}_p = \iint_{CS}p_\mathrm{atm}(-\hat{n})dA = \iiint_V\vec{\nabla p_\mathrm{atm}}dV = 0$$
+
+\begin{ex}
+	The sketch below shows a 0.04kg rocket, of the type used for model rocketry, being fired on a test stand in order to evaluate thrust. The exhaust jet from the rocket motor has a diameter of $d$ = 1cm, a speed of $v = 450\unit{m.s^{-1}}$, and a density of $\rho = 0.5\unit{kg.m^{-3}}$. Assume the pressure in the exhaust jet equals ambient pressure and neglect any momentum changes inside the motor. Find the force acting on the beam that supports the rocket. \\
+	Momentum change in the rocket is negligible, as well as momentum in. Therefore
+	\begin{align*}
+		-W-F_b &= \rho vA(-v) \\
+		-0.04g-F_b &= -0.5\times 450^2 \times \frac{0.01^2\pi}{4} \\
+		F_b &= -7.56\unit{N}
+	\end{align*}
+	The force supporting the rocket is $7.56\unit{N}$.
+\end{ex}
+
+\begin{ex}
+	A horizontal jet of water exits a nozzle with a uniform speed $v_1$, strikes a vane and is turned through an angle $\theta$. Determine the force required to keep the vane stationary. Neglect gravity and friction. \\
+	We assume velocity is constant. Then splitting the force into $x$ and $y$ components, and using $F = \dot{m}v$, we have
+	$$\vec{F} = \rho Av(v(\cos\theta-1)\hat{i} + v\sin\theta\hat{k}) = \rho Av^2((\cos\theta-1)\hat{i} + \sin\theta\hat{k})$$
+\end{ex}
+
+\begin{ex}
+	Consider the above example, but with a vane moving at a constant velocity $v_v$. \\
+	This can be easily resolved by using a constant velocity moving frame, where velocity in becomes $v-v_v$. Similarly, velocity out has to be the same in magnitude (e.g. by Bernoulli). Thus the force becomes
+	$$\vec{F} = \rho A(v-v_v)^2((\cos\theta-1)\hat{i} + \sin\theta\hat{k})$$
+\end{ex}
+
+\begin{ex}
+	A stationary nozzle produces a jet with a speed $v_j$ and an area $A_j$. It strikes a moving block and is deflected by 90$^\circ$ relative to the block. The block is sliding with a constant speed $v_b$ on a rough surface. Find the frictional force $F$ acting on the block.
+	$$F = \rho A_j(v-v_b)^2$$
+\end{ex}
+
+\section{General Forms of Continuity}
+
+\begin{defn}
+	The substantial derivative is defined as
+	$$\frac{D\rho}{Dt} = \frac{\partial\rho}{\partial t} + \vec{u}\frac{\partial\rho}{\partial x} + \vec{v}\frac{\partial\rho}{\partial y} + \vec{w}\frac{\partial\rho}{\partial z}$$
+\end{defn}
+
+The first term on the right is the local derivative, the time rate of change at a fixed point due to unsteady fluctuations of the property. The second term is the time rate of change due to the movement of the fluid element from one location to another in the flow field where the flow properties are spatially different. \\
+This can be motivated by considering the change in density from 1 to 2, where
+
+$$\rho_2 \approx \rho_1 + \frac{\partial\rho}{\partial x}(x_2-x_1) + \frac{\partial\rho}{\partial y}(y_2-y_1) + \frac{\partial\rho}{\partial z}(z_2-z_1) + \frac{\partial\rho}{\partial t}(t_2-t_1)$$
+and some higher order terms which are neglected. Then rearranging, dividing by $\Delta t$ and taking $\Delta t \rightarrow 0$ gives the substantial derivative. In other words, it is the total derivative with respect to time. It can also be represented as
+$$\frac{D}{Dt} = \frac{\partial}{\partial t} + \vec{v}\cdot\vec{\nabla}$$
+where $\vec{v}$ is the velocity in all 3 directions.
+
+\subsection{Physical Meaning of Divergence of Velocity}
+
+Let $\Omega$ be the system, then
+
+\begin{align*}
+	\Delta\Omega &= \vec{v}\Delta t\cdot d\vec{S} \\
+	\frac{D\Omega}{Dt} &= \frac{1}{\Delta t}\oiint_S \vec{v}\Delta t\cdot d\vec{S} \\
+			   &= \oiint_S \vec{v}\cdot d\vec{S} \\
+			   &= \iiint_\Omega \vec{\nabla}\cdot\vec{v}d\Omega \\
+	\frac{D(\delta\Omega)}{Dt} &= \iiint_{\delta\Omega} \vec{\nabla}\cdot\vec{v}d\Omega \\
+				   &= \vec{\nabla}\cdot\vec{v}\delta\Omega \\
+	\vec{\nabla}\cdot\vec{v} &= \frac{1}{\delta\Omega} \frac{D(\delta\Omega)}{Dt}
+\end{align*}
+
+\begin{ex}
+	Conservation of mass can be represented as
+	$$\frac{D}{Dt} \iiint_\Omega \rho d\Omega = 0$$
+\end{ex}
+
+Considering an infitesimal control volume, the net flux out in the $x$ direction is
+$$\left[\rho u + \frac{\partial(\rho u)}{\partial x}dx\right]dydz - \rho udydz = \frac{\partial(\rho u)}{\partial x}dxdydz$$
+Considering all 3 directions, net mass flow rate is
+$$\vec{\nabla}\cdot\rho\vec{v}$$
+Its sum with change in mass of the volume is 0, so
+$$\frac{\partial\rho}{\partial t} + \vec{\nabla}\cdot(\rho\vec{v}) = 0$$
+
+Considering an infitesimal system of fluid moving with the flow,
+\begin{align*}
+	\frac{D}{Dt}(\delta m) &= 0 \\
+	\frac{D}{Dt}(\rho\delta\Omega) &= 0 \\
+	\rho\frac{D}{Dt}(\delta\Omega) + \delta\Omega\frac{D\rho}{Dt} &= 0 \\
+	\frac{D\rho}{Dt} + \frac{\rho}{\delta\Omega}\frac{D(\delta\Omega)}{Dt} &= 0 \\
+	\frac{D\rho}{Dt} + \rho\vec{\nabla}\cdot\vec{v} &= 0
+\end{align*}
+
+Which gives us the final form of conservation of mass.
+
+\end{document}
