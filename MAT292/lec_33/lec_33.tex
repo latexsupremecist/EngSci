@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 33}
+\begin{document}
+\maketitle
+
+\section{Fourier Series}
+
+For Fourier Transforms, we define convolutions as
+$$(f*g)(t) = \int_{-\infty}^\infty f(t-\tau)g(\tau)d\tau$$
+
+\begin{ex}
+	Express $\mathcal{F}\{f*g\}$ in terms of the Fourier Transform of $f$ and $g$.
+	$$\mathcal{F}\{f*g\} = \hat{f}\hat{g}$$
+	The proof is left to the reader as an exercise.
+\end{ex}
+
+Properties we won't derive:
+\begin{itemize}
+	\item $\mathcal{F}\{f(t-t_0)\} = e^{-it_0\xi}\hat{f}(\xi)$
+	\item $\mathcal{F}\{f(at)\} = \frac{1}{|a|}\hat{f}\left(\frac{\xi}{a}\right)$
+	\item $\mathcal{F}\{t^nf(t)\} = i^n\hat{f}^{(n)}(\xi)$
+\end{itemize}
+
+\begin{ex}\label{airy}
+	Find an expression for the Fourier Transform of the solution to the Airy Equation
+	$$y''(x) - xy(x) = 0$$
+	Applying the Fourier Transform on both sides,
+	\begin{align*}
+		\mathcal{F}\{y''-xy\} &= \mathcal{F}\{0\} \\
+		\mathcal{F}\{y''\} - \mathcal{F}\{xy\} &= 0 \\
+		-\xi^2\hat{y}(\xi) - i\hat{y}'(\xi) &= 0 \\
+		\frac{\hat{y}'(\xi)}{\hat{y}(\xi)} &= i\xi^2 \\
+		\hat{y}(\xi) &= Ce^{\frac{i\xi^3}{3}}, C \in \R
+	\end{align*}
+\end{ex}
+
+\section{Inverse Fourier Transform}
+
+Recall the Fourier Transform for periodic function
+$$\hat{f}(\xi) = \frac{1}{2\pi}\int_{-L}^Lf(t)e^{-i\xi t}dt$$
+
+In general if $f$ is not necessarily periodic, we need "more" than just countably many coefficients to represent our function. As the $\frac{1}{2\pi}$ term was dropped in the definition, it has to be re-included.
+
+\begin{thm}
+	If the function $f$ and its Fourier Transform $\hat{f}$ are well-behaved then we have that
+	$$f(t) = \frac{1}{2\pi}\int_{-\infty}^\infty\hat{f}(\xi)e^{i\xi t}d\xi$$
+	$\forall x \in \R$
+\end{thm}
+
+\begin{ex}
+	Continuing from~\ref{airy}, 
+	\begin{align*}
+		\hat{y}(\xi) &= Ce^{\frac{i\xi^3}{3}} \\
+		y(t) &= \frac{1}{2\pi}\int_{-\infty}^\infty Ce^{\frac{i\xi^3}{3}}e^{i\xi t}d\xi \\
+		     &= \frac{C}{2\pi}\int_{-\infty}^\infty e^{i\left(\xi t + \frac{\xi^3}{3}\right)}d\xi
+	\end{align*}
+\end{ex}
+
+The Fourier Transform has similar properties to the Laplace Transform, but it has a clear inversion formula. What is its major drawback? It has more restrictions on the solution.
+
+\begin{ex}
+	Use the Fourier Transform to solve
+	$$y''(x)-y(x) = f(x)$$
+	The solution is not the general solution.
+\end{ex}
+
+\section{Partial Differential Equations}
+
+There are no existence and uniqueness theorems for PDEs. It is hard to tell if equations even have a solution, and it is hard to determine if said solution is unique.
+
+\begin{ex}
+	Consider a heat conducting rod of length $L$. The initial conditions are
+	\begin{align*}
+		u_t(x,y) &= \alpha^2u_{xx}(x,t) \\
+		u(x,0) &= f(x) \\
+		u(0,t) &= 0 \\
+		u(L,t) &= 0
+	\end{align*}
+	Using separation of variables, assume
+	$$u(x,t) = X(x)T(t)$$
+	Then
+	\begin{align*}
+		X(x)T'(t) &= \alpha^2X''(x)T(t) \\
+		\frac{T'(t)}{\alpha^2T(t)} &= \frac{X''(x)}{X(x)}
+	\end{align*}
+	Both sides have to be constants. Equating them to $-\lambda$,
+	\begin{align*}
+		X''(x) + \lambda X(x) &= 0 \\
+		T' + \alpha^2\lambda T &= 0
+	\end{align*}
+	Addressing the initial conditions at both ends of the rod, $X(0) = X(L) = 0$. We can solve for $X$.
+	$$X(x) = A\sin(\sqrt{\lambda}x) + B\cos(\sqrt{\lambda}x)$$
+	And substituting the initial conditions gives
+	$$B=0$$
+	and
+	$$\lambda = \frac{n^2\pi^2}{L^2}$$
+	where we assume $\lambda > 0$.
+\end{ex}
+\end{document}
