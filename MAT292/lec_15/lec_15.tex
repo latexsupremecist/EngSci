@@ -23,7 +23,7 @@ $$y_{n+1} = y_n + hf(y_n,t_n)$$
 and use the approximation
 $$y(t_{n+1}) \approx y_{n+1}$$
 
-\subsection{Euler's Method as an Integral Approximation}
+\subsection{Euler's Method as a Taylor Approximation}
 Assuing $y$ has a Taylor series, we can approximate $y$ using its first order Taylor polynomial
 $$y(t) \approx y(t_n) + y'(t_n)(t-t_n)$$
 which is equivelant to Euler's Method.
@@ -71,6 +71,6 @@ Even if we don't have access to the solution, a bound may still be obtained.
 		f_t &= -e^{-t} \\
 		f_y &= \frac{1}{1+y^2}
 	\end{align*}
-	As the arctan function is bounded, ad $e^{-t}$ is obviously bounded in the region, $f$ is bounded, $f_t$ is bounded, and $f_y$ is bounded (it is always smaller than or equal to 1). Therefore $\exists$ an upper bound $M$.
+	As the arctan function is bounded, and $e^{-t}$ is obviously bounded in the region, $f$ is bounded, $f_t$ is bounded, and $f_y$ is bounded (it is always smaller than or equal to 1). Therefore $\exists$ an upper bound $M$.
 \end{ex}
 \end{document}
