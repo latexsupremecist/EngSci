@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 34}
+\begin{document}
+\maketitle
+
+\section{1-D Heat Equation}
+
+From the last lecture, we assumed $\lambda > 0$. This does not work in general. However, no solution is found if $\lambda \leq 0$, so it can be discarded. Substituting into the equation for $X$ yields
+
+$$X(\sqrt{\lambda}x) = 0$$
+and
+$$\lambda = \frac{n^2\pi^2}{L^2}$$
+
+\begin{align*}
+	T'(t) + \alpha^2\lambda T(t) &= 0 \\
+	T'(t) &= -\alpha^2\lambda T(t) \\
+	T(t) &= Ce^{-\alpha^2\lambda t} \\
+	     &= Ce^{-\frac{\alpha^2n^2\pi^2}{L^2}t}
+\end{align*}
+
+The solution is then their product
+
+$$u_n(x,t) = c_n\sin\left(\frac{n\pi x}{L}\right)e^{-\frac{\alpha^2n^2\pi^2}{L^2}t}$$
+
+Using the initial condition
+$$u(x,0) = f(x)$$
+we have
+$$f(x) = c_n\sin\left(\frac{n\pi x}{L}\right)$$
+However, this "fixes" our initial condition, which should not be possible.
+
+\begin{thm}
+	If $u_1(x,t)$ and $u_2(x,t)$ solve
+	$$\begin{cases} u_t(x,t)=\alpha^2u_{xx}(x,t) & \\ u(0,t)=0 & u(L,t)=0\end{cases}$$
+		then $c_1u_1(x,t) + c_2u_2(x,t)$ also solves the above equation for any coefficients $c_1,c_2\in\R$.
+\end{thm}
+
+Then
+$$f(x) = \sum_{n=1}^\infty c_n\sin\left(\frac{n\pi x}{L}\right)$$
+
+$f$ is odd, but it does not matter, as the solution is only defined on $x\in[0,L]$. The coefficients $c_n$ can easily be found, given an intial condition, which yields the solution.
+
+\section{Final Review}
+
+Consider the autonomous ODE
+$$y'(t) = y^2(y-5)(y+10)$$
+The equilibrium solutions are 0, 5, -10. Given the initial value $y(0)=1$,
+$$\lim_{t\rightarrow\infty}y(t) = 0$$
+and
+$$\lim_{t\rightarrow -\infty}y(t) = 5$$
+\end{document}
