@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 35}
+\begin{document}
+\maketitle
+
+\section{Exam Review}
+
+\begin{ex}
+	Consider
+	\begin{align*}
+		y'(t) &= t\sqrt{y-3} \\
+		y(t_0) &= y_0
+	\end{align*}
+	Does existence and uniqueness hold for every $(t_0,y_0)$ pair? If it fails, do we still have a unique solution? Prove it. Assume $y_0 \geq 3$. \\
+	$f$ is continuous, and
+	$$f_y = \frac{t}{2\sqrt{y-3}}$$
+	is continuous for $y \neq 3$. \\
+	For $y_0 = 3$, we can separate it.
+	\begin{align*}
+		\frac{dy}{\sqrt{y-3}} &= tdt \\
+		2\sqrt{y-3} &= \frac{1}{2}t^2+C \\
+		y &= \frac{t^4}{16} + C'
+	\end{align*}
+	Therefore, we do not have unique solution.
+\end{ex}
+
+\begin{ex}
+	List the four types of first order autonomous ODEs we saw in lecture that are used to model population dynamics. Describe their differences and what the parameters are for each ODE. \\
+	\begin{itemize}
+		\item Exponential growth: $\frac{dy}{dt} = ry$
+		\item Logistic equation: $\frac{dy}{dt} = r\left(1-\frac{y}{K}\right)y$
+		\item Critical threshold: $\frac{dy}{dt} = -r\left(1-\frac{y}{T}\right)y$
+		\item Logistic growth + critical threshold: $\frac{dy}{dt} = -r\left(1-\frac{y}{K}\right)\left(1-\frac{y}{T}\right)y$
+	\end{itemize}
+	Where $r$ is the growth rate, $K$ is the saturation level and $T$ is the threshold level.
+\end{ex}
+
+\begin{ex}
+	Solve
+	\begin{align*}
+		2y' + ty &= 2 \\
+		y(0) &= 1
+	\end{align*}
+	Using the integrating factor,
+	\begin{align*}
+		y' + \frac{t}{2}y &= 1 \\
+		ye^{\frac{t^2}{4}} &= \int e^{\frac{t^2}{4}}dt \\
+		y &= e^{-\frac{t^2}{4}}\int_0^t e^{\frac{s^2}{4}}ds + Ce^{-\frac{t^2}{4}} \\
+		  &= e^{-\frac{t^2}{4}}\int_0^t e^{\frac{s^2}{4}}ds + e^{-\frac{t^2}{4}}
+	\end{align*}
+	Where $C = 1$ by substituting $y(0) = 1$. Note that the lower bound is selected arbitrarily and is compensated by the constant, but setting it to $t_0$ makes the integral vanish when substituting.
+\end{ex}
+
+\begin{ex}
+	$$\frac{d\vec{x}}{dt} = \begin{bmatrix} 4 & -3 \\ 2 & -2\end{bmatrix} \vec{x} + \begin{bmatrix} t \\ e^t\end{bmatrix}$$
+	The eigenvalue eigenvector pairs are
+	$$\lambda_1 = 2, \vec{v}_1 = \begin{bmatrix} 3 \\ 2\end{bmatrix}, \lambda_2 = 1, \vec{v}_2 = \begin{bmatrix} 1 \\ 1\end{bmatrix}$$
+	The homogeneous solution is hence
+	$$x = c_1e^t\begin{bmatrix} 1 \\ 1\end{bmatrix} + c_2e^{2t}\begin{bmatrix} 3 \\ 2\end{bmatrix}$$
+	The general solution is given by
+	$$\vec{x}_p(t) = X(t)\int X(t)^{-1}\vec{g}(t)dt$$
+	Substituting, we have \\
+	\textit{To be continued...}
+\end{ex}
+\end{document}
