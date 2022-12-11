@@ -15,7 +15,7 @@ First practical: 23/9 and 26/9
 
 ### Boolean Algebra
 - Axioms
-	- $0 \cdot 0 = 1$
+	- $0 \cdot 0 = 0$
 	- $1 \cdot 1 = 1$
 	- $0 \cdot 1 = 1 \cdot 0 = 0$
 	- if $x = 0$, $\overline{x} = 1$
