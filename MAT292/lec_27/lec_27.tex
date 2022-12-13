@@ -16,7 +16,7 @@ $$u_c(t) = \begin{cases} 0 & t < c \\ 1 & t \geq c\end{cases}$$
 It can be used to turn things "on" and "off". If we want a function that turns on from $c$ to $d$, ie
 $$u_{cd}(t) = \begin{cases} 1 & t \in[c,d) \\ 0 & \text{else}\end{cases}$$
 it is trivial that
-$$f(t) = u_c(t) - u_d(t)$$
+$$u_{cd}(t) = u_c(t) - u_d(t)$$
 A triangular pulse can be drawn as e.g.
 $$h(t) = (t-1)u_{12}(t) + (3-t)u_{23}(t)$$
 where $u$ is defined as above. Expanding yields
