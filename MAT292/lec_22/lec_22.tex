@@ -62,7 +62,7 @@ and assume we have linearly independent vectors $\vec{x_1}(t), \vec{x_2}(t)$ tha
 $$\vec{x}(t) = u_1(t)\vec{x_1}(t) + u_2(t)\vec{x_2}(t) = X(t)\vec{u}(t)$$
 This is similar to the general solution for the homogeneous equation, but only with functions instead of constants as coefficients. Plugging into the ODE,
 \begin{align*}
-	\frac{d\vec{x}}{t} &= P(t)\vec{x}(t) + \vec{g}(t) \\
+	\frac{d\vec{x}}{dt} &= P(t)\vec{x}(t) + \vec{g}(t) \\
 	X'(t)\vec{u}(t) + X(t)\vec{u}'(t) &= P(t)X(t)\vec{u}(t) + \vec{g}(t) \\
 	P(t)X(t)\vec{u}(t) + X(t)\vec{u}'(t) &= P(t)X(t)\vec{u}(t) + \vec{g}(t) \\
 	X(t)\vec{u}'(t) &= \vec{g}(t) \\
@@ -75,7 +75,7 @@ $$\vec{x}(t) = X(t)\vec{c} + X(t)\int X^{-1}(t)\vec{g}(t)dt$$
 The first term is just the general solution, so the particular solution can be reduced to the second term.
 
 \begin{ex}
-	$$\frac{d\vec{x}}{t} = \begin{bmatrix} 1 & -4 \\ 2 & -5\end{bmatrix}\vec{x}(t) + \begin{bmatrix} 10\cos t \\ 2e^{-t}\end{bmatrix}$$
+	$$\frac{d\vec{x}}{dt} = \begin{bmatrix} 1 & -4 \\ 2 & -5\end{bmatrix}\vec{x}(t) + \begin{bmatrix} 10\cos t \\ 2e^{-t}\end{bmatrix}$$
 	The general solution is spanned by
 	$$\vec{x}_1(t) = e^{-t}\begin{bmatrix} 2 \\ 1\end{bmatrix}$$
 	and
