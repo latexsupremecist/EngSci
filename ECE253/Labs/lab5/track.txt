@@ -1,0 +1,205 @@
+#######################Part1###########################
+Start time: 21:52:31 on Oct 31,2022
+vlog part1.sv 
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module tflipflop
+-- Compiling module part1
+
+Top level modules:
+	part1
+End time: 21:52:31 on Oct 31,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.6d
+
+# vsim -c -do "/cad2/ece253f/public/5/test/run.do" work.part1_tb 
+# Start time: 21:52:32 on Oct 31,2022
+# Loading sv_std.std
+# Loading work.part1_tb
+# Loading work.part1
+# Loading work.tflipflop
+# do /cad2/ece253f/public/5/test/run.do
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/librt.so.1 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libdl.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libm.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libpthread.so.0 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libc.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/ld-linux.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libnss_files.so.2 : module was loaded at an absolute address.
+# At cycle                    3, reset = 1, Enable = 0, current out =   0
+# At cycle                    3, Your output =   0, expected output =   0, PASSED
+# At cycle                    3, reset = 0, Enable = 0, current out =   0
+# At cycle                    6, Your output =   0, expected output =   0, PASSED
+# At cycle                    7, reset = 0, Enable = 1, current out =   0
+# At cycle                   31, Your output =  24, expected output =  24, PASSED
+# At cycle                   37, Your output =  30, expected output =  30, PASSED
+# At cycle                   43, Your output =  36, expected output =  36, PASSED
+# At cycle                   65, Your output =  58, expected output =  58, PASSED
+# At cycle                   71, Your output =  64, expected output =  64, PASSED
+# At cycle                   77, Your output =  70, expected output =  70, PASSED
+# At cycle                   95, Your output =  88, expected output =  88, PASSED
+# At cycle                  109, Your output = 102, expected output = 102, PASSED
+# ** Note: $finish    : /cad2/ece253f/public/5/test/part1_tb.sv(57)
+#    Time: 109 ns  Iteration: 0  Instance: /part1_tb
+# End time: 21:52:32 on Oct 31,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 7
+######################SUMMARY of part1##########################
+Number of Errors by compiling the verilog code: 0
+Number of Errors by running the simulation: 0
+Number of PASSED: 10
+Number of FAILED: 0
+part1 is done!
+#######################Part2###########################
+Start time: 21:52:32 on Oct 31,2022
+vlog part2.sv 
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module RateDivider
+-- Compiling module DisplayCounter
+-- Compiling module part2
+
+Top level modules:
+	part2
+End time: 21:52:32 on Oct 31,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.6d
+
+# vsim -c -do "/cad2/ece253f/public/5/test/run.do" work.part2_tb 
+# Start time: 21:52:33 on Oct 31,2022
+# Loading sv_std.std
+# Loading work.part2_tb
+# Loading work.part2
+# Loading work.RateDivider
+# Loading work.DisplayCounter
+# do /cad2/ece253f/public/5/test/run.do
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/librt.so.1 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libdl.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libm.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libpthread.so.0 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libc.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/ld-linux.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libnss_files.so.2 : module was loaded at an absolute address.
+# At cycle                    1, Reset = 1, Speed = 0, current out =  0
+# At cycle                    4, Reset = 0, Speed = 0, current out =  0
+# At cycle                   90, your output =  6,  expected output =  6
+# PASSED
+# At cycle                   90, Reset = 0, Speed = 1, current out =  6
+# At cycle                  640, your output =  8,  expected output is from  7 to          9
+# PASSED
+# At cycle                 1740, your output = 10,  expected output = 10
+# PASSED
+# ** Note: $finish    : /cad2/ece253f/public/5/test/part2_tb.sv(63)
+#    Time: 173950 ns  Iteration: 0  Instance: /part2_tb
+# End time: 21:52:33 on Oct 31,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 7
+######################SUMMARY of part2##########################
+Number of Errors by compiling the verilog code: 0
+Number of Errors by running the simulation: 0
+Number of PASSED: 3
+Number of FAILED: 0
+part2 is done!
+#######################Part3###########################
+Start time: 21:52:33 on Oct 31,2022
+vlog part3.sv 
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module part3
+-- Compiling module DisplayCounter
+-- Compiling module RateDivider
+-- Compiling module shiftmorse
+
+Top level modules:
+	part3
+End time: 21:52:33 on Oct 31,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.6d
+
+# vsim -c -do "/cad2/ece253f/public/5/test/run.do" work.part3_tb 
+# Start time: 21:52:34 on Oct 31,2022
+# Loading sv_std.std
+# Loading work.part3_tb
+# Loading work.part3
+# Loading work.RateDivider
+# Loading work.shiftmorse
+# Loading work.DisplayCounter
+# ** Warning: (vsim-3015) part3.sv(28): [PCDPC] - Port size (13) does not match connection size (45) for port 'morse'. The port definition is at: part3.sv(70).
+#    Time: 0 ps  Iteration: 0  Instance: /part3_tb/DUT/u1 File: part3.sv
+# do /cad2/ece253f/public/5/test/run.do
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/librt.so.1 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libdl.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libm.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libpthread.so.0 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libc.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/ld-linux.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libnss_files.so.2 : module was loaded at an absolute address.
+# At cycle                    1, Resetn = 1, Start = 0, Letter = 00
+# At cycle                    4, Resetn = 0, Start = 0, Letter = 00
+# At cycle                   24, Resetn = 0, Start = 1, Letter = 00
+# At cycle                   25, Resetn = 0, Start = 0, Letter = 00
+# At cycle                  253, your output = 1, expected output = 1
+# FAILED
+# At cycle                  503, your output = 0, expected output = 0
+# PASSED
+# At cycle                  753, your output = 1, expected output = 1
+# PASSED
+# At cycle                 1003, your output = 1, expected output = 1
+# PASSED
+# At cycle                 1253, your output = 1, expected output = 1
+# PASSED
+# At cycle                 1503, your output = 0, expected output = 0
+# PASSED
+# At cycle                 1753, your output = 0, expected output = 0
+# PASSED
+# At cycle                 2003, your output = 0, expected output = 0
+# PASSED
+# At cycle                 2253, your output = 0, expected output = 0
+# PASSED
+# At cycle                 2503, your output = 0, expected output = 0
+# PASSED
+# At cycle                 2753, your output = 0, expected output = 0
+# PASSED
+# At cycle                 3003, your output = 0, expected output = 0
+# PASSED
+# Finish one morse code for Letter = 0
+# At cycle                 3003, Resetn = 1, Start = 0, Letter = 10
+# At cycle                 3005, Resetn = 0, Start = 0, Letter = 10
+# At cycle                 3025, Resetn = 0, Start = 1, Letter = 10
+# At cycle                 3026, Resetn = 0, Start = 0, Letter = 10
+# At cycle                 3254, your output = 1, expected output = 1
+# FAILED
+# At cycle                 3504, your output = 1, expected output = 1
+# PASSED
+# At cycle                 3754, your output = 1, expected output = 1
+# PASSED
+# At cycle                 4004, your output = 0, expected output = 0
+# PASSED
+# At cycle                 4254, your output = 1, expected output = 1
+# PASSED
+# At cycle                 4504, your output = 0, expected output = 0
+# PASSED
+# At cycle                 4754, your output = 1, expected output = 1
+# PASSED
+# At cycle                 5004, your output = 0, expected output = 0
+# PASSED
+# At cycle                 5254, your output = 1, expected output = 1
+# PASSED
+# At cycle                 5504, your output = 0, expected output = 0
+# PASSED
+# At cycle                 5754, your output = 0, expected output = 0
+# PASSED
+# At cycle                 6004, your output = 0, expected output = 0
+# PASSED
+# Finish one morse code for Letter = 1
+# ** Note: $finish    : /cad2/ece253f/public/5/test/part3_tb.sv(112)
+#    Time: 600400 ns  Iteration: 0  Instance: /part3_tb
+# End time: 21:52:34 on Oct 31,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+######################SUMMARY of part3##########################
+Number of Errors by compiling the verilog code: 0
+Number of Errors by running the simulation: 0
+Number of PASSED: 22
+Number of FAILED: 2
+part3 is done!
