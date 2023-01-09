@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 1}
+\begin{document}
+\maketitle
+
+\section{Uncertainties}
+
+\begin{itemize}
+	\item Lack of modeling
+	\item Limited measurements
+	\item $V_1 - V_2 = I_{12}R_{12}$
+	\item $mx + dx + kx = 0$
+\end{itemize}
+
+Probability is the \textbf{systematic} way to deal with uncertainties.
+
+\section{Coin Flips}
+
+\begin{itemize}
+	\item 2 outcomes, H or T
+	\item Fair coin: $P(H) = P(T) = 0.5$
+	\item Biased coin: $P(H) = 0.3, P(T) = 0.7$
+	\item $P(H) + P(T) = 1$
+\end{itemize}
+
+\begin{ex}
+	\begin{align*}
+		P(HH) &= P(H)P(H) \\
+		      &= 0.3 \times 0.3 \\
+		      &= 0.09
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	\begin{align*}
+		P(HT) &= P(H)P(T) \\
+		      &= 0.3 \times 0.7 \\
+		      &= 0.21
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	\begin{align*}
+		P(HT \text{ or } TH) &= P(HT) + P(TH) \\
+				     &= 0.42
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	How to make a fair coin flip using a biased coin: flip a coin twice, A wins if HT, B wins if TH, else reflip.
+\end{ex}
+
+\section{Sample Space}
+
+\begin{itemize}
+	\item Coin flip: $\{H, T\}$
+	\item Dice throw: $\{1, 2, 3, 4, 5, 6\}$
+	\item 2 coin flips: $\{HH, HT, TH, TT\}$
+	\item Temperature: $\{t \in \R | -30 \leq t \leq 30\}$
+\end{itemize}
+
+\section{Event}
+
+\begin{itemize}
+	\item An \textbf{event} is a subset of $S$
+	\item $\{1,2,3,4,5,6\}$ is the sample space for a die
+	\item each element is an event
+	\item even results is also an event $\{2,4,6\}$
+	\item Negative temperature: $\{t\in\R|-30\leq t < 0\} \subset \{t\in\R|-30\leq t \leq 30\}$
+\end{itemize}
+
+\begin{defn}
+	The \textbf{complement} of an event $A$ is defined as
+	$$A' = \{s \in S|s \notin A\}$$
+\end{defn}
+
+\begin{itemize}
+	\item The complement of H is T
+	\item Die: the complement of $\{1,2\}$ is $\{3,4,5,6\}$
+	\item $S = \{(x,y) | x^2 + y^2 \leq 1\}, A = \{(x,y) | (x,y) \in S, x \geq 0\}, A' = \{(x,y) | (x,y) \in S, x < 0\}$
+\end{itemize}
+
+\section{Intersection}
+
+\begin{itemize}
+	\item Die: even $\cap \{n\leq 3\} = \{2\}$
+	\item $\{H\} \cap \{T\} = \emptyset$
+	\item $A$ and $B$ are mutually exclusive iff $A \cap B = \emptyset$
+	\item $A \cap A' = \emptyset$
+\end{itemize}
+
+\section{Union}
+
+\begin{itemize}
+	\item Everything in $A$ or $B$
+	\item $A \cup B$
+	\item even $\cap \{n \leq 3\} = \{1,2,3,4,6\}$
+	\item $A \cup A' = S$
+\end{itemize}
+\end{document}
