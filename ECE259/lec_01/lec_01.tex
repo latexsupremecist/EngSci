@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 1}
+\begin{document}
+\maketitle
+
+\section{Maxwell's Equations}
+
+\begin{equation} \label{faraday}
+	\vec{\nabla} \times \vec{E} = -\mu \frac{\partial \vec{H}}{\partial t}
+\end{equation}
+
+\begin{equation} \label{ampere}
+	\vec{\nabla} \times \vec{H} = \vec{J} + \varepsilon \frac{\partial \vec{E}}{\partial t}
+\end{equation}
+
+\begin{equation} \label{gauss_electric}
+	\vec{\nabla} \cdot \vec{E} = \frac{\rho_\nu}{\varepsilon}
+\end{equation}
+
+\begin{equation} \label{gauss_magnetic}
+	\vec{\nabla} \cdot \vec{H} = 0
+\end{equation}
+
+Which are called Faraday's Law (\ref{faraday}), Ampere's Law (\ref{ampere}), Gauss's Law (Electric) (\ref{gauss_electric}) and Gauss's Law (Magnetic) (\ref{gauss_magnetic}).
+
+\section{Coulomb's Law}
+
+Charles de Coulomb discovered that a charge in the presence of another charge experiences a force, which exhibits the following properties
+
+\begin{enumerate}
+	\item Force is proportional to product of charges
+	\item Force is inversely proportional to distance (or radius) squared
+	\item Force acts in the direction along the line joining the two charges
+	\item Like charges repulse, opposite charges attract
+\end{enumerate}
+
+\begin{align*}
+	|\vec{F}_e| &\propto \frac{Q_1Q_2}{R^2} \\
+		    &= k\frac{Q_1Q_2}{R^2} \\
+		    &= \frac{Q_1Q_2}{4\pi\varepsilon_0R^2}
+\end{align*}
+
+\end{document}
