@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 1}
+\begin{document}
+\maketitle
+
+\section{Traces and Determinants}
+
+\subsection{Notation}
+
+\begin{itemize}
+	\item $\F$ is a field, usually $\R, \C$, sometimes $\Z_p$, where $p$ is a prime
+	\item $\mathcal{L}(V,W)$ is the set of linear maps from $V$ to $W$
+	\item Given bases of $V \cong \F^n, W \cong \F^m$, $\mathcal{L}(V,W) \cong \mathcal{L}(\F^n, \F^m) = M_{m\times n}(F)$
+	\item Special case: $W=V \Rightarrow \mathcal{L}(V) = \mathcal{L}(V,V)$
+\end{itemize}
+
+\begin{defn}
+	The trace of $A \in M_{n\times n}(F)$ is
+	$$\tr(A) = \sum_{i=1}^n A_{ii}$$
+\end{defn}
+
+\begin{lem}
+	$$A, B \in M_{n\times n}(F) \Rightarrow \tr(AB) = \tr(BA)$$
+	Proof:
+	\begin{align*}
+		\tr(AB) &= \sum_i \sum_k A_{ik}B_{ki} \\
+			&= \sum_k \sum_i B_{ki}A_{ki} \\
+			&= \tr(BA)
+	\end{align*}
+	Consequentially,
+	$$\tr(CAC^{-1}) = \tr(CC^{-1}A) = \tr(A)$$
+\end{lem}
+
+Thus we can define
+
+\begin{defn}
+	For $T \in \mathcal{L}(V)$, we define
+	$$\tr(T) = \tr(A)$$
+	where $A \in M_{n\times n}(F)$ is the matrix of $T$ with basis $V$. (From above, the trace is invariant under change of basis)
+\end{defn}
+
+\begin{remember}
+	If $\F = \C$, we can choose a basis such that
+	$$A = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}$$
+	where $\lambda_i \in \C$, thus
+	$$\tr(T) = \tr(A) = \sum_{i=1}^n \lambda_i$$
+\end{remember}
+
+\begin{lem}
+	The inverse of $$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+	is
+	$$\frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$
+	and it exists iff the determinant is nonzero. \\
+	Proof: trivial \\
+	In fact, define
+	$$B = \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$
+	and if $AB = 0$, $A$ cannot have an inverse, else
+	$$A^{-1}(AB) = 0 = B$$
+	implying $A = 0$, where counterexamples can easily be found.
+\end{lem}
+
+\begin{ex}
+	\begin{align*}
+		2x_1 + 3x_2 &= 4 \\
+		2x_1 + x_2 &= 3
+	\end{align*}
+	Then
+	$$\begin{pmatrix} 2 & 3 \\ 2 & 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}$$
+	Plugging in the formula of inverse matrix yields
+	$$\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} \frac{5}{4} \\ \frac{1}{2} \end{pmatrix}$$
+\end{ex}
+
+\subsection{Area Calculations}
+
+Consider $\F = \R$. Given $v_1, v_2, \dots, v_n \in \R^n$, we want to compute the volume of the parallelpiped, which is the area of the parallelogram for $n=2$. \\
+We denote this by $\mathrm{Vol}(v_1, v_2)$. The properties are as follows
+
+\begin{itemize}
+	\item $\mathrm{Vol}(av_1, v_2) = a\mathrm{Vol}(v_1, v_2) = \mathrm{Vol}(v_1, av_2)$
+	\item $\mathrm{Vol}(v_1 + av_2, v_2) = \mathrm{Vol}(v_1, v_2)$ (as the perpendicular height is the same)
+	\item $\mathrm{Vol}(e_1, e_2) = 1$
+\end{itemize}
+
+The above properties are sufficient to derive a formula for the area.
+
+\begin{lem}
+	Vol is bilinear. \\
+	Proof: putting $a=0$ in the first property, $\mathrm{Vol}(0, v_2) = 0 = \mathrm{Vol}(v_1, 0)$. Then putting $v_1 = 0, a = 1, v_2 = v$ into the second property, $\mathrm{Vol}(v, v) = 0$. For linearity in the first argument, we want
+	$$\mathrm{Vol}(v_1 + v_1', v_2) = \mathrm{Vol}(v_1, v_2) + \mathrm{Vol}(v_1', v_2)$$
+	If $v_2 = 0$, both sides are 0, so we assume $v_2 \neq 0$. If $v_1 = av_2$, we use the second property. Now knowing that $v_1$ and $v_2$ are linearly independent, we can rewrite $v_1'$ as
+	$$v_1' = \lambda v_1 + \mu v_2$$
+	Thus
+	\begin{align*}
+		\mathrm{Vol}(v_1 + v_1', v_2) &= \mathrm{Vol}(v_1 + \lambda v_1 + \mu v_2, v_2) \\
+					      &= \mathrm{Vol}((1+\lambda)v_1, v_2) \\
+					      &= (1+\lambda)\mathrm{Vol}(v_1, v_2) \\
+					      &= \mathrm{Vol}(v_1, v_2) + \mathrm{Vol}(\lambda v_1, v_2) \\
+					      &= \mathrm{Vol}(v_1, v_2) + \mathrm{Vol}(\lambda v_1 + \mu v_2, v_2) \\
+					      &= \mathrm{Vol}(v_1, v_2) + \mathrm{Vol}(v_1', v_2)
+	\end{align*}
+\end{lem}
+
+Using the above, we know Vol is skew symmetric, as
+$$\mathrm{Vol}(v, v) = 0$$
+where expanding under the substitution $v = v_1 + v_2$ yields the desired result. Conversely, this implies $\mathrm{Vol}(v,v) = 0$.
+
+\begin{prop}
+	Let $v_1, v_2 \in \R^2$ be the columns of $A \in M_{2\times 2}(\R)$. Then $\mathrm{Vol}(v_1, v_2) = \det(A)$. \\
+	Proof: write
+	$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+	Then
+	\begin{align*}
+		\mathrm{Vol}(v_1, v_2) &= \mathrm{Vol}(ae_1 + ce_2, be_1 + de_2) \\
+				       &= a\mathrm{Vol}(e_1, be_1 + de_2) + c\mathrm{Vol}(e_2, be_1 + de_2) \\
+				       &= -ad\mathrm{Vol}(e_2, e_1) - bc\mathrm{Vol}(e_1, e_2) \\
+				       &= ad - bc \\
+				       &= \det(A)
+	\end{align*}
+\end{prop}
+
+\begin{thm} \label{theorem}
+	There eixsts a unique multi-linear functional
+	$$\det: (\F^n)^n \rightarrow F$$
+	such that
+	\begin{itemize}
+		\item $\det(v_1, v_2, \dots, v_n) = 0$ if $v_i = v_j$ for $i \neq j$
+		\item $\det(e_1, e_2, \dots, e_n) = 1$
+	\end{itemize}
+
+	We know that to be a multilinear map,
+	$$\det(v_1, \dots, \lambda v_i, \dots, v_n) = \lambda\det(v_1, \dots, v_i, \dots, v_n)$$
+	and
+	$$\det(v_1, \dots, v_i + v_i', \dots, v_n) = \det(v_1, \dots, v_i, \dots, v_n) + \det(v_1, \dots, v_i', \dots, v_n)$$
+	We have proved this for $n=2$.
+\end{thm}
+
+\begin{defn}
+	A permutation of a finite set $X$ is a bijection $\sigma: X \rightarrow X$. We will just consider $X = \{1, \dots, n\}$, so permutations go by $\sigma(1), \sigma(2), \dots, \sigma(n)$. Then there are $n!$ permutations, and other permutations are $(\sigma(1), \dots, \sigma(n))$. \\
+	A permutation is even if the number of pairs in wrong order is even ,i.e. the cardinality of
+	$$\{(\sigma(i), \sigma(j))| i < j, \sigma(i) > \sigma(j)\}$$
+	In this case we write sign$(\sigma) = 1$. Odd permutations are defined similarly, with sign$(\sigma) = -1$. Thus for $\sigma = \{4,3,1,2\}$, sign$(\sigma) = -1$ (trust me bro).
+\end{defn}
+
+Observation: \\
+If $\sigma'$ is obtained from $\sigma$ by interchanging two adjacent elements then sign$(\sigma') = -$sign$(\sigma)$. (Reason: one pair is corrected/wronged, and the other pairs do not change). Extending this, this holds for switching any pair (induction probably works). Hence, one can compute sign$(\sigma)$ by putting everything in right order through transpositions.
+
+\begin{ex}
+	$$(4312) \rightarrow (1342) \rightarrow (1243) \rightarrow (1234)$$
+	There are 3 switches, so its sign is -1.
+\end{ex}
+
+Another remark on permutation: \\
+The set $S_n$ of permutations is a group with group multiplication $\sigma \cdot \sigma' = \sigma \times \sigma'$. We define sign: $S_n \rightarrow \{1, -1\}$, and we have sign($\sigma \times \sigma')$ = sign$(\sigma) \times $sign$(\sigma')$. That is, sign is a group homomorphism.
+\end{document}
