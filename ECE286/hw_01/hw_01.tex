@@ -1,0 +1,141 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 1}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{List the elements of each of the following sample spaces}
+
+\begin{parts}
+	\part{the set of integers between 1 and 50 divisible by 8}
+	\part{the set $S = \{x|x^2+4x-5=0\}$}
+	\part{the set of outcomes when a coin is tossed until a tail or three heads appear}
+	\part{the set $S = \{x|x \text{ is a continent }\}$}
+	\part{the set $S = \{x | 2x - 4 \geq 0 \text{ and } x < 1\}$}
+\end{parts}
+
+\begin{solution}
+	\\$\{8,16,24,32,40,48\}$ \\
+	$\{-5,1\}$ \\
+	$\{T, HT, HHT, HHH\}$ \\
+	{Asia, Europe, Africa, North America, South America, Antarctica, Oceania} \\
+	$\emptyset$
+\end{solution}
+
+\question{An experiment consists of tossing a die and then flipping a coin once if the number on the die is even. If the number on the die is odd, the coin is flipped twice. Using the notation 4$H$, for example, to denote the outcome that the die comes up 4 and then the coin comes up heads, and 3$HT$ to denote the outcome that the die comes up 3 followed by a head and then a tail on the coin, construct a tree diagram to show the 18 elements of the sample space $S$.} \label{5}
+
+\begin{solution}
+	Depth first: $\{1HH, 1HT, 1TH, 1TT, 2H, 2T, 3HH, 3HT, 3TH, 3TT, 4H, 4T, 5HH, 5HT, \\ 5TH, 5TT, 6H, 6T\}$
+\end{solution}
+
+\question{Four students are selected at random from a chemistry class and classified as male or female. List the elements of the sample space $S_1$, using the letter $M$ for male and $F$ for female. Define a second sample space $S_2$ where the elements represent the number of females selected.}
+
+\begin{solution}
+	$$S_1 = \{FFFF, FFFM, FFMM, FMMM, MMMM\}$$
+	$$S_2 = \{0, 1, 2, 3, 4\}$$
+	Assuming order is irrelevant.
+\end{solution}
+
+\question{For the sample space in \ref{5},}
+
+\begin{parts}
+	\part{list the elements corresponding to the event $A$ that a number less than 3 occurs on the die;}
+	\part{list the elements corresponding to the event $B$ that two tails occur;}
+	\part{list the elements corresponding to the event $A'$;}
+	\part{list the element corresponding to the event $A' \cap B$;}
+	\part{list the elements corresponding to the event $A \cup B$}
+\end{parts}
+
+\begin{solution}
+	\\$A = \{1HH, 1HT, 1TH, 1TT, 2H, 2T\}$ \\
+	$B = \{1TT, 3TT, 5TT\}$ \\
+	$A' = \{3HH, 3HT, 3TH, 3TT, 4H, 4T, 5HH, 5HT, 5TH, 5TT, 6H, 6T\}$ \\
+	$A' \cap B = \{3TT, 5TT\}$ \\
+	$A \cup B = \{1HH, 1HT, 1TH, 1TT, 2H, 2T, 3TT, 5TT\}$
+\end{solution}
+
+\question{If $S = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ and $A = \{0,2,4,6,8\}$, $B = \{1,3,5,7,9\}$, $C = \{2,3,4,5\}$, and $D = \{1,6,7\}$, list the elements of the sets corresponding to the following events:}
+
+\begin{parts}
+	\part{$A \cup C$;}
+	\part{$A \cap B$;}
+	\part{$C'$;}
+	\part{$(C' \cap D) \cup B$;}
+	\part{$(S \cap C)'$;}
+	\part{$A \cap C \cap D'$}
+\end{parts}
+
+\begin{solution}
+	\\$\{0,2,3,4,5,6,8\}$ \\
+	$\emptyset$ \\
+	$\{0,1,6,7,8,9\}$ \\
+	$\{1,3,5,6,7,9\}$ \\
+	$\{0,1,6,7,8,9\}$ \\
+	$\{2,4\}$
+\end{solution}
+
+\question{If $S = \{x|0 < x < 12\}$, $M = \{x|1 < x < 9\}$, and $N = \{x|0 < x < 5\}$, find}
+
+\begin{parts}
+	\part{$M \cup N$;}
+	\part{$M \cap N$;}
+	\part{$M' \cap N'$;}
+\end{parts}
+
+\begin{solution}
+	\\$\{x|0 < x < 9\}$ \\
+	$\{x|1 < x < 5\}$ \\
+	$\{x| 9 \leq x < 12\}$
+\end{solution}
+
+\question{Let $A, B$, and $C$ be events relative to the sample space $S$. Using Venn diagrams, shade the areas representing the following events:}
+
+\begin{parts}
+	\part{$(A \cap B)'$;}
+	\part{$(A \cup B)'$;}
+	\part{$(A \cap C) \cup B$;}
+\end{parts}
+
+\begin{solution}
+	There's no way I'm using tikz for this.
+\end{solution}
+
+\question{A developer of a new subdivision offers a prospective home buyer a choice of 4 designs, 3 different heating systems, a garage or carport, and a patio or screened porch. How many different plans are availabe to this buyer?}
+
+\begin{solution}
+	$4 \times 3 \times 2 \times 2 = 48$
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{In how many ways can 6 people be lined up to get on a bus?}
+	\part{If 3 specific persons, among 6, insist on following each other, how many ways are possible?}
+	\part{If 2 specific persons, among 6, refuse to follow each other, how many ways are possible?}
+\end{parts}
+
+\begin{solution}
+	\\$6! = 720$ \\
+	$3! \times 4! = 144$ \\
+	$720 - 5! \times 2! = 480$
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{How many three-digit numbers can be formed from the digits 0,1,2,3,4,5, and 6 if each digits can be used only once?}
+	\part{How many of these are odd numbers?}
+	\part{How many are greater than 330?}
+\end{parts}
+
+\begin{solution}
+	\\$6*6*5 = 180$ \\
+	$3*5*5 = 75$ \\
+	$3*6*5 + 3*5 = 105$
+\end{solution}
+
+\end{questions}
+\end{document}
