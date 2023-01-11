@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 2}
+\begin{document}
+\maketitle
+
+\section{Electric Field Intensity}
+
+Two objects are required for an electric force
+
+\begin{itemize}
+	\item Source charge $Q_1$
+	\item Test charge $Q_2$
+\end{itemize}
+
+\begin{defn}
+	The \emph{electric field intensity} is defined as
+	$$\vec{E}_{12} = \lim_{Q_2\rightarrow 0} \frac{\vec{F}_{12}}{Q_2}$$
+\end{defn}
+
+Note that the force is experimentally determined to be
+
+$$\vec{F}_{12} = k\frac{Q_1Q_2}{R^2}\hat{a}_{12}$$
+
+where
+
+$$k = \frac{1}{4\pi\varepsilon_0}$$
+
+The relations below are then easily derived
+
+$$\vec{E}_{12} = \frac{Q_1(\vec{R} - \vec{R'})}{4\pi\varepsilon_0|\vec{R} - \vec{R'}|^3} $$
+
+$$\vec{F}_{12} = Q_2\vec{E}_{12}$$
+
+The electric field has 4 key properties as mentioned in the previous lecture
+
+\begin{enumerate}
+	\item $\vec{E}$ points away from positive charges
+	\item $\vec{E}$ points towards negative charges
+	\item $\vec{E}$ points along the line connecting the source to the measurement point
+	\item $\vec{E}$ is linear, hence superposition applies
+\end{enumerate}
+
+\section{Cylindrical Coordinates}
+
+Note that
+
+$$\vec{R} = r\hat{a}_r + z\hat{a}_z$$
+
+\section{Spherical Coordinates}
+
+Note that
+
+$$\vec{R} = r\hat{a}_r$$
+
+We use the notation in physics, i.e. $\hat{a}_{\phi}$ lies on the $xy$ plane, and at $\theta=0$, $\hat{a}_r = \hat{a}_z$.
+
+\end{document}
