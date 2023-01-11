@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 2}
+\begin{document}
+\maketitle
+
+\section{Counting}
+
+\begin{ex}
+	\begin{itemize}
+		\item Coin flip: $\{H\}$ has 1 element
+		\item Die toss: {even} has 3 elements
+		\item 2 dice: $6 \times 6 = 36$
+	\end{itemize}
+\end{ex}
+
+\begin{ex}
+	We can multiply options. For 3 appetizers, 4 mains, and 2 desserts, we have $3\times4\times2=24$ choices. If not ordering is also a choice, we have $4\times5\times3=60$ choices.
+\end{ex}
+
+\begin{ex}
+	To choose a president and vice president out of $n$ people, we have $n(n-1)$ choices.
+\end{ex}
+
+\begin{ex}
+	How many 4 digit numbers can we make from $\{0,1,2,5,6,9\}$? \\
+	$$5\times4\times3 + 2\times4\times4\times3 = 156$$
+\end{ex}
+
+\section{Permutations}
+
+Where order matters.
+
+\begin{ex}
+	Given $n$ items, there are $n!$ permutations.
+\end{ex}
+
+We may also pick $r$ out of $n$ items.
+
+\begin{ex}
+	2 letters out of {a,b,c,d,e,f} gives $6 \times 5 = 30$ permutations.
+\end{ex}
+
+The general formula for the number of permutations is
+
+$$\frac{n!}{(n-r)!}$$
+
+\begin{ex}
+	How many 5 card hands are there from a normal deck?
+	$$\frac{52!}{47!} = 311875200$$
+\end{ex}
+
+\begin{ex}
+	Permutations with identical items: {a,b,b} \\
+	There are $\frac{3!}{2!} = 3$ permutations.
+\end{ex}
+
+\section{General Formula}
+For $n$ items, $m$ types each with $n_m$ entries, the total number of permutations is
+$$\frac{n!}{\prod_{i=1}^m n_i!}$$
+
+\begin{ex}
+	How many distinct reorderings of ATLANTIC there are?
+	$$\frac{8!}{2!2!} = 10080$$
+\end{ex}
+
+\begin{ex}
+	Flip 10 coins in a row. How many sequences have 4 heads?
+	$$\frac{10!}{4!6!} = 210$$
+	The probability is then
+	$$\frac{210}{2^{10}} \approx \frac{1}{5}$$
+\end{ex}
+
+
+\end{document}
