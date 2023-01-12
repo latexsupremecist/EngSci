@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 2}
+\begin{document}
+\maketitle
+
+\section{Determinants}
+
+\begin{thm}
+	There exists a unique multi-linear functional
+	$$\det: \F^n \times \dots \times \F^n \rightarrow \F$$
+	such that
+	\begin{enumerate}
+		\item $\det(v_1, \dots, v_n) = 0$ whenever $v_r = v_s, r\neq s$
+		\item $\det(e_1, \dots, e_n) = 1$
+	\end{enumerate}
+\end{thm}
+
+The consequence of the first property is that the sign of det changes whenever $v_r, v_s (r\neq s)$ are swapped. Re-expressing $v_i$ as a linear sum of a basis,
+
+\begin{align*}
+	\det(v_1,\dots,v_n) &= \det\left(\sum_{i_1=1}^nA_{i_1,1}e_{i_1},\dots,\sum_{i_n=1}^nA_{i_n,n}e_{i_n}\right) \\
+			    &= \sum_{i_1=1}^n\dots\sum_{i_n=1}^n\det(A_{i_1,1}e_{i_1},\dots,A_{i_n,1}e_{i_n}) \\
+			    &= \sum_{i_1=1}^n\dots\sum_{i_n=1}^n \prod_{j=1}^nA_{i_j,j}\det(e_{i_1},\dots,e_{i_n})
+\end{align*}
+
+The only nonzero contribution of this sum is when $i_n$ is a permutation $\sigma$, or else repeating entries give a det of 0. Moreover, rearranging any pair of entries in det changes its sign, so the determinant component is simply the sign of the permutation (multiplied by 1, the determinant as defined in the second property). Substituting,
+
+$$\det(v_1,\dots,v_n) = \sum_\sigma \text{sign}(\sigma) \prod_{i=1}^n A_{\sigma(i),i}$$
+	
+	Conversely, to show existence, take the above equation to be the definition of det. \\
+For the second property, we know $A_{ij} = \delta_{ij}$, and the only permutation with non trivial products $A$ is the identity that has a sign of 1, which proves the property. \\
+For the first property, suppose $r<s$ with $v_r=v_s$. Then for every permutation $\sigma$, let $\sigma'$ be the permutation defined by
+$$\sigma'(r) = \sigma(s)$$
+$$\sigma'(s) = \sigma(r)$$
+$$\sigma'(i) = \sigma(i) \forall i\notin\{r,s\}$$
+Their signs are the negative of each other, but the product stays the same since $A_{ir} = A_{is}$.
+
+\begin{align*}
+	A_{\sigma(r),r}A_{\sigma(s),s} &= A_{\sigma(r),s}A_{\sigma(s),r} \\
+	&= A_{\sigma'(s),s}A_{\sigma'(r),r}
+\end{align*}
+
+And the rest are equal. Since every permutation $\sigma$ has a corresponding $\tau$, their sums cancel out, and the determinant vanishes.
+
+\begin{defn}
+	The determinant of $A \in M_{n,n}(\F)$ is defined as $\det(A) = \det(v_1,\dots,v_n)$ where $v_i$ is the $i$th column of $A$.
+\end{defn}
+
+\begin{thm}
+	$$\det(A^T) = \det(A)$$
+	This can be proven by its explicit formula. Note that for any permutation $\sigma$, there is an inverse permutation $\tau = \sigma^{-1}$. Then their signs are the same, as the product of signs have to be 1, equal to the sign of the identity permutation. So we have
+	\begin{align*}
+		\prod_{i=1}^n A_{\sigma(i),i} &= \prod_{i=1}^n A_{i,\tau(i)} \\
+					      &= \prod_{i=1}^n A^T_{\tau(i),i}
+	\end{align*}
+	Hence
+	$$\det(A^T) = \sum_\tau \mathrm{sign}(\tau)\prod_{i=1}^n A^T_{\tau(i),i} = \sum_\sigma \mathrm{sign}(\sigma) \prod_{i=1}^n A_{\sigma(i),i} = \det(A)$$
+\end{thm}
+
+\begin{thm}
+	Properties of the determinant
+	\begin{enumerate}
+		\item If $A'$ is defined from $A$ by interchanging two columns, $\det(A) = -\det(A')$
+		\item If $A'$ is defined from $A$ by multiply a column by $c$, then $\det(A') = c\det(A)$
+		\item If $A'$ is defined from $A$ by a adding scalar multiple of one column to another column, $\det{A'} = \det{A}$
+	\end{enumerate}
+	A similar statement can be said for row operators, since $\det(A) = \det(A^T)$.
+\end{thm}
+
+
+\end{document}
