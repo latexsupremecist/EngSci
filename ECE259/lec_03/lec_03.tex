@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 3}
+\begin{document}
+\maketitle
+
+\section{Continuous Charge Distributions}
+
+Consider the field at $P(0,0,z)$ due to a charged plate lying on the $xy$ plane. Electric field is the sum of contributions from all partitions of the plate. Taking the limit,
+$$\vec{E}_{\mathrm{TOT}} = \int \frac{(\vec{R}-\vec{R}')dQ'}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|^3} = \iint_S \frac{\rho(\vec{R}-\vec{R}')dS}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|^3}$$
+
+where $\vec{R}'$ refers to the position vector of the plate (element). \\
+Imagine using point charges when we can integrate.
+
+\section{Cylindrical Coordinates}
+
+\begin{itemize}
+	\item Point $P(r,\phi,z)$
+	\item Unit vectors $\hat{a}_r, \hat{a}_\phi, \hat{a}_z$
+	\item Position vector $r\hat{a}_r+z\hat{a}_z$
+	\item Differential lengths $dr,rd\phi,dz$
+	\item Differential length vector $d\vec{l} = dr\hat{a}_r + rd\phi\hat{a}_\phi + dz\hat{a}_z$
+	\item Differential surface vectors
+		\begin{itemize}
+			\item $d\vec{s}_r = rd\phi dz\hat{a}_r$
+			\item $d\vec{s}_\phi = drdz\hat{a}\phi$
+			\item $d\vec{s}_z = rdrd\phi\hat{a}_z$
+		\end{itemize}
+	\item Differential volume $rdrd\phi dz$
+\end{itemize}
+
+\section{Spherical Coordinates}
+
+\begin{itemize}
+	\item Point $P(R,\theta,\phi)$
+	\item Unit vectors $\hat{a}_R,\hat{a}_\theta,\hat{a}_\phi$
+	\item Position vector $R\hat{a}_R$
+	\item Differential lengths $dR, Rd\theta, R\sin\theta d\phi$
+	\item Differential length vector $dR\hat{a}_R + Rd\theta\hat{a}_\theta + R\sin\theta d\phi\hat{a}_\phi$
+	\item Differential surface vectors
+		\begin{itemize}
+			\item $d\vec{s}_R = R^2\sin\theta d\phi d\theta \hat{a}_R$
+			\item $d\vec{s}_\phi = Rd\theta dR\hat{a}_\phi$
+			\item $d\vec{s}_\theta = R\sin\theta d\phi dR\hat{a}_\theta$
+		\end{itemize}
+	\item Differential volume $dV = R^2\sin\theta dRd\phi d\theta$
+\end{itemize}
+
+\end{document}
