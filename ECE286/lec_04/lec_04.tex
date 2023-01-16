@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 4}
+\begin{document}
+\maketitle
+
+\section{Recall}
+
+$$P(A)\in[0,1]\forall A\subseteq S$$
+
+\begin{ex}
+	Consider throwing darts. The probability of landing in region $A$, given a random throw, is
+	$$P(A) = \frac{\text{Area of }A}{\text{Area of }S} = \frac{\int_Adx}{\int_Sdx}$$
+\end{ex}
+
+\section{Additive Rule}
+
+$$P(A\cup B) = P(A) + P(B) - P(A\cap B)$$
+
+\begin{ex}
+	Consider 2 dice. The probability of rolling 7 ($A$) or at least one two ($B$) is
+	$$P(A) + P(B) - P(A\cap B) = \frac{1}{6} + \frac{11}{36} - \frac{1}{18} = \frac{5}{12}$$
+\end{ex}
+
+Expanding, we have
+\begin{align*}
+	P(A\cup B\cup C) &= P(A) + P(B\cup C) - P(A\cap(B\cup C)) \\
+			 &= P(A) + P(B) + P(C) - P(B\cap C) - P((A\cap B)\cup(A\cap C)) \\
+			 &= P(A) + P(B) + P(C) - P(B\cap C) - P(A\cap B) - P(A\cap C) + P(A\cap B\cap C)
+\end{align*}
+
+\section{Conditional Probability}
+
+For $A,B\subseteq S$, $P(B|A)$ is the probability of $B$ given $A$ occurred.
+
+\begin{ex}
+	Rolling two dice
+	\begin{itemize}
+		\item $P(7) = \frac{1}{6}$
+		\item $P(7|\text{first roll is a 2}) = \frac{1}{6}$
+	\end{itemize}
+\end{ex}
+
+\begin{defn}
+	$$P(B|A) = \frac{P(A\cup B)}{P(A)}, P(A) > 0$$
+\end{defn}
+
+Consider being a pro athlete. The probability of that is $10^{-4}$. Given the probability of beinga pro who starts at 3 is $9\times10^{-5}$, and the probability of starting at 3 is $0.01$. Then the probability of being a pro given one starts at 3 is then
+
+$$\frac{9\times10^{-5}}{0.01} = 0.009$$
+
+\end{document}
