@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 4}
+\begin{document}
+\maketitle
+
+\section{Electric Fields}
+
+\begin{ex}
+	Electric Field Above a Charged Disk
+	$$\vec{E} = \iint_S \frac{dQ'(\vec{R}-\vec{R}')}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|^3}$$
+	By definition,
+	$$dQ' = \rho_Sds'$$
+	and we can use cylindrical coordinates, so
+	$$ds' = rdrd\phi$$
+	The position vectors are given by
+	\begin{align*}
+		\vec{R} &= h\hat{a}_z \\
+		\vec{R}' &= r\hat{a}_r
+	\end{align*}
+	Note that $r$ is constant. Then
+	$$\vec{R}-\vec{R}' = -r\hat{a}_r + h\hat{a}_z = -r\cos\phi\hat{a}_x -r\sin\phi\hat{a}y + h\hat{a}_z$$
+	And
+	$$d\vec{E} = \frac{\rho_Srdrd\phi}{4\pi\varepsilon_0(r^2+h^2)^{3/2}}$$
+	By symmetry, $\vec{E}$ must be a multiple of $\hat{a}_z$. Integrating gives
+	$$\frac{\rho_s}{2\varepsilon_0}\left(\frac{h}{|h|}-\frac{h}{\sqrt{a^2+h^2}}\right)$$
+	Then as $h\rightarrow0$ or $a\rightarrow\infty$, this simplifies to $\frac{\rho_S}{2\varepsilon_0}$. Then a capacitor can be build by placing two sheets of oppositely charged plates next to each other in parallel.
+\end{ex}
+	
+
+\end{document}
