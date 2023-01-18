@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 5}
+\begin{document}
+\maketitle
+
+\section{Vector Fields}
+
+Vector fields describe physical quantities that only have both a magnitude and direction at every point in space.
+
+\subsection{Changing Unit Vectors}
+
+\begin{ex}
+	At $(-2,0,0)$, we have $\hat{a}_r = -\hat{a}_x$ and $\hat{a}_\phi = -\hat{a}_y$
+\end{ex}
+
+Note that we can rewrite unit vectors in one system in terms of those of another, e.g.
+$$\hat{a}_r = \cos\phi\hat{a}_x + \sin\phi\hat{a}_y$$
+in the cylindrical coordinate system.
+
+\begin{ex}
+	At $(1,1,0)$
+	$$\hat{a}_r = \frac{1}{\sqrt{2}}\hat{a}_x + \frac{1}{\sqrt{2}}\hat{a}_y$$
+	and
+	$$\hat{a}_\phi = -\frac{1}{\sqrt{2}}\hat{a}_x + \frac{1}{\sqrt{2}}\hat{a}_y$$
+\end{ex}
+
+
+\begin{ex}
+	Consider a cone. Then
+	$$dA = r\sin\theta d\phi dr$$
+	In this case,
+	$$dQ' = \rho_sr\sin\theta d\phi dr$$
+	and the integration limits are from $0$ to $2\pi$ and $0$ to $R$
+\end{ex}
+
+\begin{ex}
+	Consider a cylinder. Then
+	$$dA = Rd\phi dz$$
+\end{ex}
+
+\begin{ex}
+	A wire bent into a semicircular shape lies in teh $xy$-plane and is defined by $r=a,-\frac{\pi}{2}\leq\phi\leq\frac{\pi}{2}$. The wire is charged with a non-uniform charge density defined by $\rho_l = \rho\sin\phi$, where $\rho$ is a constant. Determine an expression for the electric field intensity at any point on the $z$-axis. \\
+	Then $dQ = a\rho\sin\phi d\phi$. By symmetry, it only acts along the $y$-axis. Letting $h$ be the height,
+	\begin{align*}
+		E_y &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \frac{a\rho\sin\phi d\phi \times (-a\sin\phi)}{(h^2+a^2)^{3/2}} \\
+		    &= \frac{-a^2\rho}{(h^2+a^2)^{3/2}} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin^2\phi d\phi \\
+		    &= \frac{-a^2\rho\pi}{2(h^2+a^2)^{3/2}}
+	\end{align*}
+\end{ex}
+
+\end{document}
