@@ -1,0 +1,160 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 2}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{If a letter is chosen at random from the English alphabet, find the probability that the letter}
+
+\begin{parts}
+\part{is a vowel exclusive of $y$;}
+\part{is listed somewhere ahead of the letter $j$;}
+\part{is listed somewhere after the letter $g$}
+\end{parts}
+
+\begin{solution}
+	$\frac{5}{26}, \frac{9}{26}, \frac{19}{26}$
+\end{solution}
+
+\question{Prove that
+	$$P(A'\cap B') = 1 + P(A\cup B) - P(A) - P(B)$$
+}
+
+\begin{solution}
+	\begin{align*}
+		P(A'\cap B') &= P((A\cup B)') \\
+			     &= 1 - P(A\cup B) \\
+			     &= 1 + P(A\cap B) - P(A) - P(B)
+	\end{align*}
+	where the first equality comes from De Morgan.
+\end{solution}
+
+\question{Pollution of the reivers in the United States has been a problem for many years. Consider the following events:
+	$$A: \text{ the river is polluted}$$
+	$$B: \text{ a sample of water tested detects pollution}$$
+	$$C: \text{ fishing is permitted}$$
+Assume $P(A)=0.3,P(B|A)=0.75,P(B|A')=0.20,P(C|A\cap B)=0.20,P(C|A'\cap B)=0.15,P(C|A\cap B')=0.80$, and $P(C|A'\cap B')=0.90$.}
+
+\begin{parts}
+\part{Find $P(A\cap B\cap C)$}
+\part{Find $P(B'\cap C)$}
+\part{Find $P(C)$}
+\part{Find the probability that the river is polluted, given that fishing is permitted and the sample tested did not detect pollution.}
+\end{parts}
+
+\begin{solution}
+	\begin{align*}
+		P(A\cap B\cap C) &= \frac{P(A\cap B\cap C)}{P(A\cap B)}\times P(A\cap B) \\
+				 &= P(C|A\cap B)P(B|A)P(A) \\
+				 &= 0.20\times0.75\times0.3 \\
+				 &= 0.045
+	\end{align*}
+	Given $P(A) = 0.3$ and $P(B|A) = 0.75$, we can deduce $P(A\cap B) = 0.225$. Similarly, from $P(B|A')$ we obtain $P(A'\cap B) = 0.14$. Summing we have $P(B) = 0.365$. This gives $P(A\cap B') = 0.075$ and $P(A'\cap B') = 0.56$. From $P(C|A\cap B)$ we get $P(A\cap B\cap C) = 0.045$. Similarly, $P(A'\cap B\cap C) = 0.021, P(A\cap B'\cap C) = 0.06, P(A'\cap B'\cap C) = 0.504$. Summing we have $P(C) = 0.63$ and $P(B'\cap C) = 0.564$. Then finally
+	\begin{align*}
+		P(A|C\cap B') &= \frac{P(A\cap B'\cap C)}{P(B'\cap C)} \\
+			      &= \frac{0.06}{0.564} \\
+			      &= \frac{5}{47} \\
+			      &= 0.106
+	\end{align*}
+\end{solution}
+
+\question{Suppose the diagram of an electrical system is as given in Figure 2.10. What is the probability that the system works? Assume the components fail independently.}
+
+\begin{solution}
+	$$0.95\times(1-0.2\times0.3)\times0.9 = 0.8037$$
+\end{solution}
+
+\question{A paint-store chain produces and sells latex and semigloss paint. Based on long-range sales, the probability that a customer will purchase latex paint is 0.75. Of those that purchase latex paint, 60\% also purchase rollers. But only 30\% of semigloss paint buyers purchase rollers. A randomly selected buyer purchases a roller and a can of paint. What is the probability that the paint is latex?}
+
+\begin{solution}
+	Let $A$ be the purchase of latex paint, $B$ be the purchase of rollers, and $C$ the the purchase of semigloss paint. Then
+	\begin{align*}
+		P(A|B) &= P(A\cap B)P(B) \\
+		       &= 0.75\times0.6(P(A\cap B) + P(C\cap B)) \\
+		       &= 0.45(0.45 + 0.25\times0.3) \\
+		       &= 0.45\times0.525 \\
+		       &= 0.23625
+	\end{align*}
+\end{solution}
+
+\question{Let $W$ be a random variable giving the number of heads minus the number of tails in three tosses of a coin. List the elements of the sample space $S$ for the three tosses of the coin and to each sample point assign a value $w$ of $W$.}
+
+\begin{solution}
+	$$S = \{HHH(3), HHT(1), HTH(1), HTT(-1), THH(1), THT(-1), TTH(-1), TTT(-3)\}$$
+\end{solution}
+
+\question{The total number of hours, measured in units of 100 hours, that a family runs a vacuum cleaner over a period of one year is a continuous random variable $X$ that has the density function
+	$$f(x) = \begin{cases} x & 0<x<1 \\ 2-x & 1\leq x<2 \\ 0 & \text{elsewhere}\end{cases}$$
+Find the probability that over a period of one year, a family runs their vacuum cleaner}
+
+\begin{parts}
+\part{less than 120 hours}
+\part{between 50 and 100 hours}
+\end{parts}
+
+\begin{solution}
+	For less than 120 hours, $x \in [0,1.2]$, so the probability is
+	$$0.5 + (1+0.8)\times0.1 = 0.68$$
+	For between 50 and 100 hours, the probability is
+	$$0.5\times0.75 = 0.375$$
+\end{solution}
+
+\question{Suppose it is known from large amounts of historical data that $X$, the number of cars that arrive at a specific intersection during a 20-second time period, is characterized by the following discrete probability function:
+	$$f(x) = e^{-6}\frac{6^x}{x!} \forall x \in \N$$
+}
+
+\begin{parts}
+\part{Find the probability that in a specific 20-second time period, more than 8 cars arrive at the intersection.}
+\part{Find the probability that only 2 cars arrive.}
+\end{parts}
+
+\begin{solution}
+	For more than 8 cars to arrive, the probability is
+	$$1-\sum_{i=0}^8f(i) = 0.153$$
+	For two cars to arrive, the probability is
+	$$f(2) = 0.0446$$
+\end{solution}
+
+\question{Let $X$ denote the reaction time, in seconds, to a certain stimulus and $Y$ denote the temperature ($^\circ$F) at which a certain reaction starts to take place. Suppose that two random variables $X$ and $Y$ have the joint density
+	$$f(x,y) = \begin{cases} 4xy & 0<x<1,0<y<1 \\ 0 & \text{elsewhere}\end{cases}$$
+Find}
+
+\begin{parts}
+\part{$P(0\leq X\leq\frac{1}{2}\cap\frac{1}{4}\leq Y\leq\frac{1}{2})$}
+\part{$P(X<Y)$}
+\end{parts}
+
+\begin{solution}
+	The first probability is given by
+	$$\int_0^{\frac{1}{2}}\int_{\frac{1}{4}}^{\frac{1}{2}} 4xy dydx = 0.046875$$
+	For the second probability, note that $P(X=Y)=0$, so by symmetry
+	$$P(X<Y) = 0.5$$
+\end{solution}
+
+\question{The joint probability density function of the random variables $X$, $Y$, and $Z$ is
+	$$f(x,y,z) = \begin{cases} \frac{4xyz^2}{9} & 0<x,y<1,0<z<3 \\ 0 & \text{elsewhere}\end{cases}$$
+Find}
+
+\begin{parts}
+\part{the joint marginal density function of $Y$ and $Z$}
+\part{the marginal density of $Y$}
+\part{$P(\frac{1}{4}<X<\frac{1}{2},Y>\frac{1}{3},1<Z<2)$}
+\part{$P(0<X<\frac{1}{2}|Y=\frac{1}{4},Z=2)$}
+\end{parts}
+
+\begin{solution}
+	The joint marginal density is
+	$$g(y,z) = \int_0^1 \frac{4xyz^2}{9}dx = \frac{2yz^2}{9}$$
+	The marginal density is
+	$$h(y) = \int_0^3\int_0^1 \frac{4xyz^2}{9}dxdz = 2y$$
+	The first desired probability is
+	$$\int_1^2\int_{\frac{1}{3}}^1\int_{\frac{1}{4}}^{\frac{1}{2}} \frac{4xyz^2}{9}dxdydz = 0.0432$$
+	The second desired probability is
+	$$\frac{\int_0^\frac{1}{2} \frac{4x}{9}dx}{g\left(\frac{1}{4},2\right)} = \frac{1}{18}\div\frac{2}{9} = \frac{1}{4}$$
+\end{solution}
+
+\end{questions}
+\end{document}
