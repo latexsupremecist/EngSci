@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 5}
+\begin{document}
+\maketitle
+
+\section{Conditional Probability}
+
+$$P(B|A) = \frac{P(A\cup B)}{P(A)}, P(A)>0$$
+$$P(A\cap B) = P(B|A)P(A)$$
+
+\begin{defn}
+	Events $A$ and $B$ are independent if
+	$$P(A|B) = P(A)$$
+	or
+	$$P(B|A) = P(B)$$
+\end{defn}
+
+It is trivial to see both statements are equivalent given $P(A),P(B)\neq0$. \\
+Note that independence is not mutual exclusivity.
+
+\begin{ex}
+	For a coin flip, $H$ and $T$ are mutually exclusive, but $P(H) = 0.5 \neq 0 = P(H|T)$
+\end{ex}
+
+\begin{ex}
+	For a die roll, 2 and 3 are mutually exclusive. However, even and 2 are not mutually exclusive, as $P(2) = \frac{1}{6} \neq \frac{1}{3} = P(2|\text{even})$
+\end{ex}
+
+\section{Bayes' Rule}
+$$P(A|B)P(B) = P(B|A)P(A)$$
+
+section{Total Probability}
+
+Recall partitions. $B_1,\dots,B_k$ is a partition if
+$$B_i\cap B_j=\emptyset\forall i\neq j$$
+and
+$$\bigcup_{i=1}^k B_i = S$$
+
+Then the \textbf{Law of Total Probability} is
+\begin{align*}
+	P(A) &= \sum_{i=1}^k P(A\cap B_i) \\
+	     &= \sum_{i=1}^k P(A|B_i)P(B_i)
+\end{align*}
+
+This can be easily proved by noting
+$$P\left(\bigcup_{i=1}^k A_i\right) = \sum_{i=1}^kP(A_i)$$
+given $A_i\cap A_j=\emptyset\forall i\neq j$. This then leads to the first equality. The proof that
+$$A = \bigcup_{i=1}^k A\cap B_i$$
+is trivial and is left to the reader as an exercise.
+
+\begin{ex}
+	Consider machines 1, 2, 3 producing the same product. $B_i$ refers to the product being made by machine $i$. We are given that $P(B_1) = 0.3, P(B_2) = 0.45, P(B_3) = 0.25$. The probability that there are defects is $2\%,3\%,2\%$ for machines 1, 2, 3 respectively. The probability that a product is defective is
+	$$0.3\times2\% + 0.45\times3\% + 0.25\times2\% = 2.45\%$$
+\end{ex}
+
+\end{document}
