@@ -73,7 +73,7 @@ Using row and column operations, every $A$ can be made diagonal. We can do this 
 
 Proof: \\
 If $A$ is not invertible, then $AB$ is not invertible, so both sides are equal to 0. Thus we assume $\det(A)\neq0$. Define a multilinear functional
-$$\phi:\F^n\times\dots\times\F^n\rightarrow\F, (v_1,\dots,v_n) \mapsto \frac{\det(Aw_1,\dots,Aw_n)}{\det(A)}$$
+$$\phi:\F^n\times\dots\times\F^n\rightarrow\F, (w_1,\dots,w_n) \mapsto \frac{\det(Aw_1,\dots,Aw_n)}{\det(A)}$$
 Note that $\phi$ vanishes when $\exists i\neq j:w_i=w_j$. If $w_i=e_i$, then the numerator is the determinant of the columns of $A$, so $\phi=1$. Then we know
 $$\phi(w_1,\dots,w_n) = \det(w_1,\dots,w_n)$$
 and rearranging yields
@@ -114,7 +114,7 @@ $$\det(TS) = \det(T)\det(S)$$
 
 Another method is to use linearity in columns/rows.
 
-$$\det(A) = A_{11}\det\begin{pmatrix}1 & A_{12} & \dots & A_{1n} \\ 0 & A_{22} & \dots & \vdots \\ \vdots & \vdots & \ddots & \vdots \\ 0 & A_{n2} & \dots & A_{nn}\end{pmatrix} + A_{21} \begin{pmatrix} 0 \\ A_{12} & \dots & A_{1n} \\ 1 & A_{22} & \dots & A_{2n} \\ 0 & A_{32} & \dots & A_{3n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & \dots & \dots & A_{nn}\end{pmatrix} + \dots$$
+$$\det(A) = A_{11}\det\begin{pmatrix}1 & A_{12} & \dots & A_{1n} \\ 0 & A_{22} & \dots & \vdots \\ \vdots & \vdots & \ddots & \vdots \\ 0 & A_{n2} & \dots & A_{nn}\end{pmatrix} + A_{21} \begin{pmatrix} 0 & A_{12} & \dots & A_{1n} \\ 1 & A_{22} & \dots & A_{2n} \\ 0 & A_{32} & \dots & A_{3n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & \dots & \dots & A_{nn}\end{pmatrix} + \dots$$
 
 Note that for all the determinants, row operations can be used to switch the $i$th row to the 1st row while preserving order for all other rows. Substitution for block matrices can then be used. Additional signs then come from the switching of rows. More generally, we have
 
