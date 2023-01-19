@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 4}
+\begin{document}
+\maketitle
+
+\section{Inverse of a Matrix}
+
+Denote columns of $A^{-1}$ by $w_i$. Then observing
+$$v_i = Ae_i$$
+we can see
+$$w_j = A^{-1}e_j \Leftrightarrow Aw_j = e_j$$
+That is, $w_j$ solves the equation $Ax=e_j$. Thus by Cramer's rule,
+$$A^{-1}_{ij} = \frac{\det(v_1,\dots,v_{i-1},e_j,v_{i+1},\dots,v_n)}{\det(A)}$$
+Using cofactor expansion along the $j$th column
+$$A^{-1}_{ij} = \frac{(-1)^{i+j}\det(A^{[ji]})}{\det(A)}$$
+Note that $i$ and $j$ are flipped for the cofactor, as it is the $j$th column that is deleted.
+
+\section{More Properties}
+
+For $T\in\mathcal{L}(V)$ we defined
+$$\det(T) = \det(A)$$
+giving the properties
+$$\det(TS) = \det(T)\det(S)$$
+$$\det(T^{-1}) = \det(T)^{-1}$$
+$$\det(T') = \det(T)$$
+
+If $W\subseteq V$ is $T$-invariant then
+$$\det(T) = \det(T|_W)\det(\bar{T})$$
+where $\bar{T} \in \mathcal{L}(V/W)$ is $\bar{T}(V+W) = Tv+W$
+
+\section{Characteristic Polynomials}
+
+Let $T\in\mathcal{L}(V)$
+
+\begin{thm}
+	A scalar $\lambda\in\F$ is an eigenvalue of $T$ iff $\det(\lambda I-T) = 0$
+\end{thm}
+
+Proof: \\
+The definition of an eigenvalue $\lambda$ is that $Tv=\lambda v$. Rearranging this, $v$ is in the nullspace of $(\lambda I-T)$, which is equivalent to it being noninvertible, giving it a determinant of 0. \\
+To rephrase this, $\lambda$ is an eigenvalue iff $\lambda$ is a root of
+$$q(z) = \det(zI - T)$$
+
+\begin{defn}
+	FOr $T\in\mathcal{L}(V)$, the polynomial
+	$$q(z) = \det(zI-T)$$
+	is called the characteristic polynomial. Similarly, for $A\in M_{n\times n}(\F)$ we call
+	$$q(z) = \det(zI-A)$$
+	the characteristic polynomial.
+\end{defn}
+
+Remark: \\
+The definition works for any field $\F$
+$$p(z) = \sum_{i=0}^n a_iz^i$$
+where $a_i\in\F$. Note that the degree of the polynomial is at most $n$ (based on the permutations).
+For $\F = \C$, we can use the fundamental theorem of algebra to factorise $q(z)$
+$$q(z) = \prod_i (z-\lambda_i)$$
+where some eigenvalues may repeat. Then this is equivalent to the set of eigenvalues by the theorem above. \\
+Then for any square matrix $A$, for any upper triangular matrix with $A'_{ii} = \lambda_i$, we see
+$$\det(zI-A) = \det(zI-A')$$
+Remark: \\
+If $A$ has block upper triangular form
+$$A = \begin{pmatrix} A' & * \\ 0 & A''\end{pmatrix}$$
+then
+$$q_A(z) = q_{A'}(z)q_{A''}(z)$$
+since
+$$zI-A = \begin{pmatrix} zI-A' & * \\ 0 & zI-A''\end{pmatrix}$$
+
+\section{Cyclic Vectors}
+
+Suppose $T\in\mathcal{L}(V),v\neq0\in V, v_k = T^{k-1}v$. There is a smallest $k$ such that $v_1,\dots,v_{k+1}$ are linearly dependent, The subspace $W$ spanned by $v_1,\dots,v_k$ is $T$-invariant, as $v_i$ maps to $v_{i+1}$ except for $i=k$, where it maps to a linear combination of $v_i,\dots,v_k$. \\
+We call $v\in V$ a cyclic vector for $T$ if $v_1,\dots$ spans all of $V$. In this case, $v_1,\dots,v_k$ is a basis of $V$. The matrix of $T$ in this basis is
+$$A_{\cdot,i} = \begin{cases} e_{i+1} & i\neq k \\ b & i = k\end{cases}$$
+where $A_{\cdot,i}$ is the $i$th column of $A$, and
+$$b = \sum_{i=1}^k -a_ie_i$$
+where
+$$Tv_k = \sum_{i=1}^k -a_iv_i$$
+\end{document}
