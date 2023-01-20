@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 6}
+\begin{document}
+\maketitle
+
+\section{Review}
+
+We can calculate electric field due to static charge for discrete charges
+
+$$\vec{E}_{\text{total}} = \sum_i \frac{Q_i}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|^3}(\vec{R}-\vec{R}')$$
+
+and continuous charges
+
+$$\vec{E}_{text{total}} = \int \frac{dQ'}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|^3}(\vec{R}-\vec{R}')$$
+
+\section{Fundamental Postulates of Electrostatics}
+
+In differential form, they are
+
+$$\vec{\nabla}\times\vec{E} = 0$$
+$$\vec{\nabla}\cdot\vec{D} = \rho_v$$
+
+or in integral form
+
+$$\oint_C \vec{E}\cdot d\vec{l} = 0$$
+$$\oiint_S \vec{D}\cdot d\vec{S} = Q_{\mathrm{enc}}$$
+
+where the first equation comes from the fact that
+
+$$\vec{E} = \vec{\nabla}V$$
+
+and the curl of a gradient is zero. \\
+
+$\varepsilon$ is the electrical permittivity of the material, with
+
+$$\varepsilon = \varepsilon_r\varepsilon_0$$
+
+The value of $\varepsilon_r$ in vacuum is 1, and it is 1.0006 in air, which is often approximated as 1. This relates $\vec{D}$ and $\vec{E}$
+
+$$\vec{D} = \varepsilon\vec{E}$$
+
+It is possible for $\varepsilon$ to vary over a region, e.g. for an anisotropic crystal.
+
+\begin{ex}
+	For the electric flux density given by $\vec{D} = \frac{5}{4}\left(R^2-\frac{1}{R^2}\right)\hat{a}_R$ for $R<2$m. Use Gauss's law to determine the volume charge density in this region. \\
+	The gradient in spherical coordinates is given by
+	$$\vec{\nabla}\cdot\vec{A} = \frac{1}{R^2}\frac{\partial(R^2A_R)}{\partial R} + \frac{1}{R\sin\theta}\frac{\partial(\sin\theta A_\theta)}{\partial \theta} + \frac{1}{R\sin\theta}\frac{\partial A_\phi}{\partial \phi}$$
+	Only the first term is nonzero, as $\vec{D}$ is a function of $R$ only. Substituting, we have
+	\begin{align*}
+		\rho_v &= \frac{1}{R^2}\frac{\partial}{\partial R} \left(\frac{5}{4}(R^4-1)\right) \\
+		       &= \frac{1}{R^2} (5R^3) \\
+		       &= 5R
+	\end{align*}
+\end{ex}
+
+Note that from Coulomb's law, we have
+
+$$\vec{D} = \varepsilon\vec{E} = \frac{Q}{4\pi R^2}\hat{a}_R$$
+
+Then integrating over the surface of a sphere,
+
+$$\oiint_S \vec{D}\cdot d\vec{S} = \oiint_S \frac{Q}{4\pi R^2} dS = Q$$
+\end{document}
