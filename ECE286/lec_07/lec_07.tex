@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 7}
+\begin{document}
+\maketitle
+
+\section{Random Variables}
+
+\begin{ex}\label{main}
+	Consider 3 coin flips, where $X$ denotes the number of heads. Then
+	$$P(X=0) = \frac{1}{8}, P(X=1) = \frac{3}{8}, P(X=2) = \frac{3}{8}, P(X=3) = \frac{1}{8}$$
+\end{ex}
+
+\begin{defn}
+	$f(x)$ is a probability mass function (PMF) of the discrete random variable $X$ if
+	\begin{itemize}
+		\item $f(x) \geq 0\forall x \in S$
+		\item $\sum_{x\in S}f(x) = 1$
+		\item $P(X=x) = f(x)$
+	\end{itemize}
+\end{defn}
+
+\begin{ex}
+	From \ref{main}, we can write
+	$$f(0)=f(3) = \frac{1}{8}$$
+	and
+	$$f(1) = f(2) = \frac{3}{8}$$
+\end{ex}
+
+\begin{defn}
+	$F(x)$ is a cumulative distribution function (CDF) of discrete random variables if
+	$$F(x) = \sum_{t\leq x} f(t)$$
+	hence
+	$$F(x) = P(X\leq x)$$
+\end{defn}
+
+\begin{ex}
+	From \ref{main},
+	$$F(-1) = 0, F(0) = \frac{1}{8}, F(1) = \frac{1}{2}, F(2) = \frac{7}{8}, F(3) = 1$$
+\end{ex}
+
+Abusing notation we have (the limit is implied)
+$$F(-\infty) = 0, F(\infty) = 1$$
+
+Consider if $X\in\R$ is a continuous random variable, then
+$$P(X=5)=0$$
+but
+$$P(4\leq X\leq6) > 0$$
+in general.
+
+\begin{defn}
+	$f(x)$ is a probability distribution/density function (PDF) of the continuous random variable $X$ if
+	\begin{itemize}
+		\item $f(x)\geq 0\forall x$
+		\item $\int_{-\infty}^\infty f(x)dx = 1$
+		\item $P(a\leq X\leq b) = \int_a^b f(x)dx$
+	\end{itemize}
+\end{defn}
+
+\begin{defn}
+	$F(x)$ is the cumulative density function of $X$ if
+	$$F(x) = \int_{-\infty}^x f(t)dt$$
+\end{defn}
+
+Observe that these identities still hold
+$$F(x)=P(X\leq x)$$
+$$F(\infty) = 1$$
+
+In addition,
+$$P(a\leq X\leq b) = F(b) - F(a)$$
+
+\begin{ex}
+	Triangle PDF. $X$ is a continuous random variable whose probability density function is
+	$$f(x) = \begin{cases} x & 0 \leq x \leq 1 \\ 2-x & 1\leq x \leq 2 \\ 0 & \text{elsewhere}\end{cases}$$
+	Then
+	\begin{align*}
+		P(0.5\leq X\leq 1) &= \int_{0.5}^1 xdx \\
+				   &= \frac{x^2}{2} \Big |_{0.5}^1 \\
+				   &= \frac{3}{8}
+	\end{align*}
+	The cumulative density function can be derived.
+	$$F(x) = \begin{cases} 0 & x\leq 0 \\ \frac{x^2}{2} & 0\leq x\leq 1 \\ -1 + 2x - \frac{x^2}{2} 1\leq x\leq 2 \\ 1 & x\geq 2\end{cases}$$
+\end{ex}
+\end{document}
