@@ -1,0 +1,241 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 3}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A coin is biased such that a head is three times as likely to occur as a tail. Find the expected number of tails when this coin is tossed twice.}
+
+\begin{solution}
+	Then $P(H) = 0.75, P(T) = 0.25$. The expected number is
+	$$0\times0.75^2 + 1\times2\times0.75\times0.25 + 2\times0.25^2 = 0.5$$
+\end{solution}
+
+\question{The density function of coded measurements of the pitch diameter of threads of a fitting is
+	$$f(x) = \begin{cases} \frac{4}{\pi(1+x^2)} & 0 < x < 1 \\ 0 & \text{elsewhere}\end{cases}$$
+Find the expected value of $X$.}
+
+\begin{solution}
+	\begin{align*}
+		E(X) &= \int_0^1 \frac{4xdx}{\pi(1+x^2)} \\
+		     &= \frac{4}{\pi} \int_0^1 \frac{x}{1+x^2} \\
+		     &= \frac{2\ln2}{\pi}
+	\end{align*}
+\end{solution}
+
+\question{Assume that two random variables $(X, Y)$ are uniformly distributed on a circle with radius $a$. Then the joint probability density function is
+	$$f(x,y) = \begin{cases} \frac{1}{\pi a^2} & x^2 + y^2 \leq a^2 \\ 0 & \text{otherwise}\end{cases}$$
+Find $\mu_X$, the expected value of $X$.}
+
+\begin{solution}
+	As they are distributed on the circle, $x^2 + y^2 \leq a^2$ has to be true. Then $f(x,y)$ only takes on one value on the circle, so the expected value is
+	$$\frac{1}{\pi a^2}$$
+\end{solution}
+
+\question{A continuous random variable $X$ has the density function
+	$$f(x) = \begin{cases} e^{-x} & x > 0 \\ 0 & \text{elsewhere}\end{cases}$$
+Find the expected value of $g(X) = e^{2X/3}$}
+
+\begin{solution}
+	\begin{align*}
+		E(g(X)) &= \int_0^\infty e^{2x/3}e^{-x}dx \\
+			&= \int_0^\infty e^{-x/3}dx \\
+			&= -3[e^{-x/3}]_0^\infty \\
+			&= 3
+	\end{align*}
+\end{solution}
+
+\question{Suppose that $X$ and $Y$ have the following joint probability function:
+	\begin{center}
+	\begin{tabular}{|c||c|c|}
+	\hline
+	y/x & 2 & 4 \\
+	\hline\hline
+	1 & 0.10 & 0.15 \\
+	\hline
+	3 & 0.20 & 0.30 \\
+	\hline
+	5 & 0.10 & 0.15 \\
+	\hline
+	\end{tabular}
+	\end{center}
+}
+
+\begin{parts}
+\part{Find the expected value of $g(X,Y) = XY^2$.}
+
+\begin{solution}
+	$$0.10(2\times1^2 + 2\times5^2) + 0.15(4\times1^2 + 4\times5^2) + 0.20\times2\times3^2 + 0.30\times4\times3^2 = 35.2$$
+\end{solution}
+
+\part{Find $\mu_X$ and $\mu_Y$.}
+
+\begin{solution}
+	$$\mu_X = 2\times(0.10+0.20+0.10) + 4\times(0.15+0.30+0.15) = 3.2$$
+	$$\mu_Y = 1\times(0.10+0.15) + 3\times(0.20+0.30) + 5\times(0.10+0.15) = 3$$
+\end{solution}
+
+\end{parts}
+
+\question{The length of time, in minutes, for an airplane to obtain clearance for takeoff at a certain airport is a random variable $Y = 3X - 2$, where $X$ has the density function
+	$$f(x) = \begin{cases} \frac{1}{4}e^{-x/4} & x > 0 \\ 0 & \text{elsewhere}\end{cases}$$
+Find the mean and variance of the random variable $Y$.}
+
+\begin{solution}
+	The mean is
+	\begin{align*}
+		\mu &= \int_0^\infty \frac{1}{4}xe^{-x/4}dx \\
+		    &= -xe^{-x/4} \Big |_0^\infty + \int_0^\infty e^{-x/4}dx \\
+		    &= 4
+	\end{align*}
+	The variance is
+	\begin{align*}
+		\sigma^2 &= E((X-\mu)^2) \\
+			 &= \int_0^\infty (\frac{1}{4}e^{-x/4}-4)^2\times\frac{1}{4}e^{-x/4}dx \\
+			 &= \int_0^\infty (\frac{1}{16}e^{-x/2} - 2e^{-x/4} + 16)\times\frac{1}{4}e^{-x/4}dx \\
+			 &= \int_0^\infty \frac{1}{64}e^{-3x/4} - \frac{1}{2}e^{-x/2} + 4e^{-x/4} dx \\
+			 &= \frac{1}{48} - 1 + 16 \\
+			 &= 15\frac{1}{48}
+	\end{align*}
+\end{solution}
+
+\question{For a laboratory assignment, if the equipment is working, the density function of the observed outcome $X$ is
+	$$f(x) = \begin{cases} 2(1-x) & 0 < x < 1 \\ 0 & \text{otherwise}\end{cases}$$
+	Find the variance and standard deviation of $X$
+}
+
+\begin{solution}
+	The mean is
+	\begin{align*}
+		\mu &= \int_0^1 2x(1-x)dx \\
+		    &= \int_0^1 2x - 2x^2 dx \\
+		    &= 1 - \frac{2}{3} \\
+		    &= \frac{1}{3}
+	\end{align*}
+	Then the variance is
+	\begin{align*}
+		\sigma^2 &= E(X^2) - \mu^2 \\
+			 &= \int_0^1 2x^2(1-x)dx - \frac{1}{9} \\
+			 &= \int_0^1 2x^2 - 2x^3 dx - \frac{1}{9} \\
+			 &= \frac{2}{3} - \frac{1}{2} - \frac{1}{9} \\
+			 &= \frac{1}{18}
+	\end{align*}
+	The standard deviation is then
+	$$\sigma = \frac{1}{\sqrt{18}} = \frac{1}{3\sqrt{2}}$$
+\end{solution}
+
+\question{Random variables $X$ and $Y$ follow a joint distribution
+	$$f(x,y) = \begin{cases} 2 & 0 < x\leq y < 1 \\ 0 & \text{otherwise}\end{cases}$$
+Determine the correlation coefficient between $X$ and $Y$.}
+
+\begin{solution}
+	The means are
+	\begin{align*}
+		\mu_x &= \int_0^1 \int_x^1 2x dydx \\
+		      &= \int_0^1 2x(1-x)dx \\
+		      &= \int_0^1 2x - 2x^2 dx \\
+		      &= 1 - \frac{2}{3} \\
+		      &= \frac{1}{3}
+	\end{align*}
+	and
+	\begin{align*}
+		\mu_y &= \int_0^1 \int_x^1 2ydydx \\
+		      &= \int_0^1 1 - x^2 dx \\
+		      &= 1 - \frac{1}{3} \\
+		      &= \frac{2}{3}
+	\end{align*}
+	Then the covariance is
+	\begin{align*}
+		\sigma_{XY} &= E(XY) - \mu_X\mu_Y \\
+			    &= \int_0^1 \int_x^1 2xydydx - \frac{2}{9} \\
+			    &= \int_0^1 x(1-x^2)dx - \frac{2}{9} \\
+			    &= \int_0^1 x - x^3 dx - \frac{2}{9} \\
+			    &= \frac{1}{2} - \frac{1}{4} - \frac{2}{9} \\
+			    &= \frac{5}{36}
+	\end{align*}
+	Then the standard deviations are given by
+	\begin{align*}
+		\sigma_x^2 &= E(X^2) - \mu_x^2 \\
+			   &= \int_0^1 \int_x^1 2x^2 dydx - \frac{1}{9} \\
+			   &= \int_0^1 2x^2(1-x)dx - \frac{1}{9} \\
+			   &= \int_0^1 2x^2 - 2x^3 dx - \frac{1}{9} \\
+			   &= \frac{2}{3} - \frac{1}{2} - \frac{1}{9} \\
+			   &= \frac{1}{18} \\
+		\sigma_x &= \frac{1}{3\sqrt{2}}
+	\end{align*}
+	and
+	\begin{align*}
+		\sigma_y^2 &= E(Y^2) - \mu_y^2 \\
+			   &= \int_0^1 \int_x^1 2y^2 dydx - \frac{4}{9} \\
+			   &= \frac{2}{3} \int_0^1 1 - x^3 dx - \frac{4}{9} \\
+			   &= \frac{2}{3}(1 - \frac{1}{4}) - \frac{4}{9} \\
+			   &= \frac{1}{18} \\
+		\sigma_y &= \frac{1}{3\sqrt{2}}
+	\end{align*}
+	Combining, the correlation coefficient is
+	$$\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X\sigma_Y} = \frac{5}{2}$$
+\end{solution}
+
+\question{Let $X$ be a random variable with the following probability distribution:
+	\begin{center}
+	\begin{tabular}{|c||c|c|c|}
+	\hline
+	$x$ & -3 & 6 & 9 \\
+	\hline\hline
+	$f(x)$ & $\frac{1}{6}$ & $\frac{1}{2}$ & $\frac{1}{3}$ \\
+	\hline
+	\end{tabular}
+	\end{center}
+	Find $E(X)$ and $E(X^2)$ and then, using these values, evaluate $E[(2X + 1)^2]$.}
+
+\begin{solution}
+	We have
+	$$E(X) = -3\times\frac{1}{6} + 6\times\frac{1}{2} + 9\times\frac{1}{3} = \frac{11}{2}$$
+	and
+	$$E(X^2) = 9\times\frac{1}{6} + 36\times\frac{1}{2} + 81\times\frac{1}{3} = \frac{93}{2}$$
+	Combining,
+	$$E[(2X+1)^2] = E(4X^2 + 4X + 1) = 4\times\frac{93}{2} + 4\times\frac{11}{2} + 1 = 209$$
+\end{solution}
+
+\question{Let $X$ represent the number that occurs when a red die is tossed and $Y$ the number that occurs when a green die is tossed. Find}
+
+\begin{parts}
+\part{$E(X+Y)$}
+\part{$E(X-Y)$}
+\part{$E(XY)$}
+\end{parts}
+
+\begin{solution}
+	$$E(X+Y) = E(X) + E(Y) = 3.5 + 3.5 = 7$$
+	$$E(X-Y) = E(X) - E(Y) = 0$$
+	$$E(XY) = E(X)E(Y) = 3.5\times3.5 = 12.25$$
+\end{solution}
+
+\question{Let $X$ represent the number that occurs when a green die is tossed and $Y$ the number that occurs when a red die is tossed. Find the variance of the random variable}
+
+\begin{parts}
+\part{$2X-Y$}
+\part{$X+3Y-5$}
+\end{parts}
+
+\begin{solution}
+	The mean of $2X-Y$ is obviously $2\times3.5-3.5 = 3.5$. Then the variance is
+	\begin{align*}
+		E[(2X-Y-3.5)^2] &= E(4X^2 + Y^2 + 12.25 - 4XY - 14X + 7Y) \\
+				&= 4\times\frac{91}{6} + \frac{91}{6} + 12.25 - 4\times3.5^2 - 14\times3.5 + 7\times3.5 \\
+				&= \frac{175}{12}
+	\end{align*}
+	The mean of $X+3Y-5$ is obviously $3.5+3\times3.5-5 = 9$. Then the variance is
+	\begin{align*}
+		E[(X+3Y-5-9)^2] &= E[(X+3Y-14)^2] \\
+				&= E(X^2 + 9Y^2 + 196 + 6XY - 28X - 84Y) \\
+				&= \frac{91}{6} + 9\times\frac{91}{6} + 196 + 6\times3.5^2 - 28\times3.5 - 84\times3.5 \\
+				&= \frac{175}{6}
+	\end{align*}
+\end{solution}
+
+\end{questions}
+\end{document}
