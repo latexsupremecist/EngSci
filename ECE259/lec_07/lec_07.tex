@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 7}
+\begin{document}
+\maketitle
+
+\section{Divergence and Curl of a Vector Field}
+
+\begin{defn}
+	The divergence is defined as
+	$$\vec{\nabla}\cdot\vec{D} = \lim_{\Delta S\rightarrow0}\frac{\oiint_S\vec{D}\cdot d\vec{S}}{\Delta S}$$
+\end{defn}
+
+This is equivalent to our definition of $\vec{\nabla}$ in Cartesian coordinates by considering the flux out of one face of an infitesimal cube and applying symmetry.
+
+\begin{defn}
+	The curl is defined as
+	$$\vec{\nabla}\times\vec{E} = \lim_{\Delta S\rightarrow0}\frac{\left(\hat{a}_n\oint_C\vec{E}\cdot d\vec{l}\right)_\mathrm{max}}{\Delta S}$$
+\end{defn}
+
+where $\hat{a}_n$ is chosen to maximise the expression. \\
+In "proving" Gauss' Law, we assumed
+\begin{enumerate}
+	\item Field had specific components
+	\item Gaussian surface was chosen so that $\vec{D}\cdot d\vec{S}=0$ or $\vec{D}\cdot d\vec{S} = DdS$
+\end{enumerate}
+
+This helps us determine the different regions where Gauss' Law is applied separately, and what type of Gaussian surface is needed. The surface has to satisfy
+
+\begin{enumerate}
+	\item $S$ has to be closed (cube, cylinder, sphere)
+	\item $S$ has to be oriented such that $\vec{D}\cdot d\vec{S}=0$ and/or $\vec{D}\cdot d\vec{S}=DdS$ over different points of the surface
+	\item Over points of $S$ where $\vec{D}\cdot d\vec{S} = DdS$, we need $|\vec{D}|$ to be a constant
+\end{enumerate}
+
+\begin{ex}
+	Consider the charge density given by $\rho_v$ at $R\leq a$ (and 0 everywhere else), which is a constant. Find the electric flux density everywhere. \\
+	In the region $R\leq a$, we get
+	$$\oiint_S\vec{D}\cdot d\vec{S} = D_RA = D_R(4\pi R^2)$$
+	while
+	$$Q = \iiint \rho_v dV = \rho_v\left(\frac{4}{3}\pi R^3\right)$$
+	Letting both sides be equal gives
+	$$\vec{D} = \frac{\rho_vR}{3}\hat{a}_R$$
+	For everywhere else, i.e. $R>a$, we obtain the same expression on the left hand side, and
+	$$Q = \rho_v\left(\frac{4}{3}\pi a^3\right)$$
+	So
+	$$\vec{D} = \frac{\rho a^3}{3R^2}\hat{a}_R = \frac{Q}{4\pi R^2}\hat{a}_R$$
+\end{ex}
+
+\end{document}
