@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 5}
+\begin{document}
+\maketitle
+
+\section{Cyclic Vectors}
+
+Suppose $n=\mathrm{dim}V<\infty$. $v\in V$ is a cyclic vector for $T\in\mathcal L$, i.e.
+$$v,Tv,T^2v,\dots$$
+span $V$. Then
+$$v_i = T^{i-1}v$$
+is a basis of $V$, for $i$ from 1 to $n$. In addition,
+$$T^nv = -\sum_{i=1}^n a_{i-1}v_i$$
+And $T$ can be described by the composition matrix
+$$A = \begin{pmatrix} 0 & 0 & \dots & -a_0 \\ 1 & 0 & \dots & -a_1 \\ 0 & 1 & \dots & -a_2 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \dots & -a_{n-1}\end{pmatrix}$$
+
+Its characteristic polynomial is given by
+$$q_T(z) = \det(zI_A)$$
+
+Using the cofactor expansion along the last column for $C=zI-A$,
+$$q_T(z) = \sum_{i=1}^n (-1)^{n+i} a_{i-1}\det(C^{[in]}) + z\det(C^{[in]})$$
+Note that all of the terms involve the determinant of a matrix that can be represented as
+$$A = \begin{pmatrix} A' & * \\ 0 & A''\end{pmatrix}$$
+in block matrix form. Using this analogy, observe $A'$ is lower triangular and $A''$ is upper triangular. The determinant is then given by
+$$\det(C^{[in]}) = z^{i-1}(-1)^{n-i}$$
+Summing the terms,
+$$q_T(z) = a_0 + a_1z +\dots+a_{n-1}z^{n-1} + z^n$$
+
+Note: \\
+Given any monic polynomial $p(z)$ one can write down a matrix having $p(z)$ as the characteristic polynomial called the companion matrix.
+
+\begin{ex}
+	$$p(z) = (z-1)^3 = z^3 -3z^2 + 3z - 1$$
+	Then
+	$$A = \begin{pmatrix} 0 & 0 & 1 \\ 1 & 0 & -3 \\ 0 & 1 & 3\end{pmatrix}$$
+	has this.
+\end{ex}
+
+More on characteristic polynomials. Suppose $V=W_1 \oplus W_2$ with $T(W_i)\subseteq W_i$. Then
+$$q_T(z) = q_{T|_{W_1}}(z)q_{T|_{W_2}}(z)$$
+Reason: Choose basis for $W_1,W_2$ to form basis for $V_1$. Then $q_T(z)$ becomes the determinant of a block matrix. \\
+In general, a $T$-invariant subspace $W_1\subseteq V$ need not admit an invariant complement (i.e. there need not exist $T$-invariant $W_2$ such that $V=W_1+W_2$)
+
+\begin{ex}
+	$V=\R^2,Te_1=e_2,Te_2=0$. Then $W=ke_2$ is invariant, but there is no invariant complement.
+\end{ex}
+
+If $W\subseteq V$ is $T$-invariant, then $T$ induces quotient $\bar{T}$ on $V/W$ where
+$$\bar{T}(v+W) = Tv+W$$
+Then
+$$q_T(z) = q_{T|_W}(z)q_{\bar{T}}(z)$$
+
+Proof: \\
+$T$ preserves $W$, so $zI-T$ also preserves $W$. Then
+$$(zI_V-T)|_W = zI_W-T|_W$$
+and
+$$\overline{zI_V-T} = zI_{V/W}-\bar{T}$$
+Thus from the homework problem,
+$$\det(zI_V-T) = \det(zI_W-T|_W)\det(zI_{V/W}-\bar{T}) = q_{T|_W}(z)q_{\bar{T}}(z)$$
+
+\begin{thm}
+	(Cayley-Hamilton) Let $T\in\mathcal L(V)$ with characteristic polynomial $q(z)=q_T(z)$. Then
+	$$q(T) = 0$$
+\end{thm}
+
+Proof: \\
+Consider the first case that $V$ has the cyclic vector $v$. The characteristic polynomial is hence
+$$a_0 + a_1z + a_2z^2 +\dots a_{n-1}z^{n-1} + z^n$$
+where the coefficients are defined as
+$$Tv_n = -a_0v_1 - a_1v_2 - \dots - a_{n-1}v_n$$
+Rearranging yields
+$$a_0v + a_1Tv +\dots + a_{n-1}T^{n-1}v + T^nv = 0$$
+Meaning $q(T)v=0$. Then
+$$q(T)v_2 = q(T)Tv = Tq(T)v = 0$$
+where $q(T)$ and $T$ commute as the former is a polynomial of $T$. Then this can be extended to $v_n$, which completes the proof if a cyclic vector exists. \\
+For the general case, we want to show $q(T)v=0\forall v\neq0$. We know
+$$v,Tv,T^2v,\dots$$
+gives a $T$-invariant subspace $W\subseteq V$ and $v$ is a cyclic vector for $T|_W$. Then
+$$q_T(z) = q_{T|_W}(z)q_{\bar{T}}(z)$$
+so
+$$q_T(T)v = q_{\bar{T}}(z)q_{T|_W}(T)v = q_{\bar{T}}(z)q_{T|_W}(T|_W)v = 0$$
+
+There are other polynomials $p(z)$ with $p(T)=0$. There's a unique one of lowest degree
+$$I_V,T,T^2,T^3,\dots,\in\mathcal L(V)$$
+Let $k$ be the smallest natural number such that $I_V, T,\dots,T^k$ is linearly dependent. Then
+$$T^k = -b_0 - b_1T-\dots-T^{k-1} \Rightarrow b_0 + b_1T +\dots+b_{k-1}T^{k-1} + T^k = 0$$
+Hence
+$$p(z) = b_0 + b_1z +\dots+ b_{n-1}z^{n-1} + z^n$$
+satisfies $p(T)=0$
+
+\begin{defn}
+	The polynomial $p(z)=p_T(z)$ defined in this way is the minimal polynomial of $T$.
+\end{defn}
+
+\begin{ex}
+	If $T^2=T$, then the minimal polynomial $p_T(z) = z^2 - z$ satisfies unless $T=I_V$ or $T=0$.
+\end{ex}
+
+\begin{ex}
+	$T=I_V$ has the minimal polynomial
+	$$p(z) = z-1$$
+	$T=0_V$ has the minimal polynomal
+	$$p(z) = z$$
+\end{ex}
+
+\begin{ex}
+	$T\in\mathcal L(V)$ is called \emph{involution} if $T^2=I$. Its minimal polynomial is
+	$$p(z)=z^2-1$$
+	unless $T=I_V$ or $T=-I_V$
+\end{ex}
+
+\begin{ex}
+	$$\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0\end{pmatrix}\in M_{3\times 3}(\C)$$
+	Then $A^2 = -I$ (trust me bro) and its minimal polynomial is $z^2+1$.
+\end{ex}
+
+\begin{thm}
+	Let $q(z)$ be any monic polynomial with $q(T)=0$. Then $q$ is divisible by the minimal polynomial $p_T(z)$.
+\end{thm}
+
+Proof: \\
+By long division, since the degree of $q_T$ is lower than that of $q$
+$$q(z) = p_T(z)u(z) + r(z)$$
+where $u,r$ are polynomials with the degree of $r$ lower than that of $p_T$
+$$0=q(T) = p_T(T)u(T)+r(T) = r(T)$$
+so $r=0$, else $p_T$ is not minimal. Then
+$$q(t) = p_T(T)u(T)$$
+which completes the proof.
+
+\begin{thm}Let $T\in\mathcal L(V)$, where the vector space $V$ with dimension $n<\infty$ over $F=\C$. Then there exists a basis of $V$ in which the matrix $A$ of $T$ has block diagonal form here each block $A_i$ is of form
+	$$A_i = \begin{pmatrix} \lambda_i & 1 & 0 \\ 0 & \ddots & \ddots & \vdots \\ 0 & 0 & \vdots & 1 \\ 0 & 0 & \dots & \lambda_i\end{pmatrix}$$
+\end{thm}
+
+	The characteristic polynomial of such $A$ is
+	$$q_T(z) = q_A(z) = q_{A_1}(z)\dots q_{A_k}(z) = (z-\lambda_1)^{r_1}\dots(z-\lambda_k)^{r_k}$$
+	For the minimal polynomial, consider first case of single Jordan block $N$. If $\lambda=0$, then the diagonal "1"s in $N$ "shift" to the top right to form a linearly independent matrix. Then obviously
+	$$p_N(z) = z^n$$
+	For the general Jordan block $\mathcal{J}$, note
+	$$\mathcal J-\lambda I = N$$
+	Thus
+	$$(\mathcal{J}-\lambda I)^n = 0$$
+	and
+	$$p_{\mathcal J}(z) = (z-\lambda)^n$$
+	Note that it is the minimal polynomial. Or else, the substitution $\mathcal J = N + \lambda I$ gives a lower degree polynomial that vanishes for $N$, which does not exist. Hence we have that the minimal polynomial agrees with the characteristic polynomial. \\
+	In general for $T\in\mathcal L(V)$ as above, the characteristic polynomial
+$$q(T)(z) = (z-\lambda_1)^{r_1}\dots(z-\lambda_k)^{r_K}$$
+where the eigenvalues may repeat. Then we can eliminate all terms with repeated eigenvalues with a smaller $r_i$.
+\end{document}
