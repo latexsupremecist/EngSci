@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 8}
+\begin{document}
+\maketitle
+
+\section{Joint Distribution}
+
+\begin{defn}
+	$f(x)$ is a joint PMF of the discrete random variables $X$ and $Y$ if
+	\begin{itemize}
+		\item $f(x,y)\geq0$
+		\item $\sum_x\sum_yf(x,y)=1$
+		\item $P(X=x,Y=y) = f(x,y)$
+	\end{itemize}
+\end{defn}
+
+\begin{ex}
+	There are 52 cards and 5 in a hand. Let $X$ be the number of queens and $Y$ the number of kings. Then
+	$$f(x,y) = \begin{cases} \binom{4}{x}\binom{4}{y}\binom{44}{5-x-y}/\binom{52}{5} & x+y\leq 5 \\ 0 & \text{else}\end{cases}$$
+	Let $A=\{(X,Y)|X+Y=2\}$. Then
+	$$P((X,Y)\in A) = \sum_{(X,Y)\in A} f(x,y) = f(2,0) + f(1,1) + f(0,2)$$
+\end{ex}
+
+\begin{defn}
+	$F(x,y)$ is a joint PDF of the continuous random variables $X$ and $Y$ if
+	\begin{itemize}
+		\item $f(x,y)\geq 0$
+		\item $\int_{-\infty}^\infty\int_{-\infty}^\infty f(x,y)dxdy = 1$
+		\item $P((X,Y)\in A) = \int_A f(x,y)dxdy$
+	\end{itemize}
+\end{defn}
+
+\begin{ex}
+	Consider a uniform distribution in $S=\{(x,y)|-1\leq x\leq 1, -1\leq y\leq 1\}$. Then
+	$$f(x,y)=\frac{1}{4}$$
+	in $S$.
+\end{ex}
+
+\section{Marginal Distribution}
+
+Consider a joint distribution $f(x,y)$. Then the marginal distributions are the probabilities of $X$ or $Y$ happening individually. For the discrete case,
+$$g(x) = \sum_y f(x,y)$$
+$$h(y) = \sum_x f(x,y)$$
+For the continuous case,
+$$g(x) = \int_{-\infty}^\infty f(x,y)dy$$
+$$h(y) = \int_{-\infty}^\infty f(x,y)dx$$
+
+\begin{ex}
+	$$f(x,y) = \begin{cases} 1 & |x|+|y|\leq 1,y\geq 0 \\ 0 & \text{otherwise}\end{cases}$$
+	Then
+	\begin{align*}
+		g(x) &= \int_{-\infty}^\infty f(x,y)dy \\
+		     &= \int_0^{1-|x|}dy \\
+		     &= 1-|x|
+	\end{align*}
+\end{ex}
+
+\end{document}
