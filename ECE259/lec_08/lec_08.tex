@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 8}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+To find the electric field from sources, we can
+\begin{enumerate}
+	\item Use Coulomb's Law and superposition
+	\item Apply Gauss' Law
+	\item Use potential theory
+	\item Numerical techniques
+\end{enumerate}
+
+\section{Electric Scalar Potential}
+
+If we move a point charge $Q_B$ in the presence of another point charge $Q_A$, work done by external agent is
+$$W_{\mathrm{ext}} = \int \vec{F}\cdot d\vec{l} = -\int\vec{F}_{AB}\cdot d\vec{l} = -\int_{P_1}^{P_2}Q_B\vec{E}_A\cdot d\vec{l} = \Delta U$$
+where $U$ is potential energy. Then we define the voltage as
+
+$$\Delta V = V_2 - V_1 = V_{21} = -\int_{P_1}^{P_2}\vec{E}\cdot d\vec{l}$$
+
+and $\Delta V$ is the electric scalar potential difference.
+
+\begin{ex}
+	$\Delta V$ between two points given a point charge at the origin.
+
+	\begin{align*}
+		\Delta V &= -\int_{P_1}^{P_2}\vec{E}\cdot d\vec{l} \\
+			 &= -\int_{P_1}^{P_2}\frac{Q}{4\pi\varepsilon_0R^2}\hat{a}_R\cdot d\vec{l} \\
+			 &= -\frac{Q}{4\pi\varepsilon_0}\int_{R_1}^{R_2} \frac{dR}{R^2} \\
+			 &= \frac{Q}{4\pi\varepsilon_0}\left(\frac{1}{R_2} - \frac{1}{R_1}\right)
+	\end{align*}
+	Where we switch the limits from position to radius as it is the only coordinate that matters. In addition, $\vec{E}$ is conservative, so the path integral can be evaluated directly at the limits.
+\end{ex}
+
+From the definition of $\Delta V$, if we let $R_1$ go to infinity, we obtain
+$$\Delta V = V_2 = \frac{Q}{4\pi\varepsilon_0R^2}$$
+
+\section{Equipotential Surfaces}
+
+A surface which has the same value of $V$ over the entire surface is called an equipotential surface. It can be a real or imaginary surface. Note that all perfect conductors are equipotential surfaces. The electric field is hence always perpendicular to such equipotential surfaces.
+
+\end{document}
