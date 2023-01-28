@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 6}
+\begin{document}
+\maketitle
+
+\section{Companion Matrix}
+
+Let $A$ be a companion matrix. Then $A^2$ shifts the diagonal of "1"s towards the bottom left by 1. It is easy to see that, then,
+$$I,A,A^2,\dots,A^{n-1}$$
+are linearly independent. Since its characteristic equation is of degree $n$, we know its characteristic equation is its minimal polynomial.
+
+\section{Jordan Normal Form}
+
+Let $T\in\mathcal L(V)$, choose Jordan basis so that $A$ has Jordan normal form. Then the characteristic polynomial is
+$$q_T(z) = q_A(z) = \prod_{j=1}^r (z-\lambda_j)^{k_j}$$
+where $k_j$ is the size of the $j$th block.
+$$p_T(z) = p_A(z) = \prod_\lambda (z-\lambda)^{k_\lambda}$$
+gives the minimal polynomial, where $k_\lambda$ is the largest Jordan block for $\lambda$.
+
+\begin{ex}
+
+	$$A = \begin{pmatrix} 2 & 1 & 0 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 & 0 & 0 \\ 0 & 0 & 2 & 1 & 0 & 0 \\ 0 & 0 & 0 & 2 & 0 & 0 \\ 0 & 0 & 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 & 0 & -3\end{pmatrix}$$
+	Then
+	$$q_A(z) = (z-2)^5(z+3)$$
+	and
+	$$p_A(z) = (z-2)^2(z+3)$$
+\end{ex}
+
+Comments: \\
+We have $p_T(z)=q_T(z)$ iff there exists unique Jordan blocks for each eigenvalue. In other words, every eigenspace is 1-dimensional. \\
+T is diagonalisable iff all Jordan blocks have a size of 1, iff the minimal polynomial has no repeated roots. \\
+Another version. Suppose $T\in\mathcal L(V)$ satisfies $p(T)=0$ for some non zero polynomial $p$. Then
+\begin{itemize}
+	\item The eigenvalues of $T$ appear among roots of $p$
+	\item If $p$ has no repeated roots, then $T$ is diagonalisable
+\end{itemize}
+
+\begin{ex}
+	$$T^2=T$$
+	Then its only possible eigenvalues are 0 and 1. Then $p(T)=0$ for $p(z) = z^2-z$, and it is diagonalisable.
+	$$T^2=I$$
+	We have $p(z) = z^2-1$ which gives a similar result. \\
+	In general, if $T^k=I$ then $P(T)=0$ for $p(z) = z^k-1$. $p$ has $k$ roots spread uniformly along the unit circle. Hence there are no repeated roots, and $T$ is diagonalisable.
+\end{ex}
+
+\section{Cyclic Subspace Decomposition}
+
+($\F$ is any field, not just $\C$), $T\in\mathcal L(V)$. A \emph{cyclic subspace} of $V$ is a $T$-invariant subspace $W\subseteq V$ containing a cyclic vector for $T|_W$, i.e. $v\in W$ where $v,Tv,T^2v,\dots$ span $W$.
+
+\begin{thm}
+	For all $T\in\mathcal L(V)$ there exists a direct sum decomposition
+	$$V = V_1\oplus\dots\oplus V_r$$
+	where all $V_j$ are cyclic subspaces. Hence, there exists basis such that matrix of $T$ is $A$ whose diagonals $A_j$ are companion matrices.
+\end{thm}
+
+Remark: \\
+One can show that every companion matrix $A$ is similar to its transpose
+$$A^{-1}=CAC^{-1}$$
+Using the theorem, we can see that every matrix is similar to its transpose. \\
+Proof: \\
+Difficulty: in general, $T$-invariant subspaces don't admint invariant complements. \\
+Let $W\subseteq V$ be a cyclic subspace of largest possible dimension. If $W=V$ we are done. Else construct a $T$-invariant compound as follows. Let $v\in W$ be a $T|_W$-cyclic vector, so $v_1=v, v_2 = Tv,\dots,v_k=T^{k-1}v$ is a basis of $W$. Extend to basis $v_1,\dots,v_m$ of $V$. Define $f:V\rightarrow F$ by
+$$f(v_i) = \begin{cases} 0 & i\leq k \\ 1 & i=k\end{cases}$$
+Put
+$$P:V\rightarrow F^k, x\mapsto \begin{pmatrix} f(x) \\ f(Tx) \\ \vdots \\ f(T^{k-1}x)\end{pmatrix}$$
+Claim: the kernel of $P$ is a $T$-invariant complement to $W$. \\
+Observe $P|_W:W\rightarrow F^k$ is an isomorphism. \\
+\textit{Continued in next lecture...}
+\end{document}
