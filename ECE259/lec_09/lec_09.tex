@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 9}
+\begin{document}
+\maketitle
+
+\section{Electric Scalar Potential}
+
+For a point charge which is not at the origin, we can generalise as
+$$V = \frac{Q}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|}$$
+For a collection of point charges, we have
+$$V = \sum_{i=1}^n \frac{Q_i}{4\pi\varepsilon_0|\vec{R}-\vec{R}'_i|}$$
+For a continuous charge distribution,
+$$V = \int\frac{dQ'}{4\pi\varepsilon_0|\vec{R}-\vec{R}'|}$$
+
+\begin{ex}
+	Determine the electric potential at any point on the axis of a uniformly charged disk of radius $a$.
+	\begin{align*}
+		V &= \int_0^{2\pi}\int_0^a \frac{\rho_srdrd\phi}{4\pi\varepsilon_0\sqrt{r^2+z^2}} \\
+		  &= \frac{\rho_s}{2\varepsilon_0} \int_0^a \frac{r}{\sqrt{r^2+z^2}}dr \\
+		  &= \frac{\rho_s}{2\varepsilon_0}\left(\sqrt{a^2+z^2}-|z|\right)
+	\end{align*}
+\end{ex}
+
+\begin{ex}
+	It is known that for a specific charge distribution it has an electric field given by
+	$$\vec{E} = \begin{cases} 1\times10^{-5}r\hat{a}_r & r\leq 1\unit{cm} \\ \frac{1\times10^{-9}}{r}\hat{a}_r & r>1\unit{cm}\end{cases}$$
+	Determine the volume charge density that creates this field. \\
+	For the first case,
+	\begin{align*}
+		\vec{\nabla}\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} \\
+		\frac{d}{dr}\left(rE_r\right) &= \frac{\rho r}{\varepsilon_0} \\
+		2\times10^{-5}r &= \frac{\rho r}{\varepsilon_0} \\
+		\rho &= 2\times10^{-5}\varepsilon_0
+	\end{align*}
+	For the second case,
+	\begin{align*}
+		\frac{d}{dr}\left(rE_r\right) &= \frac{\rho r}{\varepsilon_0} \\
+		0 &= \frac{\rho r}{\varepsilon_0} \\
+		\rho &= 0
+	\end{align*}
+\end{ex}
+\end{document}
