@@ -72,11 +72,12 @@ Assume $P(A)=0.3,P(B|A)=0.75,P(B|A')=0.20,P(C|A\cap B)=0.20,P(C|A'\cap B)=0.15,P
 \begin{solution}
 	Let $A$ be the purchase of latex paint, $B$ be the purchase of rollers, and $C$ the the purchase of semigloss paint. Then
 	\begin{align*}
-		P(A|B) &= P(A\cap B)P(B) \\
-		       &= 0.75\times0.6(P(A\cap B) + P(C\cap B)) \\
-		       &= 0.45(0.45 + 0.25\times0.3) \\
-		       &= 0.45\times0.525 \\
-		       &= 0.23625
+		P(A|B) &= \frac{P(A\cap B)}{P(B)} \\
+		       &= \frac{P(B|A)P(A)}{P(B)} \\
+		       &= \frac{0.6\times0.75}{P(B|A)P(A) + P(B|C)P(C)} \\
+		       &= \frac{0.45}{0.45 + 0.3\times0.25} \\
+		       &= \frac{0.45}{0.525} \\
+		       &= 0.857
 	\end{align*}
 \end{solution}
 
