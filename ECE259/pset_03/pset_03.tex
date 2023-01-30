@@ -1,0 +1,174 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 3}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A point charge $Q$ is situated in free space at a very small height $h$ above an imaginary infinite flat surface $S$ oriented upwards. The flux of the electric field intensity vector due to the charge $Q$ through $S$ comes out to be}
+
+\begin{solution}
+	According to Gauss' law,
+	$$\Psi_E = \frac{Q}{\varepsilon_0}$$
+	If $h$ is very small, one can approximate that half of the flux from $Q$ is captured by the surface. Considering $d\vec{S}$ points upwards, it goes in the opposite direction of $\vec{E}$, which points downwards. Giving it a negative sign, the flux can be found as $-\frac{Q}{2\varepsilon_0}$.
+\end{solution}
+
+\question{A point charge $Q$ is located at one of the vertices of an imaginary cube in free space. The outward flux of the electric field intensity vector due to this charge through a cube side that does not contain the charge equals}
+
+\begin{solution}
+	Consider 8 cubes that touch at that point. By symmetry, any side of the combined cube gets a sixth of the charge, and a quarter of that goes to the side of a specific cube. Combining this, the flux is $\frac{Q}{24\varepsilon_0}$.
+\end{solution}
+
+\question{A charge $Q$ ($Q>0$) is distributed uniformly throughout the volume of a sphere of radius $a$ in free space. The outward flux of the electric field intensity vector $E$ through the closed surface $S$ is}
+
+\begin{solution}
+	From Gauss Law, charges outside the surface does not matter. Since there is less charge, the outward flux is less than that of the sphere, so it is positive and less than $\Psi_E = \frac{Q}{\varepsilon_0}$.
+\end{solution}
+
+\question{An electric dipole with a moment $p=Qd (Q>0)$ is located at the center of a sphere of radius $r$, where $r>>d$, in free space. If $p$ is doubled in magnitude, the outward flux of the electric field intensity vector through the surface of the sphere}
+
+\begin{solution}
+	Total enclosed charge is 0, as there is a dipole. Therefore, flux remains the same at 0.
+\end{solution}
+
+\question{A spherical surface $S$ is placed in free space concentrically with another sphere that is uniformly charged over its volume, and the radius of $S$ is larger than that of the charged sphere. The, a point charge $Q$, where $Q$ equals the total charge of the sphere, is introduced in the system. Let $\Psi_E$ and $E$ denote the outward flux of the electric field intensity vector through $S$ and the electric field intensity at the point $A$ in the figure, respectively. which of the two quantities change their value after the point charge is introduced?}
+
+\begin{solution}
+	$\Psi_E$ does not change, as enclosed charge remains constant. $E$ changes, as electric field intensity can be calculated using superposition, where the point charge contributed by a nonzero amount.
+\end{solution}
+
+\question{Consider a sphere of radius $a$ that is uniformly charged over its surface with a total charge $Q$, and is situated in free space. The electric field intensity vector at a point whose radial distance from the sphere center is $r$ is the same as $\vec{E}$ due to a point charge placed at the sphere center for the following range of values of $r$ only}
+
+\begin{solution}
+	Intuitively $r>>a$. I'll get back to this (maybe).
+\end{solution}
+
+\question{Repeat the previous question but for a sphere (of radius $a$) that is nonuniformly charged over its surface with the same total charge $Q$ (surface charge density is a function of the zenith angle, $\theta$, in a spherical coordinate system).}
+
+\begin{solution}
+	$r>>a$
+\end{solution}
+
+\question{The density of a volume charge in a region in free space depends on the Cartesian coordinate $x$ only. Which of the following combinations of the two periodic functions $f_1(x)$ and $f_2(x)$ can represent $\rho(x)$ and the associated electric field intensity, $E(x)$, in this region?}
+
+\begin{solution}
+	None of the above combinations are possible.
+\end{solution}
+
+\question{Consider the electric field $\vec{E} = a_xE_x(x)$ with
+	$$E_x(x) = \begin{cases} \frac{\rho_0x}{\varepsilon_0}\left(1-\frac{x^2}{3a^2}\right) & |x|<a \\ \frac{2\rho_0a}{3\varepsilon_0} & x>a \\ -\frac{2\rho_0a}{3\varepsilon_0} & x<-a\end{cases}$$
+Find the corresponding charge distribution in free space.}
+
+\begin{solution}
+	Using
+	$$\vec{\nabla}\cdot\vec{E} = \frac{\rho}{\varepsilon_0}$$
+	The charge distribution is
+	$$\rho = \begin{cases} \rho_0\left(1 - \frac{x^2}{a^2}\right) & |x|<a \\ 0 & |x|\geq a\end{cases}$$
+\end{solution}
+
+\question{For a sphere of radius $R=a$, with a volume charge density: $\rho_v = \rho_0R/a$ (where $R$ is the radial coordinate of the spherical coordinate system), use Gauss’ law in the differential form to compute the electric field intensity everywhere.}
+
+\begin{solution}
+	Since only the radial coordinate matters,
+	$$\vec{\nabla}\cdot\vec{A} = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2A_r\right)$$
+	Using Gauss' Law,
+	\begin{align*}
+		\vec{\nabla}\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} \\
+		\frac{1}{r^2}\frac{d}{dr}\left(r^2E_r\right) &= \frac{\rho_0r}{\varepsilon_0a} \\
+		r^2E_r &= \frac{\rho r^4}{4\varepsilon_0a} + C \\
+		E_r &= \frac{\rho r^2}{4\varepsilon_0a} + \frac{C}{r^2}
+	\end{align*}
+	Intensity cannot be infinite at $r=0$, hence $C=0$. Thus
+	$$\vec{E} = \frac{\rho r^2}{4\varepsilon_0a}\hat{a}_R$$
+\end{solution}
+
+\question{Assuming the electric field intensity is $E_x = 100x\hat{a}_x$, find the total electric charge contained inside}
+
+\begin{parts}
+	\part{a cubical volume 100 mm on a side centered symmetrically about the origin.}
+	\part{a cylindrical volume around the $z$-axis having a radius 50 mm and a height 100 mm centered at the origin.}
+\end{parts}
+
+\begin{solution}
+	$$\oiint_S \vec{E}\cdot d\vec{S} = \frac{Q}{\varepsilon_0}$$
+	In the cubical case, only the positive and negative $yz$-planes have nonzero components on the left hand side. Summing them up yields
+	$$100(-0.05)(-0.01) + 100(0.05)(0.01) = 0.1$$
+	So
+	$$Q=0.1\varepsilon_0$$
+	In the cylindrical case, d$\vec{S}$ is symmetrical about the $yz$-plane while $\vec{E}$ is antisymmetrical. Thus the integral cancels out to give
+	$$Q=0$$
+\end{solution}
+
+\question{A spherical distribution of charge $\rho = \rho_0[1-(R^2/b^2)]$ exists in the region $0\leq R\leq b$. This charge distribution is concentrically surrounded by a conducting shell with inner radius $R_i (>b)$ and outer radius $R_0$. Determine $E$ everywhere.}
+
+\begin{solution}
+	By symmetry, $\vec{E}$ should only have a radial component. Using Gauss' Law,
+	\begin{align*}
+		\vec{\nabla}\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} \\
+		\frac{1}{r^2}\frac{d}{dr}\left(r^2E_r\right) &= \frac{\rho_0[1-(r^2/b^2)]}{\varepsilon_0} \\
+		r^2E_r &= \frac{\rho_0[(r^3/3)-(r^5/5b^2)]}{\varepsilon_0} + C \\
+		E_r &= \frac{\rho_0[(r/3)-(r^3/5b^2)]}{\varepsilon_0} + \frac{C}{r^2}
+	\end{align*}
+	Again, $E_r$ cannot be infinite at $r=0$, so
+	$$\vec{E} = \frac{\rho_0[(r/3)-(r^3/5b^2)]}{\varepsilon_0}\hat{a}_R$$
+	for $0\leq R\leq b$. Obviously,
+	$$E_r = \frac{C}{r^2}$$
+	In any other case. Considering continuity at $r=b$,
+	$$\vec{E} = \frac{2\rho_0b^3}{15\varepsilon_0r^2}\hat{a}_R$$
+	for other cases.
+\end{solution}
+
+\question{Two infinitely long coaxial cylindrical surfaces, $r=a$ and $r=b (b>a)$, carry surface charge densities $\rho_{sa}$ and $\rho_{sb}$ respectively.}
+
+\begin{parts}
+	\part{Determine $\vec{E}$ everywhere.}
+	\part{What must be the relation between $a$ and $b$ in order that $E$ vanishes for $r>b$?}
+\end{parts}
+
+\begin{solution}
+	By symmetry, only the radial component can be nonzero. Then for $r<a$,
+	\begin{align*}
+		\vec{\nabla}\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} \\
+		\frac{1}{r}\frac{d}{dr}(rE_r) &= 0 \\
+		E_r &= \frac{C}{r}
+	\end{align*}
+	For $E_r$ to be finite in the centre, $C=0$ so
+	$$\vec{E} = 0$$
+	For $a<r<b$,
+	\begin{align*}
+		\oiint \vec{E}\cdot d\vec{S} &= \frac{Q}{\varepsilon_0} \\
+		E_r\int_0^L \int_0^{2\pi} rd\phi dz &= \frac{2\rho_{sa}a\pi L}{\varepsilon_0} \\
+		2\pi LrE_r &= \frac{2\rho_{sa}a\pi L}{\varepsilon_0} \\
+		E_r &= \frac{\rho_{sa}a}{\varepsilon_0r}
+	\end{align*}
+	For $b<r$,
+	\begin{align*}
+		\oiint\vec{E}\cdot d\vec{S} &= \frac{Q}{\varepsilon_0} \\
+		E_r\times2\pi rL &= \frac{2\pi aL\rho_{sa}}{\varepsilon_0} + \frac{2\pi bL\rho_{sb}}{\varepsilon_0} \\
+		E_r &= \frac{a\rho_{sa} + b\rho_{sb}}{\varepsilon_0r}
+	\end{align*}
+	So
+	$$\vec{E} = \frac{a\rho_{sa} + b\rho_{sb}}{\varepsilon_0r}\hat{a}_r$$
+	For $\vec{E}$ to vanish when $r>b$, the numerator must vanish, i.e.
+	$$a\rho_{sa} + b\rho_{sb} = 0$$
+\end{solution}
+
+\question{n a certain region, the electric field is given by:
+	$$\vec{E} = 4xy\hat{a}_x + 2x^2\hat{a}_y + \hat{a}_z$$
+Find the total charge enclosed in a cube $0\leq x\leq1,0\leq y\leq1,0\leq z\leq1$}
+
+\begin{solution}
+	\begin{align*}
+		\oiint \vec{E}\cdot d\vec{S} &= \frac{Q}{\varepsilon_0} \\
+		Q &= \varepsilon_0\left(0 - \int_0^1\int_0^1 2x^2 dxdz - 1 + \int_0^1\int_0^1 4ydydz + \int_0^1\int_0^1 2x^2 dxdz + 1\right) \\
+		  &= \varepsilon_0\int_0^1\int_0^1 4ydydz \\
+		  &= \varepsilon_0\times2 \\
+		  &= 2\varepsilon_0
+	\end{align*}
+	Observe that the components for the faces normal to $y$ and $z$ cancel out, leaving only the plane at $x=1$ (the plane for $x=0$ vanishes).
+\end{solution}
+
+\end{questions}
+\end{document}
