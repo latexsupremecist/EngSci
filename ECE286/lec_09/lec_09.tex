@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 9}
+\begin{document}
+\maketitle
+
+\section{Joint Distribution}
+
+From the density function $f(x,y)$, the marginal distribution of $X$ is
+$$g(x) = \int_{-\infty}^\infty f(x,y)dy$$
+or
+$$g(x) = \sum_yg(x,y)$$
+in the discrete case. Similarly, the marginal distribution of $Y$ can be defined.
+
+\section{Independence}
+
+$X$ and $Y$ are random variables with joint distribution $f(x,y)$ and marginals $g(x)$ and $h(y)$.
+
+\begin{defn}
+	$X$ and $Y$ are independent if
+	$$f(x,y) = g(x)h(y)$$
+\end{defn}
+
+This implies $g(x)$ and $h(y)$ are probability density functions.
+
+\begin{ex}
+	$X$ and $Y$ are continuous random variables with joint distribution
+	$$f(x,y) = e^{-x-y} = e^{-x}e^{-y}$$
+	Then $x$ and $y$ must be independent, as
+	\begin{align*}
+		g(x) &= \int_0^\infty e^{-x}e^{-y}dy \\
+		     &= e^{-x}
+	\end{align*}
+	Note that $g(x)$ and $h(y)$ may differ by a constant factor; consider splitting $f$ into $2e^{-x}\times\frac{1}{2}e^{-y}$.
+\end{ex}
+
+In the discrete case, for $A$ and $B$ to be independent,
+$$P(A|B) = P(A)$$
+Expaning and rearranging yields
+$$P(A\cap B) = P(A)P(B)$$
+Letting $A:X=x, B:Y=y$ yields
+$$P(X=x\cup Y=y) = P(X=x)P(Y=y)$$
+or
+$$f(x,y) = g(x)h(y)$$
+
+\section{Expectation}
+
+\begin{defn}
+	The expectation value is defined as
+	$$E[X] = \int_{-\infty}^\infty xf(x)dx$$
+	or
+	$$E[X] = \sum_x xf(x)$$
+	for the discrete case.
+\end{defn}
+
+\begin{ex}
+	For 3 coinflips, and $X$ being the number of heads, then
+	$$E[X] = \frac{1}{8}\times0 + \frac{3}{8}\times1 + \frac{3}{8}\times2 + \frac{1}{8}\times3 = \frac{3}{2}$$
+\end{ex}
+
+Let $X$ be a random variable with distribution $f(x)$, and $g(X)$ be some function. Then
+$$E[g(X)] = \int_{-\infty}^\infty g(x)f(x)dx$$
+or
+$$E[g(X)] = \sum_x g(x)f(x)$$
+in the discrete case.
+
+\begin{ex}
+	The power generation for a wind turbine is
+	$$P=g(X)=aX^3$$
+	Then
+	$$E[P] = \int_{-\infty}^\infty ax^3f(x)dx$$
+\end{ex}
+
+Since integrals are linear, if
+$$X=Y_1+Y_2+Y_3$$
+then
+$$E[X] = E[Y_1] + E[Y_2] + E[Y_3]$$
+If the right hand side is defined.
+
+\begin{ex}
+	$X$ is a random variable with
+	$$f(x) = \begin{cases} \frac{x}{2} & 0\leq x\leq 2 \\ 0 & \text{otherwise}\end{cases}$$
+	Then for $g(x)=3x+1$,
+	\begin{align*}
+		E[g(X)] &= \int_{-\infty}^\infty g(x)f(x)dx \\
+			&= \int_0^2 (3x+1)\frac{x}{2}dx \\
+			&= 5
+	\end{align*}
+\end{ex}
+
+Let $X$ and $Y$ be random variables with joint distribution $f(x,y)$. Then
+$$E[g(X,Y)] = \int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f(x,y)dxdy$$
+
+$$E[g(X,Y)] = \sum_x\sum_yg(x,y)f(x,y)$$
+
+
+\end{document}
