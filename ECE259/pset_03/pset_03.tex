@@ -42,13 +42,20 @@
 \question{Consider a sphere of radius $a$ that is uniformly charged over its surface with a total charge $Q$, and is situated in free space. The electric field intensity vector at a point whose radial distance from the sphere center is $r$ is the same as $\vec{E}$ due to a point charge placed at the sphere center for the following range of values of $r$ only}
 
 \begin{solution}
-	Intuitively $r>>a$. I'll get back to this (maybe).
+	This is obviously wrong, as $\vec{E}$ vanishes for $0<r<a$, yet this does not hold for the point charge. For $r>a$, considering symmetry,`
+	\begin{align*}
+		\oiint \vec{E}\cdot d\vec{S} &= \frac{Q}{\varepsilon_0} \\
+		E_r4\pi r^2 &= \frac{Q}{\varepsilon_0} \\
+		E_r &= \frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}
+	\end{align*}
+	which agrees with the equation for a point charge.
+	$a<r<\infty$
 \end{solution}
 
 \question{Repeat the previous question but for a sphere (of radius $a$) that is nonuniformly charged over its surface with the same total charge $Q$ (surface charge density is a function of the zenith angle, $\theta$, in a spherical coordinate system).}
 
 \begin{solution}
-	$r>>a$
+	Both $\vec{E}$ do not agree in general (consider the surface charge density being proportional to $\theta$; $\vec{E}$ equidistant to the origin on the $z$-axis do not have the same magnitude, which cannot be true in the case of a point charge). Hence $r>>a$.
 \end{solution}
 
 \question{The density of a volume charge in a region in free space depends on the Cartesian coordinate $x$ only. Which of the following combinations of the two periodic functions $f_1(x)$ and $f_2(x)$ can represent $\rho(x)$ and the associated electric field intensity, $E(x)$, in this region?}
