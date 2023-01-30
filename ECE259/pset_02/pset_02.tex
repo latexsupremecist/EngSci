@@ -30,7 +30,7 @@
 		  &= \iiint_V \rho_u dV \\
 		  &= \int_0^L\int_0^{2\pi}\int_0^a \rho_0\left(1-\frac{r}{a}\right) rdr d\theta dz \\
 		  &= 2\pi\rho_0L\left(\frac{a^2}{2}-\frac{a^2}{3}\right) \\
-		\frac{Q}{L} &= \frac{2\pi\rho_0La^2}{3}
+		\frac{Q}{L} &= \frac{\pi\rho_0La^2}{3}
 	\end{align*}
 \end{solution}
 
@@ -90,12 +90,12 @@ wherer $\rho_0$ is a constant. Find the total charge in the cube.}
 	Where the substitution $z=a\tan\theta$ is used. \\
 	By symmetry, net force is along the $y$-axis. Integrating for the force along this direction,
 	\begin{align*}
-		F_y &= \int_0^\pi\int_0^L \rho_s\sin\phi \times \frac{-2k\rho_l}{a^3} \times ad\phi dz \\
-		\frac{F_y}{L} &= \frac{-2k\rho_l\rho_s}{a^2} \int_0^\pi \sin\phi d\phi \\
-			      &= \frac{-4k\rho_l\rho_s}{a^2}
+		F_y &= \int_0^\pi\int_0^L \rho_s\sin\phi \times \frac{-2k\rho_l}{a} \times ad\phi dz \\
+		\frac{F_y}{L} &= -2k\rho_l\rho_s \int_0^\pi \sin\phi d\phi \\
+			      &= -4k\rho_l\rho_s
 	\end{align*}
 	So
-	$$\vec{F} = -\frac{4k\rho_l\rho_s}{a^2}\hat{y}$$
+	$$\vec{F} = -4k\rho_l\rho_s\hat{y}$$
 \end{solution}
 
 \question{Find the force between a charged circular loop of radius $b$ and uniform charge density $\rho_l$ and a point charge $Q$ located on the loop axis at a distance $h$ from the plane of the loop. What is the force when $h>>b$ and when $h=0$? Plot the force as a function of $h$.}
@@ -110,6 +110,8 @@ wherer $\rho_0$ is a constant. Find the total charge in the cube.}
 	$$\vec{F} = \frac{2\pi k\rho_lbhQ}{(b^2+h^2)^{3/2}}\hat{z}$$
 	If $h>>b$, the denominator can be simplified to be $h^3$, so
 	$$\vec{F} = \frac{2\pi k\rho_l bQ}{h^2}\hat{z}$$
+	If $h=0$, then obviously
+	$$\vec{F} = 0$$
 \end{solution}
 
 \question{A line charge of uniform density $\rho_l$ in free space forms a semicircle of radius $b$. Determine the magnitude and direction of the electric field intensity at the center of the semicircle.}
