@@ -1,0 +1,239 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 7}
+\begin{document}
+\maketitle
+
+\section{Inner Product Spaces}
+For field $\F$, define dot product on $F^n$
+$$v=\sum_{i=1}^n a_ie_i$$
+$$w = \sum_{i=1}^n b_ie_i$$
+Then
+$$v\cdot w = \sum_{i=1}^n a_ib_i$$
+So
+$$\F^n\times\F^n\rightarrow\F,(v,w)\mapsto v\cdot w$$
+Geometric interpretation for $\F=\R$:
+The length of $v$ is
+$$||v||=\sqrt{\sum_{i=1}^n a_i^2}=\sqrt{v\cdot v}$$
+For $n=2$, the dot product describes angle between vectors.
+$$v=r\begin{pmatrix}\cos\alpha \\ \sin\alpha\end{pmatrix},w=s\begin{pmatrix}\cos\beta \\ \sin\beta\end{pmatrix}$$
+where $r,s\geq 0$. Then
+\begin{align*}
+	v\cdot w &= rs(\cos\alpha\cos\beta + \sin\alpha\sin\beta) \\
+		 &= rs\cos(\alpha-\beta) \\
+		 &= ||v|| ||w||\cos(\alpha-\beta) \\
+\end{align*}
+
+For $n>2$, we use this to define the angle between non-zero vectors, namely by
+$$\cos\theta = \frac{v\cdot w}{||v|| ||w||}$$
+Note that this only defines $\cos\theta$ not $\theta$, and we have to prove that RHS has absolute value $\leq 1$. \\
+
+More generally,
+
+\begin{defn}
+	Let $V$ be a vector space over $\F=\R$. An \emph{inner product} on $V$ is a positive definite symmetric bilinear form on $V$. That is, it is a bilinear form
+	$$\langle\cdot,\cdot\rangle: V\times V\rightarrow \R, (v,w)\mapsto \langle v,w \rangle$$
+	with
+	\begin{enumerate}
+		\item Symmetry: $\langle v,w \rangle = \langle w,v \rangle \forall v,w$
+		\item Positivity: $\langle v,v \rangle \geq 0 \forall v$
+		\item Definite: $\langle v,v \rangle = 0$ iff $v=0$
+	\end{enumerate}
+	$V$ with $\langle\cdot,\cdot\rangle$ is called \emph{inner product space}. The associated norm is
+	$$||v|| = \sqrt{\langle v,v \rangle}$$
+\end{defn}
+
+\begin{ex}
+	$V=\R^n$, then $\langle v,w \rangle = v \cdot w$
+\end{ex}
+
+\begin{ex}
+	$V = \mathcal{P}_n(\R)$, polynomials of degree $\leq n$. For $a<b\in\R$,
+	$$\langle p, q\rangle = \int_a^b p(x)q(x)dx$$
+\end{ex}
+
+Same formula defined on $\mathcal{P}(\R)$.
+
+\begin{ex}
+	$V = C([a,b])$, the set of continuous functions on $[a,b]$.
+	$$\langle f,g \rangle = \int_a^b f(x)g(x)dx$$
+\end{ex}
+
+\begin{ex}
+	$V = \mathcal{P}_n(\R)$. Fix distinct points $x_0,\dots,x_n$, put
+	$$\langle p,q \rangle = \sum_{i=0}^n p(x_i)q(x_i)$$
+	Note we need $n+1$ points for the definite property.
+\end{ex}
+
+\begin{ex}
+	$V=M_{n\times n}(\R)$. Then
+	$$\langle A,B \rangle = \tr(AB^t)$$
+	It is obviously a bilinear form. Symmetry holds as $\tr(AB) = \tr(BA)$ for square matrices. For positivity and definite, expand it at home ig?
+\end{ex}
+
+For $\F=\C$, we have to modify things a bit. Recall $z=x+yi$ has $|z| = \sqrt{x^2+y^2}$. Given
+$$v=\sum_{i=1}^n a_ie_i,a_i\in\C,v\in\C^n$$
+define
+$$||v|| = \sqrt{\sum_{i=1}^n |a_i|^2}$$
+Note that this extends $||\cdot||$ from $\R^n$ to $\C^n$. In terms of $\C^n\cong\R^{2n}$, one recovers $||\cdot||$ on $\R^{2n}$. But note that we \textbf{do not have}
+$$||v||^2 = v\cdot v$$
+
+\begin{ex}
+	Vector $v\in\C^2$ with $||v||=1, v \cdot v = 0$ is
+	$$v = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}$$
+\end{ex}
+
+Instead, we have $||v||^2 = v \cdot \bar{v}$
+
+$$\langle v,w \rangle = v\cdot\bar{w} = \sum_{i=1}^n a_i\bar{b}_i$$
+More generally,
+\begin{defn}
+	Let $V$ be a vector space on $\F = \C$. An inner product on $V$ is a map
+	$$\langle,\rangle: V \times V \rightarrow \C$$
+	with properties
+	\begin{enumerate}
+		\item $\langle \cdot,\cdot \rangle$ is linear in the \emph{first} argument
+		\item Conjugate symmetry: $\langle v,w \rangle = \overline{\langle w,v \rangle}$
+		\item Positivity: $\langle v,v \rangle \in \{0\}\cup\R^+$
+		\item Definite: $\langle v,v \rangle = 0$ iff $v=0$
+	\end{enumerate}
+\end{defn}
+
+Note that this extends $\langle \cdot,\cdot \rangle$ on $\R^n\subset\C^n$. It does not agree with $\langle \cdot,\cdot \rangle$ on $\R^{2n}\cong\C^n$.
+
+\begin{ex}
+	The first two properties imply
+	\begin{align*}
+		\langle v,w_1+w_2 \rangle &= \overline{\langle w_1+w_2, v \rangle} \\
+					  &= \overline{\langle w_1,v \rangle} + \overline{\langle w_2, v\rangle} \\
+					  &= \langle v,w_1 \rangle + \langle v,w_2 \rangle
+	\end{align*}
+	and
+	\begin{align*}
+		\langle v,\lambda w \rangle &= \overline{\langle \lambda w,v \rangle} \\
+					    &= \overline{\lambda} \langle v,w \rangle
+	\end{align*}
+	Hence it does not agree for the reals and complex sets.
+\end{ex}
+
+Note that many authors use different notations, where it is linear in the second argument, and conjugate linear in the first.
+
+\begin{ex}
+	In $V=\C^n$, $\langle v,w \rangle = v\cdot\overline{w}$
+\end{ex}
+
+\begin{ex}
+	For $V=\mathcal{P}_n(\C)$,
+	$$\langle p,q \rangle = \int_a^b p(x)\overline{q(x)}dx$$
+	Same definition for $V=\mathcal{P}(\C), V = C([a,b])$
+\end{ex}
+
+\begin{ex}
+	$V = \mathcal{P}_n(\C)$, choose distinct $z_0,\dots,z_n \in \C$
+	$$\langle p,q \rangle = \sum_{i=0}^n p(z_j)\overline{q(z_j)}$$
+\end{ex}
+
+\begin{ex}
+	$V = M_{n\times n}(\C)$,
+	$$\langle A,B \rangle = \tr(A\overline{B}^t)$$
+\end{ex}
+
+\section{Cauchy-Schwarz Inequality}
+
+$V$ inner product space ($\F=\R$ or $\C$), $\langle \cdot,\cdot \rangle$ inner product and $||\cdot||$ norm, we have
+\begin{align*}
+	||v+w||^2 &= \langle v+w, v+w \rangle \\
+		  &= \langle v,v \rangle + \langle v,w \rangle + \langle w,v \rangle + \langle w,w \rangle \\
+		  &= ||v||^2 + ||w||^2 + \langle v,w \rangle + \overline{\langle v,w \rangle} \\
+		  &= ||v||^2 + ||w||^2 + 2\Re\langle v,w \rangle
+\end{align*}
+
+\begin{defn}
+	Vectors $v,w\in V$ are orthogonal if $\langle v,w \rangle = 0$.
+\end{defn}
+
+Pythagorean theorem: If $v,w$ are orthogonal then
+$$||v+w||^2 = ||v||^2 + ||w||^2$$
+
+\emph{Orthogonality is dependent on choice of inner product!} \\
+For general vectos $v,w\in V$, with $w \neq 0$. We want to define proj$_w(v) = aw, a \in \F$ in such a way that
+$$\langle v-\text{proj}_w(v),w \rangle = 0$$
+We need to solve
+\begin{align*}
+	\langle v-aw, w \rangle &= 0 \\
+	\langle v,w \rangle - a\langle w,w \rangle &= 0 \\
+	a &= \frac{\langle v,w \rangle}{||w||^2}
+\end{align*}
+
+\begin{defn}
+	$$\text{proj}_w(v) = \frac{\langle v,w \rangle}{||w||^2}w$$
+\end{defn}
+
+So, any $v \in V$ decomposes as
+$$v = \text{proj}_w(v) + \left(v-\text{proj}_w(v)\right)$$
+
+a sum of a scalar multiple of $w$ and another vector orthogonal to $w$. By the Pythagorean theorem,
+$$||v||^2 = ||\text{proj}_w(v)||^2 + ||v-\text{proj}_w(v)||^2$$
+
+\begin{thm}
+	(Cauchy-Schwarz inequality). For $v,w \in V$, a complex or real inner product space,
+	$$|\langle v,w \rangle| \leq ||v|| ||w||$$
+	This is obvious for $w=0$, so we assume $w \neq 0$. By the Pythagorean theorem,
+	$$||v||^2 \geq ||\text{proj}_w(v)||^2 = \Big | \Big | \frac{\langle v,w \rangle}{||w||^2}w \Big | \Big |^2 = \frac{|\langle v,w \rangle|^2}{||w||^2}$$
+	and rearranging yields the inequality.
+\end{thm}
+
+Note that we used
+$$||\lambda v|| = |\lambda| ||v||$$
+
+\begin{ex}
+	$V=\C^n$, and the standard inner product $\langle v,w \rangle = v\cdot\overline{w}$
+	$$|a_1\overline{b}_1+\dots+a_n\overline{b}_n| \leq \left(\sum_{i=1}^n |a_i|^2\right)^{\frac{1}{2}}\left(\sum_{i=1}^n |b_i|^2\right)^{\frac{1}{2}}$$
+\end{ex}
+
+\begin{ex}
+	$V=\mathcal{P}(\C)$
+	$$\Big | \int_a^b p(x)\overline{q(x)}dx \Big | \leq \left(\int_a^b |p(x)|^2dx\right)^{\frac{1}{2}}\left(\int_a^b |q(x)|^2dx\right)^{\frac{1}{2}}$$
+\end{ex}
+
+\begin{ex}
+	$V = M_{n\times n}(\C)$, $\langle A,B \rangle = \tr(A\overline{B}^t)$
+	$$|\tr(A\overline{B}^t)| \leq \sqrt{\tr(A\overline{A}^t)}\sqrt{\tr(B\overline{B}^t)}$$
+\end{ex}
+
+Note that equality holds iff $v,w$ are linearly dependent, in which case
+$$||v-\text{proj}_w(v)||^2 = 0$$
+
+\begin{thm}
+	(Triangle inequality) For $v,w \in V$ (inner product space),
+	$$||v+w|| \leq ||v|| + ||w||$$
+\end{thm}
+
+For the proof, note that
+
+\begin{align*}
+	||v+w||^2 &= ||v||^2 + ||w||^2 + 2\Re\langle v,w \rangle \\
+		  &\leq ||v||^2 + ||w||^2 + 2|\langle v,w \rangle| \\
+		  &\leq ||v||^2 + ||w||^2 + 2||v|| ||w|| \\
+		  &= (||v||+||w||)^2
+\end{align*}
+
+\begin{defn}
+	For general complex or real vector spces, we define a norme $||\cdot||$ to be a map from $V$ to $\R$ such that
+	\begin{enumerate}
+		\item $||\lambda v|| = |\lambda| ||v||$
+		\item $||v||=0 \Leftrightarrow v=0$
+		\item $||v+w|| \leq ||v|| + ||w||$
+	\end{enumerate}
+\end{defn}
+
+Note that not every norm can form an inner product.
+
+\section{Orthogonal bases}
+
+Let $V$ be a real or complex inner product space. Suppose $v_1,\dots,v_k$ are nonzero, pairwise orthogonal. Then they are linearly independent. This is because
+$$\sum_{i=1}^k a_iv_i = 0$$
+Taking the inner product with $v_j$ on both sides give $a_j=0$. Then if dim $V=n$, any collection of pairwise orthogonal vectors $v_1,\dots,v_n$ forms a basis.
+
+\end{document}
