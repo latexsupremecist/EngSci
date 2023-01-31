@@ -80,7 +80,7 @@ Find the corresponding charge distribution in free space.}
 \begin{solution}
 	Since only the radial coordinate matters,
 	$$\vec{\nabla}\cdot\vec{A} = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2A_r\right)$$
-	Using Gauss' Law,
+	Using Gauss' Law for $r<a$,
 	\begin{align*}
 		\vec{\nabla}\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} \\
 		\frac{1}{r^2}\frac{d}{dr}\left(r^2E_r\right) &= \frac{\rho_0r}{\varepsilon_0a} \\
@@ -89,6 +89,14 @@ Find the corresponding charge distribution in free space.}
 	\end{align*}
 	Intensity cannot be infinite at $r=0$, hence $C=0$. Thus
 	$$\vec{E} = \frac{\rho r^2}{4\varepsilon_0a}\hat{a}_R$$
+	For $r>a$, using the integral form of Gauss' Law,
+	\begin{align*}
+		\oiint \vec{E}\cdot d\vec{S} &= \frac{Q}{\varepsilon_0} \\
+		E_r\times4\pi r^2 &= \int_0^\pi\int_0^{2\pi}\int_0^a \frac{\rho_0r}{\varepsilon_0a}r^2\sin\theta rdrd\phi d\theta \\
+		2r^2E_r &= \int_0^\pi\int_0^a \frac{\rho_0r^3\sin\theta}{\varepsilon_0a} drd\theta \\
+		2r^2E_r &= \rho_0\times\frac{a^4}{4}\times\frac{2}{\varepsilon_0a} \\
+		E_r &= \frac{\rho_0a^3}{4\varepsilon_0r^2} \\
+	\end{align*}
 \end{solution}
 
 \question{Assuming the electric field intensity is $E_x = 100x\hat{a}_x$, find the total electric charge contained inside}
@@ -122,6 +130,8 @@ Find the corresponding charge distribution in free space.}
 	$$\vec{E} = \frac{\rho_0[(r/3)-(r^3/5b^2)]}{\varepsilon_0}\hat{a}_R$$
 	for $0\leq R\leq b$. Obviously,
 	$$E_r = \frac{C}{r^2}$$
+	In the conducting shell, voltage is equal everywhere, so obviously
+	$$\vec{E} = 0$$
 	In any other case. Considering continuity at $r=b$,
 	$$\vec{E} = \frac{2\rho_0b^3}{15\varepsilon_0r^2}\hat{a}_R$$
 	for other cases.
