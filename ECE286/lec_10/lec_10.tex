@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 10}
+\begin{document}
+\maketitle
+
+\section{Expectation}
+
+For a random variable $X$ with distribution $f(x)$,
+$$E[X] = \int_{-\infty}^\infty xf(x)dx$$
+or
+$$E[X] = \sum_x xf(x)$$
+where we denote
+$$\mu = E[X]$$
+
+\section{Variance}
+Let $X$ be a random variable with $f(x)$. Then
+$$\text{var}(X) = E[(X-\mu)^2]$$
+which is
+$$\int_{-\infty}^\infty (x-\mu)^2f(x)dx$$
+or
+$$\sum_x (x-\mu)^2f(x)$$
+We write
+$$\sigma^2 = \text{var}(x)$$
+and define
+$$\sigma = \sqrt{\sigma^2}$$
+to be the standard deviation (which is non-negative).
+
+\begin{ex}
+	Consider the uniform distribution
+	$$f(x) = \begin{cases} \frac{1}{\alpha} & 0\leq x\leq \alpha \\ 0 & \text{else}\end{cases}$$
+	Then the mean is $\frac{\alpha}{2}$. The variance is then
+	\begin{align*}
+		\int_{-\infty}^\infty \left(x-\frac{\alpha}{2}\right)^2f(x)dx &= \int_0^\alpha (x^2-\alpha x + \alpha^2)\frac{1}{\alpha} dx \\
+									      &= \frac{\alpha^2}{3} - \frac{\alpha^2}{2} + \frac{\alpha^2}{4} \\
+									      &= \frac{\alpha^2}{12}
+	\end{align*}
+\end{ex}
+
+For $\alpha\rightarrow0$, we get the Dirac Delta function (not a function). \\
+
+A useful formula is
+\begin{align*}
+	\sigma^2 &= \int_{-\infty}^\infty (x-\mu)^2f(x)dx \\
+		 &= \int_{-\infty}^\infty (x^2 - 2\mu x + \mu^2)f(x)dx \\
+		 &= E[X^2] - 2\mu E[X] + \mu^2 \\
+		 &= E[X^2] - 2\mu^2 + \mu^2 \\
+		 &= E[X^2] - \mu^2
+\end{align*}
+
+\section{Covariance}
+
+Consider the random variables $X$ and $Y$, distribution $f(x,y)$ with means $\mu_x$ and $\mu_y$.
+
+\begin{defn}
+	The covariance of $X$ and $Y$ is
+	$$\sigma_{X,Y} = \text{cov}(X,Y) = E[(X-\mu_x)(Y-\mu_y)]$$
+\end{defn}
+
+Observe
+$$\text{var}(X) = \sigma_{xx}$$
+
+If $X$ is above its mean when $Y$ is below its mean, we get a negative covariance. Similarly, if $X$ and $Y$ are both above/below their means, we get a positive covariance. We can consider covariance as a correlation.
+
+\section{Correlation}
+
+\begin{defn}
+	The correlation coefficient is defined as
+	$$\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X\sigma_Y}$$
+	where
+	$$-1\leq \rho_{XY} \leq 1$$
+	Two variables are correlated if $\rho_{XY}\approx\pm1$, and uncorrelated if $\rho_{XY}\approx0$.
+\end{defn}
+
+
+\end{document}
