@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 10}
+\begin{document}
+\maketitle
+
+\section{Electric Field from Electric Potential}
+
+The second fundamental postulate for electrostatics is
+$$\vec{\nabla}\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}$$
+
+For electrostatics, there is no change with respect to time, meaning the electrostatic field is conservative. That is, it is the gradient of a scalar field, namely $V$.
+
+$$\vec{E} = -\vec{\nabla}V$$
+
+As $\vec{E}$ only depends on the gradient of $V$, it can have any reference (setting $V' = V + C$ also works). Conventionally, we define $V=0$ at $R=\infty$.
+
+\begin{ex}
+	Determine the electric field from a uniformly charged disk of radius, $a$, using the expression we had for $V(0,0,z)$ from the previous lecture \\
+	We have found that
+	$$V(0,0,z) = \frac{\rho_s}{2\varepsilon_0}\left(\sqrt{z^2+a^2}-|z|\right)$$
+	We know that
+	$$\vec{E} = -\vec{\nabla}V = -\frac{\partial V}{\partial x}\hat{a}_x - \frac{\partial V}{\partial y}\hat{a}_y -\frac{\partial V}{\partial z}\hat{a}_z$$
+	However, we do not have enough information to find $E_x$ and $E_y$! Luckily, in this case, we do not have to, as both vanish due to symmetry. Differentiating gives us
+	$$\vec{E}(0,0,z) = E_z\hat{a}_z = -\frac{\partial V}{\partial z}\hat{a}_z = \frac{\rho_s}{2\varepsilon_0}\left(1-\frac{z}{\sqrt{z^2+a^2}}\right)$$
+	for $z>0$
+\end{ex}
+\end{document}
