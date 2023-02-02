@@ -1,0 +1,226 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 3}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Find the electric field $\vec{E}$ at $r = a_B$ in the 1$s$ state of a hydrogen atom. Compare with the breakdown field of dry air, about $3 \times 10^6$ V/m.}
+
+\begin{solution}
+	Given radial symmetry, using Gauss' Law, we can treat total charge within $r=a_B$ to be a point charge. From a previous problem, we know the probability of an electron being in that region is $1-5e^{-2}$. Thus total charge in terms of $e$ is
+	$$1-(1-5e^{-2}) = 5e^{-2}$$
+	So
+	$$E = \frac{Q}{4\pi\varepsilon_0r^2} = \frac{5e^{-2}\times1.6\times10^{-19}}{\pi\varepsilon_0a_B^2} = 3.48\times10^{11}$$
+	Which is much greater than the breakdown field of dry air.
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Estimate the energy of the innermost electron of lead.}
+	\part{What is its most probable radius?}
+\end{parts}
+
+\begin{solution}
+	$$E = -82^2\times13.6 = -91\unit{keV}$$
+	$$R = \frac{a_B}{82} = 6.45\times10^{-13}$$
+\end{solution}
+
+\question{Answer the same question but for silver.}
+
+\begin{solution}
+	$$E = -47^2\times13.6 = -30\unit{keV}$$
+	$$R = \frac{a_B}{47} = 1.13\times10^{-12}$$
+\end{solution}
+
+\question{The ground state of sodium ($Z$ = 11) has two electrons in the 1$s$ level, two in the 2$s$, six in the 2$p$, and one in the 3$s$. Consider an excited state in which the outermost electron has been raised to a 3$d$ state (but all of the inner electrons are unchanged). Because the 3$d$ wave function is not very penetrating, you can treat the outer electron as if it were completely outside all the other electrons.}
+
+\begin{parts}
+	\part{In this approximation what is the potential-energy function $U(r)$ felt by the outer electron?}
+	\part{In the same approximation, what should be the energy of an electron in a 3$d$ state? Compare your answer with the oserved value of -1.52 eV. Why is the observed value lower than your estimate?}
+\end{parts}
+
+\begin{solution}
+	$$U(r) = -Z_{\text{eff}}\frac{ke^2}{r} = -\frac{ke^2}{r}$$
+	$$E = \frac{-13.6}{3^2} = -1.15\unit{eV}$$
+	The observed value is lower as the 3$d$ wave function sometimes penetrates, which leads to a greater $Z_{\text{eff}}$ and hence a lower energy.
+\end{solution}
+
+\question{The ground state of lithium ($Z$ = 3) has two electrons in the 1$s$ level and one in the 2$s$. Consider an excited state in which the outermost electron has been raised to the 3$p$ level. Since the 3$p$ wave functions are not very penetrating, you can estimate the energy of this electron by assuming it is completely outside both the other electrons.}
+
+\begin{parts}
+	\part{In this approximation what is the potential-energy function felt by the outermost electron?}
+	\part{In the same approximation write the formula for the energy of the outer electron if its principal quantum number is $n$.}
+	\part{Estimate the energy of the 3$p$ electron in this way and  compare with the observed value of -1.556\unit{eV}.}
+	\part{Repeat for the case tht the outer electron is in the 3$d$ level, whose observed energy is -1.513\unit{eV}.}
+	\part{Explain why the agreement is better for the 3$d$ level than for the 3$p$. Why is the observed energy for 3$p$ lower than thata for 3$d$?}
+\end{parts}
+
+\begin{solution}
+	$$U(r) = -Z_{\text{eff}}\frac{ke^2}{r} = -\frac{ke^2}{r}$$
+	In both cases, $Z_{\text{eff}} = 1$, so
+	$$E = \frac{-13.6}{3^2} = -1.15\unit{eV}$$
+	Similarly, the error comes from penetration, and the 3$p$ electron penetrates deeper.
+\end{solution}
+
+\begin{parts}
+	\part{How many electrons can be accomodated in an electron energy level with $l=2$?}
+	\part{How many if $l=3$?}
+	\part{Give a formula (in terms of $l$) for the number of electrons that can be accommodated in a level with arbitrary $l$.}
+\end{parts}
+
+\begin{solution}
+	For $l=2$, $m$ ranges from -2 to 2. For each $l,m$ pair, there are 2 spin states, so there is a total of $5\times2=10$ electrons. For $l=3$, we similarly have $7\times2=14$ electrons. In general, it is obvious that there are
+	$$(2l+1)\times2 = 4l+2$$
+	electrons.
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Imagine an electron (spin $s=\frac{1}{2}$) confined in a one-dimensional rigid box. What are the degeneracies of its energy levels?}
+\part{Make a sketch of the lower few levels, showing their occupancy for the lowest state of six electrons confined in the same box.}
+\end{parts}
+
+\begin{solution}
+	2. Note that
+	$$E = \frac{\pi^2\hbar^2n^2}{2ma^2}$$
+	so energy is proportional to $n^2$, and the lowest state of sixe electrons are where $n=1,2,3$.
+\end{solution}
+
+\question{Imagine several identical spin-half particles all confined inside the two-dimensional rigid square box. Assume that the particles do not interact with one another.}
+
+\begin{parts}
+	\part{What are the lowest four allowed energies for any one particle? How many particles can be accommodated in each of these levels, given that they obey the Pauli exclusion principle?}
+	\part{Assuming that there are six particles in the box, draw an energy-level diagram showing the distribution of particles that gives the state of lowest energy for the system as a whole.}
+	\part{Do the same for the case where there are ten particles in the box.}
+\end{parts}
+
+\begin{solution}
+	$$E = E_0(n_x^2 + n_y^2 + n_z^2)$$
+	Hence the lowest four allowed energies are $2E_0, 5E_0, 8E_0$ and $10E_0$ respectively with $2, 4, 2, 4$ particles, given 2 spin states.
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Consider the helium atom to be a fixed point nucleus (charge 2$e$) with two spin-half fermion electrons. What is the degeneracy of its ground state?}
+	\part{Suppose instead that the electron was a spin-half boson. What then would be the degeneracy of the He atom's ground state?}
+	\part{What would the degeneracy be if the two electrons were somehow distinguishable? The different numbers that you should get in the three parts of this problem are examples of the different "statistics" of fermions, bosons, and distinguishable particles.}
+\end{parts}
+
+\begin{solution}
+	For fermion electrons, the degeneracy is 1, as spin is $\pm\frac{1}{2}$, representing the only ground state. For spin-half bosons, the degeneracy is 3, corresponding to both up spins, both down, and one of each. If they were distinguishable, then there would $2\times2=4$ states corresponding to all possibilities of spin.
+\end{solution}
+
+\question{Draw four energy-level diagrams to illustrate the ground states of the following atoms: $_5$B, $_9$F, $_{10}$Ne, $_{11}$Na.}
+
+\begin{solution}
+	B: $1s^22s^22p^1$ \\
+	F: $1s^22s^22p^5$ \\
+	Ne: $1s^22s^22p^6$ \\
+	Na: $1s^22s^22p^63s^1$
+\end{solution}
+
+\question{Consider the graph of ionization energy against atomic number $Z$. It is clear that within each shell, the ionization energy tends to increase with $Z$. however, there is a small drop as one moves from $_4$Be to $_5$B. Explain this drop.}
+
+\begin{solution}
+	Ionization energy increases as covering is usually imperfect, so there is a larger $Z_{\text{eff}}$ that binds electrons closer to the nucleus, hence they require more energy for ionization. However, the additional electron in $_5$B is in the 2$p$ shell, which is further away from the other electrons in the 1$s$ or 2$s$ shells. Therefore, due to this greater distance from the nucleus, there is a smaller attraction force, lowering ionization energy.
+\end{solution}
+
+\question{The first ionization energy of an atom is the minimum energy needed to remove one electron. For helium, this is 24.6 eV. The second ionization energy is the additional energy required to remove a second electron.}
+
+\begin{parts}
+	\part{Calculate the second ionization energy of helium.}
+	\part{What is the total binding energy of helium?}
+\end{parts}
+
+\begin{solution}
+	He$^+$ is a hydrogen like ion, so
+	$$E = Z^2E_R = 4\times13.6 = 54.4\unit{eV}$$
+	The total binding energy is hence
+	$$24.6 + 54.4 = 79.0\unit{eV}$$
+\end{solution}
+
+\question{In this question you will estimate the total energy of a helium atom.}
+
+\begin{parts}
+	\part{What would be the total energy of a helium atom in the approximation where you ignore completely the electrostatic force between the two electrons?}
+	\part{Your answer should be negative and too negative since you ignored the positive potential energy due to the repulsion between the two electrons. To get a rough estimate of this additional potential energy, imagine the electrons to be in the first Bohr orbit, with radius $\frac{a_B}{2}$. To minimize thier energy, the two electrons would move around the same circular orbit, always on opposite sides of the nucleus, a distance of $a_B$ apart. Use this semiclassical model to estimate the potential energy of the two electrons. Combine this to estime the total energy of the He atom. Compare with the observed value of -79.0 eV.}
+\end{parts}
+
+\begin{solution}
+	Total energy is twice of He$^+$, which is $54.4\times2 = -109\unit{eV}$. The positive potential energy is
+	$$\frac{e^2}{4\pi\varepsilon_0a_B} =  27.2\unit{eV}$$
+	Subtracting yields -81.6 eV, which is closer to the observed value.
+\end{solution}
+
+\question{Use the energy-level diagram to write down the electron configurations of $_{30}$Zn, $_{35}$Br, $_{54}$Xe, $_{85}$At, $_{87}Fr$.}
+
+\begin{solution}
+	Zn: $1s^22s^22p^63s^23p^64s^23d^{10}$ \\
+	Br: $1s^22s^22p^63s^23p^64s^23d^{10}4p^5$ \\
+	Xe: $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^6$ \\
+	At: $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^{10}6p^5$ \\
+	Fr: $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^{10}6p^67s^1$
+\end{solution}
+
+\question{Explain the abrupt drops in the ionization energies between Cd and In and between Hg and Tl.}
+
+\begin{solution}
+	The last electron in In occupies the 5$p$ level, which has a higher energy than 4$d$ (last electron in Cd). Hence there is an abrupt drop. Similarly, the last electron in Tl occupies the 6$p$ level, while that of Hg occupies the 5$d$ level.
+\end{solution}
+
+\question{Write down the electron configurations for each of the six alkali-metal atoms.}
+
+\begin{solution}
+	Li: $1s^22s^1$ \\
+	Na: $1s^22s^22p^63s^1$ \\
+	K: $1s^22s^22p^63s^23p^64s^1$ \\
+	Rb: $1s^22s^22p^63s^23p^64s^23d^104p^65s^1$ \\
+	Cs: $1s^22s^22p^63s^23p^64s^23d^104p^65s^24d^{10}5p^66s^1$ \\
+	Fr: $1s^22s^22p^63s^23p^64s^23d^104p^65s^24d^{10}5p^66s^24f^{14}5d^{10}6p^67s^1$
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Find the ground-state configuration of the following atoms: $_{30}$Zn, $_{80}$Hg, $_{37}$Rb, $_{55}$Cs.}
+	\part{What is the total angular momentum of each of these atoms?}
+\end{parts}
+
+\begin{solution}
+	Zn: $1s^22s^22p^63s^23p^64s^23d^{10}$ \\
+	Hg: $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^{10}$ \\
+	Rb: $1s^22s^22p^63s^23p^64s^23d^104p^65s^1$ \\
+	Cs: $1s^22s^22p^63s^23p^64s^23d^104p^65s^24d^{10}5p^66s^1$ \\
+	For Zn and Hg, they are all closed-shell, so all angular momenta cancel out to 0. For Rb and Cs, they are all closed-shell plus one, so all angular momenta apart from the final electron in the $s$ orbital cancel out, leaving a total angular momentum of the spin of that electron, $s=\frac{1}{2}$.
+\end{solution}
+
+\question{Write down the full electron configuratiosn of $_3$Li, $_{10}Ne$, $_{12}$Mg, $_{19}$K, $_{28}$Ni, $_{48}$Cd.}
+
+\begin{solution}
+	Li: $1s^22s^1$ \\
+	Ne: $1s^22s^22p^6$ \\
+	Mg: $1s^22s^22p^63s^2$ \\
+	K: $1s^22s^22p^63s^23p^64s^1$ \\
+	Ni: $1s^22s^22p^63s^23p^64s^23d^8$ \\
+	Cd: $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}$
+\end{solution}
+
+\question{Find the names, atomic numbers, and full electron configurations of the following atoms: Ga, Xe, W, At, Md, Sg.}
+
+\begin{solution}
+	Ga: Gallium, 31, $1s^22s^22p^63s^23p^64s^23d^{10}4p^1$ \\
+	Xe: Xenon, 54, $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^6$ \\
+	W: Tungsten, 74, $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^4$ \\
+	At: Astatine, 85, $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^{10}6p^5$ \\
+	Md: Mendelevium, 101, $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^{10}6p^67s^25f^{13}$ \\
+	Sg: Seaborgium, 106, $1s^22s^22p^63s^23p^64s^23d^{10}4p^65s^24d^{10}5p^66s^24f^{14}5d^{10}6p^67s^25f^{14}6d^4$
+\end{solution}
+
+\end{questions}
+\end{document}
