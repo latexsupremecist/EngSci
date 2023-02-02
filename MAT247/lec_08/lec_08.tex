@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 8}
+\begin{document}
+\maketitle
+
+\section{Orthogonal bases and Gram-Schmidt}
+Consider $V$, a complex or real inner product space with
+$$\langle \cdot,\cdot \rangle: V \times V \rightarrow \F$$
+
+Recall if $v_1,\dots,v_n\in V$ are pairwise orthogonal, then they are linearly independent.
+
+\begin{defn}
+	A basis on an inner product space $V$ is orthonormal if
+	$$\langle v_i,v_j \rangle = \begin{cases} 0 & i\neq j \\ 1 & i=j \end{cases}$$
+\end{defn}
+
+\begin{ex}
+	The standard basis of $\F^n$ is an orthogonal basis.
+\end{ex}
+
+Note that any orthogonal basis can be made orthonormal by
+$$v'_i = \frac{v_i}{||v_i||}$$
+
+Supposed $v_1,\dots,v_n$ is an orthonormal basis of $V$. Then if
+$$v = \sum_{i=1}^n a_iv_i$$
+Its coefficients are
+$$a_i = \langle v,v_i \rangle$$
+Thus
+$$v = \sum_{i=1}^n \langle v,v_i \rangle v_i$$
+Then if $w \in V$
+$$\langle v,w \rangle = \sum_{i=1}^n \langle v,v_i\rangle \langle v_j,w \rangle$$
+A special case is given by
+$$||v||^2 = \sum_{i=1}^n |\langle v,v_i \rangle|^2$$
+So for $v=\sum a_iv_i$ and $w = \sum b_iv_i$
+$$\langle v,w \rangle = \sum_i a_j\overline{b}_j$$
+and
+$$||v||^2 = \sum_i |a_i|^2$$
+
+Suppose $y_1,\dots,y_n \in V$ is any basis of $V$. Then
+$$y_k = \sum_{i=1}^n \langle y_k,v_i \rangle v_i$$
+
+So the change of basis matrix is given by
+$$A_{ij} = \langle y_j,v_i \rangle$$
+
+Consider the standard inner prodct between the $j$th and $k$th column.
+$$\sum_{i=1}^n \langle y_j,v_i \rangle \overline{\langle y_k,v_i \rangle} = \sum_{i=1}^n \langle y_j,v_i \rangle \langle v_i, y_k \rangle = \langle y_j,y_k \rangle$$
+Where the last equality is shown earlier. \\
+So we see the basis $y_1,\dots,y_n$ is orthonormal iff the columns of the transformation matrix are orthonormal.
+
+\section{Gram-Schmidt}
+
+Suppose $y_1,\dots,y_n$ is any basis of an inner product space. Then this can be turned to an orthogonal basis $u_1,\dots,u_n$ (and hence an orthonormal basis) uniquely using the Gram-Schmidt procedure such that
+$$\text{span}\{u_1,\dots,u_k\} = \text{span}\{y_1,\dots,y_k\} \forall k\in n$$
+and $u_k$ is a linear combination of $y_1,\dots,y_k$ with coefficient of $y_k=1$. (The second implies the first). \\
+We prove this by induction. \\
+FOr $k=1$, $u_1=y_1$ suffices. For the induction step, we put
+$$u_{k+1} = y_{k+1} - \sum_{i=1}^k \text{proj}_{u_i}(y_{k+1})$$
+Now for $j\leq k$,
+\begin{align*}
+		\langle u_{k+1},u_j \rangle &= \langle y_{k+1},u_j \rangle - \langle \text{proj}_{u_j} (y_{k+1}),u_j \rangle \\
+		&= \langle y_{k+1},u_j \rangle - \left\langle \frac{\langle y_{k+1},u_j \rangle}{||u_j||^2}u_j,u_j \right\rangle \\
+		&= \langle y_{k+1},u_j \rangle - \frac{\langle y_{k+1},u_j \rangle}{||u_j||^2}\langle u_j,u_j \rangle \\
+		&= 0
+\end{align*}
+
+Uniqueness: suppose $y_{k+1} + a_iu_i + \dots + a_ku_k$ is orthogonal to $u_j$, $j\leq k$. Then
+$$0 = \langle y_{k+1} + a_1u_1 + \dots + a_ku_k,u_j \rangle = \langle y_{k+1},u_j \rangle + a_j||u_j||^2$$
+So
+$$a_j = -\frac{\langle y_{k+1},u_j \rangle}{||u_j||^2$$
+
+This produces an orthogonal basis $u_1,\dots,u_n$, and an orthonormal basis can easily be obtained. We can also normalise each step in the process. \\
+
+Remark: The fact that $\text{span}\{u_1,\dots,u_n\} = \text{span}\{y_1,\dots,y_n\}$ for all $k$ means the change of basis matrix is upper triangular. The diagonals are 1 by construction. Therefore, it has a determinant of 1.
+
+\begin{ex}
+	Let $V = \mathcal{P}(\R)$ be the real polynomials with
+	$$\langle p,q \rangle = \int_0^1 p(x)q(x)dx$$
+	Then $\mathcal{P}(\R)$ has the standard basis $p_i(x) = x^i$ (starts from 0). The Gram-Schmidt process gives us the orthogonal basis $q_0,q_1,\dots$.
+	$$q_0(x) = 1$$
+	Then
+	$$q_1 = p_1 - \text{proj}_{q_0}(p_1) = x - \frac{1}{2}$$
+	$$q_2 = p_2 - \text{proj}_{q_0}(p_2) - \text{proj}_{q_1}(p_2) = x^2 - \frac{1}{3} - (x - \frac{1}{2}) = x^2 - x + \frac{1}{6}$$
+\end{ex}
+
+Remarks: the more standard convention is to normalise it such that the constant is $\pm1$. This gives the shifted Legendre polynomials.
+$$P_0(x) = 1, P_1(x) = 2x-1, P_2(x) = 6x^2-6x+1, P_3(x) = 20x^3 - 30x^2 + 12x - 1,\dots$$
+
+\end{document}
