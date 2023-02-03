@@ -1,0 +1,32 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 4}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Twelve people are given two identical speakers, which they are asked to listen to for differences, if any. suppose that these people answer simply by guessing. Find the probability that three people claim to have heard a difference between two speaker.}
+
+\begin{solution}
+	$$\frac{\binom{12}{3}}{2^{12}} = \frac{55}{1024} = 0.0537$$
+\end{solution}
+
+\question{In testing a certain kind of truck tire over rugged terrain, it is found that 25\% of the trucks fail to complete the test run without a blowout. Of the next 15 trucks tested, find the probability that}
+
+\begin{parts}
+	\part{from 3 to 6 have blowouts}
+	\part{fewer than 4 have blowouts}
+	\part{more than 5 have blowouts}
+\end{parts}
+
+\begin{solution}
+	The probability that $n$ trucks have blowouts is
+	$$0.25^n\times0.75^{15-n} \binom{15}{n}$$
+	Summing gives 
+
+\end{solution}
+
+\end{questions}
+\end{document}
