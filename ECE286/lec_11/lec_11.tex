@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 11}
+\begin{document}
+\maketitle
+
+\section{Expectation Value}
+
+\begin{defn}
+	The expectation value of a function is
+	$$E[g(X)] = \int_{-\infty}^\infty g(x)f(x)dx$$
+	or
+	$$E[g(X)] = \sum_x g(x)f(x)$$
+\end{defn}
+
+\begin{defn}
+	Similarly, for functions with two variables,
+	$$E[g(X,Y)] = \int_{-\infty}^\infty \int_{-\infty}^\infty g(x,y)f(x,y)dydx$$
+	or
+	$$E[g(X,Y)] = \sum_x \sum_y g(x,y)f(x,y)$$
+\end{defn}
+
+\section{Expectiations of linear combinations of Random Variables}
+
+Recall linearity.
+
+\begin{defn}
+	$p(x)$ is linear if
+	$$p(ax+y) = ap(x) + p(y)$$
+\end{defn}
+
+Suppose $X$ and $Y$ are random variables with joint distribution $f(x,y)$ and marginals $g(x)$ and $h(y)$. The expectation of $aX+Y$ is
+\begin{align*}
+	E[aX+Y] &= \int_{-\infty}^\infty \int_{-\infty}^\infty (ax+y)f(x,y)dxdy \\
+		&= a\int_{-\infty}^\infty \int_{-\infty}^\infty xf(x,y)dxdy + \int_{-\infty}^\infty \int_{-\infty}^\infty yf(x,y)dxdy \\
+		&= a\int_{-\infty}^\infty xg(x)dx + \int_{-\infty}^\infty yh(y)dy \\
+		&= aE[X] + E[Y]
+\end{align*}
+
+Then expectation is linear.
+
+\section{Variance}
+
+Suppose $X$ and $Y$ are independent. Then $f(x,y)=g(x)h(y)$. Observe
+\begin{align*}
+	E[XY] &= \int_{-\infty}^\infty \int_{-\infty}^\infty xyf(x,y)dxdy \\
+	      &= \int_{-\infty}^\infty xg(x)dx\int_{-\infty}^\infty yh(y)dy \\
+	      &= E[X]E[Y]
+\end{align*}
+
+Since covariance
+$$\sigma_{XY} = E[XY] - E[X]E[Y]$$
+Independence implies correlation is 0. However, uncorrelated does not imply indepnedence.
+
+\begin{ex}
+	Consider random variables $X$ and $Y$ with joint probability density function
+	$$f(x,y) = \begin{cases} \frac{1}{\pi} & x^2+y^2\leq1 \\ 0 & \text{else}\end{cases}$$
+	Then
+	\begin{align*}
+		g(x) &= \int_{-\infty}^\infty f(x,y)dy \\
+		     &= \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{1}{\pi}dy \\
+		     &= \frac{2}{\pi}\sqrt{1-x^2}
+	\end{align*}
+	And similarly for $y$ by symmetry. However,
+	$$g(x)h(y)\neq f(x,y)$$
+	so the are not independent. Intuitively it makes sense, as the value of $x$ limits the range of $y$ for which $f$ is nonzero.
+	\begin{align*}
+		E[XY] &= \int_{-\infty}^\infty \int_{-\infty}^\infty xyf(x,y)dxdy \\
+		      &= \int_{-1}^1 \int_{-1}^1 xyf(x,y)dxdy \\
+		      &= \int_0^1 \int_0^1 xyf(x,y)dxdy + \int_{-1}^0 \int_{-1}^0 xyf(x,y)dxdy \\
+		      &+ \int_0^1 \int_{-1}^0 xyf(x,y)dxdy + \int_{-1}^0 \int_0^1 xyf(x,y)dxdy \\
+		      &= 0
+	\end{align*}
+	Where the terms cancel out.
+	\begin{align*}
+		E[X] &= \int_{-\infty}^\infty xg(x)dx \\
+		     &= \int_{-1}^1 xg(x)dx \\
+		     &= \int_{-1}^0 xg(x)dx + \int_0^1 xg(x)dx \\
+		     &= 0
+	\end{align*}
+	And similarly for $E[Y]$ by symmetry. Then
+	$$\sigma_{XY} = 0$$
+	even if $X$ and $Y$ are not independent.
+\end{ex}
+
+\begin{ex}
+	\begin{align*}
+		\sigma^2_{aX+bY+c} &= E[(aX+bY+c - E[aX+bY+c])^2] \\
+				   &= E[(aX+bY+c - (a\mu_X + b\mu_Y + c))^2] \\
+				   &= E[(a(X-\mu_x) + b(Y-\mu_Y))^2] \\
+				   &= E[a^2(X-\mu_x)^2 + b^2(Y-\mu_Y)^2 + 2ab(X-\mu_X)(Y-\mu_Y)] \\
+				   &= a^2\sigma_X^2 + b^2\sigma_Y^2 - 2ab\sigma_{XY}^2
+	\end{align*}
+\end{ex}
+\end{document}
