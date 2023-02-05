@@ -1,0 +1,137 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 4}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{If an ionic molecule results from the transfer of exactly one electron from one atom to the other, it should have a dipole moment $p = eR_0$, where $R_0$ is the bond length. Predict the dipole moments of KCl, LiF, NaBr, and NaCl in coulomb meters. The observed values are, respectively, 3.42$\times10^{-29}, 2.11\times10^{-29},3.04\times10^{-29}$, and $3.00\times10^{-29}$ C$\cdot m$; ; express these as percentages of your predicted values.}
+
+\begin{solution}
+	KCl: $0.27e = 4.32\times10^{-29}, 79.2\%$ \\
+	LiF: $0.16e = 2.56\times10^{-29}, 82.4\%$ \\
+	NaBr: $0.25e = 4.00\times10^{-29}, 76.0\%$ \\
+	NaCl: $0.24e = 3.84\times10^{-29}, 78.1\%$
+\end{solution}
+
+\question{If a diatomic molecule is ionically bonded by the complete transfer of one electron, its dipole moment should be $p = eR_0$ . Given the data in the table that follows, discuss the extent to which the molecules concerned are ionically bonded.}
+
+\begin{solution}
+	NaF: $2.72\times10^{-29}\div(0.193\times10^{-9}e) = 88.1\%$ \\
+	HF: $6.07\times10^{-30}\div(0.0917\times10^{-9}e) = 41.4\%$ \\
+	CO: $3.66\times10^{-31}\div(0.113\times10^{-9}e) = 2.02\%$
+\end{solution}
+
+\question{As a simple classical model of the covalent bond, suppose that an H$_2$ molecule is arranged symmetrically. Write down the total potential energy $U$ of the four charges and, treating the protons as fixed, find the value of the electrons’ separation $s$ for which $U$ is a minimum. Show that the minimum value is $U_{\text{min}} \approx 4.2 \frac{ke^2}{R_0}$.}
+
+\begin{solution}
+	Using superpostion, we get
+	$$U = \frac{ke^2}{R_0} + 4\times\frac{ke^2}{\sqrt{R_0^2+s^2}/2} + \frac{ke^2}{s} = ke^2\left(\frac{1}{R_0} - \frac{8}{\sqrt{R_0^2+s^2}} + \frac{1}{s}\right)$$
+	Differentiating and setting to 0,
+	$$s = \frac{R_0}{\sqrt{3}}$$
+	Which gives
+	$$U \approx -4.2\frac{ke^2}{R_0}$$
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Octane, C$_8$H$_{18}$ is called a straight chain hydrocarbon because its carbon atoms are arranged in a straight line. Draw a picture of the octane molecule showing all bonds.}
+	\part{Do the same for the straight-chain propane, C$_3$H$_8$.}
+\end{parts}
+
+\begin{solution}
+	No u
+\end{solution}
+
+\question{Make a sketch of ethane C$_2$H$_6$.}
+
+\begin{solution}
+	"
+\end{solution}
+
+\question{Make a sketch of acetylene C$_2$H$_2$.}
+
+\begin{solution}
+	"
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Assuming that the following pairs of elements combine covalently, predict the formulas of the resulting molecules.}
+	\part{Use the observed dipole moments and bondlengths to confirm that these molecules are predominantly covalent.}
+\end{parts}
+
+\begin{solution}
+	FCl: $3.0\times10^{-30}\div(0.16\times10^{-9}e) = 11.7\%$ ionic \\
+	BrCl: $1.9\times10^{-30}\div(0.21\times10^{-9}e) = 5.65\%$ ionic \\
+	ICl: $4.1\times10^{-30}\div(0.23\times10^{-9}e) = 11.1\%$ ionic
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{What should be the valence of Be in its ground state ($1s^22s^2$)?}
+	\part{The 2$s$ and 2$p$ levels are close together, and when another atom is nearby, it is often energetically favorable to promote one of the 2$s$ electrons to a 2p state, so that a bond can form. What is the valence of Be in the configuration.}
+	\part{Predict the chemical formulas for the compounds of Be with fluorine, with oxygen, and with nitrogen.}
+\end{parts}
+
+\begin{solution}
+	2, 3, BeF$_2$, BeO, Be$_3$N$_2$.
+\end{solution}
+
+\question{Consider the H$_2^+$ wavefunctions $\psi_\pm$. In that discussion we did not worry about normalization, but $\psi_\pm$ should strictly have been defined as $\psi_+ = B(\psi_1 + \psi_2)$ and $\psi_- = C(\psi_1 - \psi_2)$, where $B$ and $C$ are normalization constants needed to ensure that $\int |\psi|^2dV = 1$.}
+
+\begin{parts}
+	\part{If $\psi_1$ and $\psi_2$ do not overlap, show that $B=C=\frac{1}{\sqrt{2}}$.}
+	\part{If $\psi_1$ and $\psi_2$ overlap a little, argue that $B$ is a little less than $\frac{1}{\sqrt{2}}$ and hence that at the midpoint between the two protons, $|\psi_+|^2$ is just a little less than $2|\psi_1|^2$. This proves our claim that $\psi_+$ concentrates the probability density between the two protons.}
+	\part{Argue similarly that $C$ must be a little larger than $\frac{1}{\sqrt{2}}$.}
+\end{parts}
+
+\begin{solution}
+	If they do not overlap, $\psi_1\psi_2=0$. Normalising,
+	\begin{align*}
+		\int_{-\infty}^\infty B^2(\psi_1^2 + \psi_2^2 + 2\psi_1\psi_2) dx &= 1 \\
+		B^2\left(\int_{-\infty} \psi_1^2 dx + \int_{-\infty}^\infty \psi_2^2 dx\right) &= 1 \\
+		2B^2 &= 1 \\
+		B &= \frac{1}{\sqrt{2}}
+	\end{align*}
+	Similarly we get the same result for $C$. Note that there is a hidden term
+	$$2\int_{-\infty}^\infty \psi_1\psi_2 dx$$
+	added in the first case and subtracted in the second. Therefore, if the wavefunctions overlap a little, the term becomes slightly positive. Then
+	$$(2+\epsilon)B^2 = 1$$
+	which makes $B$ slightly less. Similarly, it would make $C$ slightly larger. Then at the midpoint,
+	$$|\psi_+|^2 \approx 4B^2|\psi_1|^2$$
+	Where $4B^2$ is slightly less than 2.
+\end{solution}
+
+\question{The water molecule is partially ionic, in that an electron is partially transferred from each hydrogen to the oxygen, where $q$ denotes the magnitude of each of the two charges transferred.}
+
+\begin{parts}
+	\part{Write down the electric dipole moment $p$ of the H$_2$O molecule in terms of the charge $q$, the H-O bond length $d$, and the angle $\theta$.}
+	\part{The measured values are $p = 6.46 \times 10^{-30} \unit{C.m}, d = 0.0956\unit{nm}$ and $\theta = 104.5^\circ$. Find the magnitude $q$ of the charge transferred and express it as a fraction of the electron charge $e$.}
+\end{parts}
+
+\begin{solution}
+	$$p = 2qd\cos\frac{\theta}{2}$$
+	Rearranging, we get
+	$$q = \frac{p}{2d\cos\frac{\theta}{2}} = 5.52 \times 10^{-20} = 0.345e$$
+\end{solution}
+
+\question{Prove that the angle between any two bonds in a molecule like CH$_4$ is 109.5$^\circ$.}
+
+\begin{solution}
+	Consider a cube. Starting from any vertex, one can construct a tetrahedron by drawing diagonals joining opposite vetices on every face. Then the centre of the tetrahedron is obviously the centre of the cube. Letting cube length be $a$, bond length is $\frac{\sqrt{3}}{2}a$, and the line joining any two bonds has a length of $\sqrt{2}a$. Using the law of cosines,
+	\begin{align*}
+		2a^2 &= \frac{3}{4}a^2 + \frac{3}{4}a^2 - 2\times\frac{3}{4}a^2\cos\theta \\
+		\cos\theta &= -\frac{1}{3} \\
+		\theta &= 109.5^\circ
+	\end{align*}
+	Where we take the smaller $\theta$.
+\end{solution}
+
+\end{questions}
+\end{document}
