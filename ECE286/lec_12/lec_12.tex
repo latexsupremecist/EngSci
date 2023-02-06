@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 12}
+\begin{document}
+\maketitle
+
+\section{Binomial Distribution}
+
+For $n$ coin flips with $P(H) = p$, we want the probability of getting $k$ heads in $n$ flips.
+$$b(k;n,p) = \binom{n}{k}p^k(1-p)^{n-k}$$
+
+The latter part $p^k(1-p)^{n-k}$ gives the probability of $k$ heads out of $n$ flips in a particular sequence. The first part $\binom{n}{k}$ gives the total number of such sequences. Since con flips are independent, we simply multiply both to obtain the desired probability.
+
+\section{Hypergeometric Distribution}
+
+We assume replacement. We define multinomials similar to binomals, but with more states than 2 (e.g. a deck of 52 cards instead of a coin with 2 sides).
+
+\begin{ex}
+	Given 52 cards, we want the probability of getting 3 red cards in 5 draws. \\
+	There are $\binom{52}{5}$ 5 card hands. The number of 5 card hands is $\binom{26}{3}\times\binom{26}{2}$, the number of ways to choose 3 red cards then 2 black cards. The required probability is then
+	$$\binom{26}{3}\binom{26}{2}\div\binom{52}{5}$$
+\end{ex}
+
+With $N$ objects, $n$ samples, $k$ successes out of $N$, then the chances of $x$ successes and $n-x$ failures is
+
+$$h(x;N,n,k) = \frac{\binom{k}{x}\binom{n-k}{n-x}}{\binom{N}{n}}$$
+
+This is valid for $0\leq x \leq n, x \leq k, x \geq n-(N-k)$. Then
+$$\mu = \frac{nk}{N}$$
+and
+$$\sigma^2 = \frac{kn(N-n)}{N(N-1)}\left(1-\frac{k}{N}\right)$$
+
+\section{Negative Binomial}
+
+We want to know how many times we have to flip a coin to get $k$ heads.
+
+$$b*(x;k,p) = \binom{x-1}{k-1}p^k(1-p)^{n-k}$$
+
+Similar to the binomial case, $\binom{x-1}{k-1}$ gives the total number of sequences, and $p^k(1-p)^{n-k}$ gives the total number of sequences. \\
+
+\section{Geometric Distribution}
+
+It is a negative binomial with $k=1$, i.e. how many trials are needed for the first success. Then
+$$g(x;p) = p(1-p)^{k-1}$$
+
+The mean and variance are
+
+$$\mu = \frac{1}{p}$$
+$$\sigma^2 = \frac{1-p}{p^2}$$
+
+\begin{ex}
+	We are playing a game against someone better. The probability of lising is 0.9. Then the distribution is
+	$$g(x) = 0.1(0.9)^{x-1}$$
+	And the first win is expected on game 10.
+\end{ex}
+
+\end{document}
