@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 12}
+\begin{document}
+\maketitle
+
+\section{Dielectrics and Polarization}
+
+\begin{ex}
+	A point charge $2Q$ is placed at the center of an air-filled spherical metallic shell, charged with $Q$ and situated in air. The inner and outer radii of the shell are $a$ and $b$ ($a<b$). What is the total charge on the inner and outer surface of the shell, respectively? Find the potential of the shell. \\
+	Consider a Gaussian shell at $a < R < b$. Then $\vec{E} = 0$, as it is in a conductive material. Then using Gauss' Law, the enclosing charge is 0, so total charge on the inner surface has to be $-2Q$. Then the charge on the outer surface is $3Q$, such that total charge in the shell is $2Q$.
+\end{ex}
+
+\subsection{Polarization}
+
+Consider the effect of a static electric field on he atoms within an insulating material. Then an $\vec{E}$ field inside the insulator polarises the bound atoms. The insulator becomes a dielectric, with a reduced field
+$$\vec{E}_{\text{TOT}} = \vec{E}_0 - \vec{E}_p$$
+
+The polarized atoms can be approximated with an electric dipole
+
+$$\vec{p} = Q\vec{d}$$
+
+where it points from the $-Q$ charge to $Q$ charge by definition ($Q\geq0$). We the use the polarization vector
+$$\vec{P} = N\vec{p}$$
+
+In this course, we limit ourselves to dielectrics that are linear, isotropic, and homogeneous.
+
+$$\vec{P} = \varepsilon_0 \chi_e \vec{E}$$
+
+where $\chi_e$ is electric susceptibility. Alternatively, we have
+$$\varepsilon_r = \chi_e + 1 \Rightarrow \vec{P} = \varepsilon_0(\varepsilon_r - 1)\vec{E}$$
+
+Reduction in $\vec{E}$ is due to the polarization electric field intensity which results from the bound charge density
+
+$$\vec{E}_{\text{TOT}} = \vec{E}_0 - \vec{E}_p = \frac{1}{\varepsilon_0} (\rho_s - \rho_{sb}$$
+
+where $\rho_s$ is the charge density from the applied $\vec{E}_0$ outside the insulator, and $\rho_{sb}$ is the charge density in the insulator due to polarisation. In fact, one can show
+
+$$\rho_{sb} = \vec{P}\cdot\hat{n}$$
+
+where $hat{n}$ is the normal of the surface. If that is parallel to the electric field, then
+
+$$|rho_{sb} = |\vec{P}| \Rightarrow \vec{E}_{\text{TOT}} - \vec{E} = \frac{\vec{E}_0}{\varepsilon_r}$$
+\end{document}
