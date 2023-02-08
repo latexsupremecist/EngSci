@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 13}
+\begin{document}
+\maketitle
+
+\section{Poisson Distribution}
+
+It refers to a sequence of intervals, such as the number of goals in a game, numbers of snow days in a year.
+
+\subsection{Poisson Process}
+
+Number of outcomes in each interval is independent of other intervals. The probability of outcome is proportional to length (measure) of the interval, and the number of outcomes in an interval can be described by a Poisson distribution. The probability mass function is defined as
+
+$$p(x;\lambda) = \frac{e^{-\lambda}\lambda^x}{x!}$$
+
+Where $x$ is the number of outcomes and $\lambda$ is the Poisson parameter. The mean is
+
+\begin{align*}
+	\mu &= \sum_{x=0}^\infty x\frac{e^{-\lambda}\lambda^x}{x!} \\
+	    &= e^{-\lambda}\sum_{x=0}^\infty \frac{x\lambda^x}{x!} \\
+	    &= e^{-\lambda}\sum_{x=1}^\infty \frac{\lambda^x}{(x-1)!} \\
+	    &= \lambda e^{-\lambda} \sum_{x=0}^\infty \frac{\lambda^x}{x!} \\
+	    &= \lambda e^{-\lambda} e^{\lambda} \\
+	    &= \lambda
+\end{align*}
+
+The variance $\sigma^2 = \lambda$.
+
+\subsection{Motivation}
+
+Recall the binomial distribution
+
+$$\binom{n}{x}p^x(1-p)^{n-x}$$
+Let $n\rightarrow\infty,p\rightarrow0$. If we hold $np = \lambda$, then
+
+\begin{align*}
+	\lim \binom{n}{x}p^x(1-p)^{n-x} &= \lim  \frac{n(n-1)\dots(n-x+1)}{x!} \left(\frac{\lambda}{n}\right)^x \left(1-\frac{\lambda}{n}\right)^{n-x} \\
+					&= \lim \frac{n^x}{x!}\left(\frac{\lambda}{n}\right)^x\left(1-\frac{\lambda}{n}\right)^{n-x} \\
+					&= \frac{\lambda^x}{x!} \lim \left(1-\frac{\lambda}{n}\right)^{n-x} \\
+					&= \frac{\lambda^x}{x!} \lim \left(1-\frac{\lambda}{n}\right)^n\div\left(1-\frac{\lambda}{n}\right)^x \\
+					&= \frac{\lambda^x}{x!} e^{-\lambda} \times 1 \\
+					&= p(x;\lambda)
+\end{align*}
+
+In larger cases, it is more convenient to compute a Poisson distribution than a binomial, as $n$ choose $k$ can be difficult to evaluate.
+\end{document}
