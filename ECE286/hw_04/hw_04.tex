@@ -24,9 +24,130 @@
 \begin{solution}
 	The probability that $n$ trucks have blowouts is
 	$$0.25^n\times0.75^{15-n} \binom{15}{n}$$
-	Summing gives 
-
+	Summing gives \\
+	From 3 - 6: $0.707$ \\
+	Fewer than 4: $0.46$ \\
+	More than 5: $0.148$
 \end{solution}
 
+\question{A traffic control engineer reports that 75\% of the vehicles passing through a checkpoint are from within the state. What is the probability that fewer than 4 of the next 9 vehicles are from out of state?}
+
+\begin{solution}
+	$$0.75^9 + 9\times0.75^8\times0.25 + \binom{9}{2}\times0.75^7\times0.25^2 + \binom{9}{3}\times0.75^6\times0.25^3 = 0.834$$
+\end{solution}
+
+\question{If the probability that a fluorescent light has a useful life of at least 800 hours is 0.9, find the probabilities that among 20 such lights}
+
+\begin{parts}
+	\part{exactly 18 will have a useful life of at least 800 hours}
+
+	\begin{solution}
+		$$\binom{20}{18}\times0.9^{18}\times0.1^2 = 0.285$$
+	\end{solution}
+
+	\part{at least 15 will have a useful life of at least 800 hours}
+
+	\begin{solution}
+		\begin{align*}
+			&\binom{20}{15}\times0.9^{15}\times0.1^5 + \binom{20}{16}\times0.9^{16}\times0.1^4 + \binom{20}{17}\times0.9^{17}\times0.1^3 \\
+			&+ \binom{20}{18}\times0.9^{18}\times0.1^2 + 20\times0.9^{19}\times0.1 + 0.9^{20} \\
+			&= 0.989
+		\end{align*}
+	\end{solution}
+
+	\part{at least 2 will not have a useful life of at least 800 hours}
+
+	\begin{solution}
+		$$1 - 0.9^{20} - 20\times0.9^{19}\times0.1 = 0.608$$
+	\end{solution}
+
+\end{parts}
+
+\question{A homeowner plants 6 bulbs selected at random from a box containing 5 tulip bulbs and 4 daffodil bulbs. What is the probability that he planted 2 daffodil bulbs and 4 tulip bulbs?}
+
+\begin{solution}
+	$$\binom{4}{2}\times\binom{5}{4}\div\binom{9}{6} = \frac{5}{14}$$
+\end{solution}
+
+\question{From a lot of 10 missiles, 4 are selected at random and fired. If the lot contains 3 defective missiles that will not fire, what is the probability that}
+
+\begin{parts}
+	\part{all 4 will fire?}
+	\part{at most 2 will not fire?}
+\end{parts}
+
+\begin{solution}
+	Probability of all 4 firing is
+	$$\binom{7}{4}\div\binom{10}{4} = \frac{1}{6}$$
+	Probability of at most 2 not firing is
+	$$1 - 7\div\binom{10}{4} = \frac{29}{30}$$
+\end{solution}
+
+\question{An urn contains 3 green balls, 2 blue balls, and 4 red balls. In a random sample of 5 balls, find the probability that both blue balls and at least 1 red ball are selected.}
+
+\begin{solution}
+	$$\left(4\times3 + \binom{4}{2}\times3 + 4\right)\div\binom{9}{5} = \frac{17}{63}$$
+\end{solution}
+
+\question{Biologists doing studies in a particular environment often tag and release subjects in order to estimate the size of a population or the prevalence of certain features in the population. Ten animals of a certain population thought to be extinct (or near extinction) are caught, tagged, and released in a certain region. After a period of time, a random sample of 15 of this type of animal is selected in the region. What is the probability that 5 of those selected are tagged if there are 25 animals of this type in the region?}
+
+\begin{solution}
+	$$\binom{10}{5}\times\binom{15}{10}\div\binom{25}{15} = \frac{17199}{74290}$$
+\end{solution}
+
+\question{Find the probability that a person flipping a coin
+gets}
+
+\begin{parts}
+	\part{the third head on the seventh flip}
+
+	\begin{solution}
+		$$\binom{6}{2}\times0.5^7 = \frac{15}{128}$$
+	\end{solution}
+
+	\part{the first head on the fourth flip}
+
+	\begin{solution}
+		$$0.5^4 = \frac{1}{16}$$
+	\end{solution}
+
+\end{parts}
+
+\question{The probability that a student at a local high school fails the screening test for scoliosis (curvature of the spine) is known to be 0.004. Of the next 1875 students at the school who are screened for scoliosis, find the probability that}
+
+\begin{parts}
+	\part{fewer than 5 fail the test}
+
+	\begin{solution}
+		$$e^{-\lambda}\left(1 + \lambda + \frac{\lambda^2}{2} + \frac{\lambda^3}{6} + \frac{\lambda^4}{24}\right) = 0.132$$
+		where $\lambda = 7.5$
+	\end{solution}
+
+	\part{8, 9, or 10 fail the test}
+
+	\begin{solution}
+		$$e^{-\lambda}\left(\frac{\lambda^8}{8!} + \frac{\lambda^9}{9!} + \frac{\lambda^{10}}{10!}\right) = 0.338$$
+		where $\lambda = 7.5$
+	\end{solution}
+
+\end{parts}
+
+\question{Potholes on a highway can be a serious problem, and are in constant need of repair. With a particular type of terrain and make of concrete, past experience suggests that there are, on the average, 2 potholes per mile after a certain amount of usage. It is assumed that the Poisson process applies to the random variable “number of potholes.”}
+
+\begin{parts}
+	\part{What is the probability that no more than one pothole will appear in a section of 1 mile?}
+
+	\begin{solution}
+		$$e^{-\lambda} + \lambda e^{-\lambda} = 0.406$$
+		where $\lambda = 2$
+	\end{solution}
+
+	\part{What is the probability that no more than 4 potholes will occur in a given section of 5 miles?}
+
+	\begin{solution}
+		$$e^{-\lambda}\left(1 + \lambda + \frac{\lambda^2}{2} + \frac{\lambda^3}{6} + \frac{\lambda^4}{24}\right) = 0.0293$$
+		where $\lambda = 10$
+	\end{solution}
+\end{parts}
 \end{questions}
 \end{document}
