@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 10}
+\begin{document}
+\maketitle
+
+\section{Orthogonal Projections}
+
+Recall $P\in\mathcal L(V)$ is a projection iff
+
+$$P^2 = P$$
+
+Then $I - P$ is also a projection, and all vectors $v$ can be decomposed by
+
+$$v = Pv + (I-P)v = v_1 + v_2$$
+or
+$$V = V_1 \oplus V_2$$
+
+where
+
+$$V_2 = \text{ran}(I-P) = \text{null}(P)$$
+
+Conversely, for any direct sum decomposition with two subspaces $V = V_1 \oplus V_2$, we get a $P$. \\
+
+If $V$ is an inner product space over $\R$ or $\C$, we call $P$ an orthogonal projection iff there is an orthogonal decomposition. Conversely, if $V = W \oplus W^\perp$, we get a corresponding $P = P_W$. \\
+
+From the last lecture, given an orthogonal projection $P$, then
+
+$$||Pv|| \leq ||v||$$
+
+\begin{prop}
+	Let $V$ be an inner product space, $P \in \mathcal L(V)$ a projection. Then $P$ is an orthogonal projection iff $||Pv|| \leq ||v|| \forall v \in V$.
+\end{prop}
+
+\begin{proof}
+	We proved the "only if" part in last lecture. For "if", we want to show
+
+	$$V = \text{ran}(P) \oplus \text{null}(P)$$
+
+	is an orthogonal decomposition, so every $v \in \text{null}(P)$ is orthogonal to ran$(P)$. Since both have the same dimensions, it suffices to show
+
+	$$\text{null}(P)^\perp \subseteq \text{ran}(P)$$
+
+	Supposed $v \in \text{null}(P)^\perp$. Write
+
+	$$Pv = v - (I - P)v$$
+
+	This is an orthogonal decomposition, since $v \in \text{null}(P)^\perp$, $(I-P)v \in \text{ran}(I-P) = \text{null}(P)$. Therefore
+
+	$$||Pv||^2 = ||v||^2 + ||(I-P)v||^2 \geq ||v||^2$$
+
+	Then
+
+	$$||v|| \geq ||Pv|| \geq ||v|| \Rightarrow ||Pv|| = ||v||$$
+
+	i.e. $||(I-P)v|| = 0$. So $Pv = v$, and $v \in \text{ran}(P)$.
+\end{proof}
+
+\begin{prop}
+	Let $V$ be an inner product space, $W \subseteq V$, where $W$ is finite dimensiona. Let $v_1,\dots,v_n$ be an orthonormal basis of $W$. Then
+	$$P_w(v) = \sum_{i=1}^n \langle v,v_i \rangle v_i$$
+\end{prop}
+
+\begin{proof}
+	Use $V = W \oplus W^\perp$. The formula is true for all $v \in W^\perp$ and $v \in W$.
+\end{proof}
+
+\begin{thm}\label{mythm}
+	Let $V = W \oplus W^\perp$, $v \in V, w \in W$. Then
+	$$P_w(v) - v || \leq ||w-v||$$
+	with equality iff $w = P_w(v)$.
+\end{thm}
+
+\begin{proof}
+	$$w - v = (P_w(w) - v) + (w - P_w(v))$$
+	where the first term is an element of $W^\perp$ and the second term is an element of $W$. Then the Pythagorean theorem shows that
+	$$||w-v||^2 = ||P_w(v) - v||^2 + ||v - P_w(v)||^2 \geq ||P_w(v) - v||^2$$
+	with equality iff the dropped term is 0.
+\end{proof}
+
+\begin{ex}
+	Let $V$ be continuous real functions on $[-\pi,\pi)$ with
+	$$\langle f,g \rangle = \int_{-\pi}^\pi f(x)g(x)dx$$
+	Last time, we showed that
+	$$f_n(x) = \frac{1}{\sqrt{\pi}}\sin(nx), n \in \N$$
+	are all orthonormal. Then which linear combination
+	$$\sum_{i=1}^n a_if_i(x)$$
+	is the best approximation to $f(x) = x$? I.e. such that
+	$$||f - \sum_{i=1}^n a_if_i||$$
+	is minimized. \\
+	By \ref{mythm}, the best approximation is the orthogonal projection of $f$ on
+	$$W = \text{span}\{f_1,\dots,f_n\}$$
+	so
+	$$P_w(f) = \sum_{i=1}^n \langle f,f_i \rangle f_i$$
+	So the oordinate $a_i$ become
+	
+	\begin{align*}
+		a_i &= \langle f,f_i \rangle \\
+		    &= \frac{1}{\sqrt{\pi}} \int_{-\pi}^\pi x\sin(nx)dx \\
+		    &= -\frac{1}{n\sqrt{\pi}} (x\cos(nx)) |_{-\pi}^\pi + \frac{1}{n\sqrt{\pi}} \int_{-\pi}^\pi \cos(nx)dx \\
+		    &= \frac{2\sqrt{\pi}}{n}(-1)^{n+1}
+	\end{align*}
+
+	So
+	$$P_w(f) \approx 2\sum_{i=1}^n \frac{(-1)^{i+1}}{i}\sin(ix)$$
+\end{ex}
+
+\section{Adjoint Operators}
+
+Consider $\F^n$, where $\F$ is real or complex, and
+$$\mathcal L(\F^m,\F^n) = M_{n\times m}(\F)$$
+For $A \in M_{m \times n}(\F)$ define the conjugate transpose
+
+$$A^* = \overline{A}^t$$
+
+If $\langle , \rangle$ is the standard inner product on $\F^n, \F^m$, we have
+
+$$\langle Av,w \rangle = \langle v,A^*w \rangle$$
+
+For all $v \in \F^m, w \in \F^n$.
+
+\begin{proof}
+	\begin{align*}
+		\langle Av,w \rangle &= (Av)^t\overline{w} \\
+				     &= v^tA^t\overline{w} \\
+				     &= v^t \overline{\overline{A^t}w} \\
+				     &= v^t\overline{A^*w} \\
+				     &= \langle v, A^*w \rangle
+	\end{align*}
+\end{proof}
+
+\begin{thm}
+	Let $V,W$ be inner product spaces with finite dimensions. $forall T \in \mathcal L(V,W)$ there is a unique $T^* \in \mathcal{L}(W,V)$ such that
+	$$\langle Tv,w \rangle = \langle v,T*w \rangle$$
+\end{thm}
+\end{document}
