@@ -103,6 +103,29 @@
 \question{For the semi-circular line charge in the figure below, the electric field at an arbitrary point on the $z$-axis has an $x$ and a $z$ component (confirm). Find the 𝑧-component of the field from the potential $V(0,0,𝑧)$. Can you find the $x$-component too using $V (0,0,z)$?}
 
 \begin{solution}
+	By symmetry, there is no $y$ component.
+	\begin{align*}
+		V(0,0,z) &= \int \frac{kdQ}{r} \\
+			 &= \int_{-\frac{\pi}{2}}^\frac{\pi}{2} \frac{ka\rho_ld\phi}{\sqrt{a^2+z^2}} \\
+			 &= \frac{ka\rho_l\pi}{\sqrt{a^2+z^2}} \\
+			 &= \frac{kQ}{\sqrt{a^2+z^2}}
+	\end{align*}
+	Then the $z$-component is
+	\begin{align*}
+		E_z &= -\frac{dV(0,0,z)}{dz} \\
+		    &= \frac{kQ}{2(a^2+z^2)^{3/2}} \times 2z \\
+		    &= \frac{kQz}{(a^2+z^2)^{3/2}}
+	\end{align*}
+	The $x$-component cannot be found.
+\end{solution}
+
+\question{Two point charges $Q_1 = 7\unit{\mu.C}$, and $Q_2 = -3\unit{\mu.C}$, are located on two non-adjacent vertices of a square contour $a=15\unit{cm}$ on a side. Find the voltage between any of the remaining two vertices of the square and the square center.}
+
+\begin{solution}
+	By symmetry, both voltages are the same.
+	$$\frac{(7-3)\times10^{-6}k}{0.15} - \frac{(7-3)\times10^{-6}k}{0.15\div\sqrt{2}} = -99.3\unit{kV}$$
+\end{solution}
+
 
 \end{questions}
 \end{document}
