@@ -1,0 +1,89 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 5}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Given a continuous uniform distribution, show that}
+
+\begin{parts}
+	\part{$\mu = \frac{A+B}{2}$}
+	\part{$\sigma^2 = \frac{(B-A)^2}{12}$}
+\end{parts}
+
+\begin{solution}
+	The mean is
+	\begin{align*}
+		\mu &= \int_{-\infty}^\infty xf(x)dx \\
+		    &= \int_A^B \frac{x}{B-A} dx \\
+		    &= \frac{B^2-A^2}{2(B-A)} \\
+		    &= \frac{A+B}{2}
+	\end{align*}
+	The variance is
+	\begin{align*}
+		\sigma^2 &= \int_{-\infty}^\infty (x-\mu)^2f(x)dx \\
+			 &= \int_A^B \frac{x^2 - (A+B)x + \frac{(A+B)^2}{4}}{B-A}dx \\
+			 &= \frac{B^3-A^3}{3(B-A)} - \frac{(A+B)(B^2-A^2)}{2(B-A)} + \frac{(A+B)^2(B-A)}{4(B-A)} \\
+			 &= \frac{A^2+AB+B^2}{3} - \frac{(A+B)^2}{2} + \frac{(A+B)^2}{4} \\
+			 &= \frac{4A^2+4AB+4B^2-6A^2-12AB-6B^2+3A^2+6AB+3B^2}{12} \\
+			 &= \frac{A^2-2AB+B^2}{12} \\
+			 &= \frac{(B-A)^2}{12}
+	\end{align*}
+\end{solution}
+
+\question{A bus arrives every 10 minutes at a bus stop. It is assumed that the waiting time for a particular individual is a random variable with a continuous uniform distribution.}
+
+\begin{parts}
+	\part{What is the probability that the individual waits more than 7 minutes?}
+	\part{What is the probability that the individual waits between 2 and 7 minutes?}
+\end{parts}
+
+\begin{solution}
+	$$P[X>7] = \frac{10-7}{10} = 0.3$$
+	$$P[2\leq X\leq 7] = \frac{7-2}{10} = 0.5$$
+\end{solution}
+
+\question{Given a standard normal distribution, find the value of $k$ such that}
+
+\begin{parts}
+	\part{$P(Z>k) = 0.2946$}
+	\part{$P(Z<k) = 0.0427$}
+	\part{$P(-0.93<Z<k) = 0.7235$}
+\end{parts}
+
+\begin{solution}
+	$$0.54,-1.72,1.28$$
+\end{solution}
+
+\question{The loaves of rye bread distributed to local stores by a certain bakery have an average length of 30 centimeters and a standard deviation of 2 centimeters. Assuming that the lengths are normally distributed, what percentage of the loaves are}
+
+\begin{parts}
+	\part{longer than 31.7 centimeters?}
+	\part{between 29.3 and 33.5 centimeters in length?}
+	\part{shorter than 25.5 centimeters?}
+\end{parts}
+
+\begin{solution}
+	$$P(X>31.7) = P(Z>0.85) = 19.8\%$$
+	$$P(29.3<X<33.5) = P(-0.35<Z<1.75) = 59.7\%$$
+	$$P(X<25.5) = P(Z<-2.25) = 1.22\%$$
+\end{solution}
+
+\question{f a set of observations is normally distributed,
+what percent of these differ from the mean by}
+
+\begin{parts}
+	\part{more than 1.3$\sigma$?}
+	\part{less than 0.52$\sigma$?}
+\end{parts}
+
+\begin{solution}
+	$$P(|Z|>1.3) = 19.4\%$$
+	$$P(|Z|<0.52) = 39.7\%$$
+\end{solution}
+
+\end{questions}
+\end{document}
