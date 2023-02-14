@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\newtheorem{cor}{Corollary}[section]
+\title{Lecture 11}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+For $\F = \R$ or $\F = \C$, we have an inner product $\langle , \rangle$ where
+\begin{itemize}
+	\item It is linear in the first argument
+	\item $\langle u,v \rangle = \overline{\langle v,u \rangle}$
+	\item $\langle v,v \rangle \geq 0$
+	\item $\langle v,v \rangle = 0$ iff $v=0$
+\end{itemize}
+
+For the inner product spaces $V$ and $W$ with finite dimensions, we have $T \in \mathcal L(V,W)$
+
+\section{Adjoints}
+
+\begin{thm}
+	There exists a unique $T^*: W \rightarrow V$ such that
+	$$\langle Tv,w \rangle_W = \langle v,T^*w \rangle_V$$
+\end{thm}
+
+Recall that for $f \in V^*$, $\exists v^* \in V$ such that
+$$f(v) = \langle v,v^* \rangle$$
+
+\begin{proof}
+	Fixing $w \in W$, define
+	$$\phi(v) = \langle T(v),w \rangle_W \in \F$$
+	Then $\exists!v^*\in V$ such that
+	$$\phi(v) = \langle v,v^* \rangle_V$$
+	This gives $T^*:W\rightarrow V, w\mapsto v^*$ and
+	$$\langle T(v),w \rangle_W = \langle v,v^* \rangle_V = \langle v,T^*(w) \rangle_V$$
+	To show that $T^*$ is linear, not that
+	\begin{align*}
+		\langle v,T^*(kw_1+w_2) \rangle_V &= \langle T(v), kw_1 + w_2 \rangle_W \\
+						  &= \overline{k}\langle T(v),w_1 \rangle_W + \langle T(v),w_2 \rangle_W \\
+						  &= \overline{k}\langle v,T^*(w_1) \rangle_V + \langle v,T^*w_2 \rangle_V \\
+						  &= \langle v,kT^*(w_1)+T^*w_2 \rangle_V
+	\end{align*}
+	Then setting $v$ to be all the unit vectors in $V$ completes the proof.
+\end{proof}
+
+Let $V = \C^n, W = \C^m, T \in \mathcal L(V,W)$ and $A$ be the matrix of $T$. Then
+\begin{align*}
+	\langle T(v),w \rangle &= (Av)^t\overline{w} \\
+	\langle v,T^*w \rangle &= v^tA^t\overline{w} \\
+	v^t\overline{T^*w} &= v^t\overline{\overline{A^t}w} \\
+\end{align*}
+
+Hence
+$$T^* = \overline{A^t}$$
+Note that this is only when we are using an orthonormal basis on both sides.
+
+\subsection{Infinite Dimensions}
+
+Let $V$ be the set of all complex continuous functions on $\R$ where
+$$f(x+2\pi) = f(x) \forall x \in \R$$
+Define
+$$\langle f,g \rangle = \int_{-\pi}^\pi f(t)\overline{g(t)} dt$$
+Then
+\begin{align*}
+	\langle T(f),g \rangle &= \int_{-\pi}^\pi f'(x)\overline{g(x)}dx \\
+			       &= f(x)\overline{g(x)} |_{-\pi}^\pi \int_{-\pi}^\pi f(x)\overline{g'(x)}dx \\
+			       &= \langle f,-g' \rangle
+\end{align*}
+
+So $T^* = -T$.
+
+\subsection{Properties}
+
+\begin{itemize}
+	\item $(T^*)^* = T$
+	\item $(T_1+T_2)^* = T_1^* + T_2^*$
+	\item $(\lambda T)^* = \overline{\lambda}T^*$
+	\item $I^* = I$
+	\item $(ST)^* = T^*S^*$
+\end{itemize}
+
+\begin{proof}
+	For the first property,
+	$$\langle w,T(v) \rangle_W = \langle T^*(w),v \rangle_V = \langle w,(T^*)^*v \rangle_W$$
+	The second and third can be proven similarly, using linearity. The fourth is trivial. Finally, let $T:V\rightarrow W,S:W\rightarrow X$. Then
+	$$\langle STv,x \rangle_X = \langle Tv,S^*x \rangle_W = \langle v,T^*S^*x \rangle_V$$
+\end{proof}
+			       
+\begin{thm}
+	$$\text{range}(T^*) = \text{null}(T)^\perp$$
+	$$\text{range}(T) = \text{null}(T^*)^\perp$$
+	$$\text{rank}(T) = \text{rank}(T^*)$$
+\end{thm}
+
+\begin{proof}
+	$$V \in \text{null}(T) \Leftrightarrow \langle T(v),w \rangle = 0 \forall w \in W \Leftrightarrow \langle v,T^*(w) \rangle = 0 \forall w \in W \Leftrightarrow v \in \text{range}(T^*)^\perp$$
+	Assuming finite dimensions, taking the $^\perp$ on both side yields the desired equality. Letting $S = T^*$ and noting $S^* = T$ gives the second equality.
+	$$\text{dim}V = \text{dim range}(T^*) + \text{dim null}T = \text{dim}V - \text{dim null}(T^*) + \text{dim null}T$$
+	so the nullspaces of $T$ and $T^*$ have the same dimension, and they are of the same rank.
+\end{proof}
+
+\begin{cor}
+	$$\text{null}T = 0 \Leftrightarrow \text{range}(T^*)^\perp = 0 \Leftrightarrow \text{range}(T^*) = V$$
+	So $T$ is injective iff $T^*$ is surjective, and vice versa.
+\end{cor}
+
+\subsection{Projections}
+
+Consider a projection $P$ which gives the direct sum
+$$V = X \oplus Y$$
+where $V$ is an inner product space. Then
+$$P^* = (P^2)^* = P^*P^*$$
+so $P^*$ is also a projection. \\
+If $P$ is an orthogonal projection,
+$$\langle Pv_1, v_2 \rangle = \langle x_1,x_2+y_2 \rangle = \langle x_1,x_2 \rangle = \langle v_1,x_2 \rangle = \langle v_1,Pv_2 \rangle$$
+So $P = P^*$. Moreover, the converse also holds.
+\begin{align*}
+	\langle Pv_1,v_2 \rangle &= \langle v_1,Pv_2 \rangle \\
+	\langle x_1,x_2+y_2 \rangle &= \langle x_1+y_1,x_2 \rangle \\
+	\langle x_1,y_2 \rangle &= \langle y_1,x_2 \rangle
+\end{align*}
+And if any $x_1,y_2$ pair has a non zero inner product, replacing $y_1$ with $2y_1$ produces a contradiction. Hence $X$ and $Y$ are orthogonal.
+
+\begin{thm}
+	Suppose $V$ is a finite dimensional inner product space, and $T \in \mathcal L(V)$. Then
+	$$T = T^* \Rightarrow T \text{ is diagonalisable}$$
+\end{thm}
+
+We will prove this next time (hopefully).
+\end{document}
