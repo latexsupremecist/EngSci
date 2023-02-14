@@ -1,0 +1,19 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 15}
+\begin{document}
+\maketitle
+
+\section{Boundary Conditions for Electric Fields}
+
+At a boundary, from Faraday's Law,
+$$\oint_C \vec{E} \cdot d\vec{l} = 0$$
+When we take the limit as the total normal distance goes to 0, for a rectangular box containing the boundary, we see the tangential components of $E$ must be equal across the boundary. Then from Gauss' Law,
+$$\oiint_S \vec{D}\cdot d\vec{S} = \rho_s$$
+Taking the limit as the normal distance goes to 0,
+$$D_{\text{out}} - D_{\text{in}} = \rho_s$$
+or in general
+$$(\vec{D}_{\text{out}} - \vec{D}_{\text{in}})\cdot\hat{n} = \rho_s$$
+
+\end{document}
