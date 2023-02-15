@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 16}
+\begin{document}
+\maketitle
+
+\section{Capacitance}
+
+The potential difference between two charged bodies is always proportional to the charge on them.
+
+\begin{defn}
+	The \emph{capacitance} is
+	$$C = \frac{Q}{\Delta V} = \frac{Q}{V}$$
+	with the unit of Farads.
+\end{defn}
+
+Then
+
+$$C = \frac{Q}{\Delta V} = \frac{\oiint_S \vec{D} \cdot d\vec{S}}{|\int\vec{E}\cdot d\vec{l}|} = \frac{\oiint\varepsilon_0\varepsilon_r\vec{E}\cdot d\vec{S}}{|\int\vec{E}\cdot d\vec{l}|}$$
+
+which can be solved for just by $\vec{E}$.
+
+\begin{ex}
+	The capacitance of parallel plates is as follows. Since $\vec{E}$ is conservative, $\Delta V$ is path independent, i.e.
+	$$\Delta V = -\int \vec{E} \cdot d\vec{l} = Ed = \frac{\rho_s}{\varepsilon_0\varepsilon_r}d$$
+	$Q$ is simply
+	$$Q = \rho_sS$$
+	where $S$ is the surface area. Then the capacitance is
+	$$C = \frac{Q}{\Delta V} = \frac{S\varepsilon_0\varepsilon_r}{d}$$
+	This holds assuming $\vec{E}$ is constant throughout, neglecting fringing fields.
+\end{ex}
+
+\begin{ex}
+	Consider a spherical capacitor with $\varepsilon_r$, between $a \leq R \leq b$. Find the capacitance. \\
+	Let $Q$ be the charge on the inner sphere. Gauss' Law gives us
+	$$E_R = \frac{Q}{4\pi\varepsilon_0\varepsilon_rR^2}$$
+	Then
+	$$\Delta V = \Big |-\int\vec{E}\cdot d\vec{l} \Big | = \frac{Q}{4\pi\varepsilon_0\varepsilon_rR}\left(\frac{1}{a}-\frac{1}{b}\right)$$
+	Then
+	$$C = \frac{Q}{\Delta V} = \frac{4\pi\varepsilon_0\varepsilon_rab}{b-a}$$
+\end{ex}
+\end{document}
