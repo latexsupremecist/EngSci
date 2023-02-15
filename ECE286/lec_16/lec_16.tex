@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 16}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+The Poission distribution is
+$$p(x;\lambda) = \frac{e^{-\lambda}\lambda^x}{x!}$$
+The exponential distribution is
+$$f(x;\beta) = \frac{1}{\beta}e^{-\frac{x}{\beta}}$$
+Where $\beta = \frac{1}{r}$, the time between events.
+
+\begin{ex}
+	In a factory, components fail every 4 days on average. What is the chance a component lasts longer than a week? Note that the exponential distribution is used. \\
+	We have $\beta = 4$. Then
+	$$P(X\geq7) = \int_7^\infty \frac{1}{4}e^{-\frac{x}{4}}dx = e^{-\frac{7}{4}} \approx 0.17$$
+	Note that we expect $\frac{7}{4}$ failures in one week.
+\end{ex}
+
+\section{Memoryless Proposition}
+
+Given a random variable with exponential distribution,
+$$P(X\geq s+t|X\geq s)$$
+
+By definition of conditional probability, this is equal to
+$$\frac{P(X\geq s+t)}{P(X\geq s)}$$
+Now
+$$P(X\geq s) = \int_s^\infty \frac{1}{\beta}e^{-\frac{x}{\beta}}dx = e^{-\frac{s}{\beta}}$$
+Then the quotient is $e^{-\frac{t}{\beta}}$, or $P(X\geq t)$.
+
+\section{Functions of Random Variables}
+
+For the discrete case, consider $X$ with distribution $f(x)$. Let $Y=u(X)$, where $u$ is bijective. Then we can write $X = u^{-1}(Y)$. Let $g(y)$ the the distribution of $y$.
+\begin{align*}
+	g(y) &= P(Y=y) \\
+	     &= P(u^{-1}(Y)=u^{-1}y) \\
+	     &= P(X=u^{-1}y) \\
+	     &= P(X=u^{-1}y) \\
+	     &= f(u^{-1}(y))
+\end{align*}
+
+For the continuous case, let $G(y)$ be the cumulative distribution. Then
+\begin{align*}
+	G(y) &= P(Y\leq y) \\
+	     &= P(u^{-1}(Y) \leq u^{-1}(y)) \\
+	     &= P(X\leq u^{-1}(y)) \\
+\end{align*}
+
+Then
+\begin{align*}
+	g(y) &= \frac{d}{dy}G(y) \\
+	     &= \frac{d}{dy}\int_{-\infty}^{u^{-1}(y)} f(t)dt \\
+	     &= f(u^{-1}(y))\frac{du^{-1}(y)}{dy}
+\end{align*}
+
+$u$ is either strictly increasing or strictly decreasing. In the latter case, we have an extra negative sign in the slope, giving us
+$$g(y) = f(u^{-1}(y))\Bigg |\frac{du^{-1}(y)}{dy} \Bigg |$$
+\end{document}
