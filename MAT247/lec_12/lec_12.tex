@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 12}
+\begin{document}
+\maketitle
+
+\section{Adjoints}
+
+Let $\F = \R$ or $\F = \C$, and $T \in \mathcal L(V)$. Using induction, one can prove that
+$$\langle T^n(v),w \rangle = \langle v,(T^*)^n(w) \rangle \forall n \in \N$$
+Extending this to the minimal polynomial,
+\begin{align*}
+	0 &= \langle p(T)v,w \rangle \\
+	  &= \langle v,\overline{p}(T^*)w \rangle
+\end{align*}
+However, this is true for arbitrary $v,w \in V$. Hence $\overline{p}$ is the minimal polynomial for $T^*$. (Obviously $\overline{p}(T^*) = 0$. If there is a polynomial with a smaller degree, one obtains a $p'$ of that lower degree such that $p'(T) = 0$, which is a contradiction, as $p$ is the minimal polynomial). \\
+Recall with a orthonormal basis, if $A$ is the matrix of $T$, then the matrix of $T^*$ is $\overline{A}^t$. Assuming this, consider the characteristic polynomial
+$$q_T(z) = \det(zI-T) = \det(zI-A)$$
+$$q_{T^*}(z) = \det(zI-T^*) = \det(zI-\overline{A}^t) = \det\left((zI-\overline{A})^t\right) = \det(zI-\overline{A}) = \overline{\det(\overline{z}I-A)}$$
+Then
+$$q_{T^*}(z) = \overline{q_T(\overline{z})}$$
+Now, let $J$ be the Jordan Normal Form of $T$. Then
+\begin{align*}
+	A &= CJC^{-1} \\
+	\overline{A} &= \overline{C}\overline{J}\overline{C^{-1}} \\
+	\overline{A}^t &= \overline{C^{-1}}^t\overline{J}^t\overline{C}^t \\
+		       &= \overline{C^{-1}}^t\overline{S}\overline{J}\overline{S^{-1}}\overline{C}^t
+\end{align*}
+Undoing the change of basis, the Jordan Normal Form of $T^*$ is $\overline{J}$. \\
+Suppose $T^* = T$. Then
+\begin{enumerate}
+	\item if $W \subseteq V$ is $T$ invariant, then $W^\perp$ is alto $T$ invariant
+	\item The eigenvalues of $T$ are real
+	\item T has at least one eigenvector
+\end{enumerate}
+
+\begin{thm}
+	$T$ is diagnoalisable if $T=T^*$.
+\end{thm}
+
+\begin{proof}
+	By 3 there is an eigenvector $v_1$ of $T$. Then $W = fv_1 \forall f \in \F$ is a $T$ invariant subspace. So $W^\perp$ is also $T$ invariant, and
+	$$T|_{W^\perp} \in \mathcal L(W^\perp)$$
+	Then
+	$$\left(T|_{W^\perp}\right)^* = \left(T|_{W^\perp}\right)$$
+	By induction, we get $v_1,v_2,\dots,v_n$ where $n$ is the dimension of $V$. All $v_i$ are eigenvectors, so $T$ is diagonalisable.
+\end{proof}
+\end{document}
