@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 17}
+\begin{document}
+\maketitle
+
+\section{Capacitors}
+
+\begin{ex}
+	Consider the capacitors half filled with a dielectric material (in both senses). It is know that the charge density on the plates is non-uniform. Explain why this is the case, and find an expression for the total capacitance of this structure. \\
+	If the bottom half of the capacitor is filled with a dielectric material, then $\vec{D}$ is constant, and is equal to $\rho_s$. Then
+	\begin{align*}
+		\Delta V &= -\int \vec{E}\cdot d\vec{l} \\
+			 &= -E_{\text{air}}\times\frac{d}{2} - E_{\text{diel}}\times\frac{d}{2} \\
+			 &= -\frac{\rho_s}{\varepsilon_0}\frac{d}{2} - \frac{\rho_s}{\varepsilon_0\varepsilon_r}\frac{d}{2} \\
+			 &= -Q\times\frac{d}{2\varepsilon_0s} - Q\times\frac{d}{2\varepsilon_0\varepsilon_rs} \\
+			 &= -\frac{Q}{C_1} - \frac{Q}{C_2}
+	\end{align*}
+	Thus the capacitance of capacitors in series is given by
+	$$C = \left(\frac{1}{C_1}+\frac{1}{C_2}\right)^{-1}$$
+	If they are in parallel,note that tangential $\vec{E}$ is constant. Hence
+	$$\rho_{\text{air}} = D_{\text{air}} = \varepsilon_0\frac{V}{d}$$
+	$$\rho_{\text{diel}} = D_{\text{diel}} = \varepsilon_0\varepsilon_r\frac{V}{d}$$
+	And total capacitance is
+	$$C = C_1 + C_2$$
+	where
+	$$C_1 = \frac{\varepsilon_0s}{2d}$$
+	and
+	$$C_2 = \frac{\varepsilon_0\varepsilon_rs}{2d}$$
+\end{ex}
+
+\section{Electrostatic Potential Energy}
+
+Energy can be stored in a charge distribution if there is positive work done in assembling it.
+$$W_e = \frac{1}{2}\sum_{i=1}^NQ_iV_i$$
+Note the factor of $1/2$
+$$W_e = \frac{1}{2}\sum_{i=1}^NQ_iV_i$$
+Note the factor of $\frac{1}{2}$. Consider arbitrary $i$ and $j$. Through the sum, we are double counting the effects of $Q_i$ on $Q_j$ and vice versa. However, one charge (WLOG $Q_i$) is introduced first, so it does not "feel" the effect of $Q_j$. We divide by 2 to correct for double counting. \\
+If charge distribution is continuous,
+$$W = \int_\Omega \rho Vd\Omega$$
+
+\begin{ex}
+	What is the energy stored within a parallel plate capacitor? \\
+	\begin{align*}
+		W &= \frac{1}{2} \iiint \vec{D}\cdot\vec{E}dV \\
+		  &= \frac{1}{2} \iiint \varepsilon_0\varepsilon_r |\vec{E}|^2dv \\
+		  &= \frac{1}{2}\frac{\rho_s^2}{\varepsilon_0\varepsilon_r}sd \\
+		  &= \frac{1}{2} \frac{Q^2d}{\varepsilon_0\varepsilon_rs} \\
+		  &= \frac{1}{2} \frac{Q^2}{C}
+	\end{align*}
+	Thus we also have the relation
+	$$C = \frac{1}{2} \frac{Q^2}{W} = \frac{2W}{V^2}$$
+	The other approach is
+	\begin{align*}
+		W &= \frac{1}{2} \iint\rho_sVds \\
+		  &= \frac{1}{2} \rho_sVs \\
+		  &= \frac{1}{2} QV
+	\end{align*}
+\end{ex}
+
+\end{document}
