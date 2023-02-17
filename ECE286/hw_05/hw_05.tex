@@ -85,5 +85,105 @@ what percent of these differ from the mean by}
 	$$P(|Z|<0.52) = 39.7\%$$
 \end{solution}
 
+\question{A coin is tossed 400 times. Use the normal curve
+approximation to find the probability of obtaining}
+
+\begin{parts}
+	\part{between 185 and 210 heads inclusive}
+	\part{exactly 205 heads}
+	\part{fewer than 176 or more than 227 heads}
+\end{parts}
+
+\begin{solution}
+	$$Z = \frac{X-np}{\sqrt{np(1-p)}} = \frac{X-200}{10}$$
+	Then
+	$$P(184.5\leq X\leq210.5) = P(-1.55\leq X\leq 1.05) = 0.793$$
+	$$P(204.5<X<205.5) = P(0.45<X<0.55) = 0.0352$$
+	$$P(X<175.5) + P(X>227.5) = P(Z<-2.45) + P(Z>2.75) = 0.0101$$
+\end{solution}
+
+\question{A pair of dice is rolled 180 times. What is the
+probability that a total of 7 occurs}
+
+\begin{parts}
+	\part{at least 25 times?}
+	\part{between 33 and 41 times inclusive?}
+	\part{exactly 30 times?}
+\end{parts}
+
+\begin{solution}
+	The probability that a total of 7 occurs is $\frac{1}{6}$. Thus
+	$$Z = \frac{X-np}{\sqrt{np(1-p)}} = \frac{X-30}{5}$$
+	Then
+	$$P(X>24.5) = P(Z>-1.1) = 0.864$$
+	$$P(32.5<X<41.5) = P(0.5<Z<2.3) = 0.298$$
+	$$P(29.5<X<30.5) = P(-0.1<Z<0.1) = 0.0797$$
+\end{solution}
+
+\question{Use the gamma function with $y=\sqrt{2x}$ to show that $\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}$.}
+
+\begin{solution}
+\begin{align*}
+		\Gamma\left(\frac{1}{2}\right) &= \int_0^\infty x^{\frac{1}{2}-1}e^{-x}dx \\
+					       &= \int_0^\infty \frac{e^{-x}}{\sqrt{x}}dx \\
+					       &= \sqrt{2} \int_0^\infty e^{-\frac{y^2}{2}}dy \\
+					       &= \sqrt{2} \sqrt{\frac{\pi}{2}} \\
+					       &= \sqrt{\pi}
+\end{align*}
+\end{solution}
+
+\question{Suppose that the service life, in years, of a hearing aid battery is a random variable having a Weibull distribution with $\alpha = \frac{1}{2}$ and $\beta = 2$.}
+
+\begin{parts}
+	\part{How long can such a battery be expected to last?}
+	\part{What is the probability that such a battery will be operating after 2 years?}
+\end{parts}
+
+\begin{solution}
+	The mean is
+	$$\mu = \alpha^{-\frac{1}{\beta}}\Gamma\left(1+\frac{1}{\beta}\right) = \sqrt{2}\Gamma(1.5) = \sqrt{2}\int_0^\infty \sqrt{x}e^{-x}dx = \frac{1}{\sqrt{2}}\int_0^\infty \frac{e^{-x}}{\sqrt{x}}dx = \sqrt{\frac{\pi}{2}}$$
+	The probability it operates after 2 years is
+	\begin{align*}
+		P(X>2) &= \int_2^\infty \alpha\beta x^{\beta-1}e^{-\alpha x^\beta} dx \\
+		       &= \int_2^\infty xe^{-\frac{x^2}{2}}dx \\
+		       &= e^{-2}
+	\end{align*}
+\end{solution}
+
+\question{Let $X$ be a random variable with probability
+	$$f(x) = \begin{cases} \frac{1}{3} & x=1,2,3 \\ 0 & \text{elsewhere} \end{cases}$$
+Find the probability distribution of the random variable $Y=2X-1$.}
+
+\begin{solution}
+	$$g(y) = \begin{cases} \frac{1}{3} & y=1,3,5 \\ 0 & \text{elsewhere} \end{cases}$$
+\end{solution}
+
+\question{Let $X_1$ and $X_2$ be discrete random variables with joint probability distribution
+	$$f(x_1,x_2) = \begin{cases} \frac{x_1x_2}{18} & x_1=1,2;x_2=1,2,3 \\ 0 & \text{elsewhere} \end{cases}$$
+Find the probability distribution of the random variable $Y=X_1X_2$.}
+
+\begin{solution}
+	$$g(y) = \begin{cases} \frac{1}{18} & y=1 \\ \frac{2}{9} & y=2,y=4 \\ \frac{1}{6} & y=3 \\ \frac{1}{3} & y=6 \end{cases}$$
+\end{solution}
+
+\question{Let $X$ be a random variable with probability distribution
+	$$f(x) = \begin{cases} \frac{1+x}{2} & -1 < x < 1 \\ 0 & \text{elsewhere} \end{cases}$$
+	Find the probability distribution of the random variable $Y=X^2$.
+}
+
+\begin{solution}
+	\begin{align*}
+		G(y) &= P(Y\leq y) \\
+		     &= P(-\sqrt{y}\leq X\leq \sqrt{y}) \\
+		     &= \int_{-\sqrt{y}}^{\sqrt{y}} f(t)dt
+	\end{align*}
+	Then
+	\begin{align*}
+		g(y) &= \frac{d}{dy}G(y) \\
+		     &= f(\sqrt{y})\times\frac{1}{2\sqrt{y}} - f(-\sqrt{y})\times\frac{-1}{2\sqrt{y}} \\
+		     &= \frac{1+\sqrt{y}}{2}\times\frac{1}{2\sqrt{y}} + \frac{1-\sqrt{y}}{2}\times\frac{1}{2\sqrt{y}} \\
+		     &= \frac{1}{2\sqrt{y}}
+	\end{align*}
+\end{solution}
 \end{questions}
 \end{document}
