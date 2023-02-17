@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 17}
+\begin{document}
+\maketitle
+
+\section{Moments and Moment-Generating Functions}
+
+\begin{defn}
+	The $r$th moment about the origin of the random variable $X$ is
+	$$\mu_r = E[X^r] = \int_{-\infty}^\infty x^rf(x)dx$$
+\end{defn}
+
+Then obviously the mean is the first moment. The second moment is
+$$\mu_2 = E[X^2] = \sigma^2 + \mu^2$$
+
+\begin{defn}
+	The moment-generating function of the random variable $X$ is
+	$$M_X(t) = E[e^{tX}] = \int_{-\infty}^\infty e^{tx}f(x)dx$$
+\end{defn}
+
+Note the $r$th derivative of $M_X(t)$. For the discrete case,
+\begin{align*}
+	\frac{d^rM_X(t)}{dT^r} \Bigg |_{t=0} &= \frac{d^r}{dt^r} \sum_x e^{tx}f(x) \Bigg |_{t=0} \\
+					     &= \sum_x f(x)x^re^{tx} \Big |_{t=0} \\
+					     &= \sum_xx^rf(x) \\
+					     &= \mu_r
+\end{align*}
+
+Similar for the continuous case.
+
+\begin{ex}
+	$X$ is normal with mean $\mu$ and variance $\sigma^2$. Then
+	\begin{align*}
+		M_X(t) &= \int_{-\infty}^\infty e^{tx} \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(z-\mu)^2}{2\sigma^2}}dx \\
+		       &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{x^2-2(\mu+t\sigma^2)x+\mu^2}{2\sigma^2}}dx
+	\end{align*}
+	Completing the square,
+	$$x^2-2(\mu+t\sigma^2)x+\mu^2 = (x-(\mu+t\sigma^2))^2 - 2\mu t\sigma^2 -t^2\sigma^4$$
+	Thus
+	$$M_X(t) = e^{\frac{2\mu t + t^2\sigma^2}{2}} \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-(\mu+t\sigma^2))^2}{2\sigma^2}}dx$$
+	This is just a normal PDF with mean $\mu+t\sigma^2$ and variance $\sigma^2$. Hence it integrates to 1, and
+	$$M_x(t) = e^{\frac{2\mu t+t^2\sigma^2}{2}}$$
+\end{ex}
+
+\section{Linear Combinations of Random Variables}
+
+Consider the random variable $X$ with distribution $f(x)$. The distribution of $Y=aX$ is then
+\begin{align*}
+	h(y) &= P(Y=y) \\
+	     &= P(aX=y) \\
+	     &= f\left(\frac{y}{a}\right)
+\end{align*}
+
+In the continuous case,
+
+\begin{align*}
+	H(y) &= P(Y\leq y) \\
+	     &= P(X\leq \frac{y}{a}) \\
+	     &= \int_{-\infty}^{\frac{y}{a}}f(t)dt
+\end{align*}
+
+Setting $s=at$,
+$$\int_{-\infty}^{\frac{y}{a}}f(t)dt = \int_{-\infty}^y \frac{1}{a}f\left(\frac{s}{a}\right)ds$$
+Hence
+$$h(y) = \frac{1}{|a|}f\left(\frac{y}{a}\right)$$
+
+Supposed $X$ has moment-generating function $M_X(t)$. Then
+\begin{align*}
+	M_Y(t) &= \int_{-\infty}^\infty e^{ty}h(y)dy \\
+	       &= \frac{1}{|a|}\int_{-\infty}^\infty e^{ty}f\left(\frac{y}{a}\right)dy \\
+	       &= \frac{1}{|a|} \int_{-\infty}^\infty e^{taz}f(z)adz \\
+	       &= \int_{-\infty}^\infty e^{taz}f(z)dz \\
+	       &= M_X(at)
+\end{align*}
+
+Now supposed $X$ and $Y$ are independent with distributions $f(x)$ and $g(y)$. The distribution of their sum is
+$$h(z) = \int_{-\infty}^\infty f(w)g(z-w)dw$$
+Which is a convolution.
+
+\begin{ex}
+	The changes of rolling an 8 from 2 dice is
+	$$h(8) = \sum_{k=-\infty}^\infty f(k)g(8-k) = f(2)g(6) + f(3)g(5) + f(4)g(4) + f(5)g(3) + f(6)g(2)$$
+\end{ex}
+
+\begin{ex}
+	Suppose $X$ and $Y$ have moment-generating functions $M_X(t)$ and $M_y(t)$. The moment-generating function of $Z=X+Y$ is
+	\begin{align*}
+		M_Z(t) &= \sum_{z=-\infty}^\infty e^{tz}h(z) \\
+		       &= \sum_{z=-\infty}^\infty e^{tz} \sum_{w=-\infty}^\infty f(w)g(z-w) \\
+		       &= \sum_{w=-\infty}^\infty f(w)\sum_{z=-\infty}^\infty e^{tz}g(z-w)
+	\end{align*}
+	Letting $k=z-w$,
+	\begin{align*}
+		M_Z(t) &= \sum_{w=-\infty}^\infty f(w) \sum_{k=-\infty}^\infty e^{t(k+w)g(k)} \\
+		       &= \sum_{w=-\infty}^\infty e^{tw}f(w)\sum_{k=-\infty}^\infty e^{tk}g(k) \\
+		       &= M_X(t)M_Y(t)
+	\end{align*}
+	So the moment generating function for $X+Y$ is $M_X(t)M_Y(t)$.
+\end{ex}
+\end{document}
