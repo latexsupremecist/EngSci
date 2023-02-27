@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 18}
+\begin{document}
+\maketitle
+
+\section{Renewables and Electricity Markets}
+
+Renewables have \textit{zero marginal cost}. Let $\lambda$ be the price of electricity, $\mu^-$ be the fee for underproducing, and $\mu^+$ be the fee for overproducing. Let $p$ be the power production, and $\hat p$ be the forecast. The revenue is then
+$$\tilde J = \lambda p - \mu^-(\hat p - p)^+ - \mu^+(p - \hat p)^+$$
+where
+$$(x)^+ = \text{max}(x,0)$$
+
+Then given a probability density function $f$ and a cumulative density function $F$ for $p$, we define
+$$J = \mathbb{E}_p[\tilde J]$$
+ 
+Substituting,
+
+\begin{align*}
+	J &= \lambda \int_{-\infty}^\infty pf(p)dp - \mu^-\int_{-\infty}^\infty (\hat p - p)^+f(p)dp - \mu^+\int_{-\infty}^\infty (p - \hat p)^+f(p)dp \\
+	  &= \lambda \int_{-\infty}^\infty pf(p)dp - \mu^-\int_{-\infty}^{\hat p} (\hat p - p)^+f(p)dp - \mu^+\int_{\hat p}^\infty (p - \hat p)^+f(p)dp \\
+	\frac{dJ}{d\hat p} &= -\mu^-\int_{-\infty}^{\hat p} f(p)dp + \mu^+\int_{\hat p}^\infty f(p)dp \\
+			   &= -\mu^-F(\hat p) + \mu^+(1-F(\hat p))
+\end{align*}
+
+Then the $\hat p$ that satisfies this equation is given by
+
+$$F(\hat p) = \frac{\mu^+}{\mu^- + \mu^+}$$
+or
+$$\hat p = F^{-1}\left(\frac{\mu^+}{\mu^- + \mu^+}\right)$$
+
+The limiting behaviour shows that if $\mu^- >> \mu^+$, $F(\hat p) \rightarrow 0$, so $\hat p \rightarrow 0$. If $\mu^+ >> \mu^-$, then $F(\hat p) \rightarrow 1$, so $\hat p \rightarrow \infty$. If $\mu^+ = \mu^-$, then $F(\hat p) = 0.5$, so $\hat p$ is the median. \\
+
+This is also the \textbf{Newsvendor problem} (self explanatory), where one wishes to predict how much of a perishable good to obtain.
+\end{document}
