@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 13}
+\begin{document}
+\maketitle
+
+\section{Self-Adjoint Operators}
+
+Working under finite dimensions,
+
+\begin{defn}
+	$T:V\rightarrow V$ is self adjoint if
+	$$T=T^*$$
+\end{defn}
+
+\begin{thm}[Spectral Theorem]
+	If $T$ is self-adjoint, it is diagonalisable. Moreover, it has an orthonormal eigenbasis.
+\end{thm}
+
+\begin{proof}
+	Fix an eigenvector $v$. Consider
+	$$V = \text{span}\{v\} \oplus (\text{span}\{v\})^\perp$$
+	This is repeated to form an orthogonal basis, which can be normalised. The existance of an orthogonal basis ensures $T$ is diagonalisable.
+\end{proof}
+
+The fact that an eigenvector $v$ always exists, and that $V$ can be written as a direct sum of self-adjoint sets, follows from the following lemmas.
+
+\begin{lem}
+	If $T$ is self-adjoint, and $W$ is $T$-invariant, then $W^\perp$ is $T$-invariant.
+\end{lem}
+
+\begin{proof}
+	Let $v \in W^\perp, w \in W$. Then $Tw \in W$, and
+	$$\langle Tv, w \rangle = \langle v,Tw \rangle = 0$$
+\end{proof}
+
+\begin{lem}
+	If $T$ is self-adjoint with eigenvalue $\lambda$ and eigenvector $v$, then
+	$$\lambda\langle v,v \rangle = \langle Tv,v \rangle = \langle v,Tv \rangle = \overline{\lambda}\langle v,v \rangle \Rightarrow \lambda = \overline{\lambda} \Rightarrow \lambda \in \R$$
+\end{lem}
+
+\begin{lem}
+	If $T$ is self-adjoint, $E_\lambda \perp E_\mu \forall \lambda \neq \mu$.
+\end{lem}
+
+\begin{proof}
+	Considering $v \in E_\lambda, w \in E_\mu$, then $\langle Tv,w \rangle = \langle v,Tw \rangle$. This implies $(\lambda-\mu)\langle v,w \rangle = 0$, meaning $\langle v,w \rangle = 0$.
+\end{proof}
+
+\begin{lem}
+	If $T$ is self adjoint, it has one eigenvalue.
+\end{lem}
+
+\begin{proof}
+	We proved this for complex $V$. Then let $M$ be a matrix representation of $T$ over $\R$ in an orthonormal basis. Then
+	$$\langle Mv, w \rangle = \langle v,Mw \rangle \Rightarrow v^tM^tw = v^tMw$$
+	in general, implying
+	$$M = M^t$$
+	Now let $\vec{v} = \vec{x} + i\vec{y}$ where $\vec{v}$ is a complex eigenvector. Then
+	$$M\vec{x} + iM\vec{y} = \lambda\vec{x} + i\lambda\vec{y}$$
+	So at least one of $\vec{x}$ and $\vec{y}$ is an eigenvectors (at most one can be zero).
+\end{proof}
+
+\begin{ex}
+	Consider the following self adjoint operator.
+	$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, a,d \in \R, c = \overline{b}$$
+	Then
+	$$q(z) = z^2 - \tr(A)z + \det(A)$$
+	And the eigenvalues are given by
+	$$\lambda = \frac{\tr(A)\pm\sqrt{\tr^2(A) - 4\det(A)}}{2}$$
+	The determinant is given by
+	$$(a+d)^2 - 4(ad-|b|^2) = (a-d)^2 + 4|b|^2 \geq 0$$
+	So the eigenvalue(s) are real. \\
+	The eigenvectors are
+	$$v_1 = \begin{pmatrix}  // \lambda_1 - a \end{pmatrix}, v_2 = \begin{pmatrix} \lambda_2 - d \\ c \end{pmatrix}$$
+	And they are orthogonal
+	\begin{align*}
+		\langle v_1,v_2 \rangle &= b\overline{\lambda_2 - d} + (\lambda_1 - a)b \\
+					&= b(\lambda_2 - d + \lambda_1 - a) \\
+					&= b(\lambda_1 + \lambda_2 - \tr(A)) \\
+					&= 0
+	\end{align*}
+	Where the last equality comes from the fact that the sum of roots is $\tr(A)$.
+\end{ex}
+
+\begin{ex}
+	Note that the two forms are equivalent
+	$$ax^2 + bxy + cy^2 = \begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} a & \frac{b}{2} \\ \frac{b}{2} & c \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} $$
+\end{ex}
+
+\begin{defn}
+	$T \in \mathcal L(V)$ is unitary if $T$ is invertible and $\langle Tx,Ty \rangle = \langle x,y \rangle$. These are called isometries in general.
+\end{defn}
+
+\begin{ex}
+	We can have "reflection maps" $R$, where for a fixed $w \in V$,
+	$$R_w: v \mapsto v - 2\frac{\langle v,w \rangle}{\langle w,w \rangle}w$$
+	Which is an example of an isometry.
+\end{ex}
+
+\begin{lem}
+	If $S,T$ are unitary, then $ST$ is unitary.
+	$$\langle STv,STw \rangle = \langle Tv,Tw \rangle = \langle v,w \rangle$$
+\end{lem}
+
+\begin{lem}
+	If $V$ is finite dimensional, and $T \in \mathcal L(V)$ such that
+	$$\langle Tv,Tw \rangle = \langle v,w \rangle \forall v,w \in V$$
+	then $T$ is unitary.
+\end{lem}
+
+\begin{proof}
+	Note that $||Tv||^2 = ||v||^2$. Hence its kernel is $\{0\}$. For finite dimensions, this implies $T$ is invertible.
+\end{proof}
+
+\begin{thm}
+	The following statements are equivalent
+	\begin{enumerate}
+		\item $T$ is unitary
+		\item There exists an orthonormal basis which maps to an orthonormal basis on $T$
+		\item The above holds for all orthonormal bases
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}
+	Obviously the third statement implies the second. The first implies the third, as 
+	$$\langle Tv_i,Tv_j \rangle = \langle v_i,v_j \rangle$$
+	where $i\neq j$ shows it is orthogonal, and $i=j$ shows it is orthonormal. Finally, consider the second statement. Let
+	$$x = \sum x_iv_i, y = \sum y_iv_i$$
+	Then letting $T$ map from the orthonormal bases $v_i$ to $w_i$,
+	\begin{align*}
+		\langle Tx,Ty \rangle &= \sum_{i,j} x_i\overline{y_i} \langle Tv_i,Tv_j \rangle \\
+				      &= \sum_{i,j} x_i\overline{y_i} \langle w_i,w_j \rangle \\
+				      &= \sum_i x_i\overline{y_i} \langle v_i,v_j \rangle \\
+				      &= \langle x,y \rangle
+	\end{align*}
+	Thus the second statement implies the first.
+\end{proof}
+
+If $T$ is unitary, then
+\begin{align*}
+	\langle v,w \rangle &= \langle Tv,Tw \rangle \\
+			    &= \langle v,T^*Tw \rangle \\
+	\langle v,w-T^*Tw \rangle &= 0 \\
+	(I-T^*T)w &= 0 \\
+	T^{-1} &= T^*
+\end{align*}
+
+In fact,
+\begin{align*}
+	1 &= \det(I) \\
+	  &= \det(T^*T) \\
+	  &= \det(T^*)\det(T) \\
+	  &= \overline{\det(T)}\det(T) \\
+	  &= ||\det(T)||^2
+\end{align*}
+which explains why unitary maps are named so. Note that the inverse doesn't hold; consider
+$$\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$$
+
+\end{document}
