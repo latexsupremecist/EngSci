@@ -1,0 +1,195 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 4}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Let $V$ be a real or complex inner product space, and $v,w \in V$.}
+
+\begin{parts}
+
+\part{Show $||v+w||^2 + ||v-w||^2 = 2||v||^2 + 2||w||^2$.}
+
+\begin{solution}
+	\begin{align*}
+		||v+w||^2 + ||v-w||^2 &= \langle v+w,v+w \rangle + \langle v-w,v-w \rangle \\
+				      &= \langle v,v+w \rangle + \langle w,v+w \rangle + \langle v,v-w \rangle - \langle w,v-w \rangle \\
+				      &= \overline{\langle v+w,v \rangle} + \overline{\langle v+w,w \rangle} + \overline{\langle v-w,v \rangle} - \overline{\langle v-w,w \rangle} \\
+				      &= \overline{\langle v,v \rangle} + \overline{\langle w,v \rangle} + \overline{\langle v,w \rangle} + \overline{\langle w,w \rangle} + \overline{\langle v,v \rangle} - \overline{\langle w,v \rangle} - \overline{\langle v,w \rangle} + \overline{\langle w,w \rangle} \\
+				      &= ||v||^2 + \langle v,w \rangle + \langle w,v \rangle + ||w||^2 + ||v||^2 - \langle v,w \rangle - \langle w,v \rangle + ||w||^2 \\
+				      &= 2||v||^2 + 2||w||^2
+	\end{align*}
+\end{solution}
+
+\part{Show $||v-w|| \geq ||v|| - ||w||$}
+
+\begin{solution}
+	\begin{align*}
+		||v-w|| &= \sqrt{\langle v-w,v-w \rangle} \\
+			&= \sqrt{\langle v,v-w \rangle - \langle w,v-w \rangle} \\
+			&= \sqrt{\overline{\langle v-w,v \rangle} - \overline{\langle v-w,w \rangle}} \\
+			&= \sqrt{\overline{\langle v,v \rangle} - \overline{\langle w,v \rangle} - \overline{\langle v,w \rangle} + \overline{\langle w,w \rangle}} \\
+			&= \sqrt{||v||^2 - \langle v,w \rangle - \overline{\langle v,w \rangle} + ||w||^2} \\
+			&= \sqrt{||v||^2 - 2\Re \langle v,w \rangle + ||w||^2} \\
+			&\geq \sqrt{||v||^2 - 2|\langle v,w \rangle| + ||w||^2} \\
+			&\geq \sqrt{||v||^2 - 2\lVert v \rVert \lVert w \rVert + ||w||^2} \\
+			&\geq ||v|| - ||w||
+	\end{align*}
+\end{solution}
+
+\part{Show that $v=w$ if and only if $\langle v,x \rangle = \langle w,x \rangle$ for all $x \in V$.}
+
+\begin{solution}
+	It is obvious that $v=w$ implies
+	$$\langle v,x \rangle = \langle w,x \rangle \forall x \in V$$
+	To prove the "if" part, we need an orthonormal basis of $V$, which can be formed from any basis using Gram-Schmidt then normalising. Denoting the basis as $v_1,\dots,v_n$, note that if we let
+	$$v = \sum_{i=1}^n a_iv_i$$
+	and
+	$$w = \sum_{i=1}^n b_iv_i$$
+	We get
+	$$\langle v,v_j \rangle = \left\langle \sum_{i=1}^n a_iv_i,v_j \right\rangle = \sum_{i=1}^n a_i \langle v_i,v_j \rangle = a_j$$
+	Similarly,
+	$$\langle w,v_j \rangle = b_j$$
+	Putting $x$ to be each of $v_1,\dots,v_n$, we get $a_j=b_j$ for $j$ from $1$ to $n$, which means $v=w$.
+\end{solution}
+
+\end{parts}
+
+\question{Let $V = P_2(\R)$ be the vector space of polynomials of degree $\leq 2$, with inner product
+	$$\langle p,q \rangle = p(0)q(0) + p(1)q(1) + p(2)q(2)$$
+Use Gram-Schmidt to find an orthonormal basis for the subspace spanned by the polynomials $p_1(x) = x$, $p_2(x) = x^2$.}
+
+\begin{solution}
+	Both polynomials are obviously linearly independent, so the subspace has a dimension of 2. Using the Gram-Schmidt process, the first vector is $p_1$ normalised to 1. Then
+	\begin{align*}
+		||kp_1|| &= 1 \\
+		\langle kp_1,kp_1 \rangle &= 1 \\
+		k^2\langle p_1,p_1 \rangle &= 1 \\
+		p_1(0)p_1(0) + p_1(1)p_1(1) + p_1(2)p_1(2) &= \frac{1}{k^2} \\
+		5 &= \frac{1}{k^2} \\
+		k &= \frac{1}{\sqrt{5}}
+	\end{align*}
+	So the first basis vector $u_1$ is $\frac{x}{\sqrt{5}}$. Using the Gram-Schmidt process, the second (yet to be normalised) basis vector is given by
+	\begin{align*}
+		p_2 - \text{proj}_{u_1}(p_2) &= x^2 - \frac{\langle p_2,u_1 \rangle}{||u_1||^2}u_1 \\
+					     &= x^2 - (p_2(0)u_1(0) + p_2(1)u_1(1) + p_2(2)u_1(2))u_1 \\
+					     &= x^2 - \frac{9}{5}x
+	\end{align*}
+	Normalising,
+	\begin{align*}
+		\langle k(x^2 - \frac{9}{5}x),k(x^2 - \frac{9}{5}x) \rangle &= 1 \\
+		k^2 \langle x^2 - \frac{9}{5}x,x^2 - \frac{9}{5}x \rangle &= 1 \\
+		0 + (1-\frac{9}{5})^2 + (4 - \frac{18}{5})^2 &= \frac{1}{k^2} \\
+		k &= \frac{\sqrt{5}}{2}
+	\end{align*}
+	Thus the second basis vector is
+	$$u_2 = \frac{\sqrt{5}}{2}x^2 - \frac{9}{2\sqrt{5}}x$$
+\end{solution}
+
+\question{Let $T \in \mathcal L(V)$ be a linear operator on a finite-dimensional complex vector space $V$.}
+
+\begin{parts}
+	\part{Let $R \geq 0$ a constant such that
+		$$||Tv|| \leq R||v||$$
+	for all $v \in V$. Show that all eigenvalues $\lambda$ of $T$ satisfy $|\lambda| \leq R$.}
+	\part{Suppose there exists a constant $r>0$ such that
+		$$||Tv|| \geq r||v||$$
+	for all non-zero $v \in V$. Show that $T$ is invertible.}
+\end{parts}
+
+\begin{solution}
+	Let $\lambda$ be an eigenvalue, and $v$ be any corresponding nonzero eigenvector. Then
+	\begin{align*}
+		||Tv|| &\leq R||v|| \\
+		||\lambda v|| &\leq R||v|| \\
+		\sqrt{\langle \lambda v,\lambda v \rangle} &\leq R||v|| \\
+		\sqrt{\lambda\overline{\lambda}\langle v,v \rangle} &\leq R||v|| \\
+		|\lambda|.||v|| &\leq R||v|| \\
+		|\lambda| &\leq R
+	\end{align*}
+	Note that we made use of the fact that $v$ being nonzero implies it has a nonzero norm. Since $\lambda$ is set arbitrarily, all eigenvalues satisfy this property. \\
+	For the second part, observe if $T$ is not invertible, then there exists a non zero $v$ such that $Tv = 0$. Then $||Tv||=0$, but $r||v||>0$, since $r$ is positive by definition and $||v||>0\forall v\neq 0$. This leads to a contradiction. Hence $T$ is invertible.
+\end{solution}
+
+\question{A symmetric bilinear form $\langle \cdot,\cdot \rangle$ on vector space $V$ is called nondegenerate if the only vector $v \in V$ satisfying $\langle v,w \rangle = 0$ for all $w \in V$ is the zero vector $v=0$.}
+
+\begin{parts}
+	\part{Show that the bilinear form on $\R^n$, given on vectors $v = \sum_i a_ie_i, w = \sum_jb_je_j$ by
+		$$\langle v,w \rangle = a_1b_1 + \dots + a_rb_r - a_{r+1}b_{r+1} - \dots - a_nb_n$$
+	is nondegenerate.}
+	
+	\begin{solution}
+		Let $v$ be a vector such that $\langle v,w \rangle = 0 \forall w \in V$. Consider $w = e_k$, where $k\leq r$. Then $\langle v,w \rangle = a_k = 0$. Setting this for $k=1$ to $k=r$ gives
+		$$a_1=a_2=\dots=a_r=0$$
+		Then similarly, letting $k>r$, we have $\langle v,w \rangle = -a_k = 0$. Setting this for $k=r+1$ to $k=n$ gives
+		$$a_{r+1}=a_{r+2}=\dots=a_n=0$$
+		Hence $v=0$, and the symmetric bilinear form is nondegenerate.
+	\end{solution}
+
+	\part{Given a nondegenerate symmetric bilinear form on a real vector space $V$, prove that there exists a basis $v_1,\dots,v_n$ and some $r$ with $0\leq r\leq n$ such that
+		$$\langle v_j,v_k \rangle = \begin{cases} 0 & j \neq k \\ 1 & j=k\leq r \\ -1 & j=k>r \end{cases}$$
+	}
+
+	\begin{solution}
+		Similar to inner product spaces, we define $v$ and $w$ to be orthogonal when
+		$$\langle v,w \rangle = 0$$
+		We can also define projections
+		$$\text{proj}_u(v) = \frac{\langle v,u \rangle}{\langle u,u \rangle}u$$
+		when $\langle u,u \rangle \neq 0$. Note that for an arbitrary nondegenerate subspace of $V$,
+		\begin{align*}
+			\langle v+w,v+w \rangle &= \langle v,v \rangle + \langle w,w \rangle + 2\langle v,w \rangle \\
+			2\langle v,w \rangle &= \langle v,v \rangle + \langle w,w \rangle - \langle v+w,v+w \rangle
+		\end{align*}
+		As the subspace is nondegenerate, there has to be a $v,w$ pair such that $\langle v,w \rangle \neq 0$. Then one of the terms on the right hand side has to be nonzero, meaning there exists $v$ in the subspace where $\langle v,v \rangle \neq 0$. Armed with this, we first obtain $v_1 \in V$ that satisfies this. This means proj$_{v_1}(w)$ is defined $\forall w \in V$. Then every vector in $V$ can be written as a sum of a scalar multiple of $v_1$ and a $w$ orthogonal to $v$. Let $V_1 = V$, and we can define
+		$$V_2 = \{w \in V_1 | \langle w,v_1 \rangle \}$$
+		where
+		$$V_1 = \text{span}(v_1) \oplus V_2$$
+		Now note that $V_2$ is not degenerate. Or else, let $w \in V_2$ such that $\langle w,v \rangle = 0 \forall v \in V_2$. Then for an arbitrary $u \in V$, $u$ can be written as $av_1 + v_2$ where $v_2 \in V_2, a \in \R$. We get
+		$$\langle w,u \rangle = \langle w,av_1 + v_2 \rangle = \langle w,av_1 \rangle + \langle w,v_2 \rangle = 0$$
+		So $V=V_1$ is degenerate, a contradiction. Therefore, $V_2$ is nondegenerate, and we have a $v_2 \in V_2$ such that
+		$$\langle v_2,v_2 \rangle \neq 0$$
+		By induction, we can define $v_3,v_4,\dots,v_n$. Note that for $V_i,V_j$ where $i < j$, $V_j$ is a subset of $V - V_i$, meaning all vectors in $V_j$, including $v_j$, are orthogonal to $v_i$. Thus $v_1,\dots,v_n$ are pairwise orthogonal. Then rearrange $v_1,\dots,v_n$ to $w_1,\dots,w_n$ such that $w_1,\dots,w_r$ are the unique vectors where $\langle w_i,w_i \rangle = k_i > 0$. We can then normalise using
+		$$w'_i = \frac{1}{\sqrt{k}}w_i$$
+		We use the same formula for normalisation if $\langle w_i,w_i \rangle = -k_i  < 0$. Then $w'_1,\dots,w'_n$ is the required basis.
+	\end{solution}
+
+	\part{Show that a positive symmetric bilinear form $\langle \cdot,\cdot \rangle$ on a real vector space $V$ with dim $V = n < \infty$ is positive definite if and only if it is nondegenerate.}
+
+	\begin{solution}
+		If it is an inner product, then let $v$ be a vector such that $\langle v,w \rangle = 0 \forall w \in V$. Then $\langle v,v \rangle = 0$, which implies $v = 0$, as it is definite. Hence, it is nondegenerate. To show the reverse, we consider the basis $v_1,\dots,v_n$ shown to exist in the previous part. Since it is positive, $\langle v_i,v_i \rangle \geq 0$. This means $r=n$, and gives the stricter condition that $\langle v_i,v_i \rangle > 0$. Then for an arbitrary vector
+		$$v = \sum_{i=1}^n a_iv_i, a_i \in \R$$
+		we have
+		$$\langle v,v \rangle = \sum_{i,j} a_ia_j \langle v_i,v_j \rangle = \sum_{i=j} a_i^2 \langle v_i,v_i \rangle = \sum_i a_i^2$$
+		Which means $\langle v,v \rangle = 0$ if and only if $v=0$. Note that all the terms with $i \neq j$ vanish, by definition of $v_1,\dots,v_n$.
+	\end{solution}
+\end{parts}
+
+\question{Let $V$ be a finite-dimensional complex inner product space, and $T \in \mathcal L(V)$. Let $v \in V$ with $||v|| = 1$. Prove
+	$$|\langle Tv,v \rangle| \leq ||Tv||$$
+with equality if and only if $v$ is an eigenvector of $T$.}
+
+\begin{solution}
+	By Cauchy-Schwartz,
+	$$|\langle Tv,v \rangle| \leq ||Tv||.||v|| = ||Tv||$$
+	If $v$ is an eigenvector, let $\lambda$ be the eigenvalue, then
+	$$|\langle Tv,v \rangle| = |\langle \lambda v,v \rangle| = |\lambda \langle v,v \rangle| = |\lambda|$$
+	From the right hand side,
+	$$||Tv|| = ||\lambda v|| = |\lambda|.||v|| = |\lambda|$$
+	Hence equality holds if $v$ is an eigenvector of $T$. Conversely, given equality, we first assume $Tv \neq 0$, or else $v$ is an eigenvector with eigenvalue 0. Then let $Tv = w + \lambda v$, where $\lambda v$ is its projection on $v$. Note that then $\langle w,v \rangle = \langle v,w \rangle = 0$.
+	\begin{align*}
+		|\langle Tv,v \rangle| &= ||Tv|| \\
+		|\langle w + \lambda v,v \rangle| &= \sqrt{\langle w + \lambda v, w + \lambda v \rangle} \\
+		|\langle w,v \rangle + \lambda \langle v,v \rangle| &= \sqrt{\langle w,w \rangle + \lambda \langle w,v \rangle + \lambda \langle v,w \rangle + |\lambda|^2 \langle v,v \rangle} \\
+		|\lambda| &= \sqrt{||w||^2 + |\lambda|^2}
+		\sqrt{|\lambda|^2} &= \sqrt{||w||^2 + |\lambda|^2} \\
+		||w|| &= 0 \\
+		w &= 0
+	\end{align*}
+	Then $Tv = \lambda v$, so $v$ is an eigenvector.
+\end{solution}
+
+\end{questions}
+\end{document}
