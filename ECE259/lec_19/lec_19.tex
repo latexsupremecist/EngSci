@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 19}
+\begin{document}
+\maketitle
+
+\section{Laplace and Poisson Equations}
+
+\begin{ex}[Electric Field inside a capacitor]
+	Ignoring fringing fields, $\vec{E} = E_x\hat{a}_x$. Hence from Laplace's Equation,
+	\begin{align*}
+		\vec{\nabla}^2V &= 0 \\
+		\frac{d^2V}{dx^2} &= 0 \\
+		V &= ax + b
+	\end{align*}
+	Plugging $V(0)$ and $V(L)$ gives the constants $a$ and $b$. For $V(0) = V_0, V(d) = 0$, we get
+	$$V = -\frac{V_0}{d}x + V_0$$
+\end{ex}
+
+\begin{ex}[Coaxial Cable]
+	Find the solution for the variation of the electric scalar potential, $V(r)$, within a coaxial cable which lies along the $z$-axis. The outer conductor $(r=b)$ is grounded, while the inner conductor ($r=a$) is held at a potential of $V_0$. For a 1 m long section of this coaxial cable, determine the capacitance and stored electrostatic energy. \\
+	We use Laplace's equation
+	$$\vec{\nabla}^2V = 0$$
+	Ignoring fringing fields, considering symmetry, and using
+	$$\vec{\nabla}^2V = \frac{1}{r}\frac{\partial}{\partial r}\left(r \frac{\partial V}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2V}{\partial\phi^2} + \frac{\partial^2V}{\partial z^2}$$
+	We get that
+	$$V = A\ln r + B$$
+	Where the boundary values $V(r=a) = V_0, V(r=b) = 0$ give
+	$$V(r) = \frac{V_0}{\ln\frac{b}{a}}\ln\frac{b}{r}$$
+	Then the energy stored is
+	\begin{align*}
+		W &= \frac{1}{2} \iiint \varepsilon_0 \varepsilon_r |\vec{E}|^2dv \\
+		  &= \frac{1}{2} \int_a^b \int_0^{2\pi} \int_0^L \varepsilon_0\varepsilon_r \left(\frac{V_0}{\ln\frac{b}{a}}\right)^2 \frac{1}{r} dzd\phi dr \\
+		  &= \frac{1}{2} \times 2\pi L\varepsilon_0 \varepsilon_r \times \frac{V_0^2}{\ln^2 \frac{b}{a}} \ln\frac{b}{a} \\
+		  &= \frac{\pi\varepsilon_0 \varepsilon_r V_0^2L}{\ln\frac{b}{a}}
+	\end{align*}
+	Thus
+	$$C = \frac{2W}{V_0^2} = \frac{2\pi\varepsilon_0 \varepsilon_r L}{\ln\frac{b}{a}}$$
+\end{ex}
+\end{document}
