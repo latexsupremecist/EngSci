@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 14}
+\begin{document}
+\maketitle
+
+\section{Midterm Information}
+The midterm is on Tuesday March 7, 11:00-13:00. Everything until and including unitary operators is covered.
+
+\section{Unitary Operators}
+\begin{defn}
+	Let $V$ be an inner product space. Then $T \in \mathcal L(V)$ is unitary iff
+	\begin{enumerate}
+		\item $T$ is invertible
+		\item $T$ is an isometry, i.e. 
+			$$\langle Tv,Tw \rangle = \langle v,w \rangle \forall v,w \in V \Leftrightarrow TT^* = I = T^*T$$
+	\end{enumerate}
+\end{defn}
+
+If $V$ is finite dimensional, the second condition implies the first.
+
+\begin{prop}
+	Let $T \in \mathcal L(V)$ be unitary, and $V$ be finite dimensional. Then
+	\begin{itemize}
+		\item If $W \subseteq V$ is $T$-invariant, then $W^\perp$ is $T$-invariant
+		\item All eigenvalues of $T$ have an absolute value of 1
+		\item Eigenvectors for distinct eigenvalues are orthogonal
+	\end{itemize}
+\end{prop}
+
+\begin{proof}
+	Since $T$ is invertible, $TW \subseteq W$ means $TW = W$. Then $W = T^{-1}W$, so it is $T^{-1}$ invariant. Let $v \in W^\perp$. Then
+	$$\langle Tv,w \rangle = \langle v,T^*w \rangle = \langle v,T^{-1}w \rangle = 0$$
+	Then $v \in W^\perp$, thus $TW^\perp \subseteq W^\perp$. \\
+	Then, let $v \in V$ be an eigenvector with eigenvalue $\lambda$.
+	$$\langle v,v \rangle = \langle Tv,Tv \rangle = \langle \lambda v,\lambda v \rangle = |\lambda|^2\langle v,v \rangle$$
+	Thus the eigenvalue has an absolute value of 1. Similarly, for distinct eigenvalues and eigenvectors, if $\langle v,w \rangle \neq 0$, then
+	$$\langle v,w \rangle = \langle Tv,Tw \rangle = \langle \lambda v,\mu w \rangle = \lambda\overline{\mu} \langle v,w \rangle \neq \lambda\overline{\lambda} \langle v,w \rangle = \langle v,w \rangle$$
+	So the eigenvectors are orthogonal by contradiction.
+\end{proof}
+
+\begin{thm}
+	Suppose $T \in \mathcal L(V)$ is unitary, where $V$ is a complex inner product space with finite dimensions. Then there exists an orthogonal basis of $V$ consisting of eigenvectors of $T$.
+\end{thm}
+
+\begin{proof}
+	By induction, we construct for all $k \leq n$ an orthonormal set $\{v_1,\dots,v_k\}$ such that $Tv_i = \lambda_iv_i$. Induction starts at $k=0$. Given $\{v_1,\dots,v_k\}$, its span is $T$-invariant, hence $\text{span}\{v_1,\dots,v_k\}^\perp$ is also $T$-invariant. Taking $v_{k+1}$ to be a unit length eigenvector for the restriction of $T$ to $\text{span}\{v_1,\dots,v_k\}^\perp$ completes the proof.
+\end{proof}
+
+Remark: \\
+For $T \in \mathcal L(V)$, where $V$ is complex and finite dimensional, the spectrum $\text{Spec}(T)$ is the set of eigenvalues. Then
+\begin{itemize}
+	\item If $T$ is self adjoint, $\text{spec}(T) \subseteq \R$
+	\item If $T$ is skew-adjoint, $\text{spec}(T) \subseteq i\R$
+	\item If $T$ is unitary, $\text{spec}(T) \subseteq S^1 \subseteq \C$
+\end{itemize}
+
+\section{Normal Operators}
+
+\begin{defn}
+	A operator $T \in \mathcal L(V)$ is normal iff
+	$$TT^* = T^*T$$
+\end{defn}
+
+\begin{ex}
+	Self adjoint and skew adjoint operators are normal. Unitary maps are also normal.
+	$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+	is normal iff $|b| = |c|, \overline{a}b + \overline{c}d = a\overline{c} + b\overline{d}$. If $\F = \R$, this implies $b=c$, or $b=-c$ and $a=d$.
+\end{ex}
+
+Properties of normal operators:
+
+\begin{enumerate}
+	\item If $T$ is normal, $\lambda \in \F$, then $\lambda T$ is normal
+	\item If $T$ is normal, $T^{-1}$ is normal
+	\item If $T$ is normal, $T^k$ is normal $\forall k \in \Z$
+	\item If $T$ is normal, $p(T)$ is normal for any polynomial $p$
+	\item If $T$ is normal, $p(T)^* = \overline{p}(T^*)$
+\end{enumerate}
+
+\begin{proof}
+	For the second property, taking the inverse of both sides of
+	$TT^*$ and $T^*T$ gives
+	$$(T^*)^{-1} = (T^{-1})^*$$
+\end{proof}
+\end{document}
