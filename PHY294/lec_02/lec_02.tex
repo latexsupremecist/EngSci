@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 2}
+\begin{document}
+\maketitle
+
+\section{Ideal Gas}
+
+When plotting pressure against temperature for a gas, the experimental data shows that all such lines meet at a pressure of 0 and temperature of -273$^\circ$C. This is called the \textbf{absolute zero}.
+
+\subsection{Derivation}
+
+We assume that all molecules move with the same typical average velocity, and the velocity in any given physical olume is isotropically distributed. Then by symmetry,
+
+$$\overline{v}_x = \frac{1}{N} \sum_i v_{x_i} = 0$$
+
+And
+
+$$\overline{v_x^2} = \frac{1}{N} \sum_i v^2_{x_i} = \overline{v}^2 \neq 0$$
+
+Letting $L$ be the box length, and $\Delta t$ such that
+$$L = \overline{v}\Delta t$$
+
+The number of molecules hitting the wall in time $\Delta t$ is half of the molecules in the volume, i.e.
+$$\frac{1}{2}\frac{N}{V}LA = \frac{1}{2} \frac{N}{V} \overline{v}\Delta tA$$
+
+then the change in momentum per unit area of the wall in the time interval $\Delta t$ is
+$$2m\overline{v} \times \frac{N}{V} \frac{1}{2} \overline{v}\Delta tA$$
+
+Force is but the change in momentum over time, and pressure is force per area, which gives
+$$p = m\overline{v}^2\frac{N}{V}$$
+
+Comparing this with the ideal gas law,
+$$kT = m\overline{v}^2 = \frac{1}{3} m\overline{\vec{v}^2}$$
+Rearringing, we get the kinetic energy
+$$\frac{1}{2}m\overline{\vec{v}^2} = \frac{3}{2}kT$$
+
+This means temperature is a measure of average kinetic energy! \\
+The root mean squared veolcity is
+$$v_{\text{rms}} = \sqrt{\overline{\vec{v}^2}} = \sqrt{\frac{3kT}{m}}$$
+
+\section{Equipartition Theorem}
+
+For classical gasses: At thermodynamic equilibrium of a classical gas at source given $T$ the average energy of
+
+\begin{itemize}
+	\item a translational degree of freedom is $\frac{kT}{2}$
+	\item a rotational degree of freedom is $\frac{kT}{2}$
+	\item a vibrational degree of freedom $kT$
+\end{itemize}
+
+\begin{ex}
+	For a system fo 2 atoms, there are 3 degrees of freedom for translation, 2 for rotation, and 1 for vibration.
+\end{ex}
+
+\begin{ex}
+	For N$_2$, average energy is
+	$$3\times \frac{kT}{2} + 2\times \frac{kT}{2} + kT = \frac{7kT}{2}$$
+\end{ex}
+
+\end{document}
