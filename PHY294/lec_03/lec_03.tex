@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 3}
+\begin{document}
+\maketitle
+
+\section{Equipartition Theorem}
+
+\subsection{Counting}
+
+For a system of $N$ atoms, there is a total of $3N$ degrees of freedom. However, for nonlinear particles, there are 6 cases of double counting, where the entire molecule shifts in any of the 3 directions, or rotates along any of the 3 axes. Similarly, for linear molecules, there are 5 cases. Then the normal vibrational modes are $3N-6$ and $3N-5$ respectively.
+
+A gas of $N$ nonlinear molecules of $n$ atoms each has a molecular energy of
+$$3\frac{kT}{2} + 3\frac{kT}{2} + (3n-6)kT = (3n-3)kT$$
+Hence
+$$U = N(3n-3)kT$$
+
+Similarly, for linear molecules,
+$$U = N\frac{kT}{2}(6n-5)$$
+
+The first law of thermodynamics:
+$$\Delta U = Q + W$$
+
+If we heat up a gas with constant volume, we get the heat capacity
+$$C_v = \left(\frac{\Delta U}{\Delta T}\right)_{V,N}$$
+
+Before 100K, energy is around $\frac{3}{2}kN$, where the gas behaves like a single atom. passing 100K, energy is around $\frac{5}{2}kN$, where the gas behaves like a system of atoms that translate and rotate (no vibration). Finally, at around 1000K, energy reaches $\frac{7}{2}kN$ as predicted. This is because of quantum mechanics. There is a minimum energy for harmonic oscillators, $\hbar\omega$. Therefore, without sufficient energy, rotational motion is impossible, similar for vibrational motion.
+\end{document}
