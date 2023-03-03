@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 20}
+\begin{document}
+\maketitle
+
+\section{Boundary Value Problems}
+
+The uniquness principle is that if a solution to Laplace's or Poisson's equation can e found that satisfies the boundary conditions, then the solution is unique.
+
+\begin{ex}[Electric Shielding]
+	Consider a closed perfect conductor. To find the voltage field inside the shell with $\rho_v = 0$ inside, we have
+	$$\vec{\nabla}^2V = 0$$
+	The boundary condition is
+	$$V=V_0$$
+	as voltage is constant across a perfect conductor. Then obviously $V=V_0$ is a solution, and correspondingly $\vec{E} = 0$.
+\end{ex}
+
+\begin{ex}[Spherical Capacitor with Inhomogeneous Dielectric]
+	You are asked to determine hwo the electric scalar potential changes within a spherical capacitor which consists of two concentric metal spheres (radii $a=0.2$ m and $b = 0.6$ m) separated by an inhomogeneous dielectric with a relative permittivity given by $\varepsilon_r = \frac{2}{R}$. Find the electric scalar potential function $V(R)$, within this capacitor, and the capacitance of this structure. You may assume that there is no free charge within the dielectric, and that the outer sphere is grounded and the inner sphere has a potential of $V_0 = 5$ V. \\
+	\begin{align*}
+		\vec{\nabla}(\varepsilon_r\vec{\nabla}V) &= 0 \\
+		\frac{1}{R}^2\frac{d}{dR}\left(R^2\varepsilon_r \frac{dV}{dR}\right) &= 0 \\
+		\frac{d}{dR}\left(2R\frac{dV}{dR}\right) &= 0 \\
+		\frac{dV}{dR} &= \frac{C_1}{2R} \\
+		V &= \frac{C_1}{2}\ln R + C_2
+	\end{align*}
+	Plugging the boundary values give
+	$$V(R) = \frac{5}{\ln\frac{b}{a}}\ln\frac{b}{R}$$
+	Then
+	$$\vec{E} = -\vec{\nabla}V = -\frac{C_1}{2R} = -\frac{5}{\ln\frac{b}{a}R} \hat{a}_R$$
+\end{ex}
+\end{document}
