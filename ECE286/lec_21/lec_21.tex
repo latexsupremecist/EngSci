@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 21}
+\begin{document}
+\maketitle
+
+\section{More Sampling Distributions}
+
+\begin{thm}[Central Limit Theorem]
+	Consider the independently identically distributed sample $X_1,\dots,X_n$ with $\mu,\sigma^2$. Defining
+	$$\overline{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$$
+	and
+	$$Z_n = \frac{\overline{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}}$$
+	Then as $n \rightarrow \infty$, the distribution of $Z_n$ tends to the normal distribution $n(z;0,1)$.
+\end{thm}
+
+The standard deviation of $\overline{X}_n$ is $\frac{\sigma}{\sqrt{n}}$, so the distribution of $\overline{X}_n$ is $n(\overline{x};\mu,\frac{\sigma^2}{n})$, and $\overline{x}_n$ is the realisation of $\overline{X}_n$.
+
+\section{Sample Variance}
+
+$$S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$$
+
+Recall the $\chi$-squared distribution
+$$f(y,\nu) = \begin{cases} \frac{1}{2^{\frac{\nu}{2}}\Gamma\left(\frac{\nu}{2}\right)}y^{\frac{\nu}{2}-1}e^{-\frac{y}{2}} & y > 0 \\ 0 & , y \leq 0 \end{cases}$$
+Then
+\begin{align*}
+	\chi^2 &= \frac{n-1}{sigma^2} S^2 \\
+	       &= \frac{1}{\sigma^2} \sum_{i=1}^n (X_i - \overline{X})^2
+\end{align*}
+Then $\chi^2$ has $\chi$-squared distribution $\nu = n-1$. $\nu$ is the number of degrees of freedom. For
+$$\frac{1}{\sigma^2} \sum_{i=1}^n (X_i - \mu)^2$$
+the probability density function is $\chi^2$ with $\nu = n$.
+
+\section{T distribution}
+
+We let
+
+$$T_n = \frac{\overline{X}_n - \mu}{\frac{S}{\sqrt{n}}}, S = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (X-\overline{X})^2}$$
+
+If $n \geq 30, S \approx \sigma$, then we can use the Central Limit Theorem replacing the standard deviation with $S$.
+
+\begin{defn}[T Distribution]
+	$$H(t) = \frac{\Gamma\left[\frac{\nu+1}{2}\right]}{\Gamma\left(\frac{\nu}{2}\right)\sqrt{\pi\nu}} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}$$
+\end{defn}
+
+\section{Comparison of T Distribution and Normal Distribution}
+
+The T distribution has "heavy tails", meaning it is more likely for there to be a value far from the mean. The T distribution can be used if there is a normal population, and the Central Limit Theorem ($\sigma = S$) can be used for non normal population given $n \geq 30$. 
+
+\section{Comparison of T Distribution and Normal Distribution}
+
+The T distribution has "heavy tails", meaning it is more likely for there to be a value far from the mean. The T distribution can be used if there is a normal population, and the Central Limit Theorem ($\sigma = S$) can be used for non normal population given $n \geq 30$. 
+
+\section{Comparison of T Distribution and Normal Distribution}
+
+The T distribution has "heavy tails", meaning it is more likely for there to be a value far from the mean. The T distribution can be used if there is a normal population, and the Central Limit Theorem ($\sigma = S$) can be used for non normal population given $n \geq 30$. 
+
+\section{Comparison of T Distribution and Normal Distribution}
+
+The T distribution has "heavy tails", meaning it is more likely for there to be a value far from the mean. The T distribution can be used if there is a normal population, and the Central Limit Theorem ($\sigma = S$) can be used for non normal population given $n \geq 30$. 
+
+\end{document}

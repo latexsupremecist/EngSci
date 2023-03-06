@@ -1,0 +1,90 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 6}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Let $X$ be a binomial random variable with probability distribution
+	$$f(x) = \begin{cases} \binom{3}{x}\left(\frac{2}{5}\right)^x \left(\frac{3}{5}\right)^{3-x} & x=0,1,2,3 \\ 0 & \text{elsewhere} \end{cases}$$
+	Find the probability distribution of the random variable $Y=X^2$}
+
+\begin{solution}
+	$$g(y) = \begin{cases} \binom{3}{\sqrt{y}} \left(\frac{2}{5}\right)^{\sqrt{y}} \left(\frac{3}{5}\right)^{3-\sqrt{y}} & y=0,1,4,9 \\ 0 & \text{elsewhere} \end{cases}$$
+\end{solution}
+
+\question{A dealer’s profit, in units of \$5000, on a new automobile is given by $Y = X^2$ , where X is a random variable having the density function
+$$f(x) = \begin{cases} 2(1-x) & 0<x<1 \\ 0 & \text{elsewhere} \end{cases}$$}
+
+\begin{parts}
+	\part{Find the probability density function of the random variable $Y$.}
+	\part{Using the density function of Y , find the probability that the profit on the next new automobile sold by this dealership will be less than \$500.}
+\end{parts}
+
+\begin{solution}
+	\begin{align*}
+		G(y) &= P(Y\leq y) \\
+		     &= P(\sqrt{y} \leq X \leq \sqrt{y})
+	\end{align*}
+	For $0 < y < 1$, this gives
+	$$G(y) = \int_0^{\sqrt{y}} 2(1-x)dx = 2\sqrt{y} - y$$
+	And so
+	$$g(y) = y^{-\frac{1}{2}} - 1$$
+	in this range. The probability density function is then
+	$$g(y) = \begin{cases} y^{-\frac{1}{2}} - 1 & 0 < y < 1 \\ 0 & \text{elsewhere} \end{cases}$$
+	The desired probability is then $G(0.1) = 0.532$.
+\end{solution}
+
+\question{The random variables $X$ and $Y$, representing the weights of creams and toffees, respectively, in 1-kilogram boxes of chocolates containing a mixture of creams, toffees, and cordials, have the joint density function
+$$f(x,y) = \begin{cases} 24xy & 0 \leq x \leq 1, 0 \leq y \leq 1, x+y \leq 1 \\ 0 & \text{elsewhere} \end{cases}$$
+}
+
+\begin{parts}
+	\part{Find the probability density function of the random variable $Z = X + Y$.}
+	\part{Using the density function of $Z$, find the probability that, in a given box, the sum of the weights of creams and toffees accounts for at least 1/2 but less than 3/4 of the total weight.}
+\end{parts}
+
+\begin{solution}
+	Let $z' = \text{min}\{z,1\}$.
+	\begin{align*}
+		G(z) &= P(Z \leq z) \\
+		     &= P(X + Y \leq z') \\
+		     &= \int_0^z' \int_0^{z'-x} 24xy dydx \\
+		     &= \int_0^z' 12x(z'-x)^2 dx \\
+		     &= \int_0^z' (12x^3 - 24x^2z' + 12xz'^2) dx \\
+		     &= 3z'^4 - 8z'^4 + 6z'^4 \\
+		     &= z'^4
+	\end{align*}
+	Differentiating,
+	$$g(z) = \begin{cases} 4z^3 & 0 \leq z \leq 1 \\ 0 & \text{elsewhere} \end{cases}$$
+	The required probability is then
+	$$\left(\frac{3}{4}\right)^4 - \left(\frac{1}{2}\right)^4 = 0.254$$
+\end{solution}
+
+\question{Let $X_1$ and $X_2$ be independent random variables
+each having the probability distribution
+$$f(x) = \begin{cases} e^{-x} & x>0 \\ 0 & \text{elsewhere} \end{cases}$$
+Show that the random variables $Y_1$ and $Y_2$ are independent when $Y_1=X_1+X_2$ and $Y_2 = \frac{X_1}{(X_1+X_2)}$.}
+
+\begin{solution}
+	$$f(x_1,x_2) = \begin{cases} e^{-(x_1+x_2)} & x_1,x_2 > 0 \\ 0 & \text{elsewhere} \end{cases}$$
+	Then for $y_1 > 0$
+	\begin{align*}
+		G(y_1) &= P(Y_1 \leq y_1) \\
+		       &= P(X_1 + X_2 \leq y_1) \\
+		       &= \int_0^{y_1} \int_0^{y_1-x_2} e^{-(x_1+x_2)} dx_1dx_2 \\
+		       &= \int_0^{y_1} e^{-x_2} - e^{y_1} dx_2 \\
+		       &= 1 - e^{-y_1} - y_1e^{-y_1} \\
+		       &= 1 - (y_1+1)e^{-y_1}
+	\end{align*}
+	Differentiating,
+	$$g(y_1) = \begin{cases} y_1e^{y_1} & y_1 > 0 \\ 0 & \text{elsewhere} \end{cases}$$
+	Similarly, for $y_2 > 0$,
+	\begin{align*}
+		H(y_2) &= P(Y_2 \leq y_2) \\
+		       &= P\left(\frac{X_1}{X_1+X_2} \leq y_2\right) \\
+		       &= \int_0^\infty
+\end{questions}
+\end{document}
