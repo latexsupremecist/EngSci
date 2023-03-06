@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 21}
+\begin{document}
+\maketitle
+
+\section{Electric Currents and Current Density}
+
+$$\vec{J} = \rho_{ve}\vec{u}_d$$
+where $\vec{u}_d$ is the drift velocity. \\
+Consider the movement of a single electron within a material with an electric field. Note that the drift velocity always goes in the opposite direction of the electric field. It is the average velocity of said electron considering its collisions with the other atoms in the material.
+
+\begin{align*}
+	\vec{F} &= -e\vec{E} \\
+	m_e\vec{a} &= -e\vec{E} \\
+	\vec{a} &= \frac{-e}{m_e}\vec{E}
+\end{align*}
+
+Then
+$$\vec{u}_d = \Delta t\vec{a} \approx \tau\vec{a} = -\frac{\tau e\vec{E}}{m_e}$$
+Where $\tau$ is the mean free time, or the average time between collisions. The \textbf{mobility} measures how effective the field is at moving charges in a materia, i.e.
+$$\mu_e = \frac{e\tau}{m_e}$$
+
+\section{Point Form of Ohm's Law}
+
+$$I = \iint_S \vec{J} \cdot d\vec{S}$$
+So
+$$\vec{J} = \rho_{ve}\vec{u}_d = -N_ee\left(-\frac{\tau e}{m_e}\vec{E}\right) = \frac{N_ee^2\tau}{m_e}\vec{E}$$
+This is called the point form of Ohm's Law
+$$\vec{J} = \sigma\vec{E}, \sigma = \frac{N_ee^2\tau}{m_e}$$
+
+\end{document}

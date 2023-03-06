@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 18}
+\begin{document}
+\maketitle
+
+\section{Capacitors}
+
+\begin{ex}
+
+	Consider an inner and outer cylindrical conductors. $Q = 1\unit{nC}, a = 1\unit{mm}, b = 3\unit{mm}, c = 5.5\unit{mm}, \varepsilon_{r1} = 2, \varepsilon_{r2} = 4, L = 5\unit{cm}$. Where $a,b,c$ are the radii in ascending order. Find the total stored electric potential energy and the capacitance. \\
+	We can use the equation
+	$$W = \frac{1}{2} \iint_S \rho_s vds$$
+	or
+	$$W = \frac{1}{2} \iiint_V \vec{D} \cdot \vec{E} dv$$
+	From Gauss' Law,
+	$$\vec{D} = \begin{cases} \frac{Q}{2\pi rL}\hat{a}_r & a < r < c \\ 0 & \text{else} \end{cases}$$
+	Then
+	$$\vec{E} = \begin{cases} \frac{Q}{2\pi \varepsilon_0\varepsilon_{r1} rL}\hat{a}_r & a < r < b \\ \frac{Q}{2\pi \varepsilon_0\varepsilon_{r2} rL}\hat{a}_r & b < r < c \\ 0 & \text{else} \end{cases}$$
+	The second equation then gives
+	\begin{align*}
+		W &= \frac{1}{2} \int_0^L \int_0^{2\pi} \int_a^b \frac{Q^2}{4\pi^2 \varepsilon_0\varepsilon_{r1} r^2L} rdrd\phi dz + \frac{1}{2} \int_0^L \int_0^{2\pi} \int_b^c \frac{Q^2}{4\pi^2 \varepsilon_0\varepsilon_{r2} r^2L} rdrd\phi dz \\
+		  &= \frac{Q^2}{4\pi\varepsilon_0}\left(\frac{\ln b - \ln a}{\varepsilon_{r1}} - \frac{\ln c - \ln b}{\varepsilon_{r2}}\right) \\
+		  &= 0.126\unit{\mu J}
+	\end{align*}
+	And
+	$$c = \frac{1}{2} \frac{Q^2}{W} = 3.87\unit{pf}$$
+\end{ex}
+
+\section{Some Maff}
+
+Consider the differential form of Gauss' Law:
+$$\vec{\nabla} \cdot (\varepsilon\vec{E}) = \rho_v$$
+$$\vec{E} = -\vec{\nabla} V$$
+Poisson's equation is then
+$$\vec{\nabla}\cdot(\varepsilon\vec{\nabla}V) = -\rho_v$$
+If $\rho_v = 0$, we get Laplace's equation
+$$\vec{\nabla}\cdot(\varepsilon\vec{\nabla}V) = 0$$
+
+If the material is homogeneous, i.e. $\sigma$ and $\varepsilon_r$ are independent of spatial coordinates, this simplifies to
+$$\vec{\nabla}^2V = -\frac{\rho_v}{\varepsilon}$$
+and
+$$\vec{\nabla}^2V = 0$$
+\end{document}
