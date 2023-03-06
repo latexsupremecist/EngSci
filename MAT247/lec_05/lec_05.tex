@@ -17,10 +17,10 @@ And $T$ can be described by the composition matrix
 $$A = \begin{pmatrix} 0 & 0 & \dots & -a_0 \\ 1 & 0 & \dots & -a_1 \\ 0 & 1 & \dots & -a_2 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \dots & -a_{n-1}\end{pmatrix}$$
 
 Its characteristic polynomial is given by
-$$q_T(z) = \det(zI_A)$$
+$$q_T(z) = \det(zI-A)$$
 
 Using the cofactor expansion along the last column for $C=zI-A$,
-$$q_T(z) = \sum_{i=1}^n (-1)^{n+i} a_{i-1}\det(C^{[in]}) + z\det(C^{[in]})$$
+$$q_T(z) = \sum_{i=1}^n (-1)^{n+i} a_{i-1}\det(C^{[in]}) + z\det(C^{[nn]})$$
 Note that all of the terms involve the determinant of a matrix that can be represented as
 $$A = \begin{pmatrix} A' & * \\ 0 & A''\end{pmatrix}$$
 in block matrix form. Using this analogy, observe $A'$ is lower triangular and $A''$ is upper triangular. The determinant is then given by
@@ -41,7 +41,7 @@ Given any monic polynomial $p(z)$ one can write down a matrix having $p(z)$ as t
 More on characteristic polynomials. Suppose $V=W_1 \oplus W_2$ with $T(W_i)\subseteq W_i$. Then
 $$q_T(z) = q_{T|_{W_1}}(z)q_{T|_{W_2}}(z)$$
 Reason: Choose basis for $W_1,W_2$ to form basis for $V_1$. Then $q_T(z)$ becomes the determinant of a block matrix. \\
-In general, a $T$-invariant subspace $W_1\subseteq V$ need not admit an invariant complement (i.e. there need not exist $T$-invariant $W_2$ such that $V=W_1+W_2$)
+In general, a $T$-invariant subspace $W_1\subseteq V$ need not admit an invariant complement (i.e. there need not exist $T$-invariant $W_2$ such that $V=W_1\oplus W_2$)
 
 \begin{ex}
 	$V=\R^2,Te_1=e_2,Te_2=0$. Then $W=ke_2$ is invariant, but there is no invariant complement.

@@ -15,7 +15,7 @@ That is, $w_j$ solves the equation $Ax=e_j$. Thus by Cramer's rule,
 $$A^{-1}_{ij} = \frac{\det(v_1,\dots,v_{i-1},e_j,v_{i+1},\dots,v_n)}{\det(A)}$$
 Using cofactor expansion along the $j$th column
 $$A^{-1}_{ij} = \frac{(-1)^{i+j}\det(A^{[ji]})}{\det(A)}$$
-Note that $i$ and $j$ are flipped for the cofactor, as it is the $j$th column that is deleted.
+Note that $i$ and $j$ are flipped for the cofactor, as it is the $j$th row that is deleted.
 
 \section{More Properties}
 
@@ -28,7 +28,7 @@ $$\det(T') = \det(T)$$
 
 If $W\subseteq V$ is $T$-invariant then
 $$\det(T) = \det(T|_W)\det(\bar{T})$$
-where $\bar{T} \in \mathcal{L}(V/W)$ is $\bar{T}(V+W) = Tv+W$
+where $\bar{T} \in \mathcal{L}(V/W)$ is $\bar{T}(v+W) = Tv+W$
 
 \section{Characteristic Polynomials}
 
@@ -44,7 +44,7 @@ To rephrase this, $\lambda$ is an eigenvalue iff $\lambda$ is a root of
 $$q(z) = \det(zI - T)$$
 
 \begin{defn}
-	FOr $T\in\mathcal{L}(V)$, the polynomial
+	For $T\in\mathcal{L}(V)$, the polynomial
 	$$q(z) = \det(zI-T)$$
 	is called the characteristic polynomial. Similarly, for $A\in M_{n\times n}(\F)$ we call
 	$$q(z) = \det(zI-A)$$
