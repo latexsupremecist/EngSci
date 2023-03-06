@@ -1,0 +1,143 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 5}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Let $V$ be the space of real-valued continuous functions with the property $f(x+2\pi)=f(x)$, equipped with the inner product
+$$\langle f,g \rangle = \int_{-\pi}^\pi f(x)g(x)dx$$
+Find the linear combination of $1,\sin(x),\cos(x)$ that is closest to $\sin^2(x)$, using the norm defined by this inner product.}
+
+\begin{solution}
+	First, note that $1, \sin(x), \cos(x)$ are pairwise orthogonal. For $1$ and $\sin(x)$, it suffices to note that $\sin(x)$ is odd. For $1$ and $\cos(x)$, note that $\sin(\pi) = \sin(-\pi) = 0$. Finally for $\sin(x)$ and $\cos(x)$, note that their product is $\frac{1}{2}\sin(2x)$, which is odd. Given this, we know that the desired linear combination is
+	$$\langle \sin^2(x),1 \rangle \times 1 + \langle \sin^2(x), \sin(x) \rangle \sin(x) + \langle \sin^2(x),\cos(x) \rangle \cos(x)$$
+	The first inner product is given by
+	$$\int_{-\pi}^\pi \sin^2(x)dx = \frac{x}{2} - \frac{\sin(2x)}{4} \Big |_{-\pi}^\pi = \pi$$
+	The second inner product is given by
+	$$\int_{-\pi}^\pi \sin^3dx = -\int_{-\pi}^\pi \sin^2(x)d(\cos(x)) = \int_{-\pi}^\pi \cos^2(x) - 1 d(\cos(x)) = \frac{\cos^3(x)}{3} - \cos(x) \Big |_{-\pi}^\pi = 0$$
+	The third inner product is given by
+	$$\int_{-\pi}^\pi \sin^2(x)\cos(x) dx = \int_{-\pi}^\pi \sin^2(x) d(\sin(x)) = \frac{\sin^3(x)}{3} \Big |_{-\pi}^\pi = 0$$
+	Therefore, the closest linear combination is
+	$$\pi \times 1 + 0 \times \sin(x) + 0 \times \cos(x) = \pi$$
+\end{solution}
+
+\question{Find a real polynomial $p$ of degree $\leq 2$ with the property that
+	$$\int_0^1 p(x)q(x) = q(2)$$
+for all polynomials $q$ of degree $\leq 2$.}
+
+\begin{solution}
+	Let $q = ax^2 + bx + c, (a,b,c) \in \R^3$. Similarly, $p = dx^2 + ex + f$. Then
+	\begin{align*}
+		\int_0^1 p(x)q(x) &= q(2) \\
+		\int_0^1 adx^4 + (ae + bd)x^3 + (af + cd + be)x^2 + (bf + ce)x + cf dx &= 4a + 2b + c \\
+		\frac{ad}{5} + \frac{ae+bd}{4} + \frac{af + cd + be}{3} + \frac{bf + ce}{2} + cf &= 4a + 2b + c \\
+		\left(\frac{d}{5} + \frac{e}{4} + \frac{f}{3}\right)a + \left(\frac{d}{4} + \frac{e}{3} + \frac{f}{2}\right)b + \left(\frac{d}{3} + \frac{e}{2} + f\right)c &= 4a + 2b + c
+	\end{align*}
+	Solving the simultaneous equation, $d=390,e=-372,f=57$.
+\end{solution}
+
+\question{Let $V = \mathcal P_2(\R)$ be the space of polynomials of degree at most 2, with the inner product
+	$$\langle p,q \rangle = \int_{-1}^1 p(x)q(x)dx$$
+	Let $T^* \in \mathcal L(V)$ be the adjoint of the operator
+	$$T: V \rightarrow V, p \mapsto p' = \frac{dp}{dx}$$
+	Compute $T*p$ for the polynomial $p(x) = x^2$.}
+
+\begin{solution}
+	The basis of $V$ in terms of Legendre polynomials is
+	$$e_1 = 1, e_2 = x, e_3 = \frac{1}{2}(3x^2-1)$$
+	Then
+	\begin{align*}
+		T^*p &= \langle T^*p, e_1 \rangle e_1 + \langle T^*p, e_2 \rangle e_2 + \langle T^*p, e_3 \rangle e_3 \\
+		    &= \langle p, Te_1 \rangle e_1 + \langle p, Te_2 \rangle e_2 + \langle p, Te_3 \rangle e_3 \\
+		    &= \langle x^2, 0 \rangle e_1 + \langle x^2, 1 \rangle e_2 + \langle x^2,3x \rangle e_3 \\
+		    &= \langle \frac{2}{3}e_3 + \frac{1}{3}e_1, e_1 \rangle e_2 + \langle \frac{2}{3}e_3 + \frac{1}{3}e_1, 3e_2 \rangle e_3 \\
+		    &= \frac{1}{3}e_2 \\
+		    &= \frac{1}{3}x
+	\end{align*}
+\end{solution}
+
+\question{Let $V$ be a real or complex inner product space, and $W \subset V$ a subspace, with the inner product obtained by restriction of that on $V$. Let
+	$$T \in \mathcal L(W,V)$$
+be the inclusion, taking any vector in $W$ to itself, but regarded as a vector in $V$.}
+
+\begin{parts}
+	\part{What is the adjoint $T^* \in \mathcal L(V,W)$?}
+	\part{What is the operator $T^*T \in \mathcal L(W)$?}
+	\part{What is the operator $TT^* \in \mathcal{V}$?}
+\end{parts}
+
+\begin{solution}
+	Let $e_i$ denote a set of orthonormal basis vectors of $W$, then extend it to form an orthonormal basis of $V$. Then let $e_j \in V, e_k \in W$
+	\begin{align*}
+		\langle T^*e_j, e_k \rangle &= \langle e_j, Te_k \rangle \\
+					    &= \langle e_j, e_k \rangle \\
+					    &= \delta_{jk}
+	\end{align*}
+	Then
+	$$T^*e_j = \sum_k \langle T^*e_j, e_k \rangle e_k = \begin{cases} e_j & e_j \in W \\ 0 & e_j \notin W\end{cases}$$
+	So $T^*$ is the projection from $V$ to $W$. More explicitly, 
+	$$T^* \sum_{e_i \in V} a_ie_i = \sum_{e_i \in W} a_ie_i$$
+	By definition of $T$,
+	$$Tw = w \forall w \in W$$
+	Then $T^*T$ is the identity map of $W$, and $TT^*$ is the projection from $V$ to $W$, i.e.
+	$$TT^* = T^*$$
+\end{solution}
+
+\question{Let $V$ be the vector space of \textit{infinite sequences of finite length}. That is, elements of $V$ are sequences of complex numbers 
+	$$a = (a_1,a_2,a_,3,\dots)$$
+	with the property that $\{n|a_n\neq0\}$ is finite. Define an inner product on $V$ by
+	$$\langle a,b \rangle = \sum_{n=1}^\infty a_n\overline{b_n}$$
+	Give an example of an operator $T \in \mathcal L(V)$ having the following three properties:
+	\begin{itemize}
+		\item $T$ admits an adjoint, i.e. there is an operator $T^* \in \mathcal L(V)$ with $\langle Ta,b \rangle = \langle a,T^*b \rangle$ for all $a,b \in V$
+		\item $T^*T$ is the identity operator on $V$
+		\item $TT^*$ is a projection (but not the identity operator)
+	\end{itemize}
+}
+
+\begin{solution}
+	Let 
+	$$T: (a_1,a_2,a_3,\dots) \mapsto (0,a_1,a_2,\dots)$$
+	Then it is linear. Obviously, $T(kv) = kTv$. Also,
+	\begin{align*}
+		T(v+w) &= T(v_1+w_1,v_2+w_2,v_3+w_3,\dots) \\
+		       &= (0,v_1+w_1,v_2+w_2,\dots) \\
+		       &= (0,v_1,v_2,\dots) + (0,w_1,w_2,\dots) \\
+		       &= Tv + Tw
+	\end{align*}
+	Note that if we define
+	$$U: (a_1,a_2,a_3,\dots) \mapsto (a_2,a_3,\dots)$$
+	It is also linear, as $U(kv) = kUv$ is obviously true, and
+	\begin{align*}
+		U(v+w) &= U(v_1+w_1,v_2+w_2,v_3+w_3,\dots) \\
+		       &= (v_2+w_2,v_3+w_3,\dots) \\
+		       &= (v_2,v_3,\dots) + (w_2,w_3,\dots) \\
+		       &= Uv + Uw
+	\end{align*}
+	Note that $U$ is the adjoint of $T$, as
+	\begin{align*}
+		\langle Ta,b \rangle &= \langle T(a_1,a_2,a_3,\dots),(b_1,b_2,b_3,\dots) \rangle \\
+				     &= \langle (0,a_1,a_2,\dots),(b_1,b_2,b_3,\dots) \rangle \\
+				     &= \sum_{i=1}^\infty a_ib_{i+1}
+	\end{align*}
+	And
+	\begin{align*}
+		\langle a,T^*b \rangle &= \langle (a_1,a_2,a_3,\dots),U(b_1,b_2,b_3,\dots) \rangle \\
+				       &= \langle (a_1,a_2,a_3,\dots),(b_2,b_3,\dots) \rangle \\
+				       &= \sum_{i=1}^\infty a_ib_{i+1}
+	\end{align*}
+	Then
+	$$T^*T(v) = T^*T(v_1,v_2,v_3,\dots) = T^*(0,v_1,v_2,\dots) = (v_1,v_2,v_3\dots) = v$$
+	so $T^*T$ is the identity operator. Now
+	$$TT^*(v) = TT^*(v_1,v_2,v_3,\dots) = T(v_2,v_3,\dots) = (0,v_2,v_3,\dots)$$
+	which is not the identity (consider a $v$ where $v_1 \neq 0$). However, it is a projection, as
+	$$TT^*(TT^*(v)) = TT^*(0,v_2,v_3,\dots) = T(v_2,v_3,\dots) = (0,v_2,v_3,\dots) = TT^*(v)$$
+	So $(TT^*)^2 = TT^*$.
+\end{solution}
+
+
+\end{questions}
+\end{document}
