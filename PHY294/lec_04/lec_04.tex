@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 4}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+According to the equipartition theorem,
+$$U = N\frac{kT}{2}(3+2+2)$$
+With 3 degrees of translational freedom, and 2 degrees of rotational and vibrational freedom respectively. However, the rotational and vibrational components are not observed until certain thresholds are reached. The classical equipartition theorem does not hold! The conclusion is that there is a minimum energy required for vibration and rotation.
+
+\section{Minimum Energy for Rotational and Vibrational Motion}
+
+Consider H$_2$ with bond length 0.7\AA. The energy is then
+$$E = \frac{I}{2}\dot{\phi}^2 = \frac{L^2}{2I}$$
+But $L$ is quantised, and has a minimum of 0 or $\hbar$. Then
+$$E_\text{min} = \begin{cases} 0 & \text{no solution} \\ \frac{\hbar^2}{I} & \end{cases}$$
+Meanwhile,
+$$I \approx mr^2 \approx 10^{-48} \unit{kg.m}$$
+Substituting, the minimum energy of rotation is
+$$E \approx \frac{\hbar^2}{I} \approx 10^{-20} \unit{J}$$
+However, $kT$ at room temperature is much lower than this ($10^{-23} << 10^{-20}$). They are only comparable at $T \approx 1000 \unit{K}$.
+
+\section{Some Thermo}
+
+The first law of thermodynamics is
+$$\Delta U = Q + W$$
+And the change in internal energy can be written as
+$$dU = \delta Q - pdV$$
+with $pdV = pAdx$ being work done by gas. To use this method, we will assume that the process is such that the gas remains in thermodynamic equilibrium at every instant. This is called \textbf{quasistatic}. \\
+Work done on gas is then
+$$W = -\int_{V_\text{initial}}^{V_\text{final}} pdV$$
+Now, $p(V)$ is non trivial, and we also require the process to be slow enough to be quasistatic. Or else, for example, $p$ will be dependent on position also.
+
+\subsection{Isothermal Case}
+$$W = -\int pdV = -NkT\int\frac{dV}{V} = -NkT\ln\frac{V_\text{final}}{V_\text{initial}}$$
+Since temperature remains unchanged, energy is unchanged, and
+$$\Delta U = 0 = Q + W = Q - NkT\ln\frac{V_\text{final}}{V_\text{initial}}$$
+
+\subsection{Adiabetic Case}
+We ran out of lecture time.
+
+\end{document}
