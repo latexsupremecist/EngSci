@@ -1,0 +1,210 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Probelm Set 5}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+	\question{An infinitely large dielectric slab of thickness $d=2a$ is uniformly polarized through-out its volume such that the polarization vector, $\vec{P}$, is perpendicular to the faces (boundary surfaces) of the slab. The surrounding medium is air. The electric field intensity vector (due to bound charges of the slab) at a point inside the slab is}
+
+\begin{solution}
+	Nonzero and is directed oppositely to $\vec{P}$.
+\end{solution}
+
+\question{Consider a polarized dielectric body with no free charge, in free space. The outward flux of the electric field intensity vector, $\vec{E}$, through a closed surface $S$ that completely encloses the body is}
+
+\begin{solution}
+	By Gauss' Law, 0.
+\end{solution}
+
+\question{Consider a boundary surface between two dielectric media, with relative permittivities $\varepsilon_{r1} = 4$ and $\varepsilon_{r2} = 2$ respectively. Assuming that there is no surface charge on the boundary, which of the cases represent possible electric field intensity vectors on the two sides of the boundary?}
+
+\begin{solution}
+	Case (a) only.
+\end{solution}
+
+\question{The figure shows lines of an electrostatic field near a dielectric-dielectric boundary that is free of charge ($\rho x = 0$). Which of the following is a possible combination of the two media?}
+
+\begin{solution}
+	Medium 1 is water ($\varepsilon_{r1}=81$) and Medium 2 is air ($\varepsilon_{r1}=1$).
+\end{solution}
+
+\question{Consider a rectangular dielectric parallelepiped $0\leq x \leq a, 0\leq y \leq b, 0 \leq z \leq c$. The polarization vector in the dielectric is given by:
+	$$\vec{P} = P_0\left(\frac{x}{a}\hat{a}_x + \frac{y}{b}\hat{a}_y + \frac{z}{c}\hat{a}_z\right)$$
+where $P_0$ is a constant.}
+
+\begin{parts}
+	\part{Find the densities of volume and surface bound (polarization) charge in the parallelepiped.}
+	\part{Show that the total bound charge in the parallelepiped is zero.}
+\end{parts}
+
+\begin{solution}
+	$$\vec{D} = \varepsilon_0\varepsilon_r\vec{E} = \frac{\varepsilon_r}{\chi_e}\vec{P}$$
+	Hence
+	\begin{align*}
+		\rho_v &= -\vec{\nabla}\cdot\vec{P} \\
+		       &= -P_0\left(\frac{1}{a} + \frac{1}{b} + \frac{1}{c}\right) \\
+	\end{align*}
+	And
+	\begin{align*}
+		\rho_{p,s} &= \hat{a}_n \cdot \vec{P} \\
+			   &= \begin{cases} P_0 & x=a \text{ or } y=b \text{ or } z=c \text{ given } x,y,z \neq 0 \\ 0 & \text{else} \end{cases}
+	\end{align*}
+	Total charge is then
+	$$-P_0\left(\frac{1}{a} + \frac{1}{b} + \frac{1}{c}\right)abc + P_0(ab + ac + bc) = P_0(-bc-ac-ab+ab+ac+bc) = 0$$
+\end{solution}
+
+\question{A very (infinitely) long homogeneous dielectric cylinder, of radius $a$ and relative dielectric permittivity $\varepsilon r$, is uniformly charged with free charge density $\rho$ throughout its volume. The cylinder is surrounded by air.}
+
+\begin{parts}
+	\part{Calculate the voltage between the axis and the surface of the cylinder.}
+	\part{Find the bound charge distribution in the cylinder.}
+\end{parts}
+
+\begin{solution}
+	Note the cylindrical symmetry. Using Gauss' Law,
+	\begin{align*}
+		\vec{\nabla} \cdot \vec{D} &= \rho \\
+		\frac{1}{r} \frac{\partial rD_r}{\partial r} &= \rho \\
+		rD_r &= \frac{\rho r^2}{2} + C \\
+		D_r &= \frac{\rho r}{2} + \frac{C}{r}
+	\end{align*}
+	For $D_r$ to exist at $r=0$, we need $C=0$, so substituting,
+	$$E_r = \frac{\rho r}{2\varepsilon_0\varepsilon_r}$$
+	\begin{align*}
+		V &= -\int\vec{E}\cdot d\vec{l} \\
+		  &= -\int_0^a E_rdr \\
+		  &= -\frac{\rho a^2}{4\varepsilon_0\varepsilon_r}
+	\end{align*}
+	The bound charges are then
+	\begin{align*}
+		\rho_{p,v} &= -\vec{\nabla}\cdot\vec{P} \\
+			   &= -\chi_e\varepsilon_0\vec{\nabla}\cdot\vec{E} \\
+			   &= -(\varepsilon_r-1)\varepsilon_0\times\frac{1}{r}\frac{\rho r}{\varepsilon_0\varepsilon_r} \\
+			   &= -\frac{\rho(\varepsilon_r-1)}{\varepsilon_r}
+	\end{align*}
+	and
+	\begin{align*}
+		\rho_{p,s} &= \vec{a}_n \cdot \vec{P} \\
+			   &= \frac{\rho r(\varepsilon_r-1)}{2\varepsilon_r}
+	\end{align*}
+\end{solution}
+
+\question{The polarization in a dielectric cube of side $L$ centred at the origin is given by $\vec{P} = P_0(\hat{a}_xx + \hat{b}_yy + \hat{c}_zz)$.}
+
+\begin{parts}
+	\part{Determine the surface and volume bound-charge densities.}
+	\part{Show that the total bound charge is zero.}
+\end{parts}
+
+\begin{solution}
+	The bound charges are
+	\begin{align*}
+		\rho_{p,v} &= -\vec{\nabla}\cdot\vec{P} \\
+			   &= -3P_0
+	\end{align*}
+	and
+	\begin{align*}
+		\rho_{p,s} &= \hat{a}_n\cdot\vec{P} \\
+			   &= \begin{cases} LP_0 & x=L \text{ or } y=L \text{ or } z=L \text{ given } x,y,z \neq 0 \\ 0 & \text{else} \end{cases}
+	\end{align*}
+	Total bound charge is then
+	$$-3P_0L^3 + LP_O\times3L^2=0$$
+\end{solution}
+
+\question{Determine the boundary conditions for the tangential and the normal components of $\vec{P}$ at an interface between two perfect dielectric media with dielectric constants $\varepsilon_{r1}$ and $\varepsilon_{r2}$.}
+
+\begin{solution}
+	$$\vec{E} = \frac{1}{(\varepsilon_r-1)\varepsilon_0}\vec{P}$$
+	$$\vec{D} = \varepsilon_0\varepsilon_r\vec{E} = \frac{\varepsilon_r}{\varepsilon_r-1}\vec{P}$$
+	Hence for the normal component,
+	$$\frac{\varepsilon_{r1}}{\varepsilon_{r1}-1}\vec{P_{n1}} = \frac{\varepsilon_{r2}}{\varepsilon_{r2}-1}\vec{P_{n2}}$$
+	For the tangential component,
+	$$\frac{1}{(\varepsilon_{r1}-1)\varepsilon_0}\vec{P_{t1}} = \frac{1}{(\varepsilon_{r2}-1)\varepsilon_0}\vec{P_{t2}}$$
+\end{solution}
+
+\question{What are the boundary conditions that must be satisfied by the electric potential at an interface between two perfect dielectrics with dielectric constants $\varepsilon_{r1}$ and $\varepsilon_{r2}$?}
+
+\begin{solution}
+	The normal component of $\vec{D}$ must be constant, hence
+	$$\varepsilon_{r1}(\vec{\nabla}V_1)\cdot\hat{a}_n = \varepsilon_{r2}(\vec{\nabla}V_2)\cdot\hat{a}_n$$
+	Voltage at the boundary has to agree, so
+	$$V_1 = V_2$$
+	at the boundary.
+\end{solution}
+
+\question{Determine the electric field intensity at the center of a small spherical cavity cut out of a large block of dielectric in which a polarization $\vec{P} = P_0\hat{a}_z$ exists.}
+
+\begin{solution}
+	$$\rho_{p,s} = \hat{a}_n \cdot \vec{P} = -\hat{a}_R \cdot P_0\hat{a}_z = -P_0\cos\theta$$
+	Letting the radius be $a$, the field is given by
+	\begin{align*}
+		\vec{E} &= \int_0^{2\pi} \int_0^\pi \frac{dQ}{4\pi\varepsilon_0a^2}(-\hat{a}_R) \\
+			&= \int_0^{2\pi} \int_0^\pi \frac{-P_0\cos\theta a^2 \sin\theta d\theta d\phi}{4\pi\varepsilon_0a^2}(-a)(\sin\theta\cos\phi \hat{a}_x + \sin\theta\sin\phi \hat{a}_y + \cos\theta \hat{a}_z) \\
+			&= \int_0^{2\pi} \int_0^\pi \frac{P_0a\sin\theta\cos\theta d\theta d\phi}{4\pi\varepsilon_0}(\sin\theta\cos\phi \hat{a}_x + \sin\theta\sin\phi \hat{a}_y + \cos\theta \hat{a}_z) \\
+			&= \int_0^{2\pi} \int_0^\pi \frac{P_0a\sin\theta\cos^2\theta d\theta d\phi}{4\pi\varepsilon_0}\hat{a}_z \\
+			&= \int_0^{2\pi} \frac{P_0a d\phi}{6\pi\varepsilon_0}\hat{a}_z \\
+			&= \frac{P_0a}{3\varepsilon_0}\hat{a}_z
+	\end{align*}
+	Where the $\hat{a}_x$ and $\hat{a}_y$ components vanish as the integrals of $\sin\phi$ and $\cos\phi$ from $0$ to $2\pi$ are 0.
+\end{solution}
+
+\question{Assume that the $z = 0$ plane separates two lossless dielectric regions with $\varepsilon_{r1} = 2$ and $\varepsilon_{r2} = 3$. Let the electric field $\vec{E}_1 = 2y\hat{a}_x -3x\vec{a}_y+(5+z)\hat{a}_z$ in region 1. Find the electric field $\vec{E}_2$ and the electric flux density $\vec{D}_2$ in region 2.}
+
+\begin{solution}
+	Since the tangential components of $\vec{E}$ are conserved,
+	$$\vec{E}_2^= = 2y\hat{a}_x - 3x\hat{a}_y$$
+	Scaling, the tangential component of $\vec{D}_2$ is
+	$$\vec{D}_2^= = 6\varepsilon_0y\hat{a}_x - 9\varepsilon_0x\hat{a}_y$$
+	The normal components of $\vec{D}$ are conserved, so
+	$$\vec{D}_2^\perp = \vec{D}_1^\perp = 10\varepsilon_0\hat{a}_z$$
+	Scaling gives
+	$$\vec{E}_2^\perp = \frac{10}{3}\hat{a}_z$$
+	Then the field and flux density are given by
+	$$\vec{E}_2 = 2y\hat{a}_x - 3x\hat{a}_y + \frac{10}{3}\hat{a}_z$$
+	and
+	$$\vec{D}_2 = 6\varepsilon_0y\hat{a}_x - 9\varepsilon_0x\hat{a}_y + 10\varepsilon_0\hat{a}_z$$
+\end{solution}
+
+\question{Dielectric lenses can be used to collimate electromagnetic fields. In the diagram below, the left surface of the lens is that of a circular cylinder, and the right surface is a plane. If $\vec{E}_1$ at point $P(r_o,45^\circ,z)$ is region 1 is $5\hat{a}_r - 3\hat{a}_\phi$, what must be the dielectric constant of the lens in order that $\vec{E}_3$ in region 3 is parallel to the $x$-axis?}
+
+\begin{solution}
+	If $\vec{E}_3$ in region 3 is parallel to the $x$-axis, then $\vec{E}_2$ in region 2 must also be parallel to the $x$-axis. Note that at point $P$,
+	$$\hat{a}_x = \frac{1}{\sqrt{2}}\hat{a}_r - \frac{1}{\sqrt{2}}\hat{a}_\phi$$
+	We can also see that $\hat{a}_r$ points in the normal direction, and $\hat{a}_\phi$ points in the tangential direction. For $\vec{E}_2$ to be parallel to the $x$-axis, it must be a multiple of $\hat{a}_x$, i.e. its components for $\hat{a}_r$ and $\hat{a}_\phi$ must be equal in magnitude and opposite in sign. Letting the dielectric constant be $\varepsilon_r$, we get
+	$$\frac{5}{\varepsilon_r} = 3 \Rightarrow \varepsilon_r = \frac{5}{3}$$
+\end{solution}
+
+\question{Refer to Example 3-16 in Cheng (page 119). Assuming the same $r_i$ and $r_o$ and requiring the maximum electric field intensities in the insulting materials not exceed 25\% of their dielectric strengths, determine the voltage rating of the coaxial cable}
+
+\begin{parts}
+	\part{if $r_p = 1.75r_i$}
+	\part{if $r_p = 1.35r_i$}
+	\part{Plot the variations of $E_r$ and $V$ versus $r$ for both parts}
+\end{parts}
+
+\begin{solution}
+	Note that $\frac{\rho_l}{2\pi\varepsilon_0}$ is a function of $r_i$, so it takes the same value as the example. Integrating, the voltage is
+	\begin{align*}
+		V &= -\int_{r_o}^{r_p}E_pdr - \int_{r_p}^{r_i}E_rdr \\
+		  &= \frac{\rho_l}{2\pi\varepsilon_0}\left(\frac{1}{\varepsilon_{rp}}\ln\frac{r_O}{r_p} + \frac{1}{\varepsilon_{rr}} \ln\frac{r_p}{r_i}\right) \\
+		  &= 8\times10^4\left(\frac{1}{2.6}\ln\frac{0.832}{r_p} + \frac{1}{3.2}\ln\frac{r_p}{0.4}\right)
+	\end{align*}
+	For $r_p = 1.75r_i = 0.7, V = 19.3\unit{kV}$. For $r_p=1.35r_i=0.54, V = 20.8\unit{kV}$.
+\end{solution}
+
+\question{An infinitely large dielectric slab of thickness $d=2a$ is polarized so that the polarization vector is $\vec{P} = P_0\frac{x^2}{a^2}\hat{a}_x$, where $P_0$ is a constant. The medium outside the slab is air. Find the voltage between the boundary surfaces of the slab.}
+
+\begin{solution}
+	$$\vec{E} = \frac{P_0}{(\varepsilon_r-1)\varepsilon_0a^2} x^2\hat{a}_x$$
+	Then the voltage is
+	\begin{align*}
+		V &= -\int \vec{E}\cdot d\vec{l} \\
+		  &= -\int_{-a}^a \frac{P_0}{(\varepsilon_r-1)\varepsilon_0a^2} x^2 \\
+		  &= \frac{2P_0a}{3(\varepsilon_r-1)\varepsilon_0}
+	\end{align*}
+\end{solution}
+\end{questions}
+\end{document}
