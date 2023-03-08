@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 22}
+\begin{document}
+\maketitle
+
+\section{Comparison between Distributions}
+
+\subsection{Central Limit Theorem}
+
+\begin{itemize}
+	\item Sample $X_1,\dots,X_n$
+	\item IID, finite $\sigma^2$
+	\item $\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i$
+	\item As $n \rightarrow \infty$, distribution of $\overline{X}$ tends to a normal distribution
+	\item if $X_i$ is normal, then $\overline{X}$ is normal $\forall n$
+\end{itemize}
+
+\subsection{t distibution}
+
+\begin{itemize}
+	\item Sample $X_1,\dots,X_n$
+	\item IID, normal
+	\item We do not need to know $\sigma^2$, but it is defined as
+		$$\sigma^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i-\overline{X})^2$$
+	\item $T$ as defined below has normal distribution
+		$$T = \frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}}$$
+	\item If $n \geq 30, S \approx \sigma$, use Central Limit Theorem
+\end{itemize}
+
+\subsection{$\chi^2$ distribution}
+
+\begin{itemize}
+	\item Same as t distribution, where we assume normal distribution for $X_i$
+	\item $$\chi^2 = \frac{1}{\sigma^2} \sum_{i=1}^n(X_i-\overline{X})^2$$
+\end{itemize}
+
+\section{Quantiles}
+
+Given sample data $x_1,\dots,x_n$, we have $q(f)$ where $f$ is the fraction of data $\leq q(f)$. One can then plot $q(f)$ vs $f$.
+
+\begin{ex}[Quantile Plot]
+	Given the data $-2,0,0,1,3,3,3,4,6$, $q(0.5) = 3$.
+\end{ex}
+
+In general, $q(0.5)$ is called the sample median, $q(0.25$ the lower quartile and $q(0.75)$ the upper quartile. \\
+This is the inverse of the Cumulative Distribution Function $F(x)$!
+
+$$q(f) \approx \mu+\sigma \left(4.91\left(f^{0.14}-(1-f)^{0.14}\right)\right)$$
+$q(f)$ can be approximated for a normal distribution.
+\end{document}
