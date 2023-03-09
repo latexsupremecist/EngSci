@@ -182,6 +182,101 @@ dielectric-dielectric boundaries, consider the following four statements}
 	Smaller. $\vec{E}$ is constant, but $\vec{D}$ is greater in the dielectric. Using the formula for $W_e$, energy density is greater in the dielectric, and smaller in air.
 \end{solution}
 
-\question{}
+\question{The space between a parallel-plate capacitor of area $S$ is filled with a dielectric whose permittivity varies linearly from $\varepsilon_1$ at one plate $(y=0)$ to $\varepsilon_2$ at the other plate $(y=d)$. Neglecting fringing effect, find the capacitance.}
+
+\begin{solution}
+	$$\varepsilon_r = \varepsilon_1 + (\varepsilon_2-\varepsilon_1)\times\frac{y}{d}$$
+	From Gauss' Law,
+	$$\oiint \vec{D} \cdot d\vec{S} = Q \Rightarrow D = \frac{Q}{S}$$
+	Then
+	$$\vec{D} \cdot \vec{E} = \frac{D^2}{\varepsilon_0\varepsilon_r}$$
+	Integrating,
+	\begin{align*}
+		W_e &= \frac{1}{2} \iiint_V \vec{D}\cdot\vec{E} dV \\
+		    &= \frac{Q^2}{2S} \int_0^d \frac{dy}{\varepsilon_0\varepsilon_r} \\
+		    &= \frac{Q^2}{2S}\frac{d}{\varepsilon_2-\varepsilon_1}\ln\frac{\varepsilon_2}{\varepsilon_1}
+	\end{align*}
+	Capcitance is given by
+	$$C = \frac{Q^2}{2W_e} = \frac{S(\varepsilon_2-\varepsilon_1)}{d\ln\frac{\varepsilon_2}{\varepsilon_1}}$$
+\end{solution}
+
+\question{A capacitor consists of two concentric spherical shells of radii $R_i$ and $R_o$. The space between them is filled with a dielectric of relative permittivity of $\varepsilon_r$ from $R_i$ to $b$ ($R_i<b<R_o$) and another dielectric of relative permittivity $2\varepsilon_r$ from $b$ to $R_o$.}
+
+\begin{parts}
+	\part{Determine $\vec{E}$ and $\vec{D}$ everywhere in terms of an applied voltage $V$.}
+	\part{Determine the capacitance.}
+\end{parts}
+
+\begin{solution}
+	\begin{align*}
+		\oiint \vec{D} \cdot d\vec{S} &= Q \\
+		4\pi r^2D_r &= Q \\
+		D_r &= \frac{Q}{4\pi r^2}
+	\end{align*}
+	Then
+	\begin{align*}
+		V &= -\int \vec{E} \cdot d\vec{l} \\
+		  &= -\int_{R_i}^b \frac{Q}{4\pi\varepsilon_0\varepsilon_r r^2} dr -\int_b^{R_o} \frac{Q}{8\pi\varepsilon_r r^2} dr \\
+		  &= \frac{Q}{4\pi\varepsilon_0\varepsilon_r}\left(\frac{1}{b} - \frac{1}{R_i}\right) + \frac{Q}{8\pi\varepsilon_r}\left(\frac{1}{R_o} - \frac{1}{b}\right) \\
+		  &= \frac{Q}{8\pi\varepsilon_0\varepsilon_r}\left(\frac{1}{b} - \frac{2}{R_i} + \frac{1}{R_o}\right)
+	\end{align*}
+	Rearranging for $Q$, we obtain
+	$$\vec{D} = \frac{2\varepsilon_0\varepsilon_rV}{R^2\left(\frac{1}{b} - \frac{2}{R_i} + \frac{1}{R_o}\right)}\hat{a}_R$$
+	and
+	$$\vec{E} = \begin{cases} \frac{2V}{R^2\left(\frac{1}{b} - \frac{2}{R_i} + \frac{1}{R_o}\right)}\hat{a}_R & R_i < R < b \\ \frac{V}{R^2\left(\frac{1}{b} - \frac{2}{R_i} + \frac{1}{R_o}\right)}\hat{a}_R & b < R < R_o \end{cases}$$
+	\begin{align*}
+		C &= \frac{Q}{V} \\
+		  &= \frac{8\pi\varepsilon_0\varepsilon_r}{\frac{1}{b} - \frac{2}{R_i} + \frac{1}{R_o}}
+	\end{align*}
+\end{solution}
+
+\question{Calculate the amount of electrostatic energy of a uniform sphere of charge with radius $b$ and volume charge density $\rho$ stored in the following regions:}
+
+\begin{parts}
+	\part{Inside the sphere}
+	\part{Outside the sphere}
+\end{parts}
+
+\begin{solution}
+	Within the sphere,
+	\begin{align*}
+		\oiint \vec{D} \cdot d\vec{S} &= Q \\
+		4\pi R^2 D_r &= \frac{4}{3}\pi R^3\rho \\
+		D_r &= \frac{\rho R}{3}
+	\end{align*}
+	Then
+	\begin{align*}
+		W_e &= \frac{1}{2} \iiint_V \vec{D} \cdot \vec{E} dV \\
+		    &= \frac{1}{2} \int_0^{2\pi} \int_0^\pi \int_0^b \frac{\rho^2 R^2}{9\varepsilon_0} R^2 \sin\theta dR d\theta d\phi \\
+		    &= \frac{1}{2} \int_0^{2\pi} \int_0^\pi \frac{\rho^2b^5}{45\varepsilon_0} \sin\theta d\theta d\phi \\
+		    &= \int_0^{2\pi} \frac{\rho^2b^5}{45\varepsilon_0} d\phi \\
+		    &= \frac{2\pi \rho^2b^5}{45\varepsilon_0}
+	\end{align*}
+	Outside the sphere,
+	\begin{align*}
+		\oiint \vec{D} \cdot d\vec{S} &= Q \\
+		4\pi R^2 D_r &= \frac{4}{3} \pi b^3\rho \\
+		D_r &= \frac{\rho b^3}{3R^2}
+	\end{align*}
+	Then 
+	\begin{align*}
+		W_e &= \frac{1}{2} \iiint_V \vec{D} \cdot \vec{E} dV \\
+		    &= \frac{1}{2} \int_0^{2\pi} \int_0^\pi \int_b^\infty \frac{\rho^2b^6}{9R^4\varepsilon_0} R^2 \sin\theta dR d\theta d\phi \\
+		    &= \frac{1}{2} \int_0^{2\pi} \int_0^\pi \frac{\rho^2b^5}{9\varepsilon_0} \sin\theta d\theta d\phi \\
+		    &= \int_0^{2\pi} \frac{\rho^2b^5}{9\varepsilon_0} d\phi \\
+		    &= \frac{2\pi \rho^2b^5}{9\varepsilon_0}
+	\end{align*}
+\end{solution}
+
+\question{Einstein's theory of relativity stipulates that the work required to assemble a charge is stored as energy in the mass and is equal to $mc^2$, where $m$ is the mass and $c\approx3\times10^8\unit{ms^{-1}}$ is the velocity of light. Assuming the electron to be a perfect sphere, find its radius from its charge and mass ($9.1 \times 10^{-31}\unit{kg}$).}
+
+%\begin{solution}
+%	Assume the electron is a uniformly charged sphere. Then from the previous question,
+%	$$W_e = \frac{2\pi\rho^2b^5}{45\varepsilon_0}$$
+%	Substituting $\rho = \frac{Q}{\frac{4}{3}\pi b^3}$,
+%	$$W_e = \frac{Q^2}{40\pi\varepsilon_0b}$$
+%	Putting $W_e = mc^2 = 8.19\times10^{-14}$ and $Q = 1.6\times10^{-19}$,
+%	$$b = $$
+%\end{solution}
 \end{questions}
 \end{document}
