@@ -1,0 +1,187 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 6}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{The voltage between the terminals of a charged capacitor with a linear dielectric equals $V$ . If the electric flux density at every point in the dielectric is doubled, the voltage of the capacitor in the new electrostatic equals}
+
+\begin{solution}
+	$2V$. If $\vec{D}$ is doubled, so is $\vec{E}$. Voltage is calculated as the integral
+	$$V = -\int \vec{E} \cdot d\vec{l}$$
+	Thus $V$ is doubled when $\vec{E}$ is doubled.
+\end{solution}
+
+\question{Consider a “cubical” capacitor, which consist of two concentric
+hollow metallic cubes with thin walls, as shown in Fig. Q2.5. The edge lengths of the inner and outer conductors are $a = 5 \unit{cm}$ and $b = 15 \unit{cm}$, respectively, and the medium between the conductors is air. If $a$ is made twice larger and $b$ kept the same, the capacitance of the capacitor.}
+
+\begin{solution}
+	The capacitance increases. Consider keeping the voltage constant. $\vec{E} = -\vec{\nabla}V$ is its gradient, which increases when the separation between the cubes decreases. This greater $\vec{E}$ requires a greater charge. In $Q=CV$, voltage $V$ is kept constant while $Q$ increases, so capacitance $C$ also increases.
+\end{solution}
+
+\question{An air-filled parallel-plate capacitor is charged and
+its terminals left open. A dielectric slab with relative permittivity $\varepsilon_r = 2$ s then inserted so as to just fill the space between the plates, without touching the plates by hands or any other conducting body. As a result, the electric field intensity between the plates}
+
+\begin{solution}
+	Decreases. $\vec{D}$ remains the same from Gauss' Law. Electric field intensity is halved when the dielectric is introduced.
+\end{solution}
+
+\question{An air-filled parallel-plate capacitor is attached to a voltage source. While the source is still connected, the space between the plates is completely filled by a dielectric slab ($\varepsilon_r = 2$). In the new electrostatic state, the electric field intensity is}
+
+\begin{solution}
+	The same, as $E=\frac{V}{d}$ is unchanged.
+\end{solution}
+
+\question{A capacitor with electrodes of arbitrary shapes has a homogenous dielectric of relative permittivity $\varepsilon_r (\varepsilon_r > 1)$. If the dielectric is removed (without changing the shape fo the electrodes), the capacitance of the capacitor}
+
+\begin{solution}
+	Decreases. Consider keeping charges $Q$ constant. By Gauss' Law, $\vec{D}$ stays constant. However, due to the removal of the dielectric, this causes $\vec{E}$ to increase. As $V = -\int\vec{E}\cdot d\vec{l}$, this cases voltage to increase as well. Using $Q=CV$, if $Q$ stays constant and $V$ increases, then capacitance $C$ must decrease.
+\end{solution}
+
+\question{The capacitance of the “cubical” capacitor in Fig. Q2.5 compared with the capacitance of an isolated cubical conductor of edge length $a$ in air is}
+
+\begin{solution}
+	Greater. Consider the surface of a cube of length $a$. Keeping $Q$ constant on both cases, Gauss' Law gives the same $\vec{E}$. Solving for $V$,
+	$$V = -\int\vec{E}\cdot d\vec{l}$$
+	In the first case, we are integrating from $a$ to $b$, but we are integrating from $a$ to infinity (voltage is 0 at infinity). Thus voltage is lower in the first case, and $Q=CV$ tells us capacitance must be greater.
+\end{solution}
+
+\question{The charges of the plates of an air-filled parallel-plate capacitor are $Q$ and $-Q$. The capacitor terminals are open and the fringing effects can be neglected. An uncharged metallic slab, the thickness of which is smaller than the plate separation, is next inserted between the plates, as shown in Fig. Q2.6. The voltage between the capacitor is now}
+
+\begin{solution}
+	Smaller. Since $Q$ is constant, $\vec{D}$ is also constant by Gauss' Law. $\vec{E}$ decreases to 0 in the slab, and voltage decreases as a result.
+\end{solution}
+
+\question{Consider the capacitor in Fig. Q2.6 with the following two
+modifications. In case (a), the slab is galvanically connected to the upper plate [Fig. Q.2.7(a)]. In case (b), the plates are galvanically connected together [Fig. Q2.7(b)]. The capacitance between the terminals 1 and 2 is higher for}
+
+\begin{solution}
+	Case (b). Consider fixing the voltage. Since spacing is constant on both cases, the same charge $Q$ is required to maintain said voltage. Howevr, in case (b), twice the charge is required to maintain the voltage difference in both the lower half and the upper half. From $Q=CV$, this means capacitance $C$ must also be higher to balance the equation out.
+\end{solution}
+
+\question{The capacitor shown in Fig. Q2.8 consist of seven parallel square metallic plates of edge length $a$ and separations between all adjacent $d(d<<a)$. The medium is air. With $C$ designating the capacitance of an air-filled parallel-plate capacitor of area $a^2$ and the plate separation $d$, the capacitance of the capacitor in Fig. Q2.8 equals}
+
+\begin{solution}
+	$6C$. Fixing voltage, charge for each pair of adjacent plates is equal, as geometry is the same for both cases. Since there are now 6 pairs of adjacent plates, $Q$ grows sixfold, and so does $C$ according to $Q=CV$.
+\end{solution}
+
+\question{Repeat Question 2.16 but assuming that the slab
+in Fig. Q2.6 is made of a dielectric of permittivity $\varepsilon (\varepsilon > \varepsilon_r)$.}
+
+\begin{solution}
+	Smaller. $\vec{E}$ still decreases in the slab, so the same effect is observed, but weaker.
+\end{solution}
+
+\question{Consider a charged spherical capacitor with a linear di-electric. Designating by $r$ the radial distance of an arbitrary point from the capacitor center, the magnitude of the electric field intensity, $\vec{E}$, between the capacitor electrodes is}
+
+\begin{solution}
+	Need more information. $\vec{D}$ is known (see next question), but $\vec{E}$ depends on the linear dielectric, which is unknown.
+\end{solution}
+
+\question{Repeat the previous question but considering the magnitude of the electric flux density vector, $\vec{D}$, between the electrodes of the spherical capacitor}
+
+\begin{solution}
+	By Gauss' Law, it is inversely proportionaly to $r^2$.
+\end{solution}
+
+\question{A parallel-plate capacitor is filled with a dielectric
+composed of four parts, of permittivities $\varepsilon_1$, $\varepsilon_2$, $\varepsilon_3$ and $\varepsilon_4$, as in Fig. Q2.9. Assuming that the capacitor is
+charged, that the electric field in each of the pieces is uniform, and that no surface free charges exist on
+dielectric-dielectric boundaries, consider the following four statements}
+
+\begin{parts}
+	\part{if $\varepsilon_1$ = $\varepsilon_2$ and $\varepsilon_3$ = $\varepsilon_4$, then vector $\vec{E}$ is the same in all the pieces}
+	\part{if $\varepsilon_1$ = $\varepsilon_2$ and $\varepsilon_3$ = $\varepsilon_4$, then vector $\vec{D}$ is the same in all the pieces}
+	\part{if $\varepsilon_1$ = $\varepsilon_3$ and $\varepsilon_2$ = $\varepsilon_4$, then vector $\vec{E}$ is the same in all the pieces}
+	\part{if $\varepsilon_1$ = $\varepsilon_3$ and $\varepsilon_2$ = $\varepsilon_4$, then vector $\vec{D}$ is the same in all the pieces}
+\end{parts}
+
+\begin{solution}
+	Statements b and c are true. The conditions for b implies the dielectric is split into a top and bottom half, where $\vec{D}$ is constant, as it is conserved when crossing boundaries normal to the surface. The conditions for c implies the dielectric is split into a left and right half, where $\vec{E}$ is constant, as it can be found by $E = \frac{V}{d}$.
+\end{solution}
+
+\question{A coaxial cable is filled with a continuously in-homogeneous dielectric and connected to voltage source. The permittivity of the dielectric is a function of the radial distance $r$ from the cables axis and no other coordinates. Consider vectors $\vec{D}$ and $\vec{E}$ in the cable. The way in which each of the vector varies throughout the dielectric is the same as in the same cable if air-filled for}
+
+\begin{solution}
+	$\vec{D}$ only. It is perpendicular to the boundary surface, hence it is constant, just like in air.
+\end{solution}
+
+\question{Repeat the previous equation but for a coaxial cable with a dielectric in the form of four $90^\circ$ sectors with different permittivities, the cross section of which is shown in Fig. Q2.10.}
+
+\begin{solution}
+	$\vec{E}$ only. It is parallel to the boundary surface, hence it is constant, just like in air.
+\end{solution}
+
+\question{We have a set of 100 capacitors of arbitrary geometries, with different capacitances $C_1,C_2,\dots,C_{100}$. Let $C_{\text{series}}$ and $C_{\text{parallel}}$ be the equivalent total capacitances of the capacitors connected in series [Fig. Q2.11(a)] and parallel [Fig. Q2.11(b)], respectively. Comparing these two equivalent capacitances, we have}
+
+\begin{solution}
+	$C_{\text{parallel}} > C_{\text{series}}$
+	$$C_{\text{parallel}} = \sum_{i=1}^{100} C_i > C_1 = \left(\frac{1}{C_1}\right)^{-1} > \left(\sum_{i=1}^{100} \frac{1}{C_i}\right)^{-1} = C_{\text{series}}$$
+\end{solution}
+
+\question{Consider an arbitrary shaped capacitor with a nonlinear dielectric. The electric field intensity, electric flux density, and polarization vectors in the dielectric are $\vec{E}$, $\vec{D}$, and $\vec{P}$, respectively. At any point in the dielectric and for any field intensity, the following vectors are linearly proportional to $\vec{E}$:}
+
+\begin{solution}
+	$\vec{D}-\vec{P}$. This is because the proportionality constant for $\vec{D}$ and $\vec{P}$ individually depends on $\varepsilon_r$, which is not constant. However,
+	$$\vec{D} - \vec{P} = \varepsilon_0\vec{E} + \vec{P} - \vec{P} = \varepsilon_0\vec{E}$$
+	is always a constant multiple of $\vec{E}$.
+\end{solution}
+
+\question{The dielectric in a spherical capacitor is oil. The capacitor is connected to a voltage source. The source is then disconnected and the oil is drained from the capacitor. The energy of the capacitor in the final electrostatic state is}
+
+\begin{solution}
+	Larger.
+	$$W_e = \frac{1}{2} \int \vec{D} \cdot \vec{E}dV$$
+	$\vec{D}$ remains constant as charges are kept constant. However, with the removal of the dielectric, $\vec{E}$ increases, causing $W_e$ to increase.
+\end{solution}
+
+\question{Assume that the oil in the capacitor from the previous question is drained while the source is still connected. As a result, the energy of the capacitor}
+
+\begin{solution}
+	Decreases. With voltage kept constant, $\vec{E}$ is constant, but $\vec{D}$ decreases as the dielectric is removed. Hence $W_e$ falls.
+\end{solution}
+
+\question{Consider two isolated metallic spheres with the same charges and different radii in air, and compare their energies. The larger energy is that of}
+
+\begin{solution}
+	The smaller sphere. \\
+	Let the radius be $a$. Then
+	\begin{align*}
+		\vec{\nabla}\cdot \vec{D} &= \frac{Q}{\frac{4}{3}\pi a^3} \\
+		\frac{1}{R^2}\frac{\partial R^2 D_R}{\partial R} &= \frac{3Q}{4\pi a^3} \\
+		R^2 D_R &= \frac{QR^3}{4\pi a^3} + C \\
+		D_R &= \frac{QR}{4\pi a^3} + \frac{C}{R^2}
+	\end{align*}
+	Where $C=0$ for $D_R$ to be defined at $R=0$. Then
+	$$D_R = \frac{QR}{4\pi a^3}$$
+	and
+	$$E_R = \frac{QR}{4\pi \varepsilon_0\varepsilon_r a^3}$$
+	\begin{align*}
+		W_e &= \frac{1}{2} \int_0^{2\pi} \int_0^\pi \int_0^a \frac{Q^2R^2}{16\pi^2 \varepsilon_0\varepsilon_r a^6} R^2\sin\theta dR d\theta d\phi \\
+		    &= \frac{1}{2} \int_0^{2\pi} \int_0^\pi \frac{Q^2\sin\theta}{80\pi^2\varepsilon_0\varepsilon_r a} d\theta d\phi \\
+		    &= \int_0^{2\pi} \frac{Q^2}{80\pi^2\varepsilon_0\varepsilon_r a} d\phi \\
+		    &= \frac{Q^2}{40\pi\varepsilon_0\varepsilon_r a}
+	\end{align*}
+	Energy is inversely proportional to radius, therefore the smaller sphere has a greater energy.
+\end{solution}
+
+\question{Two capacitors contain the same amount of electric energy. If the electric field intensity ($\vec{E}$) at every point in the first capacitor becomes twice larger, while the electric flux density ($\vec{D}$) at every point in the second capacitor is halved, the energy stored in the first capacitor in the new electrostatic state is}
+
+\begin{solution}
+	16 times. $\vec{D}$ and $\vec{E}$ are linearly related at every point, in the sense if any one is scaled by a constant, so is the other. Also,
+	$$W_e = \frac{1}{2} \int \vec{D} \cdot \vec{E} dV$$
+	In the first case, $W_e$ is scaled by $2^2 = 4$, and in the second case, $W_e$ is scaled by $\frac{1}{2} = \frac{1}{4}$, so the ratio is 16:1.
+\end{solution}
+
+\question{The space between the electrodes of a capacitor is half filled with a dielectric of relative permittivity $\varepsilon r = 2$ and half filled with air. The electric field in the entire space is uniform ($\vec{E}$ = const). Compare the electric energy density in the dielectric, that in the air}
+
+\begin{solution}
+	Smaller. $\vec{E}$ is constant, but $\vec{D}$ is greater in the dielectric. Using the formula for $W_e$, energy density is greater in the dielectric, and smaller in air.
+\end{solution}
+
+\question{}
+\end{questions}
+\end{document}
