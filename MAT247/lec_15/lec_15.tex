@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 15}
+\begin{document}
+\maketitle
+
+\section{Normal Operators}
+
+We take $V$ as a finite dimensional complex inner product space in today's lecture.
+
+\begin{prop}
+	$T \in \mathcal L(V)$ is normal iff $||Tv|| = ||T^*v|| \forall v \in V$
+\end{prop}
+
+\begin{proof}
+	We assume Lemma \ref{adjoint}. Then
+	\begin{align*}
+		T \text{ normal} &\Leftrightarrow TT^* = T^*T \\
+				 &\Leftrightarrow TT^* - T^*T = 0 \\
+				 &\Leftrightarrow \langle v, (TT^*-T^*T)v \rangle = 0 \forall v \in V \\
+				 &\Leftrightarrow \langle T^*v,T^*v \rangle - \langle Tv,Tv \rangle = 0 \forall v \in V \\
+				 &\Leftrightarrow ||T^*v||^2 = ||Tv||^2 \forall v \in V
+	\end{align*}
+	Where the backwards implication for the third $\Leftrightarrow$ makes use of the lemma.
+\end{proof}
+
+\begin{lem}\label{adjoint}
+	If $S \in \mathcal L(V)$ is self adjoint, then $S=0$ iff $\langle Sv,v \rangle = 0 \forall v \in V$.
+\end{lem}
+
+\begin{proof}
+	The "only if" part is trivial. For the "if" part, note that for $S$ to be self adjoint, it has a basis of eigenvectors. This implies all eigenvalues are 0, so $S=0$.
+\end{proof}
+
+\begin{lem}\label{joint}
+	If $S,T \in \mathcal L(V)$ with $ST = TS$, there exists a joint eigenvector $v \neq 0 \in V, Tv = \lambda v, Sv = \mu v$.
+\end{lem}
+
+\begin{proof}
+	Pick any eigenvalue $\lambda$ for $T$. If $v$ is one of its corresponding eigenvectors, then
+	$$T(Sv) = STv = \lambda(Sv)$$
+	So $Sv$ is also an eigenvector. Then the eigenspace for $\lambda$ is $S$ invariant, and picking any eigenvector $w$ for $S$ restricted to this eigenspace completes the proof.
+\end{proof}
+
+\begin{lem}
+	For $T \in \mathcal L(V)$, if $W \subseteq V$ is $T$-invariant then $W^\perp \subseteq V$ is $T^*$-invariant. In particular, if $W$ is $T$-invariant and $T^*$-invariant, the same is true for $W^\perp$.
+\end{lem}
+
+\begin{proof}
+	Suppose $T(W) \subseteq W$. Let $v \in W^\perp$. We want to show that $T^*v \in W^\perp$. For all $w \in W$, we have
+	$$\langle T^*v,w \rangle = \langle v,Tw \rangle = 0$$
+	Hence $T^*v \in W^\perp$.
+\end{proof}
+
+\begin{thm}[Spectrial Theorem for Normal Operators]
+	For $T \in \mathcal L(V)$, the following are equivalent:
+	\begin{itemize}
+		\item $T$ is normal
+		\item $V$ admits an orthonormal basis consisting of eigenvectors of $T$
+	\end{itemize}
+\end{thm}
+
+\begin{proof}
+	Assume $T$ is normal. Let $v_1 \in V$ be a joint unit eigenvector for $T,T^*$ by lemma \ref{joint}. Then span$\{v_1\}^\perp$ is invariant under $T,T^*$. Then $T$ is still normal in span$\{v_1\}^\perp$, and the process is repeated to build a basis. \\
+	Suppose $v_1,\dots,v_n$ is an orthonormal basis with $Tv_i = \lambda_iv_i$. Then
+	$$\langle v_i,T^*v_j \rangle = \langle Tv_i,v_j \rangle = \langle \lambda_iv_i,v_j \rangle = \langle v_i,\overline{\lambda_i}v_j \rangle$$
+	For $i \neq j$ we see $T^*v_j$ has no $v_i$ component. Taking $i=j$, we get $T^*v_j = \overline{\lambda}_jv_j$. Now
+	$$T^*Tv_i = \lambda_iT^*v_i = \lambda_i\overline{\lambda}_iv_i = T(\overline{\lambda_i}v_i) = TT^*v_i$$
+	This holds for all basis vectors, so $TT^* = T^*T$.
+\end{proof}
+
+As a consequence, if $T$ is normal, then the matrix of $T$ has a basis consisting of eigenvectors is diagonal. Moreover, for eigenvalues $\lambda \neq \mu$, their eigenspaces are orthogonal.
+
+\section{Spectral Resolution}
+
+Suppose $T \in \mathcal L(V)$ is normal, let $P_\lambda \in \mathcal L(V)$ be the orthogonal projection to the eigenspace $E(\lambda,T)$. Then
+$$P_\lambda P_\mu = \begin{cases} 0 & \lambda \neq \mu \\ P_\lambda & \lambda = \mu \end{cases}$$
+Now
+$$\sum_\lambda P_\lambda = I$$
+Hence
+$$T = \sum_\lambda \lambda P_\lambda$$
+Then
+$$T^* = \sum\lambda \overline{\lambda}P_\lambda$$
+\end{document}
