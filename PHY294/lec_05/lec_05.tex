@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 5}
+\begin{document}
+\maketitle
+
+\section{Adiabetic Process}
+
+$$\Delta U = Q - p\Delta V = -p\Delta V$$
+
+We also use $U = \frac{f}{2}NkT$, where $f=3$ for the single atomic case, and $f=7$ for the diatomic case. Combining gives
+$$-p\Delta V = \frac{f}{2}Nk\Delta T$$
+Now from the ideal gas law,
+$$\Delta(pV) = Nk\Delta T$$
+Using the product rule,
+\begin{align*}
+	-p\Delta V &= \frac{f}{2}(p\Delta V + V\Delta p) \\
+	-\left(\frac{f}{2}+1\right)p\Delta V &= \frac{f}{2}V\Delta p \\
+	-\frac{\frac{f}{2}+1}{\frac{f}{2}} \frac{\Delta V}{V} &= \frac{\Delta p}{p} \\
+	-\frac{\frac{f}{2}+1}{\frac{f}{2}} d\ln V &= d\ln p \\
+	-\left(1+\frac{2}{f}\right)\ln\frac{V_2}{V_1} &= \ln\frac{p_2}{p_1} \\
+	\left(\frac{V_1}{V_2}\right)^{1+\frac{2}{f}} &= \frac{p_2}{p_1} \\
+	V_1^{1+\frac{2}{f}}p_1 &= V_2^{1+\frac{2}{f}}p_2
+\end{align*}
+
+Thus $pV^{1+\frac{2}{f}}$ is held constant. \\
+Similarly, we have isohoric processes, with a constant $V$, and isobaric processes, with a constant $p$.
+
+\section{Heat Capacity}
+
+For constant volume,
+$$C_V = \left(\frac{\partial U}{\partial T}\right)_{V,N}$$
+The first law of thermodynamics simplifies to
+$$\Delta U = Q$$
+The general definition is then
+$$C_{\text{condition}} = \left(\frac{Q}{\Delta T}\right)_{\text{condition}}$$
+
+For constant pressure,
+$$C_p = \left(\frac{Q}{\Delta T}\right)_{p,N} = \left(\frac{\Delta U + p\Delta V}{\Delta T}\right)_{p,N} = \left(\frac{\partial U}{\partial T}\right)_{p,N} + \left(\frac{\partial V}{\partial T}\right)_{p,N}$$
+Hence $C_p > C_V$ always holds. For ideal gases,
+$$U = \frac{f}{2}NkT$$
+Substituting, this gives
+$$\left(\frac{\partial U}{\partial T}\right)_{p,N} = \left(\frac{\partial U}{\partial T}\right)_{V,N} = \frac{f}{2}Nk$$
+and from the ideal gas law,
+$$\left(\frac{\partial V}{\partial T}\right)_{p,N} = \frac{Nk}{p}$$
+
+\section{Main Postulate}
+Consider a closed system with fixed energy. Then all accessible microstates of the system are equally likely.
+\end{document}
