@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Postulate}
+
+The picture (not proof) behind the postulate is "true randomness" in the behaviour of large $N$ systems.
+
+\begin{itemize}
+	\item Consider an isolated gas with energy $E$. With $10^{23}$ particles, there are many ways for the energy to be distributed
+	\item Collisions change the way energy is distributed, i.e. microstates
+	\item We assume any such states are as likely as the other
+\end{itemize}
+
+We give up a mechanical description for statistics and probability, which is easier.
+
+\section{Electronic Paramagnet}
+
+We have $N$ sites, and we only care about the total magnetic spin. The states are totally determined by $\{s_1,\dots,s_n\}$, where $s_i$ takes the value of $\pm1$. We neglect interaction between spins. Now the energy is described as
+$$U = -\vec{\mu}\cdot\vec{B}$$
+where $U$ describes the potential energy, hence the negative sign. Total energy is hence
+$$U = \sum_{i=1}^N -\mu_0s_iB = -\mu_0B\sum_{i=1}^N s_i$$
+Then energy only depends on sum of spins. Now total spin
+$$S = \sum_{i=1}^N s_i$$
+takes all values from $-N$ to $N$ in increments of 2 (flipping a spin changes $S$ by 2). Now there are $N+1$ macrostates but $2^N$ microstates. Now, we call a microstate "accessible" to a macrostate when the microstate corresponds to the macrostate. In this case, it is all combinations of $s_i$ which add up to the same $S$, which is essentially n choose k.
+\end{document}
