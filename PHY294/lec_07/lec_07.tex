@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 7}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Electronic Paramagnet}
+
+Continuing from our last lecture, we see total spin $S$ can be found as $2N_{\text{up}} - N$. Then
+$$\Omega(N_{\text{up}},N) = \binom{N}{N_{\text{up}}} = \frac{N!}{(N-N_{\text{up}})!N_{\text{up}}!}$$
+is the multiplicity function. 
+
+\section{Einstein Solid}
+
+This is a collection of $N$ simple harmonic oscillators in 3D (i.e. each atom has 3 degrees of freedom). Each oscillator has energy
+$$E_n = \hbar\omega\left(n+\frac{1}{2}\right)$$
+Then each microstate can be written as $\{n_1,\dots,n_N\}$ where $n_i \in \N$. Then total energy is
+$$U = \hbar\omega\left(\frac{N}{2} + \sum_{i=1}^N n_i\right) = \hbar\omega\left(\frac{N}{2}+q\right)$$
+where $q$ is defined as above, the total number of quanta.
+$$\Omega(q,N) = \frac{(N-1+q)!}{(N-1)!q!}$$
+Note the $-1$ term comes from the reduced degree of freedom (stars and banners).
+
+\begin{ex}
+	Consider two isolated states $N_A,q_A$ and $N_B,q_B$. Then, they are brought together, allowing energy to flow. Then
+	$$q'_A + q'_B = q_{\text{total}}$$
+	which is constant due to conservation of energy. Now total microstates is
+	$$\Omega_{\text{total}} = \Omega_A(q'_A)\Omega_B(q'_B)$$
+\end{ex}
+\end{document}
