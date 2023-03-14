@@ -1,0 +1,149 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 16}
+\begin{document}
+\maketitle
+
+\section{Normal Operators}
+
+Recall for a finite dimensional complex space $V$ with an inner product,
+$$TT^* = T^*T \Leftrightarrow V \text{ has an orthonormal basis of eigenvectors of } T$$
+Let $P_\lambda$ be orthogonal projections to eigenspaces $E(\lambda,T)$.
+
+\begin{thm}[Spectral Resolution]
+	For a normal $T$, all of the following hold.
+	$$P_\lambda P_\mu = \begin{cases} 0 & \lambda \neq \mu \\ P_\lambda & \lambda = \mu \end{cases}$$
+	$$\sum_\lambda P_\lambda = I$$
+	$$T = \sum_\lambda \lambda P_\lambda$$
+\end{thm}
+
+\begin{proof}
+	Trivial.
+\end{proof}
+
+If $W \subseteq \C^n$ is a subspace with orthonormal basis $v_1,\dots,v_k \in W$, then the orthogonal projection to $W$ is
+$$P = \sum_{i=1}^k v_iv_i^*$$
+This is because
+$$Pv_j = \sum_iv_iv_i^*v_j = \sum_iv_i\langle v_j,v_i \rangle = \begin{cases} v_j & v_j \in W \\ 0 & v_j \notin W\end{cases}$$
+
+\begin{ex}
+	Find the spectral resolution of $A \in M_{2\times2}(\C)$
+	$$A = \begin{pmatrix} a & b \\ -b & a \end{pmatrix}$$
+	The eigenvalues are $a\pm ib$ with unit eigenvectors $\frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ \pm i \end{pmatrix}$. The orthogonal projections are then
+	$$P_{\lambda_1} = v_1v_1^* = \frac{1}{2}\begin{pmatrix} 1 \\ i \end{pmatrix} \begin{pmatrix} 1 & -i \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix}$$
+	$$P_{\lambda_2} = v_2v_2^* = \frac{1}{2} \begin{pmatrix} 1 \\ -i \end{pmatrix} \begin{pmatrix} 1 & i \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 & i \\ -i & 1 \end{pmatrix}$$
+	Thus the spectral resolution is
+	$$\begin{pmatrix} a & b & \\ -b & a \end{pmatrix} = (a+ib)\frac{1}{2}\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} + (a-ib)\frac{1}{2}\begin{pmatrix} 1 & i \\ -i & 1 \end{pmatrix}$$
+\end{ex}
+
+The spectral resolution is useful in finding us the adjoint, as
+$$T^* = \sum_\lambda \overline{\lambda}P_\lambda$$
+and that
+$$T^k = \sum_\lambda = \lambda^k P_\lambda$$
+More generally,
+$$q(T) = \sum_\lambda q(\lambda) P_\lambda$$
+Recall Spec$(T)$ is the set of eigenvalues of $T$.
+
+\begin{defn}[Functional Calculus]
+	For any $f: \text{Spec}(T) \rightarrow \C$, define, for normal $T$,
+	$$f(T) = \sum_\lambda f(\lambda)P_\lambda$$
+\end{defn}
+
+If $v \in V$ is an eigenvalue of $T$, eigenvalue $\lambda$, then it is also an eigenvalue for $f(T)$ with eigenvalue $f(\lambda)$ and $f(T)$ is the unique operator with this property. In particular $f(T)$ is normal.
+
+\begin{ex}
+	The properties of $f(T)$ are as follows.
+	\begin{itemize}
+		\item $f(\lambda) = \lambda \Rightarrow f(T) = T$
+		\item $f(\lambda) = 1 \Rightarrow f(T) = 1$
+		\item $f(\lambda) = q(\lambda) \Rightarrow f(T) = q(T)$
+		\item $f(\lambda) = \overline{\lambda} \Rightarrow f(T) = T^*$
+		\item $(f+g)(T) = f(T) + g(T)$
+		\item $(af)(T) = af(T)$
+		\item $(f\cdot g)(T) = f(T)g(T)$
+		\item $f(T)^* = \overline{f}(T^*)$
+		\item Spec$(f(T)) = f(\text{Spec}(T))$
+	\end{itemize}
+\end{ex}
+
+Now we can define all kinds of functions of normal operators.
+
+\begin{ex}
+	$|A|$ from the first example becomes
+	$$|a+ib|\frac{1}{2}\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} + |a-bi|\frac{1}{2}\begin{pmatrix} 1 & i \\ -i & 1 \end{pmatrix}$$
+	$$\exp\begin{pmatrix} a & b \\ -b  & a \end{pmatrix} = e^{a+ib}\frac{1}{2}\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} + e^{a-ib}\frac{1}{2}\begin{pmatrix} 1 & i \\ -i & 1 \end{pmatrix} = e^a \begin{pmatrix} \cos b & \sin b \\ -\sin b & \cos b \end{pmatrix}$$
+\end{ex}
+
+For a finite dimensional vector space $V = \R$ or $V = \C$, $T \in \mathcal L(V)$,
+$$\exp(T) = e^T$$
+is always defined (it converges, but one has to show it). More generally, $f(T)$ is defined $\forall f(z) = \sum_{n=0}^\infty a_nz^n$ with an $\infty$ radius of convergence.
+
+\section{Positive Operators}
+For a finite dimensional complex space $V$,
+
+\begin{prop}
+	For self adjoint $T \in \mathcal L(V)$, the following are equivalent
+	\begin{enumerate}
+		\item $\langle Tv,v \rangle > 0 \forall v \in V$
+		\item The eigenvalues of $T$ are all $\geq 0$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	The first obviously implies the second; put $v$ to be any eigenvector. Given the second,
+	$$\langle Tv,v \rangle = \langle T\left(\sum_i a_ie_i\right),\sum_i a_ie_i \rangle = \langle \sum_i a_i\lambda_ie_i,\sum_i a_ie_i \rangle = \sum_i \lambda_ia_i^2 \geq 0$$
+	where $e_i$ is an orthonormal basis of eigenvectors.
+\end{proof}
+
+\begin{defn}
+	A self-adjoint operator satisfying these properties is called positive. Note that 0 (the operator) is positive.
+\end{defn}
+
+\begin{ex}
+	$I$ is positive. $\forall T \in \mathcal L(V)$, the operators $TT^*, T^*T$ are positive. This is because
+	$$\langle T^*Tv,v \rangle = \langle Tv,Tv \rangle = ||Tv|| \geq 0$$
+	and similarly for $TT^*$. Then for any normal $T$ and any $f:\text{Spec}(\C) \rightarrow \R^+$, then $f(T)$ is positive. In particular, $|T|$ is positive.
+\end{ex}
+
+\begin{prop}
+	If $T_1,T_2$ are positive, $a_1,a_2 \geq 0$, then
+	$a_1T_1 + a_2T_2$ is positive.
+\end{prop}
+
+\begin{proof}
+	Trivial.
+\end{proof}
+
+\begin{ex}
+	If $T \in \mathcal L(V)$ is any self adjoint operator, then $I+\epsilon T$ is positive for sufficiently small $\epsilon$. This is when
+	$1-\epsilon\lambda \geq 0 \forall$ eigenvalues $\lambda$
+\end{ex}
+
+Given $T \in \mathcal L(V)$, an operator $S \in \mathcal L(V)$ is its "suare root" if $S^2 = T$.
+
+\begin{prop}
+	If $T \in \mathcal L(V)$ is positive, then it has a unique positive square root.
+\end{prop}
+
+\begin{proof}
+	Note that the positive square root function is well defined on Spec$(T) \subseteq \R^+\cup\{0\}$. Then $\sqrt{T}$ is a square root. To show uniqueness, let
+	$Tv = \mu^2v$ and $Sv = kv + u$, where $u$ and $v$ are orthogonal. Since $S$ is positive, $k \geq 0$. Then
+	$$\mu^2v = S^2v = k^2v + ku + Su \Rightarrow Su = -ku$$
+	which means $k=0$ is the only possible value of $k$. Then $S$ and $T$ share the same eigenvectors. This uniquely determines the eigenvalues of $S$ as the square roots of that of $T$.
+\end{proof}
+
+This can be applied to polar decomposition. Let $T \in \mathcal L(V)$ be any operator.
+
+\begin{thm}
+	Suppose $T \in \mathcal L(V)$ is invertible. Then there exists a unique unitary operator $U \in \mathcal L(V)$ and positive $R \in \mathcal L(V)$ such that $T = UR$.
+\end{thm}
+
+\begin{proof}
+	$$T^*T = R^*U^*UR = R^*R = R^2$$
+	We can take $R = \sqrt{T^*T}$. Then we have a unique $U = TR^{-1}$. Note that
+	$$U^*U = (R^{-1})^*T^*TR^{-1} = R^{-1}R^2R^{-1} = I$$
+\end{proof}
+
+As a consequence, if $T$ is not normal, then $U,R$ do nto commute. We also have $T = \sqrt{TT^*}U_1$, where $U_1$ is unitary.
+\end{document}
