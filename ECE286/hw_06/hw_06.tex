@@ -51,9 +51,9 @@ $$f(x,y) = \begin{cases} 24xy & 0 \leq x \leq 1, 0 \leq y \leq 1, x+y \leq 1 \\ 
 	\begin{align*}
 		G(z) &= P(Z \leq z) \\
 		     &= P(X + Y \leq z') \\
-		     &= \int_0^z' \int_0^{z'-x} 24xy dydx \\
-		     &= \int_0^z' 12x(z'-x)^2 dx \\
-		     &= \int_0^z' (12x^3 - 24x^2z' + 12xz'^2) dx \\
+		     &= \int_0^{z'} \int_0^{z'-x} 24xy dydx \\
+		     &= \int_0^{z'} 12x(z'-x)^2 dx \\
+		     &= \int_0^{z'} (12x^3 - 24x^2 z' + 12xz'^2) dx \\
 		     &= 3z'^4 - 8z'^4 + 6z'^4 \\
 		     &= z'^4
 	\end{align*}
@@ -66,25 +66,143 @@ $$f(x,y) = \begin{cases} 24xy & 0 \leq x \leq 1, 0 \leq y \leq 1, x+y \leq 1 \\ 
 \question{Let $X_1$ and $X_2$ be independent random variables
 each having the probability distribution
 $$f(x) = \begin{cases} e^{-x} & x>0 \\ 0 & \text{elsewhere} \end{cases}$$
-Show that the random variables $Y_1$ and $Y_2$ are independent when $Y_1=X_1+X_2$ and $Y_2 = \frac{X_1}{(X_1+X_2)}$.}
+Show that the random variables $Y_1$ and $Y_2$ are independent when $Y_1=X_1+X_2$ and $Y_2 = \frac{X_1}{(X_1+X_2)}$.} \label{this}
 
 \begin{solution}
-	$$f(x_1,x_2) = \begin{cases} e^{-(x_1+x_2)} & x_1,x_2 > 0 \\ 0 & \text{elsewhere} \end{cases}$$
-	Then for $y_1 > 0$
+	$$J  = \det\begin{pmatrix} \frac{dx_1}{dy_1} & \frac{dx_1}{dy_2} \\ \frac{dx_2}{dy_1} & \frac{dx_2}{dy_2} \end{pmatrix} = \det\begin{pmatrix} \frac{dy_1}{dx_1} & \frac{dy_1}{dx_2} \\ \frac{dy_2}{dx_1} & \frac{dy_2}{dx_2} \end{pmatrix}^{-1} = \det\begin{pmatrix} 1 & 1 \\ \frac{x_2}{(x_1+x_2)^2} & -\frac{x_1}{(x_1+x_2)^2} \end{pmatrix}^{-1} = -(x_1+x_2) = -y_1$$
+	Then
+	$$g(y_1,y_2) = f(y_1y_2, y_1(1-y_2))|J| = f(y_1y_2)f(y_1(1-y_2))y_1 = e^{-y_1y_2}e^{y_1(y_2-1)}y_1 = y_1e^{-y_1}$$
+	Integrating,
+	$$g(y_1) = \int_0^\infty g(y_1,y_2)dy_2 = \int_0^1 y_1e^{-y_1}dy_2 = y_1e^{-y_1}$$
+	and
+	$$g(y_2) = \int_0^\infty g(y_1,y_2)dy_1 = \int_0^1 y_1e^{-y_1}dy_1 = \int_0^1 \int_0^1 y_1e^{-y_1}dy_1dy_2 = 1$$
+	Where the last equality comes from the fact that 
+\end{solution}
+
+\question{Show that the $r$th moment about the origin of the gamma distribution is
+	$$\mu'_r = \frac{\beta^r\Gamma(\alpha+r)}{\Gamma(\alpha)}$$
+}
+
+\begin{solution}
 	\begin{align*}
-		G(y_1) &= P(Y_1 \leq y_1) \\
-		       &= P(X_1 + X_2 \leq y_1) \\
-		       &= \int_0^{y_1} \int_0^{y_1-x_2} e^{-(x_1+x_2)} dx_1dx_2 \\
-		       &= \int_0^{y_1} e^{-x_2} - e^{y_1} dx_2 \\
-		       &= 1 - e^{-y_1} - y_1e^{-y_1} \\
-		       &= 1 - (y_1+1)e^{-y_1}
+		\mu'_r &= E(X^r) \\
+		       &= \int_{-\infty}^\infty x^rf(x)dx \\
+		       &= \int_0^\infty \frac{x^{\alpha+r-1}e^{-\frac{x}{\beta}}}{\beta^\alpha\Gamma(\alpha)} dx \\
+		       &= -\frac{x^{\alpha+r-1}e^{-\frac{x}{\beta}}}{\beta^{\alpha-1}\Gamma(\alpha)} \Big |_0^\infty + \int_0^\infty \frac{(\alpha+r-1)x^{\alpha+r-2}e^{-\frac{x}{\beta}}}{\beta^{\alpha-1}\Gamma(\alpha)} dx \\
+		       &= \beta(\alpha+r-1)\mu'_{r-1}
 	\end{align*}
-	Differentiating,
-	$$g(y_1) = \begin{cases} y_1e^{y_1} & y_1 > 0 \\ 0 & \text{elsewhere} \end{cases}$$
-	Similarly, for $y_2 > 0$,
+	Then by induction, the statement obviously holds for $r=0$, as the left hand side gives the integral of the distribution, which is 1, and the right hand side obviously simplifies to 1. For the induction step, assume the statement holds for $r=k \in \N$. Then for $r=k+1$,
+	$$\mu'_{k+1} = \beta(\alpha+k)\mu'_k = \beta(\alpha+k)\times\frac{\beta^k\Gamma(\alpha+k)}{\Gamma(\alpha)} = \frac{\beta^{k+1}\Gamma(\alpha+k+1)}{\Gamma(\alpha)}$$
+	Thus the equation holds $\forall r \in \N$ by induction.
+\end{solution}
+
+\question{A random variable $X$ has the discrete uniform distribution
+	$$f(x;k) = \begin{cases} \frac{1}{k} & $x=1,2,\dots,k$ \\ 0 & \text{elsewhere} \end{cases}$$
+	Show that the moment-generating function of $X$ is
+	$$M_X(t) = \frac{e^t(1-e^{kt})}{k(1-e^t)}$$
+}
+
+\begin{solution}
 	\begin{align*}
-		H(y_2) &= P(Y_2 \leq y_2) \\
-		       &= P\left(\frac{X_1}{X_1+X_2} \leq y_2\right) \\
-		       &= \int_0^\infty
+		M_X(t) &= E(e^{tX}) \\
+		       &= \sum_x e^{tx}f(x) \\
+		       &= \sum_{x=1}^k \frac{e^{tx}}{k} \\
+		       &= \frac{1}{k} \frac{e^{(k+1)t}-e^t}{e^t-1} \\
+		       &= \frac{e^t(1-e^{kt})}{k(1-e^t)}
+	\end{align*}
+\end{solution}
+
+\question{A random variable $X$ has the geometric distribution $g(x;p) = pq^{x-1}$ for $x=1,2,3,\dots$. Show that the moment-generating function of $X$ is
+	$$M_X(t) = \frac{pe^t}{1-qe^t}, t < \ln q$$
+and then use $M_X(t)$ to find the mean and variance of the geometric distribution.}
+
+\begin{solution}
+	\begin{align*}
+		M_X(t) &= E(e^{tX}) \\
+		       &= \sum_{x=1}^\infty e^{tx}pq^{x-1} \\
+		       &= \frac{pe^t}{1-qe^t}
+	\end{align*}
+	Note that $M_X(t) = 1$, so substitution yields $p=1-q$.
+	Then the mean is found by
+	\begin{align*}
+		\mu &= \mu'_1 \\
+		    &= \frac{dM_X(t)}{dt} \Big |_{t=0} \\
+		    &= \frac{p(1-qe^t)e^t+pqe^{2t}}{(1-qe^t)^2} \Big |_{t=0} \\
+		    &= \frac{p(1-q)+pq}{(1-q)^2} \\
+		    &= \frac{p}{(1-q)^2} \\
+		    &= \frac{1}{p}
+	\end{align*}
+	The variance is found by
+	\begin{align*}
+		\sigma^2 &= \mu'_2 - \mu^2 \\
+			 &= \frac{d}{dt} \frac{p(1-qe^t)e^t+pqe^{2t}}{(1-qe^t)^2} \Big |_{t=0} - \frac{1}{p^2} \\
+			 &= \frac{(1-qe^t)^2p(e^t-2qe^{2t}+2qe^{2t})+2qe^t(1-qe^t)pe^t(1-qe^t+qe^t)}{(1-qe^t)^4} \Big |_{t=0} - \frac{1}{p^2} \\
+			 &= \frac{(1-q)^2p(1-2q+2q)+2q(1-q)p(1-q+q)}{(1-q)^4} - \frac{1}{p^2} \\
+			 &= \frac{p^3+2qp^2}{p^4} - \frac{1}{p^2} \\
+			 &= \frac{p+2q}{p^2} - \frac{1}{p^2} \\
+			 &= \frac{1-q+2q-1}{p^2} \\
+			 &= \frac{q}{p^2}
+	\end{align*}
+\end{solution}
+
+\question{A random variable $X$ has the Poisson distribution
+	$$p(x;\mu) = e^{-\mu}\frac{\mu^x}{x!}, x \in \N$$
+	Show that the moment-generating function of $X$ is
+	$$M_X(t) = e^{\mu(e^t-1)}$$
+Using $M_X(t)$, find the mean and variance of the Poisson distribution.}
+
+\begin{solution}
+	\begin{align*}
+		M_X(t) &= E(e^{tX}) \\
+		       &= \sum_{x=0}^\infty e^{tx-\mu}\frac{\mu^x}{x!} \\
+		       &= e^{-\mu} \sum_{x=0}^\infty \frac{(\mu e^t)^x}{x!} \\
+		       &= e^{-\mu} e^{\mu e^t} \\
+		       &= e^{\mu(e^t-1)}
+	\end{align*}
+	The mean is then
+	\begin{align*}
+		\mu &= \mu'_1 \\
+		    &= \frac{dM_X(t)}{dt} \Big |_{t=0} \\
+		    &= \mu e^t\times e^{\mu(e^t-1)} \Big |_{t=0} \\
+		    &= \mu
+	\end{align*}
+	And the variance is found by
+	\begin{align*}
+		\sigma^2 &= \mu'_2 - \mu^2 \\
+			 &= \frac{d}{dt} \mu e^{\mu e^t + t - \mu} \Big |_{t=0} - \mu^2 \\
+			 &= \mu(\mu e^t + 1) e^{\mu e^t + t - \mu} \Big |_{t=0} - \mu^2 \\
+			 &= \mu(\mu + 1) - \mu^2 \\
+			 &= \mu
+	\end{align*}
+\end{solution}
+
+\question{The moment-generating function of a certain Poisson random variable $X$ is given by
+	$$M_X(t) = e^{4(e^t-1)}$$
+Find $P(\mu-2\sigma < X < \mu+2\sigma)$.}
+
+\begin{solution}
+	The mean and variance are both 4. Hence the distribution is
+	$$\frac{e^{-4}4^x}{x!}$$
+	and the desired probability is
+	$$P(0 < X < 8)$$
+	Then the probability is $0.931$.
+\end{solution}
+
+\question{If both $X$ and $Y$, distributed independently, follow exponential distributions with mean parameter 1, find the distributions of}
+
+\begin{parts}
+	\part{$U=X+Y$}
+	\part{$V=\frac{X}{X+Y}$}
+\end{parts}
+
+\begin{solution}
+	This is similar to question \ref{this}. Then the joint distribution is
+	$$g(u,v) = ue^{-u}$$
+	The distribution for $u$ is then
+	$$g(u) = \int_0^1 ue^{-u}dv = ue^{-u}$$
+	The distribution for $v$ is then
+	$$g(v) = \int_0^\infty ue^{-u}du = 1$$
+\end{solution}
+
 \end{questions}
 \end{document}
