@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 24}
+\begin{document}
+\maketitle
+
+\section{DC Motors}
+A commutaor is when the current is off for half of the rotation, so the motor spins in one direction. 
+
+\begin{ex}[Mendochino Motors]
+	There is a source of magnetic field (magnet), current source (battery), and a commutator that makes it spin.
+\end{ex}
+
+\section{Magnetic Vector Potential}
+
+$$\vec{\nabla} \cdot \vec{B} = 0 \Leftrightarrow \oiint_S \vec{B} \cdot d\vec{S} = 0$$
+From one of the Maxwell's equations, we see all magnetic fields have no divergence (solenoidal). Since the divergence of a curl is always 0, we can think of $\vec{B}$ as a curl, namely
+$$\vec{B} = \vec{\nabla} \times \vec{A}$$
+
+We can relate this with the current through
+$$\vec{\nabla}^2\vec{A} = -\mu_0\vec{J}$$
+Which gives
+$$\vec{A} = \frac{\mu_0}{4\pi} \int \frac{Id\vec{l}}{|\vec{R}-\vec{R}'|}$$
+or
+$$\vec{A} = \frac{\mu_0}{4\pi}\iiint_V \frac{\vec{J}dV}{|\vec{R}-\vec{R}'|}$$
+We define $\Phi_m$ as below, and
+$$\Phi_m = \oint_C \vec{A} \cdot d\vec{l} = \iint_S \vec{B} \cdot d\vec{S}$$
+by Stokes'.
+
+\section{Biot-Savart Law}
+
+$$d\vec{B} = \frac{\mu_0Id\vec{l}\times(\vec{R}-\vec{R}')}{4\pi|\vec{R}-\vec{R}'|^3}$$
+
+\end{document}
