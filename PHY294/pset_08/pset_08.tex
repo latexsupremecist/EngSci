@@ -1,0 +1,104 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguY}
+\title{Problem Set 8}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{If you poke a hole in a container full of gas, the gas will start
+leaking out. In this problem you will make a rough estimate of the rate at which
+gas escapes through a hole. (This process is called effusion, at least when the
+hole is sufficiently small.)}
+
+\begin{parts}
+	\part{Consider a small portion (area $=A$) of the inside wall of a container full of gas. Show that the number of molecules colliding with this surface in a time interval $\Delta t$ is $\frac{PA\Delta t}{2m\overline{v_x}}$, where $P$ is the pressure, $m$ is the average molecular mass, and $\overline{v_x}$ is the average $x$ velocity of those molecules that collide with the wall.}
+
+	\begin{solution}
+		The force each molecule exerts on the surface is the change in momentum over time, or
+		$$F = \frac{m\overline{v_x} - m(-\overline{v_x})}{\Delta t} = \frac{2m\overline{v_x}}{\Delta t}$$
+		Total force on the surface is just $PA$, so the number of molecules needed to generate this force is
+		$$\frac{PA}{F} = \frac{PA\Delta t}{2m\overline{v_x}}$$
+	\end{solution}
+
+	\part{It's not easy to calculate $\overline{v_x}$, but a good enough approximation is $\sqrt{\overline{v_x^2}}$ where the bar now represents an average over all molecules in the gas. Show that $\sqrt{\overline{v_x^2}} = \sqrt{\frac{kT}{m}}$}
+
+	\begin{solution}
+		We know
+		$$kT = m\overline{v_x^2}$$
+		Dividing by $m$ and taking the square root yields the desired relation.
+	\end{solution}
+
+	\part{If we now take away this small part of the wall of the container, the molecules that would have collided with it will instead escape through the hole. Assuming that nothing enters through the hole, show that the number $N$ of molecules inside the container as a function of time is governed by the differential equation
+		$$\frac{dN}{dt} = - \frac{A}{2V} \sqrt{\frac{kT}{m}}N$$
+	Solve this equation.}
+
+	\begin{solution}
+		$$N(t) = N(0)e^{\frac{-t}{\tau}}$$
+		where
+		$$\tau = \frac{2V}{A\sqrt{\frac{kT}{m}}}$$
+	\end{solution}
+
+	\part{Calculate the characteristic time for a gas to escape from a 1-liter container punctured by a $1\unit{mm^2}$ hole.}
+
+	\begin{solution}
+		$$\tau = \frac{2V}{A\sqrt{\frac{kT}{m}}} = \frac{2\times10^{-3}}{10^{-6}\sqrt{\frac{RT}{M}}} = \frac{2000}{300} = 6.7\unit{s}$$
+	\end{solution}
+
+	\part{Your bicycle tire has a slow leak, so that it goes flat within about an hour after being inflated. Roughly how big is the hole? (Use any reasonable estimate for the volume of the tire.)}
+
+	\begin{solution}
+		$$A = \frac{2V}{\tau\sqrt{\frac{kT}{m}}} = \frac{0.002}{3600\times300} = 5 \times 10^{-9} \unit{m^2}$$
+	\end{solution}
+
+	\part{In Jules Verne's Round the Moon, the space travelers dispose of a dog's corpse by quickly opening a window, tossing it out, and closing the window. Do you think they can do this quickly enough to prevent a significant amount of air from escaping? Justify your answer with some rough estimates and calculations.}
+
+	\begin{solution}
+		Did not pass ethics board.
+	\end{solution}
+
+\end{parts}
+
+\question{Calculate the total thermal energy in a liter of helium at room temperature and atmospheric pressure. Then repeat the calculation for a liter of air.}
+
+\begin{solution}
+	As helium is diatomic,
+	$$U = \frac{7}{2}NkT = \frac{7}{2}pV = 354\unit{J}$$
+	Air is mostly diatomic, which gives a similar thermal energy.
+\end{solution}
+
+\question{Calculate the total thermal energy in a gram of lead at room temperature, assuming that none of the degrees of freedom are "frozen out" (this happens to be a good assumption in this case).}
+
+\begin{solution}
+	Lead is monoatomic, so
+	$$U = \frac{3}{2}NkT = \frac{3}{2}\frac{6.02\times10^{23}}{207.2}\times1.38^{-23}\times298 = 17.9\unit{J}$$
+\end{solution}
+
+\question{List all the degrees of freedom, or as many as you can, for a molecule of water vapor. (Think carefully about the various ways in which the molecule can vibrate.)}
+
+\begin{solution}
+	3 degrees of translational freedom, 3 degrees of rotational freedom (it is nonlinear) and $3N-6=3$ degrees of vibrational freedom.
+\end{solution}
+
+\question{A battery is connected in series to a resistor, which is immersed in water (to prepare a nice hot cup of tea). Would you classify the flow of energy from the battery to the resistor as "heat" or "work"? What about the flow of energy from the resistor to the water?}
+
+\begin{solution}
+	Work then heat. Flow of energy from the battery to the resistor is not due to their temperature difference, so it is work but not heat. Flow of energy from the resistor to water is based on their temperature difference, so it is heat. (if both have the same temperature, energy would not flow.)
+\end{solution}
+
+\question{Give an example of a process in which no heat is added to a system, but its temperature increases. Then give an example of the opposite: a process in which heat is added to a system but its temperature does not change.}
+
+\begin{solution}
+	The system in the previous question is a process where no heat is added, but temperature increases. In the melting of ice, heat is added but temperature does not change (until all the ice has melted).
+\end{solution}
+
+\question{Two identical bubbles of gas form at the bottom of a lake, then rise to the surface. Because the pressure is much lower at the surface than at the bottom, both bubbles expand as they rise. However, bubble A rises very quickly, so that no heat is exchanged between it and the water. Meanwhile, bubble B rises slowly (impeded by a tangle of seaweed), so that it always remains in thermal equilibrium with the water (which has the same temperature everywhere). Which of the two bubbles is larger by the time they reach the surface? Explain your reasoning fully.}
+
+\begin{solution}
+	$$pV = nRT$$
+	At the end, $p$ is the same, as the volume of the bubble is sensitive to pressure difference, and will change quickly until equilibrium is reached. $n$ is constant as gas does not leak. Then volume is proportional to temperature which is proportional to internal energy. Both bubbles do work to push against water as they expand. Since bubble B rises slowly, it has time to absorb heat from the water to remain at thermal equilibrium. Hence it has a greater volume.
+\end{solution}
+
+\end{questions}
+\end{document}
