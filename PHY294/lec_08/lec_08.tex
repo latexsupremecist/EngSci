@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 8}
+\begin{document}
+\maketitle
+
+\section{}
+
+Consider two isolated systems, $A$ and $B$. Total microscopic states of the entire system $C = A + B$ is
+$$\Omega_C(q) = \sum_{q'_A=0}^q \Omega_A(q'_A)\Omega_B(q-q'_B)$$
+Now consider two systems 1 and 2 with the same energy $\frac{E}{2}$. Then if energy $\Delta$ is transferred from 1 to 2,
+$$P(\Delta) = \frac{\Omega_1\left(\frac{E}{2}-\Delta\right)\Omega_2\left(\frac{E}{2}+\Delta\right)}{\Omega_{1+2}(E)}$$
+The most likely value of $\Delta$ is
+\begin{align*}
+	\frac{\partial}{\partial\Delta}\left(\Omega_1\left(\frac{E}{2}-\Delta\right)\Omega_2\left(\frac{E}{2}+\Delta\right)\right) &= 0 \\
+	-\frac{\partial\Omega_1\left(\frac{E}{2}-\Delta\right)}{\partial\left(\frac{E}{2}-\Delta\right)}\Omega_2\left(\frac{E}{2}+\Delta\right) + \Omega_1\left(\frac{E}{2}-\Delta\right)\frac{\partial\Omega_2\left(\frac{E}{2}+\Delta\right)}{\partial\left(\frac{E}{2}+\Delta\right)} &= 0 \\
+	\frac{1}{\Omega_1\left(\frac{E}{2}-\Delta\right)}\frac{\partial\Omega_1\left(\frac{E}{2}-\Delta\right)}{\partial\left(\frac{E}{2}-\Delta\right)} &= \frac{1}{\Omega_2\left(\frac{E}{2}+\Delta\right)}\frac{\partial\Omega_2\left(\frac{E}{2}+\Delta\right)}{\partial\left(\frac{E}{2}+\Delta\right)} \\
+	\frac{\partial}{\partial\left(\frac{E}{2}-\Delta\right)}\left(k\ln\Omega_1\left(\frac{E}{2}-\Delta\right)\right) &= \frac{\partial}{\partial\left(\frac{E}{2}+\Delta\right)}\left(k\ln\Omega_2\left(\frac{E}{2}+\Delta\right)\right) \\
+	\frac{\partial}{\partial E'_1} k\ln\Omega_1(E'_1) &= \frac{\partial}{\partial E'_2} k\ln\Omega_2(E'_2)
+\end{align*}
+
+Where $E'_1$ and $E'_2$ are defined as shown. Now we define tempterature as
+$$\frac{1}{T} = \frac{\partial}{\partial E}(k\ln\Omega(E))_{N,V}$$
+
+\begin{defn}
+	Entropy is defined as
+	$$S(E,N,V) = k\ln\Omega(E,N,V)$$
+\end{defn}
+
+Now $S \geq 0$ since $\Omega \geq 1$.
+
+\begin{defn}
+	Temperature is defined as
+	$$\frac{1}{T} = \left(\frac{\partial S(E,N,V)}{\partial E}\right)_{N,V}$$
+\end{defn}
+
+\section{Einstein Solids}
+
+Recall
+$$\Omega(N,q) = \frac{(N-1+q)!}{(N-1)q!} \approx \frac{(N+q)!}{N!q!}$$
+Taking the log,
+$$\ln\Omega(N,q) = \ln(N+q)! - \ln N! - \ln q!$$
+We use Stirling's approximation, with $N >> 1, \frac{q}{N} >> 1$.
+
+
+\end{document}
