@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 17}
+\begin{document}
+\maketitle
+
+\section{Polar Decomposition}
+
+Let $V$ be a complex inner product space with finite dimensions. As proven in the previous lecture,
+
+\begin{thm}
+	For every invertible $T \in \mathcal L(V)$, there are unique unitary $U \in \mathcal L(V)$ and positive $R \in \mathcal L(V)$ such that $T=UR$.
+\end{thm}
+
+\begin{proof}
+	We use $R=\sqrt{T^*T}$ and $U=TR^{-1}$.
+\end{proof}
+
+\begin{ex}
+	Find polar decomposition of
+	$$A = \begin{pmatrix} 2i+1 & i \\ 2+i & 1\end{pmatrix}$$
+	Then
+	$$A^*A = \begin{pmatrix} -2i+1 & 2-i \\ -i & 1\end{pmatrix}\begin{pmatrix} 2i+1 & i \\ 2+i & 1\end{pmatrix} = \begin{pmatrix} 10 & 4 \\ 4 & 2\end{pmatrix}$$
+	To take the square root, find the eigenvectors and eigenvalues. We get
+	$$\sqrt{A^*A} = \sqrt{2} \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}$$
+	Then
+	$$U = TR^{-1} = \begin{pmatrix} 2i+1 & i \\ 2+i & 1 \end{pmatrix}\frac{1}{-\sqrt{2}} \begin{pmatrix} 0 & -1 \\ -1 & 2 \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} i & 1 \\ 1 & i \end{pmatrix}$$
+	The polar decomposition is
+	$$\begin{pmatrix} 2i+1 & i \\ 2+i & 1 \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} i & 1 \\ 1 & i \end{pmatrix} \sqrt{2} \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}$$
+\end{ex}
+
+\begin{thm}[Polar Decomposition]\label{polar}
+	For any $T \in \mathcal L(V)$, there exists a unitary $U \in \mathcal L(V)$ and a positive $R \in \mathcal L(V)$ such that $T=UR$ where $R$ is unique.
+\end{thm}
+
+\begin{lem}\label{lemma}
+	For $T \in \mathcal L(V,W)$, with $V,W$ being inner product spaces, then
+	$$V = \text{null}(T) \oplus \text{ran}(T^*)$$
+	$$W = \text{null}(T^*) \oplus \text{ran}(T)$$
+\end{lem}
+
+\begin{proof}
+	Show that the spaces are orthogonal.
+\end{proof}
+
+So for $V=W$, we get two decompositions of $V$.
+
+\begin{lem}
+	For $T \in \mathcal L(V,W)$,
+	$$\text{null}(T) = \text{null}(T^*T), \text{ran}(T^*) = \text{ran}(T^*T)$$
+\end{lem}
+
+\begin{proof}
+	If $Tv=0$ then $T^*Tv=0$, so $\text{null}(T) \subseteq \text{null}(T^*T)$. Suppose $T^*Tv = 0$. Then
+	$$\langle T^*Tv,v \rangle = 0 \Rightarrow \langle Tv,Tv \rangle = 0 \Rightarrow Tv = 0$$
+	so $\text{null}(T^*T) \subseteq \text{null}(T)$. Then by lemma \ref{lemma},
+	$$\text{ran}(T^*) = \text{null}(T)^\perp = \text{null}(T^*T)^\perp = \text{ran}((T^*T)^*) = \text{ran}(T^*T)$$
+\end{proof}
+
+Now we can prove the polar decomposition theorem \ref{polar}.
+\begin{proof}
+	If such a decomposition exists, we must have
+	$$T^*T = R^*U^*UR = R^*R = R^2 \Rightarrow R = \sqrt{T^*T}$$
+	Since $R$ is normal, we have
+	$$\text{null}(R) = \text{nulll}(R^2) = \text{null}(T^*T) = \text{null}(T)$$
+	We will define $U \in \mathcal L(V)$ as a sum of two isomorphisms
+	$$U_1: \text{ran}(T^*) \rightarrow \text{ran}(T), U_2: \text{null}(T) \rightarrow \text{null}(T^*)$$
+	For $U_2$, we can take any isometric isomorphism, and for $U_1$, consider the restriction
+	$$T_1 = T|_{\text{ran}(T^*)}:\text{ran}(T^*) \rightarrow \text{ran}(T)$$
+	This is an isomorphism. Put
+	$$R_1 = \sqrt{T_1^*T_1}: \text{ran}(T^*) \rightarrow \text{ran}(T^*)$$
+	This is the restriction of $R = \sqrt{T^*T}$ to $\text{ran}(T^*)$. Define $U_1$ by
+	$$T = U_1R_1 \Rightarrow U_1 = T_1R_1^{-1}$$
+	This is an isometry:
+	$$U_1^*U_1 = (R_1^{-1})^*T_1^*T_1R_1^{-1} = R_1^{-1}R_1^2R_1^{-1} = I_{\text{ran}(T^*)}$$
+	Finally, define $U \in \mathcal L(V)$ by
+	$$U(v) = U_1(v_1) + U_2(v+2)$$
+	for $v = v_1 + v_2 \in \text{ran}(T^*) \oplus \text{null}(T) = V$. By the Pythagorean theorem, since $U_1(v_1), U_2(v_2)$ are orthogonal,
+	$$||U(v)||^2 = ||U_1(v_1)||^2 + ||U_2(v_2)||^2 = ||v_1||^2 + ||v_2||^2 = ||v||^2$$
+	So $U$ is unitary. Furthermore,
+	$$URv = URv_1 = U_1r_1v_1 = T_1v_1 = Tv_1 = Tv$$
+\end{proof}
+
+\section{Singular Value Decomposition of Operators}
+
+For general $T \in \mathcal L(V)$, where we do not have an orthonormal basis of eigenvectors, we can get nice results by looking at $T^*T$.
+
+\begin{defn}
+	THe eigenvalues of $\sqrt{T^*T}$ are called the singular values of $T$.
+\end{defn}
+
+\begin{ex}
+	Find the singular values of $T:\C^4 \rightarrow \C^4$ defined by
+	$$Te_1 = e_2, Te_2 = -2e_3, Te_3 = e_4, Te_4 = 0$$
+	we find the adjoint to be
+	$$T^*e_1 = 0, T^*e_2 = e_1, T^*e_3 = -2e_2, T^*e_4 = e_3$$
+	Then
+	$$T^*Te_1 = e_1, T^*Te_2 = 4e_2, T^*Te_3 = e_3, T^*Te_4 = 0$$
+	so the singular values are $1,2,1,0$.
+\end{ex}
+\end{document}
