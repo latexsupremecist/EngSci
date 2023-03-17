@@ -1,0 +1,127 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 7}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{The lengths of time, in minutes, that 10 patients waited in a doctor’s office before receiving treatment were recorded as follows: 5, 11, 9, 5, 10, 15, 6, 10, 5, and 10. Treating the data as a random sample, find}
+
+\begin{parts}
+	\part{The mean}
+	\part{The mode}
+	\part{The median}
+\end{parts}
+
+\begin{solution}
+	We can order the data as 5, 5, 5, 6, 9, 10, 10, 10, 11, 15. Then the mean is 8.6, the modes are 5 and 10, and the median is 9.5.
+\end{solution}
+
+\question{If all possible samples of size 16 are drawn from a normal population with mean equal to 50 and standard deviation equal to 5, what is the probability that a sample mean $\overline{X}$ will fall in the interval from $\mu_{\overline{X}} - 1.9\sigma_{\overline{X}}$ to $\mu_{\overline{X}} - 0.4\sigma_{\overline{X}}$? Assume that the sample means can be measured to any degree of accuracy.}
+
+\begin{solution}
+	$$P(\mu_{\overline{X}} - 1.9\sigma_{\overline{X}} \leq \overline{X} \leq \mu_{\overline{X}} - 0.4\sigma_{\overline{X}}) = P(-1.9 \leq Z \leq -0.4) = 0.316$$
+\end{solution}
+
+\question{If the standard deviation of the mean for the sampling distribution of random samples of size 36 from a large or infinite population is 2, how large must the sample size become if the standard deviation is to be reduced to 1.2?}
+
+\begin{solution}
+	Let $\sigma^2$ be the standard deviation for each sample. Then
+	$$\frac{\sigma}{\sqrt{36}} = 2 \Rightarrow \sigma = 12$$
+	and the new sample size must be
+	$$n = \left(\frac{\sigma}{1.2}\right)^2 = 100$$
+\end{solution}
+
+\question{Given the discrete uniform population
+	$$f(x) = \begin{cases} \frac{1}{3} & x=2,4,6 \\ 0 & \text{elsewhere} \end{cases}$$
+	find the probability that a random sample of size 54, selected with replacement, will yield a sample mean greater than 4.1 but less than 4.4. Assume the means are measured to the nearest tenth.}
+
+\begin{solution}
+	$$\sigma^2 = \frac{2^2+0+2^2}{3} = \frac{8}{3}$$
+	so
+	$$\sigma_{\overline{X}} = \sqrt{\frac{8}{3\times54}} = \frac{2}{9}$$
+	Then the desired probability is
+	$$P(4.15 \leq \overline{X} \leq 4.35) = P\left(\frac{4.15-4}{\frac{2}{9}} \leq Z \leq \frac{4.35-4}{\frac{2}{9}}\right) = P(0.675 \leq Z \leq 1.575) = 0.192$$
+\end{solution}
+
+\question{If a certain machine makes electrical resistors having a mean resistance of 40 ohms and a standard deviation of 2 ohms, what is the probability that a random sample of 36 of these resistors will have a combined resistance of more than 1458 ohms?}
+
+\begin{solution}
+	The average is $1458 \div 36 = 40.5$, and $\sigma_{\overline{X}} = \frac{2}{\sqrt{36}} = \frac{1}{3}$. Hence the required probability is
+	$$P(\overline{X} \geq 40.5) = P\left(Z \geq \frac{40.5-40}{\frac{1}{3}}\right) = P(Z \geq 1.5) = 0.0668$$
+\end{solution}
+
+\question{A random sample of size 25 is taken from a normal population having a mean of 80 and a standard deviation of 5. A second random sample of size 36 is taken from a different normal population having a mean of 75 and a standard deviation of 3. Find the probability that the sample mean computed from the 25 measurements will exceed the sample mean computed from the 36 measurements by at least 3.4 but less than 5.9. Assume the difference of the means to be measured to the nearest tenth.}
+
+\begin{solution}
+	$$\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} = \sqrt{\frac{25}{25} + \frac{9}{36}} = \frac{\sqrt{5}}{2}$$
+	Then
+	$$P(3.35 \leq \overline{X_1} - \overline{X_2} \leq 5.85) = P\left(\frac{3.35-5}{\frac{\sqrt{5}}{2}} \leq Z \leq \frac{5.85-5}{\frac{\sqrt{5}}{2}}\right) = P(-1.476 \leq Z \leq 0.760) = 0.707$$
+\end{solution}
+
+\question{Two different box-filling machines are used to fill cereal boxes on an assembly line. The critical measurement influenced by these machines is the weight of the product in the boxes. Engineers are quite certain that the variance of the weight of product is $\sigma^2 = 1$ ounce. Experiments are conducted using both machines with sample sizes of 36 each. The sample averages for machines A and B are $\overline{x}_A = 4.5$ ounces and $\overline{x}_B = 4.7$ ounces. Engineers are surprised that the two sample averages for the filling machines are so different.}
+
+\begin{parts}
+	\part{Use the Central Limit Theorem to determine
+		$$P(\overline{X_B} - \overline{X_A} \geq 0.2)$$
+	under the condition that $\mu_A = \mu_B$.}
+	\part{Do the aforementioned experiments seem to, in any way, strongly support a conjecture that the population means for the two machines are different? Explain using your answer in (a).}
+\end{parts}
+
+\begin{solution}
+	$$P(\overline{X_A} - \overline{X_B} \geq 0.2) = P\left(Z \geq \frac{0.2}{\frac{1}{3\sqrt{2}}}\right) = P(Z \geq 0.849) = 0.198$$
+	0.198 is a sizeable probability, so it does not strongly support the conjecture.
+\end{solution}
+
+\question{For a chi-squared distribution, find}
+
+\begin{parts}
+	\part{$\chi^2_{0.025}$ when $v=15$}
+	\part{$\chi^2_{0.01}$ when $v=7$}
+	\part{$\chi^2_{0.05}$ when $v=24$}
+\end{parts}
+
+\begin{solution}
+	27.488, 18.475, 36.415.
+\end{solution}
+
+\question{For a chi-squared distribution, find $\chi_\alpha^2$ such that}
+
+\begin{parts}
+	\part{$P(X^2>\chi_\alpha^2) = 0.01$ when $v=21$}
+	\part{$P(X^2<\chi_\alpha^2) = 0.95$ when $v=6$}
+	\part{$P(\chi_\alpha^2 \leq X^2 \leq 23.209) = 0.015$ when $v=10$}
+\end{parts}
+
+\begin{solution}
+	For $v=21, \chi_{0.01}^2 = 38.932$ \\
+	For $v=6, \chi_{0.05}^2 = 12.592$ \\
+	For $v=10$, note that $\chi_{0.01}^2 = 23.209$, so the desired value is $\chi_{0.025}^2 = 20.483$
+\end{solution}
+
+\question{}
+
+\begin{parts}
+	\part{Find $P(T<2.365)$ when $v=7$.}
+	\part{Find $P(T>1.318)$ when $v=24$.}
+	\part{Find $P(-1.356<T<2.179)$ when $v=12$.}
+	\part{Find $P(T>-2.567)$ when $v=17$.}
+\end{parts}
+
+\begin{solution}
+	When $v=7$, $P(T<2.365) = P(T<t_{0.025}) = 1 - 0.025 = 0.975$. \\
+	When $v=24$, $P(T>1.318) = P(T>t_{0.10}) = 0.10$. \\
+	When $v=12$, $P(-1.356<T<2.179) = P(-t_{0.10}<T<t_{0.025}) = P(t_{0.90}<T<t_{0.025}) = 0.9-0.025 = 0.875$. \\
+	When $v=17$, $P(T>-2.567) = P(T>-t_{0.01}) = P(T>t_{0.99}) = 1 - 0.99 = 0.01$.
+\end{solution}
+
+\question{A normal population with unknown variance has a mean of 20. Is one likely to obtain a random sample of size 9 from this population with a mean of 24 and a standard deviation of 4.1? If not, what conclusion would you draw?}
+
+\begin{solution}
+	$$t = \frac{24-20}{\frac{4.1}{\sqrt{9}}} = 2.93$$
+	Now for $9-1=8$ degrees of freedom, $t_{0.01}=2.896 < 2.93$, so the probability of this is less than 1\%. Therefore no, this is unlikely.
+\end{solution}
+\end{questions}
+\end{document}
