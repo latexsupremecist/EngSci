@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 25}
+\begin{document}
+\maketitle
+
+\section{Amp\`ere's Law}
+\begin{ex}
+	An infinitely long metallic strip of negligible thickness and width $2a$ carries a total current of $I$. The strip lies in the $xy$-plane, is centered about the $z$-axis, and is infinitely long in the $x$-direction. The current is uniformly distributed over the width of the strip and flows in the $+x$-direction. Dtermine the magnetic field due to this current strip at a point $P(0,0,z)$. \\
+	Using Biot-Savart law,
+	$$d\vec{B} = \frac{\mu_0\vec{J}\times(\vec{R}-\vec{R}')dS}{4\pi|\vec{R}-\vec{R}'|^3}$$
+	Plugging this into an integral,
+	\begin{align*}
+		\vec{B} &= \int_{-\infty}^\infty \int_{-a}^a \frac{\mu(\frac{I}{2a})\hat{a}_x\times(-x\hat{a}_x-y\hat{a}_y+z\hat{a}_z)}{(x^2+y^2+z^2)^{1.5}} dydx \\
+			     &= \frac{\mu_0I}{8\pi a}\int_{-\infty}^\infty \int_{-a}^a \frac{-z\hat{a}_y-y\hat{a}_z}{(x^2+y^2+z^2)^{1.5}} dydx \\
+			     &= \frac{\mu_0I}{8\pi a}\int_{-\infty}^\infty \int_{-a}^a \frac{-z\hat{a}_y}{(x^2+y^2+z^2)^{1.5}} dydx \\
+			     &= -\frac{\mu_0I}{2\pi a}\tan^{-1}\left(\frac{a}{z}\right)\hat{a}_y
+	\end{align*}
+	Note that the $\hat{a}_z$ term is ignored. By the right hand rule, we know the resulting field is parallel to $\hat{a}_y$. Moreover, the $\hat{a}_z$ term is odd, so the integral yields a 0.
+\end{ex}
+
+The forms of \textbf{Amp\`ere's Law} are its differential form
+$$\vec{\nabla}\times\vec{H} = \vec{J}$$
+and its integral form
+$$\ointctrclockwise_C \vec{H} \cdot d\vec{l} = \iint_S \vec{J} \cdot d\vec{S} = I$$
+
+This means at any point in space, the magnetic field has a non zero curl if and only if a current density $\vec{J}$ is present.
+
+\subsection{Integral Form}
+
+In the integral form, we will use an \textbf{Amp\`erian Loop}. We choose a loop such that
+
+\begin{itemize}
+	\item $\vec{H}$ is either tangential or normal to the loop, so $\vec{H}\cdot d\vec{l}$ is $Hdl$ or $0$
+	\item $\vec{H}$ has a constant value when $\vec{H}$ is tangential, so $\int Hdl = H\int dl = HL$
+\end{itemize}
+
+\begin{ex}
+	Find the magnetic fields within each region of a coaxial cable. \\
+	First observe that $\vec{H} = H_\phi\hat{a}_\phi$. Now for $0 < r < a$, the inner cabe,
+	$$\ointctrclockwise_C \vec{H} \cdot d\vec{l} = H_\phi(2\pi r) = I_{\text{enc}} = J\pi r^2 = \left(\frac{I_0}\pi a^2\right)\pi r^2 \Rightarrow \vec{H} = \frac{I_0a^2r}{2\pi}$$
+\end{ex}
+\end{document}
