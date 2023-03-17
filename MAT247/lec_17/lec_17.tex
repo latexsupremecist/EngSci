@@ -41,7 +41,9 @@ Let $V$ be a complex inner product space with finite dimensions. As proven in th
 \end{lem}
 
 \begin{proof}
-	Show that the spaces are orthogonal.
+	For the first property, note that if $T^*$ maps to a nontrivial vector in the kernel $T$, then let $T^*w = v \neq 0$ be in the kernel of $T$. Then
+	$$0 \neq \langle v,v \rangle = \langle v,T^*w \rangle = \langle Tv,w \rangle = \langle 0,w \rangle = 0$$
+	which is a contradiction. Then note that $T$ and $T^*$ share the same rank (consider their matrix forms). Then both sets intersect only at 0, and their union has the same dimension as $V$, so equality holds. Now the second property can be proven by letting $S=T^*$ and applying the first property.
 \end{proof}
 
 So for $V=W$, we get two decompositions of $V$.
