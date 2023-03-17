@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 9}
+\begin{document}
+\maketitle
+
+\section{Definitions of Thermodynamic Quantities}
+
+\begin{defn}[Entropy]
+	$$S(E,V,N) = k\ln\Omega(E,V,N)$$
+\end{defn}
+
+\begin{defn}[Temperature]
+	$$\frac{1}{T} = \left(\frac{\partial S(E,V,N)}{\partial E}\right)_{V,N}$$
+\end{defn}
+
+\begin{defn}[Pressure]
+	$$\frac{p}{T} = \left(\frac{\partial S(E,V,N)}{\partial V}\right)_{E,N}$$
+\end{defn}
+
+\begin{defn}
+	$$\frac{\mu}{T} = \left(\frac{\partial S(E,V,N)}{\partial N}\right)_{E,V}$$
+\end{defn}
+
+\section{Stirling's Approximation}
+
+We try to approximate $\Omega$ given $q >> N$.
+We know
+$$\Omega(q,N) = \frac{(N-1+q)!}{(N-1)!q!} \approx \frac{(N+q)!}{N!q!}$$
+Then
+$$\ln\Omega \approx \ln(N+q)! - \ln N! - \ln q! \approx (N+q)\ln(N+q) - N\ln N - q\ln q$$
+and so
+$$\ln\Omega \approx N\ln(N+q) + q\ln(N+q) - N\ln N - q\ln q$$
+Note that
+$$\ln(N+q) = \ln\left(q\left(1+\frac{N}{q}\right)\right) = \ln q + \ln\left(1+\frac{N}{q}\right) \approx \ln q + \frac{N}{q}$$
+Substituting and cancelling the terms,
+$$\ln\Omega = \ln\left(\frac{qe}{N}\right)^N$$
+Then putting
+$$q = \frac{E}{\hbar\omega}$$
+we get
+$$\frac{1}{T} = \frac{kN}{E}$$
+Now for $N >> q$, we have
+$$\Omega(q,N) = \ln\left(\frac{Ne}{q}\right)^q$$
+So
+$$\frac{1}{T} = \frac{k}{\hbar\omega}\ln\frac{N\hbar\omega}{E} \Rightarrow e^{\frac{\hbar\omega}{kT}} = \frac{N\hbar\omega}{E}$$
+or
+$$\frac{E}{N} = \hbar\omega e^{-\frac{\hbar\omega}{kT}}$$
+
+\begin{ex}
+	Consider two containers $A$ and $B$ placed side by side, with $q_A = \frac{q}{2} + x$ and $q_B = \frac{q}{2} - x$. We want to find the most likely value of $x$. Obviously, it should be 0 by intuition/symmetry. But we can also solve for this.
+	$$P(x) \propto \Omega_A\left(\frac{q}{2}+x,N\right)\Omega_B\left(\frac{q}{2}-x,N\right) = \left(\frac{e^2}{N^2}\right)^N\left(\frac{q}{2}-x\right)^N(\frac{q}{2}+x)^N = \left(\frac{e^2}{N^2}\right)^N\left(\left(\frac{q}{2}\right)^2-x^2\right)^N$$
+	Now
+	$$\frac{P(x)}{P(0)} = \left(1 - \left(\frac{2x}{q}\right)^2\right)^N$$
+	Taking the logarithm,
+	$$\ln\frac{P(x)}{P(0)} = N\ln\left(1-\left(\frac{2x}{q}\right)\right) \approx -N\left(\frac{2x}{q}\right)^2$$
+	So
+	$$P(x) \approx P(0) e^{-N\left(\frac{2x}{q}\right)^2}$$
+	When $N$ is large, this is practically a delta function, and $x=0$ is the only value where $P$ is nonzero.
+\end{ex}
+
+\end{document}
