@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 27}
+\begin{document}
+\maketitle
+
+\section{Paired Observations}
+With 2 samples of the same size $n$, each pair has means from each.
+
+\begin{ex}
+	The blood pressure of participants before and after a medical trial.
+\end{ex}
+
+We define the difference $D_i = X_i-Y_i$. Now
+$$\text{var}(D_i) = \text{var}(X_i-Y_i) = \sigma_X^2 + \sigma_Y^2 - 2\text{cov}(X_i,Y_i)$$
+A lower variance leads to a narrower confidence interval. We have
+$$Z = \frac{\overline{D}-(\mu_X-\mu_Y)}{\sqrt{\frac{1}{n}(\sigma_X^2+\sigma_Y^2-2\text{cov}(X,Y))}}$$
+
+\section{Bernoulli Random Variable}
+
+It is a binomial with
+$$P(Y_i = 1) = p \forall i \in \Z^+$$
+(think coin flips). We define
+$$X = \sum_{i=1}^n Y_i$$
+and
+$$b(x;n,p) = \binom{n}{x}p^x(1-p)^{n-x}$$
+We have
+$$\mu = np, \sigma^2 = np(1-p)$$
+Let
+$$Z = \frac{X-np}{\sqrt{np(1-p)}}$$
+As $n \rightarrow \infty$, the distribution of $Z$ goes towards $n(z;0,1)$ by the Central Limit Theorem. \\
+Now we estimate $\hat{p} = \frac{X}{n}$. It is unbiased, as the mean is
+$$\mu = E\left[\frac{X}{n}\right] = \frac{1}{n}E[X] = \frac{1}{n}np = p$$
+and
+$$\sigma^2 = \frac{1}{n^2} \sigma_X^2 = \frac{np(1-p)}{n^2} = \frac{p(1-p)}{n}$$
+Now the statistic
+$$Z = \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}$$
+tends to the normal distribution as $n \rightarrow \infty$. \\
+The confidence interval becomes
+\begin{align*}
+	1 - \alpha &= p(-z_{\frac{\alpha}{2}} \leq Z \leq z_{\frac{\alpha}{2}}) \\
+		   &= p(-z_{\frac{\alpha}{2}} \leq \frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}} \leq z_{\frac{\alpha}{2}})
+\end{align*}
+
+where
+$$z_{\frac{\alpha}{2}} = -\Phi^{-1}\left(\frac{\alpha}{2}\right)$$
+Rearranging,
+$$1 - \alpha = P\left(\hat p - z_{\frac{\alpha}{2}}\sqrt{\frac{\hat p (1-\hat p )}{n}}\right) \leq P\left(p \leq \hat p + z_{\frac{\alpha}{2}}\sqrt{\frac{\hat p (1-\hat p )}{n}}\right)$$
+We want this confidence intervala to be no wider than $2\delta$. Rearranging gives
+$$n \geq \frac{z^2_{\frac{\alpha}{2}}}{4\delta^2}$$
+where we use the fact that
+$$\hat{p}(1-\hat{p}) \leq \frac{1}{4}$$
+because $\hat p$ is positive.
+
+\end{document}
