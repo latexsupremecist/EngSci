@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 26}
+\begin{document}
+\maketitle
+
+\section{Magnetization}
+
+A magnetic dipole is a closed loop of current. Then
+$$\vec m = IS\hat{a}_n$$
+where $I$ is the current and $S$ is the surface area contained in the loop.
+With $N$ terms,
+$$\vec m = NIS\hat{a}_n$$
+If a magnetic dipole is placed in an applied magnetic field, it will experience a torque equal to
+$$\vec{T} = \vec{m} \times \vec{B}$$
+Now all materials have small magnetic dipole caused by electrons orbiting the nuclei. If we apply a magnetic field to a magnetic material, the dipoles within the material would align with the applied magnetic field.
+
+\begin{defn}
+	A material is considered magnetic if all atomic magnetic dipoles can be aligned in the same directions.
+\end{defn}
+
+\begin{defn}
+	The magnetization vector is defined as
+	$$\vec{M} = \lim_{\Delta V \rightarrow 0} \frac{1}{\Delta V} \sum_i \vec{m}_i$$
+\end{defn}
+
+\begin{defn}
+	This leads to the creation of bound current density
+	$$\vec J_{\text{ms}} = \vec M \times \hat a_n$$
+\end{defn}
+
+\begin{defn}
+	The magnetic field intensity is
+	$$\vec H = \frac{\vec B}{\mu_0} - \vec M = \frac{\vec B}{\mu_r\mu_0}$$
+\end{defn}
+
+\begin{defn}
+	The magnetic susceptibility is
+	$$\vec M = \chi_m \vec H$$
+\end{defn}
+
+\begin{defn}
+	The relative permeability is
+	$$\mu_r = \chi_m + 1$$
+\end{defn}
+
+\begin{ex}
+	Calculate the magnetic field at $(0,0,z)$ due to a permanent cylindrical bar magnet. We assume $\vec M = M_0\hat a_z$ in the cylinder defined by $-\frac{L}{2} \leq z \leq \frac{L}{2}, 0 \leq r \leq a$. \\
+	Along the side wall,
+	$$\vec{J}_{\text{ms}} = \vec M \times \hat a_r = M_0\hat a_\phi$$
+	We use the Biot-Savart Law,
+	\begin{align*}
+		\vec B(0,0,Z) &= \iint \frac{\mu_0\vec{J}_{\text{ms}} \times \vec R dS}{4\pi|\vec R|^3} \\
+			      &= \frac{\mu_0}{4\pi} \int_{-\frac{L}{2}}^{\frac{L}{2}} \int_0^{2\pi} \frac{M_0\hat a_\phi \times (-a\hat a_r + (Z-z)hat a_z)}{\left(a^2+(Z-z)^2\right)^{1.5}} ad\phi dz \\
+			      &= \frac{\mu_0M_0}{2} \left[\frac{L}{2\sqrt{a^2+\left(z-\frac{L}{2}\right)^2}} + \frac{L}{2\sqrt{a^2+\left(z+\frac{L}{2}\right)^2}}\right]
+	\end{align*}
+\end{ex}
+\end{document}
