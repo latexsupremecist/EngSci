@@ -1,0 +1,118 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 8}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Assume the sample variances to be continuous measurements. Find the probability that a random sample of 25 observations, from a normal population with variance $\sigma^2 = 6$, will have a sample variance $S^2$}
+
+\begin{parts}
+	\part{greater than 9.1}
+
+	\begin{solution}
+		$$P(S^2>9.1) = P\left(\frac{(25-1)S^2}{6} > \frac{24\times9.1}{6}\right) = P(\chi^2 > 36.4) = 0.05$$
+		where the last equality comes from the table (for $v=24,\chi_{0.05}^2 = 36.415$)
+	\end{solution}
+
+	\part{between 3.462 and 10.745}
+
+	\begin{solution}
+		\begin{align*}
+			P(3.462<S^2<10.745) &= P\left(13.848 < \frac{(n-1)S^2}{\sigma^2} < 42.98\right) \\
+					    &= P\left(\chi_{0.95}^2 < \frac{(n-1)S^2}{\sigma^2} < \chi_{0.01}^2\right) \\
+					    &= 0.95-0.01 = 0.94
+		\end{align*}
+	\end{solution}
+	
+\end{parts}
+
+\question{Show that the variance of $S^2$ for random samples of size $n$ from a normal population decreases as $n$ becomes large.}
+
+\begin{solution}
+	The variance for $\frac{(n-1)S^2}{\sigma^2}$ is $2(n-1)$. Equating both sides,
+	\begin{align*}
+		\frac{(n-1)^2\sigma^2_{S^2}}{\sigma^4} &= 2(n-1) \\
+		\sigma^2_{S^2} &= \frac{2\sigma^4}{n-1}
+	\end{align*}
+	which decreases as $n$ becomes large.
+\end{solution}
+
+\question{A maker of a certain brand of low-fat cereal bars claims that the average saturated fat content is 0.5 gram. In a random sample of 8 cereal bars of this brand, the saturated fat content was 0.6, 0.7, 0.7, 0.3, 0.4, 0.5, 0.4, and 0.2. Would you agree with the claim? Assume a normal distribution.}
+
+\begin{solution}
+	Sample mean is 0.475, and sample variance is 0.0336. Then
+	$$\frac{S}{\sqrt{n}} = \frac{\sqrt{0.0336}}{2\sqrt{2}} = 0.0648$$
+	$$P(\overline{X} \leq 0.475) = P\left(T \leq \frac{0.475-0.5}{0.0648}\right) = P(T < -0.386) = P(T > 0.386) \approx 0.35$$
+	I would not agree with the claim, but I would not disagree.
+\end{solution}
+
+\question{Construct a quantile plot}
+
+\begin{solution}
+	No.
+\end{solution}
+
+\question{The heights of a random sample of 50 college students showed a mean of 174.5 centimeters and a standard deviation of 6.9 centimeters.}
+
+\begin{parts}
+	\part{Construct a 98\% confidence interval for the mean height of all college students.}
+	\part{What can we assert with 98\% confidence about the possible size of our error if we estimate the mean height of all college students to be 174.5 centimeters?}
+\end{parts}
+
+\begin{solution}
+	$$1-\alpha = 0.98 \Rightarrow \frac{\alpha}{2} = 0.01, z_{0.01} \approx 2.33$$
+	Then
+	$$P\left(-2.33 < \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} < 2.33\right) = P(172.23 < \mu < 176.77)$$
+	This means the error is within
+	$$z_{0.01}\times\frac{\sigma}{\sqrt{n}} = 2.27$$
+	98\% of the time.
+\end{solution}
+
+\question{A random sample of 100 automobile owners in the state of Virginia shows that an automobile is driven on average 23,500 kilometers per year with a standard deviation of 3900 kilometers. Assume the distribution of measurements to be approximately normal.}
+
+\begin{parts}
+	\part{Construct a 99\% confidence interval for the average number of kilometers an automobile is driven annually in Virginia.}
+	\part{What can we assert with 99\% confidence about the possible size of our error if we estimate the average number of kilometers driven by car owners in Virginia to be 23,500 kilometers per year?}
+\end{parts}
+
+\begin{solution}
+	$$1 - \alpha = 0.99 \Rightarrow \alpha = 0.01, z_{0.005} = 2.575$$
+	Then
+	$$P\left(-2.575 < \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} < 2.575\right) = P(22496 < \mu < 24504) = 0.99$$
+	The error is within
+	$$2.575\times\frac{3900}{\sqrt{10}} = 1004$$
+	99\% of the time.
+\end{solution}
+
+\question{Regular consumption of presweetened cereals contributes to tooth decay, heart disease, and other degenerative diseases, according to studies conducted by Dr. W. H. Bowen of the National Institute of Health and Dr. J. Yudben, Professor of Nutrition and Dietetics at the University of London. In a random sample consisting of 20 similar single servings of Alpha-Bits, the average sugar content was 11.3 grams with a standard deviation of 2.45 grams. Assuming that the sugar contents are normally distributed, construct a 95\% confidence interval for the mean sugar content for single servings of Alpha-Bits.}
+
+\begin{solution}
+	$$1-\alpha = 0.95 \Rightarrow \alpha = 0.05, t_{0.025} = 2.093$$
+	Then
+	$$P\left(-2.093 < \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} < 2.093\right) = P(10.15 < \mu < 12.45) = 0.95$$
+\end{solution}
+
+\question{A machine produces metal pieces that are cylindrical in shape. A sample of pieces is taken, and the diameters are found to be 1.01, 0.97, 1.03, 1.04, 0.99, 0.98, 0.99, 1.01, and 1.03 centimeters. Find a 99\% confidence interval for the mean diameter of pieces from this machine, assuming an approximately normal distribution.}
+
+\begin{solution}
+	$$1-\alpha = 0.99 \Rightarrow \alpha = 0.01, t_{0.005} = 3.355$$
+	and
+	$$\mu = 1.006, \sigma = 0.0231$$
+	Then
+	$$P\left(-3.355 < \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} < 3.355\right) = P(0.978 < \mu < 1.033)$$
+\end{solution}
+
+\question{A random sample of 10 chocolate energy bars of a certain brand has, on average, 230 calories per bar, with a standard deviation of 15 calories. Construct a 99\% confidence interval for the true mean calorie content of this brand of energy bar. Assume that the distribution of the calorie content is approximately normal.}
+
+\begin{solution}
+	$$1-\alpha = 0.99 \Rightarrow \alpha = 0.01, t_{0.005} = 3.250$$
+	Then
+	$$P\left(-3.25 < \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} < 3.25\right) = P(214.6 < \mu < 245.4)$$
+\end{solution}
+
+\end{questions}
+
+\end{document}
