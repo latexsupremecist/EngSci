@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 27}
+\begin{document}
+\maketitle
+
+\section{Generalized Amp\`ere's Law}
+
+$$\vec B = \mu \vec H = \mu_0\mu_r \vec H$$
+and
+$$\oint_C \vec H \cdot d\vec l = I_{\text{enc}} \Rightarrow \oint_C \vec B \cdot d\vec l = \mu_0\mu_r I_{\text{enc}}$$
+Similar to Gauss' Law with $\vec E$ and $\vec D$.
+
+\begin{ex}
+	Consider a very long solenoid that consists of $n$ turns per meter filled with a magnetic material with relative permeability of $\mu_r$. Find the magnetic field intensity, $\vec H$, inside the solenoid. \\
+	Let the closed path be a rectangle. The only nonzero component is the part of the path parallel to $\vec B$. Then
+	$$Bw = \mu_0\mu_rI_0nw \Rightarrow \vec B = \mu_0\mu_r I_0n = \frac{\mu_0\mu_rI_0N}{L}\hat a_z$$
+\end{ex}
+
+\section{Ferromagnetism}
+
+When a material is exposed to an applied field $\vec B$,
+
+\begin{itemize}
+	\item Materials with nonzero internal moments can align:
+	\begin{itemize}
+		\item Strong alignment (Ferromagnetic): Field is greatly enhanced
+		\item Weak alignment (Paramagnetic): Filed is moderately enhanced
+	\end{itemize}
+	\item Materials with net internal moments of zero:
+	\begin{itemize}
+		\item Due to Lenz's Law, the applied field reduced the orbital moments slightly
+		\item Diamagnetic: This causes a small net reduction of the $\vec B$ field within the material
+	\end{itemize}
+\end{itemize}
+
+
+\end{document}
