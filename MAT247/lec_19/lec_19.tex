@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 19}
+\begin{document}
+\maketitle
+
+\section{Schur's Theorem and other Decompositions}
+
+\begin{thm}[Schur's Theorem]
+	Let $V$ be a finite dimensional complex inner product space, $T \in \mathcal L(V)$. Then there exists an orthonormal basis such that the matrix of $T$ is upper triangular.
+\end{thm}
+
+\begin{proof}
+	Pick any basis $w_1,\dots,w_k$ of $V$ such that the matrix of $T$ becomes upper triangular, i.e. $Tw_i \in \text{span}\{w_1,\dots,w_i\}$ (such as in the Jordan Normal Form). Let
+	$$W_i = \text{span}\{w_1,\dots,w_i\}$$
+	Then $W_i$ is $T$-invariant, and
+	$$0 = W_0 \subseteq W_1 \subseteq W_2 \dots \subseteq W_n = V$$
+	where dim$W_i = i$. So, $W_i \cap W_{i-1}^\perp$ is 1-dimensional. Comparing dimensions, the intersection has to be at least 1-dimensional. Now if it is more than 1-dimensional, we can find linearly independent $v_1,v_2$ in the intersection. Either one of them have no $w_i$ component, or they have a nonzero lienar combination that has no $w_i$ component. Then this nonzero vector cannot be in $W_{i-1}^\perp$, which is a contradiction. Now let $v_i \in W_i \cap W_{i-1}^\perp$ be a unit vector. Then $v_1,\dots,v_n$ is the desired orthonormal basis. \\
+	We could also use the Gram-Schmidt process on $w_1,\dots,w_n$.
+\end{proof}
+
+Note that we have proven that this upper triangular matrix is normal iff it is diagonal.
+
+\begin{thm}[Schur's Theorem for Matrices]
+	Any $A \in M_{n\times n}(\C)$ ca be written $A=UBU^{-1}$ where $U$ is unitary and $B$ is upper triangular, with diagonal entries $B_{ii} \geq 0$. If $A$ is invertible, then $U,B$ are unique.
+\end{thm}
+
+\begin{proof}
+	Let $w_1,\dots,w_n$ be columns of $A$. Then $A=UB$ gives
+	$$w_i = \sum_j B_{ji}v_j$$
+	where $v_j$ are the columns of $U$. We want $B$ to be upper triangular, so $B_{ji} = 0 \forall j > i$. Therefore, $w_i \in \text{span}\{v_1,\dots,v_i\}$. So, we want an orthonormal basis $v_1,\dots,v_n$ that satisfies this with the $i$th coefficient being non-negative. If $A$ is invertible, $w_1,\dots,w_n$ is a basis, so there is a unique solution given by Gram-Schmidt. In general, construct $v_1,\dots,v_n$ by induction. Suppose that $v_1,\dots,v_k$ is an orthonormal set that satisfies. We want a $v_{k+1}$ such that
+	$$w_{k+1} \in \text{span}\{v_1,\dots,v_{k+1}\}$$
+	with the $k+1$th coefficient being non-negative. Now, if
+	$$w_{k+1} \in \text{span}\{v_1,\dots,v_k\}$$
+	then any unit vector orthogonal to $\text{span}\{v_1,\dots,v_n\}$ suffices. If not, apply Gram-Schmidt on $w_{k+1}$ to produce $v_{k+1}$.
+\end{proof}
+
+This also holds on $\R$. When $A$ is invertible, we can write, one step further, that $B=DN$ where the diagonals of $D$ are all positive, and $N$ is the upper triangular matrix with all diagonal entries 1. In this form, it is called the Iwasawa decomposition.
+
+\begin{thm}[Cholesky Decomposition]
+	Every positive matrix $A \in M_{n \times n}(\C)$ can be written as
+	$$A = B^*B$$
+	where $B$ is upper triangular, with diagonal entries $B_{ii} \geq 0$. If $A$ is invertible, this is unique.
+\end{thm}
+
+\begin{proof}
+	Consider $\sqrt{A}$. Write $\sqrt{A} = UB$ where $U$ is unitary and $B$ is upper triangular with $B_{ii} \geq 0$. Then
+	$$A=(\sqrt{A})^2 = \sqrt{A}^*\sqrt{A} = B^*U^*UB = B^*B$$
+\end{proof}
+
+\begin{ex}
+	$$A = \begin{pmatrix} 4 & 0 \\ 3 & -5 \end{pmatrix}$$
+	Now $A$ has eigenvectors $w_1 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, w_2 = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$ with eigenvalues $\lambda_1 = -5, \lambda_2 = 4$. Gram-Schmidt gives 
+	$$v_1 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, v_2 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$$
+	Then
+	$$U = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
+	Giving
+	$$B = U^{-1}AU = \begin{pmatrix} -5 & 3 \\ 0 & 4 \end{pmatrix}$$
+	For the Iwasawa decomposition, we write the columns
+	$$w_1 = \begin{pmatrix} 4 \\ 3 \end{pmatrix}, w_2 = \begin{pmatrix} 0 \\ -5 \end{pmatrix}$$
+	where Gram-Schmidt gives us
+	$$v_1 = \frac{1}{5} \begin{pmatrix} 4 \\ 3 \end{pmatrix}, v_2 = \frac{1}{5} \begin{pmatrix} 3 \\ -4 \end{pmatrix}$$
+	Then
+	$$U = \frac{1}{5} \begin{pmatrix} 4 & 3 \\ 3 & -4 \end{pmatrix}, B = U^{-1}A = \begin{pmatrix} -5 & 3 \\ 0 & 5 \end{pmatrix}$$
+\end{ex}
+
+\begin{ex}
+	For
+	$$P = \begin{pmatrix} 2 & -1 \\ -1 & 1 \end{pmatrix}$$
+	Find $B$ such that $P = B^*B$. Now here we know
+	$$B = \begin{pmatrix} a & b \\ 0 & c \end{pmatrix}, B^* = \begin{pmatrix} \overline{a} & 0 \\ \overline{b} & \overline{c} \end{pmatrix}$$
+	Then
+	$$B^*B = \begin{pmatrix} |a|^2 & b\overline{a} \\ \overline{b}a & |c|^2+|b|^2 \end{pmatrix}$$
+	Which gives
+	$$a = \sqrt{2}, b = -\frac{1}{\sqrt{2}}, c = \frac{1}{\sqrt{2}}$$
+	and so
+	$$B = \begin{pmatrix} \sqrt{2} & -\frac{1}{\sqrt{2}} \\ 0 & \frac{1}{\sqrt{2}} \end{pmatrix}$$
+\end{ex}
+
+\end{document}
