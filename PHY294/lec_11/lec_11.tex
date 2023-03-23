@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 11}
+\begin{document}
+\maketitle
+
+\section{Ideal Gas}
+
+$$S(E,N,V) = k\ln\Omega(E,N,V)$$
+and
+$$\frac{1}{T} = \left(\frac{\partial S}{\partial E}\right)_{V,N}$$
+
+We want to show this for the ideal gas.
+
+$$U = \sum_i \frac{\vec{p_i}^2}{2m} \Rightarrow \sum_i \vec{p_i}^2 = 2m\vec U$$
+Now for a sphere in $n$ dimensions,
+$$\sum_i x_i^2 = R^2$$
+Both are similar, i.e. $2mU \propto R^2$, in the sense that they are the sum of squares. Using this analogy, we have a \textit{radius} for $\vec{p_i}$. Now, the area of $S^{3N-1}$ of radius $R$ is
+$$A = \frac{2\pi^{\frac{3N}{2}}}{\left(\frac{3N}{2}-1\right)!} R^{3N-1}$$
+Now, it seems that
+$$\Omega(N,U) \propto \frac{2\pi^{\frac{3N}{2}}}{\left(\frac{3N}{2}-1\right)!}(2mU)^{\frac{3N-1}{2}}$$
+Note that $2mU$ shares the same units as $\vec p^2$, which is $\frac{\pi\hbar}{L}$. To nondimensionalise this,
+$$\Omega(N,U) \propto \frac{2\pi^{\frac{3N}{2}}}{\left(\frac{3N}{2}-1\right)!}\left(\frac{\sqrt{2mU}}{\pi\hbar/L}\right)^{3N-1}$$
+Secondly, since all $\vec{p_i}$ are positive, we need a factor of $\frac{1}{2^{3N}}$.
+$$\Omega(N,U) \propto \frac{1}{2^{3N}} \frac{2\pi^{\frac{3N}{2}}}{\left(\frac{3N}{2}-1\right)!}\left(\frac{\sqrt{2mU}}{\pi\hbar/L}\right)^{3N-1}$$
+There is also the indistinguishability of the particles. We only have access to the different $\vec{p_i}$, but not the corresponding particle. There are $N!$ permutations which we have to divide by. Then
+$$\Omega(N,U) \propto \frac{1}{2^{3N}N!} \frac{2\pi^{\frac{3N}{2}}}{\left(\frac{3N}{2}-1\right)!}\left(\frac{\sqrt{2mU}}{\pi\hbar/L}\right)^{3N-1}$$
+Using more approximations,
+\begin{align*}
+	\Omega(N,U) &\approx \left(\frac{e}{N}\right)^N \frac{1}{8^N} \frac{2(\pi^{1.5})^N}{\left(\frac{3N}{2e}\right)^{1.5N}} ((2mU)^{1.5})^N \left(\frac{V}{(\pi\hbar)^3}\right)^N \\
+		    &\approx \left[\frac{e^{1.5}}{N}\frac{1}{8}\frac{\pi^{1.5}2^{1.5}}{3^{1.5}} \frac{V}{(\pi\hbar)^3} \frac{2^{1.5}m^{1.5}}{N^{1.5}}U^{1.5} \right]^N \times 2 \\
+		    &= 2\left[e^{1.5}\frac{V}{N} \frac{(4\pi mU)^{1.5}}{(3N(2\pi\hbar)^2)^{1.5}}\right]^N \\
+	\ln\Omega(N,U) &\approx kN\left[\ln\left(\frac{(4\pi mU)^{1.5}}{(3N(2\pi\hbar)^2)^{1.5}}\frac{V}{N}\right) + \frac{5}{2}\right]
+\end{align*}
+
+Differentiating,
+$$\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_{N,V} = kN\frac{3}{2}\frac{1}{U} \Rightarrow U = \frac{3}{2}kNT$$
+
+We conclude that
+\begin{itemize}
+	\item Entropy is extensive (if $V,N,U$ are all doubled, so is $S$)
+	\item Entropy is huge, because of the factor of $N$
+	\item $U$ increases with $S$
+	\item $C_V > 0$
+\end{itemize}
+
+\end{document}
