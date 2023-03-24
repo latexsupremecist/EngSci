@@ -1,0 +1,21 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 28}
+\begin{document}
+\maketitle
+
+\section{Hysteresis}
+
+"Soft" magnetic matierials have small residual $\vec B$ values, being easily magnetised and demagnetised. \\
+"Hard" magnetic materials are the opposite, having high residual $\vec B$ values. They are difficult to demagnetise, and make good permanent magnets. However, there is a greater energy loss when applied field $\vec H$ varies with time.
+
+\section{Boundary Conditions}
+
+From
+$$\oiint_S \vec B \cdot d\vec S = 0$$
+Observe that the integral is equal to $\vec B_{n1} - \vec B_{n2}$, meaning the normal component of $\vec B$ is preserved when crossing a magnetic materia. \\
+Now consider a closed loop of length $\Delta l$ along $\vec H$. Then
+$$\oint_ctrclockwise \vec H \cdot d\vec l = H_{t2} \Delta l - H_{t1} \Delta l = J_S\Delta l \Rightarrow \hat n_2 \times (\vec{H_1} - \vec{H_2}) = \vec{J_S}$$
+
+\end{document}
