@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 30}
+\begin{document}
+\maketitle
+
+\section{Maximum Likelihood Estimation}
+
+Before $\overline X, S^2, \frac{\overline X}{n}$. \\
+With data $x_1,\dots,x_n$, the density function
+$$f(x_1,\dots,x_n;\theta) = g(x_1;\theta) \times \dots \times g(x_n;\theta)$$
+where the right hand side is the likelihood function. Then
+$$\hat \theta = \max_\theta L(x_1,\dots,x_n;\theta)$$
+Taking the log,
+$$\hat \theta = \max_\theta \ln(L)$$
+
+\begin{ex}
+    In the normal case,
+    \begin{align*}
+        L(x,\dots,x_n;\mu,\sigma^2) &= n(x;\mu,\sigma^2) \times \dots \times n(x_n;\mu,\sigma^2) \\
+                                    &= \prod_{k=1}^n n(x_k;\mu\sigma^2) \\
+                                    &= \prod_k \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x_k-\mu}{\sigma}\right)^2\right) \\
+                                    &= \frac{1}{(2\pi\sigma^2)^{n/2}} \exp\left(-\frac{1}{2}\sum_k \left(\frac{x_k-\mu}{\sigma}\right)^2\right)
+    \end{align*}
+    Taking the log, this gives
+    $$-\frac{n}{2}\ln(2\pi\sigma^2) - \frac{1}{2} \sum_{k=1}^n \left(\frac{x_k-\mu}{\sigma}\right)^2$$
+    Differentiating and setting to zero, 
+    $$\sum_k \frac{x_k-\mu}{\sigma^2} = 0 \Rightarrow \mu = \frac{1}{n}\sum_k x_k = \overline X$$
+    If we differentiate with respect to the variance,
+    \begin{align*}
+        -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_k (x_k-\mu)^2 &= 0 \\
+        \sigma^2 &= \frac{1}{n} \sum_k (x_k-\mu)^2
+    \end{align*}
+\end{ex}
+
+\begin{ex}
+    Recall the gamma distribution
+    $$f(x;\alpha,\beta) = \begin{cases} \frac{1}{\beta^\alpha\Gamma[\alpha]} x^{\alpha-1}e^{-\frac{x}{\beta}} & x > 0 \\ 0 & x < 0 \end{cases}$$
+    Given $x_1,\dots,x_n$, we can find $\alpha,\beta$ by
+    $$\hat a = \max_\alpha \prod_k f(x_k;\alpha,\beta)$$
+    This can be solved by numeric methods.
+\end{ex}
+\end{document}
