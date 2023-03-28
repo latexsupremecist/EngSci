@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 12}
+\begin{document}
+\maketitle
+
+\section{Ideal Gas (Cont'd)}
+
+We derived the approximation
+
+$$S(U,N,V) = kN\left(\ln\left[\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{1.5}\right]+\frac{5}{2}\right)$$
+And differentiating for temperature gives
+$$U = \frac{3}{2} kNT$$
+This is a simplification, as this gives negative entropy at $T$ when we fix density $\frac{V}{N}$. Therefore, the ideal gas law does not hold if it is too cold.
+
+\subsection{De Broglie Wavelength}
+
+$$\lambda = \frac{h}{p}$$
+We define a \textbf{thermal de Broglie Wavelength} by
+$$\lambda_{\text{th}} \propto \frac{h}{\sqrt{mkT}}$$
+Then
+$$S = kN\left[\ln\frac{\overline{l}^3}{\lambda_{\text{th}}^3}+C\right]$$
+where $C$ is a constant, and $\overline{l}$ is the average distance between particles. Essentially, we can assume the model to be classical if the particles are not within each other's de Broglie wavelength.
+
+\end{document}
