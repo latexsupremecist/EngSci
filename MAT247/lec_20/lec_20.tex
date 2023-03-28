@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 20}
+\begin{document}
+\maketitle
+
+\section{Complexification}
+
+We can complexify real vectors, polynomials, vector spaces, linear maps,\dots
+
+\begin{ex}[Matrices]
+    For $A \in M_{m \times n}(\R)$, let $A_{\C} \in M_{m \times n}(\C)$ be the same matrix. Then for $m=n$,
+    \begin{itemize}
+        \item $\tr(A_{\C}) = \tr(A)$
+        \item $\det(A_{\C}) = \det(A)$
+        \item The characteristic polynomial of $A_{\C}$ is the complexification of that of $A$ (see Example \ref{poly})
+    \end{itemize}
+\end{ex}
+
+\begin{ex}[Polynomials] \label{poly}
+    For the real polynomial $p(t) = \sum_{i=0}^n a_it^i, a_i \in \R$, define    $$p_{\C}(t) = \sum_{i=0}^n a_it^i$$
+    with the domain $\C$.
+\end{ex}
+
+\begin{prop}
+    The minimal polynomial of $A_{\C}$ is the complexification of the minimal polynomial of $A$.
+\end{prop}
+
+\begin{proof}
+    The minimal polynomial of $A$ is the unique shortest monic polynomial
+    $$p(t) = \sum_{i=0}^n a_it^i$$
+    such that $p(A)=0$. This implies
+    $$p_{\C}(A_{\C}) = p(A) = 0 $$
+    So $p_{\C}$ is divisible by the minimal polynomial. Now suppose
+    $$r(z) = \sum_{i=0}^k c_iz_i, c_i \in \C, k \leq m$$
+    is the minimal polynomial of $A_{\C}$. Since all entries of $A_{\C}$ are real, then the real part of $r(A) = 0$ becomes
+    $$r_{\R}(A) = \sum_{i=0}^k \Re(c_i)A^i = 0$$
+    Since $r_{\R}(A) = 0$, it cannot be shorter than the minimal polynomial of $A$, so $k \geq m$. Combining this with $k \leq m$, we see $k=m$.
+\end{proof}
+
+\begin{prop}
+    For $A \in M_{n \times n}(\R)$, in the Jordan normal form for $A_{\C}$, the number of Jordan blocks of size $k$ and type $\lambda$ eqauls the number of Jordan blocks of size $k$ and type $\overline{\lambda}$.
+\end{prop}
+
+Then the eigenvalues appear in complex conjugate pairs, with the same geometric and algebraic multiplicity. Equivalently,
+$$\dim(\text{null}(\lambda I - A_{\C})^k) = \dim(\text{null}(\overline{\lambda} I - A_{\C})^k) \forall \lambda \in \C, k \in \N$$
+
+\begin{proof}
+    By Jordan normal form theorem, we have an invertible $C \in M_{n \times n}(\C)$ with $CA_{\C}C^{-1} = \mathcal J$. Taking the complex conjugate,
+    $$\overline CA_{\C}\overline{C^{-1}} = \overline{\mathcal J}$$
+    Since $A_{\C}$ only has 1 Jordan normal form, up to rearrangement of the boxes, $\mathcal J$ and $\overline{\mathcal J}$ share the same $\lambda$s that are conjugated.
+\end{proof}
+
+By complex conjugation,
+$$(\lambda I - A_{\C})v = 0 \Leftrightarrow (\overline \lambda I - A_{\C})\overline v = 0$$
+
+\begin{ex}
+    $$A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} \in M_{2 \times 2}(\R)$$
+    The characteristic polynomial is
+    $$q(t) = (t-1)^2 + 1 = (t-(1+i))(t-(1-i))$$
+    Then the eigenvalues of $A_{\C}$ are $1+i$ and $1-i$, with eigenvectors $\begin{pmatrix} 1 \\ -i \end{pmatrix}, \begin{pmatrix} 1 \\ i \end{pmatrix}$, where the pairs of eigenvalues and eigenvectors are complex conjugates.
+\end{ex}
+
+\section{Complexification of Vector Spaces}
+
+Let $V$ be a real vector space. We put
+$$V_{\C} = V \times V$$
+with elements denotes $(u,w) = u+iw$. Addition is defined as
+$$(u_1 + iw_1) + (u_2 + iw_2) = (u_1+u_2) + i(w_1+w_2)$$
+and multiplication
+$$(a+ib)(u+iw) = (au-bw) + i(aw+bu)$$
+
+\begin{lem}
+    $V_{\C}$ with the addition and scalar multiplication as defined above is a complex vector space.
+\end{lem}
+
+\begin{proof}
+    Trivial.
+\end{proof}
+
+\begin{ex}
+    $(\R^n)_{\C} = \C^n, (M_{m\times n}(\R))_{\C} = M_{m\times n}(\C)$
+\end{ex}
+
+We can consider $V$ as a subset of $V_{\C}$ with vectors $u+i0$. Similarly we define an imaginary part, such that for all complex vector spaces $V$, it is the direct sum of hts real and complex subspaces. We can then use this decomposition to define complex conjugates of vectors in $V_{\C}$.
+
+\begin{prop}
+    If $v_1,\dots,v_n$ is a basis of $V$, a real vector space, then it is also a basis of $V_{\C}$, which has the same dimension.
+\end{prop}
+
+\begin{proof}
+    Any $u+iw$ can be written as
+    $$u+iw = \sum_j a_jv_j + i\sum_j b_jv_j = \sum_j c_jv_j, c_j = a_j + ib_j$$
+    So the vectors span $V_{\C}$. Now $u+iw = 0$ implies $u=0$ and $w=0$. Since $v_1,\dots,v_n$ is a basis for $V$, this means $a_j,b_j = 0 \forall j \Rightarrow c_j = 0 \forall j$. Hence the vectors are linearly dependent. Then they are a basis for $V_{\C}$, also implying the dimensions of $V$ and $V_{\C}$ are equal (equal length of bases).
+\end{proof}
+
+\section{Complexification of Operators}
+Let $V,W$ be real vector spaces, and $T \in \mathcal L(V,W)$. Then
+$$T_{\C}(v_1 + iv_2) = T(v_1) + iT(v_2)$$
+and $T_{\C} \in \mathcal L(V_{\C},W_{\C})$.
+
+\begin{itemize}
+    \item $(T_1+T_2)_{\C} = (T_1)_{\C} + (T_2)_{\C}$
+    \item $(\lambda T)_{\C} = \lambda T_{\C}, \lambda \in \R$
+    \item $(ST)_{\C} = S_{\C} T_{\C}$
+\end{itemize}
+
+In particular, $T_{\C}$ is invertible if and only if $T$ is invertible. In that case,
+$$(T_{\C})^{-1} = (T^{-1})_{\C}$$
+
+For $T \in \mathcal L(V)$,
+
+\begin{itemize}
+    \item $\det(T_{\C}) = \det(T), \tr(T_{\C}) = \tr(T)$
+    \item The characteristic and minimal polynomials of $T$ are the complexification of the respective polynomials of $T$
+    \item The eigenvalues of $T_{\C}$ appear in complex conjugate pairs, with the same geometric and algebraic multiplicities
+    \item $\dim\text{null}((\lambda I - T_{\C})^k) = \dim\text{null}((\overline \lambda I - T)^k)$
+\end{itemize}
+
+If $\lambda$ is a real eigenvector of $T_{\C}$, then it is also an eigenvalue of $T$. In fact,
+$$\dim E(\lambda,T_{\C}) = \dim E(\lambda,T)$$
+with the same algebraic and geometric multiplicities.
+
+\begin{proof}
+    Suppose $\lambda$ is a real eigenvalue of $T_{\C}$ with a nonzero eigenvector $v \in V_{\C}$. Then $\Re(v)$ is a real eigenvector, and if $v$ is imaginary, take $\Im(v)$. \\
+
+We can use the same method to get a basis for $E(\lambda,T)$, which is the same basis for $E(\lambda,T_{\C})$. By induction, let $v_1,\dots,v_k \in E(\lambda,T)$ be linearly independent. They are also linearly independent in $E(\lambda,T_{\C})$. If they don't span, we pick $v \in E(\lambda,T_{\C})$ that is not in the span of $v_1,\dots,v_k$. We cannot have both the real and imaginary part of the vector to be in the span, so we obtain at least one "new" vector.
+\end{proof}
+
+\begin{prop}
+    If $\dim V$ is odd, then $T \in \mathcal L(V)$ has at least an eigenvalue $\lambda \in \R$.
+\end{prop}
+
+\begin{proof}
+    The non-real eigenvalues of $T_{\C}$ appear in pairs, with the same algebraic multiplicities, so the total number of non-real eigenvalues is even. Then there is at least a real eigenvalue, which also has to be an eigenvalue of $T$.
+\end{proof}
+
+\begin{prop}
+    If $T \in \mathcal L(V)$, where $V$ is a real vector space, with a negative determinant, then there is a negative eigenvalue.
+\end{prop}
+
+\begin{proof}
+    \begin{align*}
+        \det(T) &= \det(T_{\C}) \\
+                &= \prod \lambda \\
+                &= \left(\prod_{\lambda \in \R} \lambda\right) \left(\prod_{\Im(\lambda) > 0} \lambda\right) \left(\prod_{\Im(\lambda) < 0}\right) \\
+                &= \left(\prod_{\lambda \in \R} \lambda\right) \left(\prod_{\Im(\lambda) < 0} |\lambda|^2\right)
+    \end{align*}
+    Since the second term is real, there has to be a negative $\lambda$ in the first term.
+\end{proof}
+
+\begin{prop}
+    Let $T \in \mathcal L(V)$, with $V$ being a real vector space. Then there exists a $T$-invariant subspace $W \subseteq V$ of dimension 1 or 2.
+\end{prop}
+
+\begin{proof}
+    If $T$ has a real eigenvalue, we take $W$ as the subspace spanned by one of its eigenvector(s). If not, $T_{\C}$ has a complex eigenvalue, with eigenvector $v \in V_{\C}$.
+    $$T_{\C}v = \lambda v, \lambda = a+ib$$
+    Then
+    \begin{align*}
+        T(\Re(v)) + T(\Im(v)) &= (a\Re(v) - b\Im(v)) + i(a\Im(v) + b\Re(v)) \\
+        T(\Re(v)) &= a\Re(v) - b\Im(v) \\
+        T(\Im(v)) &= a\Im(v) + b\Re(v)
+    \end{align*}
+    Then take
+    $$W = \text{span}\{\Re(v),\Im(v)\}$$
+\end{proof}
+
+\begin{prop}
+    Let $T \in \mathcal L(V)$, with $V$ being a real vector space. There exists a basis $v_1,\dots,v_k$ of $V$ such that the companion matrix $A$ of $T$ is block upper triangular with diagonal block of size 1 or 2.
+\end{prop}
+
+\begin{proof}
+    The proof is left as an exercise to the reader.
+\end{proof}
+
+\end{document}
