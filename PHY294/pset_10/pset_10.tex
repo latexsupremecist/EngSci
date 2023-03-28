@@ -1,0 +1,59 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 10}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{For a single large two-state paramagnet, the multiplicity function is very sharply peaked about $N_\uparrow = \frac{N}{2}$.}
+
+\begin{parts}
+	\part{Use Stirling's approximation to estimate the height of the peak in the multiplicity function.}
+
+	\begin{solution}
+		$$\Omega(N_\uparrow) = \binom{N}{N_\uparrow} = \frac{N!}{N_\uparrow ! N_\uparrow !}$$
+		Since there is an equal number of up and down spins. Using Stiring's approximation, this becomes
+		\begin{align*}
+			\Omega &\approx \frac{N^Ne^{-N}\sqrt{2\pi N}}{\left[\left(\frac{N}{2}\right)^{\frac{N}{2}}e^{-\frac{N}{2}}\sqrt{2\pi\frac{N}{2}}\right]^2} \\
+			       &= \frac{N^N\sqrt{2\pi N}}{\left(\frac{N}{2}\right)^N\pi N} \\
+			       &= 2^N\sqrt{\frac{2}{\pi N}}
+		\end{align*}
+	\end{solution}
+
+	\part{Use the methods of this section to derive a formula for the multiplicity function in the vicinity of the peak, in terms of $x = N_\uparrow - (N /2$). Check that your formula agrees with your answer to part (a) when $x = 0$.}
+
+	\begin{solution}
+		We have shifted the graph to have an average of 0. Then
+		\begin{align*}
+			\Omega(N_\uparrow) &= \frac{N!}{N_\uparrow ! N_\downarrow !} \\
+					   &= \frac{N^Ne^{-N}\sqrt{2\pi N}}{N_\uparrow^{N_\uparrow}N_\downarrow^{N_\downarrow}e^{-N} \sqrt{2\pi N_\uparrow}\sqrt{2\pi N_\downarrow}} \\
+					   &= \frac{N^N}{N_\uparrow^{N_\uparrow}N_\downarrow^{N_\downarrow}} \times \sqrt{\frac{N}{2\pi N_\uparrow N_\downarrow}} \\
+					   &= \frac{N^N}{\left(\frac{N}{2}+x\right)^{\frac{N}{2}+x}\left(\frac{N}{2}-x\right)^{\frac{N}{2}-x}} \sqrt{\frac{N}{\left(\frac{N}{2}+x\right)\left(\frac{N}{2}-x\right)2\pi}} \\
+					   &= \frac{N^N}{\left(\frac{N^2}{4}-x^2\right)^{\frac{N}{2}}\left(\frac{N}{2}+x\right)^x\left(\frac{N}{2}-x\right)^{-x}} \sqrt{\frac{N}{\left(\frac{N^2}{4}-x^2\right)2\pi}} \\
+			\ln\Omega &= N\ln N - \frac{N}{2}\ln\left(\frac{N^2}{4}-x^2\right) - x\ln\left(\frac{N}{2}+x\right) + x \ln\left(\frac{N}{2}-x\right) + \frac{1}{2}\ln\frac{N}{2\pi} - \frac{1}{2}\ln\left(\frac{N^2}{4}-x^2\right) \\
+				  &= \dots \\
+				  &= N\ln 2 - \frac{2x^2}{N} + \ln\sqrt{\frac{2}{N\pi}} + \frac{2x^2}{N^2} \\
+			\Omega &= 2^Ne^{-\frac{2x^2}{N}}\sqrt{\frac{2}{N\pi}}e^{\frac{2x^2}{N^2}} \\
+			       &= 2^N\sqrt{\frac{2}{N\pi}}\exp\left(-\frac{2x^2}{N}+\frac{2x^2}{N^2}\right) \\
+			       &\approx 2^N\sqrt{\frac{2}{N\pi}}\exp\left(-\frac{2x^2}{N}\right) \\
+		\end{align*}
+		which agrees with the previous answer when $x=0$.
+	\end{solution}
+
+	\part{How wide is the peak in the multiplicity function?}
+
+	\begin{solution}
+		The function is approximately Gaussian. We find the width of one standard deviation $(68\%)$, where $\sigma \approx \sqrt{N}$.
+	\end{solution}
+
+	\part{Suppose you flip 1,000,000 coins. Would you be surprised to obtain 501,000 heads and 499,000 tails? Would you be surprised to obtain 510,000 heads and 490,000 tails? Explain.}
+
+	\begin{solution}
+		We are flipping a coin for $10^6$ times, so the standard deviation is 1000. In the first case, we are at the edge of the first standard deviation, which is not unexpected. However, in the second case we are 10 standard eviations away, which is unlikely.
+	\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}
