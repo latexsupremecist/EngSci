@@ -1,0 +1,231 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 6}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Let $V$ be a complex inner product space, $\text{dim}V < \infty$, and $T \in \mathcal L(V)$.}
+
+\begin{parts}
+	\part{Prove that $T$ may be uniquely written as
+		$$T = T_1 + iT_2$$
+	where $T_1,T_2$ are Hermitian.}
+	\begin{solution}
+		First we prove existence. Note that
+		$$T = \frac{T+T^*}{2} + i\frac{T-T^*}{2i}$$
+		Then letting $T_1 = \frac{T+T^*}{2}$ and $T_2 = \frac{T-T^*}{2i}$, note that
+		$$\langle T_1x,y \rangle = \left\langle \frac{T+T^*}{2}x,y \right\rangle = \frac{1}{2}\langle Tx,y \rangle + \frac{1}{2} \langle T^*x,y \rangle = \frac{1}{2} \langle x,T^*y \rangle + \frac{1}{2} \langle x,Ty \rangle = \left\langle x,\frac{T+T^*}{2}y \right\rangle$$
+		Thus $T_1$ is Hermitian/self-adjoint. Similarly,
+		$$\langle T_2x,y \rangle = \langle \frac{T-T^*}{2i}x,y \rangle = \frac{1}{2i} \langle Tx,y \rangle - \frac{1}{2i} \langle T^*x,y \rangle = \frac{1}{2i} \langle x,T^*y \rangle - \frac{1}{2i} \langle x,Ty \rangle = \left\langle x,\frac{T-T^*}{2i}y \right\rangle$$
+		Hence $T_2$ is also Hermitian. \\
+		Then we prove uniqueness. Assume $T=T_1 + iT_2$. Then
+		$$\langle Tx,y \rangle = \langle T_1x,y \rangle + \langle iT_2x,y \rangle = \langle x,T_1y \rangle + \langle x,-iT_2y \rangle = \langle x,(T_1-iT_2)y \rangle = \langle x,T^*y \rangle$$
+		Then considering the last inequality, we have
+		$$\langle x,(T_1-iT_2-T^*)y \rangle = 0$$
+		Which implies $T_1-iT_2-T^*=0$, or else letting
+		$$x = (T_1-iT_2-T^*)y$$
+		for some $y$ that gives a nonzero $x$ would yield a contradiction. Then
+		$$T^* = T_1 - iT_2$$
+		implying
+		$$T-T^* = 2iT_2$$
+		which uniquely determines $T_2$. Similarly,
+		$$T+T^* = 2T_1$$
+		uniquely determinds $T_1$. Hence the representation is unique.
+	\end{solution}
+
+	\part{Prove that $T$ is normal if and only if $T_1,T_2$ commute.}
+
+	\begin{solution}
+		\begin{align*}
+			T_1T_2 - T_2T_1 &= \left(\frac{T+T^*}{2}\right)\left(\frac{T-T^*}{2i}\right) - \left(\frac{T-T^*}{2i}\right)\left(\frac{T+T^*}{2}\right)  \\
+					&= \frac{(T+T^*)(T-T^*)}{4i} - \frac{(T-T^*)(T+T^*)}{4i}\\
+			       &= \frac{T^2+T^*T-TT^*-(T^*)^2 - T^2 + T^*T - TT^* + (T^*)^2}{4i} \\
+			       &= \frac{T^*T - TT^*}{2i}
+		\end{align*}
+		Then if $T$ is normal, $T_1T_2-T_2T_1 = 0$, hence $T_1, T_2$ communtes. If $T_1,T_2$ commutes, this implies $T^*T-TT^* = 0$, hence $T$ is normal.
+	\end{solution}
+
+	\part{Prove that T is unitary if and only if, furthermore, $T_1^2 + T_2^2 = I$.}
+
+	\begin{solution}
+		We assume $T$ is normal, i.e. $T_1,T_2$ commute. Then we have shown that
+		$$\langle Tx,y \rangle = \langle x,(T_1-iT_2)y \rangle $$
+		Letting $y = Tz$ for arbitrary $z \in V$,
+		$$\langle Tx,Tz \rangle = \langle x,(T_1-iT_2)(T_1+iT_2)z \rangle = \langle x,(T_1^2+T_2^2)z \rangle$$
+		If $T_1^2+T_2^2 = I$, then
+		$$\langle Tx,Tz \rangle = \langle x,z \rangle$$
+		so $T$ is unitary. If $T$ is unitary, then
+		$$\langle x,(T_1^2+T_2^2-I)z \rangle = 0$$
+		in general, meaning
+		$$T_1^2+T_2^2-I = 0 \Rightarrow T_1^2+T_2^2 - I$$
+	\end{solution}
+
+\end{parts}
+
+\question{Let $V$ be a complex inner product space, $\text{dim} V < \infty$, and $T \in \mathcal L(V)$ an involution: That is, $T^2 = I$. Prove that the following are equivalent:
+	\begin{parts}
+		\part{$T$ is self-adjoint}
+		\part{$T$ is unitary}
+		\part{$T$ is normal}
+	\end{parts}
+}
+
+\begin{solution}
+	First we assume $T$ is self-adjoint. Then
+	$$\langle Tx,Ty \rangle = \langle x,T^2y \rangle = \langle x,y \rangle$$
+	For a finite dimensional $V$, this is sufficient to show that $T$ is unitary. \\
+	Then assuming $T$ is unitary,
+	$$\langle x,y \rangle = \langle Tx,Ty \rangle = \langle x,T^*Ty \rangle$$
+	Hence
+	$$\langle x,(T^*T-I)y \rangle = 0 \forall x,y \in V \Rightarrow T^*T = I$$
+	Then $T$ and $T^*$ are inverses of each other, so $T^*T = TT^*$, and $T$ is normal. \\
+	If $T$ is normal, then $V$ has an orthonormal basis consisting of eigenvectors of $T$. Since $T$ is an involution, any eigenvalue of $T$ must satisfy
+	$$v = Iv = T^2v = \lambda^2v$$
+	so $\lambda = \pm 1$. We choose the orthonormal basis $\{v_1,\dots,v_k,v_{k+1},\dots,v_n\}$ where the eigenvalues for $v_1,\dots,v_k$ are 1 and the eigenvalues for $v_{k+1},\dots,v_n$ are -1. Then letting $x = \sum_i a_iv_i$ and $y = \sum_i b_iv_i$, we have
+	\begin{align*}
+		\langle Tx,y \rangle &= \langle \sum_{i\leq k} a_iv_i - \sum_{i > k} a_iv_i,\sum_i b_iv_i \rangle \\
+				     &= \sum_{i\leq k} a_ib_i - \sum_{i>k} a_ib_i
+	\end{align*}
+	And
+	\begin{align*}
+		\langle x,Ty \rangle &= \langle \sum_i a_iv_i, \sum_{i\leq k} b_iv_i - \sum_{i>k} b_iv_i \rangle \\
+				     &= \sum_{i\leq k} a_ib_i - \sum_{i>k} a_ib_i \\
+				     &= \langle Tx,y \rangle
+	\end{align*}
+	Since this holds for arbitrary $x,y \in V$, $T$ is self-adjoint.
+\end{solution}
+
+\question{Let $V$ be a complex inner product space, $\text{dim}V < \infty$, and $T \in \mathcal L(V)$ is a normal operator.}
+
+\begin{parts}
+	\part{Show that $V = \text{null}T \oplus \text{ran}T$}
+	\part{Show that for any $S \in \mathcal L(V)$ (not necessarily normal), if $ST = TS$ then $ST^* = T^*S$.}
+\end{parts}
+
+\begin{solution}
+	Let $\{v_1,\dots,v_k,v_{k+1},\dots,v_n\}$ be an orthonormal eigenbasis of $V$, where $v_1,\dots,v_k$ are the only basis vectors with eigenvalue 0. Then $\{v_1,\dots,v_k\}$ span null$(T)$ and $\{v_{k+1},\dots,v_n\}$ span ran$(T)$.
+	Then any vector $v \in V$ can be written as
+	$$v = \sum_{i=1}^n a_iv_i = \left(\sum_{i=1}^k a_iv_i\right) + \left(\sum_{i=k+1}^n a_iv_i\right)$$
+	where the first term is an element in null$(T)$ and the second term is an element in ran$(T)$, so the union of both sets is $V$. Since both sets are spanned by distinct linearly independent basis vectors, their intersection is $\{0\}$. This justifies the use of $\oplus$. \\
+	Then if $ST=TS$, let $v$ be an eigenvector of $T$ with eigenvalue $\lambda$,
+	$$T(Sv) = (TS)v = (ST)v = S(Tv) = S(\lambda v) = \lambda Sv$$
+	Then $Sv$ is also an eigenvector with eigenvalue $\lambda$. \\
+	In lecture, we proved that if $v$ is an eigenvector with eigenvalue $\lambda$ in $T$, then it is also an eigenvector with eigenvalue $\overline{\lambda}$ in $T^*$. For an arbitrary eigenvector $v_i$ with eigenvalue $\lambda_i$, we know $Sv_i$ is also an eigenvector with eigenvalue $\lambda_i$, so
+	$$ST^*v_i = S(\overline{\lambda_i}v_i) = \overline{\lambda_i}Sv_i$$
+	and
+	$$T^*Sv_i = \overline{\lambda_i}Sv_i = ST^*v_i$$
+	This holds for all eigenvectors of $T$, hence this holds for all basis vectors for $V$, thus
+	$$ST^* = T^*S$$
+\end{solution}
+
+\question{Let $V$ be a complex vector space, $\text{dim}V < \infty$. For any $T \in \mathcal {L}(V)$ such that $-1$ is not an eigenvalue of $T$, one defines the Cayley transform
+	$$C(T) = (I+T)^{-1}(I-T)$$
+}
+
+\begin{parts}
+	\part{Show that if $T$ does not have $-1$ as an eigenvalue, then $C(T)$ does not have $-1$ as an eigenvalue, and
+		$$C(C(T)) = T$$
+	}
+
+	\begin{solution}
+		Proof by contradiction. Let $-1$ be an eigenvalue of $C(T)$, so $\exists v \neq 0 \in V$ such that
+		\begin{align*}
+			C(T)v &= -v \\
+			(I+T)^{-1}(I-T)v &= -v \\
+			(I+T)^{-1}(v-Tv) &= -v \\
+			v-Tv &= (I+T)-v \\
+			v-Tv &= -v-Tv \\
+			v &= 0
+		\end{align*}
+		Which contradicts $v \neq 0$. Hence $-1$ is not an eigenvalue of $C(T)$. \\
+		Now let $v \in V$, and define $w = C(C(T))v$. Then
+		\begin{align*}
+			C(C(T))v &= w \\
+			\left(I+(I+T)^{-1}(I-T)\right)^{-1}\left(I-(I+T)^{-1}(I-T)\right)v &= w \\
+			\left(I-(I+T)^{-1}(I-T)\right)v &= \left(I+(I+T)^{-1}(I-T)\right)w \\
+			v - (I+T)^{-1}(v-Tv) &= w + (I+T)^{-1}(w-Tw) \\
+			v + Tv - v + Tv &= w + Tw + w - Tw \\
+			2Tv &= 2w \\
+			Tv &= w
+		\end{align*}
+		This implies
+		$$(C(C(T))-T)v = w-w = 0$$
+		Since this holds for arbitrary $v$, we know
+		$$C(C(T)) - T = 0 \Rightarrow C(C(T)) = T$$
+	\end{solution}
+
+	\part{Suppose $V$ has an inner product, so that adjoints are defined. Show that if $T$ is skew-adjoint, then $C(T)$ is unitary, and if $T$ is unitary, then $C(T)$ is skew-adjoint.}
+
+	\begin{solution}
+		In this proof, we make use of the fact that
+		$$(AB)^* = B^*A^*$$
+		because
+		$$\langle ABx,y \rangle = \langle Bx,A^*y \rangle = \langle x,B^*A^*y \rangle$$
+		If $T$ is skew-adjoint, then
+		$$\langle (I\pm T)x,y \rangle = \langle x,y \rangle \pm \langle Tx,y \rangle = \langle x,y \rangle \pm \langle x,-Ty \rangle = \langle x,(I \mp T)y \rangle$$
+		Therefore $(I+T)^* = I-T, (I-T)^* = I+T$. Then
+		\begin{align*}
+			(C(T))^*C(T) &= [(I+T)^{-1}(I-T)]^*(I+T)^{-1}(I-T) \\
+				     &= (I-T)^*\left((I+T)^{-1}\right)^*(I+T)^{-1}(I-T) \\
+				     &= (I+T)\left((I+T)^*\right)^{-1}(I+T)^{-1}(I-T) \\
+				     &= (I+T)(I-T)^{-1}(I+T)^{-1}(I-T) \\
+				     &= (I+T)\left((I+T)(I-T)\right)^{-1}(I-T) \\
+				     &= (I+T)\left((I-T)(I+T)\right)^{-1}(I-T) \\
+				     &= (I+T)(I+T)^{-1}(I-T)^{-1}(I-T) \\
+				     &= I
+		\end{align*}
+		So
+		$$\langle C(T)x,C(T)y \rangle = \langle x,(C(T))^*C(T)y \rangle = \langle x,y \rangle$$
+		hence $C(T)$ is unitary. \\
+		If $T$ is unitary, then
+		$$\langle x,y \rangle = \langle Tx,Ty \rangle = \langle x,T^*Ty \rangle$$
+		So
+		$$\langle x,(T^*T-I)y \rangle = 0 \forall x,y \in V \Rightarrow T^*T = I$$
+		Hence $T^*$ and $T$ are inverses. In addition,
+		\begin{align*}
+			\langle (I \pm T)x,y \rangle &= \langle (T \pm T^2)x, Ty \rangle \\
+						     &= \langle Tx,Ty \rangle \pm \langle T^2x,Ty \rangle \\
+						     &= \langle x,y \rangle \pm \langle Tx,y \rangle \\
+						     &= \langle x,y \rangle \pm \langle x,T^*y \rangle \\
+						     &= \langle x, (I \pm T^*)y \rangle
+		\end{align*}
+		So $(I+T)^* = I+T^*$ and $(I-T)^* = I-$. Then
+		\begin{align*}
+			(C(T))^* + C(T) &= \left((I+T)^{-1}(I-T)\right)^* + (I+T)^{-1}(I-T) \\
+					&= (I-T)^*\left((I+T)^{-1}\right)^* + (I+T)^{-1} - (I+T)^{-1}T \\
+					&= (I-T^*)\left((I+T)^*\right)^{-1} + (I+T)^{-1} - (I+T)^{-1}(T^*)^{-1} \\
+					&= (I+T^*)^{-1} - T^{-1}(I+T^*)^{-1} + (I+T)^{-1} - (T^*+I)^{-1} \\
+					&= -(T+I)^{-1} + (I+T)^{-1} \\
+					&= 0
+		\end{align*}
+		So $(C(T))^* = -C(T)$, and $C(T)$ is skew-adjoint.
+	\end{solution}
+
+\end{parts}
+
+\question{Let $V$ be a complex inner product space, $\text{dim} V<\infty$. Let $T$ be a normal operator. Show that the set of numerical values
+	$$\{\langle Tv,v \rangle | v \in V, ||v|| = 1\}$$
+	is the convex hull of the spectrum
+	$$\text{Spec}(T) = \{\lambda \in \C | \lambda \text{ is an eigenvalue of } T\}$$
+}
+
+\begin{solution}
+	Since $T$ is normal, it admits an orthogonal basis of eigenvectors $\{v_1,\dots,v_n\}$. Let the corresponding eigenvalue for eigenvector $v_i$ be $\lambda_i$. Then letting $v = \sum_{i=1}^n a_iv_i$,
+	$$\langle Tv,v \rangle = \langle \sum_{i=1}^n a_i\lambda_iv_i,\sum_{i=1}^n a_iv_i \rangle = \sum_{i=1}^n a_i^2\lambda_i$$
+	Let $A$ be the set defined in the question, and $B$ be the convex hull. Then $\forall a \in A$, using the definitions as above,
+	$$||v|| = 1 \Rightarrow \sqrt{\sum_{i=1}^n a_i^2} = 1 \Rightarrow \sum_{i=1}^n a_i^2 = 1$$
+	Letting $t_i = a_i^2$, 
+	$$a = \sum_{i=1}^n a_i^2\lambda_i = \sum_{i=1}^n t_i\lambda_i \in B$$
+	Therefore $A \subseteq B$. Conversely, $\forall b \in B$,
+	$$b = \sum_{i=1}^n t_i\lambda_i = \sum_{i=1}^n a_i^2\lambda_i = \langle Tv,v \rangle \in A$$
+	where we define $a_i$ to be a root of $x^2 = t_i$, and $v_i = \sum_{i=1}^n a_iv_i$. Note that this implies $b \in A$ as
+	$$||v|| = \sqrt{\sum_{i=1}^n a_i^2} = \sqrt{\sum_{i=1}^n t_i} = \sqrt{1} = 1$$
+	Then $B \subseteq A$. Combining both, we see
+	$$A = B$$
+	Or that the set $\{\langle Tv,v \rangle | v \in V, ||v|| = 1\}$ is the convex hull.
+\end{solution}
+\end{questions}
+\end{document}
