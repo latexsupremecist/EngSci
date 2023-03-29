@@ -1,5 +1,5 @@
 \documentclass[answers]{exam}
-\usepackage{.../../template}
+\usepackage{../../template}
 \author{niceguy}
 \title{Problem Set 9}
 \begin{document}
@@ -7,29 +7,114 @@
 
 \begin{questions}
 
+\question{An ideal gas is made to undergo the cyclic process shown in Figure 1.10(a). For each of the steps $A, B$, and $C$, determine whether each of the following is positive, negative, or zero}
+
+\begin{parts}
+    \part{the work done on the gas}
+    \part{the change in the energy content of the gas}
+    \part{the heat added to the gas.}
+\end{parts}
+
+Then determine the sign of each of these three quantities for the whole cycle. What does this process accomplish?
+
+\begin{solution}
+    For $A$, work done is negative, energy increases, and heat added is positive. For $B$, work done is zero, energy increases, and heat added is positive. For $C$, work done is positive, energy decreases, and heat added is negative.
+\end{solution}
+
 \question{Consider a system of two Einstein solids, $A$ and $B$, each containing 10 oscillators, sharing a total of 20 units of energy. Assume that the solids are weakly coupled, and that the total energy is fixed.}
 
 \begin{parts}
-	\part{How many different macrostates are available to this system?}
-	\part{How many different microstates are available to this system?}
-	\part{Assuming that this system is in thermal equilibrium, what is the probability of finding all the energy in solid $A$?}
-	\part{What is the probability of finding exactly half of the energy in solid $A$?}
-	\part{Under what circumstances would this system exhibit irreversible behavior?}
+    \part{How many different macrostates are available to this system?}
+    \part{How many different microstates are available to this system?}
+    \part{Assuming that this system is in thermal equilibrium, what is the probability of finding all the energy in solid $A$?}
+    \part{What is the probability of finding exactly half of the energy in solid $A$?}
+    \part{Under what circumstances would this system exhibit irreversible behavior?}
 \end{parts}
 
 \begin{solution}
-	There are 21 macrostates and $binom{39}{19}$ microstates. \\
-	The probability that all the energy is in solid $A$ is
-	$$\frac{\binom{29}{9}}{\binom{39}{19}}$$
-	The probability that half the energy is in solid $A$ is
-	$$\frac{\binom{19}{10}^2}{\binom{39}{19}}$$
-	There is no "irreversible" behaviour, as every state is equally probable. However, the process from an "unlikely" macrostate to a "likely" macrostate is semi-irreversible, as it is very unlikely to go back.
+    There are 21 macrostates and $binom{39}{19}$ microstates. \\
+    The probability that all the energy is in solid $A$ is
+    $$\frac{\binom{29}{9}}{\binom{39}{19}}$$
+    The probability that half the energy is in solid $A$ is
+    $$\frac{\binom{19}{10}^2}{\binom{39}{19}}$$
+    There is no "irreversible" behaviour, as every state is equally probable. However, the process from an "unlikely" macrostate to a "likely" macrostate is semi-irreversible, as it is very unlikely to go back.
 \end{solution}
 
 \question{Use the methods of this section to derive a formula, similar to equation 2.21, for the multiplicity of an Einstein solid in the "low-temperature" limit, $q << N$.}
 
 \begin{solution}
-	asdf
+    \begin{align*}
+        \Omega &= \binom{N-1+q}{q} \\
+               &= \frac{(N-1+q)!}{(N-1)!q!} \\
+               &= \frac{(N+q)!}{N!q!} \\
+        \ln\Omega &\approx (N+q)\ln(N+q) - N - q - N\ln N + N - q\ln q + q \\
+                  &= (N+q)\ln(N+q) - N\ln N - q\ln q \\
+                  &= (N+q)\left(\ln N + \ln\left(1+\frac{q}{N}\right)\right) - N\ln N - q\ln q \\
+                  &\approx (N+q)(\ln N + \frac{q}{N}) - N\ln N - q\ln q \\
+                  &= q\ln N + q + \frac{q^2}{N} - q\ln q \\
+                  &\approx q\ln N - q\ln q + q \\
+        \Omega &= \left(\frac{eN}{q}\right)^q
+    \end{align*}
+\end{solution}
+
+\question{Use Stirling’s approximation to find an approximate formula for the multiplicity of a two-state paramagnet. Simplify this formula in the limit $N_\downarrow << N$ to obtain $\Omega \approx \left(\frac{Ne}{N_\downarrow}\right)^{N_\downarrow}$. $N_\downarrow << N$ to obtain $\Omega \approx (\frac{Ne}{N_\downarrow})$. This result should look very similar to your answer to Problem 2.17; explain why these two systems, in the limits considered, are essentially the same.}
+
+\begin{solution}
+    \begin{align*}
+        \Omega &= \binom{N}{N_\downarrow} \\
+               &= \frac{N!}{(N-N_\downarrow)!N_\downarrow!} \\
+        \ln\Omega &\approx N\ln N - N - (N-N_\downarrow)\ln(N-N_\downarrow) + N - N_\downarrow - N_\downarrow\ln N_\downarrow + N_\downarrow \\
+                  &\approx N\ln N - (N-N_\downarrow)\left(\ln N - \frac{N_\downarrow}{N}\right) - N_\downarrow\ln N_\downarrow \\
+                  &= N_\downarrow + N_\downarrow\ln N - \frac{N_\downarrow^2}{N} - N\downarrow\ln N_\downarrow \\
+                  &\approx N_\downarrow\ln\left(\frac{N}{N_\downarrow}\right) + N_\downarrow \\
+        \Omega &= \left(\frac{Ne}{N_\downarrow}\right)^{N_\downarrow}
+    \end{align*}
+    They are essentially the same, as putting $N_\downarrow = q$ and assuming $q<<N$,
+    $$\binom{N}{q} = \frac{N!}{(N-q)!q!} \approx \frac{(N+q-1)!}{(N-1)!q!} = \binom{N+q-1}{q}$$
+\end{solution}
+
+\question{This problem gives an alternative approach to estimating the width of the peak of the multiplicity function for a system of two large Einstein solids.}
+
+\begin{parts}
+    \part{Consider two identical Einstein solids, each with N oscillators, in thermal contact with each other. Suppose that the total number of energy units in the combined system is exactly $2N$. How many different macrostates (that is, possible values for the total energy in the first solid) are there for this combined system?}
+    \part{Use the result of Problem 2.18 to find an approximate expression for the total number of microstates for the combined system.}
+    \part{The most likely macrostate for this system is (of course) the one in which the energy is shared equally between the two solids. Use the result of Problem 2.18 to find an approximate expression for the multiplicity of this macrostate.}
+    \part{You can get a rough idea of the “sharpness” of the multiplicity function by comparing your answers to parts (b) and (c). Part (c) tells you the height of the peak, while part (b) tells you the total area under the entire graph. As a very crude approximation, pretend that the peak’s shape is rectangular. In this case, how wide would it be? Out of all the macrostates, what fraction have reasonably large probabilities? Evaluate this fraction numerically for the case $N=10^{23}$.}
+\end{parts}
+
+\begin{solution}
+    There are $2N+1$ macrostates. We know that total number of microstates can be approximated as
+    $$\Omega(N,q) = \frac{\left(\frac{q+N}{q}\right)^q\left(\frac{q+N}{N}\right)^N}{\sqrt{2\pi q(q+N)/N}}$$
+    where we put $N=q=2N$. Then
+    \begin{align*}
+        \Omega &= \frac{2^{4N}}{\sqrt{2\pi(4N)}} \\
+               &= \frac{2^{4N}}{\sqrt{8\pi N}}
+    \end{align*}
+    The multiplicity of this macrostate is $\Omega(N,N)^2$. From the above result,
+    $$\Omega = \frac{2^{4N}}{4\pi N}$$
+    If the peak is a rectangular, the width would be $\sqrt{2\pi N}$. Fractional width is
+    $$\frac{\sqrt{2\pi N}}{2N+1} \approx \sqrt{\frac{pi}{2N}} \approx 4\times10^{-12}$$
+    So only this small fraction have reasonably large probabilities.
+\end{solution}
+
+\question{Consider an ideal monatomic gas that lives in a two-dimensional universe (“flatland”), occupying an area $A$ instead of a volume $V$. By following the same logic as above, find a formula for the multiplicity of this gas, analogous to equation 2.40.}
+
+\begin{solution}
+    Essentially, following the same derivation, we reach the same result, replacing $V$ with $A$, and the factor 3 with 2. This gives
+    $$\Omega \approx \frac{1}{N!}\frac{A^N}{h^{2N}} \frac{\pi^N}{N!}(2mU)^N$$
+\end{solution}
+
+\question{Show that during the quasistatic isothermal expansion of a mon-atomic ideal gas, the change in entropy is related to the heat input $Q$ by the simple formula
+    $$\Delta S = \frac{Q}{T}$$
+Show that it is not valid for the free expansion process described above.}
+
+\begin{solution}
+    Under these conditions, we have derived that
+    $$\Delta S = Nk\ln\frac{V_f}{V_i}$$
+    and
+    $$Q = NkT\ln\frac{V_f}{V_i}$$
+    So $\Delta S = \frac{Q}{T}$
+    For free expansion, $Q=0$, so the equation does not hold (as $\Delta S \neq 0$).
 \end{solution}
 
 \end{questions}
