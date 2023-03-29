@@ -1,0 +1,226 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 8}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A point charge $Q$ is moving in the air with a velocity $\vec v$ near a straight wire conductor with a time-invariant current of intensity $I$. Referring to three cases with different directions of $\vec v$ shown in Fig. Q4.1, the magnetic force on $Q$ is zero for}
+
+\begin{solution}
+	B. $\vec F = q\vec v \times \vec B$, which vanishes when $\vec v$ and $\vec B$ are parallel. By the right hand rule, $\vec B$ goes into the page, so force vanishes when $\vec v$ also goes into/out of the page.
+\end{solution}
+
+\question{A charged particle moves with velocity $\vec v$ in a vacuum. An applied magnetic fields of flux density $\vec B$ can change}
+
+\begin{solution}
+	C, the direction of $\vec v$ but not its magnitude. This is because $\vec F$ is always perpendicular to $\vec v$.
+\end{solution}
+
+\question{A steady current is established in a straight metallic wire conductor in a nonmagnetic medium. The magnetic vector potential due to this current at an arbitrary point in space that is not on the wire axis is}
+
+\begin{solution}
+	A. Parallel to the wire. If $\vec A$ only has a $\hat a_z$ component, then
+	$$\vec B = \vec \nabla \times A = \frac{\partial A_z}{\partial y}\hat a_x - \frac{\partial A_z}{\partial x} \hat a_y$$
+	which matches with reality, as $\vec B$ has no $\hat a_z$ component, as it is always perpendicular to current.
+\end{solution}
+
+\question{Consider a square loop with a steady current of intensity $I$, in free space. Let $A_1$ denote the magnitude of the magnetic vector potential at the loop center due to the current along one of the square sides. The magnitude of the total magnetic vector potential at the center equals}
+
+\begin{solution}
+	Noncritical, will do later/never
+\end{solution}
+
+\question{A DC voltage of 6V applied to the ends of 1 km of a conducting wire of 0.5 mm radius results in a current of $\frac{1}{6}$ A. Find}
+
+\begin{parts}
+	\part{the conductivity of the wire}
+	\part{the electric field intensity in the wire}
+	\part{the power dissipated in the wire}
+	\part{the electron drift velocity, assuming electron mobility in the wire to be $1.4\times10^{-3}$}
+\end{parts}
+
+\begin{solution}
+	$$R = \frac{V}{I} = 6 \div \frac{1}{6} = 36, \sigma = \frac{l}{RS} = \frac{1000}{36\pi0.0005^2} = 3.54\times10^7$$
+	Combining $I=JS$ and $\vec J = \sigma \vec E$,
+	$$E = \frac{V}{l} = 6\times10^{-3}$$
+	Power dissipated is $P=VI = 1$. \\
+	$$\rho_e u = \sigma E \Rightarrow u = \frac{\sigma}{\rho_e} E = \mu_e E = 1.4 \times 10^{-3} \times 6 \times 10^{-3} = 8.4 \times 10^{-6}$$
+\end{solution}
+
+\question{Refer to the flat conducting quarter-circular washer in Example 5-6 and Fig. 5-8. Find the resistance between the curved sides.}
+
+\begin{solution}
+	Now, we ignore fringing effects, so $V$ is a function of $r$. Then
+	\begin{align*}
+		\vec \nabla^2 V &= 0 \\
+		\frac{1}{r} \frac{\partial}{\partial r}\left(r\frac{\partial V}{\partial r}\right) &= 0 \\
+		\frac{\partial}{\partial r}\left(r\frac{\partial V}{\partial r}\right) &= 0 \\
+		r\frac{\partial V}{\partial r} &= C_1 \\
+		\frac{\partial V}{\partial r} &= \frac{C_1}{r} \\
+		V &= C_1\ln r + C_2
+	\end{align*}
+	Letting $V=0$ at $r=a$ and $V=V_0$ at $r=b$, we get
+	$$V = \frac{V_0\ln\frac{r}{a}}{\ln\frac{b}{a}}$$
+	and
+	\begin{align*}
+		\vec J &= \sigma \vec E \\
+		       &= -\sigma \vec \nabla V \\
+		       &= -\sigma \frac{\partial V}{\partial r} \hat a_r \\
+		       &= -\sigma \frac{V_0}{r\ln\frac{b}{a}} \hat a_r \\
+		       &= -\frac{\sigma V_0\ln a}{r\ln\frac{b}{a}} \hat a_r
+	\end{align*}
+	Current is then
+	\begin{align*}
+		I &= \iint_S \vec J \cdot d\vec S \\
+		  &= \int_0^h \int_0^{\frac{\pi}{2}} -\frac{\sigma V_0}{r\ln\frac{b}{a}} rd\phi dz \\
+		  &= -\frac{\sigma\pi V_0h}{2\ln\frac{b}{a}}
+	\end{align*}
+	Now resistance can be found to be
+	\begin{align*}
+		R &= \frac{V}{I} \\
+		  &= \frac{2\ln\frac{b}{a}}{\sigma\pi h}
+	\end{align*}
+\end{solution}
+
+\question{A positive point charge $q$ of mass $m$ is injected with a velocity $\vec u_0 = \hat a_yu_0$ into the $y>0$ region where a uniform magnetic field $\vec B = \hat a_xB_0$ exists. Obtain the equation of motion of the charge, and describe the path that the charge follows.}
+
+\begin{solution}
+	noncritical, will do later/never
+\end{solution}
+
+\question{The magnetic flux density $\vec B$ for an infinitely long cylindrical conductor has been found in Example 6-1. Determine the vector magnetic potential $\vec A$ both inside and outside the conductor from the relation $\vec B = \vec \nabla \times \vec A$.}
+
+\begin{solution}
+	noncritical, will do later/never
+\end{solution}
+
+\question{In a certain region, the magnetic vector potential is given as the following function in a spherical coordinate system: $\vec A = 2R^2 \hat a_\phi$.}
+
+\begin{parts}
+	\part{Find the magnetic flux density vector in this region.}
+	\part{Obtain the magnetic flux through a circular contour 1 m in adius that lies in the plane $z=0$ and is centered at hte coordinate origin.}
+	\part{Check the results by evaluating the circulation of $\vec A$ along the contour.}
+\end{parts}
+
+\begin{solution}
+	\begin{align*}
+		\vec B &= \vec \nabla \times \vec A \\
+		       & = \frac{1}{R\sin\theta} \frac{\partial (\sin\theta A_\phi)}{\partial \theta} \hat a_R - \frac{1}{R} \frac{\partial (RA_\phi)}{\partial R} \hat a_\theta \\
+		       &= \frac{2\cos\theta R^2}{R\sin\theta} \hat a_R - \frac{6R^2}{R} \hat a_\theta \\
+		       &= 2\cot\theta R \hat a_R - 6R \hat a_\theta
+	\end{align*}
+	Note that the given surface is in the $-\hat a_\theta$ direction. Then
+	\begin{align*}
+		\iint_S \vec B \cdot d\vec S &= \int_0^{2\pi} \int_0^1 6R\times R dR d\phi \\
+					     &= 2\pi \times 2 \\
+					     &= 4\pi
+	\end{align*}
+	We use the counterclockwise direction.
+	\begin{align*}
+		\oint_ctrclockwise \vec A \cdot d\vec l &= \int_0^{2\pi} 2R^2 \hat a_\phi \cdot \hat a\phi d\phi \\
+							&= \int_0^{2\pi} 2 d\phi \\
+							&= 4\pi \\
+							&= \iint_S \vec B \cdot d\vec S
+	\end{align*}
+\end{solution}
+
+\question{Find the resistance of two concentric spherical surfaces of radii $R_1$ and $R_2$ ($R_1 < R_2$). The space in between is filled with a material of conductivity $\sigma$.}
+
+\begin{solution}
+	Now $V$ is a function of $R$ with only an $\hat a_R$ component. Hence
+	\begin{align*}
+		\vec \nabla^2 V &= 0 \\
+		\frac{1}{R^2} \frac{\partial}{\partial R}\left(R^2\frac{\partial V}{\partial R}\right) &= 0 \\
+		\frac{\partial}{\partial R}\left(R^2\frac{\partial V}{\partial R}\right) &= 0 \\
+		R^2\frac{\partial V}{\partial R} &= C_1 \\
+		\frac{\partial V}{\partial R} &= \frac{C_1}{R^2} \\
+		V &= -\frac{C_1}{R} + C_2
+	\end{align*}
+	Let $V=0$ at $R_1$ and $V=V_0$ at $R_2$. Substituting,
+	$$V = \frac{V_0R_2}{R_2-R_1}\left(1-\frac{R_1}{R}\right)$$
+	Electric field intensity is
+	\begin{align*}
+		\vec E &= -\vec \nabla \vec V \\
+		       &= -\frac{\partial V}{\partial R} \hat a_R \\
+		       &= -\frac{V_0R_1R_2}{(R_2-R_1)R^2} \hat a_R
+	\end{align*}
+	Then current is
+	\begin{align*}
+		I &= \iint_S \vec J \cdot d\vec S \\
+		  &= \iint_S \sigma \vec E \cdot d\vec S \\
+		  &= \int_0^{2\pi} \int_0^\pi -\sigma \frac{V_0R_1R_2}{(R_2-R_1)R^2} R^2\sin\theta d\theta d\phi \\
+		  &= \int_0^{2\pi} \int_0^\pi -\sigma \frac{V_0R_1R_2}{R_2-R_1} \sin\theta d\theta d\phi \\
+		  &= -\frac{4\sigma\pi V_0R_1R_2}{R_2-R_1}
+	\end{align*}
+	Resistance is then
+	\begin{align*}
+		R &= \frac{V}{I} \\
+		  &= \frac{R_2-R_1}{4\sigma\pi R_1R_2}
+	\end{align*}
+\end{solution}
+
+\question{Find the resistance between the surfaces $R_1$ and $R_2$ of a truncated conical block defined by $R_1 \leq R_2$ and $0 \leq \theta \leq \theta_0$. The two spherical surfaces ($R =R_1$ and $R = R_2$) are perfect electric conductors (PECs), while the rest of the block has conductivity $\sigma$. You can neglect edge effects.}
+
+\begin{solution}
+	Ignoring edge effects, $V$ is a function of $R$. Then
+	\begin{align*}
+		\vec \nabla^2 V &= 0 \\
+		\frac{1}{R^2} \frac{\partial}{\partial R}\left(R^2\frac{\partial V}{\partial R}\right) &= 0 \\
+		\frac{\partial}{\partial R}\left(R^2\frac{\partial V}{\partial R}\right) &= 0 \\
+		R^2\frac{\partial V}{\partial R} &= C_1 \\
+		\frac{\partial V}{\partial R} &= \frac{C_1}{R^2} \\
+		V &= -\frac{C_1}{R} + C_2
+	\end{align*}
+	Setting $V=0$ at $R_1$ and $V=V_0$ at $R_2$, we get
+	$$V = \frac{V_0R_2}{R_2-R_1}\left(1-\frac{R_1}{R}\right)$$
+	Electric field intensity is then
+	\begin{align*}
+		\vec E &= -\vec \nabla V \\
+		       &= -\frac{\partial V}{\partial R} \hat a_R \\
+		       &= -\frac{V_0R_1R_2}{(R_2-R_1)R^2} \hat a_R
+	\end{align*}
+	And current is
+	\begin{align*}
+		I &= \iint_S \vec J \cdot d\vec S \\
+		  &= \iint_S \sigma \vec E \cdot d\vec S \\
+		  &= \sigma \int_0^{2\pi} \int_0^{\theta_0} -\frac{V_0R_1R_2}{(R_2-R_1)R^2} R^2\sin\theta d\theta d\phi \\
+		  &= -2\pi(1-\cos\theta_0)\sigma \frac{V_0R_1R_2}{R_2-R_1} \\
+		  &= -\frac{2\pi(1-\cos\theta_0)\sigma V_0R_1R_2}{R_2-R_1}
+	\end{align*}
+	Then resistance is
+	\begin{align*}
+		R &= \frac{V}{|I|} \\
+		  &= \frac{R_2-R_1}{2\pi(1-\cos\theta_0)\sigma R_1R_2}
+	\end{align*}
+\end{solution}
+
+\question{Find the resistance of two conducting spheres immersed in a lossy dielectric.}
+
+\begin{solution}
+	no star no do
+\end{solution}
+
+\question{A d-c voltage $V_o$ is applied across a cylindrical capacitor of length $L$. The radii of the inner and outer conductors are $a$ and $b$, respectively. The space between the conductors is filled with two different lossy dielectrics having, respectively, permittivity $\varepsilon_1$ and conductivity $\sigma_1$ in the region $a < r < c$, and permittivity $\varepsilon_2$ and conductivity $\sigma_2$ in the region $c < r < b$. Find the current density in each region and the surface charge density on the two conductors and the interface between the dielectrics.}
+
+\begin{solution}
+	I am lazy, so I will be brief. From Poisson's equation, we obtain
+	$$V = C_1\ln r + C_2$$
+	Substituting initial conditions,
+	$$V = \frac{V_0\ln\frac{r}{a}}{\ln\frac{c}{a}}$$
+	Differentiating,
+	$$\vec E = \frac{V_0}{r\ln\frac{c}{a}} \hat a_r$$
+	Integrating gives
+	$$I = \frac{2\pi\sigma_1LV_0}{\ln\frac{c}{a}}$$
+	Dividing, the resistance of the first layer $(a<r<c)$ is
+	$$R_1 = \frac{\ln\frac{c}{a}}{2\pi\sigma_1L}$$
+	Similarly, the resistance of the second layer is
+	$$R_2 = \frac{\ln\frac{b}{c}}{2\pi\sigma_2L}$$
+	As both layers are in series, total resistance is the sum of the above,
+	$$R = R_1 + R_2 = \frac{1}{2\pi L}\left(\frac{\ln\frac{c}{a}}{\sigma_1} + \frac{\ln\frac{b}{c}}{\sigma_2}\right)$$
+\end{solution}
+\end{questions}
+
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 30}
+\begin{document}
+\maketitle
+
+\section{Magnetic Circuits}
+
+We have a magnetomotive force $V_m = NI_0$, flux $\vec J$, reluctance $R = \frac{L}{\mu S}$, which are analogous to electric circuits. They follow two laws:
+$$\sum_j V_{mj} = \sum_j N_j I_j = \sum_i R_i\Phi_i$$
+$$\sum_i \Phi_i = 0$$
+
+\section{Inductance}
+
+$$L = \frac{\text{amount of magnetic flux produced by source}}{\text{strength of source}} = \frac{\Lambda}{I} = \frac{N\Phi}{I}$$
+
+\begin{ex}
+    Find the self inductance of a toroid. \\
+    By Amp\`ere's Law,
+    \begin{align*}
+        \ointctrclockwise_C \vec B \cdot d\vec l &= \mu_0\mu_r I \\
+        2\pi r B &= \mu_0\mu_r N_1I_1 \\
+        \vec B &= \frac{\mu_0\mu_r N_1I_1}{2\pi r} \hat a_z
+    \end{align*}
+    To be continued...
+\end{ex}
+
+\end{document}

@@ -1,0 +1,185 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 7}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Consider an electric dipole with a moment $\vec{p}$ placed in air above a horizontal conducting plane and its image in the plane such that the electric field in the upper half-space is the same in the original system and in the equivalent system using image theory. Images of three characteristic (vertical, horizontal, and oblique) dipoles are those shown in}
+
+\begin{solution}
+	B. For the vertical case, consider how an image dipole of opposite direction could produce the desired $\vec{E}$ field in the right direction, where it comes out of/into the conductor (if it were in an opposite direction, the fields would cancel each other out by symmetry). For the horizontal case, note that $\vec{E}$ preserves its tangential component. Since net tangential $\vec{E}$ is zero in the conductor, this can be modelled by a dipole in the opposite direction which cancels out this component.
+\end{solution}
+
+\question{Illustrated in the figure below is the application of image theory to a line charge of density $Q'$ in the presence of a $90^\circ$ corner metallic screen in air. The densities of the three image line charges in the figure are:}
+
+\begin{solution}
+	A. This is how a mirror works; $Q$ flips its sign for every reflection. $Q'_3$ is positive as there are two reflections.
+\end{solution}
+
+\question{In an electrostatic system filled with a homogeneous dielectric, of permittivity $\varepsilon$, the potential $V$ is a quadratic function of $x$ (and does not depend on other coordinates). The charge density, $\rho$, in the system is:}
+
+\begin{solution}
+	D, a nonzero constant.
+	$$\vec{E} = -\vec{\nabla}V = -\frac{d}{dx}(ax^2+bx+c)\hat{a}_x = (2aax+b)\hat{a}_x$$
+	Now by Gauss' Law,
+	$$\rho = \varepsilon\vec{\nabla}\cdot\vec{E} = \varepsilon_02a$$
+	where $a$ is a nonzero constant for $V$ to be a quadratic.
+\end{solution}
+
+\question{A metallic conductor carries a steady current of intensity $I$. If the electric field intensity at every point in the conductor is doubled, the current intensity of the conductor in the new steady state equals:}
+
+\begin{solution}
+	C, $2I$. $\vec{J} = \sigma\vec{E}$, where doubling the electric field intensity also doubles the current intensity.
+\end{solution}
+
+\question{The power of Joule’s losses in two conductors appears to be the same. If the current density at every point in the first conductor becomes twice larger, while the electric field intensity at every point in the second conductor is halved, the power of Joule’s losses in the first conductor in the new steady state is:}
+
+\begin{solution}
+	D, 16 times. \\
+	Current is doubled in the first conductor, so the electric field intensity doubles, and so does voltage. Voltage is halved in the second, so electric field intensity is halved, and so is current intensity. Then according to $P=VI$, power loss is now 16 times.
+\end{solution}
+
+\question{Consider each of the following four vectors in the Cartesian coordinate system: $\vec{J}_1 = J_o\hat{a}_x, \vec{J}_2 = J_0\frac{x}{\alpha}\hat{a}_x, \vec{J}_3 = J_0\frac{xy}{\alpha^2}\hat{a}_x, \vec{J}_4 = J_0\left(\frac{y}{\alpha}\right)^2\hat{a}_x$, where $J_0$ and $\alpha$ are constants. Which of them can be the density vector of a steady-state current in a conducting medium?}
+
+\begin{solution}
+	C, $\vec{J}_1$ and $\vec{J}_2$ only. \\
+	This is because for the current to be steady-state, the divergence of $\vec{J}$ must be zero, of which only $\vec{J}_1$ and $\vec{J}_4$ satisfy.
+\end{solution}
+
+\question{Which of the four vectors defined in the previous question can be the density vector of a time-varying current in a conducting medium (consider the answers provided in the previous question)?}
+
+\begin{solution}
+	E. All of them can be it as there are no restrictions.
+\end{solution}
+
+\question{Consider a distribution of steady currents in a conducting medium. The line integral of the current density vector, J, along an arbitrary closed path in this medium is}
+
+\begin{solution}
+	C, need more information. Consider $\vec{J} = J_0\hat{a}_x$ everywhere. Then obviously the integral vanishes. But if this only holds for a wire, then a path that goes from point A to point B via the wire, then from B to A outside the wire, would have a nonzero closed integral.
+\end{solution}
+
+\question{Consider a boundary surface between two conducting media of conductivities $\sigma_1$ and $\sigma_2$, where $\sigma_1 = 2\sigma_2$. Which of the cases shown in Fig. Q3.2 reprsent possible time-invariant current densities vectors on the two sides of the boundary?}
+
+\begin{solution}
+	B. The normal component of $\vec{J}$ remains constant, given there are no surface charges at the boundary. The tangential component is proportional to $\sigma$, hence $\vec{J}_1$ and $\vec{J}_2$ share the same normal component, but the tangential component for the former is greater.
+\end{solution}
+
+\question{Fig. Q3.3 shows steady current density lines near a boundary between two conducting media. Which of the two media is better conductor?}
+
+\begin{solution}
+	B. Normal component is equal, but tangential component varies. Hence, the tangential components can be compared from the slopes. Since the bottom media has a smaller slope, it has a greater tangential component, meaning it has a greater conductivity.
+\end{solution}
+
+\question{If a capacitor with an imperfect dielectric is connected to a time-invariant voltage source, an excess volume charge may be accumulated in the dielectric.}
+
+\begin{solution}
+	A. But what is a lossy dielectric?
+\end{solution}
+
+\question{Fig. Q3.4 shows the cross section of a long homogeneous metallic conductor carrying a steady current. The current densities $\vec{J}_1$ and $\vec{J}_2$ in the two parts of the conductor (see the figure) are related as:}
+
+\begin{solution}
+	B, $\vec{J}_1 = \vec{J}_2$. Current density is constant if current is steady.
+\end{solution}
+
+\question{A conductor is composed from two homogeneous pieces of the same size but of different conductivities $\sigma_1 \neq \sigma_2$. In case (a), the pieces are connected one along the other [Fig. Q3.5(a)]. In case (b), they are connected one behind the other [Fig. Q.3.5(b)]. If a time-invariant current density $I$ is made to flow through the conductor the current density vectors in the two pieces are the same ($\vec{J_1} = \vec{J_2}$) for}
+
+\begin{solution}
+    B, case (b) only. Now $I = \iint \vec J \cdot d\vec S = JS \Rightarrow I \propto J$, since $\vec J$ and $\vec S$ are parallel and constant. Now in case (a), $I$ is difference as the resistances of both segments are different. In case (b), the pieces are in series, so $I$ is constant.
+\end{solution}
+
+\question{Repeat the previous question but considering the electric field intensity vectors in the two pieces, i.e., determine in which of the cases in Fig. Q3.5 $\vec{E_1} = \vec{E_2}$.}
+
+\begin{solution}
+    A, case (a) only. $\vec E = -\vec \nabla V$. We know that in this ideal case, $V$ is linear in each segment in both cases. In case (a), since voltage drop is the same, so is $\vec E$. In the second case, voltage drop is not the same, so neither is $\vec E$.
+\end{solution}
+
+\question{Repeat Question 3.12 but for the electric flux density vectors $\vec{D_1}$ and $\vec{D_2}$ in the two pieces.}
+
+\begin{solution}
+    E, depends on other material properties. This is because $\vec D = \varepsilon \vec E$, where $\varepsilon$ is unknown. If it is known, we can compare $\vec D$ based on $\vec E$, which we know from the previous question.
+\end{solution}
+
+\question{The upper and lower conducting plates of a large parallel-plate capacitor are separataed by a distance $d$ and maintained at potentials $V_0$ and 0, respectively. A dielectric slab of dielectric constant 6.0 and unform thickness $0.8d$ is placed over the lower plate. Assuming negligible fringing effect, determine}
+
+\begin{parts}
+    \part{the potential and electric field distribution in the dielectric slab}
+    \part{the potential and electric field distribution in the air space between the dielectric slab and the upper plate}
+    \part{the surface charge densities on the upper and lower plates}
+    \part{Compare the results in part (b) with those without the dielectric slab}
+\end{parts}
+
+\begin{solution}
+    We know that $\vec D$ is constant, as it doesn't change when passing through the boundaries. Then $\vec E_{\text{top}} = 6\vec E_{\text{bottom}}$. Let voltage difference be $V_1$ for air and $V_2$ for the dielectric slab. Then
+    $$\frac{V_1}{0.2d} = \frac{6V_2}{0.8d} \Rightarrow 2V_1 = 3V_2$$
+    Which gives $V_1 = 0.6V_0, V_2 = 0.4V_0$. The in the dielectric slab, potential is $0.4V_0$, and the electric field is $-\frac{V_0}{2d} \hat a_y$. \\
+    In air, potential is $0.6V_0$ and the electric field is $-\frac{3V_0}{d}$. \\
+    Surface charge densities are given by $\frac{Q}{S} = D = \frac{3\varepsilon_0V_0}{d}$. \\
+    If there were no dielectric slab, potential would simply by $0.2V_0$ and the electric field would be $-\frac{V_0}{d} \hat a_y$.
+\end{solution}
+
+\question{Prove that the scalar potential
+    $$V = \frac{1}{4\pi\varepsilon_0} \int_V \frac{\rho}{R} dV = \frac{1}{4\pi\varepsilon_0} \iiint_V \frac{\rho}R\sin\theta dR d\theta d\phi$$
+    satisfies Poisson's equation
+    $$\vec\nabla^2V = -\frac{\rho}{\varepsilon_0}$$
+}
+
+\begin{solution}
+\end{solution}
+
+\question{Prove that a potential function satisfying Laplace's equation in a given region possesses no maximum or minimum within the region.}
+
+\begin{solution}
+    At an extreme point, the second derivatives of $V$ with respect to $x,y,z$ will share the same sign, so the sum, i.e. the Laplacian of $V$, will never go to zero.
+\end{solution}
+
+\question{Verify that
+    $$V_1 = \frac{C_1}{R}$$
+    and
+    $$V_2 = \frac{C_2z}{(x^2+y^2+z^2)^{1.5}}$$
+where $C_1$ and $C_2$ are arbitrary constants, are solutions of Laplace's equation.}
+
+\begin{solution}
+    \begin{align*}
+        \vec\nabla^2V_1 &= \frac{1}{R^2} \frac{\partial}{\partial R}\left(R^2 \frac{\partial V}{\partial R}\right) \\
+                        &= \frac{1}{R^2} \frac{\partial}{\partial R}(-C_1) \\
+                        &= \frac{1}{R^2} \times 0 \\
+                        &= 0
+    \end{align*}
+    and
+    \begin{align*}
+        \vec\nabla^2V_2 &= \frac{\partial^2V}{\partial x^2} + \frac{\partial^2V}{\partial y^2} + \frac{\partial^2V}{\partial z^2} \\
+                        &= \frac{15C_2x^2z - 3C_2z(x^2+y^2+z^2)}{(x^2+y^2+z^2)^{\frac{7}{2}}} + \frac{15C_2y^2z - 3C_2z(x^2+y^2+z^2)}{(x^2+y^2+z^2)^{\frac{7}{2}}} + \frac{-9C_2z(x^2+y^2+z^2) + 15C_2z^3}{(x^2+y^2+z^2)^{\frac{7}{2}}} \\
+                        &= \frac{C_2z}{(x^2+y^2+z^2)^{\frac{7}{2}}} \times 0 \\
+                        &= 0
+    \end{align*}
+    Trust me bro for this.
+\end{solution}
+
+\question{A point charge $Q$ exists at a distance $d$ above a large grounded conducting plane. Determine}
+
+\begin{parts}
+    \part{The surface charge density $\rho_s$}
+    \part{The total charge induced on the conducting plane.}
+\end{parts}
+
+\begin{solution}
+    Let $Q$ lie on the positive $z$-axis, and the plane be the $xy$-plane. Then using image theory, there is an equivalent $-Q$ on the opposite of the plane. Then
+    \begin{align*}
+        \rho_s &= 2\vec{D} \cdot \hat{a}_z \\
+               &= -\frac{Qd}{2\pi(d^2+r^2)^{\frac{3}{2}}}
+    \end{align*}
+    Integrating yields the total charge
+    \begin{align*}
+        \int_0^{2\pi} \int_0^\infty -\frac{Qd}{2\pi(d^2+r^2)^{\frac{3}{2}}} rdrd\phi &= \int_0^{2\pi} \int_0^{\frac{\pi}{2}} -Qd\frac{d^2\tan\theta\sec^2\theta d\theta}{2\pi d^3\theta\sec^3\theta} d\phi \\
+                                                                                     &= \int_0^{2\pi} \int_0^{\frac{\pi}{2}} -Qd \frac{\tan\theta d\theta}{2\pi d\sec\theta} d\phi \\
+                                                                                     &= \int_0^{2\pi} -\frac{Q}{2\pi} d\phi \\
+                                                                                     &= -Q
+    \end{align*}
+\end{solution}
+
+\end{questions}
+\end{document}

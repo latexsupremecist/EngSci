@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 29}
+\begin{document}
+\maketitle
+
+\section{Magnetic Flux}
+
+\begin{defn}
+    Magnetic Flux is defined as
+    $$\Phi = \iint_S \vec B \cdot d\vec S$$
+    with units of Wb.
+\end{defn}
+
+Since
+$$\vec B = \vec \nabla \times \vec A$$
+we can transform the above to
+$$\Phi = \ointctrclockwise_C \vec A \cdot d\vec l = \iint_S \vec \nabla \times \vec A \cdot d\vec S$$
+
+\begin{ex}
+    Find the magnetic flux within a toriod with a gap. \\
+    Now $\vec B$ field along the toroid is constant. Comparing $\mu$, this gives $H_{\text{gap}} >> H_{\text{core}}$. From Amp\`ere's Law,
+    $$\oint_C \vec H \cdot d\vec l = H_{\text{core}}L_{\text{core}} + H_{\text{gap}}L_{\text{gap}} = NI_0$$
+    Isolating for $B_0$,
+    $$B_0 = \frac{NI_0}{\frac{L_c}{\mu_0\mu_r} + \frac{L_g}{\mu_0}}$$
+    The flux is then
+    $$\Phi = \iint_S \vec B \cdot d\vec{S} \approx B_0S$$
+\end{ex}
+
+\end{document}
