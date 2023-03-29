@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 31}
+\begin{document}
+\maketitle
+
+\section{Hypothesis Testing}
+
+In statistics, a hypothesis is a conjecture about a population.
+
+\begin{ex}[Coins]
+    One hypothesis is that $P(\text{heads}) = 0.5$. Another hypothesis is $P(\text{heads}) \neq 0.5$.
+\end{ex}
+
+The status quo is called the \textbf{null hypothesis}. 
+
+\begin{ex}[Die]
+    $$H_0: P(1) = \frac{1}{6}$$
+    $$H_1: P(6) > P(1)$$
+\end{ex}
+
+\begin{defn}
+    A Type I error is a false positive, and a type II error is a false negative.
+\end{defn}
+
+\begin{ex}
+    $$H_0: \mu = 1000$$
+    $$H_1: \mu \neq 1000$$
+    We have a sample $X_1,\dots,X_{25}$, $\sigma = 50$. Then we want to find the probability that the we have a Type I error. We reject $H_0$ if the sample mean deviates from $\mu$ by more than 10. Then the desired probability becomes
+    $$P(\overline X < 990) + P(\overline X > 1010)$$
+    Assuming a normal ditribution, note that $\frac{\sigma}{\sqrt{n}} = \frac{50}{\sqrt{25}} = 10$. Then the probability is
+    $$P(Z < -1) + P(Z > 1) = 0.1587 \times 2 = 0.32$$
+    which is quite high. If we want to reduce this, we can have a wider region or increase $n$.
+\end{ex}
+
+\end{document}
