@@ -55,5 +55,38 @@
 	\end{solution}
 \end{parts}
 
+\question{Do the steps from eqn. 3.28 to 3.35 in the book.}
+
+\begin{solution}
+    For 3.29, we need to compute $\frac{\partial N_\uparrow}{\partial U}$. From 3.25,
+    \begin{align*}
+        U &= \mu B(N-2N_\uparrow) \\
+        N_\uparrow &= \frac{1}{2}\left(N-\frac{U}{\mu B}\right)
+    \end{align*}
+    So the partial derivative becomes $-\frac{1}{2\mu B}$. Then differentiating the last line of 3.28,
+    \begin{align*}
+        \frac{\partial S}{\partial N_\uparrow} &= k\frac{\partial}{\partial N_\uparrow} \left(N\ln N - N_\uparrow \ln N_\uparrow - (N-N_\uparrow)\ln(N-N_\uparrow)\right) \\
+                                               &= k(-\ln N_\uparrow - 1 + \ln(N-N_\uparrow) + 1) \\
+                                               &= k\ln\frac{N-N_\uparrow}{N_\uparrow} \\
+                                               &= -k\ln\frac{N-\frac{U}{\mu B}}{N+\frac{U}{\mu B}}
+    \end{align*}
+    Combining yields 3.30.
+    \begin{align*}
+        \frac{1}{T} &= \frac{k}{2\mu B}\ln\left(\frac{N-\frac{U}{\mu B}}{N+\frac{U}{\mu B}}\right) \\
+        \frac{2\mu B}{kT} &= \ln\left(\frac{N-\frac{U}{\mu B}}{N+\frac{U}{\mu B}}\right) \\
+        \exp\left(\frac{2\mu B}{kT}\right) &= \frac{N-\frac{U}{\mu B}}{N+\frac{U}{\mu B}} \\
+        \frac{U}{\mu B}\left(1+\exp\left(\frac{2\mu B}{kT}\right)\right) &= N\left(1-\exp\left(\frac{2\mu B}{kT}\right)\right) \\
+        U &= N\mu B\left(\frac{1-\exp\left(\frac{2\mu B}{kT}\right)}{1+\exp\left(\frac{2\mu B}{kT}\right)}\right)
+    \end{align*}
+    The heat capacity is given by
+    \begin{align*}
+        C_B &= \left(\frac{\partial U}{\partial T}\right)_{N,B} \\
+            &= -\frac{N\mu B}{\cosh^2\frac{\mu B}{kT}} \left(-\frac{\mu B}{kT^2}\right) \\
+            &= \frac{N\mu^2B^2}{kT^2\cosh^2\frac{\mu B}{kT}} \\
+            &= Nk\frac{(\mu B/kT)^2}{\cosh^2(\mu B/kT)}
+    \end{align*}
+    3.35 is trivial.
+\end{solution}
+
 \end{questions}
 \end{document}
