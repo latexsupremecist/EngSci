@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 14}
+\usepackage{fontspec}
+\setmainfont{Comic Sans MS}
+\begin{document}
+\maketitle
+
+At equilibrium, a system of two gases would tend to the same pressure and temperature, where entropy is maximised. This means
+$$\frac{\partial S_1}{\partial N_1} = \frac{\partial S_2}{\partial N_2}$$
+Now we define this as
+$$-\frac{\mu}{T} = \frac{\partial S}{\partial N}$$
+where $\mu$ is the chemical potential, with units of energy. Using our favourite equation
+$$S = kN\left[\ln\left(\frac{V}{N}\left(\frac{U}{3N}\right)^{\frac{3}{2}}\left(\frac{4\pi m}{h^2}\right)^{\frac{3}{2}}\right) + \frac{5}{2}\right]$$
+Then differentiating and skipping the steps
+\begin{align*}
+    \frac{\mu}{T} &= -k\left[\ln\left(\frac{V}{N}\left(\frac{U}{3N}\right)^{\frac{3}{2}}\left(\frac{4\pi m}{h^2}\right)^{\frac{3}{2}}\right) + \frac{5}{2}\right] + kN\frac{5}{2N} \\
+    \mu &= -kT\ln\left[\frac{V}{N}\left(\frac{1}{2}kT\right)^{\frac{3}{2}}\left(\frac{4\pi m}{h^2}\right)^{\frac{3}{2}}\right] \\
+        &= -kT\left[\ln\left(\frac{1}{n} \frac{1}{\lambda_{th}^3}\right) + C\right]
+\end{align*}
+where $C$ is a constant and $n$ is the number density. With the negative sign, $\mu$ increases with $n$, which makes sense.
+
+\end{document}
