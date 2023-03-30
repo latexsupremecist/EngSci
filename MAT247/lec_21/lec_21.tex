@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 21}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+For Complexification, we get $V \subset V_{\C}$, $T \in \mathcal L(V)$ becomes $T_{\C} \in \mathcal L(V_{\C})$. For any subspace $W \subseteq V$, we have $W_{\C} \subseteq V_{\C}$.
+
+\begin{prop}
+    A subspace $U \subseteq V_{\C}$ is of the form $U = W_{\C}$ for some $W \subseteq V$ if and only if $U$ is invariant under complex conjugation. Explicitly,
+    $$v \in U \Rightarrow \overline v \in U$$
+\end{prop}
+
+\begin{proof}
+    If $U = W_{\C}$, then it is invariant under a complex conjugate. Conversely, suppose $U$ is invariant under complex conjugation. Then choose a basis $v_1,\dots,v_n$ of $U$. Then
+    $$U = \text{span}\{v_1,\dots,v_n\} = \text{span}\{v_1,\dots,v_k,\overline{v_1},\dots,\overline{v_k}\} = \text{span}\{\Re(v_1),\dots,\Re(v_k),\Im(v_1),\dots,\Im(v_k)\}$$
+    Then we let $W$ be the real span of $\Re(v_1),\dots,\Re(v_k),\Im(v_1),\dots,\Im(v_k) \subseteq V$. Then $U=W^{\C}$.
+\end{proof}
+
+\begin{ex}
+    Let $V = \R^2, V_{\C} = \C^2$, and $U = \text{span}\left\{\begin{pmatrix} 1 \\ i \end{pmatrix}\right\}$. \\
+    Since
+    $$\overline{\begin{pmatrix} 1 \\ i \end{pmatrix}} = \begin{pmatrix} 1 \\ -i \end{pmatrix} \notin U$$
+    We see $U \neq W_{\C} \forall W \subseteq V$.
+\end{ex}
+
+\begin{prop}
+    Let $V$ be a real vector space. Given an inner product on $V$ there exists a unique extension to an inner product on $V_{\C}$.
+\end{prop}
+
+\begin{proof}
+    For uniqueness, we assume an extended inner product space. Then
+    \begin{align*}
+        \langle v_1,v_2 \rangle &= \langle \Re(v_1)+i\Im(v_1),\Re(v_2)+i\Im(v_2) \rangle \\
+                                &= \langle \Re(v_1),\Re(v_2) \rangle + \langle \Im(v_1),\Im(v_2) \rangle + i \langle \Im(v_1),\Re(v_2) \rangle - i \langle \Re(v_1),\Im(v_2) \rangle
+    \end{align*}
+    where all the inner products above are for $V_{\C}$. For $v_1,v_2 \in V$, we see $\langle \cdot,\cdot \rangle_{V_{\C}} = \langle \cdot,\cdot \rangle_V$, as expected. So for real vector pairs, the inner product of $V_{\C}$ is uniquely determined. Then we also note that all inner products on the right hand side of the last line are between real vectors, so the entire expression is uniquely determined by the inner product on $V$. \\
+    To show existance, we take the same formula. To show that it is an inner product, note that
+    $$\langle v,v \rangle = \langle \Re(v_1),\Re(v_2) \rangle + \langle \Im(v_1),\Im(v_2) \rangle \geq 0$$
+    and considering the real and imaginary components of the equation,
+    $$\langle v_1,v_2 \rangle = \overline{\langle v_2,v_1 \rangle}$$
+    and finally
+    $$\langle v_1+v_2,v \rangle = \langle v_1,v \rangle + \langle v_2,v \rangle, \langle \lambda v_1,v_2 \rangle = \lambda \langle v_1,v_2 \rangle$$
+    Hence it is an inner product.
+\end{proof}
+
+\begin{ex}
+    Not every inner product on $V_{\C}$ arises from complexification. For $V=\R^2,V_{\C}=\C^2$, let $\alpha \in \C, |\alpha| < 1$. Then for the standard basis,
+    $$\langle e_1,e_1 \rangle = 1, \langle e_2,e_2 \rangle = 1, \langle e_1,e_2 \rangle = \alpha, \langle e_2,e_1 \rangle = \overline \alpha$$
+    restricts to an inner product on $V$ only if $\alpha \in \R$. In fact, there is a 1-1 correspondance between inner products on $\C^n$ and strictly positive matrices. In the case above,
+    $$P = \begin{pmatrix} 1 & \alpha \\ \overline \alpha & 1 \end{pmatrix}$$
+\end{ex}
+
+\begin{lem}
+    For $T \in \mathcal L(V)$,
+    $$(T^*)_{\C} = (T_{\C})^*$$
+\end{lem}
+
+\begin{proof}
+    Exercise.
+\end{proof}
+
+In particular, $T$ is normal, self-adjoint, skew adjoint, unitary, etc if and only of $T_{\C}$ shares the same property.
+
+\section{Normal Operators on Real Vector Spaces}
+
+Recall on a complex inner product space $V$, an operator is normal if and only if $V$ has an orthonormal basis of eigenvectors of $T$. For real inner product spaces this is false. Insetad,
+
+\begin{thm}
+    An operator $T$ on a real inner product space is self-adjoint if and only if $V$ has an orthonormal basis of eigenvectors of $T$.
+\end{thm}
+
+\begin{proof}
+    If $T$ is self-adjoint, we can construct a basis by induction. We use an existing eigenvector to construct this.
+    If $T$ has an orthonormal basis of eigenvectors, then $Tv = \lambda v \Rightarrow T^*v = \overline \lambda v = \lambda v$.
+\end{proof}
+
+\begin{thm}
+    Suppose $V$ is a real inner product space with a dimension of 2, and $T \in \mathcal L(V)$ is not self-adjoint. Then the following are equivalent.
+    \begin{itemize}
+        \item $T$ is normal
+        \item $\exists$ orthonormal basis such that $T$ has matrix $\begin{pmatrix} a & -b \\ b & a \end{pmatrix},b>0$
+        \item $\forall$ orthonormal basis, $T$ has the matrix $\begin{pmatrix} a & -b \\ b & a \end{pmatrix}, b \neq 0$
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+    From the last statement, we can choose a basis where $b \neq 0$. If $b>0$ we are done. Then if $b$ is negative, we use the new basis $u_1 = v_1,u_2 = -v_2$. This implies the second statement. From the second statement, observe that $TT^*=T^*T$, so $T$ is normal. From the first statement, we choose any orthonormal basis, and let $A$ be its matrix. Then we see
+    $$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, AA^* = A^*A \Rightarrow b^2=c^2, (b-c)(a-d) = 0$$
+    Then $b=c$ or $b=-c$. If $b=c$, the matrix is self adjoint, which is false. Hence $b=-c\neq0$, implying $a=d$. This gives the desired form in the third statement.
+\end{proof}
+\end{document}
