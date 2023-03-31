@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 30}
+\begin{document}
+\maketitle
+
+\section{Induction}
+
+\begin{ex}
+    Find the self inductance of a toroid. \\
+    By Amp\`ere's Law,
+    \begin{align*}
+        \ointctrclockwise_C \vec B \cdot d\vec l &= \mu_0\mu_r I \\
+        2\pi r B &= \mu_0\mu_r N_1I_1 \\
+        \vec B &= \frac{\mu_0\mu_r N_1I_1}{2\pi r} \hat a_z
+    \end{align*}
+    Then
+    \begin{align*}
+        \Phi &= \iint \vec B \cdot d\vec S \\
+             &= \int_0^h \int_a^b \frac{\mu_0\mu_rNI\hat a_\phi}{2\pi r} \cdot drdz \hat a_\phi \\
+             &= \frac{\mu_0\mu_r NIh}{2\pi} \ln\frac{b}{a}
+    \end{align*}
+    And substituting,
+    $$L = \frac{N\Phi}{I} = \frac{\mu_0\mu_r N^2h}{2\pi} \ln \frac{b}{a}$$
+\end{ex}
+
+\begin{ex}[Mutual Inductance]
+    Mutual inductance is when an external source creates a flux through a second loop. Note that inductance of loop 1 on loop 2 is equal to inductance of loop 2 on loop 1. Then consider an infinitely long wire with current $I_1$ pointing upwards, with a loop $I_2$ whose centre is length $d$ on the right of the first wire, with radius $a$ rotating clockwise. Now
+    $$L_{21} = \frac{N_1\Phi_{21}}{I_2} = L_{12} = \frac{N_2\Phi_{12}}{I_1}$$
+    We know for an infinitely long wire,
+    $$B_1 = \frac{\mu_0I_1}{2\pi d}$$
+    If $d>>a$, we can approximate
+    $$\iint \vec B \cdot d \vec S \approx \frac{\mu_0I_1}{2\pi d} \pi a^2 = \frac{\mu_0aI_1a^2}{2d}$$
+    And
+    $$L_{12} = L_{21} = \frac{N_2\Phi_{12}}{I_1} = \frac{\mu_0a^2}{2d}$$
+\end{ex}
+
+\section{Magnetic Energy}
+
+It takes energy to create a current distribution (consider Lenz' Law). 
+$$W_m = \frac{1}{2} \iiint_V \vec B \cdot \vec H dV = \frac{1}{2} \iiint_V \mu_0\mu_r |\vec H|^2 dV$$
+
+\begin{ex}[Solenoids]
+    Inside a solenoid, $H = nI$, and $B$ is proportional to $H$. Thus the only way to change magnetic energy is by changing turn density $N$, the current $I$, or the volume $V$. The stored energy within a solenoid is then
+    $$W_m = \frac{1}{2} \iiint_V \mu_0\mu_r |\vec H|^2 dV = \frac{1}{2} \mu_0\mu_r \pi a^2 l n^2I^2 = \frac{\mu_0\mu_r \pi a^2N^2I^2}{2l}$$
+    But $W_m = \frac{1}{2} LI^2$, giving the inductance
+    $$L = \frac{2W_m}{I^2} = \frac{\mu_0\mu_r \pi a^2 N^2}{l}$$
+\end{ex}
+
+\begin{ex}[Energy Storage in Coupled Toroids]
+    Consider a pair of "coaxial" toroids. Find the mutual and self inductances, as well as stored magnetic energy. The larger toroid with radius 1.25 cm has 4000 turns, and the smaller toroid with radius with radius 0.5 cm has 2000 turns. The toroid itself has radius 2.7 cm. From Amp\`ere's Law along the contour of the toroid, we estimate the fields
+    $$B_1 \approx \frac{N_1I_1\mu_0\mu_r}{2\pi r_0}$$
+    and
+    $$B_2 \approx \frac{N_2I_2\mu_0\mu_r}{2\pi r_0}$$
+    Equating energy,
+    $$W = \frac{1}{2} L_{11}I_1^2 + \frac{1}{2} L_{22}I_2^2 + L_{12}I_1I_2 = \sum \frac{1}{2} \iiint_V \vec B \cdot \vec H dV$$
+\end{ex}
+
+\end{document}
