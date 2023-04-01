@@ -1,0 +1,87 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 9}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{}
+
+\begin{parts}
+    \part{Find the Cholesky decomposition of the following matrix:
+        $$\begin{pmatrix} 9 & -6 & 3 \\ -6 & 5 & -3 \\ 3 & -3 & 4 \end{pmatrix}$$
+    }
+
+    \begin{solution}
+        Cholesky decomposition only holds for positive matrices.
+        $$B = \begin{pmatrix} 3 & -2 & 1 \\ 0 & 1 & -1 \\ 0 & 0 & \sqrt{2} \end{pmatrix}$$
+    \end{solution}
+
+    \part{The matrix
+        $$\begin{pmatrix} 7 & -6 & 3 \\ -6 & 5 & -3 \\ 3 & -3 & 4 \end{pmatrix}$$
+    does not admit a Cholesky decomposition. Explain why.}
+
+    \begin{solution}
+        We have only defined a Cholesky decomposition for positive matrices. The characteristic polynomial for this matrix (denoted by $M$) is
+        $$q_M(z) = \det(zI-M) = (z-7)(z-5)(z-4) + (-6)(-3)3 + 3(-6)(-3) - (z-7)(-3)(-3) - (-6)(-6)(z-4) - 3(z-5)3 = z^3 - 16z^2 + 29z + 4$$
+        Now $q_M(0) = 4 > 0$, and $q_M(-1) = -42 < 0$. By the intermediate value theorem, it has a root strictly between -1 and 0. This means $M$ admits a negative eigenvalue, so it is not positive, and does not admit a Cholesky decomposition.
+    \end{solution}
+
+\end{parts}
+
+\question{Suppose $V$ is a real vector space, $\dim V < \infty$.}
+
+\begin{parts}
+    \part{Suppose $\dim V$ is even. Prove that there exists $T \in \mathcal L(V)$ with $T^2=-I$.}
+
+    \begin{solution}
+        Since $V$ has an even dimension, let the dimension be $2n$ and label any basis as $\{a_1,\dots,a_n,b_1,\dots,b_n\}$. Then define
+        $$Ta_i = b_i, Tb_i = -a_i$$
+        Now for any basis vector $a_i$, $T^2a_i = Tb_i = -a_i = -Ia_i$. For any basis vector $b_i$, $T^2b_i = T(-a_i) = -b_i = -Ib_i$. Since $T^2v = -Iv$ holds for every basis vector,
+        $$T^2 = -I$$
+    \end{solution}
+
+    \part{Suppose $\dim V$ is odd. Prove that there does not exist $T \in \mathcal L(V)$ with $T^2 = -I$.}
+
+    \begin{solution}
+        Proof by contradiction. Assume such a $T$ exists. Note that $T$ cannot have any eigenvalues/eigenvectors, or else for the pair $v,\lambda$,
+        $$T^2v = \lambda^2v = -Iv = -v \Rightarrow \lambda^2 = -1$$
+        which has no solution for real $\lambda$. Also, since $T^2=-I$ is of full rank, $T$ itself is of full rank. Then for any nonzero $v_1$, we see $v_2 = Tv_1$ is linearly independent. Now we construct a basis by induction. First select any nonzero $v_1$, and define $w_1 = Tv_1$. Note that $Tw_1 = -v_1$, since $T^2=-I$. For the induction step, let there be a list of linearly independent vectors $v_1,w_1,\dots,v_k,w_k$ which span a $T$-invariant subspace $V_k$. If it spans $V$, then $V$ has an even dimension. Or else, pick any vector $v_{k+1}$ from $V - V_k$. Then let $w_{k+1} = Tv_{k+1}$. We know that $v_{k+1}$ and $w_{k+1}$ are linearly independent. Moreover, if $w_{k+1} \in V_k$, then
+        $$w_{k+1} = \sum_{i=1}^k a_iv_i + \sum_{i=1}^k b_iw_i = T\left(\sum_{i=1}^k -a_iw_i + \sum_{i=1}^k b_iv_i\right) = T(v_{k+1})$$
+        Since $T$ is of full rank, this means $v_{k+1} \in V_k$, which cannot be true. Hence, we have found 2 more linearly independent vectors. Since this process eventually stops ($V$ is finite dimensional), it must stop at a point where it has a basis of an even length, so $\dim V$ cannot be odd. Technically, the first step does not hold if $V = \{0\}$, but then $V$ has a dimension of 0, which is not odd. Therefore, $T^2 = -I$ implies $V$ has an even dimension, which is false, hence the contradiction.
+    \end{solution}
+
+\end{parts}
+
+\question{Recall that an operator $S$ is nilpotent if $S^N=0$ for some natural number $N$. In particular, the zero operator is nilpotent.}
+
+\begin{parts}
+    \part{Prove that if $V$ is a real vector space of odd dimension, then there does not exist $T \in \mathcal L(V)$ such that $T^2+T+I$ is nilpotent.}
+
+    \part{For $V=\R^2$, give an example of an operator $T \in \mathcal L(V)$ such that $T^2+T+I=0$.}
+
+    \begin{solution}
+        We first let
+        $$T = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+        Then
+        $$T^2 + T + I = \begin{pmatrix} a^2+bc+a+1 & b(a+d+1) \\ c(2a+1) & bc+d^2+d+1 \end{pmatrix} = 0$$
+        Observe the top right entry. If $b=0$, then substituting into the bottom right entry means
+        $$d^2+d+1=0$$
+        which has no solution for real $d$. Hence $b\neq 0$, and $a+d+1=0$. Similarly, from the bottom left entry, if $c=0$, then the top left entry becomes $a^2+a+1$ which does not vanish for all real $a$. Hence $2a+1=0$. Solving yields $a=d=-\frac{1}{2}$. Then substituting into the top left or the bottom right entry, $bc=-\frac{3}{4}$. Then any combination of $b$ and $c$ that produces this combination suffices. Picking $b=1,c=-\frac{3}{4}$, we have
+        $$T = \begin{pmatrix} -\frac{1}{2} & 1 \\ -\frac{3}{4} & -\frac{1}{2} \end{pmatrix} \text{ such that } T^2 + T + I = 0$$
+    \end{solution}
+
+\end{parts}
+
+\question{Suppose $V$ is a real vector space and $T \in \mathcal L(V)$. Prove that the following are equivalent.}
+
+\begin{parts}
+    \part{All eigenvalues of $T_{\C}$ are real.}
+    \part{There exists a basis of $V$ with respec to which the matrix of $T$ is upper triangular.}
+\end{parts}
+
+
+\end{questions}
+\end{document}

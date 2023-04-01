@@ -1,0 +1,149 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 7}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Let $A \in M_{n\times n}(\C)$ be an upper triangular matrix. Show that A is normal if and only if A is diagonal.}
+
+\begin{solution}
+	If $A$ is diagonal, then obviously the unit vectors $e_i$ are eigenvectors with eigenvalue $A_{ii}$. Hence there is an orthonormal basis composed of eigenvectors, implying $A$ is normal. \\
+	Then assume $A$ is normal. Now $A^* = \overline{A^t}$. So
+	$$AA^*_{ik} = \sum_j A_{ij}A^*_{jk} = \sum_j A_{ij}\overline{A_{kj}}$$
+	and
+	$$A^*A_{ik} = \sum_j A^*_{ij}A_{jk} = \sum_j \overline{A_{ji}}A_{jk}$$
+	Since $A$ is normal, $AA^* = A^*A$. By induction, one can prove that the non diagonal elements of each row are all zero. For the first row, put $i=k=1$, then
+	\begin{align*}
+		\sum_j A_{1j}\overline{A_{1j}} &= \sum_j \overline{A_{j1}}A_{j1} \\
+		\sum_j |A_{1j}|^2 &= |A_{11}|^2 \\
+		\sum_{j>1} |A_{1j}|^2 &= 0
+	\end{align*}
+	Since $A$ is upper triangular, the latter terms of the sum on the right hand side vanish. So $A_{1j} = 0$ for $j > 1$. The non diagonal elements of the first row vanish. Now assume this holds for $i=k=1,\dots,m$. For $i=k=m+1$,
+	\begin{align*}
+		\sum_j A_{m+1,j}\overline{A_{m+1,j}} &= \sum_j \overline{A_{j,m+1}}A_{j,m+1} \\
+		\sum_j |A_{m+1,j}|^2 &= |A_{m+1,m+1}|^2 \\
+		\sum_{j>m+1} |A_{m+1,j}|^2 &= 0
+	\end{align*}
+	Since $A$ is upper triangular, the terms for $j>m+1$ on the sum on the right hand side vanish. The terms for $j<m+1$ are also zero, as they are non diagonal elements of previous rows, which are assumed to be zero for $i=k=1,\dots,m$. So $A_{m+1,j} = 0$ for $j > m+1$. It is also zero for $j < m+1$ as $A$ is upper triangular. Hence the non diagonal elements of the $m+1$th row vanish. By induction, only the diagonal elements of $A$ can be nonzero, meaning $A$ is diagonal.
+\end{solution}
+
+\question{Let $V$ be a finite dimensional complex inner product space, and $P \in \mathcal L(V)$ be a projection. Show that $P$ is normal if and only if it is an orthogonal projection.}
+
+\begin{solution}
+	If $P$ is normal, then
+	$$P = \sum_\lambda \lambda P_\lambda$$
+	and
+	$$P^2 = \sum_\lambda \lambda^2 P_\lambda$$
+	Let $v$ be an eigenvector with eigenvalue $\lambda$. Then for $P$ to be a projection, $P^2 = P$, so
+	$$P^2v = \lambda^2 v = Pv = \lambda v$$
+	So $\lambda = 0$ or $\lambda = 1$. This holds for all eigenvalues. Then we can arrange the eigenvectors as $v_1,\dots,v_k,v_{k+1},v_n$ where $v_1,\dots,v_k$ all have eigenvalues of 1, and the rest have eigenvalues of 0. Then $P$ is an orthogonal projection on the subspace $\text{span}\{v_1,\dots,v_k\} \subseteq V$. \\
+	Now if $P$ is an orthogonal projection, let $v_1,\dots,v_k$ be an orthonormal basis for ran$(P)$. Then $Pv_i = v_i \forall 1 \leq i \leq k$. Extend this to an orthonormal basis for $V$, namely $v_1,\dots,v_k,v_{k+1},\dots,v_n$. As $P$ is a projection, $Pv_i = 0 \forall i > k$. Then all of $v_i$ are eigenvectors with eigenvalues 0 or 1. Since $V$ has an orthonormal basis of eigenvectors, $P$ is normal.
+\end{solution}
+
+\question{Let $V$ be a finite dimensional complex inner product space, and $T \in \mathcal L(V)$.}
+
+\begin{parts}
+	\part{Show that if $v$ is an eigenvector of $T^*T$, with nonzero eigenvalue, then $Tv$ is an eigenvector of $TT^*$, with the same eigenvalue.}
+	\part{Prove that $TT^*$ and $T^*T$ have the same eigenvalues, with the same multiplicities.}
+\end{parts}
+
+\begin{solution}
+	If $v$ is an eigenvector of $T^*T$ with eigenvalue $\lambda$, then
+	$$TT^*(Tv) = T(T^*T)v = T(\lambda v) = \lambda Tv$$
+	Hence $Tv$ is an eigenvector of $TT^*$ with eigenvalue $\lambda$. \\
+	Then consider $E(\lambda,T^*T)$ where $\lambda \neq 0$. Let $v_1,\dots,v_m$ be an orthonormal basis for it. Consider $Tv_1,\dots,Tv_m$. Obviously this set of vectors are all in $E(\lambda,TT^*)$. In fact, they are linearly independent. Or else
+	$$Tw = 0$$
+	for some nonzero $w$ which is a linear combination of $v_1,\dots,v_m$. Then $T^*Tw = 0$. However, as $v_1,\dots,v_m$ are eigenvectors, this also means $T^*Tw = \lambda w \neq 0$ with both $\lambda$ and $w$ being nonzero. This yields a contradiction. \\
+	Now we show that $Tv_1,\dots,Tv_m$ span $E(\lambda,TT^*)$. By contradiction, let
+	$$Tv_1,\dots,Tv_m,v_{m+1}$$
+	be a linearly independent list in $E(\lambda,TT^*)$. Substituting $S = T^*$, we can similarly show that
+	$$STv_1,\dots,STv_m,Sv_{m+1}$$
+	is a linearly independent list of length $m+1$ in $E(\lambda,T^*T)$. Then $v_1,\dots,v_m$ with a shorter length of $m$ cannot be a basis of $E(\lambda,T^*T)$, which is a contradiction. Hence we know $TT^*$ and $T^*T$ have the same nonzero eigenvalues with the same multiplicities. \\
+	Note that both $TT^*$ and $T^*T$ are self adjoint, so they are normal. This means there is an orthonormal basis of $V$ consisting of eigenvectors of $TT^*$, same for $T^*T$. This also means $V$ has a direct sum decomposition of eigenspaces of $TT^*$ for all of its eigenvalues, similar for $T^*T$. Let $k$ be the sum of dimensions of all nonzero eigenspaces of $TT^*$ or $T^*T$ (they are the same). Then the kernel of both $TT^*$ and $T^*T$ are equal to $n-k$. If $n=k$, then they both do not have 0 as an eigenvalue. Or else, they both have 0 as an eigenvalue, with kernels of the same dimension. In both cases, $TT^*$ and $T^*T$ have the same eigenvalues (including 0) with the same multiplicities.
+\end{solution}
+
+\question{Let $T: \C^3 \rightarrow \C^3$ be the operator give on standard basis vectors as
+	$$Te_1 = e_3, Te_2 = ie_1, Te_3 = -3ie_2$$
+}
+
+\begin{parts}
+	\part{Compute $\sqrt{T^*T}$ and $\sqrt{TT^*}$.}
+	\part{Compute $U_1 = T(\sqrt{T^*T})^{-1}$, and verify that it is unitary.}
+	\part{Compute $U_2 = (\sqrt{TT^*})^{-1}T$, and verify that it is unitary.}
+\end{parts}
+
+\begin{solution}
+	$$\langle T(a_1e_1+a_2e_2+a_3e_3), e_1 \rangle = \langle a_2ie_1 -3a_3ie_2 + a_1e_3, e_1 \rangle = a_2i = \langle a_1e_1+a_2e_2+a_3e_3,T^*e_1 \rangle$$
+	thus $T^*e_1 = ie_2$.
+	$$\langle T(a_1e_1+a_2e_2+a_3e_3), e_2 \rangle = \langle a_2ie_1 -3a_3ie_2 + a_1e_3, e_2 \rangle = -3a_3i = \langle a_1e_1+a_2e_2+a_3e_3,T^*e_2 \rangle$$
+	thus $T^*e_2 = -3ie_3$.
+	$$\langle T(a_1e_1+a_2e_2+a_3e_3), e_3 \rangle = \langle a_2ie_1 -3a_3ie_2 + a_1e_3, e_3 \rangle = a_1 = \langle a_1e_1+a_2e_2+a_3e_3,T^*e_3 \rangle$$
+	thus $T^*e_3 = e_1$. \\
+	Then
+	$$T*Te_1 = e_1, T^*Te_2 = -e_2, T^*Te_3 = -9e_3$$
+	and
+	$$TT^*e_1 = -e_1, TT^*e_2 = -9e_2, TT^*e_3 = e_3$$
+	The square roots are then
+	$$\sqrt{T^*T} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & i & 0 \\ 0 & 0 & 3i \end{pmatrix}$$
+	and
+	$$\sqrt{TT^*} = \begin{pmatrix} i & 0 & 0 \\ 0 & 3i & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+	\begin{align*}
+		U_1 &= T(\sqrt{T^*T})^{-1} \\
+		    &= \begin{pmatrix} 0 & i & 0 \\ 0 & 0 & -3i \\ 1 & 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & -i & 0 \\ 0 & 0 & -\frac{i}{3} \end{pmatrix} \\
+		    &= \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & -1 \\ 1 & 0 & 0 \end{pmatrix}
+	\end{align*}
+	Then $U_1e_1 = e_3, U_1e_2 = e_1, U_1e_3 = -e_2$. $U_1$ is obviously invertible, as its determinant is nonzero.
+	$$\langle a_1e_1+a_2e_2+a_3e_3,b_1e_1+b_2e_2+b_3e_3 \rangle = a_1b_1+a_2b_2+a_3b_3$$
+	and
+	\begin{align*}
+		\langle U_1(a_1e_1+a_2e_2+a_3e_3),U_1(b_1e_1,b_2e_2,b_3e_3) \rangle &= \langle a_2e_1-a_3e_2+a_1e_3,b_2e_1-b_3e_2+b_1e_3 \rangle \\
+										    &= a_1b_1+a_2b_2+a_3b_3 \\
+										    &= \langle a_1e_1+a_2e_2+a_3e_3,b_1e_1+b_2e_2+b_3e_3 \rangle
+	\end{align*}
+	So $U_1$ is unitary.
+	\begin{align*}
+		U_2 &= (\sqrt{TT^*})^{-1}T \\
+		    &= \begin{pmatrix} -i & 0 & 0 \\ 0 & -\frac{i}{3} & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & i & 0 \\ 0 & 0 & -3i \\ 1 & 0 & 0 \end{pmatrix} \\
+		    &= \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & -1 \\ 1 & 0 & 0 \end{pmatrix}
+	\end{align*}
+	Then $U_2e_1 = e_3, U_2e_2 = e_1, U_2e_3 = -e_2$. $U_2$ is obviously invertible, as its determinant is nonzero.
+	\begin{align*}
+		\langle U_2(a_1e_1+a_2e_2+a_3e_3),U_2(b_1e_1+b_2e_2+b_3e_3) \rangle &= \langle a_2e_1-a_3e_2+a_1e_3,b_2e_1-b_3e_2+b_1e_3 \rangle \\
+										    &= a_1b_1+a_2b_2+a_3b_3 \\
+										    &= \langle a_1e_1+a_2e_2+a_3e_3,b_1e_1+b_2e_2+b_3e_3 \rangle
+	\end{align*}
+	So $U_2$ is unitary.
+\end{solution}
+
+\question{Let $V$ be a finite-dimensional complex inner product space. Are the following claims true or false? Justify your answer.}
+
+\begin{parts}
+	\part{If $T \in \mathcal L(V)$ is a positive operator, and $S \in \mathcal L(V)$ with $S^2=T$, then $S$ must be self-adjoint.}
+	\part{If $T \in \mathcal L(V)$ is self-adjoint, then the operator $e^T$ (defined using functional calculus) is positive.}
+	\part{If $T \in \mathcal L(V)$ is diagonalizable, then $T$ is normal.}
+\end{parts}
+
+\begin{solution}
+	Let $T$ be positive. $S$ does not have to be self adjoint. Note that the zero matrix is a positive operator, as all eigenvalues are 0, which is nonnegative, and it is obviously self adjoint. Then let
+	$$S = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, T = S^2 = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$$
+	Then
+	$$\left\langle S\begin{pmatrix} 1 \\ 2 \end{pmatrix},\begin{pmatrix} 3 \\ 4 \end{pmatrix} \right\rangle = \left\langle \begin{pmatrix} 2 \\ 0 \end{pmatrix},\begin{pmatrix} 3 \\ 4 \end{pmatrix} \right\rangle = 6$$
+	but
+	$$\left\langle \begin{pmatrix} 1 \\ 2 \end{pmatrix},S\begin{pmatrix} 3 \\ 4 \end{pmatrix} \right\rangle = \left\langle \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 4 \\ 0 \end{pmatrix} \right\rangle = 4 \neq \left\langle S\begin{pmatrix} 1 \\ 2 \end{pmatrix},\begin{pmatrix} 3 \\ 4 \end{pmatrix} \right\rangle$$
+	So $S^* \neq S$, and $S$ is not self adjoint. \\
+	If $T$ is self adjoint, then $e^T$ is positive. Recall
+	$$T = \sum_\lambda \lambda P_\lambda$$
+	with spectrum Spec$(T) \subseteq \R$. Using functional calculus,
+	$$f(T) = \sum_\lambda f(\lambda) P_\lambda$$
+	where for $f(T) = e^T, f(\lambda) = e^\lambda > 0$
+	which always holds for positive $\lambda$. Now there is an orthonormal basis of eigenvectors of $e^T$ (it shares the same eigenvectors as $T$ which is normal), so $e^T$ is normal. Since all of its eigenvalues are real and positive, it is self adjoint and positive. \\
+	Now let $T$ be diagonalizable. It \textbf{does not} have to be normal. Consider
+	$$T = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix} = UDU^{-1} = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix}$$
+	Where $U$ is invertible and $D$ is diagonal as defined above. We see the first and third matrices in the last equality have a product of $I$, verifying this. Then the only eigenvectors (up to multiplication by a nonzero factor) are $\begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$ with eigenvalues 1 and 2 respectively. However, they are not orthonormal, as their inner product can never be zero. Then there is no orthonormal basis of eigenvectors, so $T$ is not normal. This gives a counterexample.
+\end{solution}
+
+\end{questions}
+\end{document}

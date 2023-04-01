@@ -1,0 +1,149 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 8}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Let $T \in \mathcal L(V)$ be an operator on a finite-dimensional complex inner product space. Show that $T$ is unitary if and only if and only if all its singular values are equal to 1.}
+
+\begin{solution}
+	If $T$ is unitary, let $v$ be any eigenvectors with eigenvalue $\lambda$. Then
+	$$v = Iv = T^*Tv = \lambda\overline{\lambda}v = |\lambda|^2v \Rightarrow |\lambda| = 1$$
+	Since $T$ is unitary, $T$ is normal, and so $V$ has an orthonormal basis of eigenvectors of $T$, namely $v_1,\dots,v_n$. As shown above, $v_1,\dots,v_n$ are also eigenvalues of $T^*T$ with eigenvalues 1. Thus all singular values are $\sqrt{1} = 1$. \\
+	If all singular values of $T$ are equal to 1, then let $U = \sqrt{T^*T}$. $U$ is normal, with all eigenvalues equal to 1. Then let $v_1,\dots,v_n$ be an orthonormal basis of $V$ that are eigenvectors of $U$. Then
+	$$U\left(\sum_{i=1}^n a_iv_i\right) = \sum_{i=1}^n a_iv_i = I\left(\sum_{i=1}^n a_iv_i\right)$$
+	So $U=I$. Then
+	$$T^*T = U^2 = I^2 = I$$
+	Also note that $T$ is invertible, as $I$ is invertible. Then $T$ is unitary.
+\end{solution}
+
+\question{Consider the following complex matrix
+	$$A = \begin{pmatrix} 1 & i & 1 \\ -1 & 0 & -2 \\ 1 & 2i & 0 \end{pmatrix}$$
+}
+
+\begin{parts}
+	\part{Find a singular value decomposition of $A$. That is, give matrices $U_1,U_2,D$, where $U_1,U_2$ are unitary and $D$ is diagonal, with positive diagonal entries, such that
+		$$A = U_2DU_1^{-1}$$
+	}
+	\part{Using (a), find the polar decomposition of $A$.}
+\end{parts}
+
+\begin{solution}
+	$$A^*A = \begin{pmatrix} 1 & -1 & 1 \\ -i & 0 & -2i \\ 1 & -2 & 0 \end{pmatrix} \begin{pmatrix} 1 & i & 1 \\ -1 & 0 & -2 \\ 1 & 2i & 0 \end{pmatrix} = \begin{pmatrix} 3 & 3i & 3 \\ -3i & 5 & -i \\ 3 & i & 5 \end{pmatrix}$$
+	The characteristic polynomial is
+	\begin{align*}
+		q(z) &= (z-3)(z-5)(z-5) - 3i(-i)3 - 3(-3i)i - (z-3)(-i)i - 3i(-3i)(z-5) - 3\times(z-5)\times3 \\
+		     &= z^3 - 13z^2 + 55z - 75 - 9 - 9 - z + 3 - 9z + 45 - 9z + 45 \\
+		     &= z^3 - 13z^2 + 36z \\
+		     &= z(z-4)(z-9)
+	\end{align*}
+	The eigenvector and eigenvalue pairs are
+	$$v_1 = \frac{1}{\sqrt{6}} \begin{pmatrix} -2 \\ -i \\ 1 \end{pmatrix}, \lambda_1 = 0, v_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ i \\ 1 \end{pmatrix}, \lambda_2 = 4, v_3 = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ -i \\ 1 \end{pmatrix}, \lambda_3 = 9$$
+	Hence
+	$$w_2 = \frac{1}{2}\begin{pmatrix} 1 & i & 1 \\ -1 & 0 & -2 \\ 1 & 2i & 0 \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ i \\ 1 \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ -1 \\ -1 \end{pmatrix}$$
+	and
+	$$w_3 = \frac{1}{3} \begin{pmatrix} 1 & i & 1 \\ -1 & 0 & -2 \\ 1 & 2i & 0 \end{pmatrix} \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ -i \\ 1 \end{pmatrix} = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}$$
+	Then we can extend this to form a basis by defining
+	$$w_1 = \frac{1}{\sqrt{6}} \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$$
+	Now
+	$$U_1 = \begin{pmatrix} -\frac{2}{\sqrt{6}} & 0 & \frac{1}{\sqrt{3}} \\ -\frac{i}{\sqrt{6}} & \frac{i}{\sqrt{2}} & -\frac{i}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \end{pmatrix}$$
+	Its inverse is its adjoint, which is its complex conjugate. Hence
+	$$A = \begin{pmatrix} \frac{2}{\sqrt{6}} & 0 & \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} \\ -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \end{pmatrix} \begin{pmatrix} 0 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix} \begin{pmatrix} -\frac{2}{\sqrt{6}} & \frac{i}{\sqrt{6}} & \frac{1}{\sqrt{6}} \\ 0 & -\frac{i}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{3}} & \frac{i}{\sqrt{3}} & \frac{1}{\sqrt{3}} \end{pmatrix}$$
+	where the first matrix is $U_2$, the second matrix is $D$, and the third is $U_1^{-1}$. \\
+	We also get the polar decomposition for free.
+	$$A = U_2DU_1^{-1} = (U_2U_1^{-1})(U_1DU_1^{-1}) = UR$$
+	where $U$ is unitary and $R$ is positive. Then
+	$$U = \begin{pmatrix} \frac{2}{\sqrt{6}} & 0 & \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} \\ -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \end{pmatrix} \begin{pmatrix} -\frac{2}{\sqrt{6}} & \frac{i}{\sqrt{6}} & \frac{1}{\sqrt{6}} \\ 0 & -\frac{i}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{3}} & \frac{i}{\sqrt{3}} & \frac{1}{\sqrt{3}} \end{pmatrix} = \begin{pmatrix} -\frac{1}{3} & \frac{2i}{3} & \frac{2}{3} \\ -\frac{2}{3} & \frac{i}{3} & -\frac{2}{3} \\ \frac{2}{3} & \frac{2i}{3} & -\frac{1}{3} \end{pmatrix}$$
+	and
+	$$R = \begin{pmatrix} -\frac{2}{\sqrt{6}} & 0 & \frac{1}{\sqrt{3}} \\ -\frac{i}{\sqrt{6}} & \frac{i}{\sqrt{2}} & -\frac{i}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \end{pmatrix} \begin{pmatrix} 0 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix} \begin{pmatrix} -\frac{2}{\sqrt{6}} & \frac{i}{\sqrt{6}} & \frac{1}{\sqrt{6}} \\ 0 & -\frac{i}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{3}} & \frac{i}{\sqrt{3}} & \frac{1}{\sqrt{3}} \end{pmatrix} = \begin{pmatrix} 1 & i & 1 \\ -i & 2 & 0 \\ 1 & 0 & 2 \end{pmatrix}$$
+	so
+	$$A = \begin{pmatrix} -\frac{1}{3} & \frac{2i}{3} & \frac{2}{3} \\ -\frac{2}{3} & \frac{i}{3} & -\frac{2}{3} \\ \frac{2}{3} & \frac{2i}{3} & -\frac{1}{3} \end{pmatrix} \begin{pmatrix} 1 & i & 1 \\ -i & 2 & 0 \\ 1 & 0 & 2 \end{pmatrix}$$
+\end{solution}
+
+\question{Let $T \in \mathcal L(V,W)$ be a linear operator between finite-dimensional inner product spaces. For any orthonormal basis $v_1,\dots,v_n$ of $V$, prove that
+$$||Tv_1||^2 + \dots ||Tv_n||^2 = s_1^2 + \dots + s_n^2$$
+where $s_1,\dots,s_n$ are the singular values of $T$.}
+
+\begin{solution}
+	Let $U$ be the matrix
+	$$U = \begin{pmatrix} v_1 & v_2 & \dots & v_n \end{pmatrix}$$
+	Then note that $U$ is a change of basis, hence it is invertible. Also
+	\begin{align*}
+		\langle Ux,Uy \rangle &= \left\langle U\left(\sum_i a_ie_i\right),U\left(\sum_i b_ie_i\right) \right\rangle \\
+				      &= \left\langle \sum_ia_iv_i, \sum_ib_iv_i \right\rangle \\
+				      &= \sum_i a_ib_i \\
+				      &= \left\langle \sum_ia_ie_i,\sum_ib_ie_i \right\rangle \\
+				      &= \langle x,y \rangle
+	\end{align*}
+	Thus $U$ is unitary. Note that for any unitary matrix $W$ with columns $w_1,\dots,w_n$, note that
+	$$1 = \langle e_i,e_i \rangle = \langle We_i,We_i \rangle = \langle w_i,w_i \rangle$$
+	so all columns have a norm of 1. Now for $v_1,\dots,v_n$ to be orthonormal, the norm of $v_i$ has to be 1. We define $f_1,\dots,f_n$ to be the orthonormal basis consisting of eigenvectors of $\sqrt{T^*T}$. Defining $v$ in terms of $f$ with coefficients $a$,
+	$$v_i = \sum_j a_{ji}f_j$$
+	where $a_{ij}$ is the $ij$th component of $U$.
+	\begin{align*}
+		||v_i|| &= 1 \\
+		\langle v_i,v_i \rangle &= 1 \\
+		\left\langle \sum_j a_{ji}f_j,\sum_j a_{ji}f_j \right\rangle &= 1 \\
+		\sum_j |a_{ji}|^2 &= 1
+	\end{align*}
+	Similarly, $U^* = \overline{U^t}$ is also unitary, with columns
+	$$w_i = \sum_j \overline{a_{ij}}f_j$$
+	Doing the same to $w_i$, we see
+	$$\sum_j |a_{ij}|^2 = \sum_j |\overline{a_{ij}}|^2 = 1$$
+	where the first equality is because a complex number and its conjugate share the same norm. Now
+	\begin{align*}
+		\sum_i ||Tv_i||^2 &= \sum_i \langle Tv_i,Tv_i \rangle \\
+				  &= \sum_i \langle v_i,T^*Tv_i \rangle \\
+				  &= \sum_i \left\langle \sum_ja_{ji}f_j,\sum_ja_{ji}s_j^2f_j \right\rangle \\
+				  &= \sum_i \sum_j |a_{ji}|^2s_j^2 \\
+				  &= \sum_j s_j^2 \sum_i |a_{ji}|^2 \\
+				  &= \sum_j s_j^2
+	\end{align*}
+\end{solution}
+
+\question{Let $V$ be a finite-dimensional inner product space. For $T \in \mathcal L(V)$ define the 'operator norm'
+	$$||T|| = \text{sup}\{||Tv||:v \in V,||v||=1\}$$
+}
+
+\begin{parts}
+	\part{For $T \in \mathcal L(V)$ is positive, prove that $||T||$ equals the largest eigenvalue of $T$.}
+
+	\begin{solution}
+		Let $v_1,\dots,v_n$ be an orthonormal basis of eigenvectors of $T$ with eigenvalues $\lambda_1,\dots,\lambda_n$, such that $\lambda_1$ is (one of the) largest eigenvalue. Then let $||v|| = 1$ where
+		$$v = \sum_i a_iv_i$$
+		and
+		$$\sum_i |a_i|^2 = 1$$
+		Now
+		$$||Tv||^2 = \langle Tv,Tv \rangle = \left\langle \sum_i a_i\lambda_iv_i,\sum_i a_i\lambda_iv_i \right\rangle = \sum_i \lambda_i^2|a_i|^2 \leq \sum_i \lambda_1^2|a_i|^2 = \lambda_1^2$$
+		Taking the square root of both sides,
+		$$||Tv|| \leq \lambda_1$$
+		Putting $v=v_1$, it is obvious that $||Tv|| = \lambda_1$, so the maximum value of $||Tv||$ where $||v||=1$ is $\lambda_1$. Hence $||T|| = \lambda_1$, which is the largest eigenvalue of $T$.
+	\end{solution}
+
+	\part{For $T \in \mathcal L(V)$ arbitrary, prove that $||T||$ equals the largest singular value of $T$.}
+
+	\begin{solution}
+		Using polar decomposition, $T = UR$. We use the same $v$ as defined in the previous part. Since $U$ is unitary,
+		$$\delta_{ij} = \langle v_i,v_j \rangle = \langle Uv_i,Uv_j \rangle$$
+		So $Uv_i,\dots,Uv_n$ is an orthonormal basis. Define
+		$$f_i = Uv_i$$
+		Now $R$ is a diagonal matrix with diagonal entries $s_1,\dots,s_n$, which are all singular values of $T$, with the greatest singular value being $s_k$. Then
+		$$||Tv||^2 = \langle Tv,Tv \rangle = \left\langle \sum_i a_is_if_i,\sum_i a_is_if_i \right\rangle = \sum_i |a_i|^2s_i^2 \leq \sum_i |a_i|^2s_k^2 = s_k^2$$
+		So $||Tv|| \leq s_k$. Again, it is obvious that $||Tv_k|| = s_k$, so the maximum value of $||Tv|| with ||v||=1$ is $s_k$, or $||T|| = s_k$, the largest singular value of $T$.
+	\end{solution}
+
+	\part{Prove that
+		$$||T^*T|| = ||T||^2$$
+	}
+
+	\begin{solution}
+		Similar to above, let $s_1,\dots,s_n$ be the singular values of $T$, with $s_k$ being the largest singular value. By the first part, since $T^*T$ is always positive for any $T$, we know $||T^*T|| = s_k^2$. From the second part, $||T|| = s_k$. Then obviously
+		$$||T^*T|| = s_k^2 = ||T||^2$$
+	\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}

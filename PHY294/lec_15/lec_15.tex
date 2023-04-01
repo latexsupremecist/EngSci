@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 15}
+\begin{document}
+\maketitle
+
+\section{Thermodynamic Identity for Entropy}
+
+We call entropy $S$ the thermodynamic potential (but entropy "wants" to increase while potential "wants" to decrease). If we take the total differential,
+
+\begin{equation}\label{siden}
+    dS = \frac{\partial S}{\partial U}dU + \frac{\partial S}{\partial V}dV + \frac{\partial S}{\partial N}dN = \frac{1}{T} dU + \frac{p}{T} dV - \frac{\mu}{T} dN
+\end{equation}
+
+This holds under quasistatic infinitesimal changes of $U,V,N$. This needs to be quasistatic or else we do not have good definitions for $T, p$, etc, without equilibrium.
+
+\section{Thermodynamic Identity for Energy}
+
+Rearranging $S=k\ln\Omega$ to put $U$ as the subject, we obtain
+$$e^{\frac{S}{kN}} = U^{\frac{3}{2}}f(N,V)$$
+where $f$ is a constant function of $N$ and $V$. Multiplying Equation \ref{siden} by $T$,
+$$dU = TdS - pdV + \mu dN$$
+Note also $U$ is a function of $S,V,N$, so
+$$dU = \frac{\partial U}{\partial S}dS + \frac{\partial U}{\partial V}dV + \frac{\partial U}{\partial N}dN$$
+Then comparing like terms,
+$$T = \frac{\partial U}{\partial S}, p = -\frac{\partial U}{\partial V}, \mu = \frac{\partial U}{\partial N}$$
+
+Now extreme points are found at $dS=0$, but we do not know if it is a maximum, minimum, or neither. We also require $C_V > 0, \frac{\partial p}{\partial V} < 0, \frac{\partial \mu}{\partial N} > 0$. Heat capacity has to be positive, pressure and volume always go in the opposite directions, and chemical potential increases with number density (volue is held constant, number of particles increase).
+
+\end{document}
