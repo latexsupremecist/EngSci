@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 32}
+\begin{document}
+\maketitle
+
+\section{Time-Varying Fields}
+
+Rationale: we forgot about time in the previous lectures. The Maxwell equations we use only hold when everything is constant with respect to time. Now
+\begin{align*}
+    \vec\nabla \times \vec E &= -\frac{\partial\vec B}{\partial t} \\
+    \vec\nabla \times \vec H &= \vec J + \frac{\partial\vec D}{\partial t} \\
+    \vec\nabla \cdot \vec D &= \rho_v \\
+    \vec\nabla \cdot \vec B &= 0
+\end{align*}
+
+\section{Faraday's Law}
+
+A changing magnetic flux causes a current to flow in a closed loop. Then integrating Faraday's Law,
+$$V_{\text{emf}} = \oint_C \vec E \cdot d\vec l = -\frac{\partial}{\partial t} \iint_S \vec B \cdot d\vec S = -\frac{\partial\Phi}{\partial t}$$
+
+\section{Lenz' Law}
+
+\begin{defn}[Lenz' Law]
+    The inductive emf will generate a current whose own magnetic field opposes the change in the original magnetic flux which produced the induced emf.
+\end{defn}
+
+Note that this is a restatement of the conservation of energy. If the current is in the opposite direction, this would cause emf to increase, which causes the current to further increase, creating a positive feedback loop. \\
+Further note that a current is only generated when there is a closed circuit. \\
+
+\begin{ex}
+    Find the induced emf if $I(t) = I_0\cos(\omega t)$ for a toriod with a square cross section. \\
+    We approximate
+    $$\vec B(t) = \frac{\mu I(t)}{2\pi r}$$
+    Then
+    \begin{align*}
+        \Phi(t) &= \iint_S \vec B(t) \cdot d\vec S \\
+                &= \int_0^c \int_a^b \frac{\mu I(t)}{2\pi r} drdz \\
+                &= \frac{\mu I(t)}{2\pi} c\ln\frac{b}{a} \\
+                &= \frac{\mu_0\mu_r c\ln\frac{b}{a}}{2\pi} I_0\cos(\omega t)
+    \end{align*}
+    Now
+    $$V_{\text{emf}} = -N\frac{\partial\Phi}{\partial t} = \frac{M\mu_0\mu_r c\ln\frac{b}{a}I_0\omega}{2\pi}\sin(\omega t) = V_0\sin(\omega t) = L\frac{di}{dt}$$
+\end{ex}
+
+\end{document}
