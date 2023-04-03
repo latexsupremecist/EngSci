@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 16}
+\begin{document}
+\maketitle
+
+\section{Boltzmann Distribution}
+
+Here, we assume the system is in thermal contact with a reservoir. $E$ is the energy of the system, $U_R$ is the energy of the reservoir, and the total energy $U_T = E + U_R$ is fixed. Then the probability of any microstate is
+
+\begin{align*}
+    P &= \frac{1}{\Omega_{S+R}(U_T)} \\
+      &= \frac{1}{\sum_E \Omega(E)\Omega_R(U_T-E)}
+\end{align*}
+
+Then
+$$P(\text{system in a given microstate with }E_S) = P(S+R\text{ in any microstate with }U_T) \Omega_R(U_T-E_S)$$
+and
+$$\frac{P(S\text{ in }E_{S_1})}{P(S\text{ in }E_{S_2})} = \frac{\Omega_R(U_T-E_{S_1})}{\Omega_R(U_T-E_{S_2})} = \frac{\exp\left(\frac{1}{k}S_R(U_T-E_{S_1})\right)}{\exp\left(\frac{1}{k}S_R(U_T-E_{S_2})\right)}$$
+where $S_R$ is the entropy of the reservoir. Then note that
+$$S_R(U_T-E_S) \approx S_R(U_T) - E_S\frac{\partial S}{\partial U} \Big |_{U=U_T} = S_R(U_T) - \frac{E_S}{T}$$
+Using a Taylor Series approximation, this simplifies the ratio to
+$$\frac{P(E_{S_1})}{P(E_{S_2})} = \exp\left(-\frac{E_{S_1}-E_{S_2}}{kT}\right) \Rightarrow \frac{P(E_{S_1})}{\exp\left(-\frac{E_{S_1}}{kT}\right)} = \frac{P(E_{S_2})}{\exp\left(-\frac{E_{S_2}}{kT}\right)}$$
+This holds for arbitrary $S_1,S_2$, so we can denote this constant by $z$. Now
+$$P(E_S) = \frac{1}{z} \exp\left(-\frac{E_S}{kT}\right)$$
+Since total probability is 1,
+$$\sum_S \frac{1}{z} \exp\left(-\frac{E_S}{kT}\right) = 1 \Rightarrow z = \sum_{S'} \exp\left(-\frac{E_{S'}}{kT}\right)$$
+we can also sum over energy by plugging in the multiplicity of energies $N(E)$.
+\begin{align*}
+    z &= \sum_E \exp\left(-\frac{E}{kT}\right)N(E) \\
+      &= \sum_E \exp\left(-\frac{E}{kT}\right) \exp\left(\frac{S(E)}{k}\right) \\
+      &= \sum_E \exp\left(-\frac{1}{kT}(E-TS(E))\right)
+\end{align*}
+where $F=E-TS$ is the Helmholtz free energy. \\
+Substituting,
+$$P(E_S) = \frac{\exp\left(-\frac{E_S}{kT}\right)}{\sum_{S'} \exp\left(-\frac{E_{S'}}{kT}\right)}$$
+\end{document}
