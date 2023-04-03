@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 33}
+\begin{document}
+\maketitle
+
+\section{1 versus 2 Tailed Tests}
+
+In our example,
+$$H_0: \mu = \mu_0$$
+$$H_1: \mu \neq \mu_0$$
+With $\mu_0 = 10$. We define the critical region to be $\overline x < 8, \overline x > 12$, where $H_0$ is rejected. \\
+In a one-sided case,
+$$H_0: \mu = 0$$
+$$H_1: \mu > 0$$
+with the critical region $\overline x > 2$.
+
+\section{Hypothesis Testing vs Confidence Interval}
+
+For a Type I error (false positive), we specify a critical region $R$, then find $\alpha$. Recall
+$$P(\overline X \in R) = 1 - \alpha$$
+Now we can also specify $\alpha$ and find a critical region.
+
+\section{P Value}
+
+\begin{defn}
+    The $p$ value is defined as
+    $$p = P(|Z| > |z|)$$
+\end{defn}
+
+Then $p = 2P(Z \geq |z|)$. If $p$ is close to 1, then the values of $z$ are very close to zero, suggesting $H_0$ is likely true. If $p$ is close to 0, then conversely, $H_0$ is likely false.
+
+\begin{ex}
+    $H_0: \mu = 5, H_1: \mu \neq 5$ with sample $n=40, \overline x = 5.5, \sigma = 1$. Then
+    $$z = \frac{\overline x - \mu_0}{\sigma/\sqrt{n}} = \frac{5.5-5}{1/\sqrt{40}} = 3.16$$
+    Then the $p$ value is
+    $$p = 2P(Z > 3.16) = 2(1 - \Phi(3.16)) = 0.0016$$
+    So we reject $H_0$ and take $H_1$.
+\end{ex}
+
+\end{document}
