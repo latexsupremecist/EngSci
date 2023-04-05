@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 34}
+\begin{document}
+\maketitle
+
+\section{Function Approximation}
+
+We have $n$ pairs of $(x_i,y_i)$, and we want to approximate $y=f(x)$. It is helpful to define an error, where $e_i = f(x_i)-y_i$.
+
+\subsection{Linear Regression}
+We use the approximate function $y=ax+b$. Then we define the total error, which we wish to minimise.
+$$\mathcal E = \sum_{i=1}^n e_i^2$$
+We can minimise this by differentiating the error.
+\begin{align*}
+    \frac{\partial\mathcal E}{\partial a} &= 0 \\
+    \sum_{i=1}^n 2(ax_i+b-y_i)x_i &= 0 \\
+    \sum_{i=1}^n ax_i^2 + b\sum_{i=1}^n x_i - \sum_{i=1}^n x_iy_i &= 0
+\end{align*}
+Similarly,
+\begin{align*}
+    \frac{\partial\mathcal E}{\partial b} &= 0 \\
+    \sum_{i=1}^n 2(ax_i+b-y_i) &= 0 \\
+    a\sum_{i=1}^n x_i + bn - \sum_{i=1}^n y_i &= 0
+\end{align*}
+
+Solving the simultaneous equations,
+\begin{align*}
+    a &= \frac{\sum_{i=1}^n (x_i-\overline x)y_i}{\sum_{i=1}^n (x_i-\overline x)^2} \\
+    b &= \overline y - a\overline x
+\end{align*}
+
+\section{MLE Approximation}
+
+We define $e_i$ similarly, but we note that they are realisations of normal random variables with mean 0 and variance $\sigma^2$. Then $\max_{a,b}L$ gives the same answer.
+
+\end{document}
