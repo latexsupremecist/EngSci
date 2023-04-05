@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 33}
+\begin{document}
+\maketitle
+
+\section{Inductance}
+
+\begin{ex}
+    Consider a falling magnet with north pointing downwards, about to fall through a coil. The applied $\vec B$ field points downwards and is increasing. The induced $\vec B$ field is pointing upwards, and it is also increasing. As the magnet passes the coil, the applied $\vec B$ field still points downwards, but it is decreasing. The induced $\vec B$ field points upwards, and is increasing.
+\end{ex}
+
+\begin{ex}
+    Considering a loop moving to the right with a constant speed. It is sandwiched by a pair of finitely large magnets, with the south pole on top. Then
+    $$V_{\text{emf}} = -N\frac{\partial\Phi}{\partial t} = -\frac{\partial\Phi}{\partial t} = -B\frac{\partial A}{\partial t}$$
+\end{ex}
+
+Note that in Faraday's Law, as used above, $\Phi$ refers to total flux or net flux. We can also write
+$$V_{\text{emf}} = -\frac{\partial\Phi_{\text{net}}}{\partial t} = -\frac{\partial}{\partial t}(\Phi_{\text{app}} + \Phi_{\text{ind}}) = Ri_{\text{ind}} + L\frac{di_{\text{ind}}}{dt} = V_R + V_L$$
+which is just a RL circuit. This can be solved as a differential equation, or we can use the approximation
+$$i_{\text{ind}} \approx \frac{V_{\text{emf}}}{R}$$
+which holds if $L$ or $\frac{di}{dt}$ is small.
+
+\end{document}
