@@ -1,0 +1,36 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 11}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Consider a monatomic ideal gas that lives at a height $z$ above sea level, so each molecule has potential energy $mgz$ in addition to its kinetic energy.}
+
+\begin{parts}
+    \part{Show that the chemical potential is the same as if the gas were at sea level, plus an additional term $mgz$}
+
+    \begin{solution}
+        The new potential energy is given by
+        $$U' = U + mgzN$$
+        Then
+        $$\mu' = \frac{dU'}{dN} = \frac{dU}{dN} + \frac{d}{dN} mgzN = \mu + mgz$$
+    \end{solution}
+
+    \part{Suppose you have two chunks of helium gas, one at sea level and one at height $z$, each having the same temperature and volume. Assuming that they are in diffusive equilibrium, show that the number of molecules in the higher chunk is
+    $$N(z) = N(0)e^{-mgz/kT}$$
+}
+
+    \begin{solution}
+        \begin{align*}
+            -kT\ln[\frac{V}{N_0}\left(\frac{2\pi mkT}{h^2}\right)^3/2] &= -kT\ln[\frac{V}{N_B}\left(\frac{2\pi mkT}{h^2}\right)^{3/2}] + mgz \\
+            -kT\ln\frac{1}{N_0} &= -kT\ln\frac{1}{N_B} + mgz \\
+            \ln\frac{N_0}{N_B} &= \frac{mgz}{kT} \\
+            N(z) &= N_0 e^{-\frac{mgz}{kT}}
+        \end{align*}
+    \end{solution}
+\end{parts}
+\end{questions}
+\end{document}
