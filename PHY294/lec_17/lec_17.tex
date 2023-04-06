@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 17}
+\begin{document}
+\maketitle
+
+\section{Boltzmann Distribution}
+
+In a thermostat ($T,V,N$), the probability of a microstate is given by
+
+$$P(\text{microstate}) = \frac{1}{z} e^{-\frac{E}{kT}}$$
+
+And the probability of a system with energy $E$ is
+
+$$P(\text{energy}) = P(\text{microstate})\Omega(E) = \frac{1}{z} e^{-\frac{E-TS(E)}{kT}}$$
+
+The most likely energy is where the numerator of the exponent. Defining the free energy
+
+$$F = E-TS(E)$$
+
+we can simply look for the minimum free energy. Note that
+
+$$dF = -SdT - pdV + \mu dN$$
+
+The proof is left as an exercise for the reader. Now given $F$, we see for a low $T$, $F$ is dominated by the $E$ term, so the lowest energy arrangement is the most likely. Similarly, for a high $T$, $F$ is dominated by the $-TS$ term, so the arrangement where $S$ is maximised is the most likely. This is the \textbf{order disorder} transition.
+
+\section{Working with z}
+
+\begin{align*}
+    z &= \sum_{q_1=0}^\infty \sum_{q_2=0}^\infty \dots \sum_{q_N=0}^\infty e^{-\frac{\hbar\omega}{kT}q_1} e^{-\frac{\hbar\omega}{kT}q_2} \times \dots \times e^{-\frac{\hbar\omega}{kT}q_N} \\
+      &= \left(\sum_{q_1=0}^\infty e^{-\frac{\hbar\omega}{kT}q_1}\right)\left(\sum_{q_2=0}^\infty e^{-\frac{\hbar\omega}{kT}q_2}\right)\times\dots\times\left(\sum_{q_N=0}^\infty e^{-\frac{\hbar\omega}{kT}q_N}\right) \\
+      &= (z_1)^N
+\end{align*}
+
+Now $z_1$ itself is a geometric series, so
+$$z = (z_1)^N = \left(\frac{1}{1-e^{-\hbar\omega/kT}}\right)^N$$
+
+We attempt to find the average energy. Now letting $\beta = \frac{1}{kT}$,
+
+\begin{align*}
+E_{\text{avg}} &= \sum_{\text{microstate}} EP \\
+               &= \sum_{\text{microstate}} -\frac{1}{z} \frac{\partial}{\partial\beta} e^{-\beta E} \\
+               &= -\frac{1}{z} \frac{\partial}{\partial\beta}\left(\sum e^{-\beta E}\right) \\
+               &= -\frac{1}{z} \frac{\partial z}{\partial\beta} \\
+               &= -\frac{\partial}{\partial\beta}\ln z \\
+               &= N\frac{\partial}{\partial\beta}\ln\left(1-e^{-\beta\hbar\omega}\right) \\
+               &= \frac{N\hbar\omega}{e^{\frac{\hbar\omega}{kT}}-1}
+\end{align*}
+
+Now at high $T$, we approximate $e^x-1 \approx x$, so that gives us
+$$\overline E \approx NkT$$
+\end{document}
