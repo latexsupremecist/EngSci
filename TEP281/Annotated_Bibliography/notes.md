@@ -26,3 +26,15 @@ How does code-switching affect expression?
 
 ### Code-switching culturally
 - negative light (bad at both languages)
+
+### Code-switching with couples
+
+#### Summary
+- ELF: English lingua franca
+- focus on the private sphere
+- relaxed attitude
+
+#### Discussion
+- code switching dooesn't always mean anything
+- product of shared languages
+- 
