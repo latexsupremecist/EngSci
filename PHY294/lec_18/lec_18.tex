@@ -1,0 +1,22 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 18}
+\begin{document}
+\maketitle
+
+\section{Maxwell Speed Distribution}
+
+Pick one particle out of $~10^{23}$. The particle is the system, and all the other particles form the reservoir. We know the probability of a microstate is
+$$P = \frac{1}{z} e^{-\frac{E}{kT}} = \frac{1}{z} e^{-\frac{mc^2}{2kT}}$$
+Then consider a "velocity sphere", with axis $v_x,v_y,v_z$. Then considering the probability of the particle having speed in $[v,v+dv]$,
+$$P(v)dv = Ce^{-\frac{mv^2}{2kT}}v^2dv$$
+Since probability is normalised, we can solve for the constant, and
+$$P(v)dv = 4\pi v^2 \left(\frac{m}{2\pi kT}\right)^{\frac{3}{2}} e^{-\frac{mv^2}{2kT}}dv$$
+Then one can also show
+$$\left\langle \frac{mv^2}{2} \right\rangle = \int_0^\infty P(v) \frac{mv^2}{2}dv = \frac{3}{2}kT$$
+The average energy is (from the last lecture)
+$$E = \frac{\hbar\omega}{e^{\frac{\hbar\omega}{kT}}-1}$$
+which is approximately $kT$ when $\hbar\omega << kT$ and $\hbar\omega e^{-\frac{\hbar\omega}{kT}}$ when $kT << \hbar\omega$.
+$$\frac{\sqrt{\langle E^2 \rangle - \langle E \rangle^2}}{\langle E \rangle} = \frac{1}{\sqrt{N}}$$
+\end{document}
