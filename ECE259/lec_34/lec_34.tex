@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 34}
+\begin{document}
+\maketitle
+
+\section{Magnetostatics}
+
+\begin{ex}[Transformers from a Magnetic Circuit Perspective]
+    Consider the coils and turns $N_1i_1$ and $N_2i_2$ respectively. Using Kirchoff's Voltage Law,
+    $$-N_1i_i + R_C\Phi + N_2i_2 = 0$$
+    We know that for ideal transformers,
+    $$\frac{i_1}{i_2} = \frac{N_2}{N_1}$$
+    and
+    $$\frac{V_1}{V_2} = \frac{N_1}{N_2}$$
+    This means $R\Phi = 0$, or $\mu_r \rightarrow \infty$.
+\end{ex}
+
+Changes in magnetic flux can be due to
+\begin{itemize}
+    \item Transformer emf: static loop with time-varying magnetic field
+    \item Motional emf: moving loop with static magnetic field
+    \item Combination of both
+\end{itemize}
+
+\section{Eddy Currents}
+
+If a time-varying magnetic field is applied to a conducting material the result will be that "eddy currents" will flow within this material.
+
+\begin{ex}
+    Consider the case where a lossy material ($\sigma \neq 0$) is exposed to a changing magnetic field
+    \begin{align*}
+        \vec\nabla \times \vec E &= -\frac{\partial \vec B}{\partial t} \\
+        \frac{1}{r}[\frac{\partial}{\partial r} (rE_\Phi) - \frac{\partial}{\partial\Phi}(E_r)] \hat a_z &= B_0\sin\omega t \\
+        \frac{\partial}{\partial r}(rE_\Phi) &= rB_0\sin\omega t \\
+        rE_\Phi &= \frac{r^2B_0\sin\omega t}{2} + C \\
+        E_\Phi &= \frac{rB_0}{\sin\omega t}{2} + \frac{C}{r} \\
+               &= \frac{rB_0}{\sin\omega t}{2}
+    \end{align*}
+\end{ex}
+
+Eddy currents can be used for braking, because by Lenz' Law, a force is induced to oppose the change. These are great for contactless braking. However, braking force decreases with motion. They can also be used in induction stoves, where eddy currents in the coocking utensils produce heat through resistance, reducing heat loss. (Traditionally, heat energy is conducted from the stove to the cooking utensil.)
+
+\end{document}
