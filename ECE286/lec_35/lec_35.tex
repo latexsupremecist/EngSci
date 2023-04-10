@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 35}
+\begin{document}
+\maketitle
+
+\section{Support Vector Machines}
+
+Regression
+$$y=f(x), x \in \R^m, y \in \R$$
+Classification
+$$x \in \R^n, y \in \{-1,1\}$$
+
+\section{Hyperplane}
+
+Let $w\in\R^n$ be a vector, and $b \in \R$. Then consider
+$$w^Tx-b = 0$$
+
+\begin{ex}
+    $$w = \begin{pmatrix} 2 \\ 1 \end{pmatrix}, b = 1$$
+    Then the solution is
+    $$x = \begin{pmatrix} x_1 \\ x_2\end{pmatrix}, x_2 = 1-2x_1$$
+\end{ex}
+
+\subsection{Data}
+
+Consider the data $(x_i,y_i)$, with $x_i \in \R^m$ and $y_i = \pm 1$. The problem is given a new $x$, predict $y=ax+b$. Now the support vector machine predicts that $y=-1$ if $w^Tx-b<0$, vice versa.
+
+\subsection{Optimisation}
+
+We want to do this in a way that maximises the degree of "parallel shift" the hyperplane can make while still making the same predictions. Note that the distance is given by
+$$w^Tx^* = 1$$
+where $x^*$ is a multiple of $w$ for it to be normal to the plane. Then letting $x^* = kw$ gives
+$$k||w||^2 = 1 \Rightarrow ||x|| = \frac{1}{||w||}$$
+Maximising $x$ is equivalent to minimising $||w||^2$ with the constraint
+$$y_i(^Tx_i - b) \geq 1$$
+\end{document}
