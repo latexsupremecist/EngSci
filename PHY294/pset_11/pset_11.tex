@@ -7,6 +7,156 @@
 
 \begin{questions}
 
+\question{For each of the following irreversible processes, explain how you can tell that the total entropy of the universe has increased.}
+
+\begin{parts}
+    \part{Stirring salt into a pot of soup.}
+
+    \begin{solution}
+        Stirring itself raises entropy as heat energy is equalised for different parts of the soup.
+    \end{solution}
+
+    \part{Scrambling an egg.}
+
+    \begin{solution}
+        Energy is converted to heat, which raises entropy at this temperature.
+    \end{solution}
+
+    \part{Humpty Dumpty having a great fall.}
+
+    \begin{solution}
+        Potential energy is converted (eventually) to heat. When heat is distributed to the surroundings, there will be more energy equally distributed, which raises entropy.
+    \end{solution}
+
+    \part{A wave hitting a sand castle.}
+
+    \begin{solution}
+        Temperature of sand castle tends to the temperature of seawater. Entropy increases as energy is spread more evenly.
+    \end{solution}
+
+    \part{Cutting down a tree.}
+
+    \begin{solution}
+        Potential energy of the tree is converted to heat, spreading energy to the environment, which raises entropy.
+    \end{solution}
+
+    \part{Burning gasoline in an automobile.}
+
+    \begin{solution}
+        Chemical energy is converted to heat, which can be easily transferred. This allows for more microstates, as energy is no longer chemically locked in gasoline. This raises entropy.
+    \end{solution}
+
+\end{parts}
+
+\question{Show that the entropy of a two-state paramagnet, expressed as a function of temperature, is $S = Nk[\ln(2 \cosh x) - \tanh x]$, where $x = \mu B/kT$. Check that this formula has the expected behavior as $T \rightarrow 0$ and $T \rightarrow \infty$.}
+
+\begin{solution}
+    We can write $\frac{S}{k}$ in terms of $N$ and $N_\uparrow$. We can then rewrite $S$ if we can express those two terms in terms of $x$. Now
+    $$N_\uparrow = \frac{1}{2} \left(N - \frac{U}{\mu B}\right)$$
+    We also know
+    $$U = -N\mu B\tanh\left(\frac{\mu B}{kT}\right)$$
+    so
+    $$N_\uparrow = \frac{N}{2} (1 + \tanh x)$$
+    Substituting into the expression for $\frac{S}{k}$,
+    \begin{align*}
+        \frac{S}{k} &\approx N\ln N - N_\uparrow \ln N_\uparrow - (N-N_\uparrow)\ln(N-N-\uparrow) \\
+                    &= N\ln N - \frac{N}{2}(1+\tanh x) \ln \left(\frac{N}{2}(1+\tanh x)\right) - \frac{N}{2}(1-\tanh x) \ln\left(\frac{N}{2}(1-\tanh x)\right) \\
+        \frac{S}{Nk} &\approx \ln N - \ln \frac{N}{2} - \frac{1}{2} \left(\frac{\sinh x + \cosh x}{\cosh x} \ln \frac{\sinh x + \cosh x}{\cosh x} + \frac{\cosh x - \sinh x}{\cosh x} \ln \frac{\cosh x - \sinh x}{\cosh x}\right) \\
+                     &= \ln2 - \frac{1}{2\cosh x}\left(e^x \ln \frac{e^x}{\cosh x} + e^{-x} \ln \frac{e^{-x}}{\cosh x}\right) \\
+                     &= \ln2 - \frac{1}{2\cosh x}(e^x - e^{-x}) + \ln \cosh x \\
+                     &= \ln(2\cosh x) - \tanh x \\
+        S &= Nk[\ln(2\cosh x) - \tanh x]
+    \end{align*}
+
+    As $T\rightarrow0, x\rightarrow\infty$, so $S$ goes to infinity, which is expected. As $T\rightarrow\infty, x\rightarrow0$, so $S$ goes to $Nk\ln2$, which is also expected, with there only being 2 states.
+\end{solution}
+
+\question{What partial-derivative relation can you derive from the thermodynamic identity by considering a process that takes place at constant entropy? Does the resulting equation agree with what you already knew? Explain.}
+
+\begin{solution}
+    At constant entropy, $dS=0$, so
+    $$dU = -PdV$$
+    When entropy is constant, we know the only change in internal energy comes from work done, $PdV$, agreeing with that is known.
+\end{solution}
+
+\question{Use the thermodynamic identity to derive the heat capacity
+formula
+$$C_V = T\left(\frac{\partial S}{\partial T}\right)_V$$
+which is occasionally more convenient than the more familiar expression in terms of $U$. Then derive a similar formula for $C_P$, by first writing $dH$ in terms of $dS$ and $dP$.}
+
+\begin{solution}
+    At constant volume, $dU = TdS$. Then
+    \begin{align*}
+        C_V &= \left(\frac{\partial U}{\partial T}\right)_V \\
+            &= T\left(\frac{\partial S}{\partial T}\right)_V
+    \end{align*}
+    Then similarly,
+    $$dH = dU + PdV + VdP = TdS + VdP = TdS$$
+    where the last equality comes from constant pressure. Hence
+    \begin{align*}
+        C_P &= \left(\frac{\partial H}{\partial T}\right)_P \\
+            &= T\left(\frac{\partial S}{\partial T}\right)_P
+    \end{align*}
+\end{solution}
+
+\question{Polymers, like rubber, are made of very long molecules, usually tangled up in a configuration that has lots of entropy. As a very crude model of a rubber band, consider a chain of $N$ links, each of length $l$ (see Figure 3.17). Imagine that each link has only two possible states, pointing either left or right. The total length $L$ of the rubber band is the net displacement from the beginning of the first link to the end of the last link.}
+
+\begin{parts}
+    \part{Find an expression for the entropy of this system in terms of $N$ and $N_R$, the number of links pointing to the right.}
+
+    \begin{solution}
+        $$\Omega = \binom{N}{N_R} \Rightarrow S = k\ln\binom{N}{N_R} \Rightarrow k(N\ln N - N_R\ln N_R - (N-N_R)\ln(N-N_R))$$
+    \end{solution}
+
+    \part{Write down a formula for L in terms of $N$ and $N_R$.}
+
+    \begin{solution}
+        $$L = l|N_R - N_L| = l|N_R - (N-N_R)| = l|2N_R - N|$$
+    \end{solution}
+
+    \part{For a one-dimensional system such as this, the length $L$ is analogous to the volume $V$ of a three-dimensional system. Similarly, the pressure $P$ is replaced by the tension force $F$. Taking F to be positive when the rubber band is pulling inward, write down and explain the appropriate thermodynamic identity for this system.}
+
+    \begin{solution}
+        $$dU = TdS + FdL$$
+        Note the sign flip because $P$ points outwards but $F$ points inwards. This makes sense, as energy increases when $dL$ is positive. Then $dU$ has a $TdS$ component and a work done component, similar to the thermodynamic identity.
+    \end{solution}
+
+    \part{Using the thermodynamic identity, you can now express the tension force $F$ in terms of a partial derivative of the entropy. From this expression, compute the tension in terms of $L$, $T$, $N$, and $l$.}
+
+    \begin{solution}
+        We know
+        $$P = T\left(\frac{\partial S}{\partial V}\right)_U$$
+        Using this analogy,
+        \begin{align*}
+            F &= -T\left(\frac{\partial S}{\partial L}\right)_U \\
+              &= -T\left(\frac{\partial S}{\partial N_R} \frac{\partial N_R}{\partial L}\right)_U \\
+              &= kT(1 + \ln N_R -1 - \ln(N-N_R))\frac{1}{2l} \\
+              &= \frac{kT}{2l}\ln\frac{N_R}{N-N_R} \\
+              &= \frac{kT}{2l}\ln\left(1+\frac{2L}{Nl}\right)
+        \end{align*}
+    \end{solution}
+
+    \part{Show that when $L << Nl$, the tension force is directly proportional to $L$ (Hooke’s law).}
+
+    \begin{solution}
+        In this case, $\frac{L}{Nl}\rightarrow 0$, so the logarithm tends to $\frac{2L}{Nl}$, and
+        $$F \approx \frac{kTL}{Nl^2}$$
+    \end{solution}
+
+    \part{Discuss the dependence of the tension force on temperature. If you increase the temperature of a rubber band, does it tend to expand or contract? Does this behavior make sense?}
+
+    \begin{solution}
+        Tension force is proportional to temperature. If you increase the temperature, tension increases, so it contracts. It does make sense, because at higher temperatures, $N_R$ and $N_L$ should be closer, causing $L$ to decrease.
+    \end{solution}
+
+    \part{Suppose that you hold a relaxed rubber band in both hands and suddenly stretch it. Would you expect its temperature to increase or decrease? Explain. Test your prediction with a real rubber band (preferably a fairly heavy one with lots of stretch), using your lips or forehead as a thermometer. (Hint: The entropy you computed in part (a) is not the total entropy of the rubber band. There is additional entropy associated with the vibrational energy of the molecules; this entropy depends on $U$ but is approximately independent of $L$.)}
+
+    \begin{solution}
+        Temperature should increase. Total entropy should be constant, but entropy according to part (a) decreases, as $N_R$ increases. Then vibrational energy must increase to keep entropy constant, which results in an increase in temperature.
+    \end{solution}
+
+\end{parts}
+
 \question{Consider a monatomic ideal gas that lives at a height $z$ above sea level, so each molecule has potential energy $mgz$ in addition to its kinetic energy.}
 
 \begin{parts}
