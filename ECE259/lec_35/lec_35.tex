@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 35}
+\begin{document}
+\maketitle
+
+\section{Motional Electromotive Force}
+
+Consider a sliding bar along an open loop in the presence of magentic fields. We can see this as a changing magnetic flux, where
+$$V_{\text{emf}} = -\frac{\partial\Phi}{\partial t} = -B_0 \frac{dS}{dt}$$
+Now $S(t) = lu_0t$, so $V_{\text{emf}} = -B_0lu_0$ \\
+Alternatively, this can be seen as electrons move with the bar, in the presence of a field, which produces a force on the electrons. This produces a current. Then
+\begin{align*}
+    V_{\text{emf}} &= -\frac{\partial\Phi}{\partial t} \\
+                   &= \oint_C \frac{\vec F \cdot d\vec l}{q} \\
+                   &= \oint_C \vec u \times \vec B \cdot d\vec l \\
+                   &= \int_0^{-l} u_0\hat a_y \times B_0 \hat a_z \cdot dx\hat a_x \\
+                   &= -u_0B_0l
+\end{align*}
+
+\begin{ex}
+    Consider a short-circuited loop with fixed area $S$ which lies in the $xy$-plane with a resistance $R$. It moves through a static magnetic field $B_0y\hat a_z$. It is moved with a constant velocity $u_0\hat a_y$. Find the induced emf and current in the loop. \\
+    Now
+    $$V = -\frac{\partial\Phi}{\partial t} = -\frac{\partial\Phi}{\partial y}\frac{dy}{dt} = -B_0Su_0$$
+    and current is $\frac{B_0Su_0}{R}$ in the clockwise direction.
+\end{ex}
+
+\section{AC Generator}
+
+With a constant $\vec B$ field and a rotating loop, a current is produced.
+
+\begin{align*}
+    V_{\text{emf}} &= -\frac{\partial \Phi}{\partial t} \\
+                   &= -\frac{\partial}{\partial t} \iint \vec B \cdot d\vec S \\
+                   &= -\frac{\partial}{\partial t}B_0S\cos(\omega t) \\
+                   &= B_0S\omega\sin\omega t
+\end{align*}
+
+\end{document}
