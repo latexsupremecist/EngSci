@@ -1,0 +1,88 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 11}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Consider a circular copper loop carrying a steady current, in air, and the following changes to the loop, one at the time: (a) change the wire material from copper to aluminum, (b) double the loop radius, (c) extend the loop so it becomes an ellipse with the major to minor axis ratio of four but the same circumference, (d) add a ferromagnetic core so that the loop encircles it, (e) double the current of the loop, and (f) reverse the direction of the loop current. Which of these changes would result in a change of the loop inductance?}
+
+\begin{solution}
+    C, changes (b)-(d) only. We know
+    $$L = \frac{N\Phi}{I}$$
+    This is independent of material, so (a) is false. $\vec B$ and hence $\Phi$ changes with (b) or (c), with all else constant, so both are true. For (c), $\mu$ changes, so $\vec B$ and hence $\Phi$ changes, so it is true. (e) would double $\Phi$ and $I$, where the changes cancel out. Finally, (f) does not change inductance, which is always positive.
+\end{solution}
+
+\question{If a piece of a ferromagnetic material of relative permeability $\mu_r$ is placed as a core of a wire loop, as indicated in Fig. Q7.3, the inductance of the loop, $L$, is related that, $L_0$, of the same loop with no core as follows}
+
+\begin{solution}
+    B, $L_0 < L < \mu_r L_0$. Note that $L$ is proportional to $\Phi$, which is proportional to $\vec B$, which is proportional to $\mu$. Depending on the region, i.e. air or the core, $\mu = \mu_0$ or $\mu = \mu_r \mu_0$. We can then take a weighted average and apply it to all $\vec B$ to get the same mathematical result for $L$. Since $\mu = \mu_0$ for $L_0$, the constant by which it is scaled to get $L$ is between $1$ and $\mu_r$.
+\end{solution}
+
+\question{A coil with $N$ turns of wire is wound uniformly and densely about a thin toroidal core made from a linear ferromagnetic material of relative permeability $\mu_r$. Consider the magnetic flux density, $\vec B$, inside the core and inductance, $L$, of the coil. If the diameter of the wire in the coil is halved and $N$ is doubled, while the current $I$ in the coil is kept the same, we have that}
+
+\begin{solution}
+    D, $\vec B$ doubles and $L$ quadruples. The diameter has no effect, but doubling $N$ would double $\vec B$, hence $\Phi$. Then the numerator of $L$ quadruples, with the denominator kept constant.
+\end{solution}
+
+\question{Two conducting wire contours, $C_1$ and $C_2$, in air carry slowly time-varying currents of intensities $i_1(t)$ and $i_2(t)$, respectively, as shown in Fig. Q7.4. The mutual inductance $L_{21}$ between the contours will not change if}
+
+\begin{solution}
+    D, both contour remain the same. This is because
+    $$L_{12} = \frac{N_2}{I_1} \int \vec B_1 \cdot d\vec S_2$$
+    The fraction is unchanged. If only $C_2$ changes, the domain of the integral changes, so $L_{12}$ need not stay constant. The same happens if only $C_1$ changes. Although it is possible, there is no guarantee mutual inductance is kept constant when both change.
+\end{solution}
+
+\question{The mutual inductance $L_{12}$ of the two contours in Fig. Q7.4 will change if}
+
+\begin{solution}
+    E, none of the above cases. If $I$ is scaled by a nonzero constant, this is reflected only in $\vec B_1$ and $I_1$ in the equation, where the constant is cancelled out. Hence no scaling of current would change mutual inductance.
+\end{solution}
+
+\question{If in Fig. Q.7.4 the orientation of the contour $C_1$ is reversed and that of $C_2$ remains the same, which of the mutual inductances $L_{12}$ and $L_{21}$ of the contours will change?}
+
+\begin{solution}
+    C, both inductances. Consider $L_{21}$, where the direction of $d\vec S_1$ is reversed. This causes $L_{21}$ to become its negative. Noting that $L_{12}=L_{21}$, we know both inductances change. Alternatively, flipping the contour would flip the direction of current, flipping the sign of $\vec B_1$ and hence $L_{12}$.
+\end{solution}
+
+\question{Out of the four mutual positions of two circular wire loops shown in Fig. Q7.5, the magnitude of the mutual inductance between the loops is largest in}
+
+\begin{solution}
+    B. $N$ and $I$ are constant, so only $\Phi$ matters. Note the direction of $\vec B$. Case (c) is out as it is perpendicular to the normal of the surface. Case (b) is out, as its $\vec B$ is not parallel to the normal, and is lesser in magnitude than in case (a), all else being equal. Finally, case (d) is also out, as it has a smaller $\vec B$. (It is inversely proportional to radius squared, which is minimised in case (a).)
+\end{solution}
+
+\question{Fig. Q7.6 shows two coils wound on a cardboard one. The mutual inductance $L_{12}$ of the coil is}
+
+\begin{solution}
+    A, positive. Without loss of generality, assume current goes clockwise, i.e. the positive voltage is on the right. Then $\vec B$ goes counterclockwise on the cardboard coil, cause by both coils. In both cases, $\vec B$ goes in the same direction as the normal of the surface, according to the right hand rule. Hence mutual inductance is positive.
+\end{solution}
+
+\question{Repeat the previous question but for two coils shown in Fig. Q7.7.}
+
+\begin{solution}
+    B, negative. Without loss of generality, we let current flow downwards. Then in this case, $\vec B$ points upwards, yet the normal of the surface points downwards for both coils. Hence mutual inductance is negative.
+\end{solution}
+
+\question{Two linear inductors of inductances $L$ and $2L$, respectively, have the same magnetic flux, $\Phi$. The magnetic energy stored in the inductor with twice as large inductance is}
+
+\begin{solution}
+    C, half of that stored in the other inductor. For convenience, since this holds for all cases, this holds for $N=1$. Then current in the inductor with the smaller inductance is twice as large. Now consider
+    $$L = \frac{2W_m}{I^2}$$
+    Since current is squared, $W_m$ must be doubled for the inductor with the smaller inductance to maintain the ratio of inductance.
+\end{solution}
+
+\question{Two linear inductors contain the same amounts of magnetic energy. If the magnetic field intensity ($\vec H$) at every point in the first inductor becomes twice larger, while the magnetic flux density ($\vec B$) at every point in the second inductor is halved, the energy stored in the first inductor in the new steady state is}
+
+\begin{solution}
+    D, 16 times. Note that $W_m$ is the integral of the dot product of both, and that there is a linear relationship between $\vec B$ and $\vec H$. Then the energy in the first inductor quadruples, as both are doubled. Similarly, the energy in the second inductor becomes 4 times smaller.
+\end{solution}
+
+\question{In two equally sized pieces of different ferromagnetic materials, a uniform magnetic field is first established, at the same intensity ($H_m$), and then reduced to zero ($H=0$), during which process the operating point describes the respective paths shown in Fig.Q7.10. The net magnetic energy spent in the magnetization-demagnetization of the piece in case(a) is}
+
+\begin{solution}
+    C, a half. $W_m$ is proportional to $BH$, and $B$ is half as great at the end in case (a), so net energy used is also half.
+\end{solution}
+\end{questions}
+\end{document}
