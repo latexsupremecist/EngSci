@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 36}
+\begin{document}
+\maketitle
+
+\section{LTI systems}
+
+Consider the current state $x_k$, and the next state $x_{k+1} = Ax_k$. Of course, this isn't always linear, but it would be cool if it were.
+
+\section{Markov Chains}
+
+There are $n$ states, and a probability $p_i(k)$ of being in state $i$ at time $k$. Then
+$$\sum_i p_i(k) = 1$$
+We define $P_{ij}$ to be the probability of moving from state $i$ to $j$ (it is time independent)
+$$\sum_j P_{ij} = 1$$
+
+\subsection{Dynamics}
+
+$$p_i(k+1) = \sum_j P_{ji}p_j(k)$$
+
+Now define $p(k)$ to be a column matrix with $p(k)_i = p_i(k)$, and $M$ to be a matrix with $M_{ij} = P_{ji}$. Then we have
+$$p(k+1)=Mp(k)$$
+By induction,
+$$p(k+s)=M^sp(k)$$
+
+Note that
+$$\textbf 1^TM = \textbf 1^T, M^T\textbf 1 = \textbf 1$$
+where $\textbf 1$ denotes the column vector of 1s. Now consider the eigenvectors of $M$ with eigenvalue 1, i.e.
+$$q = Mq$$
+Given a steady state, we will have
+$$q = \lim_{k\rightarrow\infty}M^k p$$
+
+\end{document}
