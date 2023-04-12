@@ -1,0 +1,189 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\title{Problem Set 10}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A coaxial cable carries a time-invariant current $I$. A thin layer of a ferromagnetic material is placed near the outer conductor, and the rest of the space between the conductor is air-filled. With respect to the notation in the Fig. Q5.1 showing the cable cross section, the magnetic field exist only in}
+
+\begin{solution}
+    D, regions 1, 2, 3, 4. This is because
+    $$\oint_C \vec B \cdot d\vec l = \mu I$$
+    For all of these regions, enclosed $I$ is nonzero, so there is a magnetic field. For region 5, enclosed current cancels out.
+\end{solution}
+
+\question{The conduction current density vector at a point of a homogenous magnetic material of relative permeability $\mu_r$ is $\vec J$. The curl of the magnetic flux density vector, $\vec \nabla \times \vec B$, at that point equals}
+
+\begin{solution}
+    D, $\mu_r\mu_0\vec J$. This is because
+    $$\vec\nabla \times \vec B = \mu \vec J$$
+\end{solution}
+
+\question{Consider a boundary surface between two magnetic media, with relative permeabilities $\mu_{r1} = 600$ and $\mu_{r2} = 300$, respectively. Assuming that no conduction current exist on the boundary ($\vec J_s = 0$), which of the cases shown in Fig. Q5.2 represent possible magnetic field intensity vectors on the two sides of the boundary?}
+
+\begin{solution}
+    B. Tangential component of $\vec H$ is preserved, and normal component of $\vec B$ is preserved. Since $\vec B = \mu \vec H$, and $\mu$ is greater in region 1, $\vec H_2$ has to have a greater normal component to balance it out.
+\end{solution}
+
+\question{Repeat the previous question but assuming that the vectors in Fig. Q5.2 are magnetic flux density vectors, $\vec B_1$ and $\vec B_2$, in place of $\vec H_1$ and $\vec H_2$, respectively, and determine which of these cases shown represent possible vectors B on the two sides of the interface (consider the answers provided in the previous question).}
+
+\begin{solution}
+    D. Similarly, normal component of $\vec B$ is preserved. $\vec H$ scales with $\mu$. Since the tangential component of $\vec H$ is preserved, but $\mu$ is greater in region 1, the tangential component of $\vec B$ is also greater in region 1.
+\end{solution}
+
+\question{Fig. Q5.3 shows magnetic field lines near a boundary between two linear magnetic media that is free of conduction currents ($\vec J_s = 0$). Which of the two media has higher permeability?}
+
+\begin{solution}
+    A, medium 1. Consider the last question, where $\mu$ is greater in region 1. Now, $\vec B$ becomes steeper upon crossing to region 2, which matches the case.
+\end{solution}
+
+\question{In the structure in Fig.Q5.6, a coil of wire is wound uniformly and densely about a thin toroidal magnetic core. The current of the coil is $I$, and the magnetic field intensity and flux density in the core are $\vec H$ and $\vec B$, respectively. If $I$ is doubled,}
+
+\begin{solution}
+    Nonessential, will do later.
+\end{solution}
+
+\question{Assume that the core in Fig.Q5.6 is made of iron. If the current $I$ of the coil is increased gradually and smoothly from zero to a very large value, the value of the magnetic flux density, $\vec B$, in the core}
+
+\begin{solution}
+    C, rises rapidly first and more slowly later. This is according to the hysterisis curve.
+\end{solution}
+
+\question{Let the core in Fig.Q5.6 be cut from iron and the current $I$ of the coil be established at a very large (positive) value. If $I$ is then reduced to zero, the values of the magnetic field intensity ($\vec H$) and flux density ($\vec B$) in the core encounter the following changes:}
+
+\begin{solution}
+    D, $\vec H$ drops to zero and $\vec B$ drops to a nonzero value. This is because the curl of $\vec H$ is equal to $\vec J$, which goes to zero, thus so does $\vec H$. However, $\vec B$ drops, but not to zero, according to the hysterisis curve.
+\end{solution}
+
+\question{In analysis of magnetic circuits, a set of approximations is introduced to simplify the computation. However, consider the following possible assumptions: (a) The magnetic flux is concentrated exclusively inside the branches of the ferromagnetic core and air gaps; (b) Magnetic materials of the core can be considered to be linear; (c)Magnetic materials of the branches are never in the state of saturation; (d) There is no magnetic field in air gaps; (e) Lengths of air gaps can be considered to be zero; (f) The fringing magnetic flux near the edges of air gaps can be neglected; (g) The magnetic field intensity ($\vec H$) is the same in all branches of the circuit; (h) The magnetic field is uniform throughout the volume of each branch of the circuit; (i) Magnetic fluxes are the same in all branches of the circuit. Which of the assumptions constitute the set of approximations used in the analysis?}
+
+\begin{solution}
+    E, Assumptions (a), (f), and (h).
+\end{solution}
+
+\question{A thin toroidal core, made of a ferromagnetic material of permeability $\mu$, has an air gap, as shown in Fig.Q5.7. There is a time-invariant current through the winding. The magnitude of the magnetic field intensity vector in the ferromagnetic with respect to the clockwise reference direction is $H$. The magnitude of the magnetic field intensity vector in the gap ($H_0$) with respect to the same reference direction is}
+
+\begin{solution}
+    E, $H_0 = \frac{\mu H}{\mu_0}$. In this case, $B$ is constant, so this answer is obtained by rearranging
+    $$\mu_0H_0 = \mu H$$
+\end{solution}
+
+\question{In a magnetic circuit with several nodes and branches, nonlinear magnetization curves of the core materials, and more than one magnetomotive force (winding with current), it is possible to have a branch with a zero magnetic flux.}
+
+\begin{solution}
+    Nonessential.
+\end{solution}
+
+\question{A thin ferrormagnetic disk of radius $a$ and thickness $d$ ($d << a$) in air has a nonuniform magnetization, given by $M = M_0\left(\frac{r}{a}\right)^2\hat a_z$ (Fig. Q5.37), where $M_0$ is a constant. Calculate}
+
+\begin{parts}
+    \part{the distribution of magnetization currents of the disk, and}
+    \part{the magnetic flux density vector along the $z$-axis.}
+\end{parts}
+
+\begin{solution}
+    \textbf{Incomplete} \\
+    The volume current magnetization vector is given by
+    \begin{align*}
+        \vec J_m &= \vec\nabla \times \vec M \\
+                 &= \vec\nabla \times M_0\left(\frac{r}{a}\right)^2 \hat a_z \\
+                 &= -\frac{\partial}{\partial r} M_0\left(\frac{r}{a}\right)^2 \hat a_\phi \\
+                 &= -\frac{2M_0r}{a^2} \hat a_\phi
+    \end{align*}
+    and the surface current is
+    \begin{align*}
+        \vec J_{m,s} &= \vec M \times \hat a_n \\
+                     &= \vec M \times \hat a_r \\
+                     &= M_0 \hat a_\phi
+    \end{align*}
+    which holds for the circumference, with normal in the $\hat a_r$ direction. The only other surfaces both point in the $\hat a_z$ direction, both of which lead to a cross product of 0.
+\end{solution}
+
+\question{Consider a plane boundary ($y=0$) between air (region 1, $\mu_{r1}=1$) and iron (region 2, $\mu_{r2}=5000$).}
+
+\begin{parts}
+    \part{Assuming $\vec B_1 = 0.5\hat a_x - 10\hat a_y$, find $\vec B_2$ and the angle that $\vec B_2$ makes with the interface.}
+
+    \begin{solution}
+        Normal components of $\vec B$ are conserved, so $B_{2,y} = -10$. Tangential components of $\vec H$ are conserved, so $B_{2,x} = B_{1,x}\times\frac{\mu_{r2}}{\mu_{r1}} = 2500$. Hence
+        $$\vec B_2 = 2500\hat a_x - 10\hat a_y$$
+        and the angle is
+        $$\arctan\frac{10}{2500} \approx \frac{1}{250}$$
+    \end{solution}
+    
+    \part{Assuming $\vec B_2 = 10\hat a_x + 0.5\hat a_y$, find $\vec B_1$ and the angle that $\vec B_1$ makes with the interface.}
+
+    \begin{solution}
+        The same properties are used. $B_{1,y} = 0.5$ and $B_{1,x} = B_{2,x}\times\frac{\mu_{r1}}{\mu_{r2}} = 0.002$. Then
+        $$\vec B_1 = 0.002\hat a_x + 0.5\hat a_y$$
+        and the angle is
+        $$\arctan\frac{0.5}{0.002} = \arctan 250 = 1.57$$
+    \end{solution}
+\end{parts}
+
+\question{P6.34 from the book.}
+
+\begin{solution}
+    Nonessential.
+\end{solution}
+
+\question{A uniformly magnetized square ferromagnetic plate of side length $a$ and thickness $d$ ($d << a$) is situated in air. With reference to the coordinate system in Fig. 5.36, the magnetization vector in the plate is given by $\vec M = M_0\hat a_z$, where $M_0$ is a constant. Determine the magnetic flux density vector at an arbitrary point on the $z$ axis.}
+
+\begin{solution}
+    The volume current density is
+    \begin{align*}
+        \vec J_m &= \vec\nabla \times \vec M \\
+                 &= 0
+    \end{align*}
+    Since $\vec M$ is a constant. The surface current density is
+    $$\vec J_{m,s} = M_0\hat a_z \times a_n$$
+    Then on the 4 side surfaces, this has the magnitude of $M_0$ in the anticlockwise direction. On the top and bottom surfaces, it vanishes. Then by symmetry, $\vec B$ on the $z$-axis only has a $\hat a_z$ component. Now we calculate the contribution of each side to $\vec B$. We do this first for the front side,
+    $$d\vec l \times (\vec R - \vec R') = dx\hat a_x \times \left(-x\hat a_x + \frac{a}{2}\hat a_y + z\hat a_z\right) = (\frac{a}{2} \hat a_z - z \hat a_y)dx$$
+    Taking only the $\hat a_z$ component and integration,
+    \begin{align*}
+        \vec B &= \frac{\mu_0 M_0 d}{4\pi} \int_{-\frac{a}{2}}^{\frac{a}{2}} \frac{adx}{2(x^2 + \frac{a^2}{4} + z^2)^{\frac{3}{2}}} \\
+               &= \frac{\mu_0M_0da^2}{(a^2+4z^2)\sqrt{2a^2+4z^2}}
+    \end{align*}
+    Summing them up,
+    $$\vec B = \frac{2\sqrt{2}\mu_0M_0da^2}{(a^2+4z^2)\sqrt{a^2+2z^2}}$$
+\end{solution}
+
+\question{Assume that the plane $z = 0$ separates medium 1 ($z > 0$) and medium 2 ($z < 0$), with relative permeabilities $\mu_{r1} = 600$ and $\mu_{r2} = 250$, respectively. The magnetic field intensity vector in medium 1 near the boundary (for $z = 0^+$) is $\vec H_1 = (5\hat a_x - 3\hat a_y + 2\hat a_z)$ A/m. Find the magnetic field intensity in medium 2 near the boundary (for $z = 0^-$) if the surface current is either $\vec J_s = 0$ or $\vec J_s = 3\hat a_y$.}
+
+\begin{solution}
+    In both cases, the normal components of $\vec B$ are constant, so the normal components of $\vec H$ scale by $\mu$, i.e. $H_{2,z} = 4.8$. The tangential components depend on $\vec J_s$. In the first case, it vanishes, so the tangential components of $\vec H$ are constant. Then
+    $$\vec H_2 = 5\hat a_x - 3\hat a_y + 4.8\hat a_z$$
+    In the second case,
+    $$-\hat a_z \times (H_2 - H_1) = \vec J_s = 3\hat a_y$$
+    Then $H_2$ and $H_1$ does not have an $\hat a_y$ component. By comparing terms, we get
+    $$\vec H_2 = 2\hat a_x - 3\hat a_y + 4.8 \hat a_z$$
+\end{solution}
+
+\question{Consider the magnetic circuit shown in the figure below. A current of 3 A flows through 200 turns of wire on the center leg. Assuming the core has constant cross-sectional area of $10^{-3}\unit{m^2}$ and a relative permeability of 5000, compute the magnetic flux density vector and the magnetic field intensity vector in each leg of the core and in the air gap.}
+
+\begin{solution}
+    Reluctance is given by $\frac{l}{\mu S}$. The reluctances of the segments are
+    $$R_A = R_B = \frac{0.128}{\mu_0}, R_C = R_D = \frac{0.0238}{\mu_0}, R_E = \frac{2}{\mu_0}$$
+    Then $V=NI=600$. Total resistance is
+    $$\frac{1}{2} \times \frac{0.128}{\mu_0} + 2 \times \frac{0.0238}{\mu_0} + \frac{2}{\mu_0} = \frac{2.1116}{\mu_0}$$
+    Flux through the air gap is just the current, or
+    $$\Phi = \frac{V}{R} = \frac{600\mu_0}{2.1116} = 0.357\unit{mWb}$$
+    Flux through each leg is half of that, or $0.179\unit{mWb}$. \\
+    Magnetic flux density is flux per surface area, or $0.357\unit{T}$ through the air gap and $0.179\unit{T}$ through the legs. \\
+    Magnetic field intensity is scaled by $\mu$, which is $28.4\unit{A.m^{-1}}$ for the legs and $2.84\times10^5\unit{A.m^{-1}}$ for the air gap.
+\end{solution}
+
+\question{A toroidal iron core of relative permeability 3000 has a mean radius $R=80$ (mm) and a circular cross section with radius $b = 25$(mm). An air gap $l_g = 3$(mm) exists, and a current $I$ flows in a 500-turn winding to produce a magnetic flux of $10^{-5}\unit{Wb}$. The geometry of the toroidal core is shown below. Neglecting flux leakage and using mean path length, find the reluctance, magnetic field intensity and magnetic flux density for both the air gap and the iron core, and the required current $I$.}
+
+\begin{solution}
+    Reluctance is given by $\frac{l}{\mu S}$. The reluctances of the air gap and the iron core are $1.22\times10^6$ and $6.75\times10^4$ respectively. Then the mmf is found by the electric circuit analogy, where
+    $$V = \Phi R = 12.8$$
+    Applying the formula for the mmf, we can find the current $I = \frac{V}{N} = 0.0257\unit{A} = 25.7\unit{mA}$. \\
+    The magnetic flux intensity for both the air gap and the iron core is just flux per area, which is $5.09\unit{mT}$. Magnetic field intensity scales by $\mu$, giving $4050\unit{A.m^{-1}}$ and $1.35\unit{A.m^{-1}}$ for the air gap and the iron core respectively.
+\end{solution}
+
+\end{questions}
+\end{document}
