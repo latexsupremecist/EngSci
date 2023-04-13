@@ -43,19 +43,19 @@
 \question{In the structure in Fig.Q5.6, a coil of wire is wound uniformly and densely about a thin toroidal magnetic core. The current of the coil is $I$, and the magnetic field intensity and flux density in the core are $\vec H$ and $\vec B$, respectively. If $I$ is doubled,}
 
 \begin{solution}
-    Nonessential, will do later.
+    F, need more information. For a hard core, both would double, but for a soft core, it would follow the hysteresis curve.
 \end{solution}
 
 \question{Assume that the core in Fig.Q5.6 is made of iron. If the current $I$ of the coil is increased gradually and smoothly from zero to a very large value, the value of the magnetic flux density, $\vec B$, in the core}
 
 \begin{solution}
-    C, rises rapidly first and more slowly later. This is according to the hysterisis curve.
+    C, rises rapidly first and more slowly later. This is according to the hysteresis curve.
 \end{solution}
 
 \question{Let the core in Fig.Q5.6 be cut from iron and the current $I$ of the coil be established at a very large (positive) value. If $I$ is then reduced to zero, the values of the magnetic field intensity ($\vec H$) and flux density ($\vec B$) in the core encounter the following changes:}
 
 \begin{solution}
-    D, $\vec H$ drops to zero and $\vec B$ drops to a nonzero value. This is because the curl of $\vec H$ is equal to $\vec J$, which goes to zero, thus so does $\vec H$. However, $\vec B$ drops, but not to zero, according to the hysterisis curve.
+    D, $\vec H$ drops to zero and $\vec B$ drops to a nonzero value. This is because the curl of $\vec H$ is equal to $\vec J$, which goes to zero, thus so does $\vec H$. However, $\vec B$ drops, but not to zero, according to the hysteresis curve.
 \end{solution}
 
 \question{In analysis of magnetic circuits, a set of approximations is introduced to simplify the computation. However, consider the following possible assumptions: (a) The magnetic flux is concentrated exclusively inside the branches of the ferromagnetic core and air gaps; (b) Magnetic materials of the core can be considered to be linear; (c)Magnetic materials of the branches are never in the state of saturation; (d) There is no magnetic field in air gaps; (e) Lengths of air gaps can be considered to be zero; (f) The fringing magnetic flux near the edges of air gaps can be neglected; (g) The magnetic field intensity ($\vec H$) is the same in all branches of the circuit; (h) The magnetic field is uniform throughout the volume of each branch of the circuit; (i) Magnetic fluxes are the same in all branches of the circuit. Which of the assumptions constitute the set of approximations used in the analysis?}
@@ -74,7 +74,7 @@
 \question{In a magnetic circuit with several nodes and branches, nonlinear magnetization curves of the core materials, and more than one magnetomotive force (winding with current), it is possible to have a branch with a zero magnetic flux.}
 
 \begin{solution}
-    Nonessential.
+    A, True. The forces can act in opposite directions, leading to a zero magnetic flux.
 \end{solution}
 
 \question{A thin ferrormagnetic disk of radius $a$ and thickness $d$ ($d << a$) in air has a nonuniform magnetization, given by $M = M_0\left(\frac{r}{a}\right)^2\hat a_z$ (Fig. Q5.37), where $M_0$ is a constant. Calculate}
@@ -99,7 +99,34 @@
                      &= \vec M \times \hat a_r \\
                      &= M_0 \hat a_\phi
     \end{align*}
-    which holds for the circumference, with normal in the $\hat a_r$ direction. The only other surfaces both point in the $\hat a_z$ direction, both of which lead to a cross product of 0.
+    which holds for the circumference, with normal in the $\hat a_r$ direction. The only other surfaces both point in the $\hat a_z$ direction, both of which lead to a cross product of 0. \\
+    Now consider the $d\vec B$ contributions of each ring with inner radius $r$ and thickness $dr$. The integral is
+    \begin{align*}
+        \oint_c \frac{rd\phi\hat a_\phi \times (-r\hat a_r + z\hat a_z)}{(r^2+z^2)^{\frac{3}{2}}} &= \int_0^{2\pi} \frac{(r^2\hat a_z + rz\hat a_r)d\phi}{(r^2+z^2)^{\frac{3}{2}}} \\
+                                                                                                  &= \frac{2\pi r^2}{(r^2+z^2)^{\frac{3}{2}}}\hat a_z
+    \end{align*}
+    where the $\hat a_r$ component is ignored, as it has a constant coefficient, and integrating the unit vector gives 0. Then we can write
+    $$d\vec B = \frac{\mu dI}{4\pi} \frac{2\pi r^2}{(r^2+z^2)^{\frac{3}{2}}} = \frac{\mu r^2}{2(r^2+z^2)^{\frac{3}{2}}} \left(-\frac{2dM_0 rdr}{a^2}\right) = -\frac{d\mu M_0r^3dr}{a^2(r^2+z^2)^{\frac{3}{2}}}$$
+    Now we get $\vec B$ by integrating this
+    \begin{align*}
+        \vec B &= \int d\vec B \\
+               &= -\frac{d\mu M_0}{a^2} \int_0^a \frac{r^3dr}{(r^2+z^2)^{\frac{3}{2}}} \hat a_z \\
+               &= -\frac{d\mu M_0}{a^2} \int_0^{\arctan\frac{a}{z}} \frac{z^3\tan^3\theta\times z\sec^2\theta d\theta}{z^3\sec^3\theta} \hat a_z \\
+               &= -\frac{d\mu M_0}{a^2} \int_0^{\arctan\frac{a}{z}} \frac{z\sin^3\theta}{\cos^2\theta}d\theta \hat a_z \\
+               &= -\frac{d\mu M_0}{a^2} \int_0^{\arctan\frac{a}{z}} \frac{z(\sin\theta(1-\cos^2\theta))}{\cos^2\theta} d\theta \hat a_z \\
+               &= -\frac{d\mu M_0}{a^2} \int_0^{\arctan\frac{a}{z}} z(\sec\theta\tan\theta - \sin\theta) d\theta \hat a_z \\
+               &= -\frac{d\mu M_0}{a^2} z\left(\frac{\sqrt{a^2+z^2}}{z} + \frac{z}{\sqrt{a^2+z^2}} - 1\right) \hat a_z \\
+               &= -\frac{d\mu M_0}{a^2} \left(\sqrt{a^2+z^2} + \frac{z^2}{\sqrt{a^2+z^2}} - z\right) \hat a_z
+    \end{align*}
+    Now we consider the contribution from the outer strip. The integral remains the same, substituting $r=a$. Then
+    \begin{align*}
+        \vec B &= \frac{\mu M_0d}{4\pi} \frac{2\pi a^2}{(a^2+z^2)^{\frac{3}{2}}} \hat a_z \\
+               &= \frac{\mu M_0d}{a^2} \frac{a^4}{(a^2+z^2)^{\frac{3}{2}}} \hat a_z
+    \end{align*}
+    So total $\vec B$ is
+    $$\vec B = -\frac{d\mu M_0}{a^2} \left(\sqrt{a^2+z^2} + \frac{z^2}{\sqrt{a^2+z^2}} - z + \frac{a^4}{(a^2+z^2)^{\frac{3}{2}}}\right) \hat a_z$$
+
+
 \end{solution}
 
 \question{Consider a plane boundary ($y=0$) between air (region 1, $\mu_{r1}=1$) and iron (region 2, $\mu_{r2}=5000$).}
