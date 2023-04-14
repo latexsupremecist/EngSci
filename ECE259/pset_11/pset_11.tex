@@ -84,5 +84,222 @@
 \begin{solution}
     C, a half. $W_m$ is proportional to $BH$, and $B$ is half as great at the end in case (a), so net energy used is also half.
 \end{solution}
+
+\question{Refer to Example 6-16. Determine the inductance per unit length of the air coaxial tranmission line assuming that its outer conductor is not very thin but is of a thickness $d$.}
+
+\begin{solution}
+    In the outer conductor,
+    $$I_\text{enc} = I \times \frac{\pi(b+d)^2 - \pi r^2}{\pi(b+d)^2 - \pi b^2} = I \times \frac{(b+d)^2-r^2}{(b+d)^2-b^2}$$
+    Hence
+    $$\vec B_3 = \frac{\mu_0I}{2\pi r} \times \frac{(b+d)^2-r^2}{(b+d)^2-b^2} \hat a_\phi$$
+    Then the magnetic energy per length stored in the outer conductor is
+    $$W_m = \frac{1}{2} \int_0^{2\pi} \int_b^{b+d} \frac{|\vec B_3|^2rdrd\phi dz}{\mu_0} = \frac{\mu_0I^2}{4\pi} \left(\frac{(b+d)^4}{((b+d)^2-b^2)^2} \ln \left(1 + \frac{d}{b}\right) + \frac{b^2-3(b+d)^2}{4((b+d)^2-b^2)}\right)$$
+    Adding this to inductance found in the example, we have
+    $$L = \frac{\mu_0}{2\pi}\left(\frac{1}{4} + \ln \frac{b}{a} + \frac{(b+d)^4}{((b+d)^2-b^2)^2}\ln\left(1+ \frac{d}{b}\right) + \frac{b^2-3(b+d)^2}{4((b+d)^2-b^2)}\right)$$
+\end{solution}
+
+\question{calculate the mutual inductance per unit length between two parallel two-wire transmission lines $A-A'$ and $B-B'$ separated by a distance $D$. Assume the wire radius to be much smaller than $D$ and the wire spacing $d$.}
+
+\begin{solution}
+    Note: this is a weird integral I don't quite get even after literally copying the answer key. \\
+    To find inductance, we use
+    $$L = \frac{N\Phi}{I}$$
+    Where
+    $$\Phi = \int \vec B \cdot d\vec S$$
+    The surface we pick is the surface in the $\hat a_\phi$ direction, from the circle centred at $A$ touching $B$ to another concentric circle touching $B'$, i.e. from $r=D$ to $r=\sqrt{D^2+d^2}$. This is so that the surface "covers" the entirety of $B$ and $B'$ in the point of view of $A$. The same process is also done for $A'$, but the result is the same by symmetry. Moving on to the maths, note that for a long wire,
+    $$\vec B = \frac{\mu I}{2\pi r} \hat a_\phi$$
+    The surface as defined has area
+    $$dS = Ldr = dr$$
+    where $L=1$ is taken to be the unit length (in/out of page). Now
+    $$\Phi = \int_D^{\sqrt{D^2+d^2}} \frac{\mu I}{2\pi r}\hat a_\phi \cdot dr\hat a_\phi = \frac{\mu I}{2\pi} \ln\frac{\sqrt{D^2+d^2}}{D}$$
+    Then inductance becomes
+    $$L = \frac{\mu}{\pi} \ln\frac{\sqrt{D^2+d^2}}{D}$$
+\end{solution}
+
+\question{Determine the mutual inductance between a very long, straight wire and a conducting circular loop.}
+
+\begin{solution}
+    Consider the flux of the long straight wire,
+    $$B = \frac{\mu_0 I}{2\pi r}$$
+    Then the flux is given by
+    \begin{align*}
+        \Phi &= \int BdS \\
+             &= \int_{-b}^b \int_{-\sqrt{b^2-x^2}}^{\sqrt{b^2-x^2}} \frac{\mu I}{2\pi(x+d)} dydx \\
+             &= \int_{-b}^b \frac{\mu I\sqrt{b^2-x^2}}{\pi(x+d)} dx \\
+    \end{align*}
+    The integral is analytical, but quite involved, according to WolframAlpha. According to the solution manual, which gives an integral that is most definitely wrong, we get
+    $$\Phi = \mu I(d-\sqrt{d^2-b^2})$$
+    Then inductance is
+    $$L = \mu(d-\sqrt{d^2-b^2})$$
+\end{solution}
+
+\question{Find the mutual inductance between two coplanar rectangular loops with parallel sides. Assume that $h_1 >> h_2 (h_2 > w > d)$.}
+
+\begin{solution}
+    We ignore the shorter sides because they are shorter. Since $h_1 >> h_2$, we can ignore fringing effects, and assume
+    $$B = \frac{\mu_0 I}{2\pi r}$$
+    Then the flux according to the contributions of both long wires to the smaller rectangular loop is
+    \begin{align*}
+        \Phi &= \int \vec B \cdot d\vec S \\
+             &= \int_0^{w_2} \frac{\mu_0 I}{2\pi} \left(\frac{1}{d+x} - \frac{1}{w_1+d+x}\right) h_2 dx \\
+             &= \frac{\mu_0 Ih_2}{2\pi} \left(\ln\frac{d+w_2}{d} - \ln\frac{w_1+d+w_2}{w_1+d}\right)
+    \end{align*}
+    And
+    $$L = \frac{\mu_0 h_2}{2\pi} \left(\ln\frac{d+w_2}{d} - \ln\frac{w_1+d+w_2}{w_1+d}\right)$$
+\end{solution}
+
+\question{Calculate the force per unit length on each of three equidistant, infinitely long parallel wires $0.15\unit{m}$ apart, each carrying a current of $25\unit{A}$ in the same direction. Specify the direction of the force.}
+
+\begin{solution}
+    Between each pair of wires,
+    $$B = \frac{\mu I}{2\pi r}$$
+    The contributions to any wire by the other two wires have an angle of $\frac{\pi}{3}$, so net $\vec B$ bisects both contributions, forming an angle of $\frac{\pi}{6}$ with each. Then total contribution becomes
+    $$B = 2\cos\frac{\pi}{6} \frac{\mu I}{2\pi r} = \frac{\sqrt{3}\mu I}{2\pi r}$$
+    Since
+    $$F = I\vec l \times \vec B$$
+    it points the wires towards the centre of the triangle. Its magnitude is
+    $$F = IB = \frac{\sqrt{3}\mu I^2}{2\pi r} = 1.44\times10^{-3}$$
+    per length.
+\end{solution}
+
+\question{Determine the force per unit length between two parallel, long, thin conducting strips of equal width $w$. The strips are at a distance $d$ apart and carry currents $I_1$ and $I_2$ in opposite directions.}
+
+\begin{solution}
+    From a previous problem, the magnetic flux density at height $y$ is given by
+    $$B = -\frac{\mu_0 I_1}{2\pi w} \left[\arctan\frac{y}{d} + \arctan\frac{w-y}{d}\right]$$
+    Then the force can be integrated as
+    \begin{align*}
+        F &= \int_0^w B\times\frac{I_2}{w}dy \\
+          &= \frac{\mu_0I_1I_2}{2\pi w^2} \int_0^w\left[\arctan\frac{y}{d} + \arctan\frac{w-y}{d}\right]dy \\
+          &= \frac{\mu_0I_1I_2}{2\pi w^2} \left[2w\arctan\frac{w}{d} - d\ln\left(1+\frac{w^2}{d^2}\right)\right]
+    \end{align*}
+    Where $\vec F$ points in the $\hat a_x$ direction. Note that the integral uses the identity
+    $$\int \arctan x = x\arctan x - \frac{1}{2}\ln(1+x^2) + C$$
+    which can be derived using integration by parts.
+\end{solution}
+
+\question{Find the force on the circular loop that is exerted by the magnetic field due to an upward current $I_1$ in the long straight wire. The circular loop carries a current $I_2$ in the counterclockwise direction.}
+
+\begin{solution}
+    \begin{align*}
+        \vec F &= I\vec l \times \vec B \\
+               &= \int_0^{2\pi} I_2 d\phi \hat a_\phi \times -\frac{\mu I_1}{2\pi(d+b\cos\theta)} \hat a_z \\
+               &= -\frac{\mu I_1I_2}{2\pi} \int_0^{2\pi} \frac{d\phi}{d+b\cos\theta} \hat a_r \\
+               &= -\frac{\mu I_1I_2}{2\pi} \int_0^{2\pi} \frac{(\cos\theta\hat a_x + \sin\theta\hat a_y)d\phi}{d+b\cos\theta}
+    \end{align*}
+    By symmetry, $\vec F$ has no net $y$ component, so we can ignore that. The integral becomes
+    \begin{align*}
+        \vec F &= -\frac{\mu I_1I_2}{\pi} \int_0^\pi \frac{\cos\theta d\theta}{d + b\cos\theta} \hat a_x \\
+               &= \mu I_1I_2 \left(\frac{1}{\sqrt{1-\frac{b^2}{d^2}}} - 1\right) \hat a_x
+    \end{align*}
+    where the solution to the definite integral comes from the same place Praxis TAs get their marks from.
+\end{solution}
+
+\question{For the question above, assuming that the circular loop is rotated about its horizontal axis by an angle $\alpha$, find the torque exerted on the circular loop.}
+
+\begin{solution}
+    \begin{align*}
+        \vec T &= \int d\vec T \\
+          &= \int d\vec M \times \vec B \\
+          &= I_2 \int d\vec S \times \vec B \\
+          &= -I_2 \sin\alpha \int Bds \hat a_x \\
+          &= -\mu I_1I_2 \sin\alpha (d-\sqrt{d^2-b^2}) \hat a_x
+    \end{align*}
+    Where the integral is solved the same as before.
+\end{solution}
+
+\question{Determine the mutual inductance between a very long, straight wire and a conducting equilateral triangle loop, as shown in the figure below}
+
+\begin{solution}
+    Mutual inductance is defined as
+    $$L_{12} = \frac{N_2}{I_1} \int_{S_2} \vec B_1 \cdot d\vec S_2$$
+    The $B$-field generated by the line current is
+    $$\vec B = -\frac{\mu I}{2\pi x} \hat a_z$$
+    Flux through the triangle is
+    \begin{align*}
+        \Phi &= \int \vec B \cdot d\vec S \\
+             &= \int_0^{\frac{\sqrt{3}}{2}b} \int_{-\frac{x}{\sqrt{3}}}^{\frac{x}{\sqrt{3}}} \frac{\mu I}{2\pi (x+d)} dydx \\
+             &= \frac{\mu I}{\sqrt{3}\pi} \int_0^{\frac{\sqrt{3}}{2}b} \frac{x}{x+d} dx \\
+             &= \frac{\mu I}{\sqrt{3}\pi} x - d\ln(x+d) \Big |_0^{\frac{\sqrt{3}}{2}b} \\
+             &= \frac{\mu I}{\sqrt{3}\pi} \left(\frac{\sqrt{3}}{2}b - d\ln\left(1+\frac{\sqrt{3}b}{2d}\right)\right)
+    \end{align*}
+    Inductance is then
+    $$\frac{\mu}{\sqrt{3}\pi} \left(\frac{\sqrt{3}}{2}b - d\ln\left(1+\frac{\sqrt{3}b}{2d}\right)\right)$$
+\end{solution}
+
+\question{The cross section of a long thin metal plate and a parallel wire is shown in the figure below. Equal and opposite current $I$ flow in the conductors. Find the force per unit length acting on both conductors.}
+
+\begin{solution}
+    Magnetic flux at an arbitrary point on the metal plate is
+    \begin{align*}
+        \vec B &= -\frac{\mu I}{2\pi r} \hat a_\phi \\
+               &= \frac{\mu I}{2\pi\sqrt{D^2+y^2}} \left(\frac{y\hat a_x}{\sqrt{D^2+y^2}} + \frac{D\hat a_y}{\sqrt{D^2+y^2}}\right)
+    \end{align*}
+    Now force per unit length is
+    \begin{align*}
+        \vec F &= I\vec l \times \vec B \\
+               &= \int_{-\frac{W}{2}}^{\frac{W}{2}} \frac{I}{W} dy \hat a_z \times \frac{\mu I}{2\pi\sqrt{D^2+y^2}} \left(\frac{y\hat a_x}{\sqrt{D^2+y^2}} + \frac{D\hat a_y}{\sqrt{D^2+y^2}}\right) \\
+               &= \frac{\mu I^2}{2W\pi} \int_{-\frac{W}{2}}^{\frac{W}{2}} \frac{ydy\hat a_y}{D^2+y^2} - \frac{Ddy\hat a_x}{D^2+y^2} \\
+               &= \frac{\mu I^2}{2W\pi} -\arctan\frac{y}{D} |_{-\frac{W}{2}}^{\frac{W}{2}} \hat a_x \\
+               &= \frac{\mu I^2}{2W\pi} (-2) \arctan\frac{W}{2D} \hat a_x \\
+               &= -\frac{\mu I^2}{W\pi} \arctan\frac{W}{2D} \hat a_x
+    \end{align*}
+    The forces must balance, so force per unit length exerted by the metal plate on the wire is
+    $$\vec F = \frac{\mu I^2}{W\pi} \arctan\frac{W}{2D} \hat a_x$$
+\end{solution}
+
+\question{The bar AA’ in the figure below serves as a conducting path (such as the blade of a circuit breaker) for the current $I$ in two very long (semi-infinite) parallel lines. The lines have a radius $b$ and are spaced at a distance $d$ apart. Find the direction and the magnitude of the magnetic force on the bar.}
+
+\begin{solution}
+    Flux at the bar due to the bottom line is
+    \begin{align*}
+        \vec B &= \frac{\mu I}{4\pi} \int_0^\infty \frac{-dx\hat a_x \times (y\hat a_y - x\hat a_x)}{(x^2+y^2)^{\frac{3}{2}}} \\
+               &= -\frac{\mu I}{4\pi} \int_0^\infty \frac{ydx\hat a_z}{(x^2+y^2)^{\frac{3}{2}}} \\
+               &= -\frac{\mu I}{4\pi} \frac{1}{y} \hat a_z \\
+               &= -\frac{\mu I}{4\pi y} \hat a_z
+    \end{align*}
+    By symmetry, flux due to the top line is
+    $$\vec B = -\frac{\mu I}{4\pi (d - y)} \hat a_z$$
+    Then force acting on the bar is
+    \begin{align*}
+        \vec F &= I\vec l \times \vec B \\
+               &= \int_0^d Idy \hat a_y \times \left(-\frac{\mu I}{4\pi}\right)\left(\frac{1}{y} + \frac{1}{d-y}\right)\hat a_z \\
+               &= -\frac{\mu I^2}{4\pi} \int_b^(d-b) \left(\frac{1}{y} + \frac{1}{d-y}\right)dy \hat a_x \\
+               &= -\frac{\mu I^2}{4\pi} \left(\ln\frac{d-b}{b} - \ln\frac{b}{d-b}\right) \hat a_x \\
+               &= -\frac{\mu I^2}{2\pi} \ln\frac{d-b}{b} \hat a_x
+    \end{align*}
+\end{solution}
+
+\question{A d-c current $I = 10\unit{A}$ flows in a triangular loop in the xy-plane as in the figure below. Assuming a uniform magnetic flux density $\vec B = \hat a_y 0.5\unit{T}$ in the region, find the forces and torque on the loop. All dimensions are in cm.}
+
+\begin{solution}
+    Segment 1:
+    \begin{align*}
+        \vec F &= I\vec l \times \vec B \\
+               &= 10 \times 0.2 \hat a_x \times 0.5 \hat a_y \\
+               &= \hat a_z
+    \end{align*}
+    Segment 2:
+    \begin{align*}
+        \vec F &= I\vec l \times \vec B \\
+               &= \left(-\frac{10}{\sqrt{5}}\hat a_x + \frac{20}{\sqrt{5}}\hat a_y\right) \times 0.5 \hat a_y \times \frac{\sqrt{5}}{10} \\
+               &= -0.5 \hat a_z
+    \end{align*}
+    Segment 3:
+    \begin{align*}
+        \vec F &= I\vec l \times \vec B \\
+               &= \left(-\frac{10}{\sqrt{5}}\hat a_x - \frac{20}{\sqrt{5}} \hat a_y\right) \times 0.5 \hat a_y \times \frac{\sqrt{5}}{10} \\
+               &= -0.5 \hat a_z
+    \end{align*}
+
+    Total force on the loop is then 0. Torque is
+    \begin{align*}
+        \vec T &= \vec m \times \vec B \\
+               &= NI\vec A \times 0.5\hat a_y \\
+               &= 10 \times \frac{1}{2} \times 0.2 \times 0.2 \hat a_z \times 0.5 \hat a_y \\
+               &= -0.1\hat a_x
+    \end{align*}
+\end{solution}
+
 \end{questions}
 \end{document}
