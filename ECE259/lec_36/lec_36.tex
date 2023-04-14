@@ -1,0 +1,21 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 36}
+\begin{document}
+\maketitle
+
+\section{Amp\`ere's Law}
+
+$$\vec \nabla \times H = \vec J$$
+or
+$$\oint_C \vec H \cdot d\vec l = I_{\text{enc}}$$
+
+Consider an AC voltage source connected to a capacitor. Then
+$$\oint_C \vec H \cdot d\vec l = I_{\text{enc}} = \iint_S \vec J \cdot d\vec S = i(t) = -\frac{V_0}{|z_L|}\sin\omega t$$
+However, there should be no current, as a capacitor is essentially an open circuit. Maxwell suggested that we need to consider a new "displacement" current
+$$\vec J_d = \frac{\partial \vec D}{\partial t}$$
+Now Amp\`ere's Law becomes
+$$\vec\nabla \times \vec H = \vec J + \vec J_d = \vec J + \varepsilon\frac{\partial \vec E}{\partial t}$$
+
+\end{document}
