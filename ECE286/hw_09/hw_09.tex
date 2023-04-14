@@ -1,0 +1,131 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 9}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A random sample of size $n_1 = 25$, taken from a normal population with a standard deviation $\sigma_1 = 5$, has a mean $\overline x_1 = 80$. A second random sample of size $n_2 = 36$, taken from a different normal population with a standard deviation $\sigma_2 = 3$, has a mean $\overline x_2 = 75$. Find a 94\% confidence interval for $\mu_1 - \mu_2$.}
+
+\begin{solution}
+    $\alpha = 0.06, z_{0.03} = -1.88$. Then
+    $$P(-1.88 < Z < 1.88) = P(2.90 < \mu_1 - \mu_2 < 7.10)$$
+    So the confidence interval is $(2.90,7.10)$ where
+    $$Z = \frac{(\overline X_1 - \overline X_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n} + \frac{\sigma_2^2}{n}}}$$
+\end{solution}
+
+\question{Students may choose between a 3-semester-hour physics course without labs and a 4-semester-hour course with labs. The final written examination is the same for each section. If 12 students in the section with labs made an average grade of 84 with a standard deviation of 4, and 18 students in the section without labs made an average grade of 77 with a standard deviation of 6, find a 99\% confidence interval for the difference between the average grades for the two courses. Assume the populations to be approximately normally distributed with equal variances.}
+
+\begin{solution}
+    There are $(12-1) + (18-1) = 28$ degrees of freedom. $\alpha = 0.01, t_{0.005} = -2.763$. Then
+    $$P(-2.763 < Z < 2.763) = P(1.96 < \mu_1 - \mu_2 < 12.04)$$
+    So the confidence interval is $(1.96, 12.04)$.
+\end{solution}
+
+\question{A taxi company is trying to decide whether to purchase brand A or brand B tires for its fleet of taxis. To estimate the difference in the two brands, an experiment is conducted using 12 of each brand. The tires are run until they wear out. The results are
+    $$\overline x_1 = 36300, s_1 = 5000, \overline x_2 = 38100, s_2 = 6100$$
+Compute a 95\% confidence interval for $\mu_A - \mu_B$ assuming the populations to be approximately normally distributed. You may not assume that the variances are equal.}
+
+\begin{solution}
+    We use the $T$ distribution, since the true variances are unknown. Degrees of freedom is approximated as
+    $$v = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{(s_1^2/n_1)^2/(n_1-1) + (s_2^2/n_2)^2/(n_2-1)} = 21.2 \approx 21$$
+    Then for $\alpha = 0.05$ and 21 degrees of freedom, $t_{0.025} = 2.080$.
+    \begin{align*}
+        0.95 &= P(-2.080 \leq Z \leq 2.080) \\
+             &= P\left(-2.080 \leq \frac{(\overline X_1 - \overline X_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \leq 2.080\right) \\
+             &= P(-6536 \leq \mu_1 - \mu_2 \leq 2936)
+    \end{align*}
+    And the confidence interval is
+    $$[-6536, 2936]$$
+\end{solution}
+
+\question{An automotive company is considering two types of batteries for its automobile. Sample information on battery life is collected for 20 batteries of type A and 20 batteries of type B. The summary statistics are $\overline x_A = 32.91, \overline x_B = 30.47, s_A = 1.57, and s_B = 1.74$. Assume the data on each battery are normally distributed and assume $\sigma_A = \sigma_B$.}
+
+\begin{parts}
+    \part{Find a 95\% confidence interval on $\mu_A - \mu_B$.}
+    \part{Draw a conclusion from (a) that provides insight into whether A or B should be adopted.}
+\end{parts}
+
+\begin{solution}
+    We use the $T$-distribution, with the same reason as above. Degrees of freedom is
+    $$v = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{(s_1^2/n_1)^2/(n_1-1) + (s_2^2/n_2)^2/(n_2-1)} = 37.6 \approx 38$$
+    For $\alpha = 0.05$ with 38 degrees of freedom, $t_{0.025} = 2.021$ (the answer key is wrong I think). Then
+    \begin{align*}
+        0.95 &= P(-2.021 \leq Z \leq 2.021) \\
+             &= P\left(-2.021 \leq \frac{(\overline X_1 - \overline X_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \leq 2.021\right) \\
+             &= P(1.381 \leq \mu_1 - \mu_2 \leq 3.499)
+    \end{align*}
+    The confidence interval is
+    $$[1.381, 3.499]$$
+    Since there is more than a 95\% chance $\mu_A$ is greater than $\mu_B$, battery A should be used.
+\end{solution}
+
+\question{In a random sample of 1000 homes in a certain city, it is found that 228 are heated by oil. Find 99\% confidence intervals for the proportion of homes in this city that are heated by oil using both methods presented on page 297.}
+
+\begin{solution}
+    With $\alpha = 0.01$, we have $z_{0.005} = -2.575$. Also
+    $$\sqrt{\frac{\hat p\hat q}{n}} = \sqrt{\frac{0.228\times0.772}{1000}} = 0.0133$$
+    Then the confidence interval is
+    $$[0.228 - 2.575\times0.0133, 0.228 + 2.575\times0.0133] = [0.194, 0.262]$$
+    For the second method, plugging in the values, the confidence interval is
+    $$[0.196, 0.264]$$
+\end{solution}
+
+\question{}
+
+\begin{parts}
+    \part{A random sample of 200 voters in a town is selected, and 114 are found to support an annexation suit. Find the 96\% confidence interval for the fraction of the voting population favoring the suit.}
+    \part{What can we assert with 96\% confidence about the possible size of our error if we estimate the fraction of voters favoring the annexation suit to be 0.57?}
+\end{parts}
+
+\begin{solution}
+    With $\alpha = 0.04$, we have $z_{0.02} = -2.055$. And
+    $$\sqrt{\frac{\hat p\hat q}{n}} = \sqrt{\frac{0.57\times0.43}{200}} = 0.0350$$
+    The confidence interval is
+    $$[0.57 - 2.055\times0.0350, 0.57 + 2.055\times0.0350] = [0.498, 0.642]$$
+    We can then assert that the possible size of our error in estimating the fractions of voters is within $0.0719$ of $0.57$ in 96\% of the time.
+\end{solution}
+
+\question{A new rocket-launching system is being considered for deployment of small, short-range rockets. The existing system has $p = 0.8$ as the probability of a successful launch. A sample of 40 experimental launches is made with the new system, and 34 are successful.}
+
+\begin{parts}
+    \part{Construct a 95\% confidence interval for $p$.}
+    \part{Would you conclude that the new system is better?}
+\end{parts}
+
+\begin{solution}
+    With $\alpha = 0.05$, we have $z_{0.025} = -1.96$. Then
+    $$\sqrt{\frac{\hat p\hat q}{n}} = \sqrt{\frac{0.85\times0.15}{40}} = 0.0565$$
+    The confidence interval is
+    $$[0.85 - 1.96\times0.0565, 0.85 + 1.96\times0.0565] = [0.739, 0.961]$$
+    We cannot conclude that the new system is better at a 95\% confidence interval.
+\end{solution}
+
+\question{In the newspaper article referred to in Exercise 9.57, 32\% of the 1600 adults polled said the U.S. space program should emphasize scientific exploration. How large a sample of adults is needed for the poll if one wishes to be 95\% confident that the estimated percentage will be within 2\% of the true percentage?}
+
+\begin{solution}
+    With $\alpha = 0.05$, we have $z_{0.025} = -1.96$. Then
+    \begin{align*}
+       1.96\sqrt{\frac{\hat p\hat q}{n}} &= 0.02 \\
+        \frac{0.32\times0.68}{n} &= 1.04\times10^{-4} \\
+        n &= 2089.8
+    \end{align*}
+    Hence a sample of at least 2090 is needed.
+\end{solution}
+
+\question{A study is to be made to estimate the percentage of citizens in a town who favor having their water fluoridated. How large a sample is needed if one wishes to be at least 95\% confident that the estimate is within 1\% of the true percentage?}
+
+\begin{solution}
+    $$z_{0.025} = -1.96$$
+    \begin{align*}
+        1.96\sqrt{\frac{0.5\times0.5}{n}} &= 0.01 \\
+        \frac{0.25}{n} &= 2.60\times10^{-5} \\
+        n &= 9604
+    \end{align*}
+    A sample of at least 9604 is needed.
+\end{solution}
+
+\end{questions}
+\end{document}
