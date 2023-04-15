@@ -1,0 +1,123 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 11}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Suppose that an allergist wishes to test the hypothesis that at least 30\% of the public is allergic to some cheese products. Explain how the allergist could commit}
+
+\begin{parts}
+    \part{a type I error}
+    \part{a type II error}
+\end{parts}
+
+\begin{solution}
+    If the allergist concludes that fewer than 30\% of the public is allergic when it is not true, they commit a type I error. If they conclude that at least 30\% is allergic when it is not true, they commit a type II error.
+\end{solution}
+
+\question{A fabric manufacturer believes that the proportion of orders for raw material arriving late is $p = 0.6$. If a random sample of 10 orders shows that 3 or fewer arrived late, the hypothesis that $p = 0.6$ should be rejected in favor of the alternative $p < 0.6$. Use the binomial distribution.}
+
+\begin{parts}
+    \part{Find the probability of committing a type I error if the true proportion is $p = 0.6$.}
+    \part{Find the probability of committing a type II error for the alternatives $p = 0.3$, $p = 0.4$, and $p = 0.5$.}
+\end{parts}
+
+\begin{solution}
+    For $p = 0.6$, the probability is
+    $$0.4^{10} + 10\times0.4^9\times0.6 + \binom{10}{2} 0.4^8\times0.6^2 + \binom{10}{3} 0.4^7\times0.6^3 = 0.0548$$
+    For $p = 0.3$, the probability is
+    $$1 - 0.7^{10} - 10\times0.7^9\times0.3 - \binom{10}{2} 0.7^8\times0.3^2 - \binom{10}{3} 0.7^7\times0.3^3 = 0.350$$
+    For $p = 0.4$, the probability is
+    $$1 - 0.6^{10} - 10\times0.6^9\times0.4 - \binom{10}{2} 0.6^8\times0.4^2 - \binom{10}{3} 0.6^7\times0.4^3 = 0.618$$
+    For $p = 0.5$, the probability is
+    $$1 - 0.5^{10}\left(1 + 10 + \binom{10}{2} + \binom{10}{3}\right) = 0.828$$
+\end{solution}
+
+\question{Repeat Exercise 10.4 but assume that 50 orders are selected and the critical region is defined to be $x \leq 24$, where $x$ is the number of orders in the sample that arrived late. Use the normal approximation.}
+
+\begin{solution}
+    For $p = 0.6$, $\mu = np = 30$ and $\sigma = \sqrt{npq} = 2\sqrt{3}$. The probability is
+    $$P(X \leq 24.5) = P(Z \leq -1.59) = 0.0559$$
+    For $p = 0.3$, $\mu = np = 15$ and $\sigma = \sqrt{npq} = \sqrt{10.5}$. The probability is
+    $$P(X \geq 24.5) = P(Z \geq 2.93) = 1 - 0.9983 = 0.0017$$
+    For $p = 0.4$, $\mu = np = 20$, and $\sigma = \sqrt{npq} = 2\sqrt{3}$. The probability is
+    $$P(X \geq 24.5) = P(Z \geq 1.30) = 1 - 0.9032 = 0.0968$$
+    For $p = 0.5$, $\mu = np = 25$, and $\sigma = \sqrt{npq} = \sqrt{12.5}$. The probability is
+    $$P(X \geq 24.5) = P(Z \geq -0.141) = 1 - 0.4443 = 0.5557$$
+\end{solution}
+
+\question{In Relief from Arthritis published by Thorsons Publishers, Ltd., John E. Croft claims that over 40\% of those who suffer from osteoarthritis receive measurable relief from an ingredient produced by a particular species of mussel found off the coast of New Zealand. To test this claim, the mussel extract is to be given to a group of 7 osteoarthritic patients. If 3 or more of the patients receive relief, we shall not reject the null hypothesis that $p = 0.4$; otherwise, we conclude that $p < 0.4$.}
+
+\begin{parts}
+    \part{Evaluate $\alpha$, assuming that $p = 0.4$.}
+    \part{Evaluate $\beta$ for the alternative $p = 0.3$.}
+\end{parts}
+
+\begin{solution}
+    $$\alpha = 0.6^7 + 7\times0.6^6\times0.4 + \binom{7}{2}\times0.6^5\times0.4^2 = 0.420$$
+    $$\beta = 1 - 0.7^7 - 7\times0.7^6\times0.3 - \binom{7}{2}\times0.7^5\times0.3^2 = 0.353$$
+\end{solution}
+
+\question{A random sample of 400 voters in a certain city are asked if they favor an additional 4\% gasoline sales tax to provide badly needed revenues for street repairs. If more than 220 but fewer than 260 favor the sales tax, we shall conclude that 60\% of the voters are for it.}
+
+\begin{parts}
+    \part{Find the probability of committing a type I error if 60\% of the voters favor the increased tax.}
+    \part{What is the probability of committing a type II error using this test procedure if actually only 48\% of the voters are in favor of the additional gasoline tax?}
+\end{parts}
+
+\begin{solution}
+    We use the normal approximation, since obviously both $np$ and $nq$ are greater than 5. If $60\%$ are in favour, then $np = 240$, $\sqrt{npq} = 4\sqrt{6}$.
+    $$\alpha = P(X \leq 220.5) + P(X \geq 259.5) = P(Z \leq -1.99) + P(Z \geq 1.99) = 0.0233 + 1 - 0.9767 = 0.0466$$
+    If $48\%$ are in favour, then $np = 192$, $\sqrt{npq} = \sqrt{99.84}$.
+    $$\beta = P(220.5 \leq X \leq 259.5) = P(2.85 \leq Z \leq 6.76) \approx P(2.85 \leq Z) = 1 - 0.9978 = 0.0022$$
+\end{solution}
+
+\question{A soft-drink machine at a steak house is regulated so that the amount of drink dispensed is approximately normally distributed with a mean of 200 milliliters and a standard deviation of 15 milliliters. The machine is checked periodically by taking a sample of 9 drinks and computing the average content. If $x$ falls in the interval $191 < x < 209$, the machine is thought to be operating satisfactorily; otherwise, we conclude that $\mu = 200$ milliliters.}
+
+\begin{parts}
+    \part{Find the probability of committing a type I error when $\mu = 200$ milliliters.}
+    \part{Find the probability of committing a type II error when $\mu = 215$ milliliters.}
+\end{parts}
+
+\begin{solution}
+    In the first case,
+    $$\alpha = P(X \leq 191) + P(X \geq 209) = P(Z \leq -1.8) + P(Z \geq 1.8) = 0.0359 + 1 - 0.9641 = 0.0718$$
+    In the second case,
+    $$\beta = P(191 \leq X \leq 209) = P(-4.8 \leq X \leq -1.2) \approx P(X \leq -1.2) = 0.1151$$
+\end{solution}
+
+\question{ In a research report, Richard H. Weindruch of the UCLA Medical School claims that mice with an average life span of 32 months will live to be about 40 months old when 40\% of the calories in their diet are replaced by vitamins and protein. Is there any reason to believe that $\mu < 40$ if 64 mice that are placed on this diet have an average life of 38 months with a standard deviation of 5.8 months? Use a P -value in your conclusion.}
+
+\begin{solution}
+    $$z = \frac{38-40}{5.8/\sqrt{64}} = -2.76$$
+    The $P$ value is $P(Z \leq -2.76) = 0.0029$. Hence there is reason to believe $\mu < 40$.
+\end{solution}
+
+\question{A random sample of 64 bags of white cheddar popcorn weighed, on average, 5.23 ounces with a standard deviation of 0.24 ounce. Test the hypothesis that $\mu = 5.5$ ounces against the alternative hypothesis, $\mu < 5.5$ ounces, at the 0.05 level of significance.}
+
+\begin{solution}
+    $$z = \frac{5.23-5.5}{0.24/\sqrt{64}} = -9$$
+    This is much less than -1.64, so the null hypothesis is rejected.
+\end{solution}
+
+\question{Test the hypothesis that the average content of containers of a particular lubricant is 10 liters if the contents of a random sample of 10 containers are 10.2, 9.7, 10.1, 10.3, 10.1, 9.8, 9.9, 10.4, 10.3, and 9.8 liters. Use a 0.01 level of significance and assume that the distribution of contents is normal.}
+
+\begin{solution}
+    Sample mean is 10.06, and sample standard deviation is 0.246. Then using the $T$ distribution,
+    $$t = \frac{10.06-10}{0.246/\sqrt{10}} = 0.772$$
+    Using a 0.01 level of significance, we have $t_{0.005} = 3.25$. Therefore, we cannot reject the null hypothesis.
+\end{solution}
+
+\question{Past experience indicates that the time required for high school seniors to complete a standardized test is a normal random variable with a mean of 35 minutes. If a random sample of 20 high school seniors took an average of 33.1 minutes to complete this test with a standard deviation of 4.3 minutes, test the hypothesis, at the 0.05 level of significance, that $\mu = 35$ minutes against the alternative that $\mu < 35$ minutes.}
+
+\begin{solution}
+    We use the $T$ distribution.
+    $$t = \frac{33.1-35}{4.3/\sqrt{20}} = -1.98$$
+    Now $t_{0.95} = -1.729$, so we reject the null hypothesis.
+\end{solution}
+
+\end{questions}
+\end{document}
