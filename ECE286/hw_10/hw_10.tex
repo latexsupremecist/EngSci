@@ -1,0 +1,168 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Homework 10}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A manufacturer of car batteries claims that the batteries will last, on average, 3 years with a variance of 1 year. If 5 of these batteries have lifetimes of 1.9, 2.4, 3.0, 3.5, and 4.2 years, construct a 95\% confidence interval for $\sigma^2$ and decide if the manufacturer’s claim that $\sigma^2 = 1$ is valid. Assume the population of battery lives to be approximately normally distributed.}
+
+\begin{solution}
+    We have $\alpha = 0.05$ and 4 degrees of freedom. Then $\chi^2_{0.025} = 11.143, \chi^2_{0.975} = 0.484$. $S^2$ is found to be 0.815.
+    $$0.95 = P(0.484 < \frac{(5-1)S^2}{\sigma^2} < 11.143) = P(0.293 < \sigma^2 < 6.74)$$
+    The confidence interval contains 1, so the claim is not rejected.
+\end{solution}
+
+\question{A random sample of 20 students yielded a mean of $\overline x = 72$ and a variance of $s^2 = 16$ for scores on a college placement test in mathematics. Assuming the scores to be normally distributed, construct a 98\% confidence interval for $\sigma^2$.}
+
+\begin{solution}
+    $\alpha = 0.02$ and the degree of freedom is 19. This gives $\chi^2_{0.01} = 36.191, \chi^2_{0.99} = 7.633$. The confidence interval is
+    $$0.98 = P(7.633 < X^2 < 36.191) = P(7.633 < \frac{(20-1)S^2}{\sigma^2} < 36.191) = P(8.40 < \sigma^2 < 39.8)$$
+\end{solution}
+
+\question{Suppose that there are $n$ trials $x_1, x_2 ,\dots, x_n$ from a Bernoulli process with parameter $p$, the probability of a success. That is, the probability of $r$ successes is given by $\binom{n}{r} p^r(1-p)^{n-r}$. Work out the maximum likelihood estimator for the parameter $p$.}
+
+\begin{solution}
+    First we assume there are $r$ successes in total.
+    \begin{align*}
+        L(x_1,x_2,\dots,x_n|p) &= \binom{n}{r} p^r(1-p)^{n-r} \\
+        \ln L &= \ln\binom{n}{r} + r\ln p + (n-r)\ln(1-p) \\
+        \frac{\partial \ln L}{\partial p} &= \frac{r}{p} - \frac{n-r}{1-p} \\
+        \frac{r}{p} &= \frac{n-r}{1-p} \\
+        p &= \frac{r}{n} \\
+          &= \overline x
+    \end{align*}
+    Which makes sense.
+\end{solution}
+
+\question{Consider the lognormal distribution with the density function given in Section 6.9. Suppose we have a random sample $x_1, x_2 ,\dots, x_n$ from a lognormal distribution.}
+
+\begin{parts}
+    \part{Write out the likelihood function.}
+    \part{Develop the maximum likelihood estimators of $\mu$ and $\sigma^2$.}
+\end{parts}
+
+\begin{solution}
+    The likelihood function is
+    $$L(x_1,x_2,\dots,x_n|\mu,\sigma) = \prod_{i=1}^n f(x_i;\mu,\sigma) = \frac{1}{(2\pi)^{\frac{n}{2}}\sigma^n\prod_{i=1}^nx_i} \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n [\ln(x_i) - \mu]^2\right)$$
+    Taking the logarithm,
+    $$\ln L = -\frac{n}{2}\ln(2\pi) - \frac{n}{2}\ln\sigma^2 - \sum_{i=1}^n \ln x_i - \frac{1}{2\sigma^2} \sum_{i=1}^n [\ln(x_i) - \mu]^2$$
+    Taking the partial derivative with respect to $\mu$,
+    \begin{align*}
+        \frac{\partial \ln L}{\partial \mu} &= \frac{1}{\sigma^2} \sum_{i=1}^n (\ln(x_i) - \mu) \\
+        \sum_{i=1}^n \ln(x_i) - \mu &= 0 \\
+        \mu &= \frac{1}{n} \sum_{i=1}^n \ln(x_i)
+    \end{align*}
+    Taking the partial derivative with respect to $\sigma^2$,
+    \begin{align*}
+        \frac{\partial \ln L}{\partial \sigma^2} &= -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4} \sum_{i=1}^n [\ln(x_i) - \mu]^2 \\
+        n &= \frac{1}{\sigma^2} \sum_{i=1}^n [\ln(x_i) - \mu]^2 \\
+        \sigma^2 &= \frac{1}{n} \sum_{i=1}^n [\ln(x_i) - \mu]^2
+    \end{align*}
+\end{solution}
+
+\question{Consider a random sample of $x_1,x_2,\dots,x_n$ observations from a Weibull distribution with parameters $\alpha$ and $\beta$ and density function
+    $$f(x) = \begin{cases} \alpha\beta x^{\beta-1} e^{-\alpha x^\beta} & x > 0 \\ 0 & x \leq 0 \end{cases}$$
+for $\alpha,\beta > 0$.}
+
+\begin{parts}
+    \part{Write out the likelihood function.}
+    \part{Write out the equations that, when solved, give the maximum likelihood estimators of $\alpha$ and $\beta$.}
+\end{parts}
+
+\begin{solution}
+    The likelihood function is
+    $$L(x_1,x_2,\dots,x_n|\alpha,\beta) = \alpha^n\beta^n \prod_{i=1}^n x_i^{\beta-1} \exp\left(-\alpha \sum_{i=1}^n x_i^\beta\right)$$
+    Taking the logarithm,
+    $$\ln L = n\ln\alpha + n\ln\beta + (\beta-1)\sum_{i=1}^n \ln x_i - \alpha \sum_{i=1}^n x_i^\beta$$
+    Then the equations to be solved are
+    \begin{align*}
+        \frac{\partial \ln L}{\partial \alpha} &= \frac{n}{\alpha} - \sum_{i=1}^n x_i^\beta \\
+        \alpha &= \frac{n}{\sum_{i=1}^n x_i^\beta}
+    \end{align*}
+    and
+    \begin{align*}
+        \frac{\partial \ln L}{\partial \beta} &= \frac{n}{\beta} + \sum_{i=1}^n \ln x_i - \alpha \sum_{i=1}^n x_i^\beta \ln x_i \\
+        \frac{n}{\beta} + \sum_{i=1}^n \ln x_i - \alpha \sum_{i=1}^n x_i^\beta \ln x_i &= 0
+    \end{align*}
+\end{solution}
+
+\question{Consider a random sample of $x_1,\dots, x_n$ from a uniform distribution $U(0, \theta)$ with unknown parameter $\theta$, where $\theta > 0$. Determine the maximum likelihood estimator of $\theta$.}
+
+\begin{solution}
+    $$f(x|\theta) = \frac{1}{\theta}$$
+    Then
+    $$L(x_1,\dots,x_n|\theta) = \theta^{-n}$$
+    which is maximised when $\theta$ is minimum. However, $\theta$ has to be no less than any $x_i$. Hence the maximum likelihood estimator is
+    $$\hat\theta = \max\{x_1,\dots,x_n\}$$
+\end{solution}
+
+\question{Consider a hypothetical experiment where a man with a fungus uses an antifungal drug and is cured. Consider this, then, a sample of one from a Bernoulli distribution with probability function
+$$f(x) = p^xq^(1-x), x = 0,1$$
+where $p$ is the probability of a success (cure) and $q = 1 - p$. Now, of course, the sample information gives $x = 1$. Write out a development that shows that $\hat p = 1.0$ is the maximum likelihood estimator of the probability of a cure.}
+
+\begin{solution}
+    \begin{align*}
+        L &= f(x) \\
+        \ln L &= x\ln p + (1-x)\ln(1-p) \\
+        \frac{\partial \ln L}{\partial p} &= \frac{x}{p} - \frac{1-x}{1-p} \\
+        \frac{x}{p} &= \frac{1-x}{1-p} \\
+        p &= x
+    \end{align*}
+    Then in this case, since $x_1 = 1$, we have $\hat p = 1$.
+\end{solution}
+
+\question{Consider two estimators of $\sigma^2$ for a sample $x_1,x_2,\dots,x_n$  which is drawn from a normal distribution with mean $\mu$ and variance $\sigma^2$. The estimators are the unbiased estimator $s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline x)^2$ and the maximum likelihood estimator $\hat\sigma^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \overline x)^2$. Discuss the variance properties of these two estimators.}
+
+\begin{solution}
+    \begin{align*}
+        \text{Var}(s^2) &= \frac{1}{(n-1)^2} \text{Var}\left(\sum_{i=1}^n (x_i - \overline x)^2\right) \\
+                        &= \frac{1}{(n-1)^2} \text{Var}\left(\sigma^2\chi^2\right) \\
+                        &= \frac{\sigma^4}{(n-1)^2} \text{Var}\left(\chi^2\right) \\
+                        &= \frac{2\sigma^4}{n-1}
+    \end{align*}
+    For the latter,
+    \begin{align*}
+        \text{Var}(\hat\sigma^2) &= \text{Var}\left(\frac{n-1}{n}s^2\right) \\
+                                 &= \frac{(n-1)^2}{n^2} \times \frac{2\sigma^4}{n-1} \\
+                                 &= \frac{2\sigma^4(n-1)}{n^2}
+    \end{align*}
+\end{solution}
+
+\question{A manufacturer turns out a product item that is labeled either “defective” or “not defective.” In order to estimate the proportion defective, a random sample of 100 items is taken from production, and 10 are found to be defective. Following implementation of a quality improvement program, the experiment is conducted again. A new sample of 100 is taken, and this time only 6 are found to be defective.}
+
+\begin{parts}
+    \part{Give a 95\% confidence interval on $p_1 - p_2$, where $p_1$ is the population proportion defective before improvement and $p_2$ is the proportion defective after improvement.}
+    \part{Is there information in the confidence interval found in (a) that would suggest that $p_1 > p_2$? Explain.}
+\end{parts}
+
+\begin{solution}
+    $\alpha = 0.05$, and $z_{0.025} = -1.96$. Then
+    $$\sqrt{\frac{\hat p_1\hat q_1}{n_1} + \frac{\hat p_1\hat q_1}{n_1}} = \sqrt{\frac{0.1\times0.9}{100} + \frac{0.06\times0.94}{100}} = 0.0383$$
+    We have
+    $$-0.0350 < p_1 - p_2 < 0.115$$
+    The confidence does not tell us the sign of $p_1-p_2$, so it does not suggest whether or not $p_1 > p_2$.
+\end{solution}
+
+\question{A certain supplier manufactures a type of rubber mat that is sold to automotive companies. The material used to produce the mats must have certain hardness characteristics. Defective mats are occasionally discovered and rejected. The supplier claims that the proportion defective is 0.05. A challenge was made by one of the clients who purchased the mats, so an experiment was conducted in which 400 mats are tested and 17 were found defective.}
+
+\begin{parts}
+    \part{Compute a 95\% two-sided confidence interval on the proportion defective.}
+    \part{Compute an appropriate 95\% one-sided confidence interval on the proportion defective.}
+    \part{Interpret both intervals from (a) and (b) and comment on the claim made by the supplier.}
+\end{parts}
+
+\begin{solution}
+    For the two-sided confidence interval, $\alpha = 0.05$, and $z_{0.025} = -1.96$. Then
+    $$\sqrt{\frac{\hat p\hat q}{n}} = \sqrt{\frac{0.0425\times0.9575}{400}} = 0.0101$$
+    The confidence interval is
+    $$[0.0227, 0.0623]$$
+    For the one-sided confidence interval, $z_{0.05} = -1.645$. The confidence interval is then
+    $$[0, 0.0591]$$
+    In both cases, the claim made by the supplier cannot be rejected, as the claim is in the confidence interval.
+\end{solution}
+
+\end{questions}
+\end{document}
