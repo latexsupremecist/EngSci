@@ -181,5 +181,28 @@ where $C_1$ and $C_2$ are arbitrary constants, are solutions of Laplace's equati
     \end{align*}
 \end{solution}
 
+\question{Assuming $S$ to be the area of the electrodes in the space-charge-limited vacuum diode in Fig. 5-2, find}
+
+\begin{parts}
+    \part{$V(y)$ and $E(y)$ within the interelectrode region}
+    \part{the total amount of charge in the interelectrode region}
+    \part{the total surface charge on the cathode and on the anode}
+    \part{the transit time of an electron from the cathode to the anode with $V_0 = 200$V and $d = 1$cm.}
+\end{parts}
+
+\begin{solution}
+    From the example, we are given the following equation which can be integrated.
+    \begin{align*}
+        V^{-\frac{1}{4}}dV &= 2\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}dy \\
+        \frac{4}{3}V^{\frac{3}{4}}(y) &= 2\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}y \\
+        V^{\frac{3}{4}}(y) &= \frac{3}{2}\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}y \\
+        V(y) &= \left(\frac{3}{2}\right)^{\frac{4}{3}}\left(\frac{J}{\varepsilon_0}\right)^{\frac{2}{3}}\left(\frac{m}{2e}\right)^{\frac{1}{3}}y^{\frac{4}{3}} \\
+             &= V_0\left(\frac{y}{d}\right)^{\frac{4}{3}}
+    \end{align*}
+    Then differentiating,
+    $$E(y) = -\frac{dV}{dy} = -\frac{4V_0}{3d}\left(\frac{y}{d}\right)^{\frac{1}{3}}$$
+    Incomplete!
+\end{solution}
+
 \end{questions}
 \end{document}
