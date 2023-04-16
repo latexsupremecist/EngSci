@@ -28,10 +28,10 @@ $$E[X] = \mu$$
 
 $$S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$$
 
-We want that $E[S^2] = \sigma^2$. Note that
+We want that $E[S^2] = \sigma^2$.
 \begin{align*}
-	E[S^2] &= E\left[\frac{1}{n-1} \sum_{i=1}^n (X_i^2 - 2X_i\overline{X} + \overline{X}^2)\right] \\
-	       &= E\left[\frac{1}{n-1} \left(\sum_{i=1}^n X_i^2\right) - n\overline{X}^2\right] \\
+	E[S^2] &= E\left[\frac{1}{n-1} \sum_{i=1}^n \left(X_i^2 - 2X_i\overline{X} + \overline{X}^2\right)\right] \\
+           &= \frac{1}{n-1} E\left[\left(\sum_{i=1}^n X_i^2\right) - n\overline{X}^2\right] \\
 	       &= \frac{1}{n-1}\left(n\mu^2 + n\sigma^2 - n\mu^2 - n\text{var}(\overline{X})\right) \\
 	       &= \frac{1}{n-1}\left(n\sigma^2 - n\text{var}\left(\frac{1}{n}\sum_{i=1}^n X_i\right)\right) \\
 	       &= \frac{1}{n-1} \left(n\sigma^2 - \frac{1}{n}\sum_{i=1}^n\text{var}(X_i)\right) \\
@@ -39,4 +39,11 @@ We want that $E[S^2] = \sigma^2$. Note that
 	       &= \sigma^2
 \end{align*}
 
+Note that we used
+$$E(X_i - \mu)^2 = E(X_i^2) - \mu^2 \Rightarrow E(X_i^2) = E(X_i - \mu)^2 + \mu^2 = \text{var}(X_i) + \mu^2$$
+and
+$$E(X_i - \mu)^2 = \sigma^2$$
+The latter is because the standard deviation is the average value of $(X_i - \mu)^2$. Finally,
+$$\text{var}(X+Y) = \text{var}(X) + \text{var}(Y)$$
+if $X$ and $Y$ are independent. This can be proven using algebra, but it is annoying.
 \end{document}
