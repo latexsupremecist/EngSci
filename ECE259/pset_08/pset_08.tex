@@ -120,7 +120,7 @@
 	\end{align*}
 	We use the counterclockwise direction.
 	\begin{align*}
-		\oint_ctrclockwise \vec A \cdot d\vec l &= \int_0^{2\pi} 2R^2 \hat a_\phi \cdot \hat a\phi d\phi \\
+		\ointctrclockwise_C \vec A \cdot d\vec l &= \int_0^{2\pi} 2R^2 \hat a_\phi \cdot \hat a\phi d\phi \\
 							&= \int_0^{2\pi} 2 d\phi \\
 							&= 4\pi \\
 							&= \iint_S \vec B \cdot d\vec S
@@ -203,7 +203,7 @@
 	no star no do
 \end{solution}
 
-\question{A d-c voltage $V_o$ is applied across a cylindrical capacitor of length $L$. The radii of the inner and outer conductors are $a$ and $b$, respectively. The space between the conductors is filled with two different lossy dielectrics having, respectively, permittivity $\varepsilon_1$ and conductivity $\sigma_1$ in the region $a < r < c$, and permittivity $\varepsilon_2$ and conductivity $\sigma_2$ in the region $c < r < b$. Find the current density in each region and the surface charge density on the two conductors and the interface between the dielectrics.}
+\question{A d-c voltage $V_0$ is applied across a cylindrical capacitor of length $L$. The radii of the inner and outer conductors are $a$ and $b$, respectively. The space between the conductors is filled with two different lossy dielectrics having, respectively, permittivity $\varepsilon_1$ and conductivity $\sigma_1$ in the region $a < r < c$, and permittivity $\varepsilon_2$ and conductivity $\sigma_2$ in the region $c < r < b$. Find the current density in each region and the surface charge density on the two conductors and the interface between the dielectrics.}
 
 \begin{solution}
 	I am lazy, so I will be brief. From Poisson's equation, we obtain
@@ -220,7 +220,77 @@
 	$$R_2 = \frac{\ln\frac{b}{c}}{2\pi\sigma_2L}$$
 	As both layers are in series, total resistance is the sum of the above,
 	$$R = R_1 + R_2 = \frac{1}{2\pi L}\left(\frac{\ln\frac{c}{a}}{\sigma_1} + \frac{\ln\frac{b}{c}}{\sigma_2}\right)$$
+    Then current is
+    $$I = \frac{V_0}{R} = \frac{2\pi L\sigma_1\sigma_2V_0}{\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}}$$
+    And current density is
+    $$J = \frac{I}{S} = \frac{\sigma_1\sigma_2V_0}{r\left(\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}\right)}$$
+    The $E$ fields are
+    $$E_1 = \frac{J}{\sigma_1} = \frac{\sigma_2V_0}{r\left(\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}\right)}$$
+    and
+    $$E_2 = \frac{\sigma_1V_0}{r\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}}$$
+    Since there is no $\vec D$ outside the conductors, and that $\vec D$ is normal to the surface, we can simplify surface charge density as $\pm\vec D$. On $r=a$,
+    $$\rho_s = \varepsilon_1E_1(r=a) = \frac{\varepsilon_1\sigma_2V_0}{a\left(\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}\right)}$$
+    For $r=b$,
+    $$\rho_s = -\varepsilon_2E_2(r=b) = -\frac{\varepsilon_2\sigma_1V_0}{b\left(\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}\right)}$$
+    Surface charge density is then
+    $$\rho_s = \varepsilon_2E_2(r=c) - \varepsilon_1E_1(r=c) = \frac{(\varepsilon_2\sigma_1-\varepsilon_1\sigma_2)V_0}{c\left(\sigma_2\ln\frac{c}{a} + \sigma_1\ln\frac{b}{c}\right)}$$
 \end{solution}
+
+\question{The space between two parallel conducting plates each having an area $S$ is filled with an inhomogeneous ohmic medium whose conductivity varies linearly from $\sigma_1$ at one plate ($y = 0$) to $\sigma_2$ at the other plate ($y=d$). A d-c voltage $V_0$ is applied across the plates as shown below. Find the resistance between the plates, the surface charge density on the plates, and the amount of charge between the plates.}
+
+\begin{solution}
+    Nonessential.
+\end{solution}
+
+\question{An electron is injected with a velocity $\vec u_0 = \hat a_y u_0$ into a region where both an electric field $\vec E$ and a magnetic field $\vec B$ exist. Find the velocity of the electron for all time $\vec u(t)$.}
+
+\begin{solution}
+    Assuming $\vec E = \hat a_zE_0$ and $\vec B = \hat a_xB_0$, their contributions to force is
+    $$\vec F_E = q\vec E = -eE_0\hat a_z$$
+    and
+    $$\vec F_B = q\vec u \times \vec B = -eB_0u_z(t) \hat a_y + eB_0u_y(t)\hat a_z$$
+    Now total force is
+    $$\vec F = -eB_0u_z(t) \hat a_y + e(B_0u_y(t) - E_0) \hat a_z$$
+    Rewriting force as a derivative of $\vec u(t)$,
+    $$m(u_x'(t)\hat a_x + u_y'(t)\hat a_y + u_z'(t)\hat a_z) = -eB_0u_z(t) \hat a_y + e(B_0u_y(t) - E_0) \hat a_z$$
+    Then we know $u_x(t)$ is a constant. We get the simultaneous equations
+    $$\begin{cases} u_y'(t) = -\frac{eB_0}{m} u_z(t) & \\ u_z'(t) = \frac{e}{m} (B_0u_y(t) - E_0) & \end{cases}$$
+    Differentiating the second equation with respect to $t$ and substituting the first,
+    $$u_z''(t) = -\frac{e^2B_0^2}{m^2} u_z(t)$$
+    This gives the solution
+    $$u_z(t) = A\cos\left(\frac{eB_0}{m}t\right) + B\sin\left(\frac{eB_0}{m}t\right)$$
+    We know $u_z(0) = 0$ since $\vec u(0)$ only has an $\hat a_y$ component. Therefore $A = 0$. Substituting back into the first equation,
+    $$u_y'(t) = -\frac{BeB_0}{m} \sin\left(\frac{eB_0}{m}t\right)$$
+    Integrating and substituting $u_y(0) = u_0$, we have
+    $$u_y(t) = B\cos\left(\frac{eB_0}{m}t\right) + u_0 - B$$
+    Then differentiating $u_z(t)$ gives us
+    $$u_z'(t) = \frac{BeB_0}{m} \cos\left(\frac{eB_0}{m}t\right)$$
+    Substituting into the second equation,
+    $$B = u_0 - \frac{E_0}{B_0}$$
+    So
+    $$\vec u(t) = \left(\left(u_0 - \frac{E_0}{B_0}\right)\cos\left(\frac{eB_0}{m}t\right) + \frac{E_0}{B_0}\right)\hat a_y + \left(u_0 - \frac{E_0}{B_0}\right)\sin\left(\frac{eB_0}{m}t\right)\hat a_z$$
+    Hence if $\frac{E_0}{B_0} = u_0$, then $\vec u(t)$ is constant. If $\frac{E_0}{B_0} << u_0$ or the opposite, we have an almost circular motion. \\
+    Now if $\vec E = -\hat a_zE_0$ and $\vec B = -\hat a_zB_0$, then
+    \begin{align*}
+        \vec F &= q\vec u \times \vec B + q\vec E \\
+               &= eB_0u_y(t) \hat a_x - eB_0u_x(t) \hat a_y + eE_0\hat a_z \\
+        m(u_x'(t)\hat a_x + u_y'(t)\hat a_y + u_z'(t)\hat a_z) &= eB_0u_y(t) \hat a_x - eB_0u_x(t) \hat a_y + eE_0\hat a_z
+    \end{align*}
+    Comparing like terms, $u_z(t) = \frac{eE_0}{m}t$.
+    $$\begin{cases} u_x'(t) = \frac{eB_0}{m} u_y(t) & \\ u_y'(t) = -\frac{eB_0}{m} u_x(t) & \end{cases}$$
+    Similar to above, we get
+    $$u_x''(t) = -\frac{e^2B_0^2}{m^2} u_x(t)$$
+    which yields
+    $$u_x(t) = A\sin\left(\frac{eB_0}{m}t\right)$$
+    Substituting into the second equation,
+    $$u_y(t) = A\cos\left(\frac{eB_0}{m}t\right) + u_0 - A$$
+    Substituting back into the first equation, $A = u_0$, so
+    $$\vec u(t) = u_0\sin\left(\frac{eB_0}{m}t\right) \hat a_x + u_0\cos\left(\frac{eB_0}{m}t\right) \hat a_y + \frac{eE_0}{m}t$$
+    Thus the electron displays helical motion.
+\end{solution}
+
+
+
 \end{questions}
 
 \end{document}
