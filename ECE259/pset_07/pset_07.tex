@@ -128,6 +128,7 @@
 }
 
 \begin{solution}
+    idk
 \end{solution}
 
 \question{Prove that a potential function satisfying Laplace's equation in a given region possesses no maximum or minimum within the region.}
@@ -185,23 +186,128 @@ where $C_1$ and $C_2$ are arbitrary constants, are solutions of Laplace's equati
 
 \begin{parts}
     \part{$V(y)$ and $E(y)$ within the interelectrode region}
+
+    \begin{solution}
+        From the example, we are given the following equation which can be integrated.
+        \begin{align*}
+            V^{-\frac{1}{4}}dV &= 2\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}dy \\
+            \frac{4}{3}V^{\frac{3}{4}}(y) &= 2\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}y \\
+            V^{\frac{3}{4}}(y) &= \frac{3}{2}\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}y \\
+            V(y) &= \left(\frac{3}{2}\right)^{\frac{4}{3}}\left(\frac{J}{\varepsilon_0}\right)^{\frac{2}{3}}\left(\frac{m}{2e}\right)^{\frac{1}{3}}y^{\frac{4}{3}} \\
+                 &= V_0\left(\frac{y}{d}\right)^{\frac{4}{3}}
+        \end{align*}
+        Then differentiating,
+        $$E(y) = -\frac{dV}{dy} = -\frac{4V_0}{3d}\left(\frac{y}{d}\right)^{\frac{1}{3}}$$
+    \end{solution}
+
     \part{the total amount of charge in the interelectrode region}
+
+    \begin{solution}
+        Charge density is given by
+        \begin{align*}
+            \vec\nabla \cdot \vec E &= \frac{\rho}{\varepsilon} \\
+            \rho &= \varepsilon \frac{dE}{dy} \\
+                 &= -\frac{4\varepsilon V_0}{9d^2}\left(\frac{y}{d}\right)^{-\frac{2}{3}}
+        \end{align*}
+        Total charge is integrated to be
+        \begin{align*}
+            Q &= \iiint_V \rho dV \\
+              &= S\int_0^d \rho dy \\
+              &= -\frac{4\varepsilon V_0S}{3d}
+        \end{align*}
+    \end{solution}
+
     \part{the total surface charge on the cathode and on the anode}
+
+    \begin{solution}
+        Total surface charge on the anode is
+        $$Q = S\rho_s = S\hat a_n \cdot (\vec D_2 - \vec D_1) = -S\varepsilon E(d) = \frac{4\varepsilon V_0S}{3d}$$
+        Similarly, total surface charge on the anode is
+        $$Q = -S\varepsilon E(0) = 0$$
+    \end{solution}
+
     \part{the transit time of an electron from the cathode to the anode with $V_0 = 200$V and $d = 1$cm.}
+
+    \begin{solution}
+        In the example, it was derived that
+        $$u = \sqrt{\frac{2eV}{m}}$$
+        Then
+        \begin{align*}
+            \frac{dy}{dt} &= \sqrt{\frac{2eV}{m}} \\
+                          &= \sqrt{\frac{2eV_0}{m}} \left(\frac{y}{d}\right)^{\frac{2}{3}} \\
+            y^{-\frac{2}{3}}dy &= \sqrt{\frac{2eV_0}{m}} d^{-\frac{2}{3}} dt \\
+            3y^{\frac{1}{3}} &= \sqrt{\frac{2eV_0}{m}} d^{-\frac{2}{3}} t \\
+            y &= \left(\frac{2eV_0}{m}\right)^{\frac{3}{2}} \times \frac{1}{27d^2} t^3
+        \end{align*}
+        Setting $y(t) = d$, we have
+        \begin{align*}
+            t^3 &= 27d^3 \left(\frac{m}{2eV_0}\right)^{\frac{3}{2}} \\
+            t &= 3d\sqrt{\frac{m}{2eV_0}} \\
+              &= 3.58\unit{ns}
+        \end{align*}
+    \end{solution}
+
 \end{parts}
 
+\question{Assume a point charge $Q$ above an infinite conducting ground plane at $y = 0$. Prove that $V(x, y, z)$ in equation (4-37) satisfies Laplace’s equation if the conducting plane is maintained at zero potential. Find the expression for $V(x, y, z)$ if the potential were non-zero, and find the electrostatic force of attraction between the charge $Q$ and the conducting plane}
+
 \begin{solution}
-    From the example, we are given the following equation which can be integrated.
+    $$V(x,y,z) = \frac{Q}{4\pi\varepsilon_0}\left(\frac{1}{\sqrt{x^2+(y-d)^2+z^2}} - \frac{1}{\sqrt{x^2+(y+d)^2+z^2}}\right)$$
+    Its second derivative with respect to $x$ is
     \begin{align*}
-        V^{-\frac{1}{4}}dV &= 2\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}dy \\
-        \frac{4}{3}V^{\frac{3}{4}}(y) &= 2\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}y \\
-        V^{\frac{3}{4}}(y) &= \frac{3}{2}\sqrt{\frac{J}{\varepsilon_0}}\left(\frac{m}{2e}\right)^{\frac{1}{4}}y \\
-        V(y) &= \left(\frac{3}{2}\right)^{\frac{4}{3}}\left(\frac{J}{\varepsilon_0}\right)^{\frac{2}{3}}\left(\frac{m}{2e}\right)^{\frac{1}{3}}y^{\frac{4}{3}} \\
-             &= V_0\left(\frac{y}{d}\right)^{\frac{4}{3}}
+        \frac{dV}{dx} &= \frac{Q}{4\pi\varepsilon_0} \left(-\frac{x}{(x^2+(y-d)^2+z^2)^{\frac{3}{2}}} + \frac{x}{(x^2+(y+d)^2+z^2)^{\frac{3}{2}}}\right) \\
+        \frac{d^2V}{dx^2} &= \frac{Q}{4\pi\varepsilon_0} \left(\frac{3x^2\sqrt{x^2+(y-d)^2+z^2} - (x^2+(y-d)^2+z^2)^{\frac{3}{2}}}{(x^2+(y-d)^2+z^2)^3}\right. \\
+                          &+ \left.\frac{(x^2+(y+d)^2+z^2)^{\frac{3}{2}} - 3x^2\sqrt{x^2+(y+d)^2+z^2}}{(x^2+(y+d)^2+z^2)^3}\right) \\
+                          &= \frac{Q}{4\pi\varepsilon_0} \left(\frac{3x^2 - x^2 - (y-d)^2 - z^2}{(x^2+(y-d)^2+z^2)^{\frac{5}{2}}} + \frac{x^2+(y+d)^2+z^2 - 3x^2}{(x^2+(y+d)^2+z^2)^{\frac{5}{2}}}\right) \\
+                          &= \frac{Q}{4\pi\varepsilon_0} \left(\frac{2x^2 - (y-d)^2 - z^2}{(x^2+(y-d)^2+z^2)^{\frac{5}{2}}} + \frac{-2x^2+(y+d)^2+z^2}{(x^2+(y+d)^2+z^2)^{\frac{5}{2}}}\right)
     \end{align*}
-    Then differentiating,
-    $$E(y) = -\frac{dV}{dy} = -\frac{4V_0}{3d}\left(\frac{y}{d}\right)^{\frac{1}{3}}$$
-    Incomplete!
+    Then similarly, the second derivative with respect to $z$ is
+    $$\frac{d^2V}{dz^2} = \frac{Q}{4\pi\varepsilon_0} \left(\frac{-x^2 - (y-d)^2 + 2z^2}{(x^2+(y-d)^2+z^2)^{\frac{5}{2}}} + \frac{x^2+(y+d)^2-2z^2}{(x^2+(y+d)^2+z^2)^{\frac{5}{2}}}\right)$$
+    The derivative with respect to $y$ is equivalent to the derivative with respect to $y\pm d$, so
+    $$\frac{d^2V}{dy^2} = \frac{Q}{4\pi\varepsilon_0} \left(\frac{-x^2 + 2(y-d)^2 - z^2}{(x^2+(y-d)^2+z^2)^{\frac{5}{2}}} + \frac{x^2-2(y+d)^2+z^2}{(x^2+(y+d)^2+z^2)^{\frac{5}{2}}}\right)$$
+    Summing up the $x^2,(y\pm d)^2,z^2$ terms for each denominators respectively, the sum vanishes, hence it satisfies Laplace's equation
+    $$\nabla^2V = 0$$
+    If the potential were non-zero, image theory still applies, and $V' = V + V_0$ suffices. Now the $\vec E$ field due to the image charge is
+    \begin{align*}
+        \vec E &= -\vec\nabla V \\
+               &= \vec\nabla \frac{Q}{4\pi\varepsilon_0} \frac{1}{\sqrt{x^2+(y+d)^2+z^2}} \\
+               &= -\frac{Q}{4\pi\varepsilon_0} \left(\frac{x\hat a_x + (y+d)\hat a_y + z\hat a_z}{(x^2+(y+d)^2+z^2)^{\frac{3}{2}}}\right) \\
+        \vec E(x,d,z) &= -\frac{Q}{4\pi\varepsilon_0} \frac{x\hat a_x + 2d\hat a_y + z\hat a_z}{(x^2+4d^2+z^2)^{\frac{3}{2}}}
+    \end{align*}
+    Then the force acting on $Q$ is
+    \begin{align*}
+        \vec F &= q\vec E \\
+               &= -\frac{Q^2}{4\pi\varepsilon_0} \frac{x\hat a_x + 2d\hat a_y + z\hat a_z}{(x^2+4d^2+z^2)^{\frac{3}{2}}} \\
+    \end{align*}
+\end{solution}
+
+\question{Assume that the space between the inner and outer conductors of a long coaxial cylindrical structure is filled with an electron cloud having a volume density of charge $\rho = \frac{A}{r}$ for $\alpha < r < b$, where $\alpha$ and $b$ are the radius of the inner and outer conductor, respectively. The inner conductor is maintained at potential $V_0$ and the outer conductor is grounded. Find $V(\alpha < r < b)$ by solving Poisson’s equation.}
+
+\begin{solution}
+    By symmetry, $V$ should only be dependent on $r$.
+    \begin{align*}
+        \vec\nabla \cdot (\varepsilon \vec\nabla V) &= -\rho_v \\
+        \varepsilon \vec\nabla \cdot \left(\frac{\partial V}{\partial r}\hat a_r\right) &= -\frac{A}{r} \\
+        \frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial V}{\partial r}\right) &= -\frac{A}{\varepsilon r} \\
+        \frac{\partial}{\partial r} \left(r\frac{\partial V}{\partial r}\right) &= -\frac{A}{\varepsilon} \\
+        r\frac{\partial V}{\partial r} &= -\frac{Ar}{\varepsilon} + C \\
+        \frac{\partial V}{\partial r} &= -\frac{A}{\varepsilon} + \frac{C}{r} \\
+        V &= -\frac{Ar}{\varepsilon} + C\ln r + D
+    \end{align*}
+    Substituting $V(b) = 0$ and $V(\alpha) = V_0$, we have
+    $$V = \frac{A(b-r)}{\varepsilon} + \frac{V_0 - \frac{A(b-\alpha)}{\varepsilon}}{\ln\frac{a}{b}}\ln\frac{r}{b}$$
+\end{solution}
+
+\question{Lightning strikes a lossy dielectric sphere $\varepsilon = 1.2\varepsilon_0$, $\sigma$ = 10 S/m, of radius 0.1 m, at time $t = 0$, uniformly depositing charge 1 mC. For all $t$, determine the electric field intensity and current density inside and outside the sphere, and the time it takes for the charge density to diminish to 1\% of its initial value. Also find the electrostatic energy stored in the space outside the sphere. Does this energy change with time?}
+
+\begin{solution}
+    Lossy dielectrics are not covered on the final so I refuse to do this.    
+\end{solution}
+
+\question{Two lossy dielectric media with permittivities and conductivities ($\varepsilon_1, \sigma_1$) and ($\varepsilon_2, \sigma_2$) are in contact. An electric field with a magnitude $E_1$ is incident from medium 1 upon the interface at an angle $\alpha_1$ measured from the common normal, as in Fig. 5-10. Find the electric field in medium 2 $E_2$ and the surface charge density. How would these change if the media were perfect dielectrics?}
+
+\begin{solution}
+    Lossy dielectrics are not covered on the final so I refuse to do this.    
 \end{solution}
 
 \end{questions}
