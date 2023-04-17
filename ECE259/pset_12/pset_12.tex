@@ -1,0 +1,121 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\author{niceguy}
+\title{Problem Set 12}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{A rectangular wire loop is situated in a uniform
+low-frequency time-harmonic magnetic field of flux density $B(t) = B_0\sin\omega t$ ($B_0 > 0$). The vector $\vec B$ is perpendicular to the plane of the loop, as shown in Fig.Q6.3. The magnetic field due to induced currents can be neglected. The induced emf in the loop is of the following form ($\mathcal E_0$ is positive constant):}
+
+\begin{solution}
+    D, $e_{\text{ind}}(t) = -\mathcal E_0\cos\omega t$. This is because the induced emf is proportional to $-\frac{\partial B}{\partial t}$.
+\end{solution}
+
+\question{A rectangular copper contour of area $S$ is first situated outside any magnetic field, and there is no current in it. The contour is then brought in a uniform time-invariant magnetic field of flux density 𝐵 and positioned so that the vector $\vec B$ is perpendicular to the plane of the contour (like the situation in Fig.Q6.3). In the new steady state, the magnetic flux through the contour due to the current induced in it, computed with respect to the same orientation as that of the vector $\vec B$, equals}
+
+\begin{solution}
+    E, $\Phi_{\text{ind}} = 0$. There is no induced emf when $\vec B$ does not vary with time.
+\end{solution}
+
+\question{An air-filled infinitely long solenoidal coil with a circular cross section of radius $a$ carries a slowly time-varying current. The magnetic flux through a surface spanned over one turn of the coil is $\Phi(t)$. An open-circuited circular wire loop of radius $b$ ($b > a$) is placed coaxially around the solenoid, as shown in Fig.Q6.4. The voltage between the terminals of the loop, for the reference orientation of the terminals in the figure, equals}
+
+\begin{solution}
+    A, $v(t) = \frac{d\Phi}{dt}$. I don't know why, thought it was B. I think they're wrong.
+\end{solution}
+
+\question{Consider the induced electromotive force, $e_{\text{ind}}$, and induced electric field intensity, $E_{\text{ind}}$, along the loop in Fig.Q6.4. If the radius of the loop is doubled (becomes $2b$), while both $a$ and $\Phi(t)$ are not changed, we have that}
+
+\begin{solution}
+    D, $e_{\text{ind}}$ remains the same, and $E_{\text{ind}}$ is halved. This is because the former only depends on $-\frac{\partial\Phi(t)}{\partial t}$ which remains constant. It is also equal to $\oint \vec E \cdot d\vec l$. Since the contour it integrates over is doubled, $\vec E$ should be halved.
+\end{solution}
+
+\question{If the loop in Fig. Q6.4 is an imaginary (nonmaterial) contour, in place of a conducting wire loop, which of the two quantities, the induced electromotive force ($e_{\text{ind}}$) and induced electric field intensity ($E_{\text{ind}}$), along the contour remain the same as along the conducting wire?}
+
+\begin{solution}
+    C, both quantities. The only thing that matters is $\Phi(t)$, which stays the same.
+\end{solution}
+
+\question{A coil of wire, with a low-frequency time-harmonic current $i(t) = I_0\cos\omega t$, is wound uniformly and densely about a thin toroidal core made of a nonlinear ferromagnetic material that exhibits hysteresis effects. Consider the magnetic flux density, $B(t)$, and magnetic field intensity, $H(t)$, in the core, as well as the induced emf, $e_{\text{ind}}(t)$, in the coil. Which of these quantities are time-harmonic functions?}
+
+\begin{solution}
+    B, $H(t)$ only. This is because $H(t)$ is determined by the current. However, $B(t)$ follows the hysteresis curve, and is hence not time harmonic. $e_{\text{ind}}$ is proportional to the derivative of $B(t)$, so it is also not time harmonic.
+\end{solution}
+
+\question{Fig. Q6.5 portrays four cases of either a (closed) contour or open line (with two ends) that are either imaginary (nonmaterial) or made of a metallic wire - moving uniformly with a velocity $\vec v$ in a time-invariant (static) magnetic field of flux density $\vec B$, in a vacuum. For a specific orientation in space of the vector $\vec B$, it is possible for an emf to be induced ($e_{\text{ind}} \neq 0$) along the contour/line in}
+
+\begin{solution}
+    E, all  four cases. Consider the electrons on the open lines. Since $\vec F = q\vec u \times \vec B$, we can have a $\vec B$ such that $\vec F$ is nonzero. This means an emf can be induced, given a suitable selection of $\vec B$ which causes $\vec F$ to point along the lines. For the contours, simply consider $\vec B$ which changes with position, so $\Phi$ is nonzero.
+\end{solution}
+
+\question{A metallic bar (of finite length) moves uniformly with a velocity $\vec v$ in a steady uniform magnetic field of flux density $\vec B$. Fig. Q6.6 shows five cases with different positions of the bar and of its velocity vector with respect to the magnetic field lines. There is a nonzero emf induced in the bar ($e_{\text{ind}} \neq 0$) for}
+
+\begin{solution}
+    D, cases (a) and (c) only. $\vec F = q\vec v \times \vec B$. If $\vec F$ is not perpendicular to the bar, then an emf is induced.
+\end{solution}
+
+\question{A rectangular loop moves with a constant velocity $v$ ($\vec v = v\hat a_x$) in a magnetic field of flux density vector $\vec B$. The ambient medium is air. Referring to Fig. Q6.7, and with $\vec B_0$, $\omega$, and $a$ being positive constants, there is a nonzero emf induced in the loop ($e_{\text{ind}} \neq 0$) if}
+
+\begin{solution}
+    F, more than one of the above cases. When $\vec B$ is in the $\hat a_z$ direction, $\Phi$ becomes nonzero. If either $\vec B$ changes with time or with position, flux would change with time, so there will be an induced emf.
+\end{solution}
+
+\question{A planar metallic wire loop moves with a velocity $\vec v$ in a nonuniform static magnetic field of flux density $\vec B$, as depicted in Fig. Q6.8. The magnetic field due to the induced current in the loop is negligible. Consider the following two expressions computed for this loop:
+    $$A_1 = -\frac{d}{dt} \int_s \vec B \cdot d\vec S$$
+    and
+    $$A_2 = \oint_C (\vec v \times \vec B)\cdot d\vec l$$
+where the reference directions of $d\vec l$ and $d\vec S$ are interconnected by the right-hand rule. Which of the following is true for the induced emf, $e_{\text{ind}}$, in the loop?}
+
+\begin{solution}
+    C, $e_{\text{ind}} = A_1 = A_2$. This is literally in the formula sheet.
+\end{solution}
+
+\question{Fig. Q6.9 shows a circular loop that rotates with a constant angular velocity $\omega$ about its axis in a uniform time-invariant magnetic field of flux density $B$. The vector $\vec B$ is perpendicular to the plane of drawing. With $\mathcal E_0$ being a positive constant and $T = \frac{2\pi}{\omega}$, the induced emf in the loop is of the following form:}
+
+\begin{solution}
+    A, $e_{\text{ind}} = \mathcal E_0\cos\omega t$. This is because it is proportional to $\frac{d\Phi}{dt}$. But then $\Phi = \vec B \cdot \vec S = BS\cos\theta$,
+    where $\theta$ is the angle between both vectors. As the angle has a constant derivative, $\Phi$ is sinusoidal, so the induced emf, its derivative, is also sinusoidal.
+\end{solution}
+
+\question{A liquid of conductivity $\sigma$ flows with a constant velocity $\vec v = v\hat a_x$ through a tube of width $d$, in which a uniform time-invariant magnetic field of flux density $\vec B = B\hat a_y$ is applied, as depicted in Fig. Q6.10. The induced electric field intensity vector, $\vec E_{\text{ind}}$, and the field intensity vector due to excess charge, $\vec E_q$, in the liquid are given by}
+
+\begin{solution}
+    E, $\vec E_{\text{ind}} = vB\hat a_z$, $\vec E_q = -vB\hat a_z$. The force induced on the electron goes in the $-\hat a_z$ direction, so the induced current goes in the opposite direction as that. The field from excess charges would counter the current, pointing in the opposite direction.
+\end{solution}
+
+\question{If the loop in Fig.Q6.9 uniformly rotates in a low-frequency time-harmonic uniform magnetic field of flux density $B(t) = B_0\cos\omega t$ ($B_0 > 0$), the induced emf in the loop, with $\mathcal E_0 > 0$, can be represented as}
+
+\begin{solution}
+    B, $e_{\text{ind}}(t) = \mathcal E_0\sin 2\omega t$. There is an extra $\cos\omega t$ term in $\Phi$, so its derivative is proportional to
+    $$\frac{d}{dt}\cos^2\omega t = -2\omega\cos\omega t\sin\omega t = -\omega\sin2\omega t$$
+\end{solution}
+
+\question{Assume that the magnetic flux density vector $\vec B$ in Fig. Q6.9 also rotates, in the same direction as the loop, with an angular velocity $\omega_B$, where $\omega_B > \omega$ (vectors $\omega$ and $\omega_B$ are collinear and in the same direction). With $\mathcal E_0$, $\mathcal E_{01}$, and $\mathcal E_{02}$ standing for respective constants, the induced emf in the loop is given by}
+
+\begin{solution}
+    D, $e_{\text{ind}}(t) = \mathcal E_0\cos(\omega_B-\omega)t$. This is because net $\omega$ in the reference frame of the loop is $\omega_B - \omega$.
+\end{solution}
+
+\question{A rectangular superconducting copper contour of area $S$ is first situated outside any magnetic field, and there is no current in it. The contour is then brought in a uniform time-invariant magnetic field of flux density $B$ and positioned so that the vector $\vec B$ is perpendicular to the plane of the contour (like the situtation in Fig. Q6.3). In the new steady state, the magnetic flux through the contour due to the current induced in it, computed with respect to the same orientation as that of the vector $\vec B$, equals}
+
+\begin{solution}
+    B, $\Phi_{\text{ind}} = -BS$. I wish I knew why.
+\end{solution}
+
+\question{Consider a cylindrical copper conductor carrying a time-varying current, and whether this current is more or less uniform because of eddy currents induced in the conductor and their magnetic field. When compared to the analysis with no effect of eddy currents taken into account, the magnitude of the total current density vector over the cross section of the conductor}
+\end{questions}
+
+\begin{solution}
+    $B$, less uniform and increases towards the conductor surface. This is because the induced eddy currents go in the opposite direction of the original current. However, the eddy currents are the strongest at the centre, so current becomes less uniform over the cross section, and magnitude is smaller closer to the centre.
+\end{solution}
+
+\question{Consider a ferromagnetic (e.g. iron) core of an ac machine or transformer made of mutually insulated stacked thin plates, shown in Fig. Q6.11(a), and a core made of a single piece of material, shown in Fig. Q6.11(b), and compare the respective distributions of the time-harmonic magnetic field in the two cases. The magnetic flux is more uniformly distributed throughout the volume of the core (or over its cross section) for}
+
+\begin{solution}
+\end{solution}
+
+\question{For the same applied time-harmonic magnetic
+field, the time-average power of Joule’s losses, (𝑃𝐽 )ave, due to eddy currents in the two cores in Fig.Q6.11 is greater for}
+\end{document}
