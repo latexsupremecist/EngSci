@@ -60,7 +60,7 @@ and the magnetic flux density vector due to these currents at an arbitrary point
 
 \begin{solution}
     C, remains the same. Same logic as above, but enclosed current remains the same.
-\end{questions}
+\end{solution}
 
 \question{An insulated metallic strip folded as in Fig. Q4.9 carries a steady current of intensity $I$. The width of the strip is $a=20d$, where $d$ is the diameter of the cylindrical cavity formed by the strip. With this, the magnitude of the $\vec B$ field at the point $P$ inside the cavity (see the figure) is}
 
@@ -104,8 +104,7 @@ and the magnetic flux density vector due to these currents at an arbitrary point
     C.
 \end{solution}
 
-\question{Consider a vertical cylinder in
-a steady magnetic field in free space. If $\Phi_1$ denotes the magnetic flux through the lower basis of the cylinder and $\Phi_2$ that through the upper basis with both surfaces oriented in the same way (upwards), we have that}
+\question{Consider a vertical cylinder in a steady magnetic field in free space. If $\Phi_1$ denotes the magnetic flux through the lower basis of the cylinder and $\Phi_2$ that through the upper basis with both surfaces oriented in the same way (upwards), we have that}
 
 \begin{solution}
 \end{solution}
@@ -125,5 +124,147 @@ a steady magnetic field in free space. If $\Phi_1$ denotes the magnetic flux thr
 \question{An infinintely long cylindrical bar magnet of radius $a$, is permanently magnetized with a uniform magnetization, and the magnetization vector, of magnitude $M$, is parallel to the bar axis. Magnitudes of the magnetization volume and surface current density vectors, $\vec{J_m}$ and $\vec{J_{ms}}$, over the volume and surface of the magnet, respectively, are}
 
 \begin{solution}
+    B, $J_m = 0, J_{ms} = M$. This is because $J_m = \vec\nabla \times \vec M = 0$, as $\vec M$ is a constant. Now $J_{ms} = \hat a_n \times \vec M$, which is nonzero, as the surface normal is perpendicular to the bar axis.
 \end{solution}
+
+\question{Using the magnetization vector, $\vec M$, of the bar magnet from the previous question, the magnetic flux density vector inside the magnet can be expressed as}
+
+\begin{solution}
+    D, $\vec B = \mu_0 (\vec H + \vec M) = \mu_0 \vec M$, since $\vec H$ vanishes in the centre of a magnet.
+\end{solution}
+
+\question{The magnetization vector in a ferromagnetic body is given by $\vec M = M(x)\hat a_y$. The magnetization volume current density vector inside this body can be represented as}
+
+\begin{solution}
+    C, $\vec J_m = J_m(x)\hat a_z$. This is because $\vec J_m = \vec\nabla \times \vec M$, so $J_m$ points in $\hat a_z$ and is a function of $x$.
+\end{solution}
+
+\question{Assuming that the magnetic flux density vector $\vec B$ inside the bar magnet from Questions 5.1 and 5.2 is known, the associated magnetic field intensity vector (in the magnet) equals}
+
+\begin{solution}
+    E. $\vec H$ vanishes in the centre of a magnet.
+\end{solution}
+
+\question{Determine the magnetic flux density at a point on the axis of a solenoid with radius $b$ and length $L$, and with a current $I$ in its $N$ turns of closely wound coil. Show that the result reduces to the following equation as $L \rightarrow \infty$}
+
+\begin{solution}
+    For an infinitely long solenoid, we can always pick a coordinate system where the point is the origin. Then
+    \begin{align*}
+        d\vec B &= \frac{\mu Idz}{4\pi} \frac{N}{L} \oint_C \frac{bd\phi\hat a_\phi \times (-b\hat a_r-z\hat a_z)}{(b^2+z^2)^{\frac{3}{2}}} \\
+                &= \frac{\mu Idz}{4\pi} \frac{N}{L} \int_0^{2\pi} \frac{b(b\hat a_z - z\hat a_r)d\phi}{(b^2+z^2)^{\frac{3}{2}}} \\
+                &= \frac{\mu Idz}{4\pi} \frac{N}{L} \frac{2\pi b^2}{(b^2+z^2)^{\frac{3}{2}}} \hat a_z \\
+                &= \frac{\mu Ib^2}{2} \frac{N}{L} \frac{dz}{(b^2+z^2)^{\frac{3}{2}}} \hat a_z
+    \end{align*}
+    where the $\hat a_r$ term in the integral cancels itself out. Then total $\vec B$ is
+    \begin{align*}
+        \vec B &= \int_{-\frac{L}{2}}^{\frac{L}{2}} \frac{\mu Ib^2}{2} \frac{N}{L} \frac{dz}{(b^2+z^2)^{\frac{3}{2}}} \hat a_z \\
+               &= \frac{\mu Ib^2}{2} \frac{N}{L} \frac{1}{b^2} \frac{2L}{\sqrt{L^2+4b^2}} \\
+               &= \frac{\mu IN}{\sqrt{L^2+4b^2}}
+    \end{align*}
+    Then as $L\rightarrow\infty$, we have
+    $$\vec B = \frac{\mu_0 IN}{L}$$
+\end{solution}
+
+\question{A very long, thin conducting strip of width $d$ lies in the $xz$-plane between $x=\pm\frac{w}{2}$. A surface current $\vec J_s = J_{s0}\hat a_z$ flows in the strip. Find the magnetic flux density at an arbitrary point outside the strip.}
+
+\begin{solution}
+    For an infinitely long wire,
+    $$\vec B = \frac{\mu_0 I}{2\pi r}$$
+    Then the flux for a strip of width $dx'$ is
+    $$d\vec B = \frac{\mu_0 J_{s0}dx'}{2\pi r} \left(-\frac{y}{r} \hat a_x + \frac{x-x'}{r} \hat a_y\right) = \frac{\mu_0 J_{s0}dx'}{2\pi} \left(-\frac{y}{(x-x')^2+y^2} \hat a_x + \frac{x-x'}{(x-x')^2+y^2} \hat a_y\right)$$
+    Integrating,
+    \begin{align*}
+        \vec B &= \int_{-\frac{w}{2}}^{\frac{w}{2}} d\vec B \\
+               &= \frac{\mu_i J_{s0}}{2\pi}\left(\left(\arctan\left(\frac{2x-w}{2y}\right) - \arctan\left(\frac{2x+w}{2y}\right)\right)\hat a_x + \left(\frac{1}{2}\ln\frac{(2x+w)^2+4y^2}{(2x-w)^2+4y^2}\right)\hat a_y\right)
+    \end{align*}
+    where some steps were skipped.
+\end{solution}
+
+\question{An infinitely long straight conductor with a circular cross section of radius $b$ carries a steady current $I$. Determine the magnetic flux density inside and outside the conductor.}
+
+\begin{solution}
+    Note that due to symmetry, $\vec B$ only has an $\hat a_\phi$ component. Inside the conductor,
+    \begin{align*}
+        \oint_C \vec B \cdot d\vec l &= \mu I_{\text{enc}} \\
+        2\pi rB_\phi &= \mu I \frac{r^2}{b^2} \\
+        B_\phi &= \frac{\mu I r}{2\pi b^2} \\
+        \vec B &= \frac{\mu Ir}{2\pi b^2} \hat a_\phi
+    \end{align*}
+    Outside,
+    \begin{align*}
+        \oint_C \vec B \cdot d\vec l &= \mu I_{\text{enc}} \\
+        2\pi r B_\phi &= \mu I \\
+        B_\phi &= \frac{\mu I}{2\pi r} \\
+        \vec B &= \frac{\mu I}{2\pi r} \vec \hat a_\phi
+    \end{align*}
+\end{solution}
+
+\question{A cylindrical bar magnet of radius $b$ and length $L$ has a uniform magnetization $\vec M = M_0\hat a_z$ along its axis. Determine the magnetic flux density at an arbitrary distant point.}
+
+\begin{solution}
+    No asterisk
+\end{solution}
+
+\question{Find the total magnetic flux through a circular toroid with a rectangular cross section of height $h$. The inner and outer radii of the toroid are $a$ and $b$, respectively. A current $I$ flows in $N$ turns of closely wound wire around the toroid. Determine the percentage of error if the flux is found by  multiplying the cross-sectional area by the flux density at the mean radius.}
+
+\begin{solution}
+    Note that by symemtry, $\vec B$ only has a $\hat a_\phi$ component.
+    \begin{align*}
+        \int \vec B \cdot d\vec l &= \mu I_{\text{enc}} \\
+        2\pi rB_\phi &= \mu NI \\
+        B_\phi &= \frac{\mu NI}{2\pi r} \\
+        \vec B &= \frac{\mu NI}{2\pi r} \hat a_\phi
+    \end{align*}
+    Then the flux is given by
+    \begin{align*}
+        \Phi &= \int_S \vec B \cdot d\vec S \\
+             &= h \int_a^b \frac{\mu NI}{2\pi r} dr \\
+             &= \frac{\mu NIh}{2\pi} \ln\frac{b}{a}
+    \end{align*}
+    If we take the average $\vec B$, then
+    $$\Phi = (b-a)h \times \frac{\mu NI}{\pi(b+a)}$$
+    Percentage error is
+    $$\left(\frac{2(b-a)}{(b+a)\ln\frac{b}{a}} - 1\right) \times 100\%$$
+\end{solution}
+
+\question{A current $I$ flows lengthwise in a very long, thin conducting sheet of width $w$, as shown below. Assuming that the current flows into the paper, determine the magnetic flux density $\vec B$ at points $P_1(0, d)$ and $P_2(2w/3, d)$.}
+
+\begin{solution}
+    For $P_1$,
+    \begin{align*}
+        d\vec B &= \frac{\mu Idx}{4\pi w} \int_{-\infty}^\infty \frac{-\hat a_zdz \times (d\hat a_y - x\hat a_x - z\hat a_z)}{(d^2+x^2+z^2)^{\frac{3}{2}}} \\
+                &= \frac{\mu Idx}{4\pi w} \int_{-\infty}^\infty \frac{d\hat a_x x\hat a_y}{(d^2+x^2+z^2)^{\frac{3}{2}}} \\
+                &= \frac{\mu Idx}{4\pi w} \times (d\hat a_x + x\hat a_y) \times \frac{2}{x^2+d^2} \\
+                &= \frac{\mu I(d\hat a_x + x\hat a_y) dx}{2\pi w(x^2+d^2)} \\
+        \vec B &= \int_0^w \frac{\mu I(d\hat a_x + x\hat a_y) dx}{2\pi w(x^2+d^2)} \\
+               &= \frac{\mu I}{2\pi w} \left(\arctan\frac{w}{d} \hat a_x + \frac{1}{2} \ln\frac{w^2+d^2}{d^2}\right)
+    \end{align*}
+    Using superposition, $\vec B$ for $P_2$ can be split into the contributions from the left and right component. When mirroring, the $\hat a_y$ component flips its sign, while the $\hat a_x$ component doesn't. Hence
+    $$\vec B_R = \frac{3\mu I}{2\pi w} \left(\arctan\frac{2w}{3d} \hat a_x + \frac{1}{2} \ln\frac{w^2+9d^2}{9d^2}\right)$$
+    and
+    $$ \vec B_L = \frac{3\mu I}{4\pi w} \left(\arctan\frac{2w}{3d} \hat a_x - \frac{1}{2} \ln\frac{4w^2+9d^2}{9d^2}\right)$$
+    Then
+    $$\vec B = \vec B_R + \vec B_L$$
+\end{solution}
+
+\question{A current $I$ flows in a $w\times w$ square loop as shown in Fig. a) below. Find the magnetic flux density
+at the off-center point $P (w/4, w/2$).}
+
+\begin{solution}
+    From Fig .b),
+    \begin{align*}
+        \vec B &= \frac{\mu I}{4\pi} \int_0^w \frac{dy\hat a_y \times (b\hat a_x + a\hat a_y - y\hat a_y)}{(b^2 + (y-a)^2)^{\frac{3}{2}}} \\
+               &= \frac{\mu I}{4\pi} \int_0^w \frac{-bdy\hat a_z}{(b^2 + (y-a)^2)^{\frac{3}{2}}} \\
+               &= -\frac{\mu I}{4\pi} \frac{1}{b}\left(\frac{w-a}{\sqrt{b^2+(w-a)^2}} + \frac{a}{\sqrt{a^2+b^2}}\right) \\
+               &= -\frac{\mu I}{4\pi b}\left(\frac{w-a}{\sqrt{b^2+(w-a)^2}} + \frac{a}{\sqrt{a^2+b^2}}\right)
+    \end{align*}
+    Then summing all 4 components,
+    \begin{align*}
+        \vec B &= -\frac{\mu I}{\pi w}\frac{4}{\sqrt{5}} -\frac{\mu I}{2\pi w}\left(\frac{3}{\sqrt{13}} + \frac{1}{\sqrt{5}}\right) - \frac{\mu I}{3\pi w}\frac{4}{\sqrt{13}} - \frac{\mu I}{2\pi w} \left(\frac{1}{\sqrt{5}} + \frac{3}{\sqrt{13}}\right) \\
+               &= \frac{\mu I}{3\pi w}(\sqrt{13} + 3\sqrt{5})
+    \end{align*}
+\end{solution}
+
+
+\end{questions}
 \end{document}
