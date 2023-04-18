@@ -14,7 +14,7 @@ low-frequency time-harmonic magnetic field of flux density $B(t) = B_0\sin\omega
     D, $e_{\text{ind}}(t) = -\mathcal E_0\cos\omega t$. This is because the induced emf is proportional to $-\frac{\partial B}{\partial t}$.
 \end{solution}
 
-\question{A rectangular copper contour of area $S$ is first situated outside any magnetic field, and there is no current in it. The contour is then brought in a uniform time-invariant magnetic field of flux density 𝐵 and positioned so that the vector $\vec B$ is perpendicular to the plane of the contour (like the situation in Fig.Q6.3). In the new steady state, the magnetic flux through the contour due to the current induced in it, computed with respect to the same orientation as that of the vector $\vec B$, equals}
+\question{A rectangular copper contour of area $S$ is first situated outside any magnetic field, and there is no current in it. The contour is then brought in a uniform time-invariant magnetic field of flux density $\vec B$ and positioned so that the vector $\vec B$ is perpendicular to the plane of the contour (like the situation in Fig.Q6.3). In the new steady state, the magnetic flux through the contour due to the current induced in it, computed with respect to the same orientation as that of the vector $\vec B$, equals}
 
 \begin{solution}
     E, $\Phi_{\text{ind}} = 0$. There is no induced emf when $\vec B$ does not vary with time.
@@ -23,7 +23,7 @@ low-frequency time-harmonic magnetic field of flux density $B(t) = B_0\sin\omega
 \question{An air-filled infinitely long solenoidal coil with a circular cross section of radius $a$ carries a slowly time-varying current. The magnetic flux through a surface spanned over one turn of the coil is $\Phi(t)$. An open-circuited circular wire loop of radius $b$ ($b > a$) is placed coaxially around the solenoid, as shown in Fig.Q6.4. The voltage between the terminals of the loop, for the reference orientation of the terminals in the figure, equals}
 
 \begin{solution}
-    A, $v(t) = \frac{d\Phi}{dt}$. I don't know why, thought it was B. I think they're wrong.
+    A, $v(t) = \frac{d\Phi}{dt}$. This is based on the formula sheet. If $\frac{d\Phi}{dt} > 0$, induced current flows in the clockwise direction, according to the right hand rule. Hence, in this open circuit, current "wants" to go from the positive to the negative end, so $v(t) > 0$.
 \end{solution}
 
 \question{Consider the induced electromotive force, $e_{\text{ind}}$, and induced electric field intensity, $E_{\text{ind}}$, along the loop in Fig.Q6.4. If the radius of the loop is doubled (becomes $2b$), while both $a$ and $\Phi(t)$ are not changed, we have that}
@@ -105,7 +105,6 @@ where the reference directions of $d\vec l$ and $d\vec S$ are interconnected by 
 \end{solution}
 
 \question{Consider a cylindrical copper conductor carrying a time-varying current, and whether this current is more or less uniform because of eddy currents induced in the conductor and their magnetic field. When compared to the analysis with no effect of eddy currents taken into account, the magnitude of the total current density vector over the cross section of the conductor}
-\end{questions}
 
 \begin{solution}
     $B$, less uniform and increases towards the conductor surface. This is because the induced eddy currents go in the opposite direction of the original current. However, the eddy currents are the strongest at the centre, so current becomes less uniform over the cross section, and magnitude is smaller closer to the centre.
@@ -116,6 +115,117 @@ where the reference directions of $d\vec l$ and $d\vec S$ are interconnected by 
 \begin{solution}
 \end{solution}
 
-\question{For the same applied time-harmonic magnetic
-field, the time-average power of Joule’s losses, (𝑃𝐽 )ave, due to eddy currents in the two cores in Fig.Q6.11 is greater for}
+\question{For the same applied time-harmonic magnetic field, the time-average power of Joule’s losses, $(P_J)_{\text{ave}}$, due to eddy currents in the two cores in Fig.Q6.11 is greater for}
+
+\begin{solution}
+\end{solution}
+
+\question{If the frequency of the applied time-harmonic magnetic field in any of the two cores in Fig. Q6.11 is doubled, the new time-average power of Joule’s losses in the core equals $k$ times its previous value, where}
+
+\begin{solution}
+\end{solution}
+
+\question{A very long conducting cylinder of radius $a$ uniformly rotates with angular velocity $\omega$ about its axis in a uniform time-invariant magnetic field of flux density $\vec B$, as depicted in Fig. Q6.12. Streamlines of eddy currents inside the cylinder away from its ends (bases) are}
+
+\begin{solution}
+    C, axial. The surfaces with a variable flux include the constant $\phi$ surfaces, which is circled by eddy currents. Inside the cylinder, these currents are axial.
+\end{solution}
+
+\question{A conducting equilateral triangular loop is placed near a very long straight wire, with $d = \frac{b}{2}$. A current $i(t) = I\sin\omega t$ flows in the straight wire.}
+
+\begin{parts}
+    \part{Determine the voltage registered by a high-impedance rms voltmeter inserted in the loop.}
+    \part{Determine the voltmeter reading when the triangular loop is rotated by $60^\circ$ about a perpendicular axis through its centre.}
+\end{parts}
+
+\begin{solution}
+    From that problem, the flux is found to be
+    $$\Phi = \frac{\mu bi(t)}{2\sqrt{3}\pi} (\sqrt{3} - \ln(1+\sqrt{3}))$$
+    Then
+    $$V(t) = -\frac{d\Phi}{dt} = \frac{\mu bI\omega\cos(\omega t)}{2\sqrt{3}\pi} (\sqrt{3} - \ln(1+\sqrt{3}))$$
+    The rms value is then
+    $$V_{\text{rms}} = \frac{\mu bI\omega}{2\sqrt{6}\pi}(\sqrt{3} - \ln(1+\sqrt{3}))$$
+    If the triangular loop is rotated by $60^\circ$, the integral for the flux becomes
+    \begin{align*}
+        \Phi &= \int \vec B \cdot d\vec S \\ 
+             &= \int_0^{\frac{\sqrt{3}}{2}b} \int_{\frac{x}{\sqrt{3}} - \frac{b}{2}}^{\frac{b}{2} - \frac{x}{\sqrt{3}}} \frac{\mu I}{2\pi(x+d)}dydx \\
+             &= \frac{\mu I}{2\sqrt{3}\pi} \int_0^{\frac{\sqrt{3}}{2}b} \frac{\sqrt{3}b - 2x}{x+d} dx \\
+             &= \frac{\mu I}{2\sqrt{3}\pi} (-\sqrt{3}b + (\sqrt{3} + 1)b\ln(\sqrt{3}+1))
+    \end{align*}
+    Then similarly,
+    $$V_{\text{rms}} = \frac{\mu bI\omega}{2\sqrt{6}\pi} (-\sqrt{3} + (\sqrt{3} + 1)\ln(\sqrt{3}+1))$$
+\end{solution}
+
+\question{A conducting circular loop of a radius 0.1 m is situated in the neighbourhood of a very long power line carrying a 60 Hz current with $d = 0.15$m. An a-c milliammeter inserted in the loop reads 0.3 mA. Assume the total impedance of the loop including the milliammeter to be $0.01\Omega$.}
+
+\begin{parts}
+    \part{Find the magnitude of the current in the power line.}
+    \part{To what angle about the horizontal axis should the circular loop be rotated in order to reduce the milliammeter reading to 0.2 mA?}
+\end{parts}
+
+\begin{solution}
+    From a previous question, flux is
+    $$\Phi = \mu I(d-\sqrt{d^2-b^2}) = 0.0382\mu I$$
+    so voltage (rms) is
+    $$V = -\frac{d\Phi}{dt} = \frac{1}{\sqrt{2}} \times 120\pi \times 0.0382 \mu I = 10.2\mu I$$
+    and current is
+    $$I = \frac{10.2}{0.01}\mu I = 1018\mu I = 3\times10^{-4}$$
+    Comparing like terms,
+    $$I = 0.234$$
+    We want to scale $\Phi$ by $\frac{2}{3}$. Since we are rotating by the horizontal axis, in the reference frame of the circular loop, the integration limits remain unchanged, same as $|\vec B|$, but the dot product is scaled by the cosine of the angle rotated. Then this is simply
+    $$\arccos\left(\frac{2}{3}\right) = 48.2^\circ$$
+\end{solution}
+
+\question{An air-filled solenoid of length $l = 2$ m and circular cross section of radius $a = 10$ cm has $N_1 = 1750$ turns of wire. There is a low-frequency time-harmonic current of intensity $i(t) = I_0\sin\omega t$ flowing through the winding, where $I_0 = 10$ A and $\omega = 10^6$ rad/s. An open-circuited short coil with $N_2 = 10$ turns of wire is placed around the solenoid, as shown in Fig. Q6.11(a). Compute the voltages between the terminals of the coil.}
+
+\begin{solution}
+    We need the flux inside a solenoid. First we find the magnetic flux density. Assuming an infinitely long solenoid, we find the flux density in the centre.
+    \begin{align*}
+        \vec B &= \int_{-\frac{L}{2}}^{\frac{L}{2}} \frac{\mu N_1Idz}{4\pi L} \int_0^{2\pi} \frac{rd\phi\hat a_\phi \times (-r\hat a_r - z\hat a_z)}{(r^2+z^2)^{\frac{3}{2}}} dz \\
+               &= \int_{-\frac{L}{2}}^{\frac{L}{2}} \frac{\mu N_1Idz}{4\pi L} \int_0^{2\pi} \frac{r(r\hat a_z - z\hat a_r)d\phi}{(r^2+z^2)^{\frac{3}{2}}} dz \\
+               &= \int_{-\frac{L}{2}}^{\frac{L}{2}} \frac{\mu N_1Idz}{4\pi L} \frac{2\pi r^2}{(r^2+z^2)^{\frac{3}{2}}} dz\hat a_z \\
+               &= \frac{\mu N_1Ir^2}{2L} \int_{-\frac{L}{2}}^{\frac{L}{2}} \frac{dz\hat a_z}{(r^2+z^2)^{\frac{3}{2}}} \\
+               &= \frac{\mu IN_1r^2}{2L} \times \frac{2L}{r^2\sqrt{L^2+4r^2}} \hat a_z \\
+               &= \frac{\mu IN_1}{\sqrt{L^2+4r^2}} \hat a_z \\
+               &\approx \frac{\mu IN_1}{L} \hat a_z
+    \end{align*}
+    Then total flux is
+    $$N_2\Phi = -\frac{\mu IN_1N_2\pi r^2}{L}$$
+    and voltage is
+    $$V(t) = \frac{\mu N_1N_2I_0\omega \pi r^2}{L} \cos(\omega t) = 3454\cos10^6t$$
+\end{solution}
+
+\question{The circuit in the figure below is situated in a magnetic field
+    $$\vec B = \hat a_z 3\cos\left(5\pi10^7t -\frac{2}{3}\pi x\right)\unit{\mu.T}$$
+    Assuming $R = 15\Omega$, find the current $i$.}
+
+\begin{solution}
+    Using Faraday's Law
+    $$\oint_C \vec E \cdot d\vec l = -\frac{d\Phi}{dt}$$
+    Flux is given by
+    \begin{align*}
+        \Phi &= \int \vec B \cdot d\vec S \\
+             &= \int_0^{0.6} \int_0^{0.2} 3\cos\left(5\pi10^7t - \frac{2}{3}\pi x\right) \times 10^{-6} dydx \\
+             &= 6\times10^{-7} \int_0^{0.6} \cos\left(5\pi10^7t - \frac{2}{3}\pi x\right) dx\\
+             &= \frac{9\times10^{-7}}{\pi}(\sin(5\pi10^7t) - \sin(5\pi10^7t - 0.4\pi)) \\
+    \end{align*}
+    And voltage is its derivative,
+    $$V(t) = \frac{d\Phi}{dt} = 45(\cos(5\pi10^7t) - \cos(5\pi10^7t - 0.4\pi))$$
+    Current is then
+    $$i(t) = 1.5(\cos(5\pi10^7t) - \cos(5\pi10^7t-0.4\pi))$$
+    To solve for the sign, note that in this configuration, with $d\vec S$ pointing upwards, the sign of $i(t)$ is the same as the sign of $\frac{d\Phi}{dt}$.
+\end{solution}
+
+\question{A rectangular loop of width $w$ and height $h$ is situated near a very long wire carrying a current $i_1(t)$, as shown in the figure below. Assume $i_1$ to be a step function as shown in the right panel of the figure below. Find the current $i_2(t)$ induced in the rectangular loop as a function of the mutual inductance $L_{12}$ between the two circuits, the self-inductance $L_{22}$ of the square loop, and the resistance $R$ (note: you don’t have to calculate $L_{12}$ and $L_{22}$).}
+
+\begin{solution}
+    Total flux is
+    $$\Phi = L_{12}i_1(t) + L_{22}i_2(t)$$
+    By the right hand rule, using the correct signs, $i_2(t)$ starts out as negative, so
+    $$Ri_2(t) = -L_{12}i_1'(t) - L_{22}i_2'(t)$$
+    Using the Laplace Transform,
+    $$i_2(t) = \frac{L_{12}I_1}{L_{22}} \exp\left(-\frac{R}{L_{22}}t\right)$$
+\end{solution}
+
+\end{questions}
 \end{document}
