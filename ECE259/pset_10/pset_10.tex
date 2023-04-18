@@ -85,7 +85,6 @@
 \end{parts}
 
 \begin{solution}
-    \textbf{Incomplete} \\
     The volume current magnetization vector is given by
     \begin{align*}
         \vec J_m &= \vec\nabla \times \vec M \\
@@ -125,8 +124,6 @@
     \end{align*}
     So total $\vec B$ is
     $$\vec B = -\frac{d\mu M_0}{a^2} \left(\sqrt{a^2+z^2} + \frac{z^2}{\sqrt{a^2+z^2}} - z + \frac{a^4}{(a^2+z^2)^{\frac{3}{2}}}\right) \hat a_z$$
-
-
 \end{solution}
 
 \question{Consider a plane boundary ($y=0$) between air (region 1, $\mu_{r1}=1$) and iron (region 2, $\mu_{r2}=5000$).}
@@ -151,11 +148,22 @@
     \end{solution}
 \end{parts}
 
-\question{P6.34 from the book.}
+\question{A very long conductor in free space carrying a current $I$ is parallel to, and at a distance $d$ from, an infinite plane interface with a medium.}
 
-\begin{solution}
-    Nonessential.
-\end{solution}
+\begin{parts}
+    \part{Discuss the behaviour of the normal and tangential components of $\vec B$ and $\vec H$ at the interface}
+    \begin{parts}
+        \part{if the medium is infinitely conducting}
+        \part{if the medium is infinitely permeable}
+    \end{parts}
+
+    \begin{solution}
+        If the medium is infinitely conducting, $\vec B_2 = \vec H_2 = 0$ as there is no current.
+    \end{solution}
+
+    \part{Find and compare the magnetic field intensities $\vec H$ at an arbitrary point in the free space for the two cases in part (a).}
+    \part{Determine the surface current densities at the interface, if any, for the two cases.}
+\end{parts}
 
 \question{A uniformly magnetized square ferromagnetic plate of side length $a$ and thickness $d$ ($d << a$) is situated in air. With reference to the coordinate system in Fig. 5.36, the magnetization vector in the plate is given by $\vec M = M_0\hat a_z$, where $M_0$ is a constant. Determine the magnetic flux density vector at an arbitrary point on the $z$ axis.}
 
@@ -177,6 +185,40 @@
     Summing them up,
     $$\vec B = \frac{2\sqrt{2}\mu_0M_0da^2}{(a^2+4z^2)\sqrt{a^2+2z^2}}$$
 \end{solution}
+
+\question{An infinitely-long ferromagnetic cylinder of radius $a$ in air has a nonuniform magnetization. In a cylindrical coordinate system whose $z$-axis coincides with the cylinder axis, $\vec M = M_0\frac{r}{a}\hat a_\phi$ ($0 \leq r \leq a$), where $M_0$ is a constant. Find the current densities $\vec J_m$ in the cylinder and $\vec J_{ms}$ on the cylinder, as well as the magnetic flux density $\vec B$ inside and outside the cylinder.}
+
+\begin{solution}
+    \begin{align*}
+        \vec J_m &= \vec\nabla \times \vec M \\
+                 &= \vec\nabla \times M_0\frac{r}{a} \hat a_\phi \\
+                 &= \frac{1}{r} \frac{\partial}{\partial r} rM_0\frac{r}{a} \hat a_z \\
+                 &= \frac{1}{r} \frac{2M_0r}{a} \hat a_z \\
+                 &= \frac{2M_0}{a} \hat a_z
+    \end{align*}
+    For the side surface,
+    \begin{align*}
+        \vec J_{ms} &= \vec M \times \hat a_n \\
+                    &= M_0\frac{a}{a} \hat a_\phi \times \hat a_r \\
+                    &= -M_0 \hat a_z
+    \end{align*}
+    Since $\vec J_s$ is constant in the cylinder, pointing upwards, we know $\vec B$ is constant given $r$, and rotates in a counterclockwise direction. Within the cylinder,
+    \begin{align*}
+        \int \vec B \cdot d\vec l &= \mu I \\
+        2\pi rB &= \mu \times \frac{2M_0}{a} \times \pi r^2 \\
+        B &= \frac{M_0\mu r}{a}
+    \end{align*}
+    So
+    $$\vec B = \frac{M_0\mu r}{a} \hat a_\phi$$
+    Outside the cylinder, we do this similarly, noting the "extra" current on the surface.
+    \begin{align*}
+        \int \vec B \cdot d\vec l &= \mu I \\
+        2\pi rB &= \mu \times \left(\frac{2M_0}{a} \times \pi a^2 - M_0\times 2\pi a\right) \\
+                &= 0 \\
+        B &= 0
+    \end{align*}
+\end{solution}
+
 
 \question{Assume that the plane $z = 0$ separates medium 1 ($z > 0$) and medium 2 ($z < 0$), with relative permeabilities $\mu_{r1} = 600$ and $\mu_{r2} = 250$, respectively. The magnetic field intensity vector in medium 1 near the boundary (for $z = 0^+$) is $\vec H_1 = (5\hat a_x - 3\hat a_y + 2\hat a_z)$ A/m. Find the magnetic field intensity in medium 2 near the boundary (for $z = 0^-$) if the surface current is either $\vec J_s = 0$ or $\vec J_s = 3\hat a_y$.}
 
@@ -201,6 +243,25 @@
     Flux through each leg is half of that, or $0.179\unit{mWb}$. \\
     Magnetic flux density is flux per surface area, or $0.357\unit{T}$ through the air gap and $0.179\unit{T}$ through the legs. \\
     Magnetic field intensity is scaled by $\mu$, which is $28.4\unit{A.m^{-1}}$ for the legs and $2.84\times10^5\unit{A.m^{-1}}$ for the air gap.
+\end{solution}
+
+\question{A very large slab of material of thickness $d$ lies perpendicularly to a uniform magnetic field of intensity $\vec H_0 = \hat a_z H_0$. Find the magnetic field intensity inside the dielectric slab if it has a permeability $\mu$ or if it is a permanent magnet having a magnetization vector $M_i = \hat a_z M_i$.}
+
+\begin{solution}
+    If the slab has permeability $\mu$, then the normal component of $\vec B$ is conserved. The tangential component of $\vec H$, which is 0, is also conserved. Then
+    $$\vec H = \frac{\mu_0H_0}{\mu} \hat a_z$$
+    If it is a permanent magnet,
+    \begin{align*}
+        \vec J_m &= \vec\nabla \times \vec M \\
+                 &= 0
+    \end{align*}
+    We find the normal component of $\vec B$.
+    \begin{align*}
+        \mu_0H_0 &= \mu_0(H+M_i) \\
+        H &= H_0 - M_i
+    \end{align*}
+    Then
+    $$\vec H = (H_0-M_i) \hat a_z$$
 \end{solution}
 
 \question{A toroidal iron core of relative permeability 3000 has a mean radius $R=80$ (mm) and a circular cross section with radius $b = 25$(mm). An air gap $l_g = 3$(mm) exists, and a current $I$ flows in a 500-turn winding to produce a magnetic flux of $10^{-5}\unit{Wb}$. The geometry of the toroidal core is shown below. Neglecting flux leakage and using mean path length, find the reluctance, magnetic field intensity and magnetic flux density for both the air gap and the iron core, and the required current $I$.}
