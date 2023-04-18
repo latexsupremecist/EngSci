@@ -30,7 +30,7 @@
 \question{Consider a square loop with a steady current of intensity $I$, in free space. Let $A_1$ denote the magnitude of the magnetic vector potential at the loop center due to the current along one of the square sides. The magnitude of the total magnetic vector potential at the center equals}
 
 \begin{solution}
-	Noncritical, will do later/never
+    A, $4A_1$. The magnitude is equal to the total contributions of all 4 sides of the square.
 \end{solution}
 
 \question{A DC voltage of 6V applied to the ends of 1 km of a conducting wire of 0.5 mm radius results in a current of $\frac{1}{6}$ A. Find}
@@ -88,13 +88,37 @@
 \question{A positive point charge $q$ of mass $m$ is injected with a velocity $\vec u_0 = \hat a_yu_0$ into the $y>0$ region where a uniform magnetic field $\vec B = \hat a_xB_0$ exists. Obtain the equation of motion of the charge, and describe the path that the charge follows.}
 
 \begin{solution}
-	noncritical, will do later/never
+    $$\vec F = q\vec u(t) \times \vec B = qB_0u_z(t) \hat a_y - qB_0u_y(t) \hat a_z$$
+    Noting $\vec F = m\vec a$, we see $u_x(t)$ is a constant. Initial conditions tell use $u_x(t) = 0$. Then
+    $$\begin{cases} u_y'(t) = \frac{qB_0}{m}u_z(t) & \\ u_z'(t) = -\frac{qB_0}{m}u_y(t) & \end{cases}$$
+    Differentiating the second equation and substituting the first,
+    $$u_z(t) = A\cos\left(\frac{qB_0}{m}t\right) + B\sin\left(\frac{qB_0}{m}t\right)$$
+    Substituting initial conditions, $A=0$. Substituting into the second equation,
+    $$u_y(t) = -B\cos\left(\frac{qB_0}{m}t\right)$$
+    Using initial conditions, $B = -u_0$. Hence
+    $$\vec u(t) = u_0\cos\left(\frac{qB_0}{m}t\right)\hat a_y - u_0\sin\left(\frac{qB_0}{m}t\right)\hat a_z$$
+    The equations of motion can then be integrated for
+    $$y = \frac{u_0m}{qB_0}\sin\left(\frac{qB_0}{m}t\right)$$
+    and
+    $$x = \frac{u_0m}{qB_0}\cos\left(\frac{qB_0}{m}t\right) - \frac{u_0m}{qB_0}$$
+    The charge follows a circular path.
 \end{solution}
 
 \question{The magnetic flux density $\vec B$ for an infinitely long cylindrical conductor has been found in Example 6-1. Determine the vector magnetic potential $\vec A$ both inside and outside the conductor from the relation $\vec B = \vec \nabla \times \vec A$.}
 
 \begin{solution}
-	noncritical, will do later/never
+    Let the radius of the cylinder be $a$. Inside the cylinder,
+    $$\vec B = \frac{\mu Ir}{2\pi a^2}\hat a_\phi$$
+    Since this is equal to the curl of $\vec A$, we get the following by comparing the $\hat a_\phi$ components.
+    $$B_\phi = \frac{\partial A_r}{\partial z} - \frac{\partial A_z}{\partial r}$$
+    By symmetry, $A_r$ does not depend on $z$ (shifting an infinitely long cylinder along the $z$ axis should do nothing). This reduces to
+    $$A_z = -\frac{\mu Ir^2}{4\pi a^2} + C_1$$
+    Outside,
+    $$\vec B = \frac{\mu I}{2\pi r} \hat a_\phi$$
+    and similarly
+    $$A_z = \frac{\mu I}{2\pi} \ln r + C_2$$
+    Equating both at $r=a$, we reduce the second equation to
+    $$A_z = \frac{\mu I}{4\pi} \left(2\ln\frac{r}{a} - 1\right) + C_1$$
 \end{solution}
 
 \question{In a certain region, the magnetic vector potential is given as the following function in a spherical coordinate system: $\vec A = 2R^2 \hat a_\phi$.}
@@ -200,7 +224,7 @@
 \question{Find the resistance of two conducting spheres immersed in a lossy dielectric.}
 
 \begin{solution}
-	no star no do
+    Lossy dielectrics are not covered on the exam.
 \end{solution}
 
 \question{A d-c voltage $V_0$ is applied across a cylindrical capacitor of length $L$. The radii of the inner and outer conductors are $a$ and $b$, respectively. The space between the conductors is filled with two different lossy dielectrics having, respectively, permittivity $\varepsilon_1$ and conductivity $\sigma_1$ in the region $a < r < c$, and permittivity $\varepsilon_2$ and conductivity $\sigma_2$ in the region $c < r < b$. Find the current density in each region and the surface charge density on the two conductors and the interface between the dielectrics.}
@@ -239,7 +263,30 @@
 \question{The space between two parallel conducting plates each having an area $S$ is filled with an inhomogeneous ohmic medium whose conductivity varies linearly from $\sigma_1$ at one plate ($y = 0$) to $\sigma_2$ at the other plate ($y=d$). A d-c voltage $V_0$ is applied across the plates as shown below. Find the resistance between the plates, the surface charge density on the plates, and the amount of charge between the plates.}
 
 \begin{solution}
-    Nonessential.
+    $$\sigma(y) = (\sigma_2-\sigma_1)\frac{y}{d} + \sigma_1$$
+    Now
+    $$\vec E = \frac{\vec J}{\sigma} = -\frac{J_0}{\sigma}\hat a_y$$
+    Now voltage is
+    \begin{align*}
+        V_0 &= -\int_0^d \vec E \cdot d\vec l \\
+            &= \int_0^d \frac{J_0}{(\sigma_2-\sigma_1)\frac{y}{d}+\sigma_1} dy \\
+            &= \frac{J_0d}{\sigma_2-\sigma_1} \ln\frac{\sigma_2}{\sigma_1}
+    \end{align*}
+    Then resistance is
+    $$R = \frac{V_0}{I} = \frac{V_0}{J_0S} = \frac{d}{(\sigma_2-\sigma_1)S} \ln\frac{\sigma_2}{\sigma_1}$$
+    Now charge density on the bottom plate is
+    $$\varepsilon_0E_y(0) = -\frac{\varepsilon_0J_0}{\sigma_1} = -\frac{\varepsilon_0V_0(\sigma_2-\sigma_1)}{d\sigma_1\ln\frac{\sigma_2}{\sigma_1}}$$
+    And charge density on the top plate is
+    $$-\varepsilon_0E_y(d) = \frac{\varepsilon_0J_0}{\sigma_2} = \frac{\varepsilon_0V_0(\sigma_2-\sigma_1)}{d\sigma_2\ln\frac{\sigma_2}{\sigma_1}}$$
+    Volume charge density is
+    \begin{align*}
+        \rho_v &= \vec\nabla \cdot \vec D \\
+               &= \frac{d}{dy} \varepsilon_0E_y \\
+        Q &= S\int_0^d \rho_v dy \\
+          &= S\varepsilon_0(E_y(d) - E_y(0)) \\
+          &= S\varepsilon_0J_0\left(\frac{1}{\sigma_1} - \frac{1}{\sigma_2}\right) \\
+          &= \frac{S\varepsilon_0V_0(\sigma_2-\sigma_1)}{d\ln\frac{\sigma_2}{\sigma_1}}\left(\frac{1}{\sigma_1} - \frac{1}{\sigma_2}\right)
+    \end{align*}
 \end{solution}
 
 \question{An electron is injected with a velocity $\vec u_0 = \hat a_y u_0$ into a region where both an electric field $\vec E$ and a magnetic field $\vec B$ exist. Find the velocity of the electron for all time $\vec u(t)$.}
