@@ -227,5 +227,101 @@ where the reference directions of $d\vec l$ and $d\vec S$ are interconnected by 
     $$i_2(t) = \frac{L_{12}I_1}{L_{22}} \exp\left(-\frac{R}{L_{22}}t\right)$$
 \end{solution}
 
+\question{An infinitely long straight wire carries a slowly time-varying current density of intensity $i(t)$. A rectangular contour of side lengths $a$ and $b$ lies in the same plane with the wire, with two sides parallel to it, as shown in Fig. 6.12. The distance between the wire and the closer parallel side of the contour is $c$. Determine the emf induced in the contour.}
+
+\begin{solution}
+    $$\vec B = \frac{\mu_0i(t)}{2\pi r} \hat a_\phi$$
+    Switching to the coordinate system of the contour,
+    $$\vec B = -\frac{\mu_0i(t)}{2\pi x} \hat a_z$$
+    And flux is
+    $$\Phi = \int \vec B \cdot d\vec S = b\int_c^{a+c} -\frac{\mu_0i(t)}{2\pi x} dx = -\frac{\mu_0bi(t)}{2\pi} \ln\frac{a+c}{c}$$
+    And its derivative is
+    $$\frac{d\Phi}{dt} = -\frac{\mu_0bi'(t)}{2\pi} \ln\frac{a+c}{c}$$
+    By the right hand rule, $i'(t)$ and $e_{\text{ind}}$ have opposite signs, so
+    $$e_{\text{ind}}(t) = -\frac{\mu_0bi'(t)}{2\pi} \ln\frac{a+c}{c}$$
+\end{solution}
+
+\question{Assume that the current in the straight wire conductor from Fig. Q6.12 is time-invariant, with intensity $I$, and that the contour moves away from the wire at a constant velocity $v$, as shown in Fig. Q6.17. At $t = 0$, the distance of the closer parallel side of the contour from the wire is $x = c$. Determine the emf induced in the contour.}
+
+\begin{solution}
+    $$\vec B = -\frac{\mu_0I}{2\pi x} \hat a_z$$
+    And flux is
+    $$\Phi = \int \vec B \cdot d\vec S = b\int_x^{x+a} -\frac{\mu_0I}{2\pi x} dx = -\frac{\mu_0bI}{2\pi}\ln\frac{x+a}{x}$$
+    Its derivative is
+    $$\frac{d\Phi}{dt} = \frac{d\Phi}{dx} \frac{dx}{dt} = \frac{\mu_0bI}{2\pi}\left(\frac{1}{x} - \frac{1}{x+a}\right)v$$
+    By the right hand rule, $\frac{d\Phi}{dt}$ and $e_{\text{ind}}$ share the same sign, so
+    $$e_{\text{ind}} = \frac{\mu_0bI}{2\pi}\left(\frac{1}{x} - \frac{1}{x+a}\right)v$$
+\end{solution}
+
+\question{Fig. Q6.33 shows two concentric wire loops lying in the same plane, in free space. One is a large square loop of side length $a$ and the other is a small circular loop of radius $b (b << a)$. The loops are oriented in the same, counter-clockwise, direction. The square loop carries a low-frequency time-harmonic current of intensity $i(t) = I_0\sin\omega t$, and the resistance of the circular loop is $R$. Determine the induced current in the circular loop, neglecting its own magnetic field.}
+
+\begin{solution}
+    The magnetic flux density at the centre is parallel to $\hat a_z$.
+    \begin{align*}
+        \vec B &= 4\frac{\mu I}{4\pi} \int_{-\frac{a}{2}}^{\frac{a}{2}} \frac{dx\hat a_x \times \left(-x\hat a_x + \frac{a}{2} \hat a_y\right)}{\left(x^2 + \frac{a^2}{4}\right)^{\frac{3}{2}}} \\
+               &= \frac{\mu I}{\pi} \int_{-\frac{a}{2}}^{\frac{a}{2}} \frac{4adx\hat a_z}{(4x^2+a^2)^{\frac{3}{2}}} \\
+               &= \frac{4a\mu I}{\pi} \frac{1}{\sqrt{2}a^2} \hat a_z \\
+               &= \frac{2\sqrt{2}\mu I}{\pi a} \hat a_z
+    \end{align*}
+    Since $b<<a$, we assume $\vec B$ is approximately constant in the small circular loop. Then
+    $$\Phi = BS = \frac{2\sqrt{2}\mu Ib^2}{a}$$
+    Hence
+    $$\frac{d\Phi}{dt} = \frac{2\sqrt{2}\mu I_0\omega b^2}{a} \cos\omega t$$
+    Hence the induced current has magnitude
+    $$\frac{2\sqrt{2}\mu I_0\omega b^2}{aR} \cos\omega t$$
+    By the right hand rule, initial current is clockwise, so the induced current should be
+    $$-\frac{2\sqrt{2}\mu I_0\omega b^2}{aR} \cos\omega t$$
+\end{solution}
+
+\question{A suggested scheme for reducing eddy-current power loss in transformer cores with a circular cross section is to divide the cores into a large number of small insulated filamentary parts. As illustrated in Fig. 7-12, the section shown in part (a) is replaced by that in part (b). Assuming that $B(t) = B_0\sin\omega t$ and that $N$ filamentary areas fill 95\% of the original cross-sectional area, find average eddy-current power loss in the section of core of height $h$ in Fig. 7-12 (a), and Fig. 7-12 (b).}
+
+\begin{solution}
+    For the cylinder, we divide it into concentric rings with radius $r$ and thickness $dr$. Then
+    $$\Phi = BS = \pi r^2B(t) \Rightarrow V = \frac{d\Phi}{dt} = \pi r^2B'(t)$$
+    Its resistance is
+    $$R = \frac{l}{\sigma S} = \frac{2\pi r}{\sigma hdr}$$
+    So the current is
+    $$i = \frac{V}{R} = \frac{\sigma hrdr}{2}B'(t)$$
+    Power dissipated is
+    $$P = Vi = \frac{\sigma h\pi r^3dr}{2} (B'(t))^2$$
+    Total power dissipated is
+    \begin{align*}
+        P &= \int_0^a \frac{\sigma h\pi r^3dr}{2} (B'(t))^2 dr \\
+          &= \frac{\sigma h\pi a^4}{8} (B'(t))^2 \\
+          &= \frac{\sigma h\pi a^4 B_0^2\omega^2}{8} \cos^2\omega t
+    \end{align*}
+    The average value of $\cos^2\omega t$ is $\frac{1}{2}$, so
+    $$P_{\text{avg}} = \frac{\sigma h\pi a^4 B_0^2\omega^2}{16}$$
+    When replaced with the filaments, the radius of each filament is
+    \begin{align*}
+        N\pi b^2 &= 0.95\pi a^2 \\
+        b &= \sqrt{\frac{0.95}{N}}a
+    \end{align*}
+    New power loss is then
+    \begin{align*}
+        P_{\text{avg}}' &= \frac{\sigma h\pi b^4 B_0^2\omega^2}{16} N \\
+                        &= \frac{\sigma h\pi a^4 B_0^2\omega^2}{16} \times \frac{0.9025}{N} \\
+                        &= \frac{0.9025}{N} P_{\text{avg}}
+    \end{align*}
+\end{solution}
+
+\question{Assuming that a resistance $R$ is connected across the slip rings of the rectangular conducting loop that rotates in a constant magnetic field $\vec B = \hat a_yB_0$, shown in Fig. 7-6, prove that the power dissipated in $R$ is equal to the power required to rotate the loop at an angular frequency $\omega$.}
+
+\begin{solution}
+    $$\Phi = B_0S\cos\alpha = B_0hw\cos\alpha \Rightarrow V = \frac{d\Phi}{dt} = -B_0hw\omega\sin\alpha$$
+    Current is then
+    $$i = \frac{V}{R} = -\frac{B_0hw\omega}{R} \sin\alpha$$
+    Power is then
+    $$P = VI = \frac{B_0^2h^2w^2\omega^2}{R^2} \sin^2\alpha$$
+    and
+    $$P_{\text{avg}} = \frac{B_0^2h^2w^2\omega^2}{2R^2}$$
+    Now magnetic force exerted on the 1-2 side of the loop is
+    $$\vec F = I\vec l \times \vec B = -ihB_0\hat a_z$$
+    and the velocity is
+    $$\vec u = r\omega \hat a_r = \frac{w\omega}{2}(\cos\alpha\hat a_y - \sin\alpha \hat a_z)$$
+    The velocity at the 4-3 side is the negative of the above. Then mechanical power required is
+    $$P = \vec F \cdot \vec u = 2ihB_0\frac{w\omega}{2}\sin\alpha = ihB_0w\omega\sin\alpha = Vi$$
+    where $V$ and $i$ are defined as above.
+\end{solution}
 \end{questions}
 \end{document}
