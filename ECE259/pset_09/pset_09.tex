@@ -265,6 +265,102 @@ at the off-center point $P (w/4, w/2$).}
     \end{align*}
 \end{solution}
 
+\question{A long wire carrying a current $I$ folds back with a semicircular bend of radius $b$ as in Fig. Q6-38. Determine the magnetic flux density $\vec B$ at the center point $P$ of the bend.}
+
+\begin{solution}
+    By symmetry, contribution to $\vec B$ due to the straight wires is parallel to $\hat a_z$. Now assume each straight wire extends to the left also. We know the contribution from each wire is the
+    $$\vec B = \frac{\mu I}{2\pi b}\hat a_z$$
+    By symmetry, the left and right halves of this extended wire have the same contribution, hence the right half contributes
+    $$\vec B = \frac{\mu I}{4\pi b} \hat a_z$$
+    Now the contribution from the top wire is the same by symmetry, so
+    $$\vec B = \frac{\mu I}{2\pi b} \hat a_z$$
+    Contribution due to the semicircle is
+    \begin{align*}
+        \vec B &= \frac{\mu I}{4\pi} \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} \frac{bd\phi\hat a_\phi \times (-b\hat a_r)}{b^3} \\
+               &= \frac{\mu I}{4\pi b} \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} d\phi \hat a_z \\
+               &= \frac{\mu I}{4b} \hat a_z
+    \end{align*}
+    Then
+    $$\vec B_{\text{total}} = \frac{\mu I}{2b}\left(\frac{1}{\pi} + \frac{1}{2}\right)\hat a_z$$
+\end{solution}
+
+\question{Two identical coaxial coils, each of $N$ turns and radius $b$, are separated by a distance $d$, as depicted in Fig. Q6-39. A current $I$ flows in each coil in the same direction. Find the magnetic flux density midway between the coils, and show that $\frac{dB_x}{dx}$ vanishes at the midpoint. Find the relation between $b$ and $d$ such that $\frac{d^B_x}{dx^2}$ also vanishes at the midpoint. Such a pair of coils are used to obtain an approximately uniform magnetic field in the midpoint region. They are known as Helmholtz coils.}
+
+\begin{solution}
+    Nonessential.
+\end{solution}
+
+\question{A circular rod of magnetic material with permeability $\mu$ is inserted coaxially in the long solenoid of Fig. 6-4. The radius of the rod, $a$, is less than the inner radius, $b$, of the solenoid. The solenoid has $n$ turns per unit length and carries a current $I$. Find $\vec H$, $\vec B$, and Minside the solenoid, as well as current densities $\vec J_m$ and $\vec J_{m,s}$.}
+
+\begin{solution}
+    \begin{align*}
+        \oint \vec H \cdot d\vec l &= I \\
+        Hl &= nlI \\
+        H &= nI
+    \end{align*}
+    Where $\vec H$ points in the $-\hat a_z$ direction. The magnetic flux density is then
+    $$\vec B = \mu \vec H = \begin{cases} -\mu nI\hat a_z & r \leq a \\ -\mu_0 nI\hat a_z & a < r < b\end{cases}$$
+    Now
+    $$\vec M = \chi_m\vec H = \begin{cases} -\left(\frac{\mu}{\mu_0}-1\right)nI\hat a_z & r \leq a \\ 0 & a < r < b\end{cases}$$
+    Finally
+    $$\vec J_m = \vec\nabla \times \vec M = 0$$
+    since $\vec M$ is a constant.
+    $$\vec J_{m,s} = \vec M \times \hat a_n = \vec M \times \hat a_r = -\left(\frac{\mu}{\mu_0}-1\right)nI\hat a_\phi$$
+    Note that there is no surface current on the top and bottom surfaces, since $\vec M$ and $\hat a_z$ are parallel.
+\end{solution}
+
+\question{Figure 6-37 shows an infinitely long solenoid with air core having a radius $b$ and $n$ closely wound turns per unit length. The windings are slanted at an angle $\alpha$ and carry a current $I$. Determine the magnetic flux density both inside and outside the solenoid.}
+
+\begin{solution}
+    Nonessential.
+\end{solution}
+
+\question{Determine the magnetic flux density inside an infinitely long solenoid in free space having $n$ closely wounds turns per unit length and carrying a current $I$.}
+
+\begin{solution}
+    Using Amp\`ere's Law,
+    \begin{align*}
+        \oint \vec H \cdot d\vec l &= nlI \\
+        Hl &= nlI \\
+        H &= nI \\
+        B &= \mu_0 nI
+    \end{align*}
+\end{solution}
+
+\question{A current $I$ flows in the inner conductor of an infinitely long coaxial line and returns via the outer conductor. The radius of the inner conductor is $a$, and the inner and outer radius of the outer conductor are $b$ and $c$, respectively. Find the magnetic flux density $\vec B$ and plot is as a function of $r$ for $0 < r < c$.}
+
+\begin{solution}
+    Nonessential.
+\end{solution}
+
+\question{A ferromagnetic sphere of radius $b$ is magnetized uniformly with magnetization $\vec M = \hat a_z M_0$. Find the current densities $\vec J_m$, $\vec J_{ms}$, and flux density $\vec B$.}
+
+\begin{solution}
+    $$\vec J_m = \vec\nabla \times \vec M = 0$$
+    since $\vec M$ is a constant. Now
+    $$\vec J_{m,s} = \vec M \times \hat a_n = M_0\hat a_z \times \hat a_R = M_0\hat a_z \times (\sin\theta\hat a_r + \cos\theta \hat a_z) = M_0\sin\theta \hat a_\phi$$
+    By symmetry, $\vec B$ only has an $\hat a_z$ component. Now
+    \begin{align*}
+        \vec B &= \int_0^\pi \frac{\mu J_{m,s}bd\theta}{4\pi} \int_0^{2\pi} \frac{b\sin\theta d\phi\hat a_\phi \times (-b\sin\theta\hat a_r -b\cos\theta\hat a_z)}{b^3} \\
+               &= \frac{\mu M_0}{4\pi} \int_0^\pi \sin\theta d\theta \int_0^{2\pi} \sin\theta(\sin\theta\hat a_z - \cos\theta\hat a_r)d\phi \\
+               &= \frac{\mu M_0}{4\pi} \int_0^\pi \sin\theta d\theta \times 2\pi\sin^2\theta \hat a_z \\
+               &= \frac{\mu M_0}{2} \int_0^\pi \sin^3\theta d\theta \hat a_z \\
+               &= \frac{\mu M_0}{2} \int_0^\pi (\cos^2\theta-1)d(\cos\theta) \hat a_z \\
+               &= \frac{\mu M_0}{2} \frac{4}{3} \hat a_z \\
+               &= \frac{2\mu M_0}{3} \hat a_z
+    \end{align*}
+\end{solution}
+
+\question{In certain experiments it is desirable to have a region of constant magnetic flux density. This can be created in an off-center cylindrical cavity that is cut in a very long cylindrical conductor carrying a uniform current density. Refer to the cross section in figure below. The uniform axial current density is $\vec J = \hat a_zJ$. Find the magnitude and direction of $\vec B$ in the cylindrical cavity whose axis is displaced from that of the conducting part by a distance $d$.}
+
+\begin{solution}
+    Without the cavity, the flux density inside the cylinder is
+    $$\vec B_1 = \frac{\mu Jr}{2} \hat a_\phi = \frac{\mu Jr}{2} (-\sin\phi\hat a_x + \cos\phi\hat a_y) = \frac{\mu Jr}{2} \left(-\frac{y}{r}\hat a_x + \frac{x}{r}\hat a_y\right) = \frac{mu J}{2} (-y\hat a_x + x\hat a_y)$$
+    Similarly, using a shifted origin,
+    $$\vec B_2 = -\frac{\mu Jr'}{2} \hat a_{\phi'} = \frac{mu J}{2} (y'\hat a_x - x'\hat a_y) = \frac{\mu J}{2} (y\hat a_x - (x+d)\hat a_y)$$
+    Now total flux density is
+    $$\vec B_1 + \vec B_2 = \frac{\mu J}{2} (-y\hat a_x + x\hat a_y + y\hat a_x - (x-d)\hat a_y) = \frac{\mu J}{2} d\hat a_y$$
+\end{solution}
 
 \end{questions}
 \end{document}
