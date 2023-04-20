@@ -65,13 +65,13 @@ and the magnetic flux density vector due to these currents at an arbitrary point
 \question{An insulated metallic strip folded as in Fig. Q4.9 carries a steady current of intensity $I$. The width of the strip is $a=20d$, where $d$ is the diameter of the cylindrical cavity formed by the strip. With this, the magnitude of the $\vec B$ field at the point $P$ inside the cavity (see the figure) is}
 
 \begin{solution}
-    No asterisk no do
+    A, considerably larger. This is because the contributions to $\vec B$ of the long flat components almost cancel out for point $Q$, but not for $P$.
 \end{solution}
 
 \question{Consider the folded strip conductor from the previous question, and assume that $a$ is made twice larger, while keeping $I$ and $d$ the same. The magnitude of the $\vec B$ field at the point $P$ in the modified structure is}
 
 \begin{solution}
-    no asterisk
+    B, considerably smaller than. This is because current density is halved, but $\vec B$ does not double when $a$ is doubled, because $a$ is already very large.
 \end{solution}
 
 \question{Two very long and wide conducting strips are placed in air parallel and very close to each other. Steady currents of the same intensity, $I$, and opposite directions flow through the strips, as shown in Fig. Q4.10. If the current direction is reversed in one of the strips, the magnetic field between the strip, away from the strip edges}
@@ -107,6 +107,7 @@ and the magnetic flux density vector due to these currents at an arbitrary point
 \question{Consider a vertical cylinder in a steady magnetic field in free space. If $\Phi_1$ denotes the magnetic flux through the lower basis of the cylinder and $\Phi_2$ that through the upper basis with both surfaces oriented in the same way (upwards), we have that}
 
 \begin{solution}
+    C, need more information. Total flux over the surface area vanishes, so if total flux through the sides is nonzero, which we do not know, then $\Phi_1 \neq \Phi_2$, vice versa.
 \end{solution}
 
 \question{If both curl and divergence of a vector $\vec a$ at a point are zero, then $\vec a$ must be zero at that point.}
@@ -202,7 +203,11 @@ and the magnetic flux density vector due to these currents at an arbitrary point
 \question{A cylindrical bar magnet of radius $b$ and length $L$ has a uniform magnetization $\vec M = M_0\hat a_z$ along its axis. Determine the magnetic flux density at an arbitrary distant point.}
 
 \begin{solution}
-    No asterisk
+    $$\vec J_m = \vec\nabla \times \vec M = 0$$
+    Since $\vec M$ is a constant. On the surface,
+    $$\vec J_{m,s} = \vec M \times \vec \hat a_n = M_0\hat a_z \times \hat a_r = M_0 \hat a_\phi$$
+    This is essentially a circular loop with $I = M_0L$. From a previous example,
+    $$\vec B = \frac{\mu_0M_0Lb^2}{4R^3}(2\cos\theta\hat a_R + \sin\theta \hat a_\theta)$$
 \end{solution}
 
 \question{Find the total magnetic flux through a circular toroid with a rectangular cross section of height $h$. The inner and outer radii of the toroid are $a$ and $b$, respectively. A current $I$ flows in $N$ turns of closely wound wire around the toroid. Determine the percentage of error if the flux is found by  multiplying the cross-sectional area by the flux density at the mean radius.}
