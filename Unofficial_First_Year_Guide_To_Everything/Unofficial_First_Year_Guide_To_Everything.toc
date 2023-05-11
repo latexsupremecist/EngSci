@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {0.1}Introduction}{1}{section.0.1}%
+\contentsline {chapter}{\numberline {1}Supplies}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Courses}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Academics}{4}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Accommodations}{4}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Petitions}{4}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Notetaking}{4}{section.3.2}%
