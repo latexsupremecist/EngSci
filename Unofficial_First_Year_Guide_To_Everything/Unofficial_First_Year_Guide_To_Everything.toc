@@ -1,7 +1,39 @@
-\contentsline {section}{\numberline {0.1}Introduction}{1}{section.0.1}%
-\contentsline {chapter}{\numberline {1}Supplies}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Courses}{3}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Academics}{4}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Accommodations}{4}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Petitions}{4}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Notetaking}{4}{section.3.2}%
+\contentsline {section}{\numberline {0.1}Introduction}{2}{section.0.1}%
+\contentsline {chapter}{\numberline {1}Supplies}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Courses}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}CIV102: Structures and Materials}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}ESC101: Praxis I}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}ESC103: Engineering Mathematics and Computation}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}ESC180: Intro to Computer Programming}{5}{section.2.4}%
+\contentsline {section}{\numberline {2.5}ESC194: Calculus I}{6}{section.2.5}%
+\contentsline {section}{\numberline {2.6}PHY180: Classical Mechanics}{6}{section.2.6}%
+\contentsline {section}{\numberline {2.7}ESC102: Praxis II}{6}{section.2.7}%
+\contentsline {section}{\numberline {2.8}ESC190: Computer Algorithms and Data Structures}{6}{section.2.8}%
+\contentsline {section}{\numberline {2.9}ESC195: Calculus II}{6}{section.2.9}%
+\contentsline {section}{\numberline {2.10}MAT185: Linear Algebra}{6}{section.2.10}%
+\contentsline {section}{\numberline {2.11}ECE159: Electric Circuits}{7}{section.2.11}%
+\contentsline {section}{\numberline {2.12}MSE160: Molecules \& Materials}{7}{section.2.12}%
+\contentsline {chapter}{\numberline {3}Academics}{8}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Hardest Time of the Year}{8}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}First Semester}{8}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Second Semester}{8}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Is EngSci stressful/hard?}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Andy}{9}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Notes}{9}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Is IB/AP enough preparation?}{9}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Accommodations}{9}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Petitions}{9}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}More about Courses}{10}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}UofT Time}{10}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Notetaking}{10}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Summer Courses}{10}{subsection.3.6.3}%
+\contentsline {chapter}{\numberline {4}UofT}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Food}{11}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}If you have a meal plan}{11}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Food Trucks}{11}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Spadina}{11}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}College}{12}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Coffee}{12}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Groceries}{12}{subsection.4.1.6}%
+\contentsline {chapter}{\numberline {5}Residences}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Chestnut or Campus One?}{13}{section.5.1}%
