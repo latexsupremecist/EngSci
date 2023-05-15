@@ -28,13 +28,20 @@
 \contentsline {subsection}{\numberline {3.6.1}UofT Time}{10}{subsection.3.6.1}%
 \contentsline {subsection}{\numberline {3.6.2}Notetaking}{10}{subsection.3.6.2}%
 \contentsline {subsection}{\numberline {3.6.3}Summer Courses}{11}{subsection.3.6.3}%
-\contentsline {chapter}{\numberline {4}UofT}{12}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Food}{12}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}If you have a meal plan}{12}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Food Trucks}{12}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Spadina}{12}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}College}{13}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Coffee}{13}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}Groceries}{13}{subsection.4.1.6}%
-\contentsline {chapter}{\numberline {5}Residences}{14}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Chestnut or Campus One?}{14}{section.5.1}%
+\contentsline {chapter}{\numberline {4}Buildings}{12}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Bahen}{12}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Myhal}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Sandford Fleming}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Galbraith}{13}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Gerstein Library}{13}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Robarts Library}{14}{section.4.6}%
+\contentsline {chapter}{\numberline {5}UofT}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Food}{15}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}If you have a meal plan}{15}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Food Trucks}{15}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Spadina}{15}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}College}{16}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Coffee}{16}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Groceries}{16}{subsection.5.1.6}%
+\contentsline {chapter}{\numberline {6}Residences}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Chestnut or Campus One?}{17}{section.6.1}%
