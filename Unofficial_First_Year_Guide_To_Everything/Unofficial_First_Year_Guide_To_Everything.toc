@@ -35,16 +35,19 @@
 \contentsline {section}{\numberline {4.3}Sandford Fleming}{15}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Galbraith}{15}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Libraries}{16}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Gerstein Science Information Centre}{16}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Robarts Library}{16}{section.4.7}%
-\contentsline {chapter}{\numberline {5}UofT}{17}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Food}{17}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}If you have a meal plan}{17}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Food Trucks}{17}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Spadina}{17}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}College}{18}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Coffee}{18}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Groceries}{18}{subsection.5.1.6}%
-\contentsline {chapter}{\numberline {6}Residences}{19}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Chestnut or Campus One?}{19}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Social}{20}{chapter.7}%
+\contentsline {subsection}{\numberline {4.5.1}Gerstein Science Information Centre}{16}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Robarts Library}{16}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Sports and Recreation}{16}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Athletics Centre}{16}{subsection.4.6.1}%
+\contentsline {chapter}{\numberline {5}UofT}{18}{chapter.5}%
+\contentsline {section}{\numberline {5.1}T-Card}{18}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Food}{18}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}If you have a meal plan}{18}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Food Trucks}{18}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Spadina}{19}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}College}{19}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Coffee}{19}{subsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.2.6}Groceries}{19}{subsection.5.2.6}%
+\contentsline {chapter}{\numberline {6}Residences}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Chestnut or Campus One?}{20}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Social}{21}{chapter.7}%
