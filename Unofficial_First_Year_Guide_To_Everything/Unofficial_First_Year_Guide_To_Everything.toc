@@ -58,3 +58,5 @@
 \contentsline {chapter}{\numberline {7}Residences}{22}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Chestnut or Campus One?}{22}{section.7.1}%
 \contentsline {chapter}{\numberline {8}Social}{23}{chapter.8}%
+\contentsline {section}{\numberline {8.1}10 Things to Do in EngSci}{23}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Memorable Quotes}{24}{chapter.9}%
