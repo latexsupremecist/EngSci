@@ -27,36 +27,38 @@
 \contentsline {subsection}{\numberline {4.2.1}Andy}{13}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}niceguy}{13}{subsection.4.2.2}%
 \contentsline {section}{\numberline {4.3}Notes}{13}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Is IB/AP enough preparation?}{14}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Accommodations}{14}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Petitions}{14}{subsection.4.5.1}%
-\contentsline {section}{\numberline {4.6}PEY}{14}{section.4.6}%
-\contentsline {section}{\numberline {4.7}More about Courses}{14}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}UofT Time}{14}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Notetaking}{15}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Summer Courses}{15}{subsection.4.7.3}%
-\contentsline {chapter}{\numberline {5}Buildings}{16}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Bahen}{16}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Myhal}{16}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Sandford Fleming}{17}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Galbraith}{17}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Libraries}{18}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Gerstein Science Information Centre}{18}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Robarts Library}{18}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}Sports and Recreation}{18}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Athletics Centre}{18}{subsection.5.6.1}%
-\contentsline {chapter}{\numberline {6}UofT}{20}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Internationals}{20}{section.6.1}%
-\contentsline {section}{\numberline {6.2}T-Card}{20}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Food}{20}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}If you have a meal plan}{20}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Food Trucks}{21}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Spadina}{21}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}College}{21}{subsection.6.3.4}%
-\contentsline {subsection}{\numberline {6.3.5}Coffee}{21}{subsection.6.3.5}%
-\contentsline {subsection}{\numberline {6.3.6}Groceries}{21}{subsection.6.3.6}%
-\contentsline {chapter}{\numberline {7}Residences}{22}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Chestnut or Campus One?}{22}{section.7.1}%
-\contentsline {chapter}{\numberline {8}Social}{23}{chapter.8}%
-\contentsline {section}{\numberline {8.1}10 Things to Do in EngSci}{23}{section.8.1}%
-\contentsline {chapter}{\numberline {9}Memorable Quotes}{24}{chapter.9}%
+\contentsline {section}{\numberline {4.4}Notetaking}{14}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}LaTeX}{14}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Markdown}{14}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Is IB/AP enough preparation?}{15}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Accommodations}{15}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Petitions}{15}{subsection.4.6.1}%
+\contentsline {section}{\numberline {4.7}PEY}{15}{section.4.7}%
+\contentsline {section}{\numberline {4.8}More about Courses}{16}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}UofT Time}{16}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Summer Courses}{16}{subsection.4.8.2}%
+\contentsline {chapter}{\numberline {5}Buildings}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Bahen}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Myhal}{17}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Sandford Fleming}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Galbraith}{18}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Libraries}{19}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Gerstein Science Information Centre}{19}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Robarts Library}{19}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Sports and Recreation}{19}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Athletics Centre}{19}{subsection.5.6.1}%
+\contentsline {chapter}{\numberline {6}UofT}{21}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Internationals}{21}{section.6.1}%
+\contentsline {section}{\numberline {6.2}T-Card}{21}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Food}{21}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}If you have a meal plan}{21}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Food Trucks}{22}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Spadina}{22}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}College}{22}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}Coffee}{22}{subsection.6.3.5}%
+\contentsline {subsection}{\numberline {6.3.6}Groceries}{22}{subsection.6.3.6}%
+\contentsline {chapter}{\numberline {7}Residences}{23}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Chestnut or Campus One?}{23}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Social}{24}{chapter.8}%
+\contentsline {section}{\numberline {8.1}10 Things to Do in EngSci}{24}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Memorable Quotes}{25}{chapter.9}%
