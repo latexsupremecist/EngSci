@@ -1,11 +1,11 @@
 ### Unofficial First Year Guide To Everything
 
 *I can't wait to promise everything and deliver nothing!*  
-This is an **unofficial** guide for frosh as they enter EngSci.
+This is an **unofficial** guide for frosh as they enter EngSci. Here I'll include things I want to say but am not allowed to, and dumb jokes. You go figure out which is which.
 
 #### I want to contribute
 
-Make a PR (pull request). If you don't know LaTeX, that's fine too! Just put the text in the PR and I'll do it for you.
+Make a PR (pull request). If you don't know LaTeX, that's fine too! Just put the text in the PR, and I'll do it for you.
 
 #### I want to come to EngSci
 

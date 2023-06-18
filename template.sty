@@ -19,8 +19,8 @@
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 \newtheorem{ex}{Example}[section]
-\newcommand{\amogus}{{\raise{-0.2em}[\kern{-0.1em}{\bigcap}\kern{-0.8em}{\raise{0.1em}\subset}}}
+\newtheorem*{rem}{Remark}
+\newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
 \usepackage{tcolorbox}
 \newtcolorbox{summary}{colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title={Summary}}
 \newtcolorbox{remember}{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title={Remember}}
-%\DeclareTColorBox[use counter from=pabox]{arbox}{ O{red} m d"" !O{} }{enhanced,colframe=#1!75!black,colback=#1!5!white,fonttitle=\bfseries,title={\thetcbcounter~#2},IfValueT={#3}{watermark text={#3}},#4}
