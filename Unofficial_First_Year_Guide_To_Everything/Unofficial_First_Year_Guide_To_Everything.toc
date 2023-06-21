@@ -6,64 +6,77 @@
 \contentsline {section}{\numberline {3.3}Academics}{8}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Projects}{8}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Further Questions}{8}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Courses}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}CIV102: Structures and Materials}{9}{section.4.1}%
-\contentsline {section}{\numberline {4.2}ESC101: Praxis I}{9}{section.4.2}%
-\contentsline {section}{\numberline {4.3}ESC103: Engineering Mathematics and Computation}{10}{section.4.3}%
-\contentsline {section}{\numberline {4.4}ESC180: Intro to Computer Programming}{10}{section.4.4}%
-\contentsline {section}{\numberline {4.5}ESC194: Calculus I}{10}{section.4.5}%
-\contentsline {section}{\numberline {4.6}PHY180: Classical Mechanics}{11}{section.4.6}%
-\contentsline {section}{\numberline {4.7}ESC102: Praxis II}{11}{section.4.7}%
-\contentsline {section}{\numberline {4.8}ESC190: Computer Algorithms and Data Structures}{11}{section.4.8}%
-\contentsline {section}{\numberline {4.9}ESC195: Calculus II}{11}{section.4.9}%
-\contentsline {section}{\numberline {4.10}MAT185: Linear Algebra}{11}{section.4.10}%
-\contentsline {section}{\numberline {4.11}ECE159: Electric Circuits}{12}{section.4.11}%
-\contentsline {section}{\numberline {4.12}MSE160: Molecules \& Materials}{12}{section.4.12}%
-\contentsline {chapter}{\numberline {5}Academics}{13}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Types of Classes}{13}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Skipping Class}{13}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Lectures}{13}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Tutorials}{13}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Practicals}{14}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Hardest Time of the Year}{14}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}First Semester}{14}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Second Semester}{14}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Is EngSci stressful/hard?}{15}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Andy}{15}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}niceguy}{15}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}Notes}{15}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Notetaking}{16}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}LaTeX}{16}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Markdown}{16}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}Is IB/AP enough preparation?}{17}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Accommodations}{17}{section.5.7}%
-\contentsline {subsection}{\numberline {5.7.1}Petitions}{17}{subsection.5.7.1}%
-\contentsline {section}{\numberline {5.8}PEY}{17}{section.5.8}%
-\contentsline {section}{\numberline {5.9}More about Courses}{18}{section.5.9}%
-\contentsline {subsection}{\numberline {5.9.1}U of T Time}{18}{subsection.5.9.1}%
-\contentsline {subsection}{\numberline {5.9.2}Summer Courses}{18}{subsection.5.9.2}%
-\contentsline {chapter}{\numberline {6}Buildings}{19}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Bahen}{19}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Myhal}{19}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Sandford Fleming}{20}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Galbraith}{20}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Libraries}{21}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Gerstein Science Information Centre}{21}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Robarts Library}{21}{subsection.6.5.2}%
-\contentsline {section}{\numberline {6.6}Sports and Recreation}{21}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Athletics Centre}{21}{subsection.6.6.1}%
-\contentsline {chapter}{\numberline {7}UofT}{23}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Internationals}{23}{section.7.1}%
-\contentsline {section}{\numberline {7.2}T-Card}{23}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Food}{23}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}If you have a meal plan}{23}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Food Trucks}{24}{subsection.7.3.2}%
-\contentsline {subsection}{\numberline {7.3.3}Spadina}{24}{subsection.7.3.3}%
-\contentsline {subsection}{\numberline {7.3.4}College}{24}{subsection.7.3.4}%
-\contentsline {subsection}{\numberline {7.3.5}Coffee}{24}{subsection.7.3.5}%
-\contentsline {subsection}{\numberline {7.3.6}Groceries}{24}{subsection.7.3.6}%
-\contentsline {chapter}{\numberline {8}Residences}{25}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Chestnut or Campus One?}{25}{section.8.1}%
-\contentsline {chapter}{\numberline {9}Social}{26}{chapter.9}%
-\contentsline {section}{\numberline {9.1}10 Things to Do in EngSci}{26}{section.9.1}%
-\contentsline {chapter}{\numberline {10}Memorable Quotes}{27}{chapter.10}%
+\contentsline {chapter}{\numberline {4}International Students}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Necessary}{9}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Study Permit}{9}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Winter Wear}{9}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Optional}{10}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}International Fee Exemption}{10}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Lester B. Pearson Scholarship}{10}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Language Skills}{10}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Cultural Differences}{10}{subsection.4.2.4}%
+\contentsline {chapter}{\numberline {5}Accessibility Services and Accommodations}{11}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Example}{11}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Reasons for Accommodations}{11}{section.5.2}%
+\contentsline {section}{\numberline {5.3}I feel like I don't really need it...}{12}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Courses}{13}{chapter.6}%
+\contentsline {section}{\numberline {6.1}CIV102: Structures and Materials}{13}{section.6.1}%
+\contentsline {section}{\numberline {6.2}ESC101: Praxis I}{13}{section.6.2}%
+\contentsline {section}{\numberline {6.3}ESC103: Engineering Mathematics and Computation}{14}{section.6.3}%
+\contentsline {section}{\numberline {6.4}ESC180: Intro to Computer Programming}{14}{section.6.4}%
+\contentsline {section}{\numberline {6.5}ESC194: Calculus I}{14}{section.6.5}%
+\contentsline {section}{\numberline {6.6}PHY180: Classical Mechanics}{15}{section.6.6}%
+\contentsline {section}{\numberline {6.7}ESC102: Praxis II}{15}{section.6.7}%
+\contentsline {section}{\numberline {6.8}ESC190: Computer Algorithms and Data Structures}{15}{section.6.8}%
+\contentsline {section}{\numberline {6.9}ESC195: Calculus II}{15}{section.6.9}%
+\contentsline {section}{\numberline {6.10}MAT185: Linear Algebra}{15}{section.6.10}%
+\contentsline {section}{\numberline {6.11}ECE159: Electric Circuits}{16}{section.6.11}%
+\contentsline {section}{\numberline {6.12}MSE160: Molecules \& Materials}{16}{section.6.12}%
+\contentsline {chapter}{\numberline {7}Academics}{17}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Types of Classes}{17}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Skipping Class}{17}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Lectures}{17}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Tutorials}{17}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.4}Practicals}{18}{subsection.7.1.4}%
+\contentsline {section}{\numberline {7.2}Hardest Time of the Year}{18}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}First Semester}{18}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Second Semester}{18}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Is EngSci stressful/hard?}{19}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Andy}{19}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}niceguy}{19}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Notes}{19}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Notetaking}{20}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}LaTeX}{20}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Markdown}{20}{subsection.7.5.2}%
+\contentsline {section}{\numberline {7.6}Is IB/AP enough preparation?}{21}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Accommodations}{21}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Petitions}{21}{subsection.7.7.1}%
+\contentsline {section}{\numberline {7.8}PEY}{21}{section.7.8}%
+\contentsline {section}{\numberline {7.9}More about Courses}{22}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}U of T Time}{22}{subsection.7.9.1}%
+\contentsline {subsection}{\numberline {7.9.2}Summer Courses}{22}{subsection.7.9.2}%
+\contentsline {chapter}{\numberline {8}Buildings}{23}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Bahen}{23}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Myhal}{23}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Sandford Fleming}{24}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Galbraith}{24}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Libraries}{25}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Gerstein Science Information Centre}{25}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Robarts Library}{25}{subsection.8.5.2}%
+\contentsline {section}{\numberline {8.6}Sports and Recreation}{25}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Athletics Centre}{25}{subsection.8.6.1}%
+\contentsline {chapter}{\numberline {9}U of T}{27}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Internationals}{27}{section.9.1}%
+\contentsline {section}{\numberline {9.2}T-Card}{27}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Food}{27}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}If you have a meal plan}{27}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Food Trucks}{28}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.3}Spadina}{28}{subsection.9.3.3}%
+\contentsline {subsection}{\numberline {9.3.4}College}{28}{subsection.9.3.4}%
+\contentsline {subsection}{\numberline {9.3.5}Coffee}{28}{subsection.9.3.5}%
+\contentsline {subsection}{\numberline {9.3.6}Groceries}{28}{subsection.9.3.6}%
+\contentsline {chapter}{\numberline {10}Residences}{29}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Chestnut or Campus One?}{29}{section.10.1}%
+\contentsline {chapter}{\numberline {11}Social}{30}{chapter.11}%
+\contentsline {section}{\numberline {11.1}10 Things to Do in EngSci}{30}{section.11.1}%
+\contentsline {chapter}{\numberline {12}Memorable Quotes}{31}{chapter.12}%
