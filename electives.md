@@ -9,6 +9,7 @@ Here is a list of CS/HSS electives that you can choose in 2W and beyond. Feel fr
 - [JRE300: Fundamentals of Accounting and Finance](jre300:-fundamentals-of-accounting-and-finance)
 - [JRE420: People Management and Organizational Behaviour](#jre420:-people-management-and-organizational-behaviour)
 - [PHL356: Philosophy of Physics](#phl356:-philosophy-of-physics)
+- [TEP327: Engineering and Law](#tep327:-engineering-and-law)
 - [TEP444: Positive Psychology for Engineers](#tep444:-positive-psychology-for-engineers)
 
 ### HIS244H1: Early Modern Europe, 1648-1815
@@ -26,6 +27,12 @@ Essentially an introductory course in Human Resources. Content is focused on und
 ### PHY356: Philosophy of Physics
 
 It touches on important philosophers of the past while also teaching you new philosophical problems we face today in physics. This is a small class, with a light course load with group discussions and a bit of essay writing. No philosophy background required.
+
+### TEP327: Engineering and Law
+
+"The most chill prof you'll ever have at UofT - she even buys you pizza! The course content is also useful with real-life examples. You learn a lot about what it really means to have responsibility as an engineer - the duty to the public, accountability, and also the various details about intellectual property. I'd even go so far as to saying that a course like this should be mandatory for everyone who wants to become a real engineer.
+
+Also, no need to "study" for this course either - all quizzes and essays in this course are taken open book, so you just need to really show up to lectures and pay attention to the general outlines. Overall a chill course just with a bit of writing, and the marking tends to be on the more generous side (course average is usually around A-)
 
 ### TEP444: Positive Psychology for Engineers
 
