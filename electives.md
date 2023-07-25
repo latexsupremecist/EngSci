@@ -10,6 +10,7 @@ Here is a list of CS/HSS electives that you can choose in 2W and beyond. Feel fr
 - [JRE420: People Management and Organizational Behaviour](#jre420:-people-management-and-organizational-behaviour)
 - [PHL356: Philosophy of Physics](#phl356:-philosophy-of-physics)
 - [TEP444: Positive Psychology for Engineers](#tep444:-positive-psychology-for-engineers)
+- [APS360: Introduction to Deep Learning](#aps360:-introduction-to-deep-learning)
 
 ### HIS244H1: Early Modern Europe, 1648-1815
 
@@ -30,3 +31,7 @@ It touches on important philosophers of the past while also teaching you new phi
 ### TEP444: Positive Psychology for Engineers
 
 The prof wants to give out a high average (50% of the class gets an A-), you can submit assignments 6 days late and still get an A-, everything is just a reflection that takes 30 mins - 2 hrs depending on the grade you want, you go on various adventures with your group (toy store, AGO, cemetery) for each assignment, great course to meet new friends in. It is a bird course, but a fun course too.
+
+### APS360: Introduction to Deep Learning
+
+This course is a hands on approach to deep learning where the goal is quite literally to get you making projects. It's quite popular since a decent number of majors allow you to get an Artificial Intelligence minor (+ a good number of ECE students take this as well). The course itself starts off nicely by introducing basic models and concepts that will come up time and time again. The midterm and exam have varying difficulty depending on the authoring prof. There are also labs in the first half of the semester before you start a group project which lasts pretty much the other half of the semester. The group project is quite hefty and requires everyone on the team to engage. Please avoid leaving submissions for the night-of; nothing is going to work, your loss is going to be uncountably infinite and your unproofread paper is going to be a trainwreck. All in all, the course provides a supportive structure for you to complete a team project in deep learning which will land on your resume with glee and pride!
