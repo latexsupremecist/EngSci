@@ -1,0 +1,75 @@
+---
+title: "Lecture 1"
+author: "niceguy"
+date: "2023-07-26"
+output: pdf_document
+---
+
+## Course Goals
+
+- R, Functional Programming
+- Visualise, Process, and Analyse tabular data
+- Predictive Modeling
+
+## Introduction
+
+I'm assuming you have previous coding experience, so I'll skip the basic stuff.
+
+### Comments
+
+start with \#
+
+```{r}
+# Hi, I'm a comment
+```
+
+### Print
+
+Use `cat` to print statements
+```{r}
+cat("Hello World!") # no semicolon at the end
+```
+
+### Variables
+
+```{r}
+# We use <- (ALT - ) for assign, instead of =
+
+engsci_adj <- -12
+x <- 97 + engsci_adj
+# These are displayed in the Environment
+```
+
+To run a line, use CTRL ENTER, to run a code chunk, use CTRL SHIFT ENTER.
+
+### Functions
+
+Let's say we want to see if
+
+$$ax^2+bx+c=0$$
+
+has real roots or not.
+
+```{r}
+no_roots <- function(a, b, c){
+  # Boolean of whether or not discriminant is negative
+  b**2 - 4*a*c < 0
+  # return not needed
+}
+```
+
+### Conditionals
+
+```{r}
+exam_grade <- 94
+
+# C-like syntax
+
+if(exam_grade >= 95){
+  cat("Yay")
+}else if(exam_grade >= 94){
+  cat("OK")
+}else{
+  cat("Drop out")
+}
+```
