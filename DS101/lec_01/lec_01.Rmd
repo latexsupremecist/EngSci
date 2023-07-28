@@ -2,7 +2,9 @@
 title: "Lecture 1"
 author: "niceguy"
 date: "2023-07-26"
-output: pdf_document
+output:
+  pdf_document:
+    keep_tex: true
 ---
 
 ## Course Goals

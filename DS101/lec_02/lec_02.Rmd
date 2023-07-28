@@ -1,0 +1,82 @@
+---
+title: "Lecture 02"
+output: pdf_document
+date: "2023-07-28"
+author: "niceguy"
+---
+
+## Functions
+
+```{r}
+# Syntax of Functions
+f <- function(x){
+  x**2 + 1
+}
+# equivalent to f(x) = x^2 + 1
+cat(f(5))
+```
+
+We can also use intermediate variables
+
+```{r}
+g <- function(x){
+  y <- 2*x
+  y**2 - x
+}
+cat(g(6))
+```
+
+Now this allows us to write a more advanced function for finding square roots for
+
+$$Ax^2 + Bx + C = 0$$
+
+```{r}
+sq.roots <- function(A, B, C){
+  disc <- B**2 - 4*A*C
+  if(disc > 0){
+    r1 <- (-b-sqrt(disc))/(2*a)
+    r2 <- (-b+sqrt(disc))/(2*a)
+    cat(r1, r2)
+  }
+  else if(disc == 0){
+    cat(-b/(2*a))
+  }
+}
+```
+
+There *is* homework, but there is no way I'm doing it. Prof Guerzhoy also mentioned how a function *returning* a string (e.g. `"Hi"`) is different from a function *printing* a string (e.g. `cat("Hi")`).
+
+## Vectors
+
+A vector is an ordered *n*-tuple of elements of the same type.
+
+```{r}
+v <- c(TRUE, FALSE, TRUE, TRUE) # c returns a vector
+v[1]
+v[2]
+v[3]
+v[4]
+```
+
+There are also functions
+
+```{r}
+v <- c(2, -50, 2, 4)
+sort(v)
+length(v)
+max(v)
+min(v)
+
+v <- c(2, -1, 2, 2, 5, 1)
+unique(v)
+```
+
+Similar to C, we have and `&`, or `|` and not `!`. We can now do funky things like
+
+```{r}
+v <- c(5, 2, -1, 1)
+v[v>0]
+v>=0 & v<= 3
+v[v>=0 & v<= 3]
+cat(v, 3)
+```
