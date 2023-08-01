@@ -1,5 +1,5 @@
 ---
-title: "Lecture 02"
+title: "Lecture 2"
 output: pdf_document
 date: "2023-07-28"
 author: "niceguy"
