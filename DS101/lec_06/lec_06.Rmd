@@ -1,0 +1,73 @@
+---
+title: "Lecture 6"
+output: pdf_document
+date: "2023-08-09"
+---
+
+## Exercises
+
+Write a function that computes the second smallest element of a vector.
+
+```{r}
+second_smallest <- function(v){
+  sort(v)[2]
+}
+second_smallest(c(5, 4, 3, 2, 1))
+```
+
+Write a function that computes the second largest element of a vector.
+
+```{r}
+second_largest <- function(v){
+  sort(v, decreasing=TRUE)[2]
+}
+second_largest(c(1, 2, 3, 4, 5))
+```
+
+Write a function that takes in a data frame with a column “temperature (Celsius)” and a column “city”, and computes a new data frame with a new column “temperature (Fahrenheit).
+
+```{r}
+library(tidyverse)
+fahrenheit <- function(df){
+  mutate(df, Fahrenheit = Celsius * 1.8 + 32)
+}
+input_data <- data.frame(
+  city = c("New York", "New York", "Los Angeles", "Los Angeles", "Chicago", "Chicago"),
+  `Celsius` = c(20, 32, 14, 26, 25, 15)
+)
+fahrenheit(input_data)
+```
+
+Write a function that takes in a data frame as in the previous problem and computes the second-smallest temperature in the data frame.
+
+```{r}
+extract_second_smallest <- function(df){
+  second_smallest(df$Celsius)
+}
+extract_second_smallest(input_data)
+```
+
+Write a function that takes in a data frame as in the previous problem and computes the average temperature for each city.
+
+```{r}
+average_temp <- function(df){
+  df %>% group_by(city) %>% summarize(AvgTemp = mean(Celsius))
+}
+average_temp(input_data)
+```
+
+Write a function that takes in a data frame as in the previous problem and computes the city where the coldest day was recorded.
+
+```{r}
+coldest <- function(df){
+  (df %>% group_by(city) %>% summarize(MinTemp = min(Celsius)) %>% arrange(MinTemp))$city[1]
+}
+coldest(input_data)
+```
+
+Make a new data frame which contains the increase in life expectancy per year for each country in gapminder. The increase per year is the difference between the life expectancy in the last year and the first year, divided by the number of years.
+
+```{r}
+library(gapminder)
+ret <- gapminder %>% group_by(country) %>% arrange(year) %>% mutate(IncreasePerYear = (lifeExp[length(lifeExp)] - lifeExp[1])/(year[length(year)] - year[1]))
+```
