@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Course Information}
+
+Office hours Fridays 14:00 - 17:00 MP408, including reading week. Problem set questions appear on quizzes.
+
+\section{Waves and Particles}
+
+\begin{equation}
+    E = h\omega
+\end{equation}
+
+\begin{equation}
+    p = \frac{h}{\lambda}
+\end{equation}
+
+The LHS of both equations are usually linked with \emph{particles}, while the RHS are linked with \emph{waves}. \\
+Relativistically, we have
+
+\begin{equation}
+    E = \frac{mc^2}{\sqrt{1 - \frac{v^2}{c^2}}}
+\end{equation}
+
+\begin{equation}
+    p = \frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}
+\end{equation}
+
+And the nonrelatavistic counterparts are trivial.
+
+\subsection{Electrons}
+Electrons are used to study surfaces, since they don't penetrate too deeply.
+
+\subsection{Wavefunctions}
+In 1 dimension, we have $\cos(kx - \omega t)$ or $\sin(kx - \omega t)$. We also know that these functions are complex in quantum, hence we use $e^{i(kx - \omega t)}$. \\
+At $t=0$, we form a wavepacket
+
+\begin{equation}
+    \psi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty g(k)e^{ikx}dk
+\end{equation}
+
+A simpler expression is to sum over $k$s instead of integration.
+
+\begin{ex}
+    Let
+    $$g(k) = \begin{cases} 1 & i = k_0 \\ \frac{1}{2} & i = k_0 \pm \frac{\Delta}{2} \end{cases}$$
+    Then
+    $$\psi(x) = \frac{e^{ik_0x}}{\sqrt{2\pi}}\left[1 + \cos\left(\frac{\Delta k_0x}{2}\right)\right]$$
+\end{ex}
+
+If we introduct time, $e^{ikx}$ becomes $e^{i(kx - \omega(k)t)}$. \\
+In a nonrelatavistic case,
+
+\begin{equation}
+    E = \frac{p^2}{2m} = \frac{\hbar^2k^2}{2m}
+\end{equation}
+
+Assuming superposition,
+
+\begin{align*}
+    \psi(x,t) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty g(k)e^{i(kx - \omega(k)t)}dk \\
+              &= \frac{1}{\sqrt{2\pi}} e^{i(k_0x - \omega(k_0)t)} \int_{-\infty}^\infty g(k)e^{i(k-k_0)x}e^{-i(\omega(k) - \omega_0)t} \\
+              &\approx \frac{1}{\sqrt{2\pi}} e^{i(k_0x - \omega_0 t)} \int_{-\infty}^\infty g(k) e^{i(k-k_0)(x - Vt)}
+\end{align*}
+
+where we define
+
+\begin{equation}
+    V = \left(\frac{d\omega}{dk}\right)_{k_0}
+\end{equation}
+
+Letting the final integral be $F(x,t)$, we see $F$ moves at a phase velocity $V$.
+
+For our nonrelatavistic particle,
+
+\begin{equation}
+    \left(\frac{d\omega}{dk}\right)_{k_0} = \frac{\hbar k_0}{m} = \frac{p_0}{m}
+\end{equation}
+
+For a relativistic particle,
+
+\begin{equation}
+    \frac{\omega}{k} = \omega\lambda = \frac{E}{p} = \frac{c^2}{v}
+\end{equation}
+
+\end{document}
