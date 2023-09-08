@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{General Information}
+
+No recordings (photos, videos, etc). Late homework are graded, but you receive a score of 0. Don't talk during lectures. Lectures follow the textbook (Analysis on Manifolds James Munkres) closely, so in case you skip lectures...
+
+\section{Review of Topology of $\R^n$}
+
+Corresponds to textbook 1.3. Review 1.1 and 1.2 at home (read: never).
+
+\subsection{Metric Spaces}
+
+\begin{defn}[Metric Space]
+    A metric space is a set equipped with a distance function.
+\end{defn}
+
+\begin{defn}[Distance Function]
+    A distance function maps from $X \times X$ to $\R$ such that
+    \begin{enumerate}
+        \item $d(x,y) = d(y,x)$
+        \item $d(x,y) \geq 0$
+        \item $d(x,y) = 0 \Leftrightarrow x = 0$
+        \item $d(x,y) \leq d(x,z) + d(z,y)$
+    \end{enumerate}
+\end{defn}
+
+\begin{ex}
+    Distance functions include Euclidean distance functions of $\R^n$, where
+    \begin{equation}
+        d_n(x,y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}
+    \end{equation}
+\end{ex}
+
+\begin{rem}
+    Any set $X$ can admit a distance function.
+\end{rem}
+
+\begin{ex}
+    The discrete distance function is
+    \begin{equation}
+        d(x,y) = \begin{cases} 0 & x = y \\ 1 & x \neq y \end{cases}
+    \end{equation}
+    As an exercise, verify that this is a distance function for any set.
+\end{ex}
+
+\subsection{Topology of Distance functions on $\R^n$}
+
+\begin{ex}
+    $||x-y||$, $\sum |x - y|$, and $\text{sup} |x - y|$ are all distance functions. I think the proof for the first involves some inequality (Cauchy Schwarz?), the second is trivial (sum up triangle inequalities in each component), and so is the last. Usually, only the triangle inequality is remotely hard to prove (or very).
+\end{ex}
+
+\begin{defn}[$\varepsilon$-ball]
+    Now in a metric space $(X,d)$, for any $x_0 \in X$ and $\varepsilon > 0$ we define the $\varepsilon$-ball as
+    \begin{equation}
+        \mathcal U(x_0;\varepsilon) = \{y \in X: d(x,y) < \varepsilon\}
+    \end{equation}
+\end{defn}
+
+For the set $\R^n$, in $d_1$ (sum of $|.|$), this is shaped like a diamond, in $d_2$ (Euclidean) a hypersphere, in $d_3$ (sup of $|.|$) a hypercube. In fact, all of these are ordered by $\subseteq$, with equality equivalent to $n=1$.
+
+\begin{defn}[Open]
+    A set $A \subseteq X$ is open when $\forall$ $p \in A \exists \varepsilon > 0$ such that $\mathcal U(p;\varepsilon) \subseteq A$
+\end{defn}
+
+\begin{ex}
+    Prove that the open disk $(0,1) \subseteq \R$ is open. This is trivial if you let $\varepsilon = \text{min}\{1-p,p\}$.
+\end{ex}
+
+\begin{rem}
+    For any metric space $(X,d)$, any $\mathcal U(p;\varepsilon)$ is open. The proof is similar; consider $\mathcal U(p';\varepsilon')$ where $\varepsilon' = \text{min}\{p + \varepsilon - p', p' - (p - \varepsilon)\}$.
+\end{rem}
+
+\end{document}
