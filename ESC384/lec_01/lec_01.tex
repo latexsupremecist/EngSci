@@ -1,0 +1,149 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{General Information}
+
+\subsection{Why PDEs?}
+
+PDEs are used to model many physical phenomena, e.g. fluid dynamics, elasticity, acoustics, heat transfer, diffusion, E\&M, quantum... They are ubiquitous in science and engineering. \\
+We use analytical techniques for simple problems, and numerical for the rest. There is finite different/volume/element methods.
+
+\subsection{Lecture Plan}
+
+We will learn to model PDEs, considering analytical properties, separation of variables, fundamental solutions, and numerical methods. The three classes of equations we cover are heat equations, lacplace's equations, and wave and transport equations.
+
+\subsection{Note}
+
+Lecture notes and optional exercises are provided. Please use the official lecture notes; these notes are for me (I only include stuff I find important) (if I don't do this I won't pay attention). Unlike in other courses, since good notes are readily available, \textbf{this is not meant to be used standalone; it does not completely cover the course}.
+
+\section{Introduction to PDEs}
+
+\begin{defn}[PDE]
+    A PDE is an equation that relates an unknown function $u$ and some of its partial derivatives.
+\end{defn}
+
+\begin{ex}[Laplace's Equation]
+    \begin{equation}
+        -\nabla^2u = 0
+    \end{equation}
+\end{ex}
+
+\begin{ex}[Poisson's Equation]
+    \begin{equation}
+        -\nabla^2u = f
+    \end{equation}
+    where $f$ denotes the source function.
+\end{ex}
+
+\begin{ex}[Heat Equation]
+    \begin{equation}
+        \del{u}{t} - \nabla^2u = f
+    \end{equation}
+\end{ex}
+
+\begin{ex}[Transport Equation]
+    \begin{equation}
+        \del{u}{t} + b\cdot\nabla u = f
+    \end{equation}
+\end{ex}
+
+\begin{ex}[Wave Equation]
+    \begin{equation}
+        \del{^2u}{t^2} - c^2\nabla^2u = 0
+    \end{equation}
+    where $c$ is the wave speed.
+\end{ex}
+
+\begin{ex}[Burger's Equation]
+    \begin{equation}
+        \del{u}{t} + u\del{u}{x} = 0
+    \end{equation}
+\end{ex}
+
+\section{Classification of PDEs}
+
+\begin{defn}[Order]
+    The \emph{order} of a PDE is the order of the highest derivative. Similarly, you can have separate orders in time and in space.
+\end{defn}
+
+\begin{defn}[Linearity]
+    A PDE is linear if it can be written as
+    $$\mathcal Lu = f$$
+    where $\mathcal L$ is a linear operator, and $f$ is independent of $u$.
+\end{defn}
+
+\begin{defn}[Linear homogeneous]
+    A PDE is linear homogeneous if $f=0$ as in above. One can define nonlinear homogeneous PDEs similarly, where we loosen the restriction on $\mathcal L$.
+\end{defn}
+
+\begin{ex}
+    $$-\del{^2u}{x^2}-\del{^2u}{y^2} = 0$$
+    is second order linear homogeneous.
+    $$\del{u}{t} - \del{u}{x} = 0$$
+    is first order linear homogeneous.
+    $$\del{u}{t} - \nabla^2u = 0$$
+    is second order linear homogeneous. \\
+    Poisson's equation with $f\neq0$ is linear nonhomogeneous, Burger's equation is nonlinear.
+\end{ex}
+
+Initial and Boundary conditions are often provided to specify solutions.
+
+\section{Classification of second order PDEs}
+
+A second order time-independent PDE can be generally written with an operator
+
+\begin{equation}
+    \mathcal Lu = \sum_{ij} a_{ij}\frac{\partial^2u}{\partial x_i\partial x_j} + \sum_i b_i\del{u}{x_i} + cu
+\end{equation}
+
+Let $A$ be a $n$ by $n$ matrix with entries $a_{ij}$. We define it to be symmetric, so it is completely specified.
+
+\begin{itemize}
+    \item Elliptic: all eigenvalues are nonzero and share the same sign
+    \item Hyperbolic: elliptic, but ONE eigenvalue has a different sign
+    \item Parabolic: hyperbolic, but that eigenvalue is 0 instead
+\end{itemize}
+
+\begin{ex}[Laplace]
+    Consider
+    $$\mathcal L = -\nabla^2$$
+    Then $A = -I$, so all eigenvalues are -1, and it is elliptic.
+\end{ex}
+
+\begin{ex}[Wave]
+    Consider
+    $$\mathcal L = \del{^2}{t^2} - \nabla^2$$
+    Then
+    $$A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$$
+    The eigenvalues are 1, -1, -1. Hence it is hyperbolic.
+\end{ex}
+
+\begin{ex}[Heat]
+    Consider
+    $$\mathcal L = \del{}{t} - \nabla^2$$
+    Then
+    $$A = \begin{pmatrix} 0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$$
+    The eigenvalues are 0, -1, -1. Hence it is parabolic.
+\end{ex}
+
+\begin{ex}[Mixed Partials]
+    Consider
+    $$\mathcal L = -\nabla^2 - \frac{\partial^2u}{\partial x\partial y}$$
+    Then
+    $$A = \begin{pmatrix} -1 & -0.5 \\ -0.5 & -1 \end{pmatrix}$$
+    The eigenvalues are $-1.5$ and $-0.5$, so it is elliptic.
+\end{ex}
+
+\begin{ex}[Variable Coefficients]
+    Consider
+    $$\mathcal L = y\del{^2}{x^2} + \del{^2}{y^2}$$
+    Then
+    $$A = \begin{pmatrix} y & 0 \\ 0 & 1 \end{pmatrix}$$
+    Then it is parabolic on $y=0$, elliptic on $y>0$ and hyperbolic on $y<0$.
+\end{ex}
+
+\end{document}
