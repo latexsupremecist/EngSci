@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 2}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{}
+
+\begin{defn}[Closed Set]
+    A set $B \subseteq X$ is closed iff $X - B \subseteq X$ is open.
+\end{defn}
+
+\begin{ex}[Sets that are both closed and open]
+    For any nonempty metric space $X$, the empty set and $X$ itself are 2 unique sets that are both closed and open.
+\end{ex}
+
+\begin{rem}
+    If $d$ is a distance function of $X$, it is also a distance function for any $Y \subseteq X$.
+\end{rem}
+
+\begin{thm}[Intersection of Open Sets is Open]
+    Let $A$ and $B$ be open sets in $X$. Then $A \cap B$ is always open.
+\end{thm}
+
+\begin{proof}
+    Let $A$ and $B$ be open. Then their intersection is either empty or not. The empty set is open. If not, then $x \in A \cap B$. This implies $x \in A$, so there exists an open ball $\mathcal U(x;\varepsilon_1) \subseteq A$. Similarly, there exists an open ball $\varepsilon_2$ in $B$. Pick $\varepsilon$ to be the smaller one, then it can be shown that $\mathcal U(x;\varepsilon)$ is a subset of both $A$ and $B$. Since this holds for arbitrary $x \in A \cap B$, the intersection is open. By induction, this holds for any finite intersection of open sets.
+\end{proof}
+
+\begin{prop}
+    If $A \subseteq X$ and $Y \subseteq X$ are both open, then $A \cap Y$ is open in $Y$ under the same distance function.
+\end{prop}
+
+\begin{proof}
+    Follows from the theorem.
+\end{proof}
+
+Recall we define $d_1$ as sum of $|x-y|$, $d_2$ to be Euclidean, and $d_3$ to be the supremum of $|x-y|$.
+
+\begin{thm}
+    Any set open in $d_i$ is open in $d_1,d_2,d_3$.
+\end{thm}
+
+\begin{proof}
+    If a set $A$ is open in $d_1$, then any point $a \in A$ is associated with an open ball $\mathcal U(a,\varepsilon_a) \subseteq A$. Then setting $\varepsilon = \frac{\varepsilon_a}{n}$ shows it is open for $d_3$.
+\end{proof}
+
+\begin{defn}[Limit Point]
+    Let $A \subseteq X$. Then $x_0 \in X$ is a limit point of $A$ if $\forall \varepsilon > 0$, $\mathcal U(x_0;\varepsilon) - \{x_0\}$ contains a point a point in $A$.
+\end{defn}
+
+\begin{prop}
+    A set is closed iff it contains all of its limit points.
+\end{prop}
+
+\begin{proof}
+    If $A$ is closed, then let $x \in X - A$. Since $X-A$ is open, there is an $\varepsilon$ where $\mathcal U(x_0;\varepsilon) \in X-A$, which means it doesn't intersect with $A$. Hence no limit points are outside $A$; $A$ contains all of its limit points. \\
+    If $A$ contains all of its limit points, then for any $x \in X-A$, then there exists a $\varepsilon$ such that $\mathcal U(x;\varepsilon) \in X-A$, or else $x$ is a limit point outside of $A$. Then $X-A$ is open, and $A$ is closed.
+\end{proof}
+
+\begin{defn}
+    Define $\mathcal L(A)$ to be the set of limit points of $A$.
+\end{defn}
+
+\begin{defn}
+    Define the closure of $A$ to be
+    $$\overline A = A \cup \mathcal L(A)$$
+\end{defn}
+
+\begin{prop}
+    A closure is always closed.
+\end{prop}
+
+\begin{proof}
+    Proof by contradiction. Let $x$ be a limit point outside of $\overline A$. Then for some $\varepsilon > 0$, the epsilon-ball only intersects with $\mathcal L(A)$ and not $A$, or else it is in $\mathcal L(A)$. Since this $\mathcal U(x;\varepsilon)$ is open and contains $a \in \mathcal L(A)$, there is a smaller epsilon-ball centred at $A$ that is in $\mathcal U(x;\varepsilon)$. Since $a$ is a limit point, we know any epsilon-ball surrounding it contains $a' \neq a$ that is in $A$. Then $\mathcal U(x;\varepsilon)$ contains $a' \in A$ for all $x$ and $\varepsilon$ pairs. Now $x \in \mathcal L(A)$, which is a contradiction. Hence $\overline A$ contains all of its limit points, and it is closed.
+\end{proof}
+
+\begin{rem}
+    We have proven that the intersection of 2 open sets are open. By induction, this holds for finitely many open sets. Now that union of any open sets denoted by $A_i$ is obviously open, since any point $a$ in the union is in $A_i$ for some $i$. Using the fact that $A_i$ is open, $\exists \varepsilon$ such that $U(a,\varepsilon) \subseteq A_i \subseteq \bigcup_i A_i$. Hence the union is open. \\
+    Taking the complement, the union of finitely many closed sets is closed, and the intersection of any closed sets is also closed. \\
+    Note: it is trivial to prove
+    $$\left(\bigcup_i A_i\right)' = \bigcap_i A_i'$$
+    and
+    $$\left(\bigcap_i A_i\right)' = \bigcup_i A_i'$$
+\end{rem}
+
+\begin{rem}
+    A closure of $A$ is also the smallest closed superset of $A$.
+\end{rem}
+
+\begin{proof}
+    Note that a limit point of $A$ is a limit point of any superset of $A$. Hence any closed set containing $A$ must contain $\mathcal L(A)$.
+\end{proof}
+\end{document}

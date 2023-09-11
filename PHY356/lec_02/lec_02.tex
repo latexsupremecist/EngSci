@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 2}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Superpositions of Waves}
+
+\begin{equation}
+    \psi(x,t) = \int_{-\infty}^\infty \frac{g(k)}{\sqrt{2\pi}}\exp(i(kx - \omega(k)t))
+\end{equation}
+
+We showed that for a nonrelatavistic particle, the group velocity is equal to that of a classical particle. The phase velocity is $\frac{v}{2}$ for a nonrelatavistic particle, and $\frac{c^2}{v}$ otherwise.
+
+\begin{defn}[Group Velocity Dispersion]
+    The group velocity dispersion is defined as
+    $$\left(\frac{d^2\omega}{dk^2}\right)_{k_0}$$
+\end{defn}
+
+In 3D, we know the wavefunction satisfies
+
+\begin{equation}
+    i\hbar \del{\psi(\vec r,t)}{t} = -\frac{\hbar^2}{2m} \nabla^2 \psi(\vec r,t)
+\end{equation}
+
+More generally,
+
+\begin{equation}
+    i\hbar \del{\psi(\vec r,t)}{t} = -\frac{\hbar^2}{2m} \nabla^2 \psi(\vec r,t) + v(\vec r)\psi(\vec r,t)
+\end{equation}
+
+We have stationary solutions of the form
+
+$$\psi(\vec r,t) = \phi(\vec r)\chi(t)$$
+
+\begin{align*}
+    \phi(\vec r)\frac{d\chi(t)}{dt} &= \left[-\frac{\hbar^2}{2m}\nabla^2\phi(\vec r) + v(\vec r)\phi(\vec r)\right] \chi(t) \\
+    \frac{d\chi(t)}{dt}\frac{1}{\chi(t)} &= \left[-\frac{\hbar^2}{2m}\nabla^2\phi(\vec r) + v(\vec r)\phi(\vec r)\right] \frac{1}{\phi(\vec r)}
+\end{align*}
+
+Since both sides are functions of $t$ and $\vec r$ respectively, they must be constants. Calling that constant $E$ and integrating,
+
+$$\chi(t) = A\exp\left(-\frac{iEt}{\hbar}\right)$$
+
+Note that $E$ is also an eigenvalue of the operator $H$, where
+
+\begin{equation}
+    H = -\frac{\hbar^2}{2m}\nabla^2 + v(\vec r)
+\end{equation}
+
+This is obtained by letting RHS be equal to $E$. \\
+
+In some problems, $E$s are discrete, and we have eigenfunctions
+
+\begin{equation}
+    H\phi_n(\vec r) = E_n\phi_n(\vec r)
+\end{equation}
+
+Writing $\omega_n = \frac{E_n}{\hbar}$, we get
+
+\begin{equation}
+    \phi_n(\vec r,t) = \phi_n(\vec r) \exp(-i\omega_nt)
+\end{equation}
+
+and the general wavefunction becomes
+
+\begin{equation}
+    \psi(\vec r,t) = \sum_n c_n\phi_n(\vec r)e^{-i\omega_nt}
+\end{equation}
+
+\section{The Born Rule}
+
+For a normalised wavefunction,
+
+\begin{equation}
+    d\mathcal P(\vec r,t) = |\psi(\vec r,t)|^2d\vec r
+\end{equation}
+
+This is the probability that a position \textbf{measurement} at time $t$ will find the particle within $d\vec r$ of $\vec r$.
+
+\end{document}
