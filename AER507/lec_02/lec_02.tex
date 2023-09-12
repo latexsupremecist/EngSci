@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 2}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Basic Physics of Fusion}
+
+\subsection{The Need for High Temperatures}
+
+We observe that fusion occurs where it is very hot (e.g. sun). This is because kinetic energy is needed (order of 100 KeV) to overcome the Coulumb barrier (around $10^{-14}$ metres). However, quantum tunneling can help reduce the energy needed.
+
+For a monoatomic particle, energy is
+
+\begin{equation}
+    E = \frac{3}{2}kT
+\end{equation}
+
+which is on the order of 10 keV.
+
+Reasons for Preferring Low \textit{z} Fusion Fuels
+
+\begin{itemize}
+    \item Coulomb repulsion is lowest
+    \item Highest energy released per nucleon
+    \item Radiation cooling is proportional to $z^2$
+    \item Material erosion issues
+\end{itemize}
+
+\subsection{Cross-Sections, etc.}
+
+Consider a box with particle density $n_b$. The length is defined such that particles traverse through it in 1 second. Cross-sectional area is 1 metre squared. Then the total flux is $n_bv_b$, where $v_b$ is the velocity. Flux density $\Gamma_b$ is also $n_bv_b$, since area is 1. It has units of particles per metre squared per second.
+
+Consider a cross section of the box with length $dx$, cross-sectional area 1 metre squared. Each target particle (with density $n_t$) has collision cross-section $\sigma$, and since $dx$ is small enough, there is no overlap. Some particles are going to go through, but some will interact with target particles.
+
+\begin{defn}
+    Reaction rate is denoted as $r$ with units of events per volume per second.
+\end{defn}
+
+\begin{equation}
+    r = n_bv_bn_t\sigma
+\end{equation}
+
+Alternatively, one can see how $r$ varies linearly with each of $v_b$, $n_b$, and $n_t$, and  treat $\sigma$ as a proportionality constant.
+
+\begin{defn}
+    Collision frequency is denoted as $\nu_b$, with units of collisions per second per beam particle.
+\end{defn}
+
+Obviously,
+
+\begin{equation}
+    \nu_b = v_bn_t\sigma
+\end{equation}
+
+We have a similar equation for target particles
+
+\begin{equation}
+    \nu_t = v_bn_b\sigma
+\end{equation}
+
+\begin{defn}
+    We define collision time to be the mean time between collisions for a beam or target particle, i.
+    \begin{equation}
+        \tau = \frac{1}{\nu}
+    \end{equation}
+\end{defn}
+
+\begin{defn}
+    The mean free path is the distance a beam particle travels between collisions, i.e.
+    \begin{equation}
+        \lambda = v_b\tau_b
+    \end{equation}
+\end{defn}
+
+We consider also beam attenuation.
+
+$$\text{Loss} = \Delta\Gamma = rdx$$
+
+In other words,
+
+$$\frac{d\Gamma}{dx} = -n_bv_bn_t\sigma = -\Gamma n_t\sigma$$
+
+Rearranging yields,
+
+$$\frac{d\Gamma}{dx} = -\frac{\Gamma}{\lambda}$$
+
+whose solution is
+
+\begin{equation}
+    \Gamma = \Gamma_0e^{-\frac{x}{\lambda}}
+\end{equation}
+
+We assume the target particles don't decay, or else it would be very sad. If the target is moving, we replace $v_b$ with $|\vec v_b - \vec v_t|$ by magic of reference frames. We can even take the average of such if there is a distribution of velocities.
+
+\subsection{Target Particles with High Random Velocity}
+
+Assume the target particles are electrons. Compared to electrons, the beam is practically still, so we only really consider the mean speed of electrons. In the assignment, the value will be derived to be
+
+$$\overline{c_e} = \sqrt{\frac{8kTe}{\pi m_e}}$$
+
+We can then approximate
+
+\begin{equation}
+    r = n_en_b\sigma\sigma\overline{c_e}
+\end{equation}
+
+\subsection{Collision Cross-sectional Area}
+
+(Not) surprisingly, $\sigma$ is a function of energy. It is shaped (really loosely) like a $\bigcap$. $\sigma$ is small when energy is low, since the target particles occupy a small volume. It decreases when energy is high, because heuristically, particles need to "stay in the same place" long enough for events to occur.
+
+$$\therefore r = n_tn_b \overline{\sigma(v)|\vec v_t - \vec v_b|}$$
+
+\begin{ex}
+    Rate could sometimes be expressed as
+    $$r = n_tn_b \overline{\sigma(E)\sqrt{\frac{2E}{m}}}$$
+\end{ex}
+
+\subsection{Cross-Sections from Experiments}
+
+\begin{equation}
+    \Gamma_{\text{out}} = \Gamma_{\text{in}} e^{-\frac{L}{\lambda}}
+\end{equation}
+
+where $L$ is the length of the box. This gives us $\lambda$.
+
+\begin{itemize}
+    \item $\sigma_{\text{atom}}$ is around $10^{-20}\unit{m^2}$
+    \item $\sigma_{\text{nucl}}$ is around $10^{-28}\unit{m^2}$, or one barn
+\end{itemize}
+
+\subsection{Relative Velocity}
+
+\begin{ex}
+    Given $\sigma_{D\rightarrow T}$ at $E_D = 100 \unit{eV}$. Since relative velocity is the same, both $E_D$ and $E_T$ can be found by $\frac{1}{2} mv^2$. The ratio of masses tell us $E_T = 150\unit{keV}$.
+\end{ex}
+
+\section{Accelerater Fusion}
+
+100 keV in, 17 MeV out. But does not work because energy is lost through interactions with atoms instead of nucleons (8 orders of magnitude larger).
+
+\begin{rem}
+    Energy lost is
+    $$dE = -n_t\mathcal E(E)dx$$
+    where $\mathcal E(E)$ is the stopping power.
+\end{rem}
+
+\begin{ex}
+    Witn $n_t = 10^{25}, \Delta x = 10^{-3}, E_{D^+} = 100 \unit{keV}, \mathcal E = 6 \times 10^{-22}$, we get
+    $$\Delta E = -10^{25} \times 6 \times 10^{-22} \times 10^{-3} = -6\unit{keV}$$
+\end{ex}
+
+Stopping distance can be derived by
+
+\begin{align*}
+    L &= \int_0^L dx \\
+      &= \int_{E_\text{in}}^0 \frac{dE}{n_T\mathcal E(E)}
+\end{align*}
+
+We also say the range is equivalent to both
+
+$$n_TL = \int_{E_\text{in}}^0 \frac{dE}{\mathcal E(E)}$$
+
+\begin{ex}
+    For 100 keV D$^+$ on T, and $n_T = 10^{19} \unit{cm^{-3}}$, the range is
+    $$\frac{n_TL}{2} = 2\unit{cm}$$
+    where the division by 2 is to convert the units to "per nucleon".
+\end{ex}
+
+Fusion rate is
+
+\begin{align*}
+    rdx &= n_bn_t\sigma v_bdx \\
+        &= n_Dn_T\sigma v_b \frac{dE}{n_T\mathcal E(E)} \\
+        &= \Gamma_b \frac{\sigma(E)}{\mathcal E(E)} dE
+\end{align*}
+
+Reaction rate in units of reactions per area per second is
+
+$$R = \int rdx$$
+
+Yield is then
+
+$$y = \frac{R}{\Gamma_b} = \int_{E_\text{in}}^0 \frac{\sigma(E)}{\mathcal E(E)} dE$$
+
+\begin{ex}
+    For the same experiment as above, average $\sigma(E)$ is 1 barn, average $\mathcal E(E)$ is around $4\times10^6$ keV barns. The yield is then $2.5 \times 10^{-5}$. Unfortunately, energy efficiency is $0.4\%$.
+\end{ex}
+
+If we use plasma, there wouldn't be parasitic reactions such as electron excitation. The major parasitic reaction, elastic collisions, have $\sigma_{\text{elastic}} \propto T^{-1.5}$, so we can get rid of that with $T \approx 10^8 \unit{K}$.
+\end{document}
