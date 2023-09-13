@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 3}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Limits and Convergence}
+
+Let $(X,d)$ be a metric space. Consider a sequence $\{x_n\}$ with $n \in \N$ and $x_i \in X$. We say $\lim_{n\rightarrow\infty} x_n = x^*$ when
+$$\lim_{n\rightarrow\infty} d(x_n,x^*) = 0$$
+
+\begin{ex}
+    If we have $X = \R^2-\{0\}$, then $X_n = \left(\sin\left(\frac{1}{n}\right)\frac{,1}{n}\right)$ tends to $0$ under the normal distance functions.
+\end{ex}
+
+\subsection{Functions}
+
+Let $f: X \mapsto Y$. We say that $f$ is continuous at $x^*$ when $\forall x_n \rightarrow x^*$, then $f(x_n) \rightarrow f(x^*)$.
+
+\begin{prop}
+    This is equivalent to the epsilon-delta definition.
+\end{prop}
+
+\begin{proof}
+    Let $f$ be continuous at $x^*$, with $f(x^*) = y^*$. Then we prove this by contradiction. If it does not satisfy epsilon delta, then for a given $\varepsilon$, then we know $\forall \delta > 0$, there exists an "outlier" in $X$ where $d(x,x^*) < \delta$ but $d(f(x),y^*) > \varepsilon$. Let $g(n)$ be any strictly decreasing sequence of positive reals that tend to 0. Then we define $a_i$ to be the sequence of outliers where $\delta = g(i)$. Now we have $a_i \rightarrow x^*$ but $f(a_i)$ doesn't tend to $y^*$, which is a contradiction. \\
+    The converse is easy to prove. If $f$ satisfies epsilon delta, then let $x_n$ be any sequence that converges to $x^*$. Given any $\varepsilon$, we have a corresponding $\delta$. Since $x_n$ converges to $x^*$, it's distance with $x^*$ will eventually be within $\delta$ starting from $n=N$, hence $f(x_n)$ will eventually be within $\varepsilon$ of $y^*$.
+\end{proof}
+
+\begin{prop} \label{open}
+    We can also say that $f$ is continuous iff for any open subset $U$ of $Y$, then $f^{-1}(U)$ is also open.
+\end{prop}
+
+\begin{proof}
+    Let's say $f$ is continuous. Let an open $U$ be given, and let $u \in U$ be arbitrary. $\forall x$ such that $f(x) \in U$, by definition of continuity, for any $\varepsilon$ centred at $u$ which is contained in $U$, we have a similar $\delta$ ball in $X$ which maps in the $\varepsilon$ ball. Then this $\delta$ ball is in $f^{-1}(U)$. It is easy to show that the union of all $\delta$ balls for all $u \in U$ is equal to the preimage of $U$, hence it is open. \\
+    Conversely, let $x \in X$ be arbitrary. Then construct an arbitrary $\varepsilon$ ball around $f(x)$. Its preimage in $X$ is open, and obviously contains $x$. Since the preimage is open, we can find a $\delta$ ball centred at $x$ which is contained in the preimage. This satisfies our epsilon delta definition, so $f$ is continuous at any arbitrary $x$.
+\end{proof}
+
+\begin{rem}
+    Let $f,g$ be continuous functions mapping from $X$ to $Y$ and $Y$ to $Z$ respectively. Then their composite is continuous also. The proof is trivial using \ref{open}.
+\end{rem}
+
+\begin{defn}
+    We define the interior of $A$ to be
+    $$\text{Int}(A) = \bigcup_{V \in A\text{ open}} V$$
+    The exterior is then
+    $$\text{Ext}(A) = \text{Int}(X-U)$$
+    And the boundary is
+    $$\text{Bd}(A) = X - (\text{Int}(A) \cup \text{Ext}(A))$$
+\end{defn}
+\end{document}
