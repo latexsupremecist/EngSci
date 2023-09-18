@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 4}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Continued...}
+
+Let $f: X \mapsto Y$. Note that for $B, Y-B \in Y$, their preimages $f^{-1}B$ and $f^{-1}(Y-B)$ are disjoint, but their union is $X$. (prove it yourself!)
+
+\begin{prop}
+    $f: X \mapsto Y$ is continuous iff the preimage of any closed set in $Y$ is closed in $X$.
+\end{prop}
+
+The proof follows from the statement above.
+
+\begin{ex}
+    Let $X \subset \R^2$ be the union of the closed disk with radius 1 around the origin, and the point $(4,0)$. Let
+    $$f(x) = \begin{cases} 1 & x \in \text{ closed disk} \\ 0 & x = (4,0) \end{cases}$$
+    Then the preimage of any closed set is closed, so $f(x)$ is continuous.
+\end{ex}
+
+\section{Compact Sets}
+
+Let $(X,d)$ be a metric space. We take $A \subseteq X$.
+
+\begin{defn}[Open Cover]
+    An open cover of $A$ is a collection of open sets $\mathcal U_i, i \in I$ such that $A \subseteq \bigcup_{i \in I} \mathcal U_i$.
+\end{defn}
+
+\begin{rem}
+    Any open set $A$ has a cover. We can take $\mathcal U_1 = X$, or take $\mathcal U_i$ to be any open ball around a given point in $A$, and have a $\mathcal U_i$ for every point in $A$.
+\end{rem}
+
+\begin{defn}[Compact]
+    A set is compact iff any open cover has a finite subcover. In other words, there exists a finite number of $\mathcal U_i$ (that partially forms said open cover) such that their union is also an open cover.
+\end{defn}
+
+\subsection{Properties of Compact Sets}
+
+\begin{prop}
+    Any compact set is closed and bounded.
+\end{prop}
+
+\begin{proof}
+    Let $A$ be said compact set. \\
+    Boundedness: Define $A_i = \mathcal U(0; i)$. Then the union of $A_i$ for $i \in \N$ is obviously an open cover. Then there is a subset of $A_i$s that is also an open cover. Hence $A$ is bounded. \\
+    Closedness: since $A$ is bounded, there is a point $b$ in $X - A$. Then define $B_i$ to be the closed ball containing $b$ with radius $i$, and $C_i$ be its complement. Define a sequence of $B_i$ with $i = \frac{1}{n}, n \in \N$. The the intersection of all such $B_i$ is closed and contains only $b$, and the union of all such $C_i$ is open and contains all points except for $b$. Then the union of $C_i$ is an open cover of $A$. With there being a finite subcover, we know there is a finite $n$ such that $C_{i(n)}$ covers $A$, so $B_i$ is a closed set containing $a$. Recall the definition of $B_i$. Then we have an open $B'_i = \mathcal U\left(b,\frac{1}{n}\right)$ that contains $b$. Since $b$ is arbitrary, the complement of $A$ is open, so $A$ is closed.
+\end{proof}
+
+\begin{prop}
+    If $A$ is compact, then $f(A)$ is also compact for any continuous $f$.
+\end{prop}
+
+\begin{proof}
+    Let $B_i$ form an open cover of $f(A)$. Define $A_i = f^{-1}(B_i)$. Then $A_i$ form an open cover of $A$. Since $A$ is compact, we have a finite collection of $A_i, i \in I'$ that covers $A$. Then the collection of $B_i$ for $i \in I'$ is a finite subcover of $B$.
+\end{proof}
+
+\end{document}

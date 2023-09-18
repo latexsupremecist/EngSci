@@ -1,3 +1,5 @@
+# LaTeX
+
 *.aux
 *.fls
 *.fdb_latexmk
@@ -6,4 +8,13 @@
 *.out
 *.toc
 *.xdv
+
+# R
+
 .Rproj.user
+
+# Deliverables
+
+**/hw*/
+**/ass*/
+**/pset*/
