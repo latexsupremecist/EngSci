@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 4}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{More on Lawson Criteria}
+
+\begin{defn}[Disassembly Time]
+    We define disassembly time $\tau$ to be
+    $$\tau = \frac{r}{v_{\text{thermal}}}$$
+\end{defn}
+
+At 10keV, $v_D \approx 10^6 \unit{ms^{-1}}$. Substituting into the Lawson Criteria,
+
+$$n\tau = 10^{20} \Rightarrow \frac{nr}{v_{\text{thermal}}} = 10^{20} \Rightarrow nr \approx 10^{26}$$
+
+In air, we have $n_{\text{atm}} \approx 10^{25} \unit{m^{-3}}$, which requires $r=10\unit{m}$, which is too big. Fusion energy is
+
+$$E = \frac{4}{3} \pi r^3 n E_{DT} \approx 10^{17}\unit{J}$$
+which is 28 Megatons of TNT. This is all released in a time of $\tau = 10^{-5}\unit{s}$, so it is an explosion.
+
+If we try $n \approx 10^{31} \unit{m^{-3}}$, then $r=10^{-5}\unit{m}$ and the energy of fusion of $10^5\unit{J}$, which is more reasonable. Time is $\tau \approx 10^{-11}\unit{s}$, temperature 10keV, and pressure is to the order of $10^{12}$ atm. We need lasers to get to this point.
+
+Here is a list of maximum values ever achieved.
+
+\begin{itemize}
+    \item $\tau_E = 11\unit{s}$
+    \item $n_{\text{max}} = 2 \times 10^{20}\unit{m^{-3}}$
+    \item $\overline{n_e}\tau_e \approx 10^{20}\unit{m^{-3}.s}$, where we have the line average of $n_e$
+    \item $n_D(0)\tau_ET_i(0) = 1.53 \times 10^{21} \unit{keV.s.m^{-3}}$
+    \item Pulse duration: 30 minutes
+    \item $T_i(0) = 45 \unit{keV}$
+    \item $\langle \beta \rangle = 13\%$
+    \item $Q = 0.68$ for actual DT
+    \item $Q = 1.25$ (extrapolated)
+\end{itemize}
+
+\section{Thermonuclear Reaction Power Density}
+
+Let's say we have a spherical reactor with energy flux $Q$. For it to be economically viable, $Q \geq 1 \unit{MW.m^{-2}}$. Material restrictions demand $Q < 10\unit{MW.m^{-2}}$.
+
+\begin{ex}
+    Let's say we have a spherical plasma producing 1GW. Now
+    $$\frac{4}{3}\pi R^3P_F = 10^9$$
+    By symmetry, the fusion energy density on the surface is the above divided by surface area, or $\frac{R}{3} P_\alpha$ where $P_\alpha$ ($\alpha$ particle makes up 20\% of the fusion energy) is $\frac{1}{5}$ of $P_F$. Solving, $R \geq 1.25\unit{m}$. For it to be economically viable, we need $R \leq 9\unit{m}$. We have $P_f \approx 10^8 \unit{W.m^{-3}}$.
+\end{ex}
+
+\section{Radiation Losses}
+
+There is a minimum temperature beneath which power loss from radiation is greater than power generated from fusion. This is at a few keV for DT fusion, so it doesn't usually matter.
+
+Blackbodies follow $A\sigma T^4$. Plugging the area to be around $100\unit{m^2}$ and temperature on the order of $10^8$, energy produced is greater than the sun. Therefore, our plasma is not a blackbody. It doesn't absorb all of the wavelength it emits.
+
+\subsection{Bremsstrahlung}
+
+Breaking radiation. If an electron is deflected by a positive charge. $\lambda \approx 0.1\unit{nm}$, so this is in the form of xrays, whose mean free path is too long to be absorbed.
+
+$$P \propto z^2\sqrt{T}$$
+
+\subsection{Line Radiation}
+
+This is from orbital electron transitions. This wouldn't be be an issue for smaller $z$ because they are fully ionised.
+
+\subsection{Cyclotron Radiation}
+
+If an electron rotates about a magnetic field line.
+
+$$P \propto n_eT_eB^2$$
+
+The assumption is that if the reactor is big enough, most of this radiation will be reabsorbed.
+
+\section{Bremsstrahlung}
+
+\textit{Note: In this derivation, we're off by a factor of approximately 3 because of handwaviness.}
+
+\begin{equation}
+    P_{\text{rad}} = \frac{1}{4\pi\varepsilon_0} \times \frac{2}{3} \times \frac{e^2a^2}{c^3}
+\end{equation}
+
+This is the power radiated by an accelerating electrical charge (with $v<<c$). We define $b$ to be the minimum distance between the electron and the charge as it passes through. Now defining the electron to travel along the $x$ axis, we have $b$ lying on the $y$ axis, and define $\theta = \arctan\left(\frac{b}{vt}\right)$. Then
+
+$$F_y = F\sin\theta = \frac{Q_1Q_2}{4\pi\varepsilon_0r^2}\sin\theta = \frac{z_ie^2}{4\pi\varepsilon_0(b^2+v^2t^2)} \times \frac{b}{\sqrt{b^2+v^2t^2}}$$
+Maximum force can be found by putting $t=0$.
+$$F_{\text{max}} = \frac{z_ie^2}{4\pi\varepsilon_0b} \Rightarrow a_{\text{max}} = \frac{z_ie^2}{4\pi\varepsilon_0b^2m_e}$$
+The impulse is equal to
+$$I_Y = \int_{-\infty}^\infty F_y(t)dt = F_{\text{y,max}} \Delta t$$
+Now we have to find $\Delta t$. The integral is
+$$I_y = \int_{-\infty}^\infty \frac{z_ie^2bdt}{4\pi\varepsilon_0(b^2+v^2t^2)^{3/2}} = \frac{2z_ie^2}{4\pi\varepsilon_0bv} \Rightarrow \Delta t = \frac{2b}{v}$$
+Now the energy of radiation is the product of $\Delta t$ and $P_{\text{rad}}$. Simplifying,
+$$E_{\text{rad}} \approx \frac{2b}{v} \times \frac{1}{4\pi\varepsilon} \times \frac{2}{3} \times \frac{e^2}{c^3}
+\left(\frac{z_ie^2}{4\pi\varepsilon_0b^2m_e}\right)^2$$
+$\Gamma = n_ev_e\sigma n_i$ where $\sigma = 2\pi bdb$. Since $E$ is energy per collision and $\Gamma$ is the unber of collisions about $b$, we have
+$$dP = E\Gamma$$
+Integrating,
+$$P = \frac{8\pi e^6n_en_iz_i^2}{(4\pi\varepsilon_0)^3\times3n_e^2c^3} \int_{b_{\text{min}}}^\infty \frac{db}{b^2}$$
+
+\begin{equation}
+   \Delta y \Delta p \approx \hbar
+\end{equation}
+
+where
+
+$$\Delta p \approx m_ev_e$$
+
+Substituting $\Delta y = b_{\text{min}}$ and noting that
+$$\frac{1}{2} m_ev_e^2 = \frac{3}{2}kT_e$$
+we get a final result of
+$$P = 5 \times 10^{-37}n_en_iz_i^2T_e^{1/2}$$
+in reality. Note that $T_e$ has units of keV.
+
+\section{Ignition}
+
+We can avoid line radiation by removing impurities, and cyclotron radiation by making the reactor big enough, but there is nothing we can really do about Bremsstrahlung.
+
+\begin{defn}[Ideal Ignition]
+    $$P_\alpha = P_{\text{br}}$$
+\end{defn}
+
+For a DT reaction, this implies
+
+$$\frac{\overline{\sigma v}(T_i)}{\sqrt{T_e}} \approx 3.6 \times 10^{-24}$$
+
+In fact, sometimes we want radiation, or else the walls of the reactor would be hot enough to melt due to heat flux.
+
+\end{document}
