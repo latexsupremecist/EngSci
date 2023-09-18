@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 3}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Definitions}
+
+We write down the definitions of some terms here for convenience.
+
+\begin{table}[h]
+    \begin{center}
+    \begin{tabular}{|c||c|}
+        \hline
+        Flux Density & $\Gamma = nv$ \\
+        \hline
+        Reaction Rate & $r = n_bn_t\sigma v_b$ \\
+        \hline
+        Collision Frequency & $\nu = v_bn_t\sigma$ \\
+        \hline
+        Mean Free Path & $\lambda_b = \frac{1}{n_t\sigma}$ \\
+        \hline
+        Beam Attenuation & $\Gamma = \Gamma_0e^{-x/\lambda}$ \\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+\section{Thermonuclear Fusion}
+
+The mean free path $\lambda$ is on the order of $10^7\unit{m}$. This means we need to make the particles go really fast. If velocity follows a Maxwellian Distribution. Defining $dN$ to be the particles with energy between $E$ and $E+dE$, the distribution is represented by $f(E) = \frac{dN}{dE}$ which tends to $E^{-1/2}e^{-E/kT}$.
+
+Recall
+
+$$r = n_Dn_T \overline{\sigma v} = n_Dn_T \overline{\sigma(E)\sqrt{\frac{2E}{m}}} = n_Dn_T \sqrt{\frac{2}{m}} \int f(E)\sigma(E)\sqrt{E}dE$$
+
+Substituting $f(E)$, we eventually get
+
+$$r = \frac{4}{\sqrt{\pi}} \left(\frac{M_r}{2kT}\right)^{3/2} \int_0^\infty \sigma(v)v^3e^{-M_rv^2/2kT}dv$$
+
+Where $v$ is the relative velocity and $M_r = \frac{m_1m_2}{m_1+m_2}$ is the reduced mass.
+
+\begin{ex}
+    For monogenergetic plasma $E_D = E_T = 15\unit{keV}$, with mean approach energy around 15 keV, if we take the mean energy, we have $\sigma$ around $2 \times 10^{-30}$ and $v$ around $2.4 \times 10^6$. Then their product is $2.4 \times 10^{-24}$.
+
+    If it's 10 keV, we get $\overline{\sigma v} = 1.09 \times 10^{-22}$.
+\end{ex}
+
+\section{Energy Distribution Among Fusion Products}
+
+With conservation of momentum, we get
+
+\begin{equation}
+    \frac{E_1}{E_2} = \frac{m_2}{m_1}
+\end{equation}
+
+$$\text{D} + \text{T} \rightarrow \text{He}(3.5\unit{MeV}) + n(14.1\unit{MeV})$$
+
+The benefits of this are that
+
+\begin{itemize}
+    \item There is no heat transfer problem for thermal electricity generation, since neutrons can travel for a long distance
+    \item It also allows neutrons to reach Li for tritium breeding.
+\end{itemize}
+
+The disadvantages are that
+
+\begin{itemize}
+    \item Neutron Radiation
+        \begin{itemize}
+            \item There is material damage because of neutron bombardment
+            \item There is induced radioactivity
+            \item Transmutations produce hydrogen and helium that leads to embrittlement
+        \end{itemize}
+    \item Thermal cycle for electricity generation (thermodynamics)
+    \item Only 20\% of the energy is available for self-heating plasma
+\end{itemize}
+
+\begin{defn}[Ignition]
+    Ignition refers to self-sustaining plasma.
+\end{defn}
+
+Exotic Fuels
+
+$$\text{D} + ^3\text{He} \rightarrow p(14.7\unit{MeV}) + ^4\text{He}(3.6\unit{MeV})$$
+$$\text{H} + ^{11}B \rightarrow 3^4\text{He}$$
+
+\section{The Need for Plasma Confinement}
+
+\subsection{Energy Balance}
+
+If we have a confinement time a hundredth of fusion time, energy output is around 5-6 times the energy input. Then confinement time becomes
+$$\tau_C = \frac{1}{100n\overline{\sigma v}} = \frac{1}{100n\times10^{-22}}$$
+Rearranging yields $n\tau_C \approx 10^{20}$. The Lawson Criteria is thus
+$$n\tau_C \geq 10^{20}$$
+
+\subsection{}
+
+Plasma pressure is
+
+$$P_p = n_DkT_D + n_TkT_T + n_ekT_e$$
+
+Plasma is quasi-neutral, meaning net charge is practically 0, or $n_e = n_D + n_T$. For $T=10\unit{keV}$ and $n_D=n_T=10^{20}$, pressure is 6.4 atm.
+
+\subsection{Electrostatics}
+
+Net force acting on each particle due to an electric field is $eE$. Combining this with pressure,
+
+$$\frac{\Delta p}{\Delta x} = -enE$$
+
+From Maxwell's Equations,
+
+$$\nabla \cdot \vec E = \frac{ne}{\varepsilon_0} \Rightarrow \frac{dE}{dx} = \frac{ne}{\varepsilon_0}$$
+
+Substituting,
+
+$$\frac{dp}{dx} + E\varepsilon_0\frac{dE}{dx} = 0 \Rightarrow \frac{d}{dx}\left(p + \frac{1}{2} \varepsilon_0 E^2\right) = 0$$
+
+Then the function in the derivative is a constant. Noting that the constant has to be greater than plasma pressure at some point ($E\neq0$), then in the exterior, we need the plasma pressure to be less than $\frac{1}{2}\varepsilon_0E^2_{\text{ext}}$. The math shows that given the values of $\varepsilon_0$ and plasma pressure, we need $E \approx 10^9 \unit{V/m}$.
+
+\subsection{Magnetic Fields}
+
+$$P_m = \frac{B^2}{2\mu_0}$$
+
+This gives $B = 1.6\unit{T}$, which is feasible.
+
+\end{document}
