@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 4}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Bras and Kets}
+
+Not every bra has a corresponding ket. We avoid this by defining a set of generalised kets which is isomorphic with the bras. This comes at the cost of generalised kets not being normalisable.
+
+\subsection{Linear Operators}
+
+Let $A$ and $B$ be linear operators. Then we can define products $AB$ where $AB|\psi\rangle = A\left(B|\psi\rangle\right)$ is also linear. Note that in general,
+$$[A,B] = AB - BA \neq 0$$
+
+\begin{ex}
+    If $\langle \psi | \psi \rangle =$, we can define a linear operator
+    $$P_\psi = |\psi\rangle\langle\psi|$$
+    This is called a projection for obvious reasons. Note that it is equal to its square, which is how we define projections.
+\end{ex}
+
+\begin{ex}
+    Let
+    $$P_g = \sum_{i=1}^g |\phi_i\rangle\langle\phi_i|$$
+    Where $\phi_i$ is orthonormal. We can then show $P_g^2 = P_g$, so we can write
+    $$P_g|x\rangle = \sum_{i=1}^g |\phi_i\rangle\langle\phi_i|x\rangle$$
+\end{ex}
+
+We can also define Hermitian conjugation, which is the adjoint, as in
+$$\langle Tx,y \rangle = \langle x,T^*y \rangle$$
+
+We say an operator is hermitian if it is equal to its adjoint. Projections are hermitian.
+
+\begin{defn}[Orthnormal Discrete Basis]
+    If we have a set $\{|u_i\rangle\}$ such that $\forall |\psi\rangle$,
+    $$|\psi\rangle = \sum_i c_i |u_i\rangle$$
+    and that
+    $$\langle u_i|u_j \rangle = \delta_{ij}$$
+    we say that $\{|u_i\rangle\}$ form an orthonormal discrete basis.
+\end{defn}
+
+\begin{defn}[Orthnormal Continuous Basis]
+    Likewise, for $\{|w_\alpha\rangle\}$ such that $\forall |\psi\rangle$,
+    $$|\psi\rangle = \int c(\alpha) |w_\alpha\rangle d\alpha$$
+    and that
+    $$\langle w_\alpha|w_{\alpha'}\rangle = \delta(\alpha - \alpha')$$
+    We say $\{|w_\alpha\rangle\}$ form an orthonormal continuous basis.
+\end{defn}
+
+Using a discrete basis,
+
+\begin{align*}
+    |\psi\rangle &= \sum_i c_i|u_i\rangle \\
+    \langle u_j|\psi\rangle &= \sum_i \langle u_j|u_i \rangle c_i = c_j
+\end{align*}
+
+So
+
+\begin{align*}
+    |\psi\rangle &= \sum_i |u_i\rangle\langle u_i|\psi\rangle \\
+                 &= I|\psi\rangle
+\end{align*}
+
+where
+
+$$I = \sum_i |u_i\rangle\langle u_i |$$
+
+For a continuous basis, we similarly have
+$$c(\alpha) = \langle w_\alpha|\psi\rangle$$
+where
+$$I = \int|w_\alpha\rangle\langle w_\alpha| d\alpha$$
+
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 3}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Potential Barriers}
+
+Let's say we have a long wave chain $\psi(x,0)$ that is approaching a potential barrier $V(x)$. We start by approximating $\psi$ to have only one frequency. Then we can write
+
+\begin{equation}
+    \psi(x,t) = \phi(x)e^{-i\frac{E}{\hbar}t}
+\end{equation}
+
+Substituting into Schr\"odinger's Equation, we get (see complement H$_1$ in textbook)
+
+\begin{equation}\label{phi}
+    \frac{d^2}{dx^2}\phi(x) + \frac{2m}{\hbar^2} (E - V(x))\phi(x) = 0
+\end{equation}
+
+Now if $E>V$, we put
+
+\begin{equation}
+    E - V = \frac{\hbar^2k^2}{2m}
+\end{equation}
+
+This substituted into \ref{phi} gives
+
+\begin{equation}\label{biggerV}
+    \phi(x) = Ae^{ix} + A'e^{-ikx}, |A| = |A'|
+\end{equation}
+
+In quantum mechanics, in fact there is a nonzero probability that the wave is reflected.
+
+\begin{equation}
+    \phi(x) = A_2e^{ik_2x}
+\end{equation}
+
+If $E<V$, then we put
+
+\begin{equation}
+    V - E = \frac{\hbar^2\rho^2}{2m}
+\end{equation}
+
+Plugging into \ref{phi} again, we get
+
+\begin{equation}
+    \phi(x) = Be^{\rho x} + B'e^{-\rho x}
+\end{equation}
+
+Classically, there is total reflection. However, in quantum mechanics, for $x>0$ we have
+
+\begin{equation}
+    \phi(x) = B'e^{-px}
+\end{equation}
+
+\section{Math facts of Quantum}
+
+\textit{Note: This corresponds to the second chapter of the textbook.}
+
+In section A of the textbook, we discuss the space of a 1 particle wave functions, where the integral of norm squared is 1. We define a vector space $\mathcal F$ with elements being functions that are square integrable and satisfies our physical assumptions (boundary conditions). This is an infinite-dimension vector space.
+
+In sections B - F, we talk about bracket notation. We link $\psi(z) \in \mathcal F$ with $|\psi\rangle \in \mathcal E_{\mathcal F}$. We will look at more general kets later.
+
+For kets $|\phi\rangle \neq |\psi\rangle$ in $\mathcal E$, introduce a scalar product that is a complex number. We define in $\mathacl E_{\vec r}$
+
+\begin{equation}
+    \left(|\phi\rangle, |\psi\rangle\right) = \int\phi^*(\vec r)\psi(\vec r) d\vec r
+\end{equation}
+
+This is an inner product.
+
+We also introduce a dual space $\mathcal E^*$. Recall a linear functional $\chi$ maps from a ket to a complex number. The dual space is the set of all $\chi$s. In fact, we can prove that all $\chi$ can be written uniquely as
+
+\begin{equation}
+    \chi\left(|\psi\rangle\right) = \langle \chi | \psi \rangle
+\end{equation}
+\end{document}
