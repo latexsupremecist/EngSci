@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 5}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{More Linear Algebra}
+
+For any ket $|\psi\rangle$, we can write it as a column vector
+
+$$\begin{pmatrix} \langle v_1|\psi\rangle \\ \langle v_2|\psi\rangle \\ \vdots \end{pmatrix}$$
+
+Similarly for any bra $\langle\phi|$,
+
+$$\begin{pmatrix} \langle \phi|v_1\rangle \\ \langle \phi|v_2\rangle \\ \dots \end{pmatrix}$$
+
+\begin{align*}
+    \langle \phi | A | \psi \rangle &= \langle \phi IAI | \psi \rangle \\
+                                    &= \sum_{ij} \langle \phi | u_i \rangle \langle u_i | A | u_j \rangle \langle u_j | \psi \rangle
+\end{align*}
+
+If we have $C=AB$, then the inner term becomes
+
+$$\langle u_i | AB | u_j \rangle = \sum_k \langle u_i | A | u_k \rangle \langle u_k | B | u_j \rangle$$
+
+\section{Change of Variables}
+
+In different bases, we can express the same ket as
+
+$$|\psi\rangle = \sum_i c_i|u_i\rangle = \sum_i |u_i\rangle\langle u_i |\psi \rangle$$
+and
+$$|\psi\rangle = \sum_k c_k'|t_k\rangle = \sum_k |t_k\rangle\langle t_k |\psi \rangle$$
+Then
+\begin{align*}
+    \langle u_m | \psi \rangle &= \sum_k \langle u_m|t_k \rangle\langle t_k | \psi \rangle \\
+                               &= \sum_k S_{mk} \langle t_k|\psi \rangle \\
+    c_m &= \sum_k S_{mk}c_k'
+\end{align*}
+
+We can get the same relation in reverse by taking the adjoint of $S$. Applying this a few times, we can do this for a matrix too.
+
+$$A_{kl} = \sum_{ij} S^*_{ki} A_{ij} S_{jl}$$
+
+\section{Eigenkets}
+
+\begin{defn}[Degeneracy]
+    We say an eigenket is degenerate if the eigenspace has more than 1 dimension.
+\end{defn}
+
+\end{document}
