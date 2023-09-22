@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 7}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Differential Calculus}
+
+Differential calculus is a local linear approximation. We are approximating the effects of a small change with a linear map, i.e. planes, tangents. The theorems we prove will usually involve proving that properties of derivatives are found in the function itself. We are going to use more linear algebra here, unlike in $\R$, since that is the trivial case.
+
+\begin{defn}[Derivative in 1 Dimension]
+    Let $f:\R\mapsto\R$ be differentiable at $a \in \R$. This means
+    $$\lim_{h\rightarrow0} \frac{f(a+h)-f(a)}{h}$$
+    exists.
+\end{defn}
+
+The above definition can be readily extended to $f:\R\rightarrow\R^m$. For $f:\R^n\rightarrow\R^m$, this does not work. We try to construct a generalisation of the tangent line.
+
+\begin{align*}
+    f'(a) &= \lim_{h\rightarrow0} \frac{f(a+h)-f(a)}{h} \\
+    0 &= \lim_{h\rightarrow0} \left(\frac{f(a+h)-f(a)}{h} - f'(a)\right) \\
+      &= \lim_{h\rightarrow0} \Big |\frac{f(a+h)-f(a)-f'(a)h}{h}\Big | \\
+      &= \lim_{h\rightarrow0} \frac{|f(a+h)-f(a)-f'(a)h|}{|h|}
+\end{align*}
+
+Then defining
+
+$$\Delta f_a(h) = f(a+h) - f(a)$$
+and
+$$T(h) = f'(a)h$$
+
+We can say the $f$ is differentiable at $a$ if and only if there exists such a $T$ that
+$$\lim_{h\rightarrow0} \frac{|\Delta f_a(h) - T(h)|}{|h|} = 0$$
+
+Extending this,
+
+\begin{defn}[Derivative in Arbitrary Dimensions]
+    Let $U \subseteq \R^n$ be open, $a \in U$, let $f:U \rightarrow \R^m$. Then $f$ is differentiable if and only if there exists a linear $T:\R^n\rightarrow\R^m$ such that
+
+    $$\lim_{h\rightarrow0} \frac{||\Delta f_a(h) - T(h)||}{||h||} = 0$$
+\end{defn}
+
+One can show that $T$ is unique, and we can denote it by $Df_a$.
+
+\begin{rem}
+    Linear maps are differentiable at any point, with $Df_a = f$.
+\end{rem}
+    
+\begin{defn}
+    Let $U \subseteq \R^n$ be an open neighbourhood of the origin 0, $f:U \rightarrow \R^m$. Then we say $f \in o(\R^n,\R^m)$ iff
+    $$f(0) = 0, \lim_{h\rightarrow0} \frac{||f(h)||}{||h||} = 0$$
+    We also say $f \in O(\R^n,\R^m)$ iff $\exists M,\delta > 0$ such that,
+    $$B_\delta(0) \subseteq U, ||f(h)|| \leq M||h|| \forall ||h|| \leq \delta$$
+\end{defn}
+
+\begin{ex}
+    For $n=m=1$, note that $|x|^{3/2}, |x|$ are in $O$, and they are continuous at 0.
+\end{ex}
+
+\begin{thm}
+    \begin{itemize}
+        \item $o, O$ are closed under linear combinations, and $o \subseteq O$, where all of them are functions continuous at 0. \\
+        \item If $f \in O(\R^n,\R^m), g \in O(R^m,\R^p)$, then $g\circ f \in O(\R^n,\R^p)$. \\
+        \item If $f \in o(\R^n,\R^m), g \in O(\R^m,\R^p)$, then $g\circ f \in o(\R^n,\R^p)$. \\
+        \item If $f \in O(\R^n,\R^m), g \in o(\R^m,\R^p)$, then $g\circ f \in o(\R^n,\R^p)$. \\
+        \item If $T: \R^n\mapsto \R^m$ is lienar, then there exists $M>0$ such that $||T(h)|| \leq M||h|| \forall h \in \R^n$. \\
+        \item If $f:\R^n\mapsto\R^m$ is homogeneous and $f \in o(\R^n,\R^m)$, then $f=0$.
+    \end{itemize}
+\end{thm}
+    
+    
+
+\end{document}
