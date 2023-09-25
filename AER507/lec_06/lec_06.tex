@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Chapter 3: Basics of Confinement}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{General Need for Confinement}
+
+We need to achieve net energy output, so the Lawson Criteria has to be met, i.e. $n\tau \geq 10^{20}$. We also want to reduce plasma-wall interactions.
+
+\subsection{Wall Erosion}
+If there is no confinement,
+$$\phi_{D^+} = \frac{1}{4}n\overline c, \overline c = \sqrt{\frac{8kT}{\pi m_e}}$$
+For $T = 10\unit{keV}, n = 10^{20}$, we have $\phi_{D^+} \rightarrow 10^{26}$
+For carbon, with an erosional yield of around 1\%, that's $10^{24}$ carbon molecules per metre squared. This number is too big.
+
+\subsection{Plasma Contamination}
+
+\begin{ex}[Carbon Walls]
+    Carbon walls have $\frac{n_C}{n_D} \leq 1\%$. Carbon Influx is $\Gamma = y\phi_{D^+} \times 2\pi a \times 2 \pi R$.
+    \begin{defn}[Impurity Confinement Time]
+        $$\tau_{\text{imp}} = \frac{n_CV}{\Gamma_C}$$
+        where $V$ stands for volume.
+    \end{defn}
+    Assume $\tau_{\text{imp}} \approx \tau_E$. Then
+    $$y\phi_{D^+} \times 2\pi a \times 2\pi R = n_C \times \frac{2\pi R \times \pi a^2}{\tau_{\text{imp}}}$$
+    Using generic values $n_D \approx 10^{20}, y \approx 1\%, a \approx 1\unit{m}, \tau \approx 1\unit{s}$,
+    $$\phi_{D^+} \leq 10^{20}$$
+    This is a million times smaller than what we conventionally have.
+\end{ex}
+
+\section{Magnetic Confinement: General}
+
+\subsection{Maxwell's Equations}
+
+$$\nabla \cdot \vec E = \frac{\rho}{\varepsilon_0}$$
+
+In 1 dimensions, this simplifies to
+
+$$\varepsilon_0 \frac{dE}{dx} = \rho = e|n_i - n_e|$$
+
+We also know
+
+$$\nabla \cdot \vec B = 0$$
+
+meaning there are no magnetic "charges". The remaining laws are
+
+$$\nabla \times \vec E = -\dot{\vec B}$$
+$$\nabla \times \vec B = \mu_0\left(\vec j + \varepsilon_0\dot{\vec E}\right)$$
+
+\subsection{Diamagnetism}
+
+There are 3 types of magnetic materials. Diamagnetic materials (induced magnetic field in opposite direction), paramagnetic materials (induced magnetic field in same direction), ferromagnetic (no induced magnetic field). Here we ignore diamagnetic materials.
+
+\subsection{Quasineutrality}
+
+$$n_e \approx n_i$$
+
+Since each negative and positive charge are generated in pairs. Now
+
+$$\nabla \cdot \vec E = \frac{dE}{dx} = \frac{\rho}{\varepsilon_0} = \frac{en}{\varepsilon_0}$$
+and
+$$E = -\frac{dV}{dx} \Rightarrow V = \frac{nex^2}{2\varepsilon_0}$$
+Choosing $V=0,E=0$ at $x=0$,
+$$V = \frac{10^{20} \times 1.6 \times 10^{-19} \times 1}{2 \times 8.85 \times 10^{-12}} = 10^{12}\unit{V}$$
+
+\subsection{Debye Shielding}
+
+At the negative electrode, voltage is lower than the voltage of plasma, so $n_e \neq n_i$.
+
+\subsection{Sheath Thickness}
+
+$$\frac{d^2V}{dx^2} = -\frac{e(n_i-n_e)}{\varepsilon_0} \approx -\frac{en_i}{\varepsilon_0}$$
+
+Then
+$$V - V_0 = -\frac{enx^2}{2\varepsilon_0}$$
+
+\begin{defn}[Debye Length]
+    $$\frac{e\Delta V}{kT_e} = \frac{1}{2}\left(\frac{x}{\lambda_D}\right)^2$$
+    Where the Debye length $\lambda_D$ is defined as above. Think of it as a scale length.
+\end{defn}
+
+$$\lambda_D = 7430 \left(\frac{T_e}{n}\right)^{1/2}$$
+where $T_e$ is in eV.
+
+\begin{ex}
+    Given $T = 10\unit{keV}, n = 10^{20}$, we have $\lambda_D = 10^{-4}\unit{m}$.
+\end{ex}
+
+Rearranging, the sheath length is
+$$x \approx \lambda_D \left(\frac{2e\Delta V}{kT}\right)^{1/2}$$
+
+\begin{ex}
+    If $V = 10^4\unit{V}$, then $x \approx 10^{-4}\unit{m}$.
+\end{ex}
+
+\subsection{Boltzmann Factor}
+
+Electric force is $F = qE = -enE$. Adding this to pressure gives
+
+$$-(p_2 - p_1)A - enEA\Delta x = 0 \Rightarrow \frac{dP}{dx} = en \frac{dV}{dx}$$
+
+From the ideal gas law, $P = n_ekT_e$, so
+
+$$\frac{dn}{n} = \frac{edV}{kT_e} \Rightarrow n_e = n_\infty e^{eV/kT}$$
+
+\subsection{Shielding Again}
+
+Far from the electrodes, $n_e = n_i = n\infty, v = 0$. Ions are fixed in space. Say $V$ goes from -10 to -1 $\frac{kT_e}{e}$. Then $x \approx 4\lambda_D$.
+
+\begin{align*}
+    \varepsilon_0 \frac{d^2V}{dx^2} &= -e(n_i - n_e) \\
+                                    &= -e\left(n_i - n_\infty e^{eV/dT}\right) \\
+                                    &= en\left(e^{eV/kT} - 1\right) \\
+                                    &\approx \frac{e^2nV}{kT}
+\end{align*}
+    
+\end{document}
