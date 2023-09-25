@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 8}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Differentiation for Functions of Many Variables}
+
+We can rewrite $f:U \rightarrow \R^n$ as
+
+$$f(x) = \begin{pmatrix} f_1(x) \\ f_2(x) \\ \vdots \\ f_n(x) \end{pmatrix}$$
+
+The derivative of a function $f$ at $x_0 \in U$ can be thought of as a matrix or a linear map. This means
+
+$$f(x) = f(x_0) + g(h) + R(h), R(h) = o(h)$$
+
+where $g$ is linear and $R$ is a correction term that tends to 0 faster than $h$. Now this linear map can be represented by a unique matrix (up to basis).
+
+Now define
+
+$$Df(x_0)_{ij} = \del{f_i}{x_j}(x_0)$$
+
+We can prove that this matrix is the desired linear map. For simplicity, assume $f:\R^m\mapsto\R$. Then using that fact that $\del{f}{x_i} = Df\cdot e_i$, we see that $Df$ is the derivative. We can generalise this by applying the theorem on each row of $f$, ie each dimension of its range.
+
+\begin{lem}
+    $$f'(a;u) = Df(a)\cdot u$$
+    where $u$ is a unit vector.
+\end{lem}
+
+\begin{proof}
+    We assumed differentiability for the LHS to make sense. Then letting $B$ be its derivative,
+    \begin{align*}
+        \lim_{t\rightarrow0} \frac{f(a+tu) - f(a) - Btu}{|tu|} &= 0 \\
+        \lim_{t\rightarrow0} \frac{f(a+tu)-f(a)}{t} - Bu &= 0
+    \end{align*}
+\end{proof}
+
+\begin{lem}
+    If $f$ is differentiable at $a$, then
+    $$Df(a) = \begin{pmatrix} D_1f(a) & D_2f(a) & \dots & D_mf(a) \end{pmatrix}$$
+\end{lem}
+
+\begin{proof}
+    Note that $Df(a)e_i = f'(a;e_i)$. Then letting $Df(a)_j = \lambda_j$, note that
+    $$D_jf(a) = f'(a;e_j) = Df(a)e_j = \lambda_j$$
+\end{proof}
+
+\end{document}
