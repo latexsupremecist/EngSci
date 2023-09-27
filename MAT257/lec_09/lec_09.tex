@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 9}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+Recall the derivative of $f$ is the matrix/linear map $A$ such that
+$$f(x+h) = f(x) + Ah + o(h)$$
+One can show that $A$ is unique by construction. We have shown that by representing
+
+$$f(x) = \begin{pmatrix} f_1(x) \\ f_2(x) \\ \vdots \\ f_m(x) \end{pmatrix}$$
+
+then its derivative is
+
+$$f'(x) = \begin{pmatrix} Df_1(x) \\ Df_2(x) \\ \vdots \\ Df_m(x) \end{pmatrix}$$
+
+where each entry is equal to
+
+$$Df(x) = \begin{pmatrix} D_1f(x) & D_2f(x) & \dots & D_nf(x) \end{pmatrix}$$
+
+and we know
+
+$$D_if(x) = \del{f}{x_i}$$
+
+Hence we can compute the derivatives of multivariable functions using our old limit laws and differentiation rules. Partial derivatives can easily be defined as normal derivatives, hence all rules (e.g. chain, product, etc) apply.
+
+\begin{thm}
+    Let $A\subseteq\R^m$ be open. Suppose the partial derivatives all exist and are continuous on $A$. Then $f$ is differentiable on $A$.
+\end{thm}
+
+\begin{proof}
+    We have shown that $f$ is differentiable at $a$ iff all of its component functions $f_i$ are differentiable at $a$. So it suffices to show the latter. Recall that $f_i:A\mapsto\R$. Now define the points
+    \begin{align*}
+        p_0 &= a \\
+        p_1 &= a + h_1e_1 \\
+        p_2 &= a + h_1e_1 + h_2e_2 \\
+            &\vdots \\
+        p_m &= a + h_1e_1 + \dots + h_me_m
+    \end{align*}
+    Then we can write $f(a+h) - f(a)$ to be the telescoping sum
+    $$f_{j=1}^m [f(p_j) - f(p_j-1)]$$
+    Pick the $j$th term, and assume for now $h_j \neq 0$. Then
+    $$f(p_j) - f(p_{j-1}) = D_jf(c_j)h_j$$
+    by the mean value theorem, which holds since the partial derivatives exist and are continuous. Note that this $c_j$ is on the straight line (parallel to $e_j$) between $p_j$ and $p_{j-1}$. Then
+    $$\lim_{h\rightarrow0} \frac{f(a+h)-f(a)}{|h|} = \lim_{h\rightarrow0} \sum_{j=1}^m \frac{D_jf(a)h_j}{h}$$
+    Now letting
+    $$B = \begin{pmatrix} D_1f(a) & D_2f(a) & \dots & D_mf(a) \end{pmatrix}$$
+    we get
+    $$\frac{f(a+h) - f(a) - Bh}{|h|} = \sum_{j=1}^m \frac{[D_jf(c_j) - D_jf(a)]h_j}{|h|}$$
+    The difference on the right hand side tends to 0, as $D_jf$ is continuous, and $c_j$ tends to $a$ as $h$ tends to 0. Obviously $\frac{h_j}{|h|}$ is not greater than 1, in terms of absolute value. Then the expression tends to 0 as $h$ tends to 0, as desired.
+\end{proof}
+
+
+\end{document}
