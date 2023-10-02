@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Chapter 3: Basics of Confinement}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{General Need for Confinement}
+
+We need to achieve net energy output, so the Lawson Criteria has to be met, i.e. $n\tau \geq 10^{20}$. We also want to reduce plasma-wall interactions.
+
+\subsection{Wall Erosion}
+If there is no confinement,
+$$\phi_{D^+} = \frac{1}{4}n\overline c, \overline c = \sqrt{\frac{8kT}{\pi m_e}}$$
+For $T = 10\unit{keV}, n = 10^{20}$, we have $\phi_{D^+} \rightarrow 10^{26}$
+For carbon, with an erosional yield of around 1\%, that's $10^{24}$ carbon molecules per metre squared. This number is too big.
+
+\subsection{Plasma Contamination}
+
+\begin{ex}[Carbon Walls]
+    Carbon walls have $\frac{n_C}{n_D} \leq 1\%$. Carbon Influx is $\Gamma = y\phi_{D^+} \times 2\pi a \times 2 \pi R$.
+    \begin{defn}[Impurity Confinement Time]
+        $$\tau_{\text{imp}} = \frac{n_CV}{\Gamma_C}$$
+        where $V$ stands for volume.
+    \end{defn}
+    Assume $\tau_{\text{imp}} \approx \tau_E$. Then
+    $$y\phi_{D^+} \times 2\pi a \times 2\pi R = n_C \times \frac{2\pi R \times \pi a^2}{\tau_{\text{imp}}}$$
+    Using generic values $n_D \approx 10^{20}, y \approx 1\%, a \approx 1\unit{m}, \tau \approx 1\unit{s}$,
+    $$\phi_{D^+} \leq 10^{20}$$
+    This is a million times smaller than what we conventionally have.
+\end{ex}
+
+\section{Magnetic Confinement: General}
+
+\subsection{Maxwell's Equations}
+
+$$\nabla \cdot \vec E = \frac{\rho}{\varepsilon_0}$$
+
+In 1 dimensions, this simplifies to
+
+$$\varepsilon_0 \frac{dE}{dx} = \rho = e|n_i - n_e|$$
+
+We also know
+
+$$\nabla \cdot \vec B = 0$$
+
+meaning there are no magnetic "charges". The remaining laws are
+
+$$\nabla \times \vec E = -\dot{\vec B}$$
+$$\nabla \times \vec B = \mu_0\left(\vec j + \varepsilon_0\dot{\vec E}\right)$$
+
+\subsection{Diamagnetism}
+
+There are 3 types of magnetic materials. Diamagnetic materials (induced magnetic field in opposite direction), paramagnetic materials (induced magnetic field in same direction), ferromagnetic (no induced magnetic field). Here we ignore diamagnetic materials.
+
+\subsection{Quasineutrality}
+
+$$n_e \approx n_i$$
+
+Since each negative and positive charge are generated in pairs. Now
+
+$$\nabla \cdot \vec E = \frac{dE}{dx} = \frac{\rho}{\varepsilon_0} = \frac{en}{\varepsilon_0}$$
+and
+$$E = -\frac{dV}{dx} \Rightarrow V = \frac{nex^2}{2\varepsilon_0}$$
+Choosing $V=0,E=0$ at $x=0$,
+$$V = \frac{10^{20} \times 1.6 \times 10^{-19} \times 1}{2 \times 8.85 \times 10^{-12}} = 10^{12}\unit{V}$$
+
+\subsection{Debye Shielding}
+
+At the negative electrode, voltage is lower than the voltage of plasma, so $n_e \neq n_i$.
+
+\subsection{Sheath Thickness}
+
+$$\frac{d^2V}{dx^2} = -\frac{e(n_i-n_e)}{\varepsilon_0} \approx -\frac{en_i}{\varepsilon_0}$$
+
+Then
+$$V - V_0 = -\frac{enx^2}{2\varepsilon_0}$$
+
+\begin{defn}[Debye Length]
+    $$\frac{e\Delta V}{kT_e} = \frac{1}{2}\left(\frac{x}{\lambda_D}\right)^2$$
+    Where the Debye length $\lambda_D$ is defined as above. Think of it as a scale length.
+\end{defn}
+
+$$\lambda_D = 7430 \left(\frac{T_e}{n}\right)^{1/2}$$
+where $T_e$ is in eV.
+
+\begin{ex}
+    Given $T = 10\unit{keV}, n = 10^{20}$, we have $\lambda_D = 10^{-4}\unit{m}$.
+\end{ex}
+
+Rearranging, the sheath length is
+$$x \approx \lambda_D \left(\frac{2e\Delta V}{kT}\right)^{1/2}$$
+
+\begin{ex}
+    If $V = 10^4\unit{V}$, then $x \approx 10^{-4}\unit{m}$.
+\end{ex}
+
+\subsection{Boltzmann Factor}
+
+Electric force is $F = qE = -enE$. Adding this to pressure gives
+
+$$-(p_2 - p_1)A - enEA\Delta x = 0 \Rightarrow \frac{dP}{dx} = en \frac{dV}{dx}$$
+
+From the ideal gas law, $P = n_ekT_e$, so
+
+$$\frac{dn}{n} = \frac{edV}{kT_e} \Rightarrow n_e = n_\infty e^{eV/kT}$$
+
+\subsection{Shielding Again}
+
+Far from the electrodes, $n_e = n_i = n\infty, v = 0$. Ions are fixed in space. Say $V$ goes from -10 to -1 $\frac{kT_e}{e}$. Then $x \approx 4\lambda_D$.
+
+\begin{align*}
+    \varepsilon_0 \frac{d^2V}{dx^2} &= -e(n_i - n_e) \\
+                                    &= -e\left(n_i - n_\infty e^{eV/dT}\right) \\
+                                    &= en\left(e^{eV/kT} - 1\right) \\
+                                    &\approx \frac{e^2nV}{kT}
+\end{align*}
+    
+We find the pre-sheath voltage drop to be
+
+$$v_{ps} \approx \frac{1}{2} k\frac{T_e}{e} \approx \frac{L}{\lambda} \frac{kT_e}{e}$$
+
+\subsection{Main plasma Quasineutral even if $E \neq 0$}
+
+We define, for charge imbalance,
+
+$$n_i - n_e \equiv \alpha n, n = \frac{n_i+n_e}{2}$$
+
+Then
+
+$$\frac{d^2V}{dx^2} = -\frac{\alpha en}{\varepsilon_0} \Rightarrow \frac{e\Delta V}{kT_e} = \frac{1}{2} \alpha \left(\frac{x}{\lambda_D}\right)^2$$
+Given $\Delta V = -\frac{1}{2} \frac{kT_e}{e}$ in $x = L \approx 1\unit{m}$, we get
+$$\alpha = \left(\frac{\lambda_D}{x}\right)^2 \approx 10^{-8}$$
+hence we can say in plasma, $n_e \neq n_i$.
+
+\subsection{Plasma Currents}
+
+$v_r$ refers to the individual particle, which is random and thermal, and $v_d$ the bulk, fluid or drift velocity. Note that the thermal distribution is centred around $v_d$. Typically, $\overline{v_r} >> v_d$. The current density is given by
+$$j_e \equiv -en_ev_{e,d}, j_i \equiv zen_iv_{i,d}$$
+If $j = en_e\overline{v_{e,r}}$, then at $T = 10\unit{keV}, \overline{v_{e,r}} = 6.7 \times 10^7 \unit{m.s^{-1}}$. If $n = 10^{20}, j \approx 10^9 \unit{A.m^{-2}}$ which is a bit too big. Thus we take
+$$j = j_i + j_e$$
+
+Fun fact: it takes around 5V to drive a current of about 5MA through plasma.
+
+\subsection{Unbalanced Pressure Gradient Causes Flow at Speed of Sound}
+
+$$F = ma \Rightarrow -Adp = ma \Rightarrow -\frac{dp}{dx} = \rho a \Rightarrow -\frac{dp}{dx} = n_im_ia_x$$
+
+The pressure gradient is approximately $\frac{p_0}{L}$, and the acceleration is around $\frac{\Delta v}{\Delta t} \approx \frac{v_f}{L/v_f} = \frac{v_f^2}{L}$. Hence
+$$\frac{p_0}{L} \approx n_im_i \frac{v_f^2}{L}$$
+
+Substituting in the Ideal Gas Law, we get
+$$v_f = \left(\frac{kT}{m}\right)^{1/2} = a = \text{ speed of sound}$$
+At 10keV, it is around $10^6\unit{m.s^{-1}}$. Inertial confinement disassembly time is then
+$$\tau \approx \frac{R}{a}$$
+
+\subsection{Magnetic Pressure Balance}
+
+$$\vec F_{EB} = ne(\vec E + \vec v_d \times \vec B)$$
+
+Summing the forces to be 0,
+$$\vec F_{EB} = \nabla p$$
+We then define $\nabla P_e = -en_e(\vec E + \vec v_{e,d} \times \vec B)$ and similarly for $\nabla P_i$. The total pressure is their sum. We get the magnetic plasma balance equation
+
+\begin{equation}
+    \vec J \times \vec B = \nabla p
+\end{equation}
+
+Recall at the edge of a plasma, pressure goes to 0, and the magnetic field tends to the external magnetic field. Knowing that $p + \frac{B^2}{2\mu_0}$ is a constant, we have
+$$p + \frac{B_{\text{int}}^2}{2\mu_0} = \frac{B_{\text{ext}}^2}{2\mu_0}$$
+The internal field is less than the external field, meaning the plasma has to be diamagnetic. \\
+Recall that
+$$\beta \equiv \frac{P}{B_0^2/2\mu_0} \Rightarrow \beta = 1 - \frac{B^2}{B_0^2}$$
+This means $\beta \in (0,1)$. In practice, it is hard to get that above a few percent.
+
+\subsection{Microscopic Explanation of Diamagnetism}
+
+$$\nabla \times \vec B = \mu_0\left(\vec j_{\text{free}} + \vec j_{\text{gyro}}\right)$$
+Revealed to me by the professor, one can observer that
+$$\Delta p = \left(\frac{1}{1+\beta}\right)\left(-\frac{1}{2}\Delta B^2\right)$$
+
+\subsection{In What Sense does $\vec B$ confine Plasma}
+
+Looking at the gross force balance,
+
+$$\vec J \times \vec B = \nabla p$$
+
+In fact, there is usually some slight imbalance in the above equation, which leads to some leakage. This requires drift velocity to be less than $10^{-6}\overline c$.
+
+$$\text{outflow} = \Gamma_\perp = nv = D_\perp \frac{dn}{dx}$$
+
+where $D_\perp \propto \frac{1}{B^2}$ in theory. Thus
+$$v = D_\perp \frac{1}{n} \frac{dn}{dx} \approx D_\perp \frac{1}{n} \frac{n}{L} \approx \frac{D_\perp}{L} << \overline c$$
+
+In practice, $D_\perp \propto \frac{1}{B}$, and it is around 1 metre squared per second at $B=3\unit{T}$. With $L \approx 1\unit{m}$, we have $v \approx \frac{1}{1} \approx 1 \approx 10^{-6} \overline c$
+
+Considering energy confinement,
+
+$$\tau_{nr} \approx \frac{L^2}{\chi_\perp}$$
+
+In theory, $\chi_\perp \propto \frac{1}{B^2}$, but in practice, $\chi_\perp \approx (1-10)D_\perp$ (between 1 to 10).
+
+\subsection{Types of Plasma Current for $\vec J \times \vec B$ Force}
+
+When we produce a plasma current that goes along the axis of a torus, $\vec J \times \vec B = 0$, since both are parallel. Luckily, the current also induces a magentic field around it, so confinement is possible.
+
+\section{Magnetic Confinement - Various Methods}
+
+\subsection{The Self-Pinch}
+
+One runs a current through the plasma. The Biot-Savart Law gives
+$$B_\phi = \frac{\mu_0I}{2\pi r} \Rightarrow \nabla p = \vec J \times B_\phi$$
+
+Assuming $p_{\text{plasma}} \approx \frac{B_\phi^2}{2\mu_0}$, we can derive
+
+\begin{align*}
+    nkT &= \left(\frac{\mu_0^I}{2\pi r}\right)^2 \times \frac{1}{2\mu_0} \\
+    I^2 &= \frac{8\pi}{\mu_0}AnkT
+\end{align*}
+
+Which is the basic pinch relation.
+
+\begin{ex}
+    For $n = 10^{20}\unit{m^{-3}}, T = 10\unit{keV}, A = 1\unit{m^2}$, we get $I = 2\unit{M.A}$.
+\end{ex}
+
+The advantages are the confinement is done without magnetic coils. It is also self heating. However, the disadvantages is that it is unstable even for straight particles. $B_\phi$ grows as $r$ gets smaller, but the greater the confinement force, the smaller the $r$. The opposite happens when $r$ grows. Hence it is unstable. There is also electrode erosion.
+
+\subsection{Stellarator}
+
+The advantages are that there are less problems with gross stability, and the pulse is also in steady state. However, it requires very complex magnets, there is no self heating, and there are stress problems on magnetics.
+
+\subsection{Mirror Machines}
+
+\begin{defn}[Magnetic Moment]
+    $$\mu_m = \frac{1}{2} mv_\perp^2/B$$
+    which is a constant.
+\end{defn}
+Then
+$$E = \frac{1}{2} mv_\parallel^2 + \mu_mB$$
+The advantages are that they are simple, and there is gross plasma stability. However, the disadvantages are that there are large end losses (e.g. wall contact), and no self heating. Also it doesn't work.
+
+\end{document}
