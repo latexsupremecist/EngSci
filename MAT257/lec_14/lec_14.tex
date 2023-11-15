@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 14}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Inverse Function Theorem}
+
+We want to show that for $f: U \subseteq \R^n \right \R^n$ where $U$ is open and $f \in \mathcal C^r$, if $Df(x_0)$ is invertible for some $x_0 \in U$, then there exists $\delta > 0$ such that $f$ constrained to $B(x_0;\delta$ is invertible and its inverse is also $\mathcal C^r$.
+
+\begin{thm}
+    If $f:A \rightarrow B \in \mathcal C^r$ where both are open subsets of $\R^n$ and $Df$ is invertible $\forall x \in A$, then the inverse of $f$ is also $\mathcal C^r$.
+\end{thm}
+
+\begin{proof}
+    We start with the fact that $Df = 0$ for extreme points. This is trivial. Based on the definition of directional derivatives, extreme points have to have a directional derivative of 0. The result follows by applying this to every direction. Now we attempt to prove that $B$ is open. $\forall b \in B$, since $A$ is open, we have some open rectangle in $A$ containing $a$ such that $f(a) = b$. Then we can find a closed rectangle $Q$ containing $a$ in $A$. Its boundary is compact. Now since $f$ is continuous, its mapping in $B$ is also compact, and disjoint from $b$. It is easy to use epsilon-delta to show that $B$ contains a neighbourhood of every of its points, as desired.
+    $$\phi(x) = ||f(x) - c||^2$$
+    This function is also of $\mathcal C^r$. $Q$ being compact ensures a minimum value that is not in its boundary. (Hint: set $2\delta$ to show that $b$ is disjoint from the boundary of $Q$, and use $\delta$) Then
+    \begin{align*}
+        \phi(x) &= \sum_k (f_k(x) - c_k)^2 \\
+        D_j\phi(x) &= \sum_k 2(f_k(x) - c_k)D_jf_k(x)
+    \end{align*}
+    Then $D\phi(x) = 0$ can be written as
+    $$2\begin{pmatrix} 2((f_1(x) - c_1)(f_2(x) - c_2)\times \dots \times (f_n(x) - c_n))\end{pmatrix}Df(x) = 0$$
+    Since the matrix is invertible, we see that $f(x) = c$. Hence $f$ is one-to-one. It is trivial to show that its inverse is continuous too; thus the theorem is proven.
+\end{proof}
+
+To prove the inverse function theorem, note that if $Df(x_0)$ is invertible, its determinant is nonzero. Since the determinant is a function of the entries of $Df$, which are continuous partial derivatives ($f \in \mathcal C^r$), the determinant is also continuous, so $Df$ is invertible on some neighbourhood of $x_0$. From the last lecture, we also know that for some neighbourhood of $x_0$, we have $|\f(x_1)-f(x_0)| \geq \alpha|x_1 - x_0|$, which implies $f$ is one-to-one. Then by the theorem above, $f$ is also one-to-one, hence it is invertible locally    
+
+\end{document}

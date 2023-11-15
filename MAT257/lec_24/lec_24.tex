@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 24}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integrals on General Domains}
+
+Consider any set $S \in \R^n$ and $f:S \rightarrow \R$ being a bounded function. We want to define $\int_S f(x)$.
+
+\begin{defn}[Extensions]
+    Define the extension of $f$ to a rectangle $Q \in \R^n \supseteq S$. Where
+    $$f_S(x) = \begin{cases} f(x) & \text{if } x \in S \\ 0 & \text{else} \end{cases}$$
+\end{defn}
+
+We wish to define $\int_S f(x) = \int_Q f_S(x)$. This only makes sense if the following holds.
+
+\begin{lem}
+    Given $f:S \rightarrow \R$ being bounded, then $_Q f_S(x)$ exists for one $Q \supseteq S$ iff it exists for all such $Q'$, and
+    $$\int_Q f_S(x) & =\int_{Q'} f_S(x)$$
+\end{lem}
+
+We can use this definition to evaluate integrals of functions defined over general open sets. Note that Fubini's theorem is applicable, since it applies to rectangular $Q$. We also expect that for $f$ to be integrable over $S$, then
+$$\int_S f(x) = \int_{S_1} f(x) + \int_{S_2} f(x)$$
+where $S_1$ and $S_2$ are 2 disjoint sets whose union is $S$.
+
+\end{document}

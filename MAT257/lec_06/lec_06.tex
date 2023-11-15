@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Connected Spaces}
+
+\begin{thm}
+    If $X \subseteq \R^n$ is closed and bounded, then $X$ is compact.
+\end{thm}
+
+\begin{proof}
+    Let $A$ be a collection of open sets covering $X$. Since $X$ is closed, add the open set $\R^n-X$ to our collection. Since $X$ is bounded, there exists a rectangle $Q$ such that $X \subseteq Q$. By compactness of $Q$, there exists some finite subcover of $Q$. Note that this is because the union of $A$ and $\R^n-X$ covers $\R^n$ and hence $Q$. Then this is a finite subcover of $X$.
+\end{proof}
+
+\begin{defn}
+    If $X$ is a metric space, we say $X$ is connected if $X$ cannot be written as $A\cup B$ where $A$ and $B$ are open, nonempty, and disjoint.
+\end{defn}
+
+\begin{rem}
+    $\R$ is connected. The only connected subspaces of $\R$ are open intervals.
+\end{rem}
+
+\begin{proof}
+    Let $\mathcal U \subseteq \R$ such that $\mathcal U$ is not an interval. Then by definition, there exists $a,b,c\in\R$ with $a<c<b$ and $a,b\in\mathcal U$, $c \notin \mathcal U$. Then $A = (-\infty,c)\cap \mathcal U, B = (c,\infty)\cap \mathcal U$, but their union is equal to $\mathcal U$. 
+\end{proof}
+
+\begin{thm}[Intermediate Value Theorem]
+    Let $X$ be connected. If $f:X\mapsto Y$ is continuous, then $f(X)$ is a connected subspace of $Y$.
+\end{thm}
+
+\begin{proof}
+    Suppose $f(X) = A\cup B$, where $A$, $B$ are disjoint, nonempty and open, then $f^{-1}(A)$ and $f^{-1}(B)$ are open, disjoint, and nonempty. By contradiction, $f(X)$ is connected.
+\end{proof}
+
+\begin{prop}
+    If $f:X\mapsto\R$ is continuous and if $f(x_0) <r<f(x_1)$, then $f(x)=r$ for some $x\in X$.
+\end{prop}
+
+\begin{proof}
+    Given $f$, let $A = \{y < r|y\in\R\}$ and $B = \{y > r | y \in \R\}$. Note that both sets are open, disjoint, and nonempty. If $r \notin f(X)$, then $f(X)$ is not connected.
+\end{proof}
+
+\begin{defn}[Line Segment]
+    If $a,b\in\R^n$, the line segment joining them is
+    $$\{x = a + t(b-a) | 0 \leq t \leq 1\}$$
+\end{defn}
+
+Any line segment is connected as it is the continuous image of
+$$t \mapsto a + t(b-a), t \in [0,1]$$
+
+\begin{defn}[Convex Set]
+    A subset $U \subseteq \R^n$ is convex if for all $a,b\in U$, the line segment between them is in $U$.
+\end{defn}
+
+Any convex subset $A \subseteq \R^n$ is connected. If $A = U\cup V$ where both are disjoint, nonempty, and open, then there exists $u\in U,v\in V$ such that the line between them can be written as
+$$L = (L\cap U) \cup (L\cap V)$$
+which contradicts the connectivity of $L$.
+
+
+\end{document}

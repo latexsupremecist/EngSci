@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 5}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{defn}
+    Let $X \subseteq \R^n$. Given $\varepsilon>0$, the set $\bigcup_{x \in X} \mathcal U(x;\varepsilon)$ is called the $\varepsilon$ neighbourhood of $X$.
+\end{defn}
+
+\begin{thm}[The $\varepsilon$ neighbourhood theorem]\label{neighbourhood}
+    Let $X \subseteq \R^n$ be compact. Let $\mathcal U$ be an open subset of $\R^n$ containing $X$. Then there is an $varepsilon>0$ such that the $\varepsilon$ neighbourhood of $X$ is contained in $\mathcal U$.
+\end{thm}
+
+\begin{proof}
+    The $\varepsilon$ neighbourhood of $X$ in the euclidean metric is contained in that of the sup metrix, so it suffices to show that this holds for the sup metric. \\
+    First, fix a set $C \subseteq \R^n$ for each $x \in \R^n$. Define
+    $$d(x,C) = \text{inf}\{d(x,c) | c \in C\}$$
+    We claim that $d(x,C)$ is continuous in $x$. Using the sequence definition, it is enough to show that
+    $$d(x,C) - d(y,C) \leq d(x,y)$$
+    Letting $c \in C$,
+    $$d(x,C) - d(x,y) \leq d(x,c) - d(x,y) \leq d(y,c)$$
+    Taking the infimum of both sides with free choice of $c$, we get
+    $$d(x,C) - d(x,y) \leq d(y,C) \Rightarrow d(x,C) - d(y,C) \leq d(x,y)$$
+    We can reverse the argument to show that this holds if we switch $x$ and $y$. This is enough to prove our claim. \\
+    Given $\mathcal U$, define $f: X \mapsto \R$ by
+    $$f(x) = d(x,\mathcal U^C)$$
+    We know $f$ is continuous and $f(x) \geq 0 \forall x \in X$ since the $\delta$ ball of $x$ is contained in $\mathcal U$ (because it is open). Because $X$ is compact, $f(x)$ has a minimum value which gives the $\varepsilon$. (Finitely many open balls centred at a point in $X$ cover $X$).
+\end{proof}
+
+\begin{lem}
+    The rectangle $Q = [a_1,b_1] \times \dots \times [a_n,b_n] \in \R^n$ is compact.
+\end{lem}
+
+\begin{proof}
+    We prove this by induction. For the induction step, let $Q = X \times [a_{n+1},b_{n+1}]$ where we assume $X$ is compact. Let $A$ be an open cover. For any $t \in [a_{n+1},b_{n+1}]$, it is obvious that $X \times \{t\}$ is compact, since it is isomorphic with $X$. Let $\mathcal U$ be a finite subcover, and by \ref{neighbourhood}, the set $X \times [t-\varepsilon,t+\varepsilon]$ is contained in $\mathcal U$. Then for any $t$, we can find an open $V_t$ defined similarly such that $X \times V_t$ is compact. Since $n=1$ holds, we only need finitely many $V_t$ to cover $[a_{n+1},b_{n+1}]$, and hence it holds for $n+1$.
+\end{proof}
+
+
+\end{document}

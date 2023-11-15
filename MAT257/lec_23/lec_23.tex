@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 23}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{thm}[Fubini's Theorem]
+    Let $f: Q \in \R^{n_1 + n_2} \rightarrow \R$ be integrable, and $Q = A \times B$. Then letting $x \in \R^{n_1}, y \in \R^{n_2}$, we can write
+    $$\int_Q f(x,y) = \int_A \int_B f(x,y)dydx$$
+\end{thm}
+
+We can denote the inner integral as $I(x)$. Denote
+
+$$\overline I(x) = \overline{\int_B} f(x,y)dy$$
+
+We then claim that $\overline I(x)$ and $\underline I(x)$ are integrable. Moreover
+$$\int_A \underline I(x)dx = \int_A \overline I(x)dx = \int_Qf(x,y)$$
+
+Both integrals need not be the same. Consider any continuous $f$, and replace the line $x=0$ with a function that is 0 at rational $y$ and 1 at irrational $y$. Then the upper and lower integrals don't agree. However, $f$ is still integrable, hence there is a need to specify both.
+
+\begin{proof}
+    Consider any partition $P$ of $Q$ with $P = P_A \times P_B$. Then
+    $$L(f;P) \leq L(\underline I(x), P_A) \leq L(\overline I(x), P_A) \leq U(\overline I(x), P_A) \leq U(f;P)$$
+    Where the first and last inequalities are to be proven. Also,
+    $$L(f;P) \leq L(\underline I(x), P_A) \leq U(\underline I(x), P_A) \leq U(\overline I(x), P_A) \leq U(f;P)$$
+    where the same inequalities are to be proven. Assuming that the above inequalities holds, for any $\varepsilon > 0 \exists$ a partition $P$ such that
+    $$U(f,P) - L(f,P) < \varepsilon &\Rightarrow U(\overline I(x), P_A) - L(\overline I(x), P_A) < \varepsilon$$
+    And a similar statement could be made for $\underline I(x)$. Then both upper and lower $I$ are integrable. Now $\int_A \overline I(x), \int_A \underline I(x), \int_Q f$ all lie between the upper and lower sums of the partition $P$. By squeeze theorem, they are all equal. Then what remains is to prove the inequalities. \\
+    We want to show that $L(f;P) \leq L(\underline I(x), P_A)$. First note that the inequality holds term by term. Denote a general rectangle in $P$ by $R_A \times R_B$. Then for a given $x_0 \in R_A, \forall y \in R_B$,
+    $$m_{R_A \times R_B}(f) \leq f(x_0, y)$$
+    Multiplying through and summing,
+    $$\sum_{R_B} m_{R_A \times R_B}(f)v(R_B) \leq L(f(x_0, y), P_B) \leq \underline{\int_{y \in B}} f(x_0, y) = \underline I(x_0)$$
+    This holds $\forall x_0 \in R_A$, so we can drop $x_0$. Multiplying through and summing again,
+    $$L(f,P) \leq L(I(x), P_A)$$
+    The other inequality is proven similarly
+    $$U(\overline I(x), P_A) \leq U(f,P)$$
+\end{proof}
+
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 20}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+For $f:Q \in \R^n \rightarrow \R$, where $Q$ is a rectangle, we say $f$ is integrable if
+$$\sup L(f;P) = \inf U(f;P)$$
+where $L$ and $U$ are the lower and upper sums respectively. We have shown that this is equivalent to saying that $\forall \varepsilon > 0, \exists P$ such that
+$$U(f;P) - L(f;P) < \varepsilon$$
+
+Our notion of volume, a \textit{measure}, is defined such that if it can be "covered" by rectangles with arbitrary volume, then it has measure 0, or a volume of 0. This makes sense, since anything with nonzero volume cannot be fully covered by rectangles small enough.
+
+\section{Properties of measure zero}
+
+If $S_i \subseteq \R^n, i \in \N$ and $S_i$ all have measure 0, then their union also has measure zero. The proof is trivial. Set $\varepsilon' = \frac{\varepsilon}{2^i}$, and note that a countable set of countable sets is still countable. \\
+
+If $T \subseteq S$ where $S$ has measure zero, $T$ also has measure zero. If I were to provide a proof, that would be an insult to your intelligence. \\
+
+$\partial Q$ of a rectangle has measure 0. It suffices to show that each face is of measure 0. We can then appeal to the first property. But it is easy to simply take the "area" of the face to be $A$, and set its height to be $\frac{\varepsilon}{A}$. \\
+
+Now we can show that the interior of a rectangle cannot have measure zero. By contradiction, the union of the interior and the boundary is the rectangle. We have proven the latter has measure zero. By assumption and the first property, a rectangle has measure zero. This is false.
+
+\begin{thm}
+    A bounded function $f: Q \rightarrow \R$ is integrable iff the set of points at which $f$ is not continuous has measure zero.
+\end{thm}
+
+\begin{proof}
+    Since $f$ is bounded, we choose a maximum so that $|f_Q| \leq M$. We start with the forward proof. Given $\varepsilon$, define
+    $$\varepsilon' = \frac{\varepsilon}{2M + 2v(Q)}$$
+    We can first cover $D$ with countably many rectangles $Q_i$ with total volume less than $\varepsilon'$. Then $\forall a \in Q - D$, pick the rectangle $Q_a$ such that
+    $$|f(x) - f(a)| < \varepsilon' \forall x \in Q_a \cup Q$$
+    Then $Q_i$ and $Q_a$ cover $Q$. $Q$ being compact gives us a finite collection of $Q_i$ and $Q_a$ that cover $Q$. The the sum of areas of $Q_i$ is less than $\varepsilon'$, and each $Q_a$ satisfies
+    $$|f(x) - f(y)| < 2\varepsilon'$$
+    We replace each rectangle with its intersection with $Q$, and these properties remain. Obviously, they still cover $Q$. Using all endpoints of these rectangles, we can define a partition $P$. Each rectangle defined by the partition lies entirely in at least one of $Q_i$ or $Q_a$. Then for those in $Q_i$,
+    $$\sum_R (M(f) - m(f))v(R) \leq 2M\sum_R v(R) \leq 2M\varepsilon'$$
+    and for those in $Q_a$,
+    $$\sum_R (M(f) - m(f))v(R) \leq 2\varepsilon' \sum_R v(R) \leq 2\varepsilon' v(Q)$$
+    Then
+    $$U(f;P) - L(f;P) < 2M\varepsilon' + 2\varepsilon' v(Q) = \varepsilon$$
+\end{proof}
+\end{document}

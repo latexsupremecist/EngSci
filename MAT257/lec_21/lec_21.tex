@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 21}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integrals}
+
+\begin{thm}
+    $f$ is integtrable if and only if the set of points where $f$ is discontinuous has a measure of zero.
+\end{thm}
+
+\begin{defn}[Oscillation]
+    Let $a \in Q$ and $\delta > 0$. Define $A_\delta$ by
+    $$A_\delta = \{f(x) | x \in Q, |x - a| < \delta\}$$
+    Letting $M_\delta(f) = \sup A_\delta$ and $m_\delta(f) = \inf A_\delta$, then we define the oscillation to be
+    $$\nu(f;a) = \inf_{\delta>0} [M_\delta(f) - m_\delta(f)]$$
+\end{defn}
+
+Now obviously if $f$ is continuous, $\nu = 0$. Given $\varepsilon > 0$ we can choose a $\delta > 0$ such that $|f(x) - f(a)| < \varepsilon$ given $|x - a| < \delta$. Then $M - m < 2\varepsilon$. Since $\varepsilon$ is arbitrary, the difference $\nu$ tends to 0. Alternatively, if $|x - a| < \delta$, we can see that
+$$|f(x) - f(a)| < M_\delta(f) - m_\delta(f)$$
+Since the infimum of the latter is 0, $\forall \varepsilon$ we can pick a $\delta > 0$ such that the term on the right hand side is at most $\varepsilon$. This shows that $f$ is continuous at $a$.
+
+\begin{proof}
+    We proved the "if" part last lecture. Now let us show the "only if" part. We need a notion of "measure of discontinuity". Now $\forall m \in \Z^+$, we define
+    $$D_m = \left\{a|\nu(f;a) \leq \frac{1}{m}\right\}$$
+    Then the set of discontinuities $D$ is the union of $D_m$. Fixing $m$, we can cover $D_m$ by rectangles of volume less that $\varepsilon$. Once we prove this, we can show that $D$, the union of countably many sets with measure zero, also has measure 0. \\
+    Since $f$ is continuous, we can pick a partition $P$ such that
+    $$U(f;P) - L(f;P) < \frac{\varepsilon}{2m}$$
+    Let $D'_m$ be a subset of $D_m$ whose points belong to the boundaries of the rectangles defined by $P$. Let $D''_m = D_m - D'_m$. For $D'_m$, we know that the boundary of $R$ has measure zero, hence so does the union of the countably many rectangles $R$. This is a superset of $D'_m$, so $D'_m$ has measure zero, and can be covered by rectangles of volume less than $\frac{\varepsilon}{2}$. For $D''_m$, let $R_1, \dots, R_k$ the the subrectangles in $P$ that cover $D''_m$. $R_i$ contains some $a$. More specifically, we can find a $\delta$ small enough such that $B(a;\delta)$ is contained in $R_i$. Then
+    $$\frac{1}{m} \leq \nu(f;a) \leq M_\delta(f) - m_\delta(f) \leq M_{R_i}(f) - m_{R_i}(f)$$
+    Multiplying by $v(R_i)$ and summing,
+    $$\frac{1}{m} v(R_i) \leq U(f;P) - L(f;P) \leq \frac{\varepsilon}{2m}$$
+    where the last inequality comes from the construction of $P$.
+    Then we can cover $D''_m$ with (at most countably many) rectangles of volume at most $\frac{\varepsilon}{2}$. This proves the theorem.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 17}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Implicit Function Theorem}
+
+Consider an equation $f(x,y) = 0$ where $f: A \subseteq \R^k \times \R^n \rightarrow \R^n$, and $f \in \mathcal C^r$. If there is some point $(x^*, y^*$ such that $D_yf(x^*,y^*)$ is invertible and $f = 0$, then there exists a $\mathcal C^r$ function $g: U \subseteq \R^k \rightarrow \R^n$ such that $f(x,g(x)) = 0$.
+
+\begin{proof}
+    Note that $\exists$ open sets $V \in \R^k, W \in \R^n$ such that $V \times W \subseteq A$. Define $F:V \times W \rightarrow \R^k \times \R^n$ by
+    $$F(x,y) = (x,f(x,y))$$
+    $F$ is $\mathcal C^r$. This is a $(k+n)$ by $(k+n)$ matrix. We have an inverse $G$ on some local neighbourhood. Consider $G(x,0)$.
+
+\end{document}

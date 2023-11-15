@@ -1,0 +1,20 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 16}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Some Linear Algebra...}
+
+From linear algebra, recall that if there are $n+k$ unknowns and $n$ equations, the solution space has to have a "dimension" of $k$. We use quotes because the solution space need not be a vector subspace. It doesn't have to be closed. Note that if we have a \textit{fixed} solution
+
+$$Ax^* = b$$
+
+then we see that the solution forms an affine subspace. Alternatively, all solutions $x$ are such that $x - x^*$ is a \textbf{vector subspace} with dimension $k$.
+
+\section{Back to Implicit Function Theorem}
+
+We can treat $f:\R^{n+k}\rightarrow \R^n$ as a system of $n$ equations with $n+k$ unknowns. If we have a solution $(x^*, w^*$, where $x^* \in \R^{n+k}, w^* = \R^n$, then consider $Df(x^*)$, which has dimensions $n \times (n+k)$. If it has rank of $n$, then we expect that for every fixed $y$, the solution space is an affine subset of dimension $k$. If we fix the first $k$ entries in fact, and approximate the function with its derivative at a point, then we have a mapping from $\R^n$ to $\R^n$.
+
+\end{document}

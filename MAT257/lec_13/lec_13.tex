@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 13}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+We know that if $f: U \subseteq \R^n \rightarrow V \subseteq \R^n$ is $\mathcal C^1$ near $x$, and it is invertible with a differentiable inverse, then
+$$Df(x) \cdot Df^{-1}(f(x)) = I \Rightarrow Df^{-1}(y) = \left[Df\left(f^{-1}(y)\right)\right]^{-1}$$
+
+As an immediate application, if $Df(x)$ is not of full rank, then $f$ is either not invertible, or its inverse is not differentiable at $f(x)$. Examples of the former include $f(x) = x^2$, examples of the latter include $f(x) = x^3$.
+
+\section{Inverse Function Theorem}
+
+\begin{thm}[Inverse Function Theorem]
+    Let $f: U \subseteq \R^n \rightarrow \R^n, f \in \mathcal C^r, Df(x)$ invertible. Then $\exists$ open $Y \subseteq V$ such that $f|_Y Y \rightarrow V$ is invertible with its inverse being differentiable on $V$.
+\end{thm}
+
+\begin{lem}
+    Suppose $f: U \subseteq \R^n \rightarrow \R^n$ in $\mathcal C^1$ and $Df(x_0)$ has full rank. Then $\exists \alpha > 0$ such that
+    $$|f(x) - f(x_0) \geq \alpha |x-x_0| \forall x \in B(x_0,\varepsilon)$$
+    where $\varepsilon$ is small enough.
+\end{lem}
+
+\begin{proof}
+    First we prove this for linear functions. If a function is linear, by definition it is equal to its derivative. Since its derivative has full rank, the function itself is invertible. We know that
+    $$|A^{-1}w| \leq M|w|$$
+    where $M$ is the norm of the matrix. Rearranging, we get
+    $$|A(x-x_0) \geq \alpha |x-x_0|$$
+    by substituting $\alpha = \frac{1}{M}$ and $w = A(x-x_0)$. \\
+    For a general function, we use the fact that $Df(x_0)$ is invertible, and denote it by $A$. We want to show that $\exists \alpha > 0$ such that
+    $$|A(x-x_0)| \geq \alpha |x-x_0|$$
+    We can define a $R(x)$ such that $|R(x)| \leq \varepsilon |x-x_0|$ since the derivative of $f$ approximates $f$ itself. Then picking $\varepsilon = \frac{1}{4} \left(||A^{-1}||\right)^{-1}$ and $\alpha = 2\varepsilon$ gives
+    $$|A(x-x_0) + R(x)| > |A(x-x_0)| - |R(x)| \geq \frac{3}{4} \left(||A^{-1}||\right)^{-1}|x-x_0|$$
+    which gives the new value $\alpha'$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 15}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Inverse Function Theorem}
+
+We finish the proof of the theorem today. So far, we have reduced it to
+
+\begin{thm}
+    If $f: A \subseteq \R^n \rightarrow B \subseteq \R^n$ is one to one, with $A$ and $B$ open, then $[Df(x)]$ being invertible means $g=f^{-1}$ is also $\mathcal C^r$.
+\end{thm}
+
+Today we show that $g^{-1}$ is differentiable. By chain rule, this implies
+
+$$[Dg(b)] = [Df(a)]^{-1}, f(a) = b$$
+
+which prove the theorem. We start by considering the linear map $E = Df(a)$. We want to show that
+
+$$\lim_{|k|\rightarrow0} \frac{|g(b+k) - g(b) - E^{-1}k|}{|k|} = 0$$
+
+We have established that $g$ is continuous; hence $g(b+k) - g(b) \rightarrow 0$ as $|k| \rightarrow 0$.
+
+$$\frac{g(b+k) - g(b)}{|k|} \leq M \Leftrightarrow \frac{g(b+k) - g(b)}{|b+k-b|} \leq M \Leftrightarrow \frac{|h|}{|f(a+h) - f(a)|} \leq M \Leftrightarrow \frac{|f(a+h)-f(a)|}{|h|} \geq M^{-1}$$
+
+We have proven the rightmost statement, so the leftmost statement holds. Then
+
+$$\frac{(g(b+k) - g(b) - E^{-1}(k)}{|k|} = E^{-1} \frac{Eh - k}{|g(b+k) - g(b)|} \frac{|g(b+k) - g(b)|}{|k|} = E^{-1} \frac{Eh - f(a+h) + f(a)}{|h|} \frac{g(b+k) - g(b)}{|k|}$$
+
+For the rightmost term, the first term is constant, the second vanishes, and the third is bounded above. Hence it tends to zero, and $g$ is differentiable. If $f$ is $\mathcal C^r$, then each entry in $Df$ has to be $\mathcal C^{r-1}$. Hence each entry in $Dg = Df^{-1}$ is $\mathcal C^{r-1}$, and $g$ is $\mathcal C^r$.
+
+\end{document}

@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 19}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integration}
+
+Consider the bounded function $f:Q \subseteq \R^n \rightarrow \R$. We define the Riemann integral with the upper and lower integrals $L(f;P)$ and $U(f;P)$ using their partitions. Then $\int_Q f = \sup L(f;P) = \inf U(f;P)$ if both are equal. Recall we also showed that for any refinement $P'$ of $P$,
+$$L(f;P) \leq L(f;P') \leq U(f;P') \leq U(f;P)$$
+
+\begin{prop}
+    A bounded function $f:Q\rightarrow\R$ is integrable iff $\forall \varepsilon > 0 \exists$ a partition $P$ such that
+    $$U(f;P) - L(f;P) < \varepsilon$$
+\end{prop}
+
+\begin{proof}
+    $\Rightarrow$: \\
+    If $f$ is integrable, then we know the supremum of the lower sum and the infimum of the upper sum are equal. For the integral to be equal to the supremum, any value lower than that \textbf{is not} an upper bound, e.g. $\int_Q f - \frac{\varepsilon}{2}$. Then we can say for some partition $P_1$,
+    $$L(f;P_1) > \int_Q f - \frac{\varepsilon}{2}$$
+    Similarly, we can find another partition $P_2$ such that
+    $$U(f;P_2) < \int_Q f + \frac{\varepsilon}{2}$$
+    Then defining $P$ to be the union of both partitions,
+    $$\int_Q f - \frac{\varepsilon}{2} < L(f;P_1) \leq L(f;P) \leq U(f;P) \leq U(f;P_2) < \int_Q f + \frac{\varepsilon}{2}$$
+    Rearranging yields the desired inequality. \\
+    $\Leftarrow$: \\
+    Argue by contradiction. Suppose $f$ is not integrable even if the inequality holds. The former implies $\exists \delta > 0$ such that
+    $$\inf U(f;P) - \sup L(f;P) = \delta > 0$$
+    Defining $\varepsilon = \frac{\delta}{2}$ yields a contradiction, since
+    $$\inf U(f;P) - \sup L(f;P) < U(f;P) - L(f;P) < \frac{\delta}{2}$$
+    for some $P$, using the assumption that the inequality holds.
+\end{proof}
+
+\section{Subsets of $\R^n$ with Measure 0}
+
+\begin{defn}
+    A subset $S \subseteq \R^n$ has measure zero iff $\forall \varepsilon > 0 \exists$ a countable collection of rectangles $Q_i \subseteq \R^n$ such that
+    $$S \subset \bigcup_{i=1}^\infty Q_i, \sum_{i=1}^\infty v(Q_i) < \varepsilon$$
+\end{defn}
+
+Then a set of countably many points has measure 0, since we can define $Q_i$ to be a rectangle centred at point $x_i$ with area $\frac{\varepsilon}{2^{i+1}}$. (Since the volume has to be smaller, not equal to $\varepsilon$.)
+
+\begin{ex}[Subset of $\R$ with uncountably many points but with measure 0]
+    The Cantor set has a measure 0. The set is constructed as follows. Start with $[0,1]$. Then at each step, take away the middle third of each interval. I.e. we get to $\left[0, \frac{1}{3}\right], \left[\frac{2}{3}, 1\right]$, and so on. It is nonempty since $0,1$ are in the set. In fact, we can define $C_i$ to be the $i$th step. We can also cover each $C_i$ with rectangles of size no more than $\left(\frac{2}{3}\right)^i$, where $C_0 = [0,1]$. Then this converges to 0. This is out of the scope of the course, but we can show that this set has uncountably many points when we label points using base 3.
+\end{ex}
+
+\begin{ex}[Subset of $\R^2$ with uncountably many points but with measure 0]
+    $$S = \{(x,c)|x \in [a, b]\}$$
+    This line has measure 0. We only need one cover, with width $(b-a)$ that spans from $a$ to $b$. Its height can be made arbitrarily small, so its measure is 0. Explicitly, we can let the height be
+    $$c\pm\frac{\varepsilon}{3(b-a)}$$
+    Again, we use 3 instead of 2 to make sure the volume of the rectangle is smaller (not equal) than $\varepsilon$.
+\end{ex}
+
+The above can be generalised to
+$$y = f(x), f\in \mathcal C^1, x \in [a,b]$$
+
+\end{document}

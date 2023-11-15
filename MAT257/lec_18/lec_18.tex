@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 18}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integration}
+
+For now, we only consider functions $f:R \in \R^n \rightarrow\R$ where $R$ is a rectangle. It is complicated to integrate over other domains, even if is a simple disk.
+
+\subsection{Formulation}
+
+Recall how we defined integrals. We can define a partition $P_n = \{a = a_0, a_1,a_2,\dots,a_n = b\}$ where $a_i > a_j$ if $i > j$. Then we can define the Riemann sum
+
+$$\mathcal R_{P_n}[f] = \sum_{i=1}^n f(a_i)(a_{i+1}-a_i)$$
+
+Taking the limit as $n\rightarrow\infty$ gives us the integral. For multi-variable calculus, we need to first define integrability and the integral itself. First we consider a bounded function $f:I_1 \times I_2 \times \dots \times I_ \rightarrow \R$. A partition of $R$ is the union of partitions of each $I_n$. We can then define the lower sum
+
+$$L(f,P) = \sum_{R \in P} \inf_R(f)v(R)$$
+
+where $R$ is a rectangle in the partition, and $v(R)$ is its volume (area). We similarly define the upper sum using the supremum. Note that the infimum and supremum exist, since $f$ is bounded.
+
+\begin{lem}
+    Take $R$. Take $P, P'$ to be 2 partitions of $R$. Then $P'' = P \cup P'$ is a partition and refinement of $P$.
+\end{lem}
+
+\begin{lem}
+    Given $P'$ is a refinement of $P$, we have
+    $$L(f,P) \leq L(f,P') \leq U(f,P') \leq U(f,P)$$
+\end{lem}
+
+\begin{proof}
+    First we prove the first inequality. We do this by induction. Let $|P'| = |P| + 1$. Then $a_q$, between $a_k$ and $a_{k+1}$. Then there is a bijection between each $R\in P$ and $R \in P'$, except for $R_k = [a_k,a_q] \times S$ and $R_{k+1} = [a_q,a_{k+1}] \times S$. Note that both of these are subsets of $R' = [a_k,a_{k+1}] \times S$. Since $R'$ is the union of the sets $R_k$ and $R_{k+1}$, the infimum of $R_k$ and $R_{k+1}$ cannot be less than that of $R'$, else that (or something lower) will be the infimum. Without loss of generality, let $m_k$ be the infimum of $R_k$, and $m$ be the infimum of $R'$. Since $m_k$ is an infimum, anything greater than it is not a lower bound of $R_k$, hence it is not a lower bound of $R$. An infimum itself is a lower bound, so $m$ is a lower bound, hence $m$ cannot be greater than $m_k$, same for $m_{k+1}$. Then the sums for the "new" rectangles will be $m_kv(R_k) + m_{k+1}v(R_{k+1}) \geq mv(R_k) + mv(R_{k+1}) = mv(R')$. This proves the first inequality. Then we can simply perform induction. \\
+    The second inequality is obvious, since the supremum cannot be less than the infimum. The third inequality is the same as the second; it can be proven by swapping infimum with supremum.
+\end{proof}
+
+\end{document}
