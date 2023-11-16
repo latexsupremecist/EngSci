@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tokamaks}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Simple Pinches}
+
+Recall how simple pinches work. By the Biot-Savart Law, we obtain
+
+$$I^2 = \frac{8\pi}{\mu_0} AnkT$$
+
+Which is the basic pinch relation with $p = nkT$ and $A$ being the cross-section area.
+
+\begin{ex}
+    With $n = 10^{20}, T = 10^4, A = 1$, we get $I = 10^6\unit{A}$.
+\end{ex}
+    
+\begin{itemize}
+    \item end losses through electrodes
+    \item inherently unstable (Magnetohydrodynamic instabilities)
+\end{itemize}
+
+\begin{itemize}
+    \item Operate quickly (high $n$, low $\tau$)
+    \item Feedback control of B (technically infeasible)
+    \item Stiffen $\vec B$ by adding $B_{\text{axial}} > B_\theta$
+\end{itemize}
+
+\section{Toroidal Pinches}
+
+\subsection{Safety Factor q}
+
+Adding a plasma current $I$ gives a poloidal $B$. A stellarator uses complex magnetic coils to give a twist to the magnetic field. Too much twist will lead to MHD instability, but some twist is needed for there to be confinement (cf self pinch).
+
+\subsection{Plasma Stability Determined by Exact Amount of Twist}
+
+\begin{defn}[Safety Factor]
+    $$q = \frac{rB_T}{RB_p}$$
+\end{defn}
+
+Ideally, we want $q \approx 3$. $q$ can also be thought of the number of toroidal loops needed to complete one poloidal loop.
+
+\begin{ex}
+    For a constant $j(r)$, then
+    $$B_\theta = \frac{\mu_0}{2\pi r} \int_0^r jdA = \frac{\mu_0rj}{2}$$
+    which is proportional to $r$. Then $q$ is a constant.
+\end{ex}
+
+There is usually a sawteeth pattern found in the $T_e/t$ graph, since as electron temperature goes up, MHD instability is more likely, so temperature falls.
+
+\subsection{First Stability Limit}
+
+The Kruskal-Shafranov Stability Limit (experimental) requires
+
+$$Q(a) \geq 2.5$$
+
+\begin{align*}
+    B_p(a) &= \frac{\mu_0I_p}{2\pi a} \\
+    q(a) &= \frac{2\pi B_Ta^2}{\mu_0RI_p} \\
+    I_p &= \frac{2\pi B_Ta^2}{\mu_0Rq(a)} \\
+        &\leq \frac{2\pi B_Ta^2}{\mu_0R(2.5)}
+\end{align*}
+
+\begin{ex}
+    For JET, where $a = 1.5, R = 3, B_T = 3.5$, we require $I_p \leq 5 \times 10^6$. For ITER, where $a = 3, R = 6.2, B_T = 5.3$, we want $I_p \leq 7 \times 10^6$, actually $15\unit{MA}$.
+\end{ex}
+
+If we make an ellipse-shaped donut, this allows us to use a greater current as above.
+
+\subsection{Second Stability Limit}
+
+\textit{Davis doesn't understand this, so it's fine if we don't either.} \\
+Recall
+$$\beta = \frac{P_p}{P_m} = \frac{\sum nkT}{B^2/2\mu_0}$$
+We similarly define
+$$\beta_p = \frac{P_p}{B_\theta^2(a)/2\mu_0} = \frac{nk(T_e+T_i)}{B_\theta^2(a)/2\mu_0}$$
+Observe that at a high plasma pressure, the poloidal field lines are distorted. The second stability limit is given by
+$$\frac{B_\theta^2(a)}{2\mu_0} > \frac{a}{R_0} P_p$$
+or
+$$\beta_P < \frac{R_0}{a}$$
+
+For $\frac{a}{R} = 0$, $B_\theta = 0$. For $q \geq 2.5$,
+\begin{align*}
+    \frac{a^2B_T^2}{2\mu_0} &\geq (2.5)^2\frac{R^2B_\theta^2}{2\mu_0} \\
+                            &\geq (2.5)^2R^2 \frac{a}{R} P_p \\
+                            &\geq 6aRP_p \\
+    \beta &\leq \frac{a}{6R}
+\end{align*}
+
+For $\frac{a}{R} \approx \frac{1}{3}$, $\beta \leq 5\%$.
+
+\section{Tokamak Density Limits}
+
+The Greenwald limit gives
+$$\overline n_e \leq n_G = \frac{I}{\pi a^2} \times 10^{20}$$
+before MHD instabilities occur.
+
+\begin{ex}
+    For DIII-D, where $I = 1.5 \unit{MA}, a = 0.7, n_G = 1 \times 10^{20}$. For JET, where $I = 5\unit{MA}, a = 1.25, n_G = 1 \times 10^{20}$. For ITER, $I = 15\unit{MA}, a = 2, n_G = 1.2 \times 10^{20}$.
+\end{ex}
+
+\end{document}

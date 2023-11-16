@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage{../../template}
-\title{Chapter 4: Plasmas}
+\title{Plasma}
 \author{niceguy}
 \begin{document}
 \maketitle
@@ -9,7 +9,7 @@
 
 Plasmas light up when energy from line radiation is in the optical range, sort of like burning metals. However, flames light up because of blackbody radiation, which is different. However, flames can still ionize air molecules up to a certain degree, like plasmas (but weaker). There are a wide range of values that they can take, e.g. $n < 1\unit{cm^{-3}}, T \approx 1\unit{K}$ to $n \geq 10^{26}\unit{cm^{-3}}, T \approx 10^{11}\unit{K}$.
 
-Plasma is usuall created from gases. It can be produced by
+Plasma is usually created from gases. It can be produced by
 
 \begin{itemize}
     \item Electron impact ionization
@@ -33,5 +33,832 @@ It can be destroyed by
         Charged particles are attracted to a surface, where they recombine
 \end{itemize}
                 
+\begin{ex}[Plasma density established by balance between production \& destruction]
+    We look at radiative recombination and electron impact as the destruction and creation methods. At steady-state,
+    $$n_en_g \overline{\sigma v_{\text{iz}}} = n_en_i \overline{\sigma v_{\text{rec}}} = n_e^2 \overline{\sigma v_{\text{rec}}}$$
+    Then
+    $$\frac{n_g}{n_i} = \frac{\overline{\sigma v_{\text{rec}}}}{\overline{\sigma v_{\text{iz}}}}$$
+    where iz stands for ionization.
+    At $T = 100\unit{eV}$, the ratio is around $10^{-7}$. At $T = 10\unit{eV}$, the ratio is $10^{-5}\unit{eV}$.
+\end{ex}
+
+\begin{ex}[Electron ionization and ion diffusion to walls]
+    In the previous example, both are scaled by volume, which can be cancelled out. In this case, one is governed by volume and the other by area, so we need to keep these values in mind. Creation and loss rate are then
+    $$R_c = n_e\overline{n_n} \overline{\sigma v_{\text{iz}}}V$$
+    $$R_L = D_\perp \frac{dn_i}{dr}A$$
+    Assuming a torus with inner radius $a$ and outer radius $R$, we get
+    $$\overline{n_n} = \frac{2D_\perp}{a^2\overline{\sigma v_{\text{iz}}}}$$
+    Plugging in some values,
+    $$\overline{n_n} \approx \frac{2 \times 1}{1^2 \times 10^{-14}} \approx 10^{14}$$
+    \textit{Note: the n and g subscripts are basically the same. Source: prof}
+\end{ex}
+
+If we want to compare the loss rates, we get the ratio
+
+$$\frac{R_{\text{diff}}}{R_{\text{rec}}} = \frac{D_\perp \frac{n_e}{a} \times 2\pi a \times 2\pi R}{n_e^2 \overline{\sigma v_{\text{rec}}} \times \pi a^2 2\pi R}$$
+
+Using generic values of $T = 10^4\unit{eV}, n = 10^{20} \unit{m^{-3}}, a = 1\unit{m}, D_\perp = 1\unit{m^2.s^{-1}}$.
+
+\subsection{Thermodynamic Equilibrium and the Saha Equation}
+
+We can consider the 3 body recombination as the inverse of electron impact ionization. Hence, it is possible to construct this as a thermodynamic equilibrium.
+
+$$R_{\text{iz}} = a(T)e^{-u/kT}n_en_n$$
+$$R_{\text{rec}} = b(T) n_e^2n_i = b(T)n_e^3$$
+
+Setting both equal gives
+
+$$\frac{n_e^2}{n_n^2} = \frac{c(T)e^{-u/kT}}{n_n}$$
+
+\section{Basic Properties of Plasmas}
+
+There is charge neutrality, so $n_e \approx n_i$. There is also Debye shielding, where
+$$\lambda_D = \left(\frac{\varepsilon_0kT}{n_ee^2}\right)^2$$
+Gyroradius is
+$$R = \frac{mv_\perp}{z_eB}$$
+and gyrofrequency is
+$$\Omega = \frac{z_eB}{m}$$
+
+\subsection{Plasma Frequency}
+
+To derive this, we assume no B field, no thermal motion, ions fixed, infinite plasma, and one dimensional motion. We start with the momentum, continuity, and Poisson's equations.
+
+$$m_en_e(\del{v}{t} + \vec v \cdot \del{\vec v}{x} = -en_e \vec E$$
+$$\del{n_e}{t} + \del{}{x} (n_ev) = 0$$
+$$\varepsilon_0 \del{E}{x} = e(n_i-n_e)$$
+We use linearization, and assume small  perturbations in $n_e,v_e,E$ with a base value (0) and change (1). We use the reference frame where $v_0 = 0$. Dividing, we get for momentum and continuity
+$$m\del{v_1}{t} = -eE_1$$
+$$\del{n_1}{t} + n_0\del{v_1}{x} = 0$$
+where we ignore second order terms. Poisson's euqation becomes
+$$\varepsilon_0 \del{E_1}{x} = -en_1$$
+We assume
+$$v_1 = \hat v_1 e^{i(kx-\omega t)}$$
+and similarly for $n_1$ and $E_1$; i.e. a sinusoidal solution. Then plugging into the 3 equations, we get
+$$\hat v_1 \neq 0 \Rightarrow \omega^2 = \frac{n_0e^2}{\varepsilon_0m}$$
+Below the plasma frequency, it is opaque. Using $\omega = 2\pi f$, we get $f_p = 9n_e^{-\frac{1}{2}}$. For $n = 10^{20}\unit{m^{-3}}, f_p = 10^{11} \unit{Hz}$, on the order of microwaves.
+
+\subsection{Propagation of EM waves through a Plasma}
+
+Show if $\omega_{\text{EM}} > \omega_{P_e}$, then propagation occurs, vice versa.
+
+\begin{defn}
+    An EM wave can propagate if the electric field can be felt further on.
+\end{defn}
+
+Speed of electrons moving due to the field is
+
+$$a = \sqrt{\frac{kT_e}{m_e}}$$
+Response time is around $\frac{\lambda_D}{a}$. For $\frac{1}{f} > \Delta t$, we get the equivalent expression in terms of $\omega$ as desired. \\
+
+Recall Debye shielding. We can in fact measure plasma density by finding the cutoff frequency, equal to $9\sqrt{n_e}$.
+
+\begin{ex}[Laser Fusion]
+    $n_e \approx 5 \times 10^{28} \unit{m^{-3}}$. To further use laser to penetrate and heat it, the cutoff frequency is around $2 \times 10^{15}\unit{s^{-1}}$, which gives a wavelength of $\lambda = 150\unit{nm}$. Now CO2 lasers have a wavelength of 10,000 nm, Nd - glass with 640 nm, or KF with 250 nm. Frequency multipliers are needed.
+\end{ex}
+
+\section{Plasma Transport Properties}
+    
+\subsection{1D Fluid Equations for One Species}
+
+Continuity:
+
+$$\del{n}{t} + \del{}{x}n\vec v = 0$$
+
+Momentum:
+
+$$mn\del{\vec v}{t} + mn\vec v\del{\vec v}{x} = e_n(\vec E + \vec v \times \vec B) - \nabla p + C_{\text{coll}}$$
+
+Energy:
+
+$$p = nkT$$
+
+Note that here $\vec v$ is fluid velocity, which is much smaller than particle velocity. For an isothermal plasma, $T$ becomes a constant, and so
+
+$$p = nkT \Rightarrow \nabla p = kT\nabla n = m \frac{kT}{m} \nabla n$$
+
+The isothermal speed of sound is $a = \sqrt{\frac{kT}{m}}$, which gives
+
+$$\nabla p = ma^2 \nabla n$$
+
+In an adiabetic case (no energy transfer), $p = Cn^\gamma$, where $\gamma = \frac{C_p}{C_v}$. Then
+
+$$\nabla p = \gamma Cn^{\gamma-1}\nabla n = \gamma \frac{p}{n} \nabla n = m\frac{\gamma kT}{m} \nabla n$$
+
+Hence $\nabla p = ma^2\nabla n$ where $a = \sqrt{\frac{\gamma kT}{m}}$.
+
+Recall the 1D continuity Equation. For an infinitesimal volume, net outflow is
+
+$$\del{nv}{x} \Delta xA = \del{nv}{x} \Delta x \Delta y \Delta z$$
+
+This is equal to the negative of the change of mass in the volume, $-\del{n}{t}\Delta x\Delta y\Delta z$. \\
+
+When deriving the 1D Momentum Equation, we use $\vec F = m\vec a = m \frac{d\vec v}{dt}$. The right hand side is the sum of other forces. Now, consider $G(x,t)$ where $x = x(t)$. Then the total derivative with respect to time is
+
+$$\frac{dG}{dt} = \del{G}{t} + \del{G}{x}\del{x}{t} = \del{G}{t} + v_x\del{G}{x}$$
+
+We call the first term the local change, and the second term is the convective change. In 3D, we similarly get
+
+$$\frac{d\vec G}{dt} = \del{\vec G}{t} + (\vec v  \cdot \nabla)\vec G$$
+
+\subsection{Interspecies Collisions}
+
+$$\del{v}{t} + v\del{v}{x} = -\frac{1}{mn} \del{p}{x} + \frac{C_{\text{coll}}}{mn}$$
+
+We define
+
+$$\frac{C_{\text{coll}}}{mn} \equiv \nu_{a\rightarrow b} (v_a - v_b)$$
+
+Where $\nu$ is the momentum transfer collision frequency.
+
+\begin{ex}[$E = B = \del{}{x} = 0$]
+    We have
+    $$\frac{dv_a}{dt} = \nu_{a\rightarrow b}(v_a - v_b)$$
+    As $t\rightarrow\infty, v_a \rightarrow v_b$.
+    We also have
+    $$\nu_{ab} = n_b \overline{\sigma_{ab}\left(\vec v_{pa} - \vec v_{pb}\right)}$$
+    Where $\vec v_{pa}$ is the individual particle random velocity. Since that of electrons is much greater, we use
+    $$\nu_{en} \approx n_n \sigma_{en}\overline{c_e}$$
+\end{ex}
+
+\subsection{Diffusion, Mobility and Conductivity}
+
+Particles move in a direction opposite to density gradient. This is diffusion if motion is obstructed by collisions. Charged particles move in the direction of $\vec E$. Particles ability to move when restricted by collisions is called \textbf{mobility}.
+
+Momentum Equation: \\
+We assume steady state, 1D, $\vec B = 0$, and a small drift velocity. The
+
+$$v\del{v}{x} = \frac{eE}{m} - \frac{1}{mn} \frac{dp}{dx} - \nu v$$
+
+The term on the left-hand side is of the order of $\frac{v^2}{L}$, and the middle term on the right-hand side is on the order of $\frac{nkT}{mnL} = \frac{a^2}{L}$. Usually $a^2 >> v^2$, so we can ignore the convective term. Then
+
+$$mnv\nu = -kT \frac{dn}{dx} + neE \Rightarrow nv = -\frac{kT}{m\nu} \frac{dn}{dx} \frac{en}{m\nu}E$$
+
+Its vector form is
+
+$$\vec \Gamma = -D\nabla n + n\mu\vec E$$
+
+where $D \equiv \frac{kT}{m\nu}$ is the diffusion coefficient, and $\mu = \frac{e}{m\nu}$ is mobility. The Einstein Relation is
+
+$$\frac{D}{\mu} = \frac{kT}{e}$$
+
+If there is no electric field, then
+$$\vec \Gamma = -D\nabla n$$
+which is Fick's Law.
+
+If $\nabla n = 0$, then $\Gamma = n\mu \vec E = n\vec v_d$.
+
+We now look at the microscopic explanation of diffusion. At $x_0$, density is $n_0$. The flux through surface goverened by densities one mean free path away is
+
+$$\Gamma_{\text{forward}} = \frac{1}{4} \left(n_0 - \lambda \frac{dn}{dx}\right)\overline c$$
+Now
+$$\Gamma_{\text{net}} = -\frac{1}{2} \left(\lambda \frac{dn}{dx}\right)\overline c = -D \frac{dn}{dx}$$
+where
+$$D \approx \frac{\overline c\lambda}{2} = \frac{\overline c^2}{2\nu} = \frac{8kT}{2\pi m\nu} \approx \frac{kT}{m\nu}$$
+
+Electric Current is $\vec j = en\vec v$ (if $\nabla n = 0$).
+
+$$\vec j = en\mu\vec E = \frac{e^2n}{m\nu} \vec E = \sigma \vec E$$
+
+Electrical Conductivity can hence be written as
+
+$$\sigma \equiv \frac{e^2n}{m\nu}$$
+
+\begin{ex}[Fluorescent Lamp]
+    For $n_e = 10^{18}$ and $n_{H_2} = 10^{20}$, then $T_e = 10\unit{eV}$, so $\overline c_e = 2 \times 10^6$. Momentum transfer cross-section is about $10^{-19}$ (Dolan p51). Now for $r = 1.5\unit{cm}$ and $L = 2\unit{m}$, at 1 ampere,
+    $$j = \frac{1}{0.015^2\pi} = 1400 \unit{A.m^{-2}}$$
+    Then
+    $$\nu = \sigma_{en}\overline c_e n_{H_2} = 2\times10^7\unit{s^{-1}}$$
+    $$\mu = \frac{e}{m_e\nu} = 8800 \unit{C.s.kg^{-1}}$$
+    $$\sigma = en_e\mu = 1400 \unit{C^2.s.kg^{-1}.m^{-3}}$$
+    $$j = \sigma E \Rightarrow E = 1\unit{V.m^{-1}}$$
+    As a check, $v_d = \mu E = 8800 << \overline c_e$, and $\lambda_en = \frac{1}{n_{H_2}\sigma_{en}} = 0.1 << L$.
+\end{ex}
+
+Currents tend to be carried by electrons, because $m_e << m_i$, which all else more or less the same.
+
+$$j_e = \frac{e^2n_e}{m_e\nu_e}\vec E$$
+and similarly for $j_i$. Now we assume $\sigma_{en} \approx \sigma_{in}$ (we don't have data on the latter).
+
+We see that most of Ohmic heating goes to the electrons.
+
+$$P_{\text{ohmic}} = \vec j \cdot \vec E = \sigma \vec E \cdot E = \frac{e^2n}{m\nu} E^2$$
+
+Generally, $m_e\nu_e << m_i\nu_i$, hence most of the power goes to the electrons.
+
+\begin{ex}[Fluorescent Tube (low density)]
+    $T_e \approx 50,000\unit{K}, T_i \approx 500 \unit{K}$.
+\end{ex}
+
+\begin{ex}[Lightning (high density)]
+    $T_e \rightarrow T_i$
+\end{ex}
+
+\begin{ex}[Fusion]
+    There is a low density but a large $\tau_E$. For JET, $T_e$ and $T_i$ are within a factor of 2, with the former being greater.
+\end{ex}
+
+\subsection{Ambipolar Diffusion (Flow to a Surface)}
+
+If electrons flow to a surface faster, an electric field is produced, which attracts ions. This is where "ambipolar" comes from. They may recombine on such surfaces. In steady state, $\Gamma_e = \Gamma_i = \Gamma$. Then
+$$\Gamma_e = -D_e\nabla n_e - n_e\mu_e\vec E$$
+$$\Gamma_i = -D_i \nabla_i + n_i\mu_i\vec E$$
+where $\vec E$ is the field due to charge separation, i.e. the ambipolar electric field. The difference in signs come from the signs of the charges.
+
+Set $\Gamma_e = \Gamma_i$, use $n_e = n_i, \Delta n_e = \Delta n_i$. Then
+$$\Gamma = -\left(\frac{\mu_iD_e + \mu_eD_i}{\mu_i + \mu_e}\right)\frac{dn}{dx} = -D_A\frac{dn}{dx}$$
+where $D_A$ is the ambipolar diffusion coefficient. Usually $|\mu_e| >> |\mu_i|$, so
+$$D_a \approx \left(1 + \frac{D_e\mu_i}{\mu_eD_i}\right)D_i$$
+
+we can use the Einstein relation which gives
+$$D_A \approx \left(1 + \frac{T_e}{T_i}\right)D_i$$
+
+\begin{ex}
+    Fusion: $T_e \approx T_i \Rightarrow D_A \approx 2D_i$. \\
+    Neon tube: $T_e \approx 100 T_i \Rightarrow D_A \approx 100 D_i$ \\
+    Note that we always have $D_i < D_A < D_e$.
+\end{ex}
+
+\begin{ex}[Radial Losses]
+    Hydrogen has a density of $10^{22}$ and electrons $10^{18}$. $T_e = 10\unit{eV}, T_i = 0.1\unit{eV}, \sigma = 10^{-19}$. Then the mean free path is $10^{-3}$. The temperatures give mean speeds of $\overline c_e = 2 \times 10^6, \overline c_i = 3500$.
+    $$\nu_{en} = \sigma\overline c_e n_{H_2} = 2 \times 10^9$$
+    $$D_e = \frac{kT_e}{m\nu_{en}} 880$$
+    $$\nu_{in} = \sigma \overline c_i n_{H_2} = 3.5 \times 10^6$$
+    $$D_i = \frac{kT_i}{m\nu_{in}} = 1.4$$
+    Thus
+    $$D_A =  D_i\left(1 + \frac{T_e}{T_i}\right) = 140$$
+\end{ex}
+
+\subsection{Diffusion in a Magnetic Field}
+
+Recall the equation for $\Gamma$. If we turn the electric field off, using $\vec E = \vec v \times \vec B$ and plugging in $\Gamma = nv$, we get
+$$\Gamma = -\frac{kT}{m\nu} \nabla n + \frac{e}{m\nu} \Gamma \times \vec B$$
+
+Choose $\vec B = (0,0,B)$, and $\frac{dn}{dz} = \frac{dn}{dy} = 0$.
+
+Splitting the equation into its components,
+$$\Gamma_x = -D \frac{dn}{dx} + \frac{e}{m\nu} \Gamma_yB$$
+$$\Gamma_y = -\frac{e}{m\nu}\Gamma xB$$
+
+Putting the second into the first,
+
+$$\Gamma_x = -\frac{D\nu^2}{\Omega^2 + \nu^2} \frac{dn}{dx} = -D_\perp \frac{dn}{dx}$$
+
+where $D_\perp$ is the magnetic fross-field diffusion coefficient, and $\Omega = \frac{eB}{m}$ is the cyclotron frequency. Note that if there are only electrons, we get $\nu = 0$ which gives $D_\perp = 0$. This makes sense, since collisions don't matter if we consider the centre of mass.
+
+\begin{ex}
+    $n = 10^{20}, T = 10\unit{keV}, B = 10\unit{T}$ Then
+    $\nu_{ei} = 3 \times 10^3, \Omega_e = 1.2 \times 10^{-12}, D_{e\perp} = 3 \times 10^{-18}D_e = 2 \times 10^{-6}$
+\end{ex}
+
+We will get to show that $D_{i\perp} = D_{e\perp}$ in assignment 5.
+
+\begin{ex}[Classical Confinement time]
+    $$\tau_f \approx \frac{\overline nV}{\Gamma_{\text{loss}}} = \frac{\overline n \times 2\pi R \times \pi a^2}{D_\perp (n/a)\times 2\pi R \times 2\pi a} \approx \frac{a^2}{D_\perp}$$
+    With $a = 1\unit{m}, D_\perp = 2\times 10^{-6} \Rightarrow \tau_p \approx 5 \times 10^5\unit{s}$. However, $D_\perp \approx 1$, and is roughly $\frac{1}{B}$.
+\end{ex}
+
+Bohm Diffusion:
+
+$$D_B = 60 \frac{T}{B}$$
+
+where $T$ is in keV and $B$ in T.
+
+$$D_{\perp\text{neoclassical}} \propto \frac{1}{B_{\text{poloidal}}^2}$$
+
+Without $B$, $D \propto \frac{1}{\nu}$, and with it, $D_\perp \propto \nu$.
+
+\subsection{Ohmic Heating a Fusion Plasma}
+
+\begin{align*}
+    P_\Omega &= \vec j \cdot \vec E \\
+             &= \frac{j^2}{\sigma} \\
+             &= j^2 \frac{m\nu_{ei}}{e^2n} \\
+             &= j^2 \frac{m_e10^{-15}n_eT^{-3/2}}{e^2n_e}
+\end{align*}
+
+where $n_e$ cancels out. Now at 10 keV, $\sigma_{\text{plasma}} \approx \frac{1}{20} \sigma_{\text{copper}}$.
+
+\subsection{Heat Conduction in a Plasma}
+
+We define the thermal flux to be
+
+$$Q = K \frac{dT}{dx}$$
+
+where $K$ is the thermal flux. Recall that in assignment 2, we wanted to show that
+
+$$Q = \frac{1}{4} n\overline c \times 2kT \neq \frac{3}{2}kT$$
+This is because for lower energy particles, only those closer to the surface could pass through, but more higher energy particles could pass through (larger volume). Net flux is  $2k(T_1-T_2)\frac{1}{4} n\tau$. Using the first order Taylor approximation,
+$$Q_{\text{net}} = -n\tau\lambda k dT/dx$$
+hence $K \approx n\tau\lambda k$. Now
+$$\lambda \approx \frac{\overline c}{\nu} \Rightarrow K \approx \frac{nk\tau^2}{\nu} \approx \frac{nk}{\nu} \times \frac{kT}{m} = nkD$$
+
+Then for electrons,
+$$K = nkD$$
+and
+$$K \propto T^{5/2}$$
+
+\subsection{Cross-Field Heat Conduction}
+
+$$K_\perp \approx K \frac{\nu^2}{\Omega^2}$$
+
+where collisionality $\nu$ is for \textbf{all} particles.
+
+For electrons, momentum transfer collision frequency are approximately the same, with
+
+$$\nu^{\text{mom}}_{ei} \approx \nu^{\text{mom}}_{ee} \approx \nu^E_{ee}$$
+
+For ions,
+$$\nu_{ii} = \sqrt{\frac{m_e}{2m_i}}\nu_{ei}$$
+where the factor of 2 selectively appears in some texts.
+$$K_i = n_ik\left(\frac{kT_i}{\nu_{ii}m_i}\right) \neq n_ikD_i$$
+$$K_{i\perp} = K_i \frac{\nu_{ii}^2}{\Omega_i^2} \neq n_ikD_{i\perp}$$
+
+\begin{defn}[Thermal Diffusivity]
+    $$nk\chi = K$$
+\end{defn}
+
+Energy confinement time due to conduction:
+
+$$\tau_E = \frac{3nkT(2\pi R\pi a^2)}{K_\pi(T/a)(2\pi R2\pi a)} \approx \frac{a^2}{\chi_\perp}$$
+For $a = 1\unit{m}$ and $\chi_\perp \approx 1\unit{m^2.s^{-1}}$, $\tau_E \approx 1\unit{s}$.
+
+\section{Collisions}
+
+\subsection{Kinetic Energy loss in elastic Collisions}
+
+We start with head-on collisions. Conservation of momentum gives
+
+$$m_Av_{A1} = m_Av_{A2} + m_Bv_{B2}$$
+
+and conservation of energy gives
+
+$$\frac{1}{2}m_Av_{A1}^2 = \frac{1}{2}m_Av_{A2}^2 + \frac{1}{2}m_Bv_{B2}^2$$
+
+change in kinetic energy is then
+
+$$\frac{\Delta K_A}{K_A} = \frac{\frac{1}{2}m_Av_{A1}^2 - \frac{1}{2}m_Av_{A2}^2}{\frac{1}{2}m_Av_{A1}^2} = \frac{4m_Am_B}{(m_A+m_B)^2}$$
+
+Recall from the momentum equation,
+
+$$mn\del{\vec v}{t} + mn\del{\vec v}{x} = en(\vec E + \vec v \times \vec B) - \nabla p + C_{\text{coll}}$$
+
+For a 90$^\circ$ collision,
+
+$$\frac{\Delta K_A}{K_A} = \frac{2m_Am_B}{(m_A+m_B)^2}$$
+Plugging in the values for protons and electrons, noting that $m_A = m_e << m_B = m_i$. Then
+$$\frac{\Delta K_e}{K_e} = \frac{2m_e}{m_i} << 1$$
+and
+$$\tau_E > \tau_{\text{mom}}$$
+
+\subsection{Differential, Total, Momentum Transfer and Energy Transfer Cross Sections}
+
+$\sigma_{\text{diff}}(\theta)$ is the cross section for a scattering event with angle $\theta$ to $\theta + d\theta$. The number of scattering per volume per time in this range of angles is then $n_ev_en_i\sigma_{\text{diff}}(\theta)d\theta$.
+
+Total cross section is then
+
+$$\sigma_T = \int_0^\pi \sigma_{\text{diff}}(\theta)d\theta$$
+
+The Rutherford cross section is
+
+$$\sigma_{\text{diff}}(\theta) \approx \frac{1}{\sin^4\left(\frac{\theta}{2}\right)}$$
+
+\textit{Fun Fact: if you integrate this from 0 to $\pi$, you get infinity. Hence nobody cares about total cross section.}
+
+Momentum Transfer Cross Section:
+
+$$C_{\text{coll}} = mvn\nu_{\text{mom}}$$
+where $\nu_{\text{mom}} = \sigma_{\text{mom}}n_e\langle \vec v_{r_1} - \vec v_{r_2} \rangle$. Change in forward momentum is
+
+$$m_ev_e(1-\cos\theta)$$
+
+Now
+
+$$\sigma_{\text{mom}} \equiv \int_0^\pi (1 - \cos\theta)\sigma_{\text{diff}}(\theta)d\theta$$
+
+The energy transfer Cross-Section is
+
+$$\frac{\Delta K}{K} = \frac{2m_e}{m_i}$$
+
+for a $90^\circ$ collision. Energy transfer is ineffective even if momentum transfer isn't. This also means
+
+$$\sigma_{ei}^E \approx \frac{2m_e}{m_i} \sigma_{ei}^{\text{mom}} \Rightarrow \nu_{ei}^E \approx \frac{2m_e}{m_i} \nu_{ei}^{\text{mom}}$$
+
+For $\sigma_{ee}$ and $\sigma_{ii}$ however, both are relatively similar, and we ignore the factor of 2.
+
+\begin{ex}[Rate of electron cooling due to collisions with ions]
+    Now
+    $$\frac{dT_e}{dt} \approx -\frac{T_e}{\tau_{ei}^E} \approx -\nu_{ei}^ET_e \approx -\frac{2m_e}{m_i} \nu_{ei}^{\text{mom}}T_e$$
+\end{ex}
+
+To obtain Cross-Section values, we consider 2 approaches, large angle collisions from a single impact and cumulative small angle collisions.
+
+For the former, assume an incoming positron collides with an ion with charge $ze$. Then the potential energy is
+$$\frac{ze^2}{4\pi\varepsilon_0r} \equiv \frac{A}{r}$$
+where $A$ is defined as shown. Maximum velocity is then found by
+$$\frac{1}{2}mv_\infty^2 = \frac{A}{r_0} \Rightarrow r_0 = \frac{2A}{mv_\infty^2}$$
+The above analogy holds for head-on collisions. If the positron is $\frac{r_0}{2}$ away, then the deflection would be $\frac{\pi}{2}$. The cross-section would be related to
+$$\pi r_0^2 = \frac{4\pi A^2}{m^2v_\infty^2}$$
+Using $E = \frac{3}{2}kT$ and $\nu_{\text{large}} = n_t\sigma_{\text{large}}v$, we get
+$$\nu_{\text{large}} = \frac{4\pi A^2n_i\sqrt{3kT/m}}{9(kT)^2}$$
+
+Force acting on the electron is $F_{\text{max}} = \frac{A}{b^2}$ for time $\Delta t = \frac{2b}{v}$. Impulse is
+$$F\Delta t = \frac{2A}{bv}$$
+For an electron passing through a cylindrical shell with height $L$, radius $b$ and thickness $db$,
+$$N_i = 2\pi b dbLn_i$$
+$$\Delta p_b = \sum_i \Delta p_i$$
+By symmetry, $\overline{\Delta p} = 0$, but its square isn't. Then
+$$(\Delta p)^2 = \sum_i (\Delta p_i)^2 + \sum_{i\neq j} \Delta p_i\Delta p_j$$
+but the last term goes to 0 on average, as we increase the number of terms. Then
+\begin{align*}
+    \overline{(\Delta p_b)^2} &= \sum_i (\Delta p_i)^2 \\
+                              &= N_i (\Delta p)^2 \\
+                              &= 2\pi bdbLn_i \frac{4A^2}{b^2v^2} \\
+    \overline{(\Delta p)^2_{\text{TOT}}} &= \frac{8\pi A^2Ln_i}{v^2} \int_{b_{\text{min}}}^{b_{\text{max}}} \frac{db}{b} \\
+                                         &= \frac{8\pi A^2Ln_i}{v^2}\ln \Lambda
+\end{align*}
+
+where $\Lambda = \frac{b_{\text{max}}}{b_{\text{min}}}$. If we choose $L = \lambda^{\text{mom}}$, then $\overline{(\Delta p)^2_{\text{TOT}}} \approx (mv)^2$. \\
+Substituting it in and noting that $\lambda = \frac{v}{\nu}$, we get
+$$\nu^{\text{mom}} = \frac{8\pi A^2n_i\ln\Lambda}{m^{1/2}(3kT)^{3/2}}$$
+According to Spitzer, you get the above answer divided by 2. Plugging the constants,
+$$\nu_{ei}^{\text{mom}} = 10^{-15}nT^{-3/2}$$
+where $T$ is in keV, $z=1$, and $\ln\Lambda=20$. $b_{\text{min}} \approx r_0$, since that is where $b$ ends for large angle collisions. $b_{\text{min}} = \lambda_D$, the Debye length, because of plasma shielding. Substituting,
+
+$$\Lambda \approx \frac{\lambda_D}{r_0} = \sqrt{\frac{\varepsilon_0kT}{ne^2}} \times \frac{mv^2}{2A}$$
+
+\begin{ex}
+    For $z=1,n=10^{20},T=10\unit{keV}$, we have
+    \begin{align*}
+        \Lambda &= \sqrt{\frac{\varepsilon_0kT}{ne^2}} \times \frac{3}{2}kT \times \frac{4\pi\varepsilon_0}{ze^2} \\
+                &= 7.75 \times 10^8
+    \end{align*}
+    Whose logarithm is around 20.5.
+\end{ex}
+
+Dolan uses $L = \ln\Lambda$, but we don't do that because there's an inundation of L's elsewhere.
+
+For partially ionized gases,
+
+\begin{align*}
+    \nu_e &= \nu_{ei} + \nu_{en} \\
+          &= 10^[-15]n_iT_e^{-3/2} + \sigma_{en}\overline{c_e}n_n
+\end{align*}
+
+\begin{ex}[Low Temperature Plasma]
+    For $T_e = 1\unit{eV}, \sigma_{en} = 10^{-9}, \overline{c_e} = 6 \times 10^5, n_n = n_e = n_i$, then
+    $$\frac{\nu_{ei}}{\nu_{en}} = \frac{10^{-15}(10^{-3})^{-3/2}}{10^{-9} \times 6 \times 10^5} = 500$$
+\end{ex}
+
+\section{Plasma Relaxation Times}
+    
+\begin{defn}[Plasma Relaxation Time]
+    This is defined by the time required to reach a Maxwellian distribution. This can be species dependent.
+\end{defn}
+
+For electron equilibria,
+$$\nu_{ee}^E \approx \nu_{ee}^{\text{mom}} \approx \nu_{ei}^{\text{mom}}$$
+thus
+$$\tau_{ee}^E \approx \frac{1}{n_e10^{-15}T_e^{3/2}}$$
+
+\begin{ex}
+    For $n=10^{20}, T = 10\unit{keV}$, $\tau_{ee}^E = 300\unit{\mu s}$.
+\end{ex}
+
+For ion equilibria,
+$$\tau_{ii}^E \approx \tau_{ii}^{\text{mom}} \approx \sqrt{\frac{2m_i}{m_e}}\tau_{ee}^E$$
+where we assume $T_i = T_e$. This results in an answer around 100 times larger, or 30 ms. \\
+
+For electron-ion equilibria,
+
+$$\tau_{ee}^E = \tau_{ie}^E \approx \tau_{ie}^{\text{mom}} \approx \left(\frac{m_i}{m_e}\right)\tau_{ei}^{\text{mom}}$$
+
+This is 4000 times larger than $\tau_{ee}^E$, which is around 1 second.
+
+\section{Plasma Waves}
+
+\subsection{Introduction}
+
+Plasma waves depend on $n, T, B, E, \nu$, etc. They are really complex. The oscillate like sine waves, e.g.
+
+$$n = n_0 + \hat n \exp(i(kz-\omega t))$$
+
+$k = \frac{2\pi}{\lambda}$ is the wavenumber, where $\lambda$ is wavelength. $\omega = 2\pi f$ is the angular frequency.
+
+\begin{defn}[Dispersion Relation]
+    The dispersion relation is $\omega(k)$, since usually there is some relationship between $\omega$ and $k$.
+\end{defn}
+
+We have a wavefunction
+
+$$\Psi = A\exp(i(kz-\omega t))$$
+
+\begin{defn}[Phase Velocity]
+    Phase velocity is defined as
+    $$v_p = \frac{dz}{dt} = \frac{\omega}{k}$$
+\end{defn}
+
+In practice, there is a wavepacket consisting of wavefunctions of different frequencies. This gives
+$$\Psi \int A(k)e^{i(kz - \omega t)} dk$$
+Let $\kappa$ be the width of $A(k)$ at half the maximum height $A(k_0)$. We only care about the integral where $A$ is not too small. We can then let
+\begin{align*}
+    \omega(k) &= \omega(k_0 + \kappa) \\
+              &= \omega_0 + \del{\omega}{k} \Big |_{k_0} \kappa + \frac{1}{2} \del{^2\omega}{k^2} \Big |_{k_0} \kappa^2 + \dots \\
+    kz - \omega t &\approx k_0z - \omega_0 t + \kappa z - \del{\omega}{k}\kappa t \\
+    \Psi &\approx e^{i(k_0z-\omega_0t)} \int A(k) e^{i\kappa\left(z - \del{\omega}{k}t\right)}dk
+\end{align*}
+The envelope moves with $\frac{dz}{dt}$, setting the phase to be constant. This gives the group velocity
+\begin{defn}[Group Velocity]
+    $$v_g = \frac{d\omega}{dk}$$
+\end{defn}
+
+\subsection{Waves in Cold Plasma}
+
+Langevin Equation
+
+$$mn \del{\vec v}{t} + mn(\vec v \cdot \nabla)\vec v = -\nabla p + qn(\vec E + \vec v \times \vec B) - mn\vec v \nu$$
+
+If we use a cold plasma approximation, we can assume $T = 0$, which is cold. Then $p = 0$, and it has no gradient. We ignore the inertial term (you can't always do that). Then we can simplify this to
+
+$$mn\dot{\vec v} = -en(\vec E + \vec v \times \vec B) - mn\vec v \nu$$
+
+If we consider electron oscillations,
+
+$$\vec v = \hat v e^{i(kz-\omega t)}$$
+
+As an aside, this gives the inertial term to be
+
+$$\frac{v \cdot \nabla v}{\dot{v}} = \frac{ikv^2}{i\omega v} = \frac{vk}{\omega} = \frac{v}{v_p}$$
+
+Using Maxwell's Equations,
+
+$$\nabla \times \vec B = \frac{1}{c^2} \vec E - ne\mu_0\vec v$$
+
+Assume $\hat n <<< n_0$, or in other words, $n = n_0$. With no external fields, we can let both $\vec B$ and $\vec E$ oscillate by the usual equations. $\vec v \times \vec B$ is a second order term which we ignore. Combining gives us
+
+$$\hat v = \frac{-e\hat E}{m(\nu-i\omega)}$$
+
+From Maxwell's equations, we know $\nabla \times \vec E$ is in terms of $\vec B$, and we have $\nabla \times \vec B$. Hence we get the wave equation
+
+$$\nabla \times (\nabla \times \vec E) = \left(\frac{\omega^2}{c^2}\hat E - i\omega \mu_0n_ee\hat v\right)e^{k(kz-\omega t)}$$
+
+In vacuum, $n_e = 0$, so
+
+$$\nabla \times (\nabla \times \vec E) = \frac{\omega^2}{c^2} \vec E$$
+
+Assume a plane wave, where $\vec E = E_x\hat i + E_z \hat k$, and only $E_x$ oscillates. Then we can simplify $\nabla$ to a partial derivative, and
+
+$$\nabla \times (\nabla \times \vec E) = \left(-\del{^2E_x}{z^2}, 0, 0\right) = \left(k^2\hat E_x, 0, 0\right) e^{i(kz-\omega t)}$$
+
+Plugging back into the equation, we get $\omega = \pm kc$, $\hat E_z = 0$. The phase and group velocities are both $c$, the speed of light. Now we consider a second case, plasma, with $n \neq 0$, but $B_0 = E_0 = \nu = T = 0$.
+
+\begin{align*}
+    \nabla \times (\nabla \times \vec E) &= \left(\frac{\omega^2}{c^2} \hat E - \frac{i\omega\mu_0ne^2}{im\omega}\hat E\right) e^{i(kz-\omega t)} \\
+                                         &= \frac{\omega^2-\omega_p^2}{c^2} \hat E e^{i(kz-\omega t)}
+\end{align*}
+
+where $\omega_p = \sqrt{\frac{ne^2}{m_e\varepsilon_0}}$ is the plasma frequency. Note for electron sound wave, $\frac{d\omega}{dk} = 0$. \\
+
+Transverse waves: $k^2c^2 = \omega^2 - \omega_p^2$. This requires $\omega > \omega_p$ for transmission. Else,
+
+$$E \propto e^{-k_Iz}$$
+
+giving us dampened waves.
+
+For transverse waves, using $k^2c^2 = \omega^2 - \omega_p^2$ as derived above,
+
+$$v_p = \frac{\omega}{k} = \frac{c}{\sqrt{1 - (\omega_p/\omega)^2}}$$
+$$v_g = \frac{d\omega}{dk} = c\sqrt{1-(\omega_p/\omega)^2}$$
+
+Group velocity is always less than $c$, and the opposite holds for phase veliocity. They converge as $\omega \rightarrow \infty$, meaning at higher frequency, there is less divergence between different wave packets.
+
+For Collisional electron plasma waves, where $T_e = \vec B_0 = \vec E_0 = 0, \nu \neq 0$, then the electron momentum conservation equation gives
+
+$$mn\dot{\vec v} = -en(\vec E + \vec v \times \vec B) - m_en\nu\vec v$$
+
+We ignore $\vec v \times \vec B$ since they are second order. Letting $\vec v, \vec E, \vec B, n$ oscillate by $e^{i(kz-\omega t)}$ (where the average value for $n$ is $n_0$ and 0 for the rest), substituting gives
+
+$$\hat v = \frac{-e\hat E}{m(\nu-i\omega)}$$
+
+where the hats refer to the maximum amplitudes.
+
+From Maxwell's equations,
+
+\begin{align*}
+    \nabla \times \vec E &= -\del{\vec B}{t} \\
+    \nabla \times \vec B &= \varepsilon_0\mu_0 \del{\vec E}{t} + \mu_0 \vec J \\
+                         &= \varepsilon_0\mu_0 \del{\vec E}{t} - \mu_0ne\vec v \\
+    \nabla \times\left(\del{\vec B}{t}\right) &= \varepsilon_0\mu_0 \del{^2\vec E}{t^2} - \mu_0ne\del{\vec v}{t} \\
+    \nabla \times \nabla \times \vec E &= &= - \frac{1}{c^2} \del{^2\vec E}{t^2} - \mu_0en\del{\vec v}{t} \\
+                                       &= \left(\frac{\omega^2}{c^2}\hat E - i\omega\mu en\hat v\right)e^{i(kz-\omega t)} \\
+                                       &= \left(\frac{\omega^2}{c^2} - \frac{i\omega\mu_0e^2n}{m(\nu-i\omega)}\right)\hat E e^{i(kz-\omega t)}
+\end{align*}
+
+Consider $\vec E = (E_x, 0, E_z)$. Then
+$$\nabla \times \nabla \times E = \left(-\del{^2E_x}{z^2},0,0\right) = (k^2\hat E_x,0,0)e^{i(kz-\omega t)}$$
+
+Substituting, in transverse waves
+$$k^2\hat E_x = \left(\frac{\omega^2}{c^2} + \frac{i\omega \mu_0e^2n}{m(\nu-i\omega)}\right)\hat E_x$$
+
+For longitudinal waves,
+$$0 = \frac{\omega^2}{c^2} + \frac{i\omega\omega_p^2}{(\nu-i\omega)c^2}$$
+which gives
+$$\omega^2 + i\omega\nu = \omega_p^2$$
+
+We see that $\omega$ is complex, so we let $\omega = \alpha + \beta i$. Solving,
+
+$$\alpha = \pm\sqrt{\omega_p^2 - \frac{\nu^2}{4}}, \beta = -\frac{\nu}{2}$$
+
+The negative value of $\beta$ means that there is dampening of longitudinal oscillations through collisions. The same happens for transverse waves, since $k$ is complex.
+
+Here is a list of plasma wave applications.
+
+\begin{itemize}
+    \item Measuring $n_e$
+    \item Energy transport in laser fusion
+    \item Radio-wave transmissions around the earth (out of sight)
+    \item Satellite Communication requires $f > 10^7\unit{Hz}$
+    \item Spacecraft re-entry blackout
+    \item Plasma confinement by RF radiation
+\end{itemize}
+
+\section{Individual Particle Motions in $\vec E$ and $\vec B$ Fields}
+
+$$\Omega_e = \frac{eB}{m} = \frac{1.6 \times 10^{-19} \times 5}{9.1 \times 10^{-31}} \approx 10^{12}$$
+$$\nu_e = 10^{-15}n_eT_e^{-3/2} = 10^{-15} \times 10^{20} \times 10^{-3/2} \approx 3000$$
+
+\subsection{Constant magnetic field; no electric field}
+
+$$m\dot{\vec v} = q(\vec E + \vec v \times \vec B) = q\vec v \times \vec B$$
+
+Let $\vec B = (0, 0, B)$. Then solving in each coordinate,
+\begin{align*}
+    m\dot v_x = v_y qB &\Rightarrow \dot v_x = \Omega v_y \\
+    m\dot v_y = -v_xqB &\Rightarrow \dot v_y = -\Omega v_x \\
+    m\dot v_z = 0 &\Rightarrow v_z = C
+\end{align*}
+where $\Omega \equiv \frac{qB}{m}$ is the gyrofrequency. Then $\ddot{v_x} = -\Omega^2v_x, \ddot{v_y} = -\Omega^2v_y$. Solving yields
+
+$$v_x = v_\perp\sin\Omega t, v_y = v_\perp\cos\Omega t$$
+
+where $v_\perp = v_x^2 + v_y^2$. Letting $r_L$ be the Larimar radius,
+
+\begin{align*}
+    2\pi r_L &= \frac{v_\perp}{\Omega/2\pi} \\
+    r_L &= \frac{v_\perp}{\Omega} \\
+        &= \frac{mv_\perp}{qD}
+\end{align*}
+
+Using
+
+$$\frac{1}{2}mv_\perp^2 = kT$$
+
+we get
+
+$$r_L = \frac{\sqrt{2mkT}}{qB}$$
+
+so $r_L$ is much greater for ions than electrons.
+
+\subsection{Constant $\vec E$ and $\vec B$; $\vec E \times \vec B$ drift}
+
+Letting $\vec B = (0, 0, B_z), \vec E = (0, E_y, 0)$, one obtains
+
+\begin{align*}
+    \dot v_x &= \frac{q}{m}v_yB_z \\
+    \dot v_y &= -\frac{q}{m}v_yB_z + \frac{qE_y}{m} \\
+    \dot v_z &= 0
+\end{align*}
+
+Solving yields
+\begin{align*}
+    v_x &= v_\perp \sin\Omega t + \frac{E_y}{B_z} \\
+    v_y &= v_\perp\cos\Omega t \\
+    v_z &= C
+\end{align*}
+
+so
+
+$$\vec v_D = \frac{\vec E \times \vec B}{B^2}$$
+
+\subsection{Generalizing to other $\vec F \times \vec B$ drifts}
+
+$$\vec v_D = \frac{1}{q} \frac{\vec F \times \vec B}{B^2}$$
+
+\begin{ex}[Gravity]
+    $$v_D = \frac{1}{q} \frac{F_q}{B}$$
+\end{ex}
+
+\begin{ex}[Curvature Drift]
+    The force is
+    $$\vec F = \frac{mv_\parallel^2\vec r}{r^2}$$
+    Now
+    $$v_D = \frac{1}{q} \frac{\vec F \times \vec B}{B^2} = \frac{2E_\parallel}{q} \frac{\vec r \times \vec B}{r^2B^2}$$
+\end{ex}
+    
+\subsection{Inhomogeneous $\vec B$ Field ($\vec E = 0$)}
+
+With a constant $\vec B$ field, a charged particle will undergo circular motion. If $\vec B$ field has varying strength, it will spiral in a certain direction. We define
+
+$$\delta x = 2(r_{L1} - r_{L2})$$
+$$\tau = \frac{1}{2}(\tau_1 + \tau_2)$$
+
+where
+
+$$\tau_1 = \frac{2\pi}{\Omega_1} = \frac{2\pi m}{qB_1}, \tau_2 = \frac{2\pi m}{qB_2}$$
+and
+$$r_{L1} = \frac{v_\perp}{\Omega} = \frac{v_\perp m}{qB_1}, r_{L2} = \frac{v_\perp m}{qB_2}$$
+so
+\begin{align*}
+    v_D &= \frac{\Delta x}{\tau} \\
+        &= \frac{2(r_{L1}-r_{L2})}{\frac{1}{2}(\tau_1 + \tau_2)} \\
+        &= \frac{4\frac{v_\perp m}{q}(\frac{1}{B_2} - \frac{1}{B_1})}{\frac{2\pi m}{q}\left(\frac{1}{B_1} + \frac{1}{B_2}\right)} \\
+        &= \frac{2v_\perp}{\pi} \frac{B_1 - B_2}{B_1 + B_2}
+\end{align*}
+
+The gradient of $\vec B$ is approximately $\frac{B_1 - B_2}{r_{L1} + r_{L2}}$, so
+$$B_1 - B_2 = (r_{L1} + r_{L2})\nabla B = \frac{mv_\perp}{q} \frac{B_1 + B_2}{B_1B_2}\nabla B$$
+Define $B$ to be the average of $B_1$ and $B_2$.
+\begin{align*}
+    v_D &\approx \frac{2v_\perp}{\pi} \frac{1}{B_1+B_2} \frac{mv_\perp}{q} \frac{B_1 + B_2}{B^2}\nabla B \\
+        &\approx \frac{\frac{2}{\pi} mv_\perp^2}{qB^2} \nabla B \\
+        &\approx \frac{mv_\perp^2\nabla B}{2qB^2}
+\end{align*}
+where we use the approximation $B_1B_2 \approx B^2$. In a 3D case, this becomes
+$$\vec v_D = \frac{E_\perp}{qB^3} \vec B \times \nabla B$$
+Alternatively, write $\vec F = -\mu\nabla B$ where the magnetic moment is
+$$\mu = \frac{\frac{1}{2}mv_\perp^2}{B}$$
+
+\begin{ex}
+    For $\nabla B \approx 1\unit{T.m^{-1}}, B \approx 3\unit{T}, E_\perp \approx 10\unit{keV}$, we have
+    $$v_d = \frac{10 \times 1000 \times 11606}{1.6 \times 10^{-19}} \times \frac{1}{3^2} = 10^3 \unit{m.s^{-1}}$$
+\end{ex}
+
+\subsection{Tokamak Drifts}
+
+For velocity in the radial direction, and a $\vec B$ field in a tokamak in the angular direction, ions go up and electrons go down, by the right hand rule. In a toroidal solenoid, wires wrap around the toroid (parallel to cross section) to produce magnetic fields. By Ampere's Law,
+
+\begin{align*}
+    \nabla \times \vec B &= \mu_0 \vec j_{TOT} \\
+    \int \nabla \times \vec B d\vec A &= \mu_0 \int \vec j_{TOT} d\vec A \\
+    \int \vec B \cdot d\vec l &= \mu_0 N \int jdA \\
+    2\pi RB &= \mu_0 NI \\
+    B &= \frac{\mu_0 nI}{2\pi R}
+\end{align*}
+
+If $\nabla B$ points inwards, ions go up and electrons go down, for the same configuration. If there is an $\vec E$ field pointing downwards, both ions and electrons go outwards.
+
+\subsection{Magnetic Mirrors}
+
+Due to symmetry, $B_\theta = 0, \del{}{\theta} = 0$. Then
+$$\nabla \cdot \vec B = 0 \Rightarrow \frac{1}{r} \del{}{r}(rB_r) + \del{B_z}{z} = 0$$
+
+Usually, there is a weak dependence of $\del{B_z}{z}$ on $r$, so integrating,
+
+\begin{align*}
+    rB_r &= -\int_0^r \rho\del{B_z}{z}d\rho \\
+         &= -\frac{1}{2}r^2 \del{B_z}{z}
+\end{align*}
+
+The Lorentz force is then
+
+$$F_r = qv_\theta B_z$$
+$$F_\theta = q(-v_{r_z} + v_zB_r)$$
+$$F_z = -qv_\theta B_r$$
+
+Substituting the above results,
+$$F_z = \frac{1}{2}qv_\theta r\del{B_z}{z}$$
+On the axis, $v_\theta = -v_\perp$ and $r = r_L$. Further expanding,
+\begin{align*}
+    F_z &= -\frac{1}{2} qv_\perp r_L \del{B_z}{z} \\
+        &+ -\frac{1}{2} \frac{mv_\perp^2}{B} \del{B_z}{z} \\
+        &= -\mu \del{B_z}{z}
+\end{align*}
+
+Consider $F_z = ma_z = m\frac{dv_z}{dt} = -\mu \del{B_z}{z}$. Now
+
+\begin{align*}
+    mv_z\frac{dv_z}{dt} &= \frac{d}{dt} \left(\frac{1}{2}mv_z^2\right) \\
+                         &= -\mu \del{B_z}{z} \frac{dz}{dt} \\
+                         &= -\mu \frac{dB_z}{dt}
+\end{align*}
+so
+\begin{align*}
+    \frac{d}{dt}\left(\frac{1}{2} mv_z^2 + \frac{1}{2} mv_\perp^2\right) &= \frac{d}{dt}\left(\frac{1}{2}mv_z^2 + \mu B_z\right) \\
+    -\mu\frac{dB}{dt} + \frac{d}{dt}(\mu B_z) &= 0 \\
+    \frac{d\mu}{dt} &= 0
+\end{align*}
+
+So $\mu$ is a constant. We can visualise the above derivative as follows. Total energy, kinetic and magnetic, is conserved. If kinetic energy goes to zero before we reach the maximum magnetic field, it is reflected. If not, it passes the magnetic mirror. \\
+
+At a low field, $B_0 \Rightarrow v_\perp = v_{\perp0}, v_z = v_{z0}$. At reflection, $B' \Rightarrow v_\perp = v_\perp', v_z = 0$.
+
+$$\frac{1}{2} \frac{mv_{\perp0}^2}{B_0} = \frac{1}{2} \frac{mv_\perp^2}{B'}$$
+and
+$$v_\perp' = v_{\perp0}^2 + v_{z_0}^2 = v_0^2$$
+thus
+$$\frac{B_0}{B} = \frac{v_\perp^2}{v_\perp'^2} = \frac{v_{v_\perp0}^2}{v_0^2} \equiv \sin^2(\theta)$$
+
+Defining $\theta_m$ such that particles within it do not get reflected,
+
+$$\sin^2\theta_m = \frac{B_0}{B_{\text{max}}} = \frac{1}{R_m}$$
 
 \end{document}
