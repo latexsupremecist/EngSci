@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 26}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Rectifiable Sets}
+
+\textit{Note: what we call a rectifiable set in this course is different from what they mean conventionally. We use textbook naming for consistency.}
+
+\begin{defn}[Rectifiable Set]
+    A bounded set $S \subseteq \R^n$ is rectifiable if  its boundary has measure zero.
+\end{defn}
+
+\begin{rem}
+    $S$ is rectifiable iff
+    $$\chi_S(x) = \begin{cases} 1 & x \in S \\ 0 & x \notin S \end{cases}$$
+    is integrable.
+\end{rem}
+
+Define for $Q \supseteq S$
+$$V(S) = \int_S 1 = \int_Q \chi_S$$
+
+Recall we will exclusively be considering continuous functions for now on.
+
+\subsection{Properties of Rectifiable Sets}
+
+\begin{enumerate}
+    \item If $S_1, S_2$ are rectifiable, then $S_1 \cup S_2, S_1 \cap S_2$ are rectifiable
+    \item If $f:S \rightarrow \R$ is a bounded continuous function, then $f$ is integrable and $S$ is rectifiable
+    \item If $S_1,S_2$ are rectifiable, then
+        $$v(S_1 \cup S_2) = v(S_1) + v(S_2) - v(S_1 \cap S_2)$$
+\end{enumerate}
+
+\begin{proof}
+The first is easy to prove. For the union, the boundary of the union is a subset of the union of the boundaries. The union of sets with measure zero has measure zero, and a subset of a set with measure zero also has measure zero.
+
+For the second, consider the extension of $f_S(x)$ over a rectangle $Q \supset S$ and show that the set of discontinuities has measure zero. The set of discontinuities of $f_S$ is contained in the boundary of $S$.
+\end{proof}
+
+We will be considering continuous functions over open sets which need not be bounded. Our next goal is to define integrability for such functions. Consider $f(x) = \frac{1}{x^p}, p > 0$ fixed. Define integrability by studying
+
+$$\lim_{\epsilon\rightarrow0} \int_\epsilon^1 \frac{1}{x^p} dx$$
+Integrability wants that the limit exists and is finite. Then define
+$$\int_0^1 f(x)dx = \sup_{\epsilon>0} \int_\epsilon^1 f(x)dx = \lim_{n\rightarrow\infty} \int_{\frac{1}{n}}^1 f(x)dx$$
+
+To define integrability of continuous but unbounded functions over an opne set $S$, we seek to construct:
+
+Consider the set $\mathcal D$ of all rectifiable, compact sets, where all elements $D$ satisfy
+
+$$D \subseteq S$$
+
+We take $\sup_{D \in \mathcal D} \int_D f$.
+
+\end{document}
