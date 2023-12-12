@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Rates}
+
+\begin{defn}[Effective Rate]
+    Say we have an effective rate $r_{\text{EFF}} = 10\%$ per year. This means in a year, the total interest is exactly 10\% of the principal.
+\end{defn}
+
+\begin{defn}[Rate]
+    If we say the interest rate is 10\% but compounded semi-annually, the effective rate is 5\% per half-year.
+\end{defn}
+
+\begin{rem}
+    The effective annual rate in the example above is $(1 + 5\%)^2 - 1 = 10.25\%$.
+\end{rem}
+
+\begin{ex}[Problem Set Q6]
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Given & Calculate & Answer \\
+        \hline\hline
+        Effective rate of 8\% & Monthly rate & $(1+8\%)^{1/12} - 1$ \\
+        \hline
+        Rate of 3.5\% compounded per trading day & Effective rate & $\left(1+\frac{3.5\%}{252}\right)^{252} - 1$ \\
+        \hline
+        Rate of 4\% compounded per quarter & Continuously compounding rate & $\ln\left(1+\frac{4\%}{4}\right)^4$
+        \hline
+    \end{tabular}
+\end{ex}
+
+\section{Converting to effective rates}
+
+\begin{equation}
+    i_{\text{eff}} = \left(1 + \frac{r_{n/m}}{n_m}\right)^{n_y} - 1
+\end{equation}
+
+Where $n_m$ is the number of compounding periods $n$ in time $m$, and $n_y$ is the same per year.
+
+\begin{ex}
+    Let the rate be 10\% per 3 years with quarterly compounding. Effective rate is then
+    $$\left(1 + \frac{10\%}{12}\right)^4 - 1 = 2.375\%$$
+    If we instead had 4\% per quarter compounded every 3 years, the effective rate is
+    $$(1 + 4\% \times 12)^{1/3} - 1$$
+\end{ex}
+
+\begin{ex}
+    Let's say our mortgage rate is 5\% compounded semi-annually. Your loan is 100k. What is the monthly interest? \\
+    Interest rate per month is
+    $$\left(1 + \frac{5\%}{2}\right)^{1/6} - 1 = 0.4124\%$$
+    Interest is then
+    $$100,000 \times 0.4124\% = \$412.4$$
+    Do note that inflation exists. A simple way to get that out of the way is to account it in the interest rate (i.e. divide 1 + interest rate by 1 + inflation rate).
+\end{ex}
+    
+
+\end{document}

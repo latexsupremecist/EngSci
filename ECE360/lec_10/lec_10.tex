@@ -1,0 +1,20 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 10}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Drift-Diffusion Current}
+
+$$J_n = q\mu_nNE - qD_n\frac{dn}{dx}$$
+and similar for $p$. This is the sum of drift and diffusion current, where $\frac{dn}{dx}$ is the gradient.
+
+\section{PN Junctions}
+
+When n type and p type materials love each other very much, a pn junction is born. We find a carrier depletion region formed by diffusion near the junction. However, an internal electric field is formed to preclude further diffusion, called a barrier voltage.
+
+\section{Maxwell-Boltzmann Distribution}
+
+The distribution is proportional to $\exp\left(\frac{E}{kT}\right) = \exp\left(\frac{qV}{kT}\right)$. The free electrons that overcome the potential barrier due to an applied voltage is then proportional to $\exp\left(\frac{qV}{kT}\right)-1$ as derived. A more detailed derivation can be found by consulting an EngSci ECE.
+\end{document}

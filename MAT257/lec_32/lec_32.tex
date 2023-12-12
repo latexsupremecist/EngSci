@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 32}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Change of Variables and diffeomorphisms}
+
+Recall in single variable calculus, for $g'(x) \neq 0$, one can write
+
+$$\int_I f = \int_{g(I)} (f \circ g) |g'|$$
+
+For single variables, it doesn't make sense to integrate from a larger number to a smaller number. Due to the implied sign change when going from I to $g(I)$ (consider $u = -x$), we take the absolute value of $g'$. Note that this always works when $g'(x) = 0$ for finitely many $x$, since one can split the integral and integrate over open sets. \\
+
+For open sets $A \subseteq \R^n$, consider a one-to-one function $g:A \rightarrow \R^n$ where its derivative has a nonzero determinant everywhere. For example,
+
+$$g(x_1,x_2) = (x_1+x_2,x_1-x_2)$$
+$$g(x_1,x_2) = \left(\sqrt{x_1^2+x_2^2}, \arctan\left(\frac{x_2}{x_1}\right)\right)$$
+
+\section{Diffeomorphism of class $C^r$}
+
+This is for a $C^r$ function from an open set $A \subseteq \R^n$. If $g$ is one-to-one and $\det Dg(x) \neq 0 \forall x \in A$, we can say $g$ is a \textbf{diffeomorphism}. By the inverse function theorem, we can equivalently say if $g$ is one-to-one from $A$ to $B$ such that $g,g^{-1}$ are $C^r$, then $g$ is a diffeomorphism.
+\end{document}

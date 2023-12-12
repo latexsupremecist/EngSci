@@ -83,7 +83,7 @@ $$\Omega = \frac{z_eB}{m}$$
 
 To derive this, we assume no B field, no thermal motion, ions fixed, infinite plasma, and one dimensional motion. We start with the momentum, continuity, and Poisson's equations.
 
-$$m_en_e(\del{v}{t} + \vec v \cdot \del{\vec v}{x} = -en_e \vec E$$
+$$m_en_e\left(\del{v}{t} + \vec v \cdot \del{\vec v}{x}\right) = -en_e \vec E$$
 $$\del{n_e}{t} + \del{}{x} (n_ev) = 0$$
 $$\varepsilon_0 \del{E}{x} = e(n_i-n_e)$$
 We use linearization, and assume small  perturbations in $n_e,v_e,E$ with a base value (0) and change (1). We use the reference frame where $v_0 = 0$. Dividing, we get for momentum and continuity
@@ -95,7 +95,7 @@ We assume
 $$v_1 = \hat v_1 e^{i(kx-\omega t)}$$
 and similarly for $n_1$ and $E_1$; i.e. a sinusoidal solution. Then plugging into the 3 equations, we get
 $$\hat v_1 \neq 0 \Rightarrow \omega^2 = \frac{n_0e^2}{\varepsilon_0m}$$
-Below the plasma frequency, it is opaque. Using $\omega = 2\pi f$, we get $f_p = 9n_e^{-\frac{1}{2}}$. For $n = 10^{20}\unit{m^{-3}}, f_p = 10^{11} \unit{Hz}$, on the order of microwaves.
+Below the plasma frequency, it is opaque. Using $\omega = 2\pi f$, we get $f_p = 9\sqrt{n_e}$. For $n = 10^{20}\unit{m^{-3}}, f_p = 10^{11} \unit{Hz}$, on the order of microwaves.
 
 \subsection{Propagation of EM waves through a Plasma}
 

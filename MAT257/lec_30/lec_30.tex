@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 30}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Partitions of Unity: Buildup}
+
+Recall that defining $f(x) = \exp\left(-\frac{1}{x}\right) \forall x > 0, f(x) = 0$ otherwise, we get that $g(x) = f(x)f(1-x)$ vanishes at exactly $x\leq0$ and $x\geq1$. It is also continuous and $C^\infty$, since $f$ is $C^\infty$. We can define a similar function on an arbitrary rectangle.
+
+$$h(x) = \prod_{i=1}^n f(x_i-a_i)f(b_i-x_i)$$
+
+where the rectangle is $Q = [a_1,b_1] \times [a_2,b_2] \times \dots \times [a_n,b_n]$.
+
+\section{Partitions of Unity in Higher Dimensions}
+
+Let $\mathcal A$ be a collection of open sets in $\R^n$, and $A$ be the union. Then there exists a countable collection of $C^\infty$ functions $f_i(x)$ with the properties
+\begin{enumerate}
+    \item $\chi_A(x) = \sum_{i=1}^\infty f_i(x) \forall x \in A$ but finitely many $f_i(x)$s vanish
+    \item Each $f_i(x) \equiv 0$ outside a rectangle $R_i$
+\end{enumerate}
+
+\end{document}

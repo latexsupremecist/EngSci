@@ -101,4 +101,36 @@ before MHD instabilities occur.
     For DIII-D, where $I = 1.5 \unit{MA}, a = 0.7, n_G = 1 \times 10^{20}$. For JET, where $I = 5\unit{MA}, a = 1.25, n_G = 1 \times 10^{20}$. For ITER, $I = 15\unit{MA}, a = 2, n_G = 1.2 \times 10^{20}$.
 \end{ex}
 
+\section{Low and High Confinement Modes}
+
+L mode is when there is low confinement, same for H mode. $\tau_E$ in H mode is approximately twice of that of low mode.
+
+\section{Emperical Scaling for $\tau_E$}
+
+$$\tau^E_{\text{non-rad}} = \frac{a^I2}{\chi_\perp}$$
+
+Classically,
+
+$$\chi_\perp = D_\perp = D\frac{\nu^2}{\Omega^2}, D = \frac{kT}{m\nu} \Omega = \frac{eB}{m}$$
+
+Then
+
+$$\tau^E_{\text{non-rad}} \propto \sqrt T B^2 a^2 n^{-1}$$
+
+It makes sense that $\tau \propto \sqrt T$, since it is harder to confine with more energy. $\tau \propto B^2$ also makes sense; a greater magnetic field can confine better. Having it inversely proportional to $n$ means confinement cannot be improved by increasing density; the effects cancel each other out. In practice,
+
+$$\tau_L = 0.048 \frac{I^{0.85}R_0^{1.2}a^{0.3}\kappa^{0.5}\overline{n}^{0.1} B_0^{0.2}A^{0.5}}{P^{0.5}}$$
+$$\tau_H = 0.145 \frac{I^{0.93}R_0^{1.39}a^{0.58}\kappa^{0.78}\overline{n}^{0.41}B_0^{0.15}A^{0.19}}{P^{0.69}}$$
+
+where $I$ is the plasma current in MA, $\kappa$ is elongation, $\overline n$ is density in $10^{20}\unit{m^{-3}}$, $A$ is the atomic mass of plasma ions, $R_0$ is the major radius, and $P$ is input power in MW.
+
+$\tau \propto R_0a$, similar to $a^2$. It is not so good that $\tau \propto T^0$. There is a weak dependence on magnetic field, which is bad, but the (positive) dependence on number density is better than in theory.
+
+\begin{ex}[ITER]
+    For $I = 15, R_0 = 6.2, a = 2, \kappa = 1.7, \overline n = 0.91, A = 2, P = 70, B_0 = 5.3$, we have $\tau_H = 3.9$.
+\end{ex}
+
+Lawson Parameter (ITER): \\
+For $N_G = 1.2 \times 10^{20}, \tau_H = 3.9$, so $n\tau = 4.2 \times 10^{20}$.
+
 \end{document}

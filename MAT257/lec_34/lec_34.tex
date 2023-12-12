@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 34}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+Recall we were verifying the lemma
+
+\begin{lem}
+    Diffeomorphisms are invariant in terms of measure zero.
+\end{lem}
+
+\begin{proof}
+    We first show that if $S$ has measure zero, it can be covered with countably many closed cubes with width less than $\delta$ and total volume less than $\varepsilon$. It suffices to show that this applies to a rectangle $Q$, which can be covered by finitely many rectangles. This is because countably many $Q$s cover $S$. Now, consider $Q = [a_1,b_1] \times \dots \times [a_n,b_n]$. Choose $\lambda > 0$ such that
+    $$v\left(\prod_{i=1}^n [a_n - \lambda, b_n + \lambda]\right) \leq 2v(Q)$$
+    Then use the "grid spacing" $\frac{1}{N}$ which is chosen to be smaller than both $\delta$ and $\lambda$. Picking $c_i$ to be the largest point on the grid not greater than $a_i$, and similarly for $d_i$, define
+    $$Q' = \prod_{i=1}^n [c_i,d_i]$$
+    Using the grid, we get cubes of width less than $\delta$, with total volume $v(Q')$. \\
+    Now let $C$ be a closed cube in $A$, where $|D(g(x))| \leq M \forall x\in C$. If $C$ has width $w$, we want to show that $g(C)$ is contained in a cube with width $(nM)w$. From the mean value theorem, at a $c_j$ on the line segment between $a$ (centre point) and $x$,
+    \begin{align*}
+        g_j(x) - g_j(a) &= Dg_j(c_j) (x - a) \\
+    |g_j(x) - g_j(a)| \leq n|Dg_j(c_j)||x-a| \leq \frac{nMw}{2}
+    \end{align*}
+    An arbitrary $y \in g(C)$ satisfies $|y - g(a)| \leq \frac{nMw}{2}$, so its width is $nMw$. \\
+    We can now prove the theorem. It would be convenient if $E$ were bounded, but it does not have to be. To remedy this, consider a series of compact $C_i$ where each set is contained in the interior of the next. We show that $E_i = C_i \cap E$ always has measure zero. Since $C_k$ is compact, we choose $\delta > 0$ such that its delta neighbourhood is still contained in the interior of $C_{k+1}$. Choose $M$ that bounds $|D(g(x))|$ for $x$ in the interior of $C_{k+1}$. Since $E_k$ is contained in a rectangle, it can be covered by countably many cubes with width less than $\delta$ and total volume less than $\frac{\varepsilon}{(nM)^n}$. Each of these cubes are in the interior of $C_{k+1}$, and $g(R)$ lies in $R'$ with width $nMw(R)$. Total volume of $g(R)$ is $(nM)^nv(R)$. Sum of all $g(R)$ is bounded by $\varepsilon$. Then $g(E_k)$ can be covered by countably many rectangles with total volume as small as desired, so it has measure zero.
+\end{proof}
+
+\begin{lemma}[Properties of Diffeomorphisms]
+    Diffeomorphisms preserve interiors, boundaries, and rectifiability.
+\end{lemma}
+
+\begin{proof}
+    Note that $g$ and its inverse are both continuous. If $g(A) = B$ with $A$ being open, the continuity of $g^{-1}$ implies $B$ is open. Then "openness" is preserved. Then $g(\text{Int }A)$ is an open set contained in $B$, so it is a subset of the interior of $B$. From the inverse, $g^{-1}(\text{Int }B) \subseteq \text{Int }A$. Similarly, we can show that $g$ preserves exteriors, so it also preserves boundaries. Now any rectifiable set has a boundary of measure zero. We have shown that $g$ of that set also has measure zero. Since boundaries are preserved, we know the image set is also rectifiable.
+\end{proof}
+
+\end{document}

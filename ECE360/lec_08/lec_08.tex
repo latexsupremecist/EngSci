@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 8}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Peak Retifier}
+
+For a peak rectifier (half wave), let $v_r$ be the voltage ripple. Now note that during the positive voltage bias,
+
+$$i_D = i_C + i_L = C\frac{dv_0}{dt} + \frac{v_0}{R}$$
+
+Substituting $i_D(0) = 0, v_0(0) = v_p$, then
+
+$$v_0 = V_pe^{-t/RC}$$
+
+$$V_r = V_p - V_pe^{-T/RC}$$
+
+Assuming $RC >>T$, we can simplify to
+$$V_r = V_p\frac{T}{RC}$$
+
+
+
+\end{document}

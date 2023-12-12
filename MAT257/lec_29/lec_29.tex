@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 29}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Improper Integrals}
+
+\begin{defn}[Improper Integral]
+    For $A \subseteq \R^n$ open and if $f:A \rightarrow \R$ is continuous, $f$ is extended integrable iff
+    $$\sup_D \int_D |f| < \infty$$
+    Then define the extended integral of $f$ to be
+    $$\int_A f = \sum_D \int_D f_+ - \sup_D \int_D f_-$$
+\end{defn}
+
+\begin{thm}
+    If both notions of integrals are applicable, i.e. $A \subseteq \R^n$ is open and bounded ,and $f:A \rightarrow \R$ is also open and bounded, then $f$ is always extended integrable, and that the extended and standard integrals are equal.
+\end{thm}
+
+\begin{proof}
+    The first is easy to show. Since $f$ is bounded, $|f| \leq M$ for some $M$. Similarly, $A$ being bounded means $v(A) < N$ for some $N$. Then for any compact and rectifiable $D$ which is a subset of $A$,
+    $$\int_D |f| \leq \int_D M \leq MN$$
+    Since $\int_D |f|$ is bounded above, its supremum is finite, so it is extended integrable. \\
+    For the second part, first assume $f \geq 0$.
+    $$\int_D f = \int_D f_A \leq \int_Q f_A = \int_A f$$
+    The ordinary integral is an upper bound of $\int_D f$, so the extended integral is at most equal to the standard integral. Consider an arbitrary partition $P$ of $A$, and denote subrectangles by $R$. Define $D$ to be the (finite) union of subrectangles contained in $A$. Then $D$ is compact and rectifiable, and
+    $$\sum_{R \in A} m_R(f)v(R) \leq \sum_{R \in A} \int_R f = \int_D f$$
+    The ordinary integral is the supremum of the leftmost term, and the extended integral is the supremum of the rightmost term. We can rewrite this (loosely) as
+    $$a_R \leq b_R \forall R$$
+    Then it is easy to see that $\sup_R a_R \leq \sup_R b_R$. In other words, the ordinary integral is at most the extended integral. Combining both inequalities, they have to be equal. \\
+    For the case where $f$ is not non-negative, simply split it up into $f_+$ and $f_-$.
+\end{proof}
+
+\begin{proof}
+    Bonus: proof of the property above. If $a_R \leq b_R \forall R$, consider, by contradiction, that the supremum of $a$ is greater than that of $b$. Then defining $c$ to be the average value of both,
+    $$\sup a > c > \sup b$$
+    Since $c$ is less than the supremum of $a$, there exists an $R^*$ such that $a_{R^*} > c$. But then $b_{R^*} \geq a_{R^*} > c > \sup_b$, which is a contradiction. Then $\sup a \leq \sup b$.
+\end{proof}
+
+\section{Change of Variables Theorem}
+
+\subsection{Partition of Unity}
+
+\begin{lem}
+    Let $Q \subseteq \R^n$ be a rectangle. There is a smooth $\Phi: \R^n \rightarrow \R$ which is strictly positive on the interior of $Q$ and vanishes otherwise.
+\end{lem}
+
+\begin{proof}
+    Define
+    $$f(x) = \begin{cases} \exp\left(-\frac{1}{x}\right) & x > 0 \\ 0 & x \leq 0 \end{cases}$$
+    Then $f$ is smooth, and it is positive iff its argument is positive. Defining
+    $$g(x) = f(x)f(1-x)$$
+    gives a function that is strictly postive exactly in $(0,1)$. This gives us such a $\Phi$ in 1 dimension. We can easily extend this. If
+    $$Q = [a_1, b_1] \times \dots \times [a_n,b_n]$$
+    then
+    $$\Phi = g\left(\frac{x_1-a_1}{b_1-a_1}\right) \times \dots \times g\left(\frac{x_n-a_n}{b_n-a_n}\right)$$
+\end{proof}
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 28}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Extended Integrals}
+
+$f: A \rightarrow \R$ is continuous, with $A$ being open. Then $f$ is extended integrable iff
+$$\sup_{D\in A} \int_D |f| < \infty$$
+where $D$ is compact and rectifiable. Then
+$$\int_A f = \int_ f_+ - \int_A f_-$$
+
+$\forall A \subseteq \R^n$ open $\exists$ a sequence $C_n \subset A$ such that $C_n \subset \text{ Int} C_{n+1}, C_n$ is compact and rectifiable.
+
+\begin{prop}
+    $f(x)$ is extended integrable over A iff
+    $$\lim_{n\rightarrow\infty} \int_{C_n} |f| < \infty$$
+    Moreover,
+    $$\int_A f = \lim_{n\rightarrow\infty} \int_{C_n} f_+ - \lim_{n\rightarrow\infty} \int_{C_n} f_-$$
+\end{prop}
+
+\begin{proof}
+    First assume $f$ is non-negative, so $f = |f|$. Then $\int_{C_n} f$ increases; it converges iff it is bounded. Suppose again $f$ is integrable over $A$. If we denote compact and rectifiable subsets of $A$ by $D$, then
+    $$\int_{C_n} f \leq \sup_D \int_D f = \int_A f$$
+    Then the sequence has an upper bound of $\int_A f$, so it converges. Conversely, if the sequence is bounded/converges, let $D$ be a compact and rectifiable subset of $A$. It is covered by the countable sequence of $C_n$. Since it is compact, it is covered by finitely many of them. Since each is a subset of the next, it is covered by one, or the interior of the next one. Then
+    $$\int_D f \leq \int_{C_m} f \leq \lim_{n\rightarrow\infty} \int_{C_n} f$$
+    So $\int_D f$ is bounded above for arbitrary $D$. By definition of the extended integral, $\int_A f$ exists. \\
+    Note that by definition, $0 \leq f_+(x) \leq |f(x)|, 0 \leq f_-(x) \leq |f(x)|$, and $|f(x)| = f_+(x) + f_-(x)$. By definition, $f$ is integrable over $A$ iff both $f_+,f_-$ are integrable over $A$, which occurs iff $f_+,f_-$ integrated over $C_n$ is bounded. From the above, they are bounded iff the integral of $|f|$ over $C_n$ is bounded. Then
+    \begin{align*}
+        \lim_{n\rightarrow\infty} \int_{C_n} f &= \lim_{n\rightarrow\infty} \int_{C_n} f_+ - \lim_{n\rightarrow\infty} \int_{C_n} f_- \\
+                                               &= \int_A f_+ - \int_A f_- \\
+                                               &= \int_A f
+    \end{align*}
+\end{proof}
+
+\end{document}

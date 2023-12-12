@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 7}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{}
+
+$$X|\vec r \rangle = x|\vec r \rangle$$
+and similar for $Y,y$ and $Z,z$. We have
+$$\langle \vec r |X|\vec r' \rangle = x\delta(\vec r - \vec r')$$
+Now to find $[X,P_x]$, we take an arbitrary inner product
+\begin{align*}
+    \langle \vec r | [X,P_x] | \vec \psi \rangle &= \langle \vec r | XP_x - P_xX | \psi \rangle \\
+                                                 &= x\langle \vec r |P_x|\psi \rangle - \frac{\hbar}{i} \del{}{x} \langle \vec r | X | \psi \rangle \\
+                                                 &= x\langle \vec r |P_x|\psi \rangle + i\hbar \del{}{x} \left(x\langle \vec r|\psi\rangle\right) \\
+                                                 &= i\hbar
+\end{align*}
+
+\section{}
+
+The only possible result of the measurement of a physical quantity $\mathcal A$ is one of the eigenvalues of the corresponding observable $A$.
+
+When the physical quantity $\mathcal A$ is measured on system in the normalised state $|\psi\rangle$, the probability $P(a_n)$ of obtaining the nondegenerate eigenvalue $a_n$ of the corresponding observable $A$ is
+$$P(a_n) = |\langle u_n|\psi\rangle|^2$$
+
+\end{document}

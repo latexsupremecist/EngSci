@@ -1,0 +1,303 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+\usepackage{../../template}
+\title{Plasma Flow to a Surface}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{The Plasma Solution}
+
+For $\vec B = 0$, electron ionization is balanced by wall recombination. Initially, $T_e = 10000, T_i = 300$. There is a bigger difference because of both conservation of momentum and energy dictates the lighter particle gains more energy, or in the case of an applied voltage, electrons move faster, so they gain energy (traverse the field) faster. The time it takes for electrons to get to the walls is approximately $\frac{L}{\overline c_e}$, in the order of $\unit{\mu s}$. After ion transit time, $\Gamma_e = \Gamma_i$. Only the most energetic electrons can reach the wall/overcome the potential barrier for recombination. This is equivalent to a cooling effect.
+
+Consider particle flux in different directions. Some go along the field lines, i.e. towards the cathode or anode, but most go to the walls.
+
+$$\Gamma_{\perp e} = \Gamma_{\perp i} \Rightarrow n_ev_{e\perp} = n_iv_{i\perp} \Rightarrow v_{e\perp} = v_{i\perp} \Rightarrow mn(v_e - v_i)\nu_{ei} = 0$$
+
+There is ambipolar diffusion when $\lambda_{en}, \lambda_{in} < r$. There is no collison when the opposite occurs, $\lambda_{en},\lambda_{in} > r$ and this is called freefall.
+
+From the momentum equation,
+
+$$\del{\vec v_e}{t} + (\vec v_e \cdot \nabla) \vec v_e = \frac{q}{m_e} (\vec E + \vec v_e \times \vec B) - \frac{1}{\rho_0} \nabla p_e - \nu\vec v_e$$
+
+If we assume $\overline v_e = 0$ (see Assignment 7), and $B=0$, then we get the 1D equation
+
+$$\frac{eE}{m_e} = -\frac{1}{\rho} \frac{dP_e}{dx}$$
+
+If $T_e$ is a constant, and we take $E$ to be the negative derivative of $V$ wrt $x$,
+
+\begin{align*}
+    \frac{e}{m_e} \frac{dV}{dx} &= \frac{kT}{\rho} \frac{dn}{dx} \\
+    \frac{dn}{n} &= \frac{e}{kT_e} dV \\
+    n &= n_0e^{eV/kT_e}
+\end{align*}
+
+We end with the \textbf{Boltzmann Relation}.
+
+Defining $S$ to be the ionization rate, in units of ions per area per time, then $\frac{d}{dx}(nv_i) = S$ and
+$$v_i \frac{dv_i}{dx} = \frac{e}{m_i} E - \frac{1}{\rho_i} \frac{dp_i}{dx} - \nu v_i$$
+Assume the last term doesn't exist. Momentum loss, approximating the new ions to have no momentum, is $m_iv_iS$. As always, $T_i$ is taken to be constant, converting the pressure gradient to a density gradient. From the electron momentum equation, we can substituting $m_e$ for $m_i$ and get
+\begin{align*}
+    \frac{eE}{m_e} &= -\frac{kT_e}{m_en_e} \frac{dn_e}{dx} \\
+    \frac{eE}{m_i} & =-\frac{kT_e}{m_in_e} \frac{dn_e}{dx}
+\end{align*}
+
+This gives
+$$v_i \frac{dv_i}{dx} = -\frac{kT_e}{m_in_e} \frac{dn_e}{dx} - \frac{kT_i}{m_in_i} \frac{dn_i}{dx} - \frac{v_2S}{n_i}$$
+If we further take $n_e = n_i$,
+\begin{align*}
+    v_i \frac{dv_i}{dx} &= -\frac{k(T_e+T_i)}{m_in} \frac{dn}{dx} - \frac{vS}{n} \\
+                        &= -\frac{c_s^2}{n} \frac{dn}{dx} - \frac{vS}{n}
+\end{align*}
+
+Where $c_s^2 = \frac{k(T_e+T_i)}{m_i}$ for low acoustic speed. Defining the Mach number as $M = \frac{v}{c_s}$, one can eventually derive
+$$\frac{d}{dx}(nv_i) = S \Rightarrow n \frac{dv}{dx} + v \frac{dn}{dx} = S$$
+and
+$$\frac{dM}{dx} = \frac{S}{nc_s} \frac{1+M^2}{1-M^2}$$
+At $M = 1$, the solution blows up, because its slope is infinite, and $\frac{dn}{dx}, E \rightarrow -\infty$. This is where the plasma ends, and we get to the wall sheath with thickness $\lambda_D$, where there is a layer of $n_e \neq n_i$.
+
+\section{The Self-Sustaining Plasma}
+
+The source term is a reaction rate, so it can be written as
+
+$$S = n_en_g\langle \sigma v \rangle \approx n_en_g \sigma_{\text{iz}} \overline c_e$$
+
+where we assume the cross-section is constant. For $T_e = 10 - 100 \unit{eV}, \sigma \approx 10^{-20} \unit{m^2}$. See Figure 3D1. Plugging this into the derivative of the Mach number gives
+
+$$\frac{dM}{dx} = \frac{n_g\sigma_{\text{iz}}\overline c_e}{c_s} \frac{1+M^2}{1-M^2}$$
+
+Integrating, assumine $M = 0$ at $x=0$,
+
+\begin{align*}
+    \int_0^M \frac{1-M^2}{1+M^2} dM = \frac{n_g\sigma_{iz}\overline c_e}{c_s} \int_0^x dx
+    \frac{n_g\sigma_{iz}\overline c_e}{c_s} x &= 2(\arctan M) - M
+\end{align*}
+
+$M = 1$ at $x = L$. The right hand side under this condition is $\frac{\pi}{2} - 1 \approx 0.57$, so
+$$\frac{\sigma_{iz}\overline c_e}{c_s} = \frac{0.57}{n_gL}$$
+
+For $T_i << T_e$, we can simplify $c_S^2$ and get
+
+$$\frac{\sigma_{iz}\overline c_e}{c_S} = \left(8\pi \frac{m_i}{m_e}\right)^{1/2}\sigma_{iz}$$
+$T_e$ is a function of $n_gL$.
+
+\section{Plasma Density Variations}
+
+From the momentum and continuity equations,
+$$\frac{dM}{dx} = \frac{S}{nc_s} \frac{1+M^2}{1-M^2}$$
+$$v \frac{dn}{dx} + n \frac{dv}{dx} = S \Rightarrow \frac{dn}{dx} = \frac{1}{v} \left(S - n \frac{dv}{dx}\right)$$
+Now
+$$\frac{dM}{dn} \left(S - n \frac{dv}{dx}\right) = \frac{Sv}{nc_s} \frac{1+M^2}{1-M^2}$$
+which implies
+$$\frac{dv}{dx} = c_s \frac{dM}{dx} = \frac{S}{n} \frac{1+M^2}{1-M^2}$$
+so
+$$\frac{dM}{dn} S\left(1 - \frac{1+M^2}{1-M^2}\right) = \frac{SM}{n} \frac{1+M^2}{1-M^2}$$
+and
+$$\frac{dn}{n} = -\frac{2MdM}{1+M^2} \Rightarrow \frac{n}{n_0} = \frac{1}{1+M^2}$$
+at the boundary, $n = \frac{n_0}{2}$. Plugging into the Boltzmann relation, the voltage difference is
+$$\Delta v = -\ln 2 \frac{kT_e}{e} \approx -0.69 \frac{kT_e}{e}$$
+This is the \textbf{Pre-sheath voltage drop}.
+
+\section{The Sheath Voltage Drop}
+
+$$\Gamma_e = \frac{1}{4} n_e\overline c_e = \frac{1}{4} n_0 \overline c_e e^{eV/kT_e}$$
+
+In steady state, $\Gamma_e = \Gamma_i$, or else there will be charge build up (i.e. not steady state). Then $\Gamma_i$ at the edge is equal to $\Gamma_i$ at the wall, or $\frac{1}{2}n_0c_s$. Substituting,
+\begin{align*}
+    \frac{eV}{kT_e} &= \ln \frac{2c_s}{\overline c_e} \\
+                    &= \ln \frac{2\sqrt{k(T_e +T_i)/m_i}}{\sqrt{8kT_e/\pi m_e}} \\
+                    &= \frac{1}{2} \ln \left(\frac{\pi}{2} \frac{m_e}{m_i} \left(1 + \frac{T_i}{T_e}\right)\right)
+\end{align*}
+
+so if we exclude the pre-sheath drop,
+
+$$\frac{e\Delta V_{\text{sheath}}}{kT_e} = \frac{1}{2} \ln \left[\frac{\pi}{2}\frac{m_e}{m_i}\left(1+\frac{T_i}{T_e}\right)\right] + 0.69$$
+
+For hydrogenic plasmas,
+$$\Delta V_{\text{sheath}} \approx \Delta V_{\text{wall}} \approx \frac{3kT_e}{e}$$
+The slope at the sheath ($\frac{dV}{dx}$) is the above value divided by Debye length.
+
+\section{Basic Consequences of Plasma Sheath}
+
+\begin{itemize}
+    \item Sputtering Increased
+        $$E_i \approx 2kT_i + 3kT_e$$
+        $$\Gamma_i^{\text{no sheath}} = \frac{1}{4} n_0\sqrt{\frac{8kT_i}{\pi m_i}}$$
+        $$\Gamma_i^{\text{sheath}} = \frac{1}{2} n_0 c_s = \frac{1}{2} n_0 \sqrt{\frac{k(T_e+T_i)}{m_i}}$$
+    \item Heat flux reduced \\
+        No sheath: $P_e = 2kT_e \times 1/4 n\overline c_e, P_i = 2kT_i \times \frac{1}{4} n\overline c_i$ \\
+        Sheath: $P_e = 1kT_e \frac{1}{4} e^{-3} n_0\overline c_e, P_i = (2kT_i + 3kT_e) \frac{1}{2}n_0\overline c_i (e \approx 2.72)$ \\
+        Power of electrons is reduced by around 20 times, and power of ions is up by 2-3 times. Total heat flux is reduced by around 10 times.
+    \item The sheath cools electrons
+    \item Sets boundary conditions for $n,T$
+\end{itemize}
+    
+\section{Plasma Heat Flux to a Wall}
+
+\subsection{Tokamak Geometry}
+
+\begin{itemize}
+    \item Limiters
+    \item Divertors
+        \begin{itemize}
+            \item Double-Null poloidal divertor
+        \end{itemize}
+\end{itemize}
+ In the divertor, a separatrix is where the open and closed field lines meet.
+
+ $$\Gamma = D_\perp \frac{dn}{dr} \Big |_{r=a} = D_\perp \frac{n}{lambda}$$
+ where $\lambda$ is the width of the scrape-off layer.
+ $$\Gamma^{\text{total}} \approx 2LD_\perp \frac{n}{\lambda}$$
+ $$\Gamma^{\text{limiters}} \approx \lambda n_0c_s \Rightarrow \lambda \approx \sqrt{\frac{2D_\perp L}{c_s}}$$
+
+ \begin{ex}[JET]
+     For $L = 10, T_i = 100\unit{eV}, T_e = 50\unit{eV}$, we have
+     $$D_\perp \approx 1 \unit{m^2.s^{-1}}, c_s = \sqrt{\frac{k(T_e+T_i)}{m_i}} \approx 10^5 \unit{m^2.s^{-1}}, \lambda \approx \sqrt{\frac{2\times1\times10}{10^5}} \approx 1\unit{cm}$$
+ \end{ex}
+
+ \begin{ex}[Reactor]
+     Consider a reactor with $2.5 \unit{GW}$ thermal power. 20\% of it, 500 mW, is transferred to the walls. Taking 8 limiter surfaces, $A_L = 2\pi r\lambda$, and total $A_L$ is $8 \times 2\pi \times 1 \times 0.01 = 0.5 \unit{m^2}$. Heat load is
+     $$q = \frac{5\times10^8}{0.5} \approx 10^9 \unit{W.m^{-2}}$$
+ \end{ex}
+
+ This is a small problem, since there is no material that can take this $q$.
+
+\begin{itemize}
+    \item Put surfaces at steep angles to B field
+    \item Sweep strike point: change the current temporally, so the strike point changes over time
+    \item Add impurities to induce radiation (so more power is radiated instead)
+    \item Spread out B field in divertor
+\end{itemize}
+
+\subsection{Sheath Energy Transmission Factor}
+
+$$Q_e^{\text{conv}} = 2kT_e\Gamma_e = 2kT_e \frac{1}{4} n \overline c_e = 2kT_e \times \frac{1}{4} n_0 \overline c_e e^{eV_w/kT_e}$$
+where $V_w$ is wall potential.
+$$Q_i^{\text{conv}} = 2kT_i\Gamma_i + e(-V_w)\Gamma_i$$
+so
+$$Q^{\text{TOT}} = (2kT_e + 2kT_i - eV_w) \Gamma = (2kT_e + 2kT_i - eV_w) \times \frac{1}{2} n_0 c_s$$
+
+\begin{defn}
+    The sheath energy transmission factor is defined as
+    $$\gamma_s = \frac{2kT_e+2kT_i-eV_w}{kT_e}$$
+\end{defn}
+
+for $T_e = T_i, eV_w \approx -3kT_e$ which implies
+$$\gamma_s = 7 \Rightarrow Q_w = 7kT_e\Gamma_w$$
+and
+$$\gamma_s = 5 \Rightarrow Q_w = 5kT_e\Gamma_w$$
+
+%%% Stuff for Issra
+
+\section{How Do Edge Conditions Get Established?}
+
+Edge conditions include $n(a), T(a)$.
+
+$$P_{\text{conduction, convection}} = P_{\text{in}} - P_{\text{rad}}$$
+The equation holds assuming all power in is emitted in one way or another. Ignore fusion power.
+
+\begin{defn}[Recycling]
+    Recycling refers to particles returning to the plasma after neutralizing at the wall.
+\end{defn}
+
+Assume
+$$\Gamma_{\text{wall}} \approx \Gamma_{\text{in}} >> \Gamma_{\text{recycle}}$$
+$\Gamma_{\text{in}}$ can be due to gas injection, pellet injection, or neutral beams. Then in the toroidal direction,
+$$\Gamma_{\text{wall}} = \frac{1}{2} n_a c_s \lambda(2\pi R \times 2)$$
+For $T_e = T_i = t_a$,
+$$Q_c = 7kT_a\Gamma_{\text{Wall}}$$
+
+\begin{ex}[JET]
+    For $R = 3\unit{cm}, P_{\text{conduction}} = P_\Omega - P_{\text{rad}} \approx 1\unit{MW}, \Gamma_{\text{in}} = 10^{22} \unit{s^{-1}}, \lambda \approx 1\unit{cm}$,
+    \begin{align*}
+        &\Rightarrow kT_a = \frac{P_{\text{cond}}}{7\Gamma_{\text{in}}} = \frac{10^6}{7 \times 10^{22}} = 1.4 \times 10^{-17}\unit{J} \approx 100 \unit{eV} \\
+        &\Rightarrow c_s \approx 10^5 \unit{m.s^{-1}} \\
+        &\Rightarrow n_a \frac{\Gamma_{\text{in}}}{2\pi Rc_s\lambda} = \frac{10^{22}}{2\pi 3 \times 10^5 \times 10^{-2}} \approx 5 \times 10^{17}\unit{m^{-3}}
+    \end{align*}
+\end{ex}
+
+\begin{ex}[ITER]
+    For $R = 6\unit{m}, P_{\text{cond}} \approx \frac{1}{2} P_{\text{in}} \approx 30\unit{MW}, \Gamma_{\text{in}} \approx 10^{24}\unit{s}, \lambda_{\text{SOL}} \approx 1\unit{cm}$. Then
+    \begin{align*}
+        &\Rightarrow kT_a = \frac{P_{\text{cond}}}{7\Gamma_c} = \frac{3\times10^7}{7\times10^{24}} = \frac{3\times10^7}{7\times10^{24}} = 4 \times 10^{-18} \unit{J} \approx 30\unit{eV} \\
+        &\Rightarrow c_s \approx 5 \times 10^4 \unit{m.s^{-1}} \\
+        &\Rightarrow n_a = \frac{\Gamma_c}{2\pi Rc_sA} = \frac{10^{24}}{2\pi \times 6 \times 5 \times 10^4 \times 0.1} = 5 \times 10^{18}\unit{m^{-3}}
+    \end{align*}
+\end{ex}
+
+\section{The Non-Self Sustaining Plasma}
+
+Consider the Tokamak Scrape-off plasma.
+$$\lambda^{\text{neutral}}_{\text{nfp}} = \frac{v\_{\text{neutral}}}{n_e\sigma_{iz}\overline c_E}$$
+Consider $n_e  =10^{18}\unit{m^{-3}}, \tau_{iz} = 10^{-20}\unit{m^2}, \overline c_e \approx 10^6 \unit{m.s^{-1}}$, for $T_e = 10\unit{eV}$. \\
+Case 1: thermal $D_2$ (300K) implies $v \approx 10^3 \unit{m.s^{-1}}$. Then
+$$\lambda = \frac{10^3}{10^{18}\times10^{-20}\times10^6} \approx 0.1\unit{m}$$
+and in case 2, where 100 eV backscattered $D^0$ implies $v \approx 10^5\unit{m.s^{-1}}$, so $\lambda = 10\unit{m}$
+
+\begin{align*}
+    \Gamma_{\text{out}} &= \overline n_e \times \frac{2\pi R \pi a^2}{\tau_p} \\
+                        &+ S_0 2\pi R \times 2\pi a \times \lambda_{\text{edge}} \\
+    S_0 &= \frac{\overline n_e a}{2\tau_p\lambda_{\text{edge}}}
+\end{align*}
+
+\begin{ex}[JET]
+    For $\overline n_e \approx 3 \times 10^9\unit{m^{-3}}, a = 1\unit{m}, \tau_p = 1\unit{s}, \lambda_{\text{wdge}} \approx 1\unit{cm}$. Then $S_0 = 1.5 \times 10^{21}\unit{m^{-3}.s^{-1}}$. From the momentum equation in the first section,
+    \begin{align*}
+        \frac{dM}{dx} &= \frac{S_0}{nc_s} \frac{1+M^2}{1-M^2} \\
+        \frac{n}{n_0} &= \frac{1}{1+M^2} \\
+        \frac{dM}{dx} &= \frac{S_0}{c_s} \frac{1_M^2}{n_0} \frac{1+M^2}{1-M^2} \\
+        \frac{S_0x}{c_sn_0} &= \frac{M}{1+M^2}
+    \end{align*}
+    At $x=L, M=1, \frac{S_0L}{n_0c_s} = \frac{1}{2} \Rightarrow \frac{1}{2} n_0c_s = \Gamma = S_0L$.
+    \begin{align*}
+        P_{\text{div}} &= \gamma_S kT_{\text{edge}}\Gamma_w - 2\lambda_{\text{edge}} \times 2\pi R \\
+                       &= \gamma_S kT_{\text{edge}}S_0L 2\lambda_{\text{edge}} \times 2\pi R \\
+                       &= \gamma_S kT_{\text{edge}} \times \frac{\overline n_ea}{2\tau_p\lambda_{\text{edge}}} L \times 2\lambda_{\text{edge}} \times 2\pi R \\
+        kT_{\text{edge}} &= \frac{P_{\text{dev}}\tau_p}{\gamma_S 2\pi RaL\overline n_e}
+    \end{align*}
+\end{ex}
+
+\begin{ex}[ITER]
+    $P_{\text{conduction, convection}} = 100\unit{MW}, R = 6\unit{m}, a = 2, \gamma_S = 7, \overline n_e \approx 10^{20}, \tau_p \approx 1\unit{s}, L = 20\unit{m}, D_\perp \approx 0.3 \unit{m^2.s^{-1}}$. Then
+    \begin{align*}
+        kT_{\text{edge}} &= \frac{10^8\times1}{2\times2\pi\times6\times2\times20\times10^{20}} = 9.6 \times 10^{-17}\unit{J} \approx 600 \unit{eV} \\
+        c_s &= \sqrt{\frac{2.95\times10^{-17}}{3.34 \times 10^{-22}}} = 2.4 \times 10^5 \unit{m.s^{-1}} \\
+        \lambda_{\text{edge}} &= \sqrt{\frac{2D_\perp L}{c_s}} = \sqrt{\frac{2\times0.3\times20}{2.4\times10^5}} = 7\unit{mm} \\
+        S_0 &= \frac{10^{20}\times2}{2\times1\times0.007} = \frac{\overline n_ea}{2\tau_p\lambda_{\text{edge}}} = 1.4 \times 10^{22} \\
+        n_0 &= \frac{2S_0L}{c_s} = \frac{2\times 1.4\times10^{22}\times20}{2.4\times10^5} = 2.3 \times 10^{18} \unit{m^{-3}}
+    \end{align*}
+\end{ex}
+
+\section{Plasma-Surface Interactions}
+
+\begin{enumerate}
+    \item Material Erosion
+    \item Hydrogen Retention
+\end{enumerate}
+
+\subsection{Material Erosion}
+
+\begin{enumerate}
+    \item Physical Sputtering
+        Think of this as billiard ball collisions. Yield increases with angle (up to $90^\circ$) for smooth surfaces, but it peaks before that for rough surfaces
+    \item Chemical Sputtering/Erosion
+        The graph of yield against temperature looks like $\bigcap$, or $y=-x^2$
+    \item Melting
+        If the surface melts, it becomes rough. B fields are usually directed such that they are close to parallel to the surface, to spread the power distribution. With increased roughness, B fields are more likely to hit the surface perpendicularly, which greatly increases power density.
+    \item Enhanced Bombardment Induced Erosion at high temperature
+        This applies for any combinations, but for convenience, we use He$^+$ on C, so chemical effects can be ignored. Yield is constant until around 1000 K, when it grows exponentially.
+\end{enumerate}
+
+\subsection{Hydrogen Retention}
+
+\begin{enumerate}
+    \item Plasma Density Control
+        Release rate is approximately a delta function centred at 1000K (static). Dynamically, it still peaks at 1000K, but it is nonzero (significantly enough) further below that temperature.
+    \item Tritium Inventory
+        Problematic for machines like ITER, where temperatures are low enough.
+    \item Permeation to Coolant
+        Applies to real reactors; temperatures are too high that the previous problems are negligible. However, tritium would permeate through the coolant.
+\end{enumerate}
+
+\end{document}

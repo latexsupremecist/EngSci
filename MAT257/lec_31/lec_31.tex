@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 31}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+Recall that given any rectangle $R \subseteq \R^n \exists$ a $C^\infty$ function $\phi: \R^n \rightarrow \R$ with
+$$\phi(x) = \begin{cases} 0 & x \notin R \\ > 0 & x \in \text{ Int}(R) \end{cases}$$
+
+In general consider any function $f:A \rightarrow \R$. The \textit{support} is defined to be
+
+\begin{defn}[Support]
+    The \textbf{support} of a function is the closure of the set $\{x \in A | f(x) \neq 0\}$.
+\end{defn}
+
+We start with a key lemma.
+
+\begin{lem}
+    Let $\mathcal A$ be a collection of open sets and $A$ their union. Then there exists a countable collection of rectangles $R_i$ such that its union is $A$, and every $R_i$ is contained in one open set in $\mathcal A$. Moreover, each $x \in A$ admits an open and bounded $U$ such that $U$ intersects finitely many of $R_i$.
+\end{lem}
+
+\begin{proof}
+    Let $D_1, D_2, \dots$ be a sequence of compact subsets whose union is $A$, and each is contained in the interior of the next. Define
+    $$B_i = D_i - \text{ Int}D_{i-1}$$
+    where $D_{-1} = \emptyset$. Then $B_i$ is contained in $D_i$, so it is bounded. It is the intersection of closed sets $D_i, \R^n - \text{ Int}D_{i-1}$, so it is closed. Hence it is compact. Now $\forall x \in B_i$, let $C_x$ be a closed cube centred at $x$ small enough that it is disjoint from $D_{i-2}$ and it is contained in an open set of $\mathcal A$. The union of $C_x$ cover $B_i$. Since the latter is compact, we can pick finitely many $C_x$ that cover it; denote this collection of cubes by $C_i$. Then the union of all $C_i$ satisfy the lemma. \\
+    This is a countable union of finitely large sets, so it is countable. For $x \in A$, it is contained in some $D_i$, so it is contained in the interior of some $D_i$. Pick the smallest such $i$, then $x \in B_i$, so it lies in a cube in $C_i$. Now any point in any rectangle is in an open set of $\mathcal A$, hence it is in $A$. Then the union of rectangles is equal to $A$. By construction, each rectangle is contained in an open set in $A$. \\
+    We check for the last condition. For an arbitrary $x \in A$, it is contained in the interior of some $D_i$. Pick any neighbourhood of $x$ contained in the interior of $D_i$. This is always possible, since the latter is open. Then all cubes in $C_{i+2}, C_{i+3}, \dots$ are disjoint from the interior of $D_i$ by construction, so they cannot intersect with $x$. Now $x$ can only intersect with rectangles of $C_1, C_2, \dots, C_{i+1}$. Each of these sets are finite, and there are finitely many sets, so there are (at most) finitely many rectangles.
+\end{proof}
+
+\begin{thm}[Substitution Rule]
+    Let $g \in C^1$ be a function with nonzero derivatives for $x \in (a,b)$. If $f$ is continuous, then
+    $$\int_{g(a)}^{g(b)} f = \int_a^b (f \circ g) g'$$
+\end{thm}
+
+\begin{proof}
+    Now since $g$ is differentiable with a nonzero derivative, it is strictly increasing or decreasing. Then by the intermediate value theorem, it maps one-to-one from $(a,b)$ to $(c,d)$, where $(c,d) = (g(a),g(b))$ or $(g(b),g(a))$, depending on which is larger. $f$ is continuous, so it is intergrable, and we define
+    $$F(y) = \int_c^y f$$
+    Then by the fundamental theorem of calculus, we have $F'(y) = f(y)$. Defining $h(x) = F(g(x))$, we can differentiate to get
+    $$h'(x) = F'(g(x))g'(x) = f(g(x))g'(x)$$
+    Then integrating,
+    \begin{align*}
+        \int_a^b f(g(x))g'(x)dx &= h(a) - h(b) \\
+                                &= F(g(a)) - F(g(b)) \\
+                                &= \int_c^{g(a)} f - \int_c^{g(b)} f \\
+                                &= \int_{g(b)}^{g(a)} f
+    \end{align*}
+\end{proof}
+
+\end{document}

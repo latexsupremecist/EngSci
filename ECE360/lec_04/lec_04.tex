@@ -1,0 +1,23 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 4}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Still Diodes}
+
+If you mess around with the function for a bit, you get
+
+\begin{equation}\label{iter}
+    V_2 - V_1 = V_T\ln\frac{I_2}{I_1}
+\end{equation}
+
+You can use this recursively to approximate circuits.
+
+\begin{ex}
+    Consider a circuit with voltage $V_{DD} = 5\unit{V}, R = 1\unit{k\Ohm}$, and a diode (forward bias) all in series. Assume the diode admits a current of 1 mA and 0.7 V. \\
+    We start by assuming $V_D$ to be 0.7, which gives us $I_D = 4.3\unit{mA}$. Using \ref{iter}, and $V_1 = 0.7\unit{V}, I_1 = 1\unit{mA}, I_2 = 4.3\unit{mA}$, we get $V_2 = 0.738\unit{V}$. We use $V_2$ to find the current through the resistor again, and use these updated values in \ref{iter} again.
+\end{ex}
+
+\end{document}

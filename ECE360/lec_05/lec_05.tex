@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 5}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Small Signal Model}
+
+Let's say there is some fluctuation in voltage. In a circuit diagram, we can consider the voltage source to be a DC source and AC source (with amplitude $\Delta V$) connected in series.
+
+If we have a linear system, we can
+
+\begin{itemize}
+    \item Use superposition to solve the circuit
+    \item Use linear algebra
+\end{itemize}
+
+For the above equation, if $\Delta V(t)$ is small, we can "scale" current up and get
+
+$$i_D(t) \approx I_D\left(1 + \frac{\Delta V(t)}{V_T}\right)$$
+
+Where we take the Taylor approximation of the solution
+
+$$i_D(t) = I_D\exp\left(\frac{\Delta V(t)}{V_T}\right)$$
+
+Where $I_D$ is the current with only the DC source.
+
+\subsection{Resistor Model}
+
+We can also use the resistor model, where we only turn one of the voltage sources on for superposition. If $\Delta V$ is small enough, then we can treaat the diode as a resistor, where resistance is given by voltage and current solutions from the DC current. This is technically a Taylor approximation, since
+
+$$i_D(v) = i_D(V_D + \Delta V) \approx I_D(V_D) + \Delta V \frac{di}{dv} \Big |_{v = V_D}$$
+
+\end{document}

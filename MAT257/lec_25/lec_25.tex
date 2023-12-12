@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 25}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integrals over bounded sets}
+
+Recall for a bounded $f: A \subseteq \R^n \rightarrow \R$ where $A$ is also bounded, we can take a rectangle $R \supseteq A$ and define
+
+$$f_A(x) = \begin{cases} f(x) & x \in A \\ 0 & x \notin A\end{cases}$$
+
+Now we can define $\int_Af = \int_R f_A$, as long as the second integral is uniquely defined, independent of $R$.
+
+\section{Property of Integrals}
+
+If $f$ and $g$ are integrable over $A$, then $af + bg$ where $a,b \in \R$ is also integrable over the same domain, with
+
+$$\int_A af + bg = a\int_A f + b \int_A g$$
+
+If $f(x) \geq 0$ and $f$ is integrable over the sets $S \subseteq T$, then
+$$\int_S f \leq \int_T f$$
+
+If $f,g$ are integrable over $A$, and $f(x) \leq g(x) \forall x \in A$, then $\int_A f \leq \int_A g$.
+
+If $f$ is integrable over $S,T$, then $f$ is integrable over their union and intersection. Moreover,
+
+$$\int_{S\cup T} f = \int_S f + \int_T f - \int_{S\cap T} f$$
+
+\begin{proof}
+    We prove the first property. The rest are left as exercises to the reader. Consider $f_A, g_A$, the extensions of $f$ and $g$ to a rectangle $R$ containing $A$. Since $f$ is integrable, its extensions are integrable by definition. \\
+    We know that $f$ and $g$ are continuous except on sets $D,E$ with measure zero. Then $af + bg$ is continuous except on $D \cup E$, so it is integrable over $Q$. \\
+    First consider $a,b \geq 0$. Let $P''$ be a partition of $Q$. In a subrectangle $R$ of said partition,
+    $$am_R(f) + bm_R(g) \leq af(x) + bg(x) \forall x \in R$$
+    Then
+    $$a m_R(f) + bm_R(g) \leq m_R(af + bg)$$
+    and so
+    $$aL(f,P'') + bL(g,P'') \leq L(af+bg,P'') \leq \int_Q (af+bg)$$
+    Similarly, we can say that
+    $$aU(f,P'') + bU(f,P'') \geq U(af + bg,P'') \geq \int_Q (af+bg)$$
+    We have shown that the above holds for general $P''$. Then for any 2 partitions $P$ and $P'$, we can say
+    $$aL(f,P) + bL(g,P') \leq \int_Q (af + bg) \leq aU(f,P) + bU(g,P')$$
+    By definition we have that $a\int_Q f + b\int_Q g$ also lies between the bounds of the inequality above. Since $P$ and $P'$ are arbitrary,
+    $$\int_Q(af + bg) = a\int_Q f + b\int_Q g$$
+    Now we consider the negative case by showing
+    $$\int_Q (-f) = -\int_Q f$$
+    Let $P$ be a partition and $R$ be a subrectangle. Then
+    $$-M_R(f) \leq -f(x) \leq -m_R(f) \forall x \in R$$
+    and
+    $$-M_R(f) \leq m_R(-f), M_R(-f) \leq -m_R(f)$$
+    Multiplying by $v(R)$ and summing,
+    $$-U(f,P) \leq L(-f, P) \leq \int_Q (-f) \leq U(-f, P) \leq -L(f,P)$$
+    By definition, $-\int_Q f$ also lies between the extremes of this inequality. Since $P$ is arbitrary, they are equal. Then we can take the negative of the integral if either $a,b$ is negative, and use the first result.
+\end{proof}
+
+\begin{thm}
+    Take $f:A \rightarrow \R$ continuous and bounded. Consider the set of points on the boundary of $A$ where $\lim_{x\rightarrow x_0} f(x)$ is not zero. Denote the set of such points AD. Then if the measure of BAD is 0, then $f$ is integrable on $A$.
+\end{thm}
+
+\begin{proof}
+    Consider $f_S(x)$. Let $x_0 \notin BAD$; we show that $f_A$ is continuous at $x_0$. If it is in the interior of $A$, then $f$ and $f_A$ agree on one of its neighbourhoods. Since $f$ is continuous, so is $f_A$. If $x_0$ is in the exterior, then $f_A$ vanishes in its neighbourhood. If $x_0$ is in the boundary, it may or may not belong to $A$. However, we know that $f \rightarrow 0$ as $x \rightarrow x_0$ by definition of BAD. Since $f$ is continuous, if $x_0 \in S$, then $f(x_0) = 0$. $f_A(x)$ is equal to either $f(x)$ or 0, both of which tend to 0. No matter if $x_0 \in A$ or not, $f_A(x_0) = 0$. Then $f_A$ is continuous at $x_0$. Since the set of (possible) discontinuities has measure zero, $f$ is integrable over $S$.
+\end{proof}
+
+\begin{thm}
+    Let $S$ be bounded in $\R^n$ and $f:S \rightarrow \R$ be bounded and continuous. Let $A$ be the interior of $S$. If $f$ is integrable over $S$, it is integrable over $A$, and both integrals agree.
+\end{thm}
+
+\begin{proof}
+    Assume $f_S$ is continuous at $x_0$. If $x_0$ is in the interior or exterior, obviously $f_S$ and $f_A$ agree on a neighbourhood of $x_0$, so $f_A$ is also continuous, and agrees with $f_S$. If $x_0$ lies on the boundary of $S$, continuity of $f_S$ implies $f_S(x) \rightarrow f_S(x_0)$ as $x \rightarrow x_0$. We have points near $x_0$ where $f_S(x) = 0$, so the limit can only be 0. Now $f_A(x)$ is either $f_S(x)$ or 0; both tend to 0. Moreover, $f_A(x_0) = 0$ since $x_0 \notin A$. So $f_A$ is continuous and agrees with $f_S$. \\
+    Now if $f$ is integrable over $S$, it is continuous except on a set of $D$ with measure zero. Then $f_A$ is continuous at points not in $D$, so it is also integrable over $A$. Since their difference vanishes at points not in $D$, we have $\int_Q f_S - f_A = 0$, where $Q$ is a rectangle containing $S$. Then both integrals are the same, as desired.
+\end{proof}
+
+\end{document}

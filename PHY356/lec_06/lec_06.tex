@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Observables}
+
+Consider a Hermitian (self-adjoint) operator $A$ with an orthonormal system of eigenvectors that for a basis
+
+$$A|\psi_n^i\rangle = a_n|\psi_n^i\rangle$$
+
+and we can write
+
+$$I = \sum_{n,i} |\psi_n^i\rangle\langle\psi_n^i|$$
+
+\subsection{Complete Set of Commuting Observables}
+
+We have a set of $A,B,C,\dots$ that all commute. The eigenvalues of all operators determine a unique common eigenvector, up to a phase.
+
+\begin{ex}[Spinless Particle]
+
+    $$\psi(\vec r) \in \mathcal F$$
+    Consider 2 sets of functions that can be used to expand $\psi$. Defining
+    $$\xi_{\vec r}(\vec r') = \delta(\vec r - \vec r')$$
+    Then
+    $$\psi(\vec r) = \int \xi_{\vec r}(\vec r')\psi(\vec r')d\vec r'$$
+    Since
+    $$\langle \phi|\psi \rangle = \int \phi^*\psi d\vec r$$
+    we get
+    \begin{align*}
+        \langle \vec r'|\vec r \rangle &= \int_\delta(\vec r' - \vec r'')\delta(\vec r - \vec r'') d\vec r'' \\
+                                       &= \delta(\vec r - \vec r')
+    \end{align*}
+    and
+    \begin{align*}
+        \langle \vec p' | \vec p \rangle &= \int \frac{1}{\left(2\pi\hbar\right)^3} \exp\left(\frac{i}{\hbar} (\vec p - \vec p ')\cdot \vec r\right) d\vec r \\
+        &= \delta(\vec p - \vec p')
+    \end{align*}
+    Similarly, we can identify
+    $$\langle \vec r | \psi \rangle = \psi(\vec r)$$
+    and
+    \begin{align*}
+        \langle \vec p | \psi \rangle &= \int \frac{\exp\left(-\frac{i}{\hbar}\vec p \cdot \vec r'\right)}{(2\pi\hbar)^{3/2}} \psi(\vec r')d\vec r' \\
+                                      &= \psi(\vec p)
+    \end{align*}
+    Using our funny notation, defining
+    $$A(\vec r',\vec r) = \langle \vec r' |A| \vec r \rangle$$
+    we get
+    $$A(\vec p',\vec p) = \frac{1}{(2\pi\hbar)^3} \int \exp\left(\frac{i}{\hbar} (\vec p \cdot \vec r - \vec p' - \vec r')\right) A(\vec r',\vec r) d\vec r d\vec r'$$
+\end{ex}
+
+I don't really know what's happening.
+
+\end{document}

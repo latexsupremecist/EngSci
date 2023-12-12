@@ -1,0 +1,19 @@
+## x calibration uncertainties (assuming x_true = a_x + b_x * x_measured)
+#  a_x, da_x, b_x, db_x = 0, 0, 1, 0
+## y calibration uncertainties (assuming y_true = a_y + b_y * y_measured)
+#  a_y, da_y, b_y, db_y = 0, 0, 1, 0
+# x dx  y   dy
+0.015 0.001 9.1e-5 6e-06
+0.017 0.001 9.7e-5 6e-06
+0.02 0.001 1.04e-4 6e-06
+0.022 0.001 1.01e-4 5e-06
+0.025 0.001 1.02e-4 5e-06
+0.027 0.001 1.01e-4 5e-06
+0.03 0.001 1.07e-4 5e-06
+0.04 0.001 1.21e-4 4e-06
+0.05 0.001 1.49e-4 5e-06
+0.1 0.001 2.94e-4 9e-06
+0.15 0.001 5.2e-4 1e-05
+0.2 0.001 8.2e-4 2e-05
+0.25 0.001 1.21e-3 3e-05
+0.3 0.001 1.75e-3 5e-05

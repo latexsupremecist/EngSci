@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 27}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Extended Integral}
+
+Consider the function $f:A \rightarrow \R$ not necessarily bounded, with $A \subseteq \R^n$ being open. In single variable calculus, you can say for $f(x) \geq 0$,
+
+\begin{align*}
+    \int_0^1 f(x)dx &= \sup_{\epsilon>0} \int_\epsilon^1 f(x)dx \\
+                    &= \lim_{n\rightarrow\infty} \int_{\frac{1}{n}}^1 f(x)dx
+\end{align*}
+
+However, we don't want to enforce a particular sequence such as $\frac{1}{n}$. Consider a general $A \subseteq \R^n$ which is open, and $f(x)$ is continuous on $A$. Then we can define $f(x) = f_+(x) - f_-(x)$ where
+
+$$f_+(x) = \begin{cases} f(x) & f(x) \geq 0 \\ 0 & f(x) < 0 \end{cases}$$
+$$f_-(x) = \begin{cases} 0 & f(x) > 0 \\ -f(x) & f(x) \leq 0 \end{cases}$$
+
+It is easy to show that $f_+,f_-$ are continuous functions over $A$. Also $|f|(x) = f_+(x) + f_-(x)$. We then say $f(x)$ is extended-integrable over $A$ iff
+$$\sup_{D \in \mathcal D} \int_D f_+(x) + \int_D f_-(x) < \infty$$
+Where $\mathcal D$ is the set of compact and rectifiable subsets of $A$. Define the extended integral Ext$\int$ by
+$$\text{Ext}\int_Af(x) = \text{Ext}\int_Af_+ - \text{Ext}\int_Af_-$$
+
+\begin{rem}
+    If $A$ is bounded and rectifiable, $v(A)$ is well defined. Then $\forall \epsilon > 0 \exists D \in \mathcal D$ such that $v(D) > v(A) - \epsilon$.
+\end{rem}
+
+\begin{proof}
+    Start with $\chi_A(x)$ defined over $Q \supseteq A$. $\chi_A$ is integrable, so $\forall \epsilon > 0 \exists$ a partition $P$ of $Q$ such that
+    $$\sum_{R \in P} m_R(\chi_A)v(R) > v(A) - \epsilon$$
+    $m_R$ is either 0 or 1. Taking only the terms where it is 1, one can see that
+    $$\sum_{R\subseteq A} v(R) > v(A) - \epsilon$$
+    since $m_R = 1 \Leftrightarrow R \subseteq A$. Then define $D = \bigcup_{R\in P, R \subseteq A} R$.
+\end{proof}
+
+\begin{lem}
+    If $A \subseteq \R^n$ is open, there exists a sequence $D_n \subseteq A$ such that $D_n \subseteq \text{Int} D_{n+1}$ and $\bigcup_{n=1}^\infty D_n = A$.
+\end{lem}
+
+\begin{proof}
+    Define
+    $$C_n = \{x \in A | d(x,A^c \geq \frac{1}{n})\}$$
+    Note that $C_n$ is the preimage of $y \geq \frac{1}{n}$, a closed set, under a continuous distance function. Hence $C_n$ is closed. It is also obvious that it is contained in the interior of $C_{n+1}$. Its union is a subset of $A$. But any point in $A$ admits an $\varepsilon$ ball contained in $A$, so its distance from $A^c$ is strictly positive, and is containedi n some $C_n$. So $A$ is also a subset of the union. Then both are equal, i.e.
+    $$\bigcup_{n=1}^\infty C_n = A$$
+    Construct $D_n's$ out of the $C_n's$ to preserve all properties, but also get that $D_n$ is rectifiable (this implies $D_n$ is bounded, and hence closed). More explicitly, construct
+    $$C_n \subseteq D_n \subseteq \text{Int} C_{n+1}$$
+    $\forall x \in C_n \exists Q(x,\varepsilon) \subseteq \text{Int} C_{n+1}$. The union of such $Q$ $\forall x \in C_n$ is a superset of $C_n$. Define it to be $D_n$.
+\end{proof}
+
+\end{document}

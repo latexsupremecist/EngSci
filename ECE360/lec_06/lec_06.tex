@@ -1,0 +1,21 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Small Signal Model}
+
+We note that past 0.7V, the slope is more or less constant, so resistance is constant. However, this slope does not pass through the origin. Mathematically, we can shift the origin to account for this, along the $x$ axis, or the voltage axis. This is equivalent to having a voltage source (voltage drop) and resistor in series, instead of a diode. This is identical to doing a first order Taylor approximation.
+
+\begin{ex}
+    Consider a circuit with a voltage source $v_s = V_s + \Delta v_s = 5 \pm 0.5$, a 1k$\Omega$ resistor, and a diode. Then the small signal resistance is
+    $$r_d = \frac{V_T}{I_D} = \frac{25}{4.3} = 5.8\unit{\Omega}$$
+    where we assume current is 4.3 mA at 0.7V across the diode. Then the voltage uncertainty across the diode is
+    $$\Delta v_d = \frac{r_d}{R+r_d} \times \Delta v_s = 3\unit{mV}$$
+    Then voltage across diode is
+    $$v_d = 0.7 \unit{V} \pm 3 \unit{mV}$$
+\end{ex}
+
+\end{document}
