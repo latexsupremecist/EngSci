@@ -1,0 +1,167 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\title{Assignment 6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{}
+
+\begin{solution}
+    Substituting the oscillating expressions for $n$ and $v$ into the continuity equation,
+    \begin{align*}
+        \dot n + \nabla \cdot (n\vec v) &= 0 \\
+        -i\omega \hat n e^{i(kz - \omega t)} + n_0\del{v}{z} &= 0 \\
+        -i\omega \hat n e^{i(kz - \omega t)} + ikvn_0 &= 0 \\
+        -i\omega \hat n + ik\hat vn_0 &= 0 \\
+        i\omega \hat n &= ik\hat vn_0
+    \end{align*}
+    When differentiating $n\vec v$, since
+    $$n = n_0 + \hat n e^{i(kz - \omega t)}, \hat n << n_0$$
+    we can assume that $n$ takes a constant value $n_0$. The second order effects, i.e. $v\del{n}{z}$ are negligible. \\
+    The momentum equation is
+    $$mn\del{\vec v}{t} + mn(\vec v \cdot \nabla)\vec v = -\nabla p + qn(\vec E + \vec v \times \vec B) - mn\vec v\nu$$
+    Neglecting the inertial and collisional terms, as well as the second order term $\vec v \times \vec B$,
+    $$mn\del{\vec v}{t} = -\nabla p + qn\vec E$$
+    Using the ideal gas law,
+    $$\nabla p = kT \nabla n = kT \del{n}{z}\hat z$$
+    and the density gradient can be expressed, using the previous result, as
+    \begin{align*}
+        \nabla p &= kT \del{n}{z}\hat z \\
+                 &= m_e\alpha^2 ik\hat n e^{i(kz-\omega t)} \hat z \\
+                 &= m_e\alpha^2 \frac{ik^2\hat vn_0}{\omega} e^{i(kz-\omega t)} \hat z
+    \end{align*}
+    where $\alpha$ is defined as in the problem statement. Substituting into the momentum equation, ignoring the second order term $\vec v \times \vec B$,
+    \begin{align*}
+        -i\omega mnv &= -m_e\alpha^2 \frac{ik^2\hat vn_0}{\omega} e^{i(kz-\omega t)} + qnE \\
+        -i\omega^2\hat v &= -\alpha^2 ik^2\hat v + \frac{q\omega \hat E}{m} \\
+        i\hat v(\alpha^2k^2 - \omega^2) &= \frac{q\omega\hat E}{m} \\
+        \frac{\hat E}{\hat v} &= \frac{i(\omega^2-\alpha^2k^2)m}{e\omega}
+    \end{align*}
+    From the wave equation,
+    \begin{align*}
+        \nabla \times (\nabla \times E) &= \nabla \times (\nabla \times (0, 0, \hat E_z) e^{i(kz-\omega t)}) \\
+                                        &= \nabla \times 0 \\
+                                        &= 0
+    \end{align*}
+    So
+    \begin{align*}
+        0 &= \left(\frac{\omega^2}{c^2} \hat E - i\omega \mu n_ee \hat v\right) \times e^{i(kz - \omega t)} \\
+        \frac{\omega^2}{a^2} \hat E &= i\omega\mu ne\hat v \\
+        \frac{\hat E}{\hat v} &= \frac{i\mu nea^2}{\omega} \\
+        \frac{m(\omega^2-\alpha^2k^2)}{e} &= \mu nea^2 \\
+        \omega^2 - \alpha^2k^2 &= \frac{\mu ne^2a^2}{m}
+    \end{align*}
+    We can express
+    $$\omega_p^2 = \frac{ne^2}{\varepsilon_0m} = \frac{ne^2\alpha^2\mu_0}{m}$$
+    Substituting,
+    \begin{align*}
+        \omega^2-\alpha^2k^2 &= \frac{\mu ne^2a^2}{m} \\
+        \omega^2-\alpha^2k^2 &= \omega_p^2 \\
+        \omega^2 &= \omega_p^2 + \alpha^2k^2
+    \end{align*}
+    Giving the dispersion relation. \\
+    These waves do propogate, since $\omega > \omega_p$. Phase velocity is
+    $$v_p = \frac{\omega}{k} = \sqrt{\frac{\omega_p^2}{k^2} + \alpha^2}$$
+    and group velocity is
+    $$v_g = \frac{d\omega}{dk} = \frac{\alpha^2k}{\omega}$$
+    The wave does not propogate at $T_e = 0$ since all the energy is absorbed by the plasma. Some energy remains at a higher temperature. Wavelength increases with $T_e$ because $\alpha$, the speed of sound in plasma, increases with $T_e$.
+\end{solution}
+
+% plasma waves with Te \neq 0
+    % neglect inertial term and collisiona term
+% nabla p = kT nabla n
+% Continuity: \dot n + div(nv) = 0
+% from above, show i omega hat n = i k n_0 hat v
+% wave eqn: curl(curl(E)) = omega^2/c^2 hat E - i omega mu ne hat v * exp(i(kz-omega t))
+% n = n0 + hat n exp(i(kz-omega t))
+% look at longitudinal wave: E = (0, 0, E_z)
+
+\question{Starting from $F = ma$, show that charged particles subject to a magnetic field $\vec B = (0, 0, B_z)$ and a constant force acting in a perpendicular direction, $\vec F = (F_x, 0, 0)$, drift at a velocity: $v_y = \frac{-F_xq}{B_z}$.}
+
+\begin{solution}
+    Consider the component of force in both directions. In the $x$ direction,
+    $$m\dot v_x = F_x + q v_y B_z$$
+    In the $y$ direction,
+    $$m\dot v_y = -qv_xB_z$$
+    Differentiating the first with respect to time,
+    \begin{align*}
+        m\ddot v_x &= q\dot v_yB_z \\
+        m\ddot v_x &= q\left(-\frac{qv_xB_z}{m}\right)B_z \\
+        \ddot v_x &= -\frac{q^2B_z^2}{m^2}v_x
+    \end{align*}
+    Then we can let a solution be
+    $$v_x = A\sin\Omega t + B\cos\Omega t$$
+    where $\Omega = \frac{qB_z}{m}$.
+    Substituting this into the first equation gives
+    \begin{align*}
+        m\dot v_x &= F_x + q v_y B_z \\
+        m(A\Omega\cos\Omega t - B\Omega\sin\Omega t) &= F_x + q v_y B_z \\
+        v_y &= A\cos\Omega t - B\sin\Omega t - \frac{F_x}{qB_z}
+    \end{align*}
+    The drift velocity is the average $v_y$. Since the first 2 terms are sinusoidal, they have no effect on the average velocity. The drift velocity is then the remaining term $-\frac{F_x}{qB_z}$.
+\end{solution}
+
+% F x B drift
+% m dot vx = Fx + q vy Bz
+% m dot vy = -q vx Bz
+% Assume a solution vx = A sin Omega t + B cos Omega t + C
+
+\question{The polarization drift velocity.}
+
+\begin{solution}
+    Similarly to the previous question, we start from Newton's Third Law in the $x$ and $y$ equations. For electrons,
+    $$m\dot v_x = -q v_y B_z - q\hat E_x\sin\omega t = -q(v_yB_z + \hat E_x\sin\omega t)$$
+    $$m\dot v_y = q v_x B_z$$
+    Differentiating the first,
+    \begin{align*}
+        m\ddot v_x &= -q(\dot v_y B_z + \hat E_x\omega\cos\omega t) \\
+        \ddot v_x &= -\frac{q}{m}(q v_x \frac{B_z^2}{m} + \hat E_x\omega\cos\omega t) \\
+                  &= -\frac{q^2B_z^2}{m^2}v_x - \frac{q\hat E_x\omega}{m}\cos\omega t
+    \end{align*}
+    Defining $\Omega = \frac{qB_z}{m}$,
+    $$\ddot v_x = -\Omega\left(\Omega v_x + \frac{\hat E_x\omega}{B_z} \cos\omega t\right)$$
+    Differentiating the second,
+    \begin{align*}
+        m\ddot v_y &= q\dot v_xB_z \\
+        \ddot v_y &= -q\Omega\left(v_yB_z + \hat E_x \sin\omega t\right) \\
+                  &= -\Omega^2\left(v_y - \frac{\hat E_x}{B_z}\sin\omega t\right)
+    \end{align*}
+    Assume the solution
+    $$v_y = A\sin\Omega t + B\cos\Omega t + \frac{\hat E_x}{B_z}\sin\omega t$$
+    Then substituting into the equation for $\ddot v_y$,
+    \begin{align*}
+    \ddot v_y &= -\Omega^2(A\sin\Omega t + B\cos\Omega t) - \omega^2\frac{E_x}{B_z}\sin\omega t \\
+              &\approx -\Omega^2(A\sin\Omega t + B\cos\Omega t) \\
+              &= -\Omega^2\left(A\sin\Omega + B\cos\Omega t + \frac{\hat E_x}{B_z}\sin\omega t - \frac{\hat E_x}{B_z}\sin\omega t\right) \\
+              &= -\Omega^2(v_y - \frac{\hat E_x}{B_z}\sin\omega t)
+    \end{align*}
+    This means that the solution we guessed approximately satisfies the ODE for $\ddot v_y$. We can then solve for $v_x$ by
+    \begin{align*}
+        m\dot v_y &= qv_xB_z \\
+        \Omega(A\cos\Omega t - B\sin\Omega t) + \omega\frac{\hat E_x}{B_z}\cos\omega t &= \Omega v_x \\
+        v_x &= A\cos\Omega t - B\sin\Omega t + \frac{\omega}{\Omega}\frac{\hat E_x}{B_z}\cos\omega t
+    \end{align*}
+    We can check that this approximately solves the ODE for $\ddot v_x$.
+    \begin{align*}
+        \ddot v_x &= -A\Omega^2\cos\Omega t + B\Omega^2\sin\Omega t + \frac{\omega}{\Omega} (\omega^2) \frac{\hat E_x}{B_z}\cos\omega t \\
+                  &= -\Omega^2v_x + \frac{\omega}{\Omega} (\Omega^2 - \omega^2) \frac{\hat E_x}{B_z}\cos\omega t \\
+                  &\approx -\Omega^2 v_x + \frac{\omega}{\Omega} \Omega^2 \frac{\hat E_x}{B_z}\cos\omega t \\
+                  &= -\Omega^2 v_x + \Omega \frac{\hat E_x\omega}{B_z}\cos\omega t \\
+                  &= -\Omega\left(\Omega v_x + \frac{\hat E_x\omega}{B_z}\cos\omega t\right)
+    \end{align*}
+    We have found solutions for $v_x$ and $v_y$ assuming $\Omega >> \omega$. The drift velocities are
+    $$v_{d,x} = \frac{\omega}{\Omega} \frac{\hat E_x}{B_z}\cos\omega t$$
+    $$v_{d,y} = \frac{\hat E_x}{B_z}\sin\omega t$$
+\end{solution}
+
+% Polarization Drift
+% similar process to q2, but dot Ex \neq 0
+% when evaluating, ddot vx <, ddot vy, use omega^2 << Omega^2 to find an approximation for ddot v and ddot vy
+
+\end{questions}
+
+\end{document}
+    

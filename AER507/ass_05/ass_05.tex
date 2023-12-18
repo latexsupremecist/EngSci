@@ -1,0 +1,290 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\title{Assignment 5}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Improved calculation of neutral density in a tokamak.}
+
+\begin{parts}
+
+% a
+% <sigma v>iz from Fig 3D1
+% dnn/dt = -nn ne<sigma v>iz -> get n = f(t), hence t = (a - r)/vn ->get n = f(r)
+    
+\part{Find the radial variation of neutral density.}
+
+\begin{solution}
+    From Figure 3D1, we find $\langle \sigma v\rangle$ for electron ionization at 500 eV is $3 \times 10^{-14}$. Then
+    \begin{align*}
+        \frac{d_{nn}}{dt} &= -n_nn_e\langle\sigma v\rangle \\
+                          &= -2 \times 10^{20} \times 3 \times 10^{-14} n_n \\
+                          &= -6 \times 10^6 n_n \\
+        n_n &= Ce^{-6\times10^6t}
+    \end{align*}
+    The velocity of the neutrals is
+    \begin{align*}
+        \frac{1}{2}mv^2 &= 3 \times 1.6 \times 10^{-19} \\
+        v^2 &= 2.87 \times 10^8 \\
+        v &= 16954
+    \end{align*}
+    Writing $t$ in terms of $r$,
+    $$t = \frac{a-r}{v} = \frac{1-r}{16946}$$
+    we get
+    $$n_n = Ce^{354(r-1)}$$
+    At the edge, $r=1$, $n_n = 10^{18}$, so
+    $$n_n = 10^{18}e^{354(r-1)}$$
+\end{solution}
+
+\part{Find the mean free path.}
+
+% Fig 3D4
+
+\begin{solution}
+    For hydrogen, velocity is
+    $$\sqrt{\frac{2E}{m}} = \sqrt{\frac{2 \times 3 \times 1.6 \times 10^{-19}}{1.67 \times 10^{-27}}} = 23976$$
+    $$\lambda = \frac{v}{n_e\langle \sigma v\rangle} = \frac{23976}{2 \times 10^{20} \times 3 \times 10^{-14}} = 4.00 \times 10^{-3}$$
+    or 4 mm.
+\end{solution}
+
+% c
+% quasineutrality assumed
+% steady state: neutral flux in = ion flux out
+
+\part{Find $n_{e0}, n_n$. Compare with findings in lecture and part (a).}
+
+\begin{solution}
+    For convenience, let $\lambda_{iz} = 1$cm. The average neutral density is
+    \begin{align*}
+        \frac{1}{a^2 - (a - \lambda_{iz})^2}\int_{a-\lambda_{iz}}^a n_n (2\pi r) dr &= \frac{2\pi10^{18}}{0.0199} \int_0.99^1 re^{354(r-1)}dr \\
+                                                                                    &= 3.16 \times 10^{20} \times \frac{1}{354^2} e^{354(x-1)}(354x-1) \Big |_{0.99}^1 \\
+                                                                                    &= 8.64 \times 10^{17}
+    \end{align*}
+    At steady state, neutral flux in is equal to flux out of charged particles.
+    \begin{align*}
+        D_\perp \frac{n_{e0}}{\lambda_{iz}} &= 2\overline{n_n} v_n \\
+        D_\perp n_{e0} \times \frac{2n_{e0}\langle \sigma v\rangle}{v_n} &= \overline{n_n} v_n \\
+        \overline{n_n} &= \frac{D_\perp \langle \sigma v\rangle n_{e0}^2}{2v_n^2}
+    \end{align*}
+    The factor of 2 is introduced because the flux in is equal to the speed of neutral entry multiplied by the neutral density at the edge, which is twice of the average neutral density, when assuming a linear profile. \\
+    For $D_\perp = 1 \unit{m^2.s^{-1}}, \langle \sigma v\rangle_{iz} = 3 \times 10^{-14}$,
+    $$\overline{n_n} = \frac{D_\perp \langle \sigma v\rangle n_{e0}^2}{2v_n^2} = \frac{1 \times 3 \times 10^{-14} \times 4 \times 10^{40}}{2 \times 23976^2} = 1.04 \times 10^{18}$$
+    The overall value found in lecture is
+    $$\overline n_n = \frac{2D_\perp}{a^2\overline{\sigma v}}$$
+    Plugging in our values, this gives
+    $$\overline n_n = \frac{2 \times 1}{1 \times 3 \times 10^{-14}} = 6.67 \times 10^{13}$$
+    These values are quite different. In fact, our very own equation doesn't quite work, since the average neutral density should not be greater than the neutral density at the edge. This value is closer to our first guess in part (a). An explanation is that for $n_n$ and $n_{e0}$ to achieve the values they have, the parameters $D_\perp$ would have to deviate from its original value, which could explain the difference. It is also worth noting that a linear approximation might be a bit too inaccurate.
+\end{solution}
+
+% d
+% volume recomb/diff = ne0^2 <sigma v>R 2 pi R (pi a^2 - pi(a - lambda_iz)^2) / Dperp ne0/lambda_iz 2 pi R 2 pi a
+% Dperp ~ 1m^2/s, <sigma v>R from Fig 3D6
+
+\part{Calculate the volume recombination rate in this edge region and show that this is not important compared to diffusion loss to the walls.}
+
+\begin{solution}
+    From Figure 3D6, we get $\langle \sigma_r v_e \rangle \approx 10^{-21}$. The volume recombination rate and diffusion ratio is then
+    \begin{align*}
+        \frac{\text{Volume Recombination}}{\text{Diffusion Loss}} &= \frac{n_{e0}^2 \langle \sigma v\rangle 2 \pi R \times \pi(a^2 - (a - \lambda_{iz})^2)}{D_\perp \frac{n_{e0}}{\lambda_{iz}}2\pi R \times 2\pi a} \\
+                                                                  &= \frac{n_{e0}\langle \sigma v\rangle(2a\lambda_{iz} - \lambda_{iz}^2)\lambda_{iz}}{D_\perp \times 2a} \\
+                                                                  &= \frac{2\times10^{20}\times10^{-21}(2\times0.01-0.01^2)0.01}{1 \times 2 \times 0.01} \\
+                                                                  &= 1.99 \times 10^{-3}
+    \end{align*}
+    Since the ratio is low, volume recombination is negligible.
+\end{solution}
+    
+\part{Show that the plasma particle confinement time is $\tau_p \approx \frac{a\lambda_{iz}}{D_\perp}$. Estimate the confinement time for JET, for ITER.}
+
+% e
+% tau_p = total number / flux out
+
+\begin{solution}
+    Particle confinement time is equal to the total number of particles over outwards flux. Since $\lambda_{iz} << a$, we approximate the electron density to be $n_{e0}$ everywhere.
+    \begin{align*}
+        \tau_p &\approx \frac{n_{e0} \times 2\pi R \times \pi a^2}{D_\perp \times \frac{n_{e0}}{\lambda_{iz}} \times 2\pi R \times 2\pi a} \\
+               &= \frac{\lambda_{iz}a}{2D_\perp} \\
+               &\approx \frac{a\lambda_{iz}}{D_\perp}
+    \end{align*}
+    For JET, $a = 0.9$, so $\tau_p \approx \frac{0.9 \times 0.01}{1} = 0.009$ seconds. For ITER,, $a = 2.8$, so $\tau_p \approx \frac{2.8 \times 0.01}{1} = 0.028$ seconds.
+\end{solution}
+\end{parts}
+    
+
+\question{}
+
+\begin{parts}
+
+\part{What is the minimum frequency that can be used to communicate with space vehicles or satellites?}
+
+\begin{solution}
+    $$f_p = 9\sqrt{n_e} \approx 9 \times 10^6$$
+\end{solution}
+
+\part{Calculate the stagnation temperature and density, then estimate the cut-off frequency.}
+
+\begin{solution}
+    $$\frac{\rho_0}{\rho} = \left(1 + \frac{\gamma-1}{2} M^2\right)^{\frac{1}{\gamma-1}}$$
+    $$\frac{T_0}{T} = 1 + \frac{\gamma-1}{2} M^2$$
+    For air, $\gamma = 1.4$. At re-entry, we take the Mach number of 25, so
+    $$\frac{T_0}{T} = 1 + \frac{1.4-1}{2}25^2 = 126$$
+    and
+    $$\frac{\rho_0}{\rho} = \left(1 + \frac{1.4-1}{2} \times 25^2\right)^{1/(1.4-1)} = 178208$$
+    Taking the altitude to be 58 km, temperature is 252.5 K and density is $3.962 \times 10^{-4}\unit{kg.m^{-3}}$. Then stagnation temperature and density are $126 \times 252.5 = 31815\unit{K}$ and $178208 \times 3.962 \times 10^{-4} = 70.6 \unit{kg.m^{-3}}$ respectively. \\
+    Given the density of air, we can find $n_e$. Assume air is 80\% nitrogen and 20\% oxygen. Then treating it as a diatomic gas, each "atom" has $28 \times 0.8 + 32 \times 0.2 = 28.8$ electrons. Its molar mass is $28.02 \times 0.8 + 32 \times 0.2 = 28.8$ grams per mol. Then the number density of electrons is given by
+    $$70.6 \div 0.0288 \times 28.8 \times 6.02 \times 10^{23} = 4.25 \times 10^{28}$$
+    And cutoff frequency is
+    $$f = 9\sqrt{n_e} = 9\sqrt{4.25 \times 10^{28}} = 1.86 \times 10^{15}\unit{Hz}$$
+\end{solution}
+
+\end{parts}
+
+% 2
+% b
+% rho 0 / rho = (1 + (gamma - 1)/2 M^2)^(1/(gamma-1))
+% T0/T = 1 + (gamma-1)/2 M^2
+% determine appropriate altitude and mach number
+
+\question{Consider a fully ionized hydrogenic plasma in which the only collisions are between electrons and ions. Construct the momentum conservation equations for the electrons and ions. Use the latter to prove that the cross-field diffusion coefficient for electrons and ions are equal. (Thus in a fully ionized plasma no ambipolar electric field arises perpendicular to the magnetic field because the diffusion rates are already equal.) Why is the result for a low-degree of ionization plasma different, ie., why does the ambipolar electric field arise? (Note: these results assume classical cross-field diffusion.)}
+
+\begin{solution}
+    The momentum conservation equation for electrons is
+    $$mn\del{\vec v_e}{t} + mn\vec v_e\del{\vec v_e}{x} = -en_e(\vec E + \vec v_e \times \vec B) - \nabla p + C_{\text{coll}}$$
+    where $C_{\text{coll}} = mn\vec v\nu$. That of ions is
+    $$mn\del{\vec v_i}{t} + mn\vec v_i\del{\vec v_i}{x} = en_i(\vec E + \vec v_i \times \vec B) - \nabla p + C_{\text{coll}}$$
+    In steady state, $\del{\vec v}{t} = 0$. The inertial term is negligible. This is because
+    $$\nabla p = \nabla (nkT) \approx \frac{nkT}{L}$$
+    and
+    $$mn(u\cdot\nabla)u \approx mnv \times \frac{v}{L} = \frac{mnv^2}{L}$$
+    We want to show that pressure gradient is much greater.
+    \begin{align*}
+        \nabla p >> mn(u\cdot\nabla)u &\Leftrightarrow \frac{nkT}{L} >> \frac{mnv^2}{L} \\
+                                      &\Leftrightarrow kT >> mv^2 \\
+                                      &\Leftrightarrow \sqrt{\frac{kT}{m}} >> v
+    \end{align*}
+    The left hand side value is proportional to the average particle velocity given $T$, and the right hand side is the average speed. Since average particle velocity is much greater than drift velocity, we can say that with the pressure gradient being involved, the inertial term is negligible. Letting $\vec E$ be in the $x$ direction and the magnetic field in $z$, we can rewrite the equation along the y direction as
+    $$en_ev_eB = m_en_ev_e\nu_{ei} \Rightarrow eB = m_e\nu_{ei}$$
+    where the velocitiy $v_e$ is the scalar value of $v$. Similarly, for that of ions, we get
+    $$eB = m_i\nu_{ie}$$
+    Then $m_i\nu_{ie} = m_e\nu_{ei}$. We can express the cross-field diffusion coefficient as
+    $$D_\perp = \frac{D\nu^2}{\Omega^2} = \frac{\frac{kT}{m\nu}\nu^2}{\frac{e^2B^2}{m^2}} = \frac{kTm\nu}{e^2B^2}$$
+    So
+    $$D_{i\perp} = \frac{kTm_i\nu_{ie}}{e^2B^2} = \frac{kTm_e\nu_{ei}}{e^2B^2} = D_{e\perp}$$
+    If the ion is not fully ionized, there are also collisions between neutrals and charged particles. Since neutrals interact differently with electrons and ions, there would be extra terms added to the momentum equations of electrons and ions that are not equal, which causes the identity $D_{e\perp} = D_{i\perp}$ to fail.
+\end{solution}
+
+% p116
+
+% 3
+% no neutral collisions
+% steady state implies dv/dt = 0
+% show that inertial term may be neglected
+% momentum lost by electrons = momentum gained by ions
+% assume B = (0, 0, B), E = (E, 0, 0), nabla p in x direction
+% work with y - direction equations
+% people don't recognise when they reach the answer
+
+\question{Consider a tokamak of dimensions $a$ = 1.5 m, $R$ = 3 m (about JET size), with a plasma current $I_p$ = 5 MA. Assume a D plasma for transport calculations.}
+
+\begin{parts}
+
+\part{Calculate the Joule heating at $T$ = 1 keV, 10 keV. How many V/m are required (toroidal electric field)?}
+
+% a
+% ohmic heating: P = E . J = j^2/sigma, sigma = e^2n/m nu
+% field required is E = j/sigma
+
+\begin{solution}
+    The required field is
+    \begin{align*}
+        E &= \frac{j}{\sigma} \\
+          &= \frac{I}{A} \times \frac{m\nu}{e^2n} \\
+          &= \frac{5 \times 10^6}{1.5^2\pi} \times \frac{m_e10^{-15}n_eT^{-3/2}}{e^2n_e} \\
+          &= 7.07 \times 10^5 \times \frac{m_e10^{-15}T^{-3/2}}{e^2} \\
+          &= 0.0252T^{-3/2}
+    \end{align*}
+    Then for $T = 1 \unit{keV}$, $E = 0.0252 \unit{V.m^{-1}}$. For $T = 10 \unit{keV}$, $E = 7.96 \times 10^{-4} \unit{V.m^{-1}}$.
+\end{solution}
+
+\part{Calculate the classical particle and heat loss rates for $B$ = 0 and 3T, $T$ = 1 and 10 keV. Take $n = 3 \times 10^{19} \unit{m^{-3}}$. The heat loss should include both conduction and convection (take the convected heat loss rate to be $2kT$ times the particle loss rate). Assume $D_i = D_e$.}
+
+% b
+% i = kTi/mi nu ie = De, chi_i = kTi/mi nui, nu_ii = sqrt(m_e/2m_i) nu_ei
+% Dperp = De nu_ei / Omega_e^2 = k Te me nuei / e^2B^2
+% chi perp = chi i nu i^2 / Omega_i^2 = kTi mi nui/e^2B^2
+% heat loss: conduction: Q = n chi dkT/dx approx n chi kT/a
+    % convection: Q = 2kT . Ddn/dx approx 2nD kT/a
+% particle flux: Gamma approx D n/a 
+% only consider ion losses & transport
+
+\begin{solution}
+    For conduction,
+    $$Q = K \frac{dT}{dx} \approx n\chi_\perp k \frac{T}{a}$$
+    For convection,
+    $$Q = 2kT D_\perp \times \frac{dn}{dx} \approx 2kTD_\perp\frac{n}{a}$$
+    Total heat loss is
+    $$Q_{TOT} = \frac{nkT}{a} (\chi_\perp + 2D_\perp)$$
+    Now
+    $$\nu_{ei} = 10^{-15}nT^{-3/2} = 30000T^{-3/2}$$
+    $$D_\perp = \frac{kT_em_e\nu_{ei}}{e^2B^2} = \frac{1.71 \times 10^{-4}T^{-1/2}}{B^2}$$ % A
+    $$\nu_{ii} = \sqrt{\frac{m_e}{2m_i}}\nu_{ei} = 350T^{-3/2}$$ % B
+    $$\chi_\perp = \frac{kT_im_i\nu_i}{e^2B^2} = 7.32 \times 10^{-3} \frac{T^{-1/2}}{B^2}$$ % C
+    Heat loss is
+    \begin{align*}
+        Q_{TOT} &= \frac{nkT}{a} (\chi_\perp + 2D_\perp) \\
+                &= 3205 \times \frac{\sqrt{T}}{B^2} \times \left(7.32 \times 10^{-3} + 2 \times 1.71 \times 10^{-4}\right) \\ % D
+                &= 24.6 \frac{\sqrt{T}}{B^2} % E
+    \end{align*}
+    Then total heat loss at $B = 3, T = 10$ is $8.63\unit{W.m^{-2}}$. For $B = 0$, I don't know.
+\end{solution}
+
+\part{Calculate the same quantities as in (b) but for anomalous cross-field transport with $D_\perp = 0.5 \unit{m^2.s^{-1}}$ and $\chi_\perp = 2 \unit{m^2.s^{-1}}$.}
+
+\begin{solution}
+    \begin{align*}
+        Q &= \frac{nkT}{a}(\chi_\perp + 2D_\perp) \\
+          &= \frac{3\times10^{19}kT}{1.5} (2 + 2 \times 0.5) \\
+          &= 8.28 \times 10^{-4}T
+    \end{align*}
+    where $T$ is in Kelvin. For $T = 1\unit{keV}, Q = 9614\unit{W.m^{-2}}$, for $T = 10\unit{keV}, Q = 9.614 \times 10^4 \unit{W.m^{-2}}$.
+\end{solution}
+
+\part{Calculate the radiated energy loss (pure D–T plasma) and the alpha particle heating rates at $T$ = 1 and 10 keV, $n = 3 \times 10^{19} \unit{m^{-3}}$. Assume $K_{cy} = 0.1$.}
+
+\begin{solution}
+    Bremsstrahlung losses are
+    \begin{align*}
+        P_{br} &= 5 \times 10^{-37}n_en_iz_i^2\sqrt{T_e}V \\
+               &= 450\sqrt{T} \times \pi1.5^2 \times 2\pi 3 \\
+               &= 59958\sqrt{T}
+    \end{align*}
+    Total energy loss is scaled by volume, giving
+    At 1 keV, $P_{br} = 59958\unit{W}$. At 10 keV, $P_{br} = 1.90\times10^5\unit{W}$. \\
+    Cyclotron radiation losses (for $B = 3\unit{T}, T = 10\unit{keV}$) are
+    \begin{align*}
+        P_{cy} &= K_{cy} \frac{e^4B^2n_ekT}{3\pi\varepsilon_0m_e^3c^3}V \\
+               &= 0.1 \times \frac{\left(1.6\times10^{-19}\right)^4\times3^2\times3\times10^{19}k(11606\times10000)}{3\pi\varepsilon_0m_e^3c^3}\times 133 \\
+               &= 2.22 \times 10^6\unit{W}
+    \end{align*}
+    Alpha particle heating rate is
+    \begin{align*}
+        P_\alpha &= rEV \\
+                 &= n^2\langle\sigma v\rangle 14.6 \times 10^6 \times 1.6 \times 10^{-19} \\
+                 &= 2.80 \times 10^{29} \langle \sigma v \rangle \\
+                 &= 2.1024
+    \end{align*}
+    For $T = 1\unit{keV}, P_\alpha = 23.25\unit{W}$. For $T = 10\unit{keV}, P_\alpha = 163 \times 10^3\unit{W} = 163\unit{kW}$.
+\end{solution}
+
+\part{Compare all of the heating and loss rates (all on the basis of [W/m2]) calculated in the foregoing and comment.}
+
+\begin{solution}
+    Classical heat loss rate is 8.63, which is much lower than the observed heat loss rate, with is to the order of 1000 watts per metre squared, reaching $96.14\unit{kW.m^{-2}}$. Radiation losses are dominated by cyclotron radiation losses. In units of watts per metre squared, $P_{cy} = 2.22 \times 10^6 \div(2\pi1.5\times2\pi3 = 12.5 \unit{kW.m^{-2}}$. Therefore, heat loss through conduction and convection are the reatest, but cyclotron radiation losses are also on the same magnitude.
+\end{solution}
+
+\end{parts}
+\end{questions}
+
+\end{document}

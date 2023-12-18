@@ -1,0 +1,211 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\title{Assignment 2}
+\author{Daniel Chua}
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question{Questions 1 and 6 from Dolan.}
+
+\begin{parts}
+
+    \part{Find $\langle v_x^3\rangle$ and $\langle v_x^4\rangle$ for a Maxwellian distribution.}
+
+\begin{solution}
+    The Maxwellian distribution function is
+    \begin{equation}
+        f_M(\vec x,\vec v, t) = n(\vec x,t) \left(\frac{\beta}{\pi}\right)^{3/2} e^{-\beta v^2}
+    \end{equation}
+    Then
+    \begin{align*}
+        \langle v_x^3 \rangle &= \frac{\int f_M(\vec x, \vec v, t) v_x^3 d\vec v}{f_M(\vec x, \vec v, t)d\vec v} \\
+                              &= \frac{\int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty n(\vec x,t) \left(\frac{\beta}{\pi}\right)^{3/2} e^{-\beta v^2} v_x^3 dv_xdv_ydv_z}{\int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty n(\vec x,t) \left(\frac{\beta}{\pi}\right)^{3/2} e^{-\beta v^2} dv_xdv_ydv_z} \\
+                              &= \frac{\int_{-\infty}^\infty e^{-\beta v_x^2} v_x^3 dv_x}{\int_{-\infty}^\infty e^{-\beta v_x^2} dv_x} \\
+                              &= 0
+    \end{align*}
+    Because the numerator is the integral of an odd function. Similarly, we replace $v_x^3$ with $v_x^4$ and get
+    \begin{align*}
+        \langle v_x^4 \rangle &= \frac{\int_{-\infty}^\infty e^{-\beta v_x^2} v_x^4 dv_x}{\int_{-\infty}^\infty e^{-\beta v_x^2} dv_x} \\
+                              &= \frac{3\sqrt{\pi}\beta^{-5/2}}{4\sqrt{\pi}\beta^{-1/2}} \\
+                              &= \frac{3}{4\beta^2}
+    \end{align*}
+\end{solution}
+
+\part{Find the mean value of $x$.}
+
+\begin{solution}
+    \begin{align*}
+        \overline x &= \int_0^\infty xp(x)dx \\
+                    &= \int_0^\infty x\exp(-n_2\sigma x)n_2\sigma dx \\
+                    &= -x\exp(-n_2\sigma x) \Big |_0^\infty + \int_0^\infty \exp(-n_2\sigma x) dx \\
+                    &= -\frac{1}{n_2\sigma}\exp(-n_2\sigma x) \Big |_0^\infty \\
+                    &= \frac{1}{n_2\sigma}
+    \end{align*}
+\end{solution}
+
+\end{parts}
+
+\question{Obtain the Maxwellian distribution for velocities in three dimensions.}
+
+\begin{solution}
+    \begin{align*}
+        f &\propto \exp\left(-\frac{E}{kT}\right) \\
+          &\propto \exp\left(-\frac{m||v||^2}{2kT}\right) \\
+          &\propto \exp\left(-\frac{m(v_x^2+v_y^2+v_z^2)}{2kT}\right)
+    \end{align*}
+    Then
+    $$f = C\exp\left(-\frac{m(v_x^2+v_y^2+v_z^2)}{2kT}\right)$$
+    We know that
+    $$\int_{-\infty}^\infty e^{-kt^2}dt = \sqrt{\frac{\pi}{k}}$$
+    Hence integrating with respect to $v_x, v_y, v_z$, we get
+    $$C\left(\frac{2\pi kT}{m}\right)^{3/2} = n$$
+    Since there are $n$ particles, the integral over $f$ has to be $n$ and not 1. Rearranging gives
+    $$C = n\left(\frac{m}{2\pi kT}\right)^{3/2}$$
+    The full form of $f$ is then
+    $$f = n\left(\frac{m}{2\pi kT}\right)^{3/2} \exp\left(-\frac{m(v_x^2+v_y^2+v_z^2)}{2kT}\right)$$
+    as desired.
+\end{solution}
+
+\question{Find, for a Maxwellian distribution, $\Gamma$, $Q_x$, and the energy density. Explain physically why $Q$ is greater than the product of $\Gamma$ times the average particle energy of $\frac{3}{2}kT$.}
+
+\begin{solution}
+    Recall $\Gamma_x = nv_x$.
+    \begin{align*}
+        \langle \Gamma_x \rangle &= \frac{n(\beta/\pi)^{3/2}\int_{-\infty}^\infty \int_{-\infty}^\infty \int_0^\infty \Gamma_x \exp\left[-\beta\left(v_x^2+v_y^2+v_z^2\right)\right]dv_xdv_ydv_z}{n(\beta/\pi)^{3/2}\int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \exp\left[-\beta\left(v_x^2+v_y^2+v_z^2\right)\right]dv_xdv_ydv_z} \\
+                                 &= \frac{\int_0^\infty nv_x\exp\left(-\beta v_x^2\right)dv_x}{\int_{-\infty}^\infty \exp\left(-\beta v_x^2\right)dv_x} \\
+                                 &= \frac{\frac{n}{2\beta}}{\sqrt{\frac{\pi}{\beta}}} \\
+                                 &= \frac{n}{2}\left(\frac{1}{\pi\beta}\right)^{1/2} \\
+                                 &= \frac{n}{4}\left(\frac{4}{\pi\beta}\right)^{1/2} \\
+                                 &= \frac{n}{4}\left(\frac{8kT}{\pi m}\right)^{1/2}
+    \end{align*}
+    Then $Q_x = \Gamma_xE = \frac{1}{2}nmv_x(v_x^2+v_y^2+v_z^2)$. The first term is equal to
+    \begin{align*}
+        \langle \Gamma_xE_x \rangle &= \frac{nm}{2} \times \frac{n(\beta/\pi)^{3/2}\int_{-\infty}^\infty \int_{-\infty}^\infty \int_0^\infty v_x^3\exp\left[-\beta\left(v_x^2+v_y^2+v_z^2\right)\right]dv_xdv_ydv_z}{n(\beta/\pi)^{3/2} \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \exp\left[-\beta\left(v_x^2+v_y^2+v_z^2\right)\right]dv_xdv_ydv_z} \\
+                            &= \frac{nm}{2} \frac{\int_0^\infty v_x^3\exp\left(-\beta v_x^2\right)dv_x}{\int_{-\infty}^\infty \exp\left(-\beta v_x^2\right)dv_x} \\
+                            &= \frac{nm}{2} \times \frac{\frac{1}{2\beta^2}}{\sqrt{\frac{\pi}{\beta}}} \\
+                            &= \frac{nm}{4} \times \frac{4k^2T^2}{m^2} \times \left(\frac{m}{2\pi kT}\right)^{1/2} \\
+                            &= \frac{n}{4} \times 2kT \times \left(\frac{2kT}{m}\right)^{1/2} \\
+                            &= kT\Gamma_x
+    \end{align*}
+    The second and third term are the same. Their sum is thus
+    \begin{align*}
+        \langle \Gamma_xE_{y,z}\rangle &= nm \times \frac{\int_{-\infty}^\infty \int_{-\infty}^\infty \int_0^\infty v_xv_y^2\exp\left[\beta\left(v_x^2+v_y^2+v_z^2\right)\right]dv_xdv_ydv_z}{\int_{-\infty}^\infty \int_{-\infty}^\infty \int_0^\infty \exp\left[-\beta\left(v_x^2+v_y^2+v_z^2\right)\right]dv_xdv_ydv_z} \\
+                                &= nm \times \frac{\int_0^\infty v_x\exp\left(-\beta v_x^2\right)v_xdx \int_{-\infty}^\infty v_y^2\exp\left(-\beta v_y^2\right) dv_y}{\left(\int_{-\infty}^\infty \exp\left(-\beta v_y^2\right)dv_y\right)^2} \\
+                                &= nm \times \frac{\frac{\sqrt{\pi}}{2\beta^{3/2}} \times \frac{1}{2\beta}}{\frac{\pi}{\beta}} \\
+                                &= \frac{n}{4} \times m \times \left(\frac{1}{\pi\beta^3}\right)^{1/2} \\
+                                &= \frac{n}{4} \times m \times \left(\frac{8k^3T^3}{\pi m^3}\right)^{1/2} \\
+                                &= \frac{n}{4} kT \left(\frac{8kT}{\pi m}\right)^{1/2} \\
+                                &= \Gamma_x kT
+    \end{align*}
+    Their sum gives $\Gamma_x \times 2kT$ as desired. $Q_x$ is greater than $\Gamma_xE$ because it only takes into account particles that pass through the surface, which has higher kinetic energy. Consider all particles to the left of the plane $x=0$ that has a positive $v_x$. The average energy of such particles is $\frac{3}{2}kT$. We can approximate the flux by considering the particles that pass through $x=0$ in time $\Delta t$. However, those with kinetic energy too low would not have enough velocity to pass $x=0$ within the given time. This means that the average particle that crosses the surface has higher kinetic energy. Since $Q_x$ is the product of $\Gamma_x$ and the average energy of particles that \textit{pass through the surface}, it is greater than simply the product of $\Gamma_x$ and average energy.
+\end{solution}
+
+\question{Show that the fusion rate for colliding pairs with relative approach energy lying between E and E + dE is proportional to the given expression. Find $E_{\text{max}}$. Estimate the number of particles in the distirbution that contribute effectively to fusion.}
+
+\begin{solution}
+    Reaction rate is proportional to $n_1n_2\langle \sigma v \rangle$. This means it is proportional to $f(E) \sigma v$. For convenience, we define
+    $$g(E) = \frac{-2^{3/2}\pi^2M^{1/2}q_1q_2}{4\pi\varepsilon_0hE^{1/2}}$$
+    We know
+    $$\sigma \propto \frac{1}{E} \exp(g(E))$$
+    As for velocity,
+    $$E = \frac{1}{2}mv^2 \Rightarrow v \propto \sqrt{E}$$
+    As for $f(E)$,
+    \begin{align*}
+        f(E) &\propto \int \exp(-\beta v^2) d\vec v^3 \\
+             &\propto \int \exp(-\beta v^2) v^2 dv \\
+             &\propto \int \exp\left(-\frac{E}{kT}\right) \sqrt{E} dE
+    \end{align*}
+    Where the extra terms from using spherical coordinates are discarded, since they are constant multiples, and in the last expression, we make use of the facts that $dE \propto vdv$ and $\sqrt{E} \propto v$. Now multiplying all together, we get
+    $$\text{reaction rate } \propto \frac{1}{E} \exp(g(E)) \times \sqrt{E} \times \sqrt{E} \exp\left(\frac{E}{kT}\right) = \exp\left(g(E) - \frac{E}{kT}\right)$$
+    The maximum can be found when the derivative of the above is equal to 0.
+    \begin{align*}
+        \frac{d}{dE} \exp\left(g(E) - \frac{E}{kT}\right) &= 0 \\
+        (g'(E) - \frac{1}{kT})\exp\left(g(E) - \frac{E}{kT}\right) &= 0 \\
+        \frac{\sqrt{2M}\pi q_1q_2}{4\varepsilon_0hE^{3/2}} - \frac{1}{kT} &= 0 \\
+        E &= \left(\frac{kT\sqrt{2M}\pi q_1q_2}{4\pi\varepsilon_0h}\right)^{2/3}
+    \end{align*}
+    For a DT reaction with $T = 20\unit{keV}$, this translates to $E_{\text{max}} = 49\unit{keV}$.
+    For a D$^*$-D$^*$ reaction at 20keV, $E_{\text{max}} = 46.2\unit{keV}$. Proportion of particles is then
+    \begin{align*}
+        \frac{\int_{46.2}^\infty \sqrt{E}\exp\left(-\frac{E}{kT}\right)dE}{\int_0^\infty \sqrt{E}\exp\left(-\frac{E}{kT}\right)dE} &= \frac{\int_{46.2}^\infty \sqrt{E} \exp(-0.05E)dE}{\int_0^\infty \sqrt{E} \exp(-0.05E)dE} \\
+                                                                                                                                   &= 20\%
+    \end{align*}
+\end{solution}
+
+\question{Question 5 is skipped because I don't have time :(}
+
+\question{}
+
+\begin{parts}
+\part{Derive 2B21 from 2B17 in Dolan.}
+
+\begin{solution}
+    We can use spherical coordinates.
+    \begin{align*}
+        \langle \sigma v \rangle &= \left(\frac{\beta}{\pi}\right)^{3/2} \int e^{-\beta v^2} \sigma(v)v d\vec v \\
+                                 &= \left(\frac{\beta}{\pi}\right)^{3/2} \int_0^{2\pi} \int_0^\pi \int_0^\infty e^{-\beta v^2} \sigma(v) v * v^2 \sin\theta dvd\theta d\phi \\
+                                 &= \left(\frac{\beta}{\pi}\right)^{3/2} \int_0^{2\pi} d\phi \int_0^\pi \sin\theta d\theta \int_0^\infty e^{-\beta v^2} \sigma(v) v^3 dv \\
+                                 &= \left(\frac{\beta}{\pi}\right)^{3/2} \times 2\pi \times 2 \int_0^\infty e^{-\beta v^2} \sigma(v) v^3 dv \\
+                                 &= \left(\frac{\beta}{\pi}\right)^{3/2} 4\pi \int_0^\infty e^{-\beta v^2} \sigma(v) v^3 dv
+    \end{align*}
+\end{solution}
+
+\part{Convert this expression for $\langle \sigma v\rangle$ from an integral over $v$ to one over $E$ where $E = \frac{1}{2} m_rv^2$ and $m_r \equiv \frac{m_1m_2}{m_1 + m_2}$, the reduced mass.}
+
+\begin{solution}
+    The differential becomes $dE = m_rvdv$. Substituting,
+    \begin{align*}
+        \langle \sigma v \rangle &= \left(\frac{\beta}{\pi}\right)^{3/2} 4\pi \int_0^\infty \exp\left(-\frac{2E\beta}{m_r}\right) \sigma(E) \times \frac{2EdE}{m_r^2} \\
+                                 &= \left(\frac{\beta}{\pi}\right)^{3/2} \frac{8\pi}{m_r^2} \int_0^\infty \exp\left(-\frac{2E\beta}{m_r}\right) E\sigma(E)dE
+    \end{align*}
+\end{solution}
+
+\part{Use the latter expression to confirm that the $\langle \sigma v \rangle$ value given in Fig. 2C3 of Dolan for 30 keV temperature D-T plasma is correct, using the $\sigma$ value from Fig. 2C1 for D$^+$ on a stationary T target. Use an $n = 6$ midpoint approximation for the integral.}
+
+\begin{solution}
+    From Fig. 2C1, we see that $\sigma(E)$ has a maximum value on the order of $10^{-28}$. Therefore in our approximation, we take $\sigma(E) = 10^{-28}$ to be the cutoff for integration from 0 and to infinity respectively, since $\sigma(E)$ being close to an order of magnitude lower would limit the error. The integral (ignoring the constants) becomes
+    \begin{align*}
+        \int_a^b \exp\left(-\frac{2E\beta}{m_r}\right)E\sigma(E)dE &= \overline{\sigma} \int_a^b \exp\left(-\frac{2E\beta}{m_r}\right) EdE \\
+                                                                   &= \overline{\sigma} \left(-\frac{\exp\left(-\frac{2E\beta}{m_r}\right)\left(\frac{2E\beta}{m_r}+1\right)}{\frac{4\beta^2}{m_r^2}} \right)_a^b
+    \end{align*}
+
+    We then take \\
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Energy (keV) & $\sigma\left(\frac{5}{3}E\right)$ \\
+        \hline\hline
+        0 - 40 & $2 \times 10^{-29}$ \\
+        \hline
+        40 - 60 & $3 \times 10^{-28}$ \\
+        \hline
+        60 - 100 & $4 \times 10^{-28}$ \\
+        \hline
+        100 - 140 & $3 \times 10^{-28}$ \\
+        \hline
+        140 - 300 & $2 \times 10^{-28}$ \\
+        \hline
+        300 - $\infty$ & $6 \times 10^{-29}$ \\
+        \hline
+    \end{tabular} \\
+    This gives an answer of $5.23 \times 10^{-22}\unit{m^4.s^{-2}}$. This agrees with value given in Fig 2C3, $6 \times 10^{22}$.
+\end{solution}
+
+\part{In carrying out (c) you will need to show first that the $\sigma(E)$ in your integral will have to be replaced by the $\sigma$ for D$^+$ on stationary T evaluated for a deuterium energy $E_D = \frac{5}{3}E$. Explain why this relation holds.}
+
+\begin{solution}
+    \begin{align*}
+        \frac{E_D}{E} &= \frac{\frac{1}{2}m_Dv^2}{\frac{1}{2}m_rv^2} \\
+                      &= \frac{m_D}{m_r} \\
+                      &= \frac{m_D+m_T}{m_T} \\
+                      &\approx \frac{2+3}{3} \\
+                      &= \frac{5}{3}
+    \end{align*}
+\end{solution}
+
+\end{parts}
+
+\end{questions}
+
+\end{document}

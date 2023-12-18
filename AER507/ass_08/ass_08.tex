@@ -1,0 +1,146 @@
+\documentclass[answers]{exam}
+\usepackage{../../template}
+\title{Assignment 8}
+\author{Daniel Chua}
+\begin{document}
+\maketitle
+
+\begin{questions}
+%% Q1
+
+\question{}
+
+\begin{parts}
+
+\part{Calculate the ionization mean-free-path for a physically sputtered C atom with 2 eV entering the scrape-off plasma of a fusion reactor: $n_e = 5 \times 10^{18} \unit{m^{-3}}, T_e = 50 \unit{eV}$.}
+
+\begin{solution}
+    Velocity of the C atom is given by
+    $$v = \sqrt{\frac{2E}{m}} = \sqrt{\frac{2\times2\times1.6\times10^{-19}}{1.99\times10^{-26}}} = 5671$$
+    $$\lambda = \frac{v}{n_e\langle \sigma v \rangle_{iz}}$$
+    From the graph provided, $\langle \sigma v\rangle_{iz} = 9\times10^{-14}$. Then
+    $$\lambda = \frac{6180}{5\times10^{18}\times9\times10^{-14}} = 0.0126\unit{m}$$
+    which is 1.26 cm.
+\end{solution}
+
+\part{Calculate the ionization mfp for a CH$_4$ molecule (0.2 eV) entering the scrape-off plasma.}
+
+\begin{solution}
+    Velocity of methane is
+    $$v = \sqrt{\frac{2E}{m}} = \sqrt{\frac{2 \times 0.2 \times 1.6 \times 10^{-19}}{16.043 \times 10^{-3} \div \left(6.02 \times 10^{23}\right)}} = 1550$$
+    From the graph, $\langle \sigma v \rangle_{iz} = 8 \times 10^{-14}$. Then
+    $$\lambda = \frac{v}{n_e\langle \sigma v \rangle_{iz}} = \frac{1550}{5\times10^{18}\times8\times10^{-14}} = 3.87\unit{mm}$$
+\end{solution}
+
+\part{Repeat a) and b) for a divertor plasma with $n_e = 10^{20} \unit{m^{-3}}, T_e = 5 \unit{eV}$.}
+
+\begin{solution}
+    The velocities of carbon and methane are the same. Ionisation rate coefficients for carbon and methane are both $4\times10^{-15}$. Then the mean free path of carbon is
+    $$\lambda = \frac{5671}{10^{20}\times4\times10^{-15}} = 1.42 \unit{mm}$$
+    and the mean free path for the methane molecule is
+    $$\lambda = \frac{1550}{10^{20}\times4\times10^{-15}} = 0.387\unit{mm}$$
+\end{solution}
+
+\part{Given a uniform SOL with a thickness of 2 cm, what fraction of 2 eV C atoms will penetrate to the core plasma.}
+
+\begin{solution}
+    The fraction can be found from the flux. The desired value is
+    \begin{align*}
+        \frac{\Gamma}{\Gamma_0} &= \exp\left(-\frac{x}{\lambda}\right) \\
+                                &= \exp\left(-\frac{2}{1.26}\right) \\
+                                &= 0.205
+    \end{align*}
+    Then $20.5\%$ of atoms will penetrate to the core plasma.
+% Nothing special, λ = v_beam / (n_e <σv>), Γ = Γ_0 exp(-x/λ)
+\end{solution}
+\end{parts}
+
+\question{}
+
+\begin{parts}
+
+\part{Given a core impurity content of 2\% Be and $n_e \approx 10^{19} \unit{m^{-3}}$ just inside the last closed flux surface, estimate the flux of Be to the divertor plates for a tokamak the size of JET ($R$ = 3 m, $a$ = 1 m). Assume a SOL thickness of 2 cm and $D_{\text{Be}} \approx 1 \unit{m^2/.s^{-1}}$.}
+
+\begin{solution}
+    Flux can be estimated by
+    \begin{align*}
+        \Gamma &\approx D_{\text{Be}} \times \frac{\Delta n}{\Delta x} \times A \\
+               &\approx 1 \times \frac{10^{19}\times2\%}{0.02} \times (2\pi1\times2\pi3) \\
+               &= 1.18 \times 10^{21} \unit{s^{-1}}
+    \end{align*}
+\end{solution}
+
+% Γ_{into sol} ~ D_{Be} × Δn_{Be}/Δx × area of plasma
+
+\part{If this impurity flux is distributed uniformly over the tungsten divertor target area ($\approx 15 \unit{m^2}$), how long will it take to build up a 10 nm thick Be coating? ($\rho_{\text{Be}} = 1850 \unit{kg.m^{-3}}$).}
+
+\begin{solution}
+    Volume deposited per second is
+    $$1.18 \times 10^{21} \times 1.5 \times 10^{-26} \div \rho_{\text{Be}} = 9.60 \times 10^{-9} \unit{m^3.s^{-1}}$$
+    Time needed is then
+    $$15 \times 10^{-8} \div (9.60 \times 10^{-9}) = 15.6 \unit{s}$$
+    1.56 seconds are needed.
+\end{solution}
+
+\end{parts}
+
+%% Q3
+
+\question{Tungsten atoms are sputtered from a surface where there is a 3 T magnetic field with grazing incidence. If the W atoms leave the wall with $\approx 1 \unit{eV}$, how small does the ionization mfp need to be for the majority of atoms to be promptly redeposited (ie., returned to the surface on their first orbit)? What plasma conditions are implied?}
+
+\begin{solution}
+    Since the magnetic field has grazing incidence, we can assume the atoms start off with a velocity approximately perpendicular to the field. Then $v_\perp \approx v$. The momentum is given by
+    $$mv_\perp = \sqrt{2Em} = \sqrt{2\times1.6\times10^{-19}\times3.05\times10^{-25}} = 3.12 \times 10^{-22}$$
+    Gyroradius is given by
+    $$r_l = \frac{mv_\perp}{qB} = \frac{3.12\times10^{-22}}{1.6\times10^{-19}\times3} = 6.51 \times 10^{-4}\unit{m}$$
+    Where we assume tungsten ions are in the form of W$^+$. The mean free path has to be at least $\pi r_l$, or else the atom would not make it back. Then
+    $$\lambda = \pi r_l = 2.04 \times 10^{-3}\unit{m} = 2.04 \unit{mm}$$
+\end{solution}
+
+% r_l = mv_⟂/(qB)
+% really simple, not that hard
+
+\question{Show that the maximum kinetic energy transferred in a binary collision is $\frac{\Delta K}{K} = \frac{4m_1m_2}{(m_1 + m_2)^2}$. Calculate the maximum energy that may be transferred from a D$^+$ ion to a Be atom or a W atom. Given surface binding energies of 3.38 eV for Be and 8.68 eV for W, estimate the threshold energy for physical sputtering.}
+
+\begin{solution}
+    Consider particle $A$ colliding with particle $B$. For convenience, we use the frame or reference where particle $B$ starts out stationary. Then conservation of momentum and kinetic energy give
+    $$m_Av_{A1} = m_Av_{A2} + m_Bv_{B2}$$
+    and
+    $$\frac{1}{2} m_Av^2_{A1} = \frac{1}{2} m_Av^2_{A2} + \frac{1}{2} m_Bv^2_{B2}$$
+    Then dividing by the left hand side, we get
+    $$1 = \frac{v_{A2}}{v_{A1}} + \frac{m_B}{m_A}\frac{v_{B2}}{v_{A1}}$$
+    and
+    $$1 = \frac{v^2_{A2}}{v^2_{A1}} + \frac{m_B}{m_A}\frac{v^2_{B2}}{v^2_{A1}}$$
+    Squaring the first and equating it with the second,
+    $$2\frac{v_{A2}}{v_{A1}}\frac{m_B}{m_A}\frac{v_{B2}}{v_{A1}} + \frac{m_B^2}{m_A^2}\frac{v^2_{B2}}{v^2_{A1}} = \frac{m_B}{m_A}\frac{v^2_{B2}}{v^2_{A1}}$$
+    Denote $v = \frac{v_{B2}}{v_{A1}}$, $m = \frac{m_B}{m_A}$, and use the momentum equation to write $\frac{v_{A2}}{v_{A1}}$ in terms of $v$. This results in the quadratic
+    \begin{align*}
+        2(1-mv)mv + m^2v^2 &= mv^2 \\
+        2mv - 2m^2v^2 + m^2v^2 &= mv^2 \\
+        (m+m^2)v^2 - 2mv &= 0 \\
+        v &= \frac{2m}{m+m^2} \\
+          &= \frac{2}{m+1}
+    \end{align*}
+    We can use this to express maximum kinetic energy transferred.
+    \begin{align*}
+        \frac{\Delta K}{K} &= \frac{\frac{1}{2}m_A(v^2_{A1} - v^2_{A2})}{\frac{1}{2}m_Av^2_{A1}} \\
+                           &= \frac{\frac{1}{2}m_Bv^2_{B2}}{\frac{1}{2}m_Av^2_{A1}} \\
+                           &= mv^2 \\
+                           &= \frac{4m}{(m+1)^2} \\
+                           &= \frac{4m_Am_B}{(m_A+m_B)^2}
+    \end{align*}
+    The expression is unitless, so we simply use atomic mass. Masses of $D^+$, Be, W are 2, 9.01, 183.84 respectively, so maximum energy transferred to a Be atom and a W atom are $59.5\%$ and $4.26\%$ respectively. The threshold energy can be thought of as the minimum energy of the $D^+$ ion such that ionisation could happen. Then we assume the collision transfers the maximum kinetic energy, which is equal to the surface binding energy, so sputtering occurs. Then the threshold energy for Be is
+    $$E = 3.38 \div 59.5\% = 5.68 \unit{eV}$$
+    and the threshold energy for W is
+    $$E = 8.68 \div 4.26\% = 204 \unit{eV}$$
+\end{solution}
+
+\question{Using SRIM (www.srim.org), calculate the yield of W atom sputtering due to 100, 1000 and 10,000 eV D$^+$ ions, C$^+$ ions and W$^+$ ions, at both $0^\circ$ and $60^\circ$ incidence. (10,000 incident particles are sufficient for most calculations; use the “Monolayer Collision Steps/Surface Sputtering” calculation type).}
+
+\begin{solution}
+    \bigskip
+\end{solution}
+\end{questions}
+
+
+\end{document}
