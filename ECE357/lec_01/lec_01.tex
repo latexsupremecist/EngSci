@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 1}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+\subsection{Course Outline}
+
+\begin{itemize}
+    \item Theoretical Study and applications of E\&M fields and waves
+    \item Electromagnetic wave propagation
+    \item Wave interaction with natural media
+    \item Waveguides (wires but for waves)
+\end{itemize}
+
+This course is not going to be similar to ECE259.
+
+\subsection{Deliverables}
+
+Weekly online quizzes, labs with lab reports, see syllabus.
+
+\section{Transmission Lines}
+
+A transmission line is composed of 2 conductors embedded in a dielectric medium. Conductors include Al, Au, Ag, Cu, and dielectrics include air, glass, plastic, etc. Dielectrics are there to prevent short circuits. Arrangements can be coaxial, parallel-plate, microstrip, etc.
+
+\begin{ex}[Analysis of Parallel Plate Transmission]
+    Let the $x$ axis be the normal, and $y$ and $z$ axis be along the sides of the rectangular plates. For the dielectric in between, permittivity is $\varepsilon = \varepsilon_0\varepsilon_r$, and permeability is $\mu = \mu_0\mu_r$. \\
+    Consider a "slice" of length $\Delta z$. Treating this as a capacitor, capacitance is
+    $$C = \varepsilon_0\varepsilon_r \frac{w\Delta z}{h}$$
+    Per unit length, capacitance is
+    $$C' = \varepsilon_0\varepsilon_r \frac{w}{h}$$
+    If we treat it as an inductor, using our knowledge from ECE259,
+    $$L = \frac{\mu h\Delta z}{w}$$
+    and similarly
+    $$L' = \frac{\mu h}{w}$$
+    If we consider it as a resistor, current would be constant between $z$ and $z+\Delta z$, which is untrue. Therefore, we cannot solve these by na\"ively treating them as resistors.
+\end{ex}
+
+\end{document}
