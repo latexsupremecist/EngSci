@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Problem Solving Flowchart}
+
+\begin{enumerate}
+    \item Write out the Lagrangian
+    \item Apply the Euler-Lagrange equation
+    \item Solve the differential equation, maybe with approximations
+\end{enumerate}
+
+\begin{ex}[Brachistochrone Problem]
+    Find the shape of a track that can get a bead from one point to another (lower) point as fast as possible. In other words, solve for the path that minimises time. First we write out the expression for time.
+    \begin{align*}
+        T &= \int \frac{ds}{v} \\
+          &= \int \frac{ds}{\sqrt{2gy}} \\
+          &= \int \sqrt{\frac{dx^2+dy^2}{2gy}} \\
+          &= \int \sqrt{\frac{1+y'^2}{2gy}} dx
+    \end{align*}
+    Before applying the Euler-Lagrange equation, note the deus ex machina identity
+    $$f - y'\del{f}{y'} = C$$
+    that applies for functions where $\del{f}{x} = 0$. Then rewriting the integral as $T = \int fdx$,
+    \begin{align*}
+        \del{f}{y'} &= \frac{y'}{\sqrt{2gy(1+y'^2)}} \\
+        f - y'\del{f}{y'} &= \frac{1+y'^2}{\sqrt{2gy(1+y'^2)}} - \frac{y'^2}{\sqrt{2gy(1+y'^2)}} \\
+        \frac{1}{\sqrt{2gy(1+y'^2)}} &= C \\
+        (1+y'^2)y &= \frac{1}{2gC^2} \\
+                  &= k^2
+    \end{align*}
+    where the new constant $k$ is as defined. It is painfully obvious that the solution is
+    $$\begin{cases} x &= \frac{1}{2} k^2(\theta - \sin\theta) \\ y &= \frac{1}{2} k^2(1 - \cos\theta) \end{cases}$$
+    which happens to be a cycloid.
+\end{ex}
+
+\end{document}

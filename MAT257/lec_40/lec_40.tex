@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 40}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Volume of Parallelpiped}
+
+Recall the $k$ volume of a $k$ parallelpiped in $\R^n, k \leq n$ is
+$$V(P_k) = \sqrt{\det(P_k^tP_k)}$$
+where $V$ is the $n \times k$ matrix whose columns are the edges of the parallelpiped. If the vectors are not linearly dependent, the parallelpiped has "collapsed", so it has zero volume.
+
+\begin{proof}
+    If the $i$th column $p_i$ of $P_k$ is a linear combination of the other columns, then the $i$th column of $P_k^tP_k$ is $P_kp_i$, which is also a linear combination of the other columns. The determinant of a square matrix whose $i$th column is a linear combination of other columns is 0. Alternatively, the rank of $P_k$ is less than $k$, so the rank of its square is less than $k$, which has to be less than $n$.
+\end{proof}
+
+\section{k Dimentional Objects}
+
+1 dimensional objects are lengths. In $\R^n$, this is a curve, represented by $x:(0,1) \rightarror \R^n$ as
+$$x(t) = \begin{pmatrix} x_1(t) \\ \vdots \\ x_n(t) \end{pmatrix}$$
+This curve is the image of a function (not the function itself), since there are many functions that represent the same function (at least 2; one in the opposite direction). To find the length, a handwavy proof is that length travelled in time $dt$ is
+$$\begin{pmatrix} \dot x_1(t)dt \\ dots \\ \dot x_n(t)dt\end{pmatrix}$$
+Factoring $dt$ out and integrating,
+$$l = \int ||\dot x(t)||dt$$
+
+Generalising to the $k$th dimension, a $k$ manifold can be represented by a map $\alpha: U \Rightarrow \R^n$ where $U \in \R^k$ is open, and $\alpha \in C^r$. We define its volume to be
+$$v(\alpha) = \int_U V(D\alpha)$$
+
+As an extension, the integral of functions over parametrized $k$ manifolds is naturally
+
+$$\int_{\alpha(U)} h = \int_U fV(D\alpha)$$
+
+where $h: \alpha(U) \rightarrow \R, f = h \circ \alpha$. E.g. when integrating over the surface of a sphere with function $h$, we use $f$ instead, which maps from the $r\theta$ plane (instead of surface of sphere) to $\R$, multiplied by the "area" $r^2\sin\theta$.
+
+\end{document}

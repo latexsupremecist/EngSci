@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 9}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Special cases of Transmission Lines}
+
+$$Z_{\text{in}} = Z_0 \frac{Z_L + jZ_0\tan(\beta l)}{Z_0 + jZ_L\tan(\beta l)}$$
+
+\begin{enumerate}
+    \item Matched Line: $Z_L = Z_0$. \\
+        This implies $Z_{\text{in}} = Z_0$, and there is no impedance tranformation, no standing wave.
+    \item $l = \frac{n\lambda}{2}, n \in \Z^+$ \\
+        Then $\beta l = \frac{2\pi}{\lambda} \frac{n\lambda}{2} = n\pi$. Then its tangent vanishes, and $Z_{\text{in}} = Z_L$. This is then a half-wave line.
+    \item $l = (n + \frac{1}{2}) \frac{\lambda}{2}, n \in \N$ \\
+        The tangent term becomes $\tan(\beta l) = \tan\left[\frac{2\pi}{\lambda} \frac{\lambda}{2}\left(n+\frac{1}{2}\right)\right] = \tan\left(n\pi + \frac{\pi}{2}\right) = \pm\infty$. This implies $Z_{\text{in}} = \frac{Z_0^2}{Z_L}$. This is the quarter-wave transformer, or impedance inverter.
+\end{enumerate}
+
+\begin{defn}[Normalised Impedance]
+    $$z = \frac{Z}{Z_0}$$
+\end{defn}
+
+The quarter-wave transformer "inverts impedance" because
+$$z_{\text{in}} = \frac{Z_0}{Z_L} = \frac{1}{z_L}$$
+
+\begin{ex}
+    Use a quarter wave transformer to \textit{match} a 5$\Omega$ load to a $Z_0 = 50\unit\Omega$ transmission line. \\
+    We add a transmission line between the existing one and the load, with $Z_0'$. Then
+    \begin{align*}
+        \frac{Z_0}{Z_0'} &= \frac{Z_0'}{R_L} \\
+        \frac{50}{Z_0'} &= \frac{Z_0'}{5} \\
+        Z_0' &= 5\sqrt{10} \\
+             &= 158\unit{\Omega}
+    \end{align*}
+    where the equation comes from the results of a quarter-wave transformer.
+\end{ex}
+
+\section{Open-Circuited Transmission Line}
+
+As $Z_L \rightarrow \infty$, we have
+$$Z_{\text{in}} = \frac{1}{jY_0\tan(\beta l)}, Y_0 = \frac{1}{Z_0}$$
+which is the characteristic admittance (recall admittance is purely imaginary). Also
+$$Y_{\text{in}} = jY_0\tan(\beta l)$$
+
+Since the sign of $\tan(\beta l)$ changes, it can act like an inductor or capacitor depending on its arguments. Susceptance against $\beta l$ becomes a tangent curve, so it starts out as a capacitor and alternates.
+
+\section{Short-Circuited Transmission Line}
+
+Obviously $Z_{\text{in}} = jZ_0\tan(\beta l)$. A similar graph can be sketched for reactance, but it starts out acting as an inductor.
+
+\begin{ex}
+    Use a shirt-circuited transmission line ($Z_0 = 50\unit{\Omega}$) to implement $C = 4\unit{pF}$ at $f = 2.25\unit{GHz}$. Phase velocity of the line is $0.75c \approx 2.25 \times 10^8\unit{m.s^{-1}}$. \\
+    The impedance of the capacitor is
+    $$Z = \frac{1}{j\omega C} = \frac{1}{j2\pi fC} = \frac{1}{j2\pi\times2.25\times10^9\times4\times10^{-12}} = -j17.684\unit\Omega$$
+    We have
+    $$\beta = \frac{2\pi}{\omega} = \frac{2\pi f}{v} = \frac{4.5\times10^9\pi}{2.25\times10^8} = 20\pi$$
+    Equating the impedance with $Z_0\tan(\beta l)$,
+    \begin{align*}
+        Z_0\tan(\beta l) &= -17.684 \\
+        50\tan(20\pi l) &= -17.684 \\
+        \tan(20\pi l) &= -0.354 \\
+        l &= 4.46 + \frac{n\lambda}{2}
+    \end{align*}
+\end{ex}
+
+\end{document}

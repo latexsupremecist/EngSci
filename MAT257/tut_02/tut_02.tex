@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 2}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Orthogonality and Isometries}
+
+\begin{defn}[Orthoganality]
+    A $n \times n$ matrix $A$ is called orthogonal if the columns of $A$ form an orthonormal set. This is equivalent to the condition that $A^tA = I_n$.
+\end{defn}
+
+The transpose of an orthogonal $A$ is equal to its inverse, so
+
+$$1 = \det(I_n) = \det(A^{-1}A) = \det(A^tA) = \det(A^t)\det(A) = \det^2(A) \Rightarrow \det(A) = \pm 1$$
+
+\begin{thm}
+    If $A, B, C$ are $n \times n$ orthogonal matrices, then
+    \begin{enumerate}
+        \item $AB$ is orthogonal
+        \item $A(BC) = (AB)C$
+        \item $\exists$ orthogonal matrix $I_n$ such that $AI_n = A = I_nA$
+        \item Given $A$, $\exists$ orthogonal $A^{-1}$ such that $AA^{-1} = I_n = A^{-1}A$
+    \end{enumerate}
+\end{thm}
+
+The proof is trivial, but this allows us to treat this as a group.
+
+\begin{defn}[Orthogonal Transformation]
+    The linear transformatino $h: \R^n \rightarrow \R^n$ given by $h(x) = Ax$ is called an orthogonal transformation if $A$ is orthogonal, i.e. if $h$ carries $e_i$ to an orthonormal basis.
+\end{defn}
+
+\begin{defn}[Euclidean Isometry]
+    Let $h:\R^n \rightarrow \R^n$. We say $h$ is a Euclidean isometry if $||h(x) - h(y)|| = ||x-y|| \forall x, y \in \R^n$.
+\end{defn}
+
+\begin{thm}
+    Let $h:\R^n \rightarrow \R^n$ be a map such that $h(0) = 0$.
+    \begin{enumerate}
+        \item $h$ is an isometry iff $h$ preserves the dot product
+        \item $h$ is an isometry iff $h$ is an orthogonal transformation
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    Given $x, y$, we have
+    $$||h(x) - h(y)||^2 = \langle h(x), h(x) \rangle - 2 \langle h(x), h(y) \rangle + \langle h(y), h(y) \rangle$$
+    and
+    $$||x - y||^2 = \langle x, x \rangle - 2 \langle x, y \rangle + \langle y, y\rangle$$
+    If $h$ preserves the dot product, the right hand sides are equal, so $h$ is an isometry. If $h$ preserves the Euclidean distance, then putting $y = 0$,
+    $$\langle x, x\rangle = \langle h(x), h(x)\rangle$$
+    Since $x$ is arbitrary, this also applies to $y$. Since the left hand sides are the same, the right hand sides have to be. Cancelling out the inner product of like terms, $h$ preserves the inner product between $x$ and $y$. \\
+    For the second part, let $h(x) = Ax$. Then $\langle h(x), h(y) \rangle = h(x)^th(y) = x^tA^tAy = x^ty = \langle x, y \rangle$, so $h$ preserves the dot product, and hence it is an isometry. If $h$ is an isometry, let $a_i = h(e_i)$. We also know it preserves the dot product. Letting
+    $$h(x) = \sum_i \alpha_i(x) a_i$$
+    we have
+    \begin{align*}
+        \langle h(x), a_j\rangle &= \alpha_j(x) \\
+        \langle h(x), h(e_j)\rangle &= \alpha_j(x) \\
+        \langle x, e_j\rangle &= \alpha_j(x) \\
+        x_j &= \alpha_j(x)
+    \end{align*}
+    Then
+    \begin{align*}
+        h(x) &= \sum_i \alpha_i(x) a_i \\
+             &= \sum_i x_i a_i \\
+             &= Ax
+    \end{align*}
+\end{proof}
+
+\begin{thm}
+    Let $h: \R^n \rightarrow \R^n$. Then $h$ is an isometry iff $h(x) = Ax + p$, where $A$ is orthogonal.
+\end{thm}
+
+\begin{proof}
+    Given $h$, let $p = h(0)$, and define $k(x) = h(x) - p$. Then $k$ is orthogonal, so it is an isometry, and
+    $$||x - y|| = ||k(x) - k(y)|| = ||h(x) - h(y)||$$
+\end{proof}
+
+\begin{thm}
+    Let $h: \R^n \rightarrow \R^n$ be an isometry. If $S$ is rectifiable in $\R^n$, then the set $T = h(S)$ is rectifiable and $v(T) = v(S)$.
+\end{thm}
+
+\begin{proof}
+    We know that $h = Ax + p$, where $A$ is orthogonal. So $Dh(x) = A$, and by the change of variable theorem,
+    $$v(T) = |\det A|v(S) = v(S)$$
+\end{proof}
+
+\end{document}

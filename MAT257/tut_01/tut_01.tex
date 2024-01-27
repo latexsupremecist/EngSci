@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 1}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{thm}
+    Let $A$ be a $n \times n$ matrix and $h:\R^n \rightarrow \R^n$ be given by $h(x) = Ax$. Let $S$ be a rectifiable set in $\R^n$ and $T = h(S)$. Then $v(T) = |\det A|v(S)$.
+\end{thm}
+
+\begin{proof}
+    First consider if $A$ is nonsingular. Then $h$ is a diffeomorphism of $\R^n$ onto itself, so
+    \begin{align*}
+        v(T) &= \int_T 1 \\
+             &= \int_S |\det Dg| \\
+             &= \int_S |\det A| \\
+             &= |\det A| \int_S 1 \\
+             &= |\det A| v(S)
+    \end{align*}
+    Or else, $\det A = 0$, so the dimension of $T$ is less than $n$. $V$ has measure zero in $\R^n$, hence
+    $$v(T) = 0 = |\det A| = |\det A| v(S)$$
+\end{proof}
+
+\begin{defn}
+    Let $a_1, \dots, a_k$ be linearly independent vectors in $\R^n$. We define the $k$ dimensional parallelpiped $P = P(a_1, \dots, a_k)$ be the set of all $x \in \R^n$ such that
+    $$x = \sum_i c_i a_i, 0 \leq c_i \leq 1$$
+\end{defn}
+
+\begin{thm}
+    Let $a_1, \dots, a_n$ be $n$ linearly independent vectors in $\R^n$. Let $A = [a_1, \dots, a_n]$ be an $n\times n$ matrix. Then $v(P) = |\det A|$.
+\end{thm}
+
+\begin{proof}
+    Consider the linear transformation $h(x) = Ax$. Then $h(e_i) = a_i$, so $h$ carries the unit cube to $P$. Then the previous theorem shows that
+    $$v(P) = |\det A|v(I) = |\det A|$$
+\end{proof}
+
+\begin{defn}
+    (Probably useless) Let $V$ be an $n$ dimentional vector space. An $n$ tuple $(a_1, \dots, a_n)$ of linearly independent vectors in $V$ is called an \textit{n-frame} in $V$. In $\R^n$, we call it right-handed if $\det[a_1, \dots, a_n] > 0$, and vice versa. An \textbf{orientation} is a choice of either the set of right- or left-handed frames.
+\end{defn}
+
+More generally, choose a linear isomorphism $T:\R^n \rightarrow V$ and define one orientation of $V$ to consist of all frame $(T(a_1), \dots, T(a_n))$ for $(a_1,\dots,a_n)$, a right-handed frame in $\R^n$.
+
+\begin{ex}
+    In $\R$, a frame is just one number, whose orientation depends on its sign. In $\R^2$, it is when $a_2$ is $0$ to $\pi$ counterclockwise from $a_1$. In $\R^3$, this is if $a_1 \times a_2$ points "in the direction of" $a_3$, i.e. the dot product is positive.
+\end{ex}
+
+\begin{thm}
+    Let $C$ be an $n\times n$ nonsingular matrix. Let $h: \R^n \rightarrow \R^n$ be $h(X) = Cx$. Let $(a_1, \dots, a_n)$ be a frame in $\R^n$. If $\det C > 0$, then $(a_1, \dots, a_n)$ and $(h(a_1), \dots, h(a_n))$ have the same orientation. If $\det C < 0$, they have opposite orientation.
+\end{thm}
+
+\begin{proof}
+    Let $b_i = h(a_i)$. Then $C[a_1, \dots, a_n] = [b_1, \dots, b_n]$, and $\det(C)\det(A) = \det(B)$. The rest is trivial.
+\end{proof}
+\end{document}

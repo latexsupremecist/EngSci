@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 42}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Manifolds}
+
+A $k$ dimensional manifold in $\R^k$ is a set $M^k \in \R^n$ with the property that $\forall p \in M^k \exists \alpha: U \rightarrow \R^n$ wwith $\alpha(U)  = V \subseteq M^k$ with open $U \subseteq \R^k, V \subseteq M^k$ satisfying
+
+\begin{enumerate}
+    \item $\alpha \in C^r$
+    \item $\alpha$ is one-to-one
+    \item $\alpha^{-1}$ is continuous
+    \item The rank of $D\alpha$ is $k$
+\end{enumerate}
+
+We call $\alpha$ a coordinate chart.
+
+\begin{ex}
+    Consider the map $\pi$ from the surface of a sphere to the $\R^2$ plane by means of a line connecting the north pole to said point and finding its intersection with the $\R^2$ plane. This is \textit{not} a coordinate chart, but $\pi^{-1}$ is. Then $\mathbb{S}^2$ is a manifold without boundary.
+\end{ex}
+
+\textit{Note: If you think $\alpha$ preserves distance, you need to seek medical help.}
+
+\begin{ex}[Ellipsoid]
+    Is $\{\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1\} \subset \R^3$ an open manifold? It is, if you use tangent planes.
+\end{ex}
+
+\begin{ex}[Parabaloid]
+    Is $\{z = 5x^2 + 7y^2\} \subset \R^3$ a manifold? It is. Define
+    $$\alpha(x,y) = (x,y,5x^2 + 7y^2)$$
+    It is obvious that $\alpha$ is continuous. Its inverse is also continuous (preimage of open set is open). Finally,
+    $$D\alpha = \begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 10x & 14y \end{pmatrix}$$
+    which has rank 2, since its (only) two columns are linearly independent.
+\end{ex}
+
+Consider any $C^r$ function $f: U \rightarrow \R$, where $U \subseteq \R^k$ is open. Similar to the example above, the graph of $f$ is a $k$ dimensional manifold in $\R^{k+1}$. \\
+
+Now we see why every condition is needed. The rank being $k$ means that there are $k$ "directions" locally, and that they are all smooth. If not, the image of $U \subseteq \R^k$ under $\alpha$ has less than $k$ dimensions, so it doesn't make sense to call it a $k$ dimensional manifold. Without $C^r$, a cone can be a manifold, which is weird because of its vertex.
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 5}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Summary}
+
+\textit{Note: These are all from the previous lecture}
+
+\begin{align*}
+    \tilde V(z) &= V_0^+ e^{-\gamma d} + V_0^-e^{\gamma d} \\
+    \tilde I(z) &= \frac{V_0^+}{Z_0} e^{-\gamma d} - \frac{V_0^-}{Z_0} e^{\gamma d}
+\end{align*}
+
+$$\Gamma = \frac{Z_L - Z_0}{Z_L + Z_0} = \frac{V_0^-}{V_0^+}$$
+
+\section{Standing Waves}
+
+Replacing $z$ with $-d$, and using $\Gamma$ to reduce unknowns,
+
+\begin{align*}
+    \tilde V(d) &= V_0^+e^{j\beta d} \left(1 + \Gamma e^{-j2\beta d}\right) \\
+                &= \frac{V_0^+}{Z_0} e^{j\beta d} \left(1 - \gamma e^{-j2\beta d}\right)
+\end{align*}
+
+The standing wave pattern is the "envelope", or $|\tilde V(d)|$, which can be expressed as
+$$|\tilde V(d)| = |V_0^+||1 + \Gamma e^{-j2\beta d}|$$
+
+\begin{defn}[Distance Dependent Reflection Coefficient]
+    $$\Gamma_d = \Gamma e^{-j2\beta d}$$
+\end{defn}
+
+The maxima is obviously when $\Gamma_d$ is real. The distance between two successive maxima is then $\frac{\pi}{\beta} = \frac{\lambda}{2}$. This explains why the standing wave pattern is constant when there is no reflection; $\Gamma = 0$. One can also determine, since $\Gamma$ has a negative sign for current, that the standing wave for current is out of phase (by exactly $\pi$), so it forms a destructive interference pattern with that of voltage.
+
+\section{Impedance Transformation}
+
+\begin{align*}
+    Z(d) &= \frac{\tilde V(d)}{\tilde I(d)} \\
+         &= Z_0 \frac{1 + \Gamma_d}{1 - \Gamma d}
+\end{align*}
+
+\textit{To be continued...}
+\end{document}

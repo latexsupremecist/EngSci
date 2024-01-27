@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 41}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integration over k Volumes}
+
+Recall we defined, for a $k < n$ dimensional subspace $A \in \R^n$ with a $C^r$ map $\alpha: A \rightarrow \R^n$, that
+
+$$\int_{\alpha(A)} f = \int_A f\circ\alpha V(D\alpha)$$
+
+provided that it exists.
+
+\begin{thm}
+    The above definition is consistent, i.e. the volume is independent of reparametrisation. Let $g:A \rightarrow B$ be a diffeomorphism of open sets in $\R^k$, and $\beta:B \rightarrow \R^n$ be a $C^r$ function, with $Y = \beta(B)$. Letting $\alpha = \beta\circ g$, we have $Y = \alpha(A)$. Then the integral using $\alpha$ or $\beta$ are equivalent.
+\end{thm}
+
+\begin{proof}
+    We want to show that
+    $$\int_B (f\circ\beta)V(D\beta) = \int_A (f\circ\alpha)V(D\alpha)$$
+    where one exists if the other does. From $B$, change of variables give us
+    \begin{align*}
+        \int_B (f\circ\beta)V(D\beta) &= \int_A ((f\circ\beta)\circ g)(V(D\beta)\circ g)|\det Dg| \\
+                                      &= \int_A (f\circ\alpha) \sqrt{\det(D\beta(g(x))^tD\beta(g(x)))}\sqrt{\det(Dg^tDg)} \\
+                                      &= \int_A (f\circ\alpha) \sqrt{\det(Dg^tD\beta(g(x))^tD\beta(g(x))Dg)} \\
+                                      &= \int_A (f\circ\alpha) \sqrt{\det(D\alpha^t\det(D\alpha))} \\
+                                      &= \int_A (f\circ\alpha) V(D\alpha)
+    \end{align*}
+    The equation holds if the left hand size exists. Since $g^{-1}$ is also a diffeomorphism, this can be repeated in the opposite direction to show that the equation holds when the right hand side exists instead.
+\end{proof}
+
+\section{Parametrisations}
+
+\begin{ex}[Sphere]
+    The parametrisation of the surface of a sphere is as follows. Consider a sphere lying on a plane. There is a diffeomorphism between non North Pole points on the sphere with points on the plane; this is done by drawing a straight line from the North Pole to the point on the sphere, and extending it until it intersects with the plane. We "lose" one point on the sphere, but this is fine, since it has no volume.
+\end{ex}
+
+\begin{ex}[Hemisphere]
+    Simply project it onto any 2D plane.
+\end{ex}
+
+\section{Manifolds}
+
+\begin{defn}[$k$ Manifolds]
+    A $k$ manifold $M^k$ is a set such that $\forall p \in M^k \exists$ an open subset $p \in \Omega \subseteq M^k$ and an open $U \in \R^k$ where there is a continuous one-to-one map $\alpha: U \rightarrow \Omega$ such that $\alpha$ is $C^r$, its inverse is continuous, and $D\alpha(x)$ has rank $k$ in its domain $x \in U$.
+\end{defn}
+

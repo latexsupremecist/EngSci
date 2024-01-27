@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 4}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Propagating Standing Waves in a Transmission Line}
+
+\subsection{Summary up till Now}
+
+\begin{align*}
+    \tilde V(z) &= V_0^+ e^{-\gamma d} + V_0^-e^{\gamma d} \\
+    \tilde I(z) &= \frac{V_0^+}{Z_0} e^{-\gamma d} - \frac{V_0^-}{Z_0} e^{\gamma d}
+\end{align*}
+
+$$\gamma = \sqrt{(R'+j\omega L')(G'+j\omega C')} = \alpha + j\beta$$
+
+The phase velocity is $v_p = \frac{\omega}{\beta}$, and the wavelength is $\lambda = \frac{2\pi}{\beta}$.
+
+\subsection{Transmission Line Circuit}
+
+Consider a lossless TL, with $Z_0 = \sqrt{\frac{L'}{C'}}, \gamma = j\beta$. At $z = 0$,
+$$\tilde V(z=0) = V_L = V_0^+ + V_0^-$$
+$$\tilde I(z=0) = \tilde I_L = \frac{V_0^+ - v_0^-}{Z_0}$$
+and
+$$Z_L = Z_0 \frac{V_0^+ + V_0^-}{V_0^+ - V_0^-}$$
+
+\begin{defn}[Reflection Coefficient]
+    $$\Gamma = \frac{Z_L - Z_0}{Z_L + Z_0} = \frac{V_0^-}{V_0^+}$$
+\end{defn}
+
+Note that $Z_L = Z_0 \Rightarrow \Gamma = 0 \Rightarrow V_0^- = 0$. This means that there is no reflection, and there is only the plus wave. The following relation is instantly satisfied
+
+$$Z_0 = \frac{\tilde V}{\tilde I}$$
+
+In an open circuit, $Z_L = \infty, \Gamma = 1, V_0^+ = V_0^-$, and so
+$$\tilde V(z) = V_0^+(e^{-j\beta z} + e^{j\beta z}) = 2V_0^+\cos(\beta z)$$
+and
+$$\tilde I(z) = \frac{V_0^+}{Z_0}[e^{-j\beta z} - e^{j\beta z}] = -\frac{2jV_0^+}{Z_0} \sin(\beta z)$$
+
+\begin{defn}[Standing Wave Ratio]
+    $$S = \frac{|\tilde V|_{\text{max}}}{|\tilde V|_{\text{min}}}$$
+\end{defn}
+
+For a matched line, $|\tilde V(z)| = |V_0^+|$, so $S = 1$. For an open circuit, $|\tilde V(z)| = 2|V_0^+||\cos(\beta z)|$, so $S = \infty$.
+\end{document}

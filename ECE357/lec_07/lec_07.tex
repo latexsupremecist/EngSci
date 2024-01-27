@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 7}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Transients in Tranmission Lines}
+
+For a DC source, $\beta = \frac{2\pi}{\lambda} = 0$, so
+
+\begin{align*}
+    Z_{in} &= Z_0 \frac{Z_L + jZ_0\an(\beta l)}{Z_0 + jZ_L \tan(\beta l)} \\
+           &= Z_0 \frac{Z_L}{Z_0} \\
+           &= Z_L
+\end{align*}
+
+Before steady state, we have "waves" of voltage "correction" that look like travelling step functions. This is because no information can travel faster than the speed of light; it takes time for the current to "know" that the generator voltage has changed. Defining $R_0, R_g, R_L$ to be the resistances of the transmission line, generator, and load respectively, the first wave is
+$$v_1^+ = v_g \frac{R_0}{R_g + R_0}$$
+When the wave passes, a reflected wave comes back and lowers the voltage
+$$v_1^- = \Gamma_L v_1^+$$
+where we define
+$$\Gamma_L = \frac{R_L - R_0}{R_L + R_0}$$
+The second positive wave is then
+$$v_2^+ = \Gamma_g v_1^-$$
+where
+$$\Gamma_g = \frac{R_g - R_0}{R_g + R_0}$$
+and so on. One can prove that the final voltage, or the sum, is
+$$V = \frac{1}{1 - \Gamma_g\Gamma_L}$$
+This is equivalent to our initial findings at steady state.
+\end{document}

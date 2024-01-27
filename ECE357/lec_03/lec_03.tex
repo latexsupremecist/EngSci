@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 3}
+\begin{document}
+
+\section{Waves in Transmission Lines}
+
+\textit{Note: variables with a tilde denote phasors.}
+
+Recall we have
+
+\begin{align}
+    -\del{v}{z} &= R'i + L'\del{i}{t} \\
+    -\del{i}{z} &= G'v + C'\del{v}{t}
+\end{align}
+
+Using phasors and assuming
+$$v(z,t) = \Re\{V(z)e^{j\omega t}\}$$
+and similarly for $i$, we can solve for $\tilde V$ and $\tilde I$. Defining
+
+\begin{equation}
+    \gamma = \sqrt{(R'+j\omega L')(G'+j\omega C')} = \alpha + j\beta
+\end{equation}
+
+\begin{defn}[Characteristic Impedance]
+    The characteristic impedance is defined to be
+    \begin{equation}
+        Z_0 = \frac{R' + j\omega L'}{\gamma}
+    \end{equation}
+    which is the quotient of $V_0^+$ and $I_0^+$.
+\end{defn}
+
+Note for lossless lines, $Z_0 = \sqrt{\frac{L'}{C'}}$, and it is real. However, a lossy line can still have a real $Z_0$.
+
+\section{Physical Meaning of $v,i$ on a Transmission Line}
+
+Recall
+
+$$\tilde V^+ = V_0^+ e^{-\gamma z} + V_0^-e^{\gamma z}$$
+
+Focusing on the first term,
+
+$$\tilde V^+ = |V_0^+|\exp(j\phi_+ - \alpha z - j\beta z)$$
+
+Going back to the time domain,
+
+\begin{align*}
+    v^+(z,t) &= \Re\{|V_0^+|\exp(j\phi_+ - \alpha z - j\beta z + j\omega t)\} \\
+             &= |V_0^+|e^{-\alpha z} \cos(\omega t - \beta z + \phi_+)
+\end{align*}
+
+This is periodic in time and space. Period in time is $T = \frac{2\pi}{\omega}$, and wavelength is $\lambda = \frac{2\pi}{\beta}$. Without loss of generality, let $\phi_+ = 0$. Phase velocity is $\frac{\lambda}{T}$, or $v = f\lambda$.
+\end{document}

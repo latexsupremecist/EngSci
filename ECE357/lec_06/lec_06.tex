@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Wave Impedance}
+
+Recall
+
+\begin{align*}
+    \tilde V(d) &= V_0^+ e^{j\beta d}[1 + \Gamma e^{-j2\beta d}] \\
+    \tilde I(d) &= \frac{V_0^+}{Z_0} e^{j\beta d}[1 - \Gamma e^{-j2\beta d}]
+\end{align*}
+
+where the reflection coefficient is
+$$\Gamma = \frac{Z_L - Z_0}{Z_L + Z_0}$$
+
+If we look at the standing waves, or the (time) maximum of $|\tilde V(d)|, |\tilde I(d)|$, they have a wavelength half of that of the voltage/current. Voltage and current are out of phase by $\pi$.
+
+\begin{defn}[Standing Wave Ratio]
+    The standing wave ratio is
+    $$S = \frac{|\tilde V|_\text{max}}{|\tilde V|_\text{min}} = \frac{1 + |\Gamma|}{1 - |\Gamma|}$$
+    For a matched line, $S = 1 = 0\unit{dB}$. For an open circuit, $|\Gamma| = 1, S = \infty = -\infty \unit{dB}$.
+\end{defn}
+
+Recall the reactance is positive for inductors and negative for capacitors. Then
+$$\Gamma = \frac{jX - Z_0}{jX + Z_0} \Rightarrow |\Gamma| = 1$$
+
+\begin{defn}[Wave Impedance]
+    $$Z(d) = \frac{\tilde V(d)}{\tilde I(d)} = Z_0 \frac{1 + \Gamma_d}{1 - \Gamma_d}$$
+\end{defn}
+
+\begin{defn}[Input Impedance]
+    $$Z_i = Z(d=l) = Z_0 \frac{Z_L + jZ_0\tan(\beta l)}{Z_0 + jZ_L\tan(\beta l)}$$
+\end{defn}
+
+\begin{ex}
+    For $v_g = 10\unit{V}, R_g = 50\unit{\Omega}, l = 2.25 \lambda, Z_0 = 50\unit{\Omega}, v_p = 3 \times 10^8 \unit{m.s^{-1}}, f = 1\unit{GHz}, Z_L = 100 + j75 \unit{\Omega}$, we get \\
+    wavelength: $\lambda = \frac{v_p}{f} = 30\unit{cm}$ \\
+    length: $l = 2.25\lambda = 67.5\unit{cm}$ \\
+    Reflection coefficient: $\Gamma = \frac{100 + j75 - 50}{100 + j75 + 50} = 0.537e^{j29.7^\circ}$ \\
+    To solve for input impedance, first note
+    $$\beta l = \frac{2\pi}{\lambda} \times 2.25 \lambda = 4.5 \pi$$
+    Then
+    $$Z_i = Z_0 \times \frac{Z_L + jZ_0\tan(4.5\pi)}{Z_0 + jZ_L\tan(4.5\pi)} = Z_0 \times \frac{Z_L + jZ_0\infty}{Z_0 + jZ_L\infty} = \frac{Z_0^2}{Z_L}$$
+    Plugging the numbers in, this gives $Z_i = 16 - j12\unit{\Omega}$. Note that the addition of the transmission line turns the imaginary component of the load from positive to negative. In other words, the load goes from a resistor and inductor in series to a resistor and capacitor in series. This equivalent circuit is $V_g, Z_0, Z_i$ in series. This makes it trivial to find $V_i$, which is
+    $$V_i = 10 \times \frac{16 - j12}{66 - j12} = 298 e^{-j26.6^\circ}\unit{V}$$
+    But then this is equal to $V_0^+ e^{j\beta l}(1 + \Gamma e^{-j2\beta l})$. Plugging $\beta l = 4.5\pi$, we get
+    $$V_i = V_0^+j(1-\Gamma)$$
+    which gives $V_0^+$.
+\end{ex}
+
+\end{document}

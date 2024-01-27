@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\author{niceguy}
+\title{Lecture 36}
+\begin{document}
+\maketitle
+
+\section{Change of Variables Theorem}
+
+Let $g:A \rightarrow B$ be a diffeomorphism and $f:B \rghtarrow \R$ be continuous, where $A, B$ are open subsets of $\R^n$. Then $f$ is integrable over $B$ iff $(f\circ g) |\det Dg|$ is integrable over $A$ and
+$$\int_A (f\circ g) |\det Dg| = \int_B f$$
+
+In fact, it suffices to prove one direction of the theorem, namely the $\Rightarrow$ direction.
+
+\begin{thm}
+    If the $\Rightarrow$ direction holds, so does the opposite direction.
+\end{thm}
+
+\begin{proof}
+    We are given that $g$ is a diffeomorphism; then its inverse is also a diffeomorphism. Define
+    $$F(x) \equiv (f\circ g)|\det Dg|$$
+    Considering $g^{-1}$, the assumption of the theorem states that
+    $$\int_A F = \int_B \left(F\circ g^{-1}\right) |\det Dg^{-1}|$$
+    Rewriting this in terms of $f$,
+    \begin{align*}
+        \int_B \left(F\circ g^{-1}\right) |\det Dg^{-1}| &= \int_B \left(f\circ g \circ g^{-1}\right) |\det Dg|\left(g^{-1}(x)\right) |\det Dg^{-1}|(x) \\
+                                                         &= \int_B f(x)
+    \end{align*}
+    where the determinants cancel out. This can easily be proven by differentiating $g\circ g^{-1}$ and applying the chain rule.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 39}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+Consider linear subspaces $Y^k \subseteq \R^n$. We want to define notions of objects and functions \textbf{only} over $V^k$. A special case is $V^k = \R^k \times \{0\}^{n-k} \subset \R^n$. What do we do beyond that? We need isometries.
+
+\section{Isometries}
+
+\begin{defn}[Isometry]
+    $\Phi:\R^n \rightarrow \R^n$ is an isometry when
+    $$||\Phi(x) - \Phi(y)|| = ||x - y||$$
+    In other words, isometries preserve \textit{distance}.
+\end{defn}
+
+We can simply have such a $\Phi$ where $\Phi(V^k) = \R^k \times \{0\}^{n-k}$.
+
+\begin{ex}
+    If such a map is a linear transformation, it is unitary by definition.
+\end{ex}
+
+Linear transformations are isometries iff they are unitary (vectors in matrix form orthonormal basis). It suffices to choose an orthonormal basis of $V^k$.
+
+\end{document}
