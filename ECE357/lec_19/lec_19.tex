@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 19}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Plane Waves}
+
+E\&M phasors satisfy
+
+\begin{align*}
+    (\nabla^2 + k^2)\tilde{\vec E} &= 0 \\
+    (\nabla^2 + k^2)\tilde{\vec H} &= 0
+\end{align*}
+
+where
+$$k^2 = \omega^2\varepsilon_c\mu, \varepsilon_c = \varepsilon_0\varepsilon_r + \frac{\sigma}{j\omega}$$
+
+For a lossless medium $\sigma = 0$, 
+$$\tilde{\vec E} = \tilde E_x(z)\hat z \Rightarrow \tilde E_x(z) = E_x^+e^{-jkz} + E_x-e^{jkz}$$
+
+Plugging into Faraday's Law, we can solve for $\tilde{\vec H}$:
+
+$$\tilde{\vec H} = \left(\frac{k}{\omega\mu}E_x^+e^{-jkz} - \frac{k}{\omega\mu}E_x^-e^{jkz}\right)\hat y$$
+
+\begin{defn}[Intrinsic Impedance]
+    $$\eta = \frac{\omega\mu}{k} = \sqrt{\frac{\mu}{\varepsilon}}$$
+\end{defn}
+
+In free space, $\eta = \eta_0 = 120\pi\unit{\Omega} \approx 377\unit{\Omega}$. Then substituting,
+$$\tilde{\vec H} = \left(\frac{E_x^+}{\eta}e^{-jkz} - \frac{E_x^-}{\eta}e^{jkz}\right)$$
+
+If we only look at the + components, we can similarly find wave propogation speed, which is
+$$v_p = \frac{\omega}{k} = \frac{1}{\sqrt{\varepsilon\mu}}$$
+
+\begin{defn}[Wavevector]
+    The wavevector $\vec k$ is a vector with magnitude $k$ (as how we define wavenumbers) in the direction of wave propogation.
+\end{defn}
+
+\section{General Plane Waves}
+
+We shall solve the Helmholz equations for lossless media in general. We first solve it for an arbitrary component $\tilde E_x$. The solution is (by observation)
+
+$$\tilde E_x = E_x e^{-jk_xx} e^{-jk_yy} e^{-jk_zz}$$
+and $k_x^2 + k_y^2 + k_z^2 = k^2$.
+\end{document}

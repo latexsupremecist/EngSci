@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 5}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Lagrange Multipliers}
+
+If we have a $g: \R^n \rightarrow \R^n$, and $M = g^{-1}(0), Dg(a)$ has full rank for $a \in M$, then $M$ is a manifold. (We have shown this before). The tangent space is
+$$T_aM = \ker \nabla g(a)$$
+
+Consider a function $f$ over a closed manifold $M$, where $M = g^{-1}(0)$ and we want to minimise/maximise $f$ over $M$. Think of expanding/contracting level sets of $f$. When they first intersect $M$, there is only one intersection point locally (usually), so it has to be on a tangent plane of the level curve. The same holds for $M$. Then the derivatives of $f$ and $g$ at $a$ are parallel.
+
+\begin{thm}
+    Given $U \subseteq \R^n$ open, with $g: U \rightarrow \R^p$ be $C^1$, $f:U \rightarrow \R$ be a differentiable function. Suppose $f$ has a local extrema on $g^{-1}(0)$ at a point $a$. Then $\exists \lambda_1,\dots,\lambda_p \in \R$ such that
+    $$Df(a) = \lambda_i\nabla g_i(a)$$
+    or
+    $$\del{f}{x_j} = \lambda_i \del{g_i}{x_j}$$
+    at $a \forall j = 1,\dots,n$ and $g_i(a) = 0$.
+\end{thm}
+
+\textit{Manifolds are level sets locally; use the inverse coordinate chart.}
+
+\begin{ex}
+    Maximise $xy$ subject to $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$. \\
+    \begin{align*}
+        Df &= \lambda Dg \\
+        (y, x) &= \lambda \left(\frac{2x}{a^2}, \frac{2y}{b^2}\right) \\
+        \frac{ya^2}{2x} &= \frac{xb^2}{2y} \\
+        a^2y^2 &= x^2b^2
+    \end{align*}
+    Multiplying the constraint by $a^2b^2$,
+    $$x^2b^2 + y^2a^2 = a^2b^2 = 2x^2b^2 \Rightarrow x = \pm\frac{a}{\sqrt{2}}, y = \pm\frac{b}{\sqrt{2}}$$
+\end{ex}
+
+\begin{ex}
+    Prove that
+    $$uv \leq \frac{1}{\alpha} u^\alpha + \frac{1}{\beta} v^\beta \forall u,v \geq 0, \alpha,\beta > 0$$
+    such that $\frac{1}{\alpha} + \frac{1}{\beta} = 1$. \\
+If either vanishes, then this is true, so we can assume both are strictly positive. Note that the inequality holds for $U,V$ iff it holds for $u = Ut^{\frac{1}{\alpha}}, v = Vt^{\frac{1}{\beta}} \forall t > 0$. If it holds for $UV$, then
+    \begin{align*}
+        uv &= UVt^{\frac{1}{\alpha} + \frac{1}{\beta}} \\
+           &= UVt \\
+           &\leq t\left(\frac{1}{\alpha}U^\alpha + \frac{1}{\beta}V^\beta\right) \\
+           &= \frac{1}{\alpha} u^\alpha + \frac{1}{\beta} v^\beta
+    \end{align*}
+    If it holds for $uv$, putting $t=1$ suffices. This means it suffices to show this for $uv = 1$, since if $uv = t, UV = 1$. We want to show
+    $$1 \leq \frac{1}{\alpha} u^\alpha + \frac{1}{\beta} v^\beta$$
+    We can start by minimising the right hand side with the constraint that $uv = 1$. Then
+    \begin{align*}
+        Df &= \lambda Dg \\
+        (u^{\alpha-1}, v^{\beta-1}) &= \lambda(v, u) \\
+        \frac{u^\alpha}{uv} &= \frac{v^\beta}{uv} \\
+        u^\alpha &= v^\beta
+    \end{align*}
+    In fact, this is equal to $\lambda$. Then $1 = uv = \lambda^{\frac{1}{\alpha}}\lambda^{\frac{1}{\beta}} = \lambda$. So $u = v = 1$, which gives the equality.
+\end{ex}
+
+\begin{ex}
+    Let $M = g^{-1}(0)$ be a manifold, where
+    $$g(x,y,z,w) = (x^2 + y^2 + z^2 - 2, y^2 + z^2 + w^2 - 3)$$
+    Find points of $M$ closest to $(0,\sqrt 2,\sqrt 2,0)$. \\
+    First we find the gradients
+    $$Df = (2x, 2(y-\sqrt{2}), 2(z-\sqrt{2}),2w)$$
+    and
+    $$Dg_1 = (2x,2y,2z,0), Dg_2 = (0,2y,2z,2w)$$
+    Now $Dg_1,D_g2$ must be linearly independent, else $x = w = 0$, but then this point cannot lie in $M$. Comparing the first and last coefficients, $\lambda_1 = \lambda_2 = 1$ if $x, y \neq 0$. Then $y = z = -\sqrt 2$, but $w \notin \R$. If $w = 0$, then $y^2 + z^2 = 3 \Rightarrow x^2 + 1 = 0$. If $x = 0$, then $y^2 + z^2 = 2 \Rightarrow w^2 = 1$. The points are
+    $$(0, \pm 1, \pm 1, \pm 1), (0, \pm 1, \pm 1, \mp 1)$$
+\end{ex}
+
+\end{document}

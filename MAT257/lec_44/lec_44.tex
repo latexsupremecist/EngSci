@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 44}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{General Definition of a Manifold}
+
+Recall that for a general manifold, we need only a chart from an open set in $\R^k_+$ to a neighbourhood of $P \in M^k$. A set is open in $\R^k_+$ when it is the intersection between an open set in $\R^k$ and the set $R^k_+$ itself.
+
+\begin{lem}
+    Let $f: S\subseteq \R^m \rightarrow \R^k$, and suppose
+\end{lem}
+
+\begin{defn}[Transition Functions]
+    Consider two coordinate patches $\alpha_0, \alpha_1$, where each map from $U_i$ to $V_i$ respectively, and $W = V_1 \cap V_0 \neq \emptyset$. Letting $W_i = \alpha_i^{-1}(W)$, we define $\alpha_1^{-1}\alpha_0$ to be the transition function.
+\end{defn}
+
+\begin{proof}
+    Assume it admits an extension to an open set in $\R^k$. This is $U$ itself if it is already open in $\R^k$. We will only (possibly) use the extension at a boundary point, where the derivative is determined (see last lecture). Therefore there is no confusion in labelling it (still) as $\alpha_i$. Let $\alpha^{-1}(p_0) = z_0$. $D\alpha(x_0)$ has rank $k$, and this has to be true for an open neighbourhood of $x_0$. This is because we can find $k$ column vectors that are linearly independent; the determinant, a continuous function, has to be locally nonzero, so the vectors are still linearly independent. Let $\pi: \R^n \rightarrow \R^k$ be the map that preserves exactly these $k$ coordinates. Then $g = \pi \circ \alpha$ has a nonsingular derivative. By the inverse function theorem, $g,g^{-1}$ are $C^r$, Then take a small open neighbourhood of $A$ of $\R^n$ containing $p$, and define
+\end{proof}
+
+\end{document}

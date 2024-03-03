@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 3}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Hamiltonian}
+
+Recall the example from the last lecture, where there is a rod with length $l$ rotating with an angular velocity $\omega$ at one end, with a mass on a spring on the other end, such that the spring is always parallel with $\hat\theta$. The Lagrangian is
+
+$$\mathcal L = \frac{1}{2}m\left(\dot r^2 + r^2\omega^2 + 2l\dot r\omega\right) + \frac{1}{2} kr^2$$
+
+The Hamiltonian is
+
+\begin{align*}
+    H &= p\dot q - \mathcal L \\
+      &= \del{L}{\dot r}\dot r - \mathcal L \\
+      &= (m\dot r + ml\omega)\dot r - \frac{1}{2}m\left(\dot r^2 + r^2\omega^2 + 2l\dot r\omega\right) + \frac{1}{2} kr^2 \\
+      &= \frac{1}{2} m\dot r^2 - \frac{1}{2} mr^2\omega^2 + \frac{1}{2}kr^2
+\end{align*}
+
+The Hamiltonian is not equal to total energy $T + V$! This is because there is a driving force from $\omega$.
+
+\section{}
+
+Consider a mass $m_T$ lying on a table, and a mass $m_H$ under the table. Both masses are connected by a piece of inelastic string through a hole in the table. Assume $m_H$ is always directly beneath the hole. Letting $r,\theta$ be the coordinates of $m_T$ with the hole being the origin,
+
+\begin{align*}
+    T &\equiv \frac{1}{2}m(\dot x^2 + \dot y^2 + \dot z^2) \\
+      &= \frac{1}{2}m_T (\dot r^2 + r^2\dot\theta^2) + \frac{1}{2}m_H\dot r^2
+\end{align*}
+
+$$V = -m_Hgr$$
+
+and
+
+$$\mathcal L = \frac{m_T}{2}(\dot r^2 + r^2\dot\theta^2) + \frac{m_H\dot r^2}{2} - m_Hgr$$
+
+\begin{align*}
+    \frac{d}{dt}\left(\del{L}{\dot\theta}\right) &= \del{L}{\theta} \\
+    \frac{d}{dt} m_Tr^2\dot\theta &= 0
+\end{align*}
+
+and
+
+\begin{align*}
+    \frac{d}{dt}\left(\del{L}{\dot r}\right) &= \del{L}{r} \\
+    \frac{d}{dt} (m_T + m_H)\dot r &= m_Tr\dot\theta^2 - m_Hg \\
+    (m_T + m_H)\ddot r &= \frac{L^2}{m_Tr^3} - m_Hg
+\end{align*}
+
+At equilibrium, $\dot r = 0$, and this simplifies to
+$$m_Hg = m_Tr\dot\theta^2$$
+at $r = r_0$. If we introduce a pertubation,
+
+\begin{align*}
+    (m_T + m_H)\ddot r &= \frac{L^2}{r_0^3m_T\left(1 + \frac{\delta r}{r_0}\right)^3} - m_Hg \\
+                       &= \frac{L^2}{r_0^3m_T} \left(1 - 3\frac{\delta r}{r_0}\right) - m_Hg
+\end{align*}
+
+Comparing this with the original expression,
+$$\Delta (m_T + m_H)\ddot r = -3\frac{\delta r}{r_0^4}\frac{L^2}{m_T}$$
+
+It is negative, so the equilibrium is stable, as expected.
+
+\section{}
+
+Consider a particle in 3D with a constant $\theta = \alpha$. Letting $r$ be the radius projected on the xy plane,
+
+$$\mathcal L = \frac{m}{2}(\dot r^2 + r^2\dot\phi^2 + \dot r^2\cot^2\alpha) - mgr\cot\alpha$$
+
+Similarly, the $\phi$ equations give
+$$mr^2\dot\phi = L$$
+and the $r$ equation gives
+$$\ddot r = r\dot\theta^2\sin^2\alpha - g\sin\alpha\cos\alpha$$
+
+At steady state,
+$$\omega = \dot\theta = \sqrt{\frac{g\cos\alpha}{r_0\sin\alpha}} = \sqrt{\frac{g}{r_0}\cot\alpha}$$
+which makes sense. If you recall coin vortex funnels, $\omega$ increases as $r$ decreases. \\
+For pertubations, first rewrite
+$$\ddot r = \frac{L^2}{m^2r_0^3}\sin^2\alpha - g\sin\alpha\cos\alpha$$
+If we want $\Delta \ddot r$, we can ignore the final constant term and the constant coefficients, so
+$$\ddot r = r^{-3}$$
+Then $\Delta\ddot r$ and $\delta r$ obviously have opposing signs, i.e. the equilibrium is stable.
+\end{document}

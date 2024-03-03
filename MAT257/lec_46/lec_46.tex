@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 46}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Manifold Examples}
+
+\begin{defn}[Manifolds]
+    A $k$ manifold is $M^k \subset \R^n$ such that $\forall P \in M^k$ there is a relatively open $V \subseteq M^k$ and a relatively open $U \subseteq \R^k$ or $\mathbb H^k$ where there exists a bijective map $\alpha: U \rightarrow V$ which is $C^r$, with a continuous inverse and $D\alpha$ having rank $k \forall x \in U$.
+\end{defn}
+
+We have derived that if all $\alpha$ has open $U \in \R^k$< then $M^k$ is a manifold without boundary. Conversely, if $\partial M^k \neq \emptyset$, then $\partial M^k$ is a $(k-1)$ manifold without boundary.
+
+\begin{ex}
+    The upper half hemisphere with $x_3 > 0$ is a manifold of 2 dimensions without boundary. That with $x_3 \geq 0$ is a manifold \textit{with} boundary, and the boundary $x_3 = 0$ is a manifold of 1 (less) dimension.
+\end{ex}
+
+\begin{ex}[Sphere without Points]
+    The set of points on the surface of a sphere, without 3 arbitrary points, is a manifold without boundary. We can always pick a small enough oepn set that doesn't contain any of the 3 arbitrary points; the projection onto the tangent plane suffices.
+\end{ex}
+
+\begin{ex}[Open set]
+    Open sets in $\R^n$ are manifolds of dimension $n$. The proof is trivial (use the identity map).
+\end{ex}
+
+It should be obvious by now that the boundary of a manifold is \textbf{not} equal to the boundary of an open set in $\R^n$. Some manifolds, e.g. compact ones, need only finitely many coordinate charts. They do not necessarily have to be compact; consider $\R^n$ itself, where the identity mapping suffices.
+
+\begin{defn}[Compactness]
+    A manifold is \textbf{compact} if it is compact in a metric space. Then can have boundaries or not.
+\end{defn}
+
+\section{Integration on Manifolds}
+
+Consider continuous function $f: M^k \rightarrow \R$, where $M^k \subset \R^n$ is compact. Then
+
+\begin{defn}[Integrals over Manifolds]
+    $$\int_{M^k} f = \sum \int_U (f\circ\alpha)(x)V[D\alpha]$$
+\end{defn}
+
+We can use change of variables to show that this definition is unique, i.e. the integral using the coordinate chart $\alpha$ is the same as that of $\beta$.
+
+\begin{thm}
+    We can "cut" cylinders to make them into squares. The discarded segment always has measure zero, so it doesn't affect the integral. It can be shown that the manifold can be written as a finite union of disjoint sets (ignoring sets of measure zero). This can be done using a partition of unity.
+    $$\int_{M^k} f = \sum_{i=1}^N \int_{\alpha_i(U_i)} \phi_i f$$
+    \textit{Note: we will never prove this.}
+\end{thm}
+
+\end{document}

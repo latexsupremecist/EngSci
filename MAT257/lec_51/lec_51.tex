@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 51}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+Recall a $k$ tensor over a linear space $V$ is the multilinear function $f: V \times \dots V \rightarrow \R$. The space of all $k$ tensors over $V$ is denoted as $\mathcal L^k(V)$, and it has a dimension of $\dim(V)^k$.
+
+\section{Permutations}
+
+Any permutation can be written (not necessarily uniquely) as compositions of $l$ elementary permutations. We define its sign to be $\tedxt{sgn}(\sigma) = (-1)^l$, and we have shown that this is independent of the choice of elementary permutations. Now permutations can operate over $\mathcal L^k(V)$, where
+$$f^\sigma(v_1,\dots,v_k) = f(v_{\sigma(1)},\dots,v_{\sigma(k)})$$
+
+\begin{defn}[Alternating Tensors]
+    $f \in \mathcal L^k(V)$ alternates if
+    $$f^\sigma = \text{sgn}(\sigma) f$$
+    Use $A^k(V)$ to denote the set of alternating tensors $f \in \mathcal L^k(V)$.
+\end{defn}
+
+Equivalently, $f^{e_i} = -f$, or $f^{\tau(i,j)} = -f$. Obviously, the first implies the second if we define $\sigma = e_i$. The second implies the third, since $\tau(i,j)$ can always be written as an odd number of elementary operations $2|i-j| - 1$. The third implies the second which implies the first, since $\sigma$ can be written as a number of elementary operations consistent with its sign.
+
+\begin{lem}
+    If $k > n$, then $A^k(V) = \{0\}$.
+\end{lem}
+
+\begin{proof}
+    If $k > n$, then there is at least one vector in $v_1,\dots,v_k$ which is the linear combination of the others. Since $f$ is multilinear, for any input $v_1,\dots,v_k$ can be written as a linear combination of $f$ with 2 identical entries. Swapping the entries reverses the sign of $f$, yet the value of $f$ remains the same since the entries are the same. Then $f = 0$.
+\end{proof}
+
+If $k = n$, this is not true. The determinant is an example. \\
+
+Our next challenge is to find the dimension and basis of $A^k(V)$.
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 20}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Plane Waves}
+
+We can simplify the general solution as such
+
+$$\tilde{\vec E} = \vec E_0e^{-jk_xx}e^{-jk_yy}e^{-jk_zz} = \vec E_0e^{-j\vec k \cdot \vec R}$$
+
+Gauss Law for plane-waves gives (with no charge density)
+
+\begin{align*}
+    \vec\nabla \cdot \tilde\vec D &= \rho_v \\
+                                  &= 0 \\
+    \vec\nabla(\varepsilon\tilde{\vec E}) &= 0 \\
+    \vec\nabla(\vec E_0e^{-j\vec k \cdot \vec R}) &= 0 \\
+    -j\vec k \cdot \vec E_0 e^{-j\vec k \cdot \vec R} &= 0
+\end{align*}
+
+so $\vec k, \vec E$ are perpendicular. Since $\vec H$ is proportional to $\vec k \times \vec E$, these vectors form a right-handed triplet.
+
+\begin{ex}
+    Plane wave propogates on the $x-z$ plane at an angle of $\varphi = 30^\circ$ from the $x$ axis, and $|\vec E| = 1\unit{V.m^{-1}}, E_y = 0$. What is $\tilde{\vec E}, \tilde{\vec H}$? Frequency is $f = 3\unit{GHz}, \varepsilon_r = 1, \mu_r = 1$. \\
+    It is easy to find $\tilde{\vec E}$ given the direction.
+    $$\tilde{\vec E} = \left(-\frac{1}{2}\hat x + \sqrt{3}\frac{}{2}\hat z\right) e^{-jk_xx-jk_zz}$$
+    Phase velocity is
+    $$\frac{1}{\sqrt{\varepsilon\mu}} = \frac{c}{\sqrt{\varepsilon_r\mu_r}} = 1.5 \times 10^8$$
+    Wavelength is thus
+    $$\lambda = \frac{v_p}{f} = \frac{1.5\times10^8}{3\times10^9} = 0.05\unit{m} = 5\unit{cm}$$
+    The magnitude of $k$ is $\frac{2\pi}{\lambda} = 40\pi\unit{m}$. Substituting,
+    $$\tilde{\vec E} = \left(-\frac{1}{2}\hat x + \sqrt{3}\frac{}{2}\hat z\right) e^{-j40\pi(\sqrt{3}x/2 + z/2)}$$
+    Now
+    $$\eta = \sqrt{\frac{\mu}{\varepsilon}} = 120\pi \times \sqrt{\frac{1}{4}} = 60\pi\unit{\Omega}$$
+    Combining, we have
+    \begin{align*}
+        \tilde{\vec H} &= \frac{\hat k \times \tilde{\vec E}}{\eta} \\
+                       &= \frac{1}{60\pi} \left(\sqrt{3}\frac{}{2}\hat x + \frac{1}{2}\hat z\right) \times (\tilde E_x\hat x + \tilde E_z\hat z) \\
+                       &= \frac{\hat i}{60\pi} \left(-\sqrt{3}\frac{1}{2} \tilde E_z + \frac{1}{2} \tilde E_x\right)
+    \end{align*}
+\end{ex}
+
+\end{document}

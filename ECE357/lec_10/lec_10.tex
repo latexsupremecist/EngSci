@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 10}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Power Flow in AC}
+
+\begin{align*}
+    \tilde V(d) &= V_0^+ e^{j\beta d} + \Gamma V_0^+ e^{-j\beta d} \\
+    \tilde I(d) &= \frac{V_0^+}{Z_0} e^{j\beta d} - \frac{\Gamma V_0^+}{Z_0} e^{-j\beta d}
+\end{align*}
+
+Recall voltage is energy per unit charge (energy can have units eV). Then
+
+$$p = \frac{dW}{dt} = v\frac{d(qv)}{dt}$$
+
+Using our sinusoidal expressions for voltage and current,
+
+\begin{defn}[Instantaneous Power]
+    It is defined as
+    $$p(t) = V_0I_0\cos(\omega t + \phi_v)\cos(\omega t + \phi_i)$$
+\end{defn}
+
+We are more interested in the average value of power. Using the product-to-sum formula,
+
+\begin{align*}
+    p(t) &= \frac{V_0I_0}{2} \left[\cos(\phi_v - \phi_i) + \cos(2\omega t + \phi_v + \phi_i)\right] \\
+    \overline p(t) &= \frac{1}{T} \int_0^T p(t)dt \\
+                   &= \frac{V_0I_0}{2} \cos(\phi_v - \phi_i)
+\end{align*}
+
+\textit{the sinusoidal term averages out to 0.} This agrees with the intuition that power is maximised when phase difference is minimised. \\
+If we use phasors, where $\tilde V = V_0 e^{j\phi_v}, \tilde I = I_0 e^{j\phi_i}$, then
+$$\frac{1}{2} \tilde V \tilde I^* = \frac{1}{2} V_0I_0 e^{j(\phi_v - \phi_i)}$$
+whose real part yields average power.
+
+\section{Power Flow in Transmission Lines}
+
+Converting our equations $\tilde V, \tilde I$ into the time domain, $V_0^+ = |V_0^+|e^{j\phi_+}, \Gamma = |\Gamma|e^{j\theta_\Gamma}$. Expanding,
+$$v(d) = |V_0^+|\cos(\omega t + \beta d + \phi_+) + |\Gamma V_0^+|\cos(\omega t - \beta d + \phi_+ + \theta_\Gamma)$$
+$$i(d) = \frac{|V_0^+|}{Z_0} \cos(\omega t + \beta ad + \phi_i) - \frac{|\Gamma V_0^+|}{Z_0} \cos(\omega t - \beta d + \phi_+ + \theta_\Gamma)$$
+Power is
+$$p(d) = \frac{|V_0^+|^2}{Z_0} \cos^2(\omega t + \beta d + \phi_+) - \frac{|\Gamma V_0^+|^2}{Z_0} \cos^2(\omega t - \beta d + \phi_+ + \theta_\Gamma)$$
+\textit{Note: the cross terms cancel out.} \\
+We call the first term \textbf{incident} power and the second \textbf{reflected} power. Taking the time average,
+$$\overline p(d) = \frac{1}{2} \frac{|V_0^+|^2}{Z_0} - \frac{1}{2} \frac{|\Gamma V_0^+|^2}{Z_0} = \frac{|V_0^+|^2}{2Z_0} (1 - |\Gamma|^2)$$
+
+\begin{ex}
+    For $R_g = 10\unit{\Omega}, l = 0.75\lambda, v_g = 1\unit{V}, Z_0 = 50\unit{\Omega}, v_p = 3 \times 10^8 \unit{m.s^{-1}}, R_L = 25\unit{\Omega}$. This is a quarter-wave transformer, where we know
+    $$Z_{\text{in}} = \frac{Z_0^2}{Z_L} = 100\unit{\Omega}$$
+    The input voltage is then
+    $$v_i = v_g \times \frac{100}{100+10} \approx 0.909\unit{V}$$
+    and current is 100 times smaller than that. Input power (time averaged) is half of the product, or 
+    $$p = \frac{v_i^2}{2Z_{\text{in}}} = \frac{0.909^2}{100} = 4.1322 \unit{mW}$$
+    To find $V_0^+$, $\Gamma = \frac{25-50}{25+50} = -\frac{1}{3}$.
+    $$v_{\text{in}} = 0.909 = V_0^+ e^{j\beta l} + \Gamma V_0^+ e^{-j\beta l}$$
+    Solving yields $V_0^+ = j0.68\unit{\Omega}$.
+\end{ex}
+
+\end{document}

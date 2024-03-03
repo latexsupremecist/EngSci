@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial  6}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Lagrange Multiplier Theorem}
+
+Given $U \subseteq \R^n$ open, $g: U \rightarror \R^p$ be $C^r$ and $f: U \rightarrow \R$ differentiable. Suppose $f$ has a local extreme value on $g^{-1}(0)$ at a point $a$, with $Dg$ having rank $p$. Then $\exists \lambda_1,\dots,\lambda_p \in \R$ such that
+$$\nabla f(a) = \sum_i \lambda_i \nabla g_i(a)$$
+
+\begin{proof}
+    From the rank of $Dg$, we know that for some indices $i1 < i2 < \dots < ip$,
+    $$\det\del{(g_1,\dots,g_p)}{x_{i1},\dots,x_{ip}}(a) \neq 0$$
+    Assume for convenience that $(x_{i1},\dots,x_{ip}) = (x_{n-p+1},\dots,x_n)$, and write $x = (u,v) = (u,\dots,u_{n-p},v_1,\dots,v_p)$. By the implicit function theorem, we can solve $g(u,v) = 0$ as $v = h(u)$ in a neighbourhood of $a$, with $h \in C^r$. Then $\phi(u) = f(u,h(u))$ has an extreme value at $a_1,\dots,a_{n-p}$. Define also $H(u) = (u,h(u))$, then
+    $$\phi'(u) = f'(u,h(u))H'(u)$$
+    Then
+    $$\nabla\phi(u) = \nabla f(u,h(u)) \begin{pmatrix} I_{n-p} \\ h'(u) \end{pmatrix}$$
+    Putting $u = (a_1,\dots,a_{n-p})$, we have
+    $$0 = \nabla f(a) \begin{pmatrix} I_{n-p} \\ h'(a_1,\dots,a_{n-p})\end{pmatrix}$$
+    Moreover, recall we know that $g_i(u,v) = 0$ locally (else there are only distinct points where $g = 0$, so there is no need for the theorem). Using the chain rule,
+    $$0 = \nabla g_i(a) \begin{pmatrix} I \\ h'(a_1,\dots,a_{n-p})\end{pmatrix}$$
+    Using a dimension argument, we see that $\nabla g_i(a)$ spans the space $V$ where $v \in V$ satisfies
+    $$v \begin{pmatrix} I \\ h'(a_1,\dots,a_{n-p}) \end{pmatrix} = 0$$
+    and the proof follows.
+\end{proof}
+
+\begin{ex}
+    Find the maximum and minimum of
+    $$f(x,y) = \frac{1}{2}x^2 + \frac{1}{2}y^2$$
+    in $D = \{\frac{1}{2}x^2 + y^2 \le 1\}$. \\
+    Now $D$ is closed and bounded with $f$ continuous, so extrema exist. First locate the critical points. $\del{f}{x} = x, \del{f}{y} = y$, so the only critical point is $(0,0)$. On the boundary, we know that
+    $$\nabla f(x,y) = (x,y) = \lambda(x,2y)$$
+    If $x,y \ne 0$, this is impossible. If $x = 0, \lambda = \frac{1}{2}, y = \pm 1$, and if $y = 0, \lambda = 1, x = \pm \sqrt 2$. Then the maximum is at $(\pm\sqrt 2, 0)$ where $f=1$, and the minimum is $(0,0)$ where $f=0$.
+\end{ex}
+
+\begin{ex}
+    For an acute angle triangle find the point $P = (x,y)$ such that the sum of distance from $P$ to vertices is minimal. The function we want to minimize is
+    $$\sum_i \sqrt{(x - x_i)^2 + (y - y_i)^2}$$
+    It is differentiable except at vertices. Looking at the critical points,
+    $$\sum_i \frac{x - x_i}{r_i} = 0$$
+    and the same holds for $y$. We know that the 
+\end{ex}
+\end{document}

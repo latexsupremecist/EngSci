@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 15}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Smith Chart Examples}
+
+Consider a transmission line with $Z_0 = 50, Z_{\text{in}} = 20 - j100$ and $Z_L = 150 + j50$. $Z_{\text{in}}$ is measured at a distance $d$, and there is an open circuit with length $L$ connected in parallel at the load. \\
+First we normalise $Z_L$. It is $z_L = 3 + j$. The admittance is, by reflecting about the origin on the Smith chart, is $0.3 - j0.1$. Now $y_{\text{in}}$ is $0.096 + j0.48$. Draw a circle using this point; the admittance at the load has to be a point in this circle. Since the open circuit is purely reactive, trace $y_L$ along the $r$ circle. We can then pick either point where they intersect. Subtracting the old reactance from the new reactance, we get the susceptance of the open circuit, and we can use the Smith chart to find the length $L$. Rotating along the circle gives us $d$.
+
+\begin{ex}
+    $Z_L = j3Z_0, Z_0 = 50$. Find a point along the line where you could place a shunt (parallel) quarter wavelength open-circuit stub, without affecting the reflection coefficient at the operating frequency. \\
+    At quarter wavelength, the shunt inverts the load, so it can be treated as a short circuit. Adding a short circuit in parallel will always disturb the system, unless if the position was shorted regardless. Starting from the point $r = 0, x = 3$, rotate until we reach the short circuit point. At this distance, we can freely add a short circuit/shunt without introducing any changes.
+\end{ex}
+
+\begin{ex}
+    Using the same example, without the shunt, show how you would match the load to the line. \\
+    We can match it by using a shunt stub with normalized admittance $1 + j/3$. Unfortunately, a resistor has to be used, or else admittance/impedance must be purely imaginary.
+\end{ex}
+
+\begin{ex}
+    With the matching network present, how much power does the source deliver to the line and how much power is absorbed by the matching network? \\
+    Drawing this as an equivalent circuit, it is a voltage source in series with a $50\unit{\Omega}$ transmission line and a $50\unit{\Omega}$ load. If voltage and current are in phase, with $v = 1\unit{V}, i = 1\unit{mA}$, then from voltage division,
+    $$p = 0.005\cos^2(\omega t) = 5\cos^2(\omega t)\unit{mW}$$
+    which averages out to $0.25\unit{mW}$.
+\end{ex}
+\end{document}

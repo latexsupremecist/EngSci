@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 4}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Effective Potentials}
+
+\subsection{Particle on Cone}
+
+Consider a particle on a cone, with $r$ being the radius in cylindrical coordinates, and $\theta = \alpha$ be constant in spherical coordinates. Then
+$$\mathcal L = \frac{m}{2}(\dot r^2\csc^2\alpha + r^2\dot\theta^2) - mgr\cot\alpha$$
+The Euler-Lagrange equations give
+\begin{align*}
+    \frac{d}{dt} \left(\del{L}{\dot r}\right) &= \del{L}{r} \\
+    \frac{d}{dt} m\dot r\csc^2\alpha &= mr\dot\theta^2 - mg\cot\alpha \\
+    \ddot r &= r\dot\theta^2\sin^2\alpha - g\sin\alpha\cos\alpha \\
+\end{align*}
+
+and angular momentum is (from the $\theta$ equation)
+\begin{align*}
+    \frac{d}{dt} \left(\del{L}{\dot\theta}\right) &= \del{L}{\theta} \\
+    \frac{d}{dt} mr^2\dot\theta &= 0 \\
+    L &= mr^2\dot\theta
+\end{align*}
+
+Substituting,
+$$\mathcal L = \frac{m}{2}\left(\dot r^2\csc^2\alpha + \frac{L^2}{m^2r^2}\right) - mgr\cos\alpha = \frac{m}{2}(\dot r^2\csc^2\alpha) + \frac{L^2}{2mr^2} - mgr\cos\alpha$$
+
+And we will get a new "effective" potential
+$$V_{\text{eff}} = \frac{L^2}{m^2r^2} + mgr\cos\alpha$$
+
+Drawing $V$ against $r$, we can find the minimum $V$ at a certain $r$. It has to be constant, since there are no local points it can move to without requiring more energy. This fixes $\dot\theta$, since $L$ is constant. \\
+From the kinetic energy term,
+\begin{align*}
+    \frac{dr}{dt} &= \sqrt{\frac{T}{\frac{m}{2}\csc^2\alpha}} \\
+    \frac{dr}{d\theta} \dot\theta &= \sqrt{\frac{E - V_{\text{eff}}(r)}{\frac{m}{2}\csc^2\alpha}} \\
+    \frac{dr}{d\theta} &= \sqrt{\frac{E - V_{\text{eff}}(r)}{\frac{m}{2}\csc^2\alpha}} \frac{L}{mr^2} \\
+\end{align*}
+
+Integrating gives $r(\theta)$.
+
+\section{Particle on Given Potential}
+
+$$V(r) = -\frac{C}{3r^3}$$
+
+If the potential depends only on $r$, motion is always on a 2D plane (think!). Then
+
+$$\mathcal L = \frac{m}{2}(\dot r^2 + r^2\dot\theta^2) + \frac{C}{3r^3}$$
+and again
+$$L = mr^2\dot\theta$$
+The Hamiltonian is
+$$H = \frac{m}{2}\dotr^2 + \frac{L^2}{2mr^2} - \frac{C}{3r^3}$$
+
+The effective potential is then
+$$V_{\text{eff}}(r) = \frac{L^2}{2mr^2} - \frac{C}{3r^3}$$
+
+Calculus gives
+$$V_{\text{max}} = \frac{L^6}{6m^3C^2}$$
+
+Rewriting angular momentum as $L = mv_0b$, where $b$ is the shortest distance between particle trajectory (projected; straight line), and the origin/potential source,
+
+$$b < \left(\frac{3C^2}{m^2v_0^4}\right)^{1/6}$$
+ensures kinetic energy is greater than $V_{\text{max}}$, i.e. the particle can "escape" the potential.
+\end{document}

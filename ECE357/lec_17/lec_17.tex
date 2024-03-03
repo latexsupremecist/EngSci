@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 17}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Ampere Maxwell}
+
+$$\oint_C \vec H \cdot d\vec l = \int_S \vec J \cdot d\vec s + \frac{d}{dt}\int_S \vec D \cdot d\vec s$$
+$$\vec\nabla \times \vec H = \vec J + \del{\vec D}{t}$$
+
+The first term on the right hand side is the conduction current $I_c$, and the second is the displacement current $I_d$. The term on the left is the magnetomotive force $V_{\text{mmf}}$.
+
+In phasors, the differential form becomes
+$$\vec\nabla \times \tilde{\vec H} = \tilde{\vec J} + j\omega\tilde{\vec D}$$
+
+Note: from Faraday's Law,
+\begin{align*}
+    \vec\nabla \times \vec E &= -\del{\vec B}{t} \\
+    \vec\nabla \cdot \vec\nabla \times \vec E &= -\vec\nabla \cdot \del{\vec B}{t} \\
+    0 &= \del{}{t} \left(\vec\nabla \cdot \vec B\right)
+\end{align*}
+
+Where the constant has to vanish. This means we actually only have 7 relations; 2 vector equations from Gauss and Faraday, then one from Ampere. There are $16 - 7 = 9$ equations left, where $\vec D, \vec B, \vec J$ are all functions of $\vec E, \vec H$.
+
+\section{Simple Media}
+
+In these media, $\vec D = \varepsilon\vec E, \vec B = \mu\vec H, \vec J = c\vec E$. $\varepsilon = \varepsilon_0\varepsilon_r, \mu = \mu_0\mu_r$. Then
+$$\vec\nabla \times \vec E = -\mu\del{\vec H}{t}$$
+and
+$$\vec\nabla \times \vec H = \sigma\vec E + \varepsilon\del{\vec E}{t}$$
+\end{document}

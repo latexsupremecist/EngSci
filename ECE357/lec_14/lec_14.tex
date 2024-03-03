@@ -1,0 +1,15 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 14}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{ex}
+    Consider $Z_L = 15 + j10, Z_0 = 50$. We want to match this line using a pair of short stubs. \\
+    $$z_L = \frac{Z_L}{Z_0} = 0.3 + j0.2$$
+    From the Smith chart, if we move along a distance of $0.325 - 0.284 = 0.041\lambda$, we intersect with the $g=1$ circle, where $y = 1 - j1.4$. For the purely reactive load, we start with an admittance of zero, which is the leftmost point. We rotate until we get to the $b = j1.4$ circle, which is $0.152\lambda$. Then this gives the length of the stubs. \\
+    Recall there are 2 intersection to the $r = 1$ circle that we can pick. For the first intersection (clockwise), it is more stable, as in performance is less affected for frequency pertubations (than the second). This affects the choice of solutions, because we have one solution that is more broadband (cares less about frequency).
+\end{ex}
+
+\end{document}

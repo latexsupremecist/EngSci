@@ -1,0 +1,23 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 53}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Wedge Product}
+
+We will prove that given the conditions, the wedge product is unique. We can also show that the wedge product of ascending linear functionals form a basis, i.e.
+$\bigwedge_{j=1}^k \phi_{ij}$ where $i1 < i2 < \dots < ik$ form a basis of $A^k(V)$.
+
+\begin{ex}[One Tensors]
+    Let $V$ be the space of vectors in $\R^n$ based at the origin. Fix a $C^1$ function on $\R^n$, where $f:\R^n \rightarrow \R$, then define the tensor
+    $$w(v) = Df(v)$$
+    Choosing $f(a_ix_i) = a_1$, we get $w = \phi_1$.
+\end{ex}
+
+\section{Tangent Space of a Manifold}
+
+The tangent space of $\R^n$ of a point $p$ is the space of vectors $v \in \R^n$ based at $p$. Every tangent vector is denoted as $(x;v)$, i.e. a vector (arrow) $v$ that starts at (point) $x$. For a coordinate chart $\alpha$, define
+$$\alpha_*(x;v) = (\alpha(x);D(\alpha) \cdot v)$$
+\end{document}

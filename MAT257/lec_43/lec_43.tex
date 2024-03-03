@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 43}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Manifolds}
+
+$M^k \subseteq \R^n$ is a $k$ manifold without boundary if $\forall P \in M^k \exists $ an open $U \subseteq \R^k$ and a 1 to 1 $C^r$ function $\alpha:U \rightarrow \R^n$ with a continuous inverse, derivative with rank $k \forall x \in U$, and $P \in U$.
+
+\begin{ex}[Graphs of Functions]
+    Graphs of $C^r$ functions over open sets in $\R^n$ are manifolds. The function itself acts as $\alpha$.
+\end{ex}
+
+\begin{defn}[Level Set]
+    Let $F(x_1,\dots,x_n): \Omega \subseteq \R^n$ have an open domain $\Omega$. A level set is a set $M = F^{-1}(g) \subseteq \Omega$.
+\end{defn}
+
+\begin{ex}[Level Set]
+    Consider a level set of a $C^r$ function. We will show in tutorial that $M = F^{-1}(g)$ is a manifold of dimension $n-1$ provided $DF(x) \neq 0 \forall x \in M$.
+\end{ex}
+
+The above example shows that ellipsoids are manifolds. \\
+
+We want to build towards manifolds possibly with boundary. It should be a set $M^k \subseteq \R^n$ which is locally modeled on \textit{either} open sets in $\R^n$ or $\R^k_+$, which is $\R^k$ with the last coordinate being positive.
+
+\begin{defn}
+    Conisder a function $f: S \rightarrow \R^k$, where $S \subseteq \R^k$. Then we say $f$ is of class $C^r$ if $\exists$ an extension $\tilde f$ of $f$ to an open superset $U \supseteq S$ such that $\tilde f:U \rightarrow \R^n$ is $C^r$ and $\tilde f = f$ whenever the latter is defined.
+\end{defn}
+
+\begin{lem}
+    Suppose $f: U \rightarrow \R^n$ is of class $C^r$, with $U \subseteq \R^k_+$ being relatively open. Then $D\tilde f(x)$ is independent of $\tilde f \forall x \in U$.
+\end{lem}
+
+\begin{proof}
+    Case 1: $x \in \text{Int}(U) \subseteq \R^k$. This is immediately true, since $f$ and $\tilde f$ agree. If $x$ is in the boundary, then the derivative depends only on $f$ by continuity.
+    \begin{align*}
+        \del{\tilde f_i}{x_j} &= \lim_{h\rightarrow0} \frac{\tilde f_i(x + he_j) - \tilde f_i(x)}{h} \\
+                              &= \lim_{h\rightarrow0^+} \frac{\tilde f_i(x + he_j) - \tilde f_i(x)}{h}
+                              &= \lim_{h\rightarrow0^+} \frac{f_i(x + he_j) - f_i(x)}{h}
+    \end{align*}
+    which depends only on $f$.
+\end{proof}
+
+Then a general $k$ manifold has a similar definition, only that we accept either $U \subseteq \R^k$ of $U \subeteq \R^k_+$ being open.
+
+\end{document}

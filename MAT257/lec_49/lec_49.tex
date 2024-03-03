@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 49}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Tensor Maps}
+
+\begin{defn}[Tensor Products]
+    The tensor product of $T \in \mathcal L^k(V)$ and $S \in \mathcal L^l(V)$ is
+    $$T \otimes S \in \mathcal L^{k+l}(V)$$
+    $$T \otimes S (v_1,\dots,v_{k+l}) = T(v_1,\dots,v_k) \times S(v_{k+1},\dots,v_{k+l})$$
+\end{defn}
+
+\begin{defn}[Pull Back]
+    If $T \in \mathcal L^k(W), A: V \rightarrow W$, we can define the pull back $T^* \in \mathcal L^k(V)$ as
+    $$T^*(v_1,\dots,v_k) = T(Av_1, \dots, Av_k)$$
+\end{defn}
+
+We can build new tensors out of old ones using tensor products. For $k = 1$, the 1 tensors are just linear functionals. We can then construct
+$$T = S_1 \otimes S_2 \otimes \dots \otimes S_n$$
+There is a (not necessarily unique) decomposition for every tensor. We prove this by induction. For $T$ being a 1 tensor, this is trivial. If a $k$ tensor can be decomposed as such, let $T$ be an arbitrary $k+1$ tensor. If $T = 0$ this becomes trivial. Else, we have a $v_1,\dots,v_{k+1}$ which $T$ does not map to zero. Since $T$ is linear in every index,
+$$S_1(v) \equiv T(v, v_2,\dots,v_{k+1})$$
+is a linear functional. Similarly,
+$$T'(w_1,\dots,w_k) \equiv \frac{T(v_1,w_1,\dots,w_k)}{S_1(v_1)}$$
+is a $k$ tensor. By the induction hypothesis, $T'$ can be decomposed into $k$ tensor products, so
+$$T(w_1,\dots,w_{k+1}) = S_1(w_1) \otimes T'(w_2,\dots,w_{k+1})$$
+
+We have symmetries and even multisymmetries in tensors. This is when
+$$T(v,w) = T(w,v)$$
+e.g. for inner products. The determinant is antisymmetric, because
+$$\det(v,w) = -\det(w,v)$$
+There are tensors that are neither symmetric nor antisymmetric, where
+$$T(v,w) = \langle v,e_1 \rangle \langle w,e_2 \rangle$$
+Then
+$$T(v,w) = v_1w_2, T(w,v) = v_2w_1$$
+where the products need not agree/be additive inverses.
+\end{document}

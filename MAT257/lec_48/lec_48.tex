@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 48}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Multilinear Maps}
+
+\begin{lem}
+    The dimension of $\mathcal L^1(V) = V^*$ is the same as that of $V$.
+\end{lem}
+
+\begin{proof}
+    We proved this previously. For finite-dimensional $V$, $\phi_i(v) = \langle v, e_i\rangle$ forms a basis (check it!). For infinite-dimensional $V$, we can show that any list of linearly independent $v_i$ provides us with a list of linearly independent $\phi_i(v) = \langle v, v_i\rangle$ of the same length. Since the length of $v_i$ can be made arbitrarily long, we have arbitrarily many linearly independent $\phi_i$, so $V^*$ is infinite-dimensional.
+\end{proof}
+
+Extending this to multilinear maps,
+
+\begin{align*}
+    T(v_1,\dots,v_k) &= T(\lambda_{1j}v_j,v_2,\dots,v_k) \\
+                     &= \sum_{j1} \lambda_{1j_1} T(v_{j1},v_2,\dots,v_k) \\
+                     &= \sum_j \prod_i \lambda_{ij_i} T(v_{j1},\dots,v_{jk})
+\end{align*}
+
+This suggests that the dimension of $\mathcal L^k(V)$ has at most dimension $n^k$, where for any tuple $\sigma$ (does not have to be injective) out of all $n^k$ possibilities, there is a basis vector
+$$\phi(\sigma(1),\dots,\sigma(k)) = 1, \phi(\sigma'(1),\dots,\sigma'(k)) = 0, \sigma \neq \sigma'$$
+
+\begin{proof}
+    We know from the previous lecture that these $\phi$ span the space. What remains is to show that they are linearly independent. Denote maps by $\phi_\sigma$. Then for an arbitrary tuple $\tau$,
+    \begin{align*}
+        a_i\phi_i &= 0 \\
+        a_i\phi_i(\tau(1),\dots,\tau(k)) &= 0(\tau)
+    \end{align*}
+    By definition, exactly one of $\phi_i$ returns 1, and all other functions return zero. Then the corresponding $a_i = 0$. Since this is arbitrary, we can pick suitable $\tau$ to force all $a_i$ to vanish, hence $\phi_i$ are linearly independent.
+\end{proof}
+
+\end{document}

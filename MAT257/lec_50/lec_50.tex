@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 50}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Permutations}
+
+This is a bijective function $\sigma:\{1,\dots,n\} \rightarrow \{1,\dots,n\}$. An elementary permutation is one that swaps 2 adjacent numbers and keeps everything the same, where
+
+\begin{itemize}
+    \item $e_i(j) = j$ if $j \ne i, j \ne i + 1$
+    \item $e_i(i) = i+1$
+    \item $e_i(i+1) = i$
+\end{itemize}
+
+Note that $e_i$ is its own inverse. We can easily prove that any permutation $\sigma$ can be expressed as the composition of finitely many switches. (Proof: by induction, show that a finite number of switches can be used to make $\sigma(1)$ be equal to an arbitrary $i$. This holds for $\sigma(j)$ by induction.)
+
+\begin{defn}[Sign of Permutation]
+    For any permutation $\sgima$ consider the number of pairs $(i,j)$ with $i < j, \sigma(i) > \sigma(j)$. $\sigma$ is odd if the number of such pairs is odd, and even if it is not odd. Odd permutations have a sign of -1, and even permutations a sign of 1.
+\end{defn}
+
+\begin{prop}
+    Let $\sigma$ be expressed as $e_{i1} \circ \dots \circ e_{il}$. Then its sign is $(-1)^l$.
+\end{prop}
+
+\begin{proof}
+    It suffices to show that a permutation changes sign when it is composed with an elementary operation. Consider the set of all pairs $(i,j)$ as described above. If the elementary operation is $e_k$, then any pair involving at most one of $k, k+1$ remains in the set. If $(k,k+1)$ is in the set, it will be removed, and vice versa. Then the cardinality of the set changes by 1, so the sign changes. It is obvious that the identity has a sign of 1. Then letting $\sigma = e_{i1} \circ \dots \circ e_{il} \circ 1$ makes it obvious that its sign is $(-1)^l$. As a consequence, it is trivial to show that
+    $$\text{sgn}(\sigma \circ \tau) = \text{sgn}(\sigma) \times \text{sgn}(\tau)$$
+    and
+    $$\text{sgn}(\sigma^{-1}) = \text{sgn}(\sigma)$$
+    If we swap any two random indices separated by $n$, note that $2n-1$ swaps are needed, so the sign switches.
+\end{proof}
+
+With permutations, we can define
+
+$$f^\sigma(v_1,\dots,v_k) = f(v_{\sigma(1)}, \dots, v_{\sigma(k)})$$
+We can then treat $\sigma$ as an operation on tensors. It is an isomorphism! (It is obviously injective, and setting $g = f^\tau$ with $\tau = \sigma^{-1}$ shows that it is surjective) \\
+Fun fact:
+$$(f^\sigma)^\tau = f^{\sigma \circ \tau}$$
+
+We could generalise symmetry by saying $f$ is symmetric when $f^{e_i} = f$, and antisymmetric when $f^{e_i} = -f$.
+\end{document}

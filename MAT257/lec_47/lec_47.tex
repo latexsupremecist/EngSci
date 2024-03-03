@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 47}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Midterm}
+
+The median and average is 8.5/15, 30\% scored 10 or above, many people got less than 5 (i.e. in trouble).
+
+\section{Integrals}
+Recall integrals of continuous functions $f$ defined over compact manifolds $M^k \subseteq \R^n$ if entirely paramtrizable, is
+$$\int_{M^k} f = \int_U (f\circ\alpha) V[D\alpha]$$
+For compact manifolds, there are finetely many $U$, so it can be simply written as a sum of integrals with corresponding $U$ and $\alpha$. What remains is to show that this definition is unique. Consider 2 different of such integrals with finite partitions $V_i$ and $V'_i$. Showing that the integral agrees on every element of the refined partition suffices, i.e. the integral has to agree on arbitrary $V = V_i \cap V'_j$. Now on this set, we denote the restricted functions (on the domain) also by $\alpha$ and $\beta$. Then we have to be able to find a diffeomorphism between $\alpha^{-1}(V)$ and $\beta^{-1}(V)$. Change of variables show that both integrals are equal. \\
+
+To define integrals over a general manifold, we need a partition of unity for $M^k$. Multiplying by the partition of unity, we can reduce the integral to a finite sum of integrals of $f\phi_i$ over compact sets, which is well defined. The textbook shows how the value of the integral is independent of the partition of unity. \\
+
+Now we're done with classical multivariable calculus and numbers in general.
+
+\section{}
+
+Take $V$ to be a $k$ dimensional vector space. Recall a linear functional $a$ on $V$ is a linear function $a:V \rightarrow \R$. A multilinear functional over $V$ is $a: V^l \rightarrow \R$ where it is linear in each input. We call $a$ an $l$ tensor over $V$.
+
+\begin{ex}
+    The inner product is a 2 tensor. In 3D, $det(v_1,v_2,v_3)$ is a 3 tensor.
+\end{ex}
+
+Now note that the set of all $k$ tensors form a vector space. The proof is trivial.
+
+\begin{lem}
+    Basis vectors uniquely determine multilinear functionals. Let $v_i = c_{ij}e_j$. Then
+    \begin{align*}
+        f(v_1,\dots,v_n) &= c_{1j}f(e_j,v_2,\dots,v_n) \\
+                         &= c_{1j_1}f(e_{j_1},v_2,\dots,v_n) \\
+                         &= \left(\prod_i c_{ij_i}\right) f(e_{j_1},\dots,e_{j_n})
+    \end{align*}
+    Note that $j_1,\dots,j_n$ need not be distinct or in any order. Then if the last term is known for all possible $j_i$ lists, any arbitrary $f(v_1,\dots,v_n)$ can be determined.
+\end{lem}
+
+\begin{lem}
+    If $V$ is finite dimensional, so is $\mathcal L(V)$, its dual space.
+\end{lem}
+
+\begin{proof}
+    It suffices to construct a basis. Letting $e_i,\dots,e_k$ be a basis of $V$. Then any $v \in V$ can be uniquely written as $c_ie_i$. Using the same notation, let $\phi_i(v) = c_i$. For an arbitrary linear functional $\phi$, if we know $\phi(e_1),\dots,\phi(e_n)$, we know $\phi(v)$ by linearity. Letting $\phi(e_i) = d_i$, it is obvious that $\phi(v) = d_i\phi_i$. We now know that $\phi_i$ spans $\mathcal L(V)$. To show that they are linearly independent, simply note that the only linear combination that adds up to zero is the trivial one.
+\end{proof}
+
+\end{document}

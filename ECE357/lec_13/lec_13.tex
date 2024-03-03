@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 13}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Smith Chart on a Network Analyzer}
+
+\section{Smith Chart as Admittance Chart}
+
+\begin{ex}
+    Find the input admitance of an open-circuited TL of characteristic impedance 300 Ohms and length $0.04\lambda$. \\
+    At open circuit, conductance is 0, which is the leftmost point on the smith chart. Rotate by 0.04 towards the generator (clockwise).
+    $$Y_i = j0.26 \times Y_0 = \frac{j0.26}{300} = j0.87\unit{mS}$$
+\end{ex}
+
+\section{Impedance Matching}
+
+We want to match a line. On a Smith chart, this is equivalent to moving an arbitrary point and moving it to the origin. There are 2 simple cases for this.
+
+\subsection{Case 1}
+
+$$z_L = 1+jx$$
+where a capacitor/inductor can be put in series to reduce $z_L$ to 1, or an open/closed circuit transmission line with suitable length. Usually open circuits are easier.
+
+\subsection{Case 2}
+
+$$y_L = 1 + jb$$
+
+If we connect in parallel a reactive load with susceptance $-b$, admittance becomes 1 (recall resistance in parallel). Similarly, this can be implemented with suitable short/open circuits.
+
+\subsection{Arbitrary Case}
+
+With $z_L = r+jx$, on a Smith chart, we can always rotate this about the origin until it intersects the $r=1$ circle. Let this distance be $\Delta d$, then at $d = \Delta d$, we have reduced the problem to our first case. We attach a purely reactive load at this point, and we are done.
+
+\end{document}

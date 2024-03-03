@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 21}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Plane Wave Polarization}
+
+\begin{defn}[Polarization]
+    The pattern traced by electric field vector as a function of time. This is \textit{not} polarization in dielectrics.
+\end{defn}
+
+\begin{ex}
+    Plane wave propagating in the $z$ direction.
+    $$\tilde{\vec E} = (E_x\hat x + E_y\hat y)e^{-jkz} = E_x\left(\hat x + \frac{E_y}{E_x}\hat y\right)e^{-jkz}$$
+    Defining $E_x = |E_x|e^{j\delta_x}$ and similarly for $y$, we can simplify this to
+    $$\tilde{\vec E} = E_xe^{-jkz}\left(\hat x + Re^{j\delta}\right)$$
+    where $R$ is the ratio of magnitudes, and $\delta_y - \delta_x = \delta$. Normalizing (ignoring constants), we have (at $z=0$)
+    $$\tilde{\vec E} = \hat x + Re^{j\delta}\hat y$$
+    Going back to the time domain,
+    $$\vec E = \Re\{\tilde{\vec E}e^{j\omega t}\} = \cos(\omega t)\hat x + R\cos(\omega t + \delta)\hat y$$
+    If $\delta = 2n\pi$, the electric field moves along $y = Rx$ as time goes on. For $\delta = 2(n+1)\pi$, it oscillates along $y = -Rx$. \\
+    For $\delta = \frac{\pi}{2}$, this forms an ellipse. One can easily find that
+    $$E_x^2 + \left(\frac{E_y}{R}\right)^2 = 1$$
+    This is left handed; if you point your left thumb along $z$, your fingers trace $\vec E$ as they curl. Similarly, for $\delta = -\frac{\pi}{2}$, we have a right handed system. In general, a negative phase different implies righthandedness, and vice versa.
+\end{ex}
+\end{document}

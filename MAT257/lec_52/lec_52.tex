@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 52}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+Tensors of rank $k$ over a vector space $V$ is a multilinear map
+$$T:V^k \rightarrow \R$$
+
+Given a basis of $V$ $e_1,\dots,e_n$, we have a basis for $V^k$ composed of $\Phi_I(e_{j1},\dots,e_{jk})$ which is equal to one if $(j1,\dots,j_k) = I$, where $I$ is an ordered list (that possibly repeats). The dimension is then $n^k$. \\
+
+Alternating $k$ tensors are tensors whose sign changes when any two vectors are swapped, i.e.
+$$T(v_1,\dots,v_i,v_{i+1},\dots,v_k) = -T(v_1,\dots,v_{i-1},v_{i+1},v_i,v_{i+2},\dots,v_k)$$
+
+They form a linear subspace. Since the sign of permutations are well-defined, we can alternatively define alternating tensors as
+$$T^\sigma = \text{sgn}(\sigma)T$$
+
+\section{Altnernating tensors}
+
+We are looking for a basis for $\mathcal A^k(V)$, the set of alternating tensors. Consider a set of ordered $k-tuples$. Unlike the $\phi_I$ as above, we do not need to know the order of the permutation, since it is determined (by definition). Now given a permutation $\bar I$ with increasing indices, e.g. $(v_1,v_2,v_3,v_5,\dots)$, we can similarly define a $\phi_{\bar I}$, which has value $\pm1$ on permutations of $\bar I$ depending on the sign. We want to say the set of this $\phi$ forms a basis. It is obvious that they are linearly independent. For an arbitrary tensor $f$, letting $a_I$ be $f(v_{i1},\dots,v_{ik})$ with $I$ being increasing, consider $g = \sum_I a_I\phi_I$. For an arbitrary $w \in V^k$, we can write $w$ as a sum of basis vectors. For both $f,g$, the function is only (possibly) nonzero on basis vectors where there are no repeating indices. For the rest, the fact that $f,\phi$ are alternating ensures $f(w) = g(w)$. Since $w$ is arbitrary, we can say that $\phi_I$ spans $\mathcal A^k(V)$, completing the proof.
+
+\begin{ex}
+    Determinants are alternating tensors.
+\end{ex}
+
+\section{Wedge Product}
+
+We want an operation
+$$\bigwedge:\mathcal A^k(V) \times \mathcal A^l(V) \rightarrow \mathcal A^{k+l}(V)$$
+We know we can take the tensor product $w_1 \otimes w_2$, which is alternating except (possibly) for switches between the first $k$ and last $l$ entries. We then desire an operaton to make it alternating.
+
+\end{document}

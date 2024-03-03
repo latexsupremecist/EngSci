@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 7}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Wedge Products}
+
+\begin{thm}
+    Let $V$ be a vector space, with alternating tensors $f \in A^k(V), g \in A^l(V)$. We define an element $f \wedge g \in A^{k+l}(V)$ such that there is
+    \begin{itemize}
+        \item Associativity: $f \wedge (g \wedge h) = (f \wedge g) \wedge h$
+        \item Homogeneity: $(cf) \wedge g = c(f \wedge g) = f \wedge (cg)$
+        \item Distributivity: If $f,g$ have the same order, then $(f + g) \wedge h = f \wedge h + g \wedge h, h \wedge (f + g) = h \wedge f + h \wedge g$
+        \item Anticommutativity: If $f,g$ re of order $k,l$ respectively, then $g \wedge f = (-1)^{kl} f \wedge g$
+        \item Given a basis $a_i$ for $V$, let $\phi_i$ be dual bases of $V^*$, $\psi_I$ be corresponding elementary alternating tensors. If $I$ is an ascending $k$ tuple,
+            $$\psi_I = \bigwedge_j \phi_{ij}$$
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+    Let $F \in \mathcal L^k(V)$. Define the linear operation
+    $$AF = \sum_\sigma (\text{sgn}\sigma)F^\sigma$$
+    If $F$ is alternating, then the signs cancel out, and obviously $AF = (k!)F$. Note also that
+    \begin{align*}
+        (AF)^\tau &= \sum_\sigma (\text{sgn}\sigma)(F^\sigma)^\tau \\
+                  &= \sum_\sigma (\text{sgn}\sigma)F^\tau\circ\sigma \\
+                  &= (\text{sgn}\tau) \sum_\sigma (\text{sgn}\tau)(\text{sgn}\sigma) F^{\tau\circ\sigma} \\
+                  &= (\text{sgn}\tau) \sum_\sigma (\text{sgn}\tau\circ\sigma)F^{\tau\circ\sigma} \\
+                  &= (\text{sgn}\tau)AF
+    \end{align*}
+    Then the output of $A$ is alternating. Now define
+    $$f \wedge g = \frac{1}{k!l!} A(f \otimes g) \in A^{k+l}(V)$$
+    Since $A$ is linear, homogeneity and distributivity are trivial. For anticommutativity,
+    \begin{align*}
+        A(F \otimes G) &= \sum_\sigma (\text{sgn}\sigma)(F \otimes G)^\sigma \\
+                       &= \sum_\sigma (\text{sgn}\sigma)((G \otimes F)^\pi)^\sigma \\
+                       &= (\text{sgn}\pi) \sum_\sigma (\text{sgn}\sigma\circ\pi) (G \times F)^{\sigma\circ\pi} \\
+                       &= (\text{sgn}\pi) A(G \otimes F)
+    \end{align*}
+    Now to permutate $F \otimes G$ to $G \otimes F$, we need to move each of the last $l$ entries $k$ steps back, so $kl$ elementary operations are needed. This gives us the sign of $\pi$, so
+    $$A(F \otimes G) = (-1)^{kl} A(G \otimes F)$$
+    which completes the proof. \\
+    Associativity is a bit more involved. First we want to show that $AF = 0 \Rightarrow A(F \otimes G) = 0$. This is trivial, since
+    $$(\text{sgn}\sigma)F(v_{\sigma(1)},\dots,v_{\sigma(k)})G(v_\sigma(k+1),\dots,v_{\sigma(k+l)}) = (\text{sgn}\sigma) \times 0 = 0$$
+    If $h$ has order $m$, $f$ has order $k$. We want to show the following.
+    \begin{align*}
+        AF \wedge h &= \frac{1}{m} A(F \otimes h) \\
+        \frac{1}{k!m!}A(AF \otimes h) &= \frac{1}{m}A(F \otimes h) \\
+        A(AF \otimes h - k!F \otimes h) &= 0 \\
+        A((AF - k!F) \otimes h) &= 0
+    \end{align*}
+    Then the first line is true if $A(AF - k!F) = 0$, from the previous identity. But since $AF$ is alternating, and $A$ is linear, $A(AF) = k!AF, A(k!F) = k!AF$. Now writing $F = f \otimes g$,
+    \begin{align*}
+        f \wedge g &= \frac{1}{k!l!} AF \\
+        (f \wedge g) \wedge h &= \frac{1}{k!l!} AF \wedge h \\
+                              &= \frac{1}{k!l!m!} A(F \otimes h) \\
+                              &= \frac{1}{k!l!m!} A(f \otimes g \otimes h)
+    \end{align*}
+    Doing the same but in reverse order, let $G = g \otimes h$, and
+    \begin{align*}
+        g \wedge h &= \frac{1}{l!m!}AG \\
+        f \wedge (g \wedge h) &= \frac{1}{l!m!} f \wedge AG \\
+                              &= \frac{(-1)^{k(l+m)}}{l!m!} AG \wedge f \\
+                              &= \frac{(-1)^{k(l+m)}}{k!l!m!} A(g \otimes h \otimes f) \\
+                              &= \frac{(-1)^{k(l+m)}(-1)^{k(l+m)}}{k!l!m!} A(f \otimes g \otimes h) \\
+                              &= \frac{1}{k!l!m!} A(f \otimes g \otimes h) \\
+                              &= (f \wedge g) \wedge h
+    \end{align*}
+\end{proof}
+\end{document}

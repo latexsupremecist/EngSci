@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 54}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Tangent Spaces}
+
+Loosely speaking, a tangent space is defined by the derivative at a point. More formally, the tangent space of the point $x = \alpha^{-1}(p)$ on $\R^k$ is $(x;v)$, and that of the corresponding manifold is $(p;D\alpha(x) \cdot v)$. The tangent space on the manifold has dimension $2k$ ($k$ dimensions for each of $x$ and $v$).
+
+\begin{defn}[Tangent Bundle]
+    The tangent bundle of a manifold $M^k \subseteq \R^n$ is the collection of all tangent spaces, based at all points $p \in M^k$.
+    $$\bigcup_{p\in M^k} TM^k|_p$$
+    Equivalently, it can be defined as
+    $$\bigcup_{\alpha,x,v}(\alpha(x),D\alpha(x)\cdot v)$$
+\end{defn}
+
+\begin{defn}
+    A vector field along a manifold $M^k$ is a continuous function $V:M^k \rightarrow TM^k$ such that $V(p) \in TM^k|_p$.
+\end{defn}
+
+\begin{ex}
+    Consider a 1-dimensional manifold defined by $\alpha:(0,1)\rightarrow\R^3$. The corresponding vector field is a line.
+\end{ex}
+
+\end{document}

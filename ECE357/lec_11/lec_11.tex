@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 11}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Smith Chart}
+
+Recall
+$$Z(d) = Z_0\frac{Z_L + jZ_0\tan(\beta d)}{Z_0 + jZ_L\tan(\beta d)} = Z_0 \frac{1 + \Gamma_d}{1 - \Gamma_d}$$
+where
+$$\Gamma_d = \Gamma e^{-j2\beta d} = |\Gamma| e^{j(\theta_\Gamma - 2\beta d)}$$
+where
+$$\Gamma = Z_l-\frac{Z_0}{Z_L+Z_0}$$
+
+Again, we can normalise this
+$$z(d) = \frac{Z(d)}{Z_0} = \frac{1+\Gamma_d}{1-\Gamma_d}$$
+
+and the same applies to resistance and reactance. Normalisation for admittance, conductance, and susceptance are obtained through dividing by $Y_0$, so they are multiplicative inverses of impedence, etc., as one would expect. This gives
+
+$$\Gamma_d = \frac{Z(d)-Z_0}{Z(d)+Z_0}$$
+
+Let's say we are really messed up, and want to map $(r,x)$ onto $(\Gamma_r,\Gamma_i)$. Then
+
+\begin{align*}
+    z &= \frac{1+\Gamma_d}{1 - \Gamma_d} \\
+    r + jx &= \frac{1 + \Gamma_r + j\Gamma_i}{1 - \Gamma_r - j\Gamma_i} \\
+           &= \frac{(1 + \Gamma_r + j\Gamma_i)(1 - \Gamma_r + j\Gamma_i)}{(1 - \Gamma_r - j\Gamma_i)(1 - \Gamma_r + j\Gamma_i)} \\
+           &= \frac{1 - \Gamma_r^2 - \Gamma_i^2}{(1 - \Gamma_r)^2 + \Gamma_i^2} + j\frac{2\Gamma_i}{(1 - \Gamma_r)^2 + \Gamma_i^2}
+\end{align*}
+
+One can show that
+
+$$\left(\Gamma_r - \frac{r}{r+1}\right)^2 + \Gamma_i^2 = \frac{1}{(1+r)^2}$$
+
+\subsection{r circles}
+
+This means for the same $r$, we have a circle centred at $\left(\frac{r}{r+1}, 0\right)$ with radius $\frac{1}{1+r}$. As $r \rightarrow \infty$, $\Gamma = 1$. This makes sense, because the reflection coefficient should tend to 1 as the load goes to infinity, i.e. open circuit. For a short circuit $r = 0$, we get a circle of radius 1 centred at the origin. No power is dissipated, so the reflection coefficient has to have a magnitude of 1.
+
+\subsection{x circles}
+
+We similarly have
+
+$$(\Gamma_r - 1)^2 + \left(\Gamma_i - \frac{1}{x}\right)^2 = \frac{1}{x^2}$$
+
+It is centred at $\left(1, \frac{1}{x}\right)$ with radius $\frac{1}{|x|}$, so there is always a real $\Gamma$.
+\end{document}

@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 18}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Wave Equation: Plane Waves}
+
+Recall in simple media,
+
+\begin{align*}
+    \vec\nabla \cdot \vec E &= \frac{\rho_v}{\varepsilon_0} \\
+    \vec\nabla \times \vec E &= -\mu\del{\vec H}{t} \\
+    \vec\nabla \cdot \vec B &= 0 \\
+    \vec\nabla \times \vec H &= \sigma\vec E + \varepsilon\del{\vec E}{t}
+\end{align*}
+
+Consider a pair of parallel planes along $z$. Drawing a closed loop (clockwise) from $z$ to $z + \Delta z$ along each plate, Faraday's Law gives
+\begin{align*}
+    V_{\text{emf}} &= \oint_C \vec E \cdot d\vec l \\
+                   &= -\frac{v(z,t)}{h} + 0 + \frac{v(z+\Delta z,t)}{h} \times h + 0 \\
+                   &= \del{v(z,t)}{z}
+\end{align*}
+
+On the other side, we get
+\begin{align*}
+    V_{\text{emf}} &= -\del{}{t} \int \mu\vec H \cdot d\vec s \\
+                   &= -\del{}{t} \frac{\mu i}{w} \Delta z \times h \\
+                   &= \frac{\mu h}{w}\Delta z \left(-\del{i}{t}\right)
+\end{align*}
+
+Therefore
+$$\del{v}{z} = -L'\del{i}{t}$$
+ 
+Likewise, using Ampere's Law,
+\begin{align*}
+    \oint \vec H \cdot d\vec l &= \int\sigma\vec E \cdot d\vec s + \frac{d}{dt} \int\varepsilon\vec E \cdot d\vec s \\
+    \dots &= \dots \\
+    \del{i}{z} &= -G'v - C'\del{v}{t}
+\end{align*}
+
+\section{Phasor Form of Maxwell's Equations}
+
+Assume (using Einstein summation)
+$$\vec E = E_i \cos(\omega t + \phi_i) \hat e_i$$
+Then
+$$\vec E = \Re\left\{\left[E_ie^{j\phi_i}\hat e_i\right]e^{j\omega t}\right\}$$
+and the same applies to $\vec H$. Then
+\begin{align*}
+    \vec\nabla \times \tilde{\vec E} &= -j\omega\mu\tilde{\vec H} \\
+    \vec\nabla \times \tilde{\vec H} &= \sigma\vec E + j\omega\varepsilon\tilde{\vec E} \\
+                                     &= j\omega\left(\varepsilon + \frac{\sigma}{j\omega}\right)\tilde{\vec E}
+\end{align*}
+where we define
+
+\begin{defn}[Complex Permittivity]
+    $$\varepsilon_c = \varepsilon + \frac{\sigma}{j\omega}$$
+\end{defn}
+
+Note: For $\varepsilon >> \frac{\sigma}{\omega}, \varepsilon_c \approx \varepsilon$, and the conduction current is much less than the displacement current, so the medium behaves as a good dielectric. Conversely, $\varepsilon_c \approx \frac{\sigma}{j\omega}$, and the medium behaves as a good conductor.
+
+\begin{ex}
+    Seawater has $\varepsilon_r = 81$ AND $\sigma \approx 4$. Then for $f = 1\unit{kHz}$,
+    $$\omega\varepsilon = 2 \times 10^3\pi \times \frac{81\times10^{-9}}{36\pi} \approx 4 \times 10^{-6} << 4 = \sigma$$
+    so we can approximate it as a conductor. For even higher frequencies, e.g. $f = 100\unit{MHz}$, then $\omega\varepsilon \approx 10^{-1}$.
+\end{ex}
+
+Recall that in phasor form, the curl of $\vec E$ is proportional to $\vec H$. Then combining both phasor equations,
+
+\begin{align*}
+    \vec\nabla \times \vec\nabla \times \tilde{\vec E} &= -j\omega\mu \vec\nabla \times \tilde{\vec H} \\
+    \vec\nabla(\vec\nabla \cdot \tilde{\vec E}) - \nabla^2\tilde{\vec E} &= -j\omega\mu \times j\omega\varepsilon_c \tilde{\vec E} \\
+    -\nabla^2\tilde{\vec E} &= \omega^2\varepsilon_c\mu\tilde{\vec E} \\
+    (\nabla^2 + \omega^2\varepsilon_c\mu)\tilde{\vec E} &= 0
+\end{align*}
+
+Doing the same for $\vec H$, we get also
+$$(\nabla^2 + \omega^2\varepsilon_c\mu)\tilde{\vec H} = 0$$
+
+This is called the wave equation, or Helmholtz equation.
+
+\begin{defn}[Complex Wavenumber]
+    $$k_c = \omega\sqrt{\varepsilon_c\mu} = \beta - j\alpha$$
+    where $\alpha$ is the attenuation constant, and $\beta$ the phase constant.
+\end{defn}
+
+For a medium with $\sigma = 0$, we get a real wavenumber $k_c \in \R$.
+
+ Assume $\tilde{\vec E} = E_x(z)\hat x$. The Laplacian then becomes a second derivative, and the Helmholtz equation becomes
+ $$\frac{d^2\tilde E_x}{z^2} + k^2\tilde E_x = 0$$
+ We have solved this previously, and we know
+ $$\tilde E_x = E_x^+e^{-jkz} + E_x^-e^{jkz}$$
+
+ Substituting into the curl of $\vec E$,
+
+ \begin{align*}
+     \vec\nabla \times \tilde{\vec E} &= \hat z\del{}{z} \times \tilde E_x \\
+                                      &= \left((-jk)E_x^+e^{-jkz} + jkE_x^-e^{jkz}\right)\hat y
+ \end{align*}
+
+ Solving for $\tilde{\vec H}$, considering only the positive wave,
+
+ $$\tilde{\vec H}^+ = \frac{E_x^+}{\frac{\omega\mu}{k}}e^{-jkz}\hat y$$
+
+ For a wave that propogates along $z$, we have an $\vec E$ field that oscillates along $x$, and a $\vec H$ field along $y$, which is what we see on every E\&M textbook. They are related by
+
+ \begin{defn}[Intrinsic Wave Impedance]
+     $$\frac{\omega\mu}{k} = \frac{\omega\mu}{\omega\sqrt{\varepsilon\mu}} = \sqrt{\frac{\mu}{\varepsilon}}$$
+ \end{defn}
+\end{document}

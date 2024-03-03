@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 45}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{lem}
+    If $M^k$ is a manifold and a point $P$ is contained in $\alpha(U)$ with $\alpha^{-1}(P) \in \partial\mathcal H^k$, then $P$ is only contained in coordinate charts where the inverse of $P$ lies on $\partial H^k$.
+\end{lem}
+
+\begin{proof}
+    Suppose $P \in M^k$ is the image of $\alpha_1, \alpha_2$, where $U_1$ is open in $\R^k$ and $\alpha_2^{-1}(P) \in \partial \mathcal H^k, U_2 \in \mathcal H^k$. Since $V_1, V_2$ are open, so is their intersection $V$. Then $W_1 = \alpha_1^{-1}(V)$ is open in $\mathcal R^k$, and $W_2 = \alpha^{-1}_2(V)$ is open in $\H^k$. The theorem on transition functions tell us $\alpha^{-1}_2 \circ \alpha_1: W_1 \rightarrow W_2$ is of $C^r$, one-to-one, and has a nonsingular derivative. Then the inverse function theorem tells us that $W_2$ is open in $\R^k$ which is a contradiction (it contains the inverse of $P$ which is on the boundary).
+\end{proof}
+
+As a consquence, we say $P \in \text{Int}(M^k)$ if there exists a coordinate chart from an open set in $\R^k$ whose image contains $P$. We similarly say $P \in \partial M^k$ if for any coordinate chart, its inverse is on the boundary of $\mathcal H^k$. Using the dichotomy provided by the lemma, we can classify all points of $M^k$ as interior and boundary points.
+
+\begin{prop}
+    The interior of $M^k$ is a $k$ manifold without boundary. The boundary is a $k-1$ manifold without boundary.
+\end{prop}
+
+\begin{proof}
+    We want to show that $\forall P \in \partial M^k \exists$ an open set $S \subseteq \R^{k-1}$ and $b: S \rightarrow \partial M^k$ such that $b \in C^r, b(S)$ relatively open in $\partial M^k$ and its inverse is continuous. $Db \forall x \in S$ has rank $(k-1)$. Let $b$ be the restriction of an arbitrary $\alpha$. $V \cap \partial M^k = T$ is relatively open in $\partial M^k$. Identify $\partial \mathcal H^k$ with $\R^{k-1}$ with 
+    $$\Pi(x_1,\dots,x_{n-1},0) = \Pi(x_1,\dots,x_{n-1})$$
+    Then $\Pi(S) \subseteq \R^{k-1}$ is open. The inverse of $b$ is a composition of $\Pi$ and $\alpha^{-1}$, which is still continuous. We need only to find the rank of its derivative.
+\end{proof}
+\end{document}

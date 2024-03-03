@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 16}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Maxwell's Equations}
+
+Recall the following quantities.
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    Name & Symbol & Units \\
+    \hline\hline
+    Electric field intensity & $\vec E$ & $\unit{V.m^{-1}}$ \\
+    \hline
+    Electric field density & $\vec D$ & $\unit{C.m^{-2}}$ \\
+    \hline
+    Magnetic field intensity & $\vec H$ & $\unit{A.m^{-1}}$ \\
+    \hline
+    Magnetic flux density & $\vec B$ & $\unit{T} = \unit{Wb.m^{-2}}$ \\
+    \hline
+    Electric charge density & $\rho_v$ & $\unit{C.m^{-3}}$ \\
+    \hline
+    Volume current density & $\vec J$ & $\unit{A.m^{-2}}$ \\
+    \hline
+\end{tabular}
+\end{center}
+\end{figure}
+
+There are 16 unknowns in total, with 5 vectors (15 unknowns) and 1 scalar.
+
+\subsection{Gauss Law}
+
+$$\oiint_S \vec D \cdot d\vec s = \int_V \rho_v dV = Q_{\text{enclosed}}$$
+$$\vec\nabla\cdot\vec D = \rho_v$$
+
+The sign convention is that positive charges are electric flux sources, and negative charges are sinks correspondingly.
+
+\subsection{Gauss Law for Magnetism}
+
+$$\oiint_S \vec B\cdot d\vec s = 0$$
+$$\vec\nabla \cdot \vec B = 0$$
+
+\subsection{Faraday Law}
+
+$$\oint_C \vec E \cdot d\vec l = -\frac{d}{dt} \int_S \vec B \cdot d\vec S$$
+$$\vec\nabla \times \vec E = -\del{\vec B}{t}$$
+
+We can then define
+
+$$V_{\text{emf}} = -\frac{d}{dt} \Phi_m$$
+
+where $\Phi_m$ is the integral of magnetic flux over the surface. We call $V_{\text{emf}}$ the electromotive force. We differentiate it from voltage, because we usually use them in time-independent scenarios. \\
+When $\vec E = \vec E_0\cos(\omega t + \phi_E), \vec B = \vec B_0\cos(\omega t + \phi_B)$, we get phasors $\tilde{\vec E}, \tilde{\vec B}$. Substituting,
+
+$$\vec\nabla \times \tilde{\vec E} = -j\omega \tilde{\vec B}$$
+
+\begin{ex}
+    Consider a closed circuit with 2 resistors $R_1 = 100\unit{\Omega}$ and $R_2 = 200\unit{\Omega}$ in series. Consider a magnetic flux pointing out of the plane with
+    $$\vec B = 10^{-3}\cos(2\pi \times 1000t)\hat z$$
+    Assuming the area of the loop is $1\unit{cm^2}$, find the voltages across each resistor.
+    \begin{align*}
+        V_{\text{emf}} &= -\frac{d}{dt} \int 10^{-3} \cos(2\pi \times 1000t) dxdy \\
+                       &= 10^{-3} \times 10^{-4} \times 2000\pi\sin(2000\pi t) \\
+                       &= 2\pi \times 10^{-4}\sin(2\pi \times 1000t)
+    \end{align*}
+    Assume this $V_{\text{emf}}$ is a voltage source. Using the right-hand rule, the current/$\vec E$ field (for a positive $V$) goes counterclockwise, for $d\vec s$ to point in the $\hat z$ direction, as implicitly assumed in the integral. Then voltage division suffices.
+\end{ex}
+\end{document}
