@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 30}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Brewster Angle}
+
+It is the angle $\theta_i = \theta_B$ for which $\Gamma_t(\theta_B) = 0$. For the parallel case,
+
+$$\sin^2\theta_B = \frac{1 - \frac{\mu_2\varepsilon_1}{\mu_1\varepsilon_2}}{1 - \left(\frac{\varepsilon_1}{\varepsilon_2}\right)^2}$$
+
+For interfaces between non-magnetic media, $\mu_1 = \mu_2 = \mu_0$, so this simplifies to
+
+$$\theta_B = \arcsin\frac{1}{\sqrt{1 + \frac{\varepsilon_1}{\varepsilon_2}}}$$
+
+For the perpendicular case,
+
+$$\sin^2\theta_B = \frac{1 - \frac{\mu_1\varepsilon_2}{\mu_2\varepsilon_1}}{1 - \left(\frac{\mu_1}{\mu_2}\right)^2}$$
+
+The brewster angle exists only for media with different $\mu$.
+
+\begin{ex}
+    Consider a plane wave travelling from air to a medium with $\varepsilon_r = 4$. Both are non-magnetic. The incident electric field is
+    $$\tilde{\vec E_i} = (4\hat x + 5\hat y - 4\hat z) e^{-j\sqrt{2}\pi(x+z)}$$
+    From the exponential term, $\sin\theta_i = \cos\theta_i$, so $\theta_i = \frac{\pi}{4}$. Since $n_1 = 1$ for air, we have $k_0 = 2\pi$. The wavelength is then 1m, and the frequency is $300\unit{MHz}$. \\
+    To find the reflected wave, we can use linear superposition. For the parallel component, $\theta_r = \theta_i$, and
+    \begin{align*}
+        \tilde{\vec E_r} &= \Gamma_\parallel E_0(\cos\theta_i\hat x + \sin\theta_i\hat z)e^{-jk_0n_1(x\sin\theta_i - z\cos\theta_i)} \\
+                         &= \Gamma_\parallel (\hat x + \hat z)e^{-j\sqrt{2}\pi(x-z)}
+    \end{align*}
+    For the perpendicular component,
+    \begin{align*}
+        \tilde{\vec E_r} &= \Gamma_\perp \tilde{\vec E_i} \\
+                         &= 5\Gamma_\perp \hat y e^{-j\sqrt{2}\pi(x+z)}
+    \end{align*}
+    Now $\eta_1 = 120\pi, \eta_2 = 60\pi$. Snell's law provides $\theta = 20.705^\circ$, which gives
+    $$\Gamma_\parallel = -0.2038, \Gamma_\perp = -0.4514$$
+    Substituting these yield the full result.
+\end{ex}
+
+\end{document}

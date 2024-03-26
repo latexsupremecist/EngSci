@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 61}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Vector Calculus in $\R^3$}
+
+The curl of a gradient and the divergence of a curl both vanish. Let $U \subseteq \R^3$ be open and let $F: U \rightarrow \R^3, f:U \rightarrow \R$, define
+
+$$\alpha_F = F_idx_i, \beta_F = F_1 dy \wedge dz + F_2 dz \wedge dx + F_3 dx \wedge dy$$
+
+We say that $F \mapsto \alpha_F, F \mapsto \beta_F$ are isomorhipsms from $C^r(U) \rightarrow \Omega^1(U)$ and $C^r(U) \rightarrow \Omega^2(U)$. Then
+
+$$df = \del{f}{x_i}dx_i \equiv \alpha_{\del{F}{x_i}} = \alpha_{\nabla F}$$
+
+and
+
+\begin{align*}
+    d\alpha_F &= \del{F_i}{x_j} dx_j \wedge dx_i \\
+              &= \left(\del{F_3}{y} - \del{F_2}{z}\right) dy \wedge dz + \left(\del{F_1}{z} - \del{F_3}{x}\right) dz \wedge dx + \left(\del{F_2}{x} - \del{F_1}{z}\right) dx \wedge dy \\
+              &= \beta_{\nabla \times F}
+\end{align*}
+
+By observation,
+$$d\beta_F = \del{F_i}{x_i}dx \wedge dy \wedge dz$$
+
+\begin{ex}
+    Let $v = \begin{pmatrix} 2 \\ 1 \\ 2\end{pmatrix}, w = \begin{pmatrix} -1 \\ 3 \\ 6\end{pmatrix}$. Then
+    \begin{align*}
+        (dx \wedge dy)(v, w) &= \det\begin{pmatrix} dx(v) & dx(w) \\ dy(v) & dy(w)\end{pmatrix} \\
+                             &= \det\begin{pmatrix} 2 & -1 \\ 1 & 3\end{pmatrix} \\
+                             &= 7
+    \end{align*}
+\end{ex}
+
+Similarly, $(dy \wedge dz)(v, w) = 0$.
+
+\end{document}

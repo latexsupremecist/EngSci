@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 9}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Differential}
+
+The differential $d$ maps from $k$ forms to $k+1$ forms via
+$$df = \sum_i D_if dx_i$$
+for 0 forms and
+$$d\omega = d\left(\sum_I f_Idx_I\right) = \sum_I df_I \wedge dx_I$$
+for $k > 0$ forms.
+
+\begin{ex}
+    $$\omega_1 = x^2ydx + 3xe^zdy + (z+y)dz, \omega \in \Omega^3(\R)$$
+    Its differential is
+    \begin{align*}
+        d\omega_1 &= d(x^2y) \wedge dx + d(3xe^z) \wedge dy + d((z+y)) \wedge dz \\
+                  &= \left(\del{x^2y}{x}dx + \del{x^2y}{y}dy\right) \wedge dx + \left(\del{3xe^z}{x}dx + \del{3xe^z}{z}dz\right) \wedge dy + \left(\del{z+y}{y}dy + \del{z+y}{z}dz\right) \wedge dz \\
+                  &= (2xydx + x^2dy) \wedge dx + (3e^zdx + 3xe^zdz) \wedge dy + (dy + dz) \wedge dz \\
+                  &= x^2dy \wedge dx + 3e^z dx \wedge dy + 3xe^z dz \wedge dy + dy \wedge dz \\
+                  &= (3e^z - x^2) dx \wedge dy + (1 - 3xe^z) dy \wedge dz
+    \end{align*}
+\end{ex}
+
+\begin{ex}
+    $$\omega_2 = x^2y^2z^2 dx \wedge dy \wedge dz, \omega \in \Omega^3(\R)$$
+    Here, $f_{x,y,z} = x^2y^2z^2$. Then $df$ is a linear combination of $dx, dy, dz$. The wedge product of any with $dx \wedge dy \wedge dz$ vanishes, so $d\omega_2 = 0$.
+\end{ex}
+
+\begin{defn}[Divergence]
+    $$\text{div}F = \sum_i D_i F_i = \sum_i \del{F_i}{x_i} = \langle \nabla,F_i \rangle$$
+\end{defn}
+
+Let $G(x) = (x; \sum g_i(x)e_i)$ be a vector field, and $h$ a scalar field, both in $A$. We define
+$$\beta_{n-1}G = \sum_i (-1)^{i-1} g_i dx_1 \wedge \dots \wedge \hat{dx_i} \wedge \dots \wedge dx_n$$
+and
+$$\beta_nh = h dx_1 \wedge \dots \wedge dx_n$$
+We can show that
+$$\beta_n(\nabla \cdot G) = d(\beta_{n-1}G)$$
+
+This is because
+$$d(\beta_{N-1}G) = \left(\sum_i \del{g_i}{x_i}\right)dx_1 \wedge \dots \wedge dx_n$$
+The only partial derivative that does not vanish for $g_i$ is with respect to $x_i$, and the signs cancel out. On the other hand, it is obvious that
+$$\beta_n\nabla \cdot G = \left(\sum_i \del_{g_i}{x_i}\right) dx_1 \dots dx_n$$
+
+\end{document}

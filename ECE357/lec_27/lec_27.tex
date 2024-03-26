@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 27}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{ex}
+    A 10 Ghz aircraft radar uses a narrow-beam scannign antenna mounted on a gimbal behind a dielectric radome. Even though the radome shape is far from planar, it is approximately planar over the narrow extent of the radar be (couldn't finish copying) \\
+    At 10 GHz, the wavelength in air is 3 cm, and that in the material is
+    $$\lambda = \frac{\lambda_0}{\sqrt{\varepsilon_r}} = \frac{3}{3} = 1\unit{cm}$$
+    From transmission lines, there will be no reflection if thickness (total length) is an integer multiple of $\frac{\lambda}{2}$, so the radome wil be stable for $d = 2.5\unit{cm}$.
+\end{ex}
+
+\section{Incidence at an angle}
+
+Unlike in the normal case, we need to find the angles of reflection and transmission. All angles are measured with respect to the normal. The wavevectors are
+\begin{align*}
+    \vec k_i &= k_0n_1(\sin\theta_i\hat x + \cos\theta_i \hat z) \\
+    \vec k_r &= k_0n_1(\sin\theta_r\hat x - \cos\theta_r \hat z) \\
+    \vec k_t &= k_0n_2(\sin\theta_t\hat x + \cos\theta_t\hat z)
+\end{align*}
+
+We can split the $\vec E$ field into parallel and perpendicular components.
+
+\begin{align*}
+    \tilde{\vec E} &= E_0(\cos\theta_i \hat x - \sin\theta_i \hat z)e^{-jk_0n_1\sin\theta_ix}e^{-jk_0n_1\cos\theta_iz} \\
+    \tilde{\vec H} &= \frac{1}{\eta_1} e^{-jk_0n_1\sin\theta_ix}e^{-jk_0n_1\cos\theta_iz} \hat y
+\end{align*}
+
+For the parallel components, the reflected waves are
+
+\begin{align*}
+    \tilde{\vec E_r} &= \Gamma_\parallel (\cos\theta_i\hat x + \sin\theta_i\hat z)e^{-jk_0n_1\sin\theta_i x}e^{jk_0n_1\cos\theta_iz} \\
+    \tilde{\vec H_r} &= -\frac{\Gamma_\parallel}{\eta_1} e^{-jk_0n_1\sin\theta_ix}e^{jk_0n_1\cos\theta_iz} \hat y
+\end{align*}
+
+and the transmitted waves are
+
+\begin{align*}
+    \tilde{\vec E_t} &= \tau_\parallel(\cos\theta_t\hat x - \sin\theta_t\hat z)e^{-jk_0n_2\sin\theta_tx}e^{-jk_0n_2\cos\theta_tz} \\
+    \tilde{\vec H_t} &= \frac{\tau_\parallel}{\eta_2} e^{-jk_0n_2\sin\theta_tx}e^{-jk_0n_2\cos\theta_tz}
+\end{align*}
+
+Applying boundary conditions,
+
+$$\cos\theta_ie^{-jk_0n_1\sin\theta_ix} + \Gamma_\parallel\cos\theta_re^{-jk_0n_1\sin\theta_ix} = \tau_\parallel\cos\theta_te^{-jk_0n_1\sin\theta_ix}$$
+
+\end{document}

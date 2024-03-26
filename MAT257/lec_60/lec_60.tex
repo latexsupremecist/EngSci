@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 60}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{More on Vector Fields}
+
+Recall that we define $\Omega$ such that $\forall \omega \in \Omega^k(U), U \subseteq \R^n, n \ge k$, then
+$$\omega(x,v_1,\dots,v_k) \in \R$$
+
+For manifolds, the same applies, but where $\omega$ only takes tangent vectors, i.e. $v_i = D_i\alpha v$, where the vector $\vec v$ is arbitrary.
+
+\begin{defn}
+    We say the form $\omega$ is closed on $U$ if $d\omega = 0 \forall x \in U$. It is exact if $\omega = d\eta$ for some $\eta$.
+\end{defn}
+
+Obviously, an exact form is closed. The converse isn't necessarily true.
+
+\begin{ex}
+    Let $\omega \in \Omega^2(\R^3)$. If
+    $$\omega = f_i \hat dx_i$$
+    (we abuse notation here), then
+    $$d\omega = (-1)^{i+1}\del{f_i}{x_i} dx_1 \wedge dx_2 \wedge dx_3$$
+\end{ex}
+
+\begin{defn}
+    A vector field is \textbf{conservative} if it is the gradient of some continuous 0-form $f$.
+\end{defn}
+
+Note that $\Omega^0(U)$ and $C^\infty(U)$ are isomorphic. This is the same for $\Omega^1(U)$ and $V^1(U)$, where the latter contains elements in the form $v_ie_i$, where $v$ is a $C^\infty$ function mapping from $U$ to $R^n$. Each element of $\Omega^1(U)$ can be decomposed to $f_idx_i$, so setting $f_i = v_i$ suffices. By definition, $df = 0$ for a conservative field.
+
+\end{document}

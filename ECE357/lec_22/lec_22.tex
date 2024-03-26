@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 22}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Plane Waves in Lossy Media}
+
+For a lossy media where $G' \ne 0$, we consider two cases. For low $G'$, the plane wave decays in amplitude, but everything else stays the same. For higher $G'$, the waves become out of phase, and amplitude decays as expected.
+
+\begin{ex}
+    Consider the field $\tilde{\vec E} = \tilde E_x(z)\hat x, \tilde{\vec H} = \tilde H_y(z)\hat y$ in a medium ($\varepsilon, \mu, \sigma \ne 0$).
+    \begin{center}
+        \begin{tabular}{c|c}
+            Lossless & Lossy \\
+            \hline
+            $\tilde E_x(z) = E_0e^{-jkz}$ & $\tilde E_x(z) = E_0e^{-jk_cz}$ \\
+            \hline
+            $\tilde{\vec H} = \frac{\hat k \times \tilde{\vec E}}{\eta}$ & $\tilde{\vec H} = \frac{\hat k_c \times \tilde{\vec E}}{\eta_c}$ \\
+        \end{tabular}
+    \end{center}
+
+    Where $\varepsilon_c = \varepsilon - \frac{j\sigma}{\omega}, k_c = \omega\sqrt{\varepsilon_c\mu}, \eta_c = \sqrt{\frac{\mu}{\varepsilon_c}}$. Depending on $\{\sigma,\omega\}$, $\varepsilon_c$ can be almost real or even almost imaginary.
+\end{ex}
+
+\begin{ex}
+    For water, $\varepsilon_c = 81\varepsilon_0 - \frac{j4}{2\pi f}$. At 60Hz, $\varepsilon_c = 81\varepsilon_0(1 - j1.48\times10^7)$, which is almost imaginary. At 100MHz, $\varepsilon_c = 81\varepsilon_0(1 - j8.9)$, so it is simply complex.
+\end{ex}
+
+For a good conductor, $\sigma >> \omega\varepsilon$, then $\varepsilon \approx -\frac{j\sigma}{\omega}$. Substituting,
+
+\begin{align*}
+    k_c &= \omega\sqrt{-\frac{j\sigma}{\omega}\mu} \\
+        &= \sqrt{-j}\sqrt{\omega\mu\sigma} \\
+        &= \frac{1-j}{\sqrt{2}}\sqrt{\omega\mu\sigma} \\
+        &= (1-j)\sqrt{\pi f\mu\sigma}
+\end{align*}
+
+Then $\tilde{\vec E}, \tilde{\vec H}$ are proportional to
+$$e^{-j(1-j)\sqrt{\pi f\mu\sigma}z} = e^{-j\sqrt{\pi f\mu\sigma}z} e^{-\sqrt{\pi f\mu\sigma}z}$$
+
+\begin{defn}[Skin Depth]
+    The skin depth of a medium is
+    $$\delta_s = \frac{1}{\sqrt{\pi f\mu\sigma}}$$
+\end{defn}
+
+\begin{ex}
+    Skin depth of Copper at $f = 10\unit{GHz}$. \\
+    Copper has conductivity $5.8 \times 10^7\unit{S.m^{-1}}$. At this frequency,
+    $$\delta_s = \frac{1}{\sqrt{\pi \times 10^{10} \times 4\pi \times 10^{-7} \times 58 \times 10^7}} = 0.66\unit{\mu m}$$
+\end{ex}
+
+These can be used as RF shields.
+
+\begin{ex}[Microwave Ovens]
+    How thick should microwave ovens be to ensure that microwaves do not leak? We typically use $3-5\delta_s$ at frequency of operation.
+\end{ex}
+
+To quantify losses, consider the surface current density $\vec J_s$.
+
+\begin{align*}
+    J &= \frac{J_s}{\delta_s} \\
+    \sigma E &= \frac{J_s}{\delta_s} \\
+    E &= \frac{J_s}{\sigma\delta_s}
+\end{align*}
+
+\section{Complex Impedance}
+
+$$\eta_c = \sqrt{\frac{\mu}{\varepsilon_c}} \approx \sqrt{\frac{\mu}{-\frac{j\sigma}{\omega}}} = \frac{1+j}{\sqrt{2}}\sqrt{\frac{\omega\mu}{\sigma}} = \frac{1+j}{\sigma}\sqrt{\pi f\mu\sigma} = \frac{1+j}{\sigma\delta_s}$$
+
+\section{"Good" Dielectric}
+
+$$\varepsilon >> \frac{\sigma}{\omega}$$
+Therefore
+$$\varepsilon_c = \varepsilon\left(1 - \frac{j\sigma}{\omega\varepsilon}\right)$$
+and
+$$k_c = \omega\sqrt{\varepsilon_c\mu} = \omega\sqrt{\varepsilon\mu}\sqrt{1 - \frac{j\sigma}{\omega\varepsilon}} \approx k\left(1 - \frac{j\sigma}{2\omega\varepsilon}\right)$$
+
+Frequency cancels out, so we can also write
+$$k_c \approx \omega{\varepsilon\mu} - \frac{j\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}$$
+and
+$$\tilde{\vec E},\tilde{\vec H} \propto e^{-j\omega\sqrt{\varepsilon\mu}z}e^{-\frac{\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}z}$$
+
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 55}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Tensor Fields}
+
+First we define tensor fields on $\R^n$. Recall $\forall p \in \R^n \exists$ a tangent space of $\R^n$ based at $p$, i.e. $T_p\R^n$. The tensor field is the tensor $T(p)$, which takes $k$ vectors and outputs a real. In fact, $T(p) \in \mathcal L^k(T_p\R^n)$.
+
+\begin{ex}[1-tensor field over $\R^n$]
+    Consider any $C^1$ function $f:\R^n\rightarrow\R$. We will see that $Df$ is a 1-tensor field. We know that $Df$ is a function that maps from points $x \in \R^n$ into the span of $1 \times n$ row vectors, which is isomorphic with $\R^n$. Then
+    $$T(p;\vec v) = D_{\vec v}f(p) = \langle Df(p), \vec v\rangle$$
+    Now the input of $T$ can be thought of an element of the tangent space, and we know that it is linear in $\vec v$, since $Df(p)$ is a constant matrix, which is linear by definition.
+\end{ex}
+
+The above example is vacuously antisymmetric, since there is only one entry. We call that a one-form.
+
+\begin{ex}[One forms]
+    $$T(\vec v, \vec w) = \langle \vec v, \vec w \rangle$$
+\end{ex}
+
+\end{document}

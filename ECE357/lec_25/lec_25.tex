@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 25}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Reflection/Transmission at Material Interfaces}
+
+We first start with a normal incidence, where the wave vector $\hat k_c$ propagates in a direction normal to the plane of material interface.
+
+\subsection{EM Field Boundary Conditions}
+
+There are conditions that determine the abrupt change of $\vec E, \vec H$ across an interface. If we go from $\varepsilon_1, \mu_1, \sigma_1$ to $\varepsilon_2, \mu_2, \sigma_2$. If the interface is small enough, we can always approximate it as a plane. Then $\vec E$ can be split into a normal and tangential component with respect to this tangent plane. \\
+
+Applying Faraday's law for a contour with width (along plane) $w$ and height $h$, we have
+
+$$\oint_C \vec E \cdot d\vec l = -\frac{d}{dt}\int_S \vec B \cdot d\vec s$$
+
+As $h\rightarrow0$, the right hand side vanishes. For a small region, we can take $\vec E$ to be constant on each side respectively. The only way for the path integral to vanish is for the tangential components to agree across the boundary. The normal components don't matter, since they are scaled by height $h$ which vanishes. \\
+
+An aside is that if the second medium is a perfect conductor, $\vec E_2 = 0$, wich means all electric fields become normal to the surface, else the tangential electric field is not conserved. \\
+
+Applying Ampere-Maxwell law on the same contour, and taking the limit $h \rightarrow 0$,
+
+\begin{align*}
+    \oint_c \vec H \cdot d\vec l &= \int_S \vec J \cdot d\vec s + \frac{d}{dt} \int_S\vec D \cdot d\vec s \\
+    (H_{2,t} - H_{1,t})w &= J_s w \\
+    H_{2,t} - H_{1,t} &= J_s
+\end{align*}
+
+Generally,
+$$\hat n \times (\vec H_2 - \vec H_1) = \vec J_s$$
+
+Setting $\hat n = \hat z$,we get
+
+$$\vec J_s = (H_{1,y} - H_{2,y})\hat x + (H_{2,x} - H_{1,x})\hat y$$
+
+and so
+
+$$\begin{cases} H_{2,x} - H_{1,x} &= J_{s,y} \\ H_{1,y} - H_{2,y} &= J_{s,x}\end{cases}$$
+
+\begin{ex}[Normal Incidence on a Conductor]
+    $\vec E$ is tangential to the plane of incidence, so it has to vanish. If we define the wave and reflected wave to be
+    \begin{align*}
+        \tilde{\vec E_i} &= E_0e^{-jk_1z} \hat x \\
+        \tilde{\vec E_r} &= \Gamma E_0e^{jk_1z}\hat x
+    \end{align*}
+    At $z = 0$, we have
+    \begin{align*}
+        E_x(z=0) &= 0 \\
+        E_0 + \Gamma E_0 &= 0 \\
+        \Gamma &= -1
+    \end{align*}
+\end{ex}
+
+\end{document}

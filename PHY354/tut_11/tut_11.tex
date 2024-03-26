@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 11}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Rolling Coin}
+
+Define $\theta$ to be the angle between the horizontal and the coin. Let $\psi$ be the normal polar angle when treating the coin as a point mass, and $\psi$ the angle of instantaneous rolling. Then
+
+$$|\phi R| = |\psi a| \Rightarrow \psi = -\frac{R}{a} \psi$$
+
+The negative sign comes from the fact that the rotation of the coin and the movement of the coin are in opposite direction. E.g. if a coin is rolling in the clockwise direction, its centre of mass travels in the anticlockwise direction. \\
+
+It is easy to find translational kinetic energy.
+
+$$T_{tr} = \frac{m}{2}((R - a\cos\theta)^2\dot\phi^2)$$
+
+For cylinders, we have that
+$$I_{11} = I_{22} = \frac{1}{4}ma^2, I_{33} = \frac{1}{2}ma^2$$
+
+We have also derived in class that
+
+\begin{align*}
+    \Omega_1 &= \dot\phi\sin\theta\sin\psi + \dot\theta\cos\psi \\
+    \Omega_2 &= \dot\phi\sin\theta\cos\psi - \dot\theta\sin\psi \\
+    \Omega_3 &= \dot\psi + \dot\phi\cos\theta
+\end{align*}
+
+We can simplify
+$$\Omega_3 = \dot\phi\left(\cos\theta - \frac{R}{a}\right)$$
+Then
+$$T_r = \frac{1}{2}\Omega_i^2I_{ii}$$
+
+\end{document}

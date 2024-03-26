@@ -26,7 +26,7 @@ The above example shows that ellipsoids are manifolds. \\
 We want to build towards manifolds possibly with boundary. It should be a set $M^k \subseteq \R^n$ which is locally modeled on \textit{either} open sets in $\R^n$ or $\R^k_+$, which is $\R^k$ with the last coordinate being positive.
 
 \begin{defn}
-    Conisder a function $f: S \rightarrow \R^k$, where $S \subseteq \R^k$. Then we say $f$ is of class $C^r$ if $\exists$ an extension $\tilde f$ of $f$ to an open superset $U \supseteq S$ such that $\tilde f:U \rightarrow \R^n$ is $C^r$ and $\tilde f = f$ whenever the latter is defined.
+    Consider a function $f: S \rightarrow \R^k$, where $S \subseteq \R^k$. Then we say $f$ is of class $C^r$ if $\exists$ an extension $\tilde f$ of $f$ to an open superset $U \supseteq S$ such that $\tilde f:U \rightarrow \R^n$ is $C^r$ and $\tilde f = f$ whenever the latter is defined.
 \end{defn}
 
 \begin{lem}
@@ -37,12 +37,12 @@ We want to build towards manifolds possibly with boundary. It should be a set $M
     Case 1: $x \in \text{Int}(U) \subseteq \R^k$. This is immediately true, since $f$ and $\tilde f$ agree. If $x$ is in the boundary, then the derivative depends only on $f$ by continuity.
     \begin{align*}
         \del{\tilde f_i}{x_j} &= \lim_{h\rightarrow0} \frac{\tilde f_i(x + he_j) - \tilde f_i(x)}{h} \\
-                              &= \lim_{h\rightarrow0^+} \frac{\tilde f_i(x + he_j) - \tilde f_i(x)}{h}
+                              &= \lim_{h\rightarrow0^+} \frac{\tilde f_i(x + he_j) - \tilde f_i(x)}{h} \\
                               &= \lim_{h\rightarrow0^+} \frac{f_i(x + he_j) - f_i(x)}{h}
     \end{align*}
     which depends only on $f$.
 \end{proof}
 
-Then a general $k$ manifold has a similar definition, only that we accept either $U \subseteq \R^k$ of $U \subeteq \R^k_+$ being open.
+Then a general $k$ manifold has a similar definition, only that we accept either $U \subseteq \R^k$ of $U \subseteq \R^k_+$ being open.
 
 \end{document}

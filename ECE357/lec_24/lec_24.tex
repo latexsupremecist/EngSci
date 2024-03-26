@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 24}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Poynting Vector}
+
+\begin{thm}[Poynting Theorem]
+    For a closed surface $S$ that encloses a volume $V$, we can show that
+    $$\oiint_S (\vec E \times \vec H) \cdot d\vec s = -\del{}{t} \int_V \left(\frac{1}{2} \varepsilon|\vec E|^2 + \frac{1}{2}\mu|\vec H|^2\right)dV - \int_V \sigma|\vec E|^2dV$$
+\end{thm}
+
+The first term on the right is the rate of decay of electric and magnetic energy inside the volume, and the second term is ohmic power losses. From conservation of energy and dimensional analysis, we see that $\vec E \times \vec H$ gives the power loss flow per area through the surface.
+
+\begin{defn}[Poynting Vector]
+    $$\vec S = \vec E \times \vec H$$
+\end{defn}
+
+\begin{ex}
+    Consider a cylindrical conductor with radius $a$ carrying current $I$ along the vertical axis, with a uniform current density. Then
+    $$\vec E = \frac{\vec J}{\sigma} = \frac{I}{\sigma \pi a^2}\hat z$$
+    At $r = a$,
+    $$\vec H = \frac{I}{2\pi a}\hat\phi$$
+    Then
+    $$\vec S(r=a,0\le z \le l) = \frac{I}{\sigma\pi a^2} \hat z \times \frac{I}{2\pi a} \hat\phi = - \frac{I^2}{2\pi^2 a^3\sigma}\hat r$$
+    Plugging into the theorem,
+    \begin{align*}
+        \oiint_S (\vec E \times \vec H) \cdot d\vec s &= \int_0^l \int_0^{2\pi} \frac{I^2}{2\pi^2 a^3\sigma} (-\hat r) \cdot \hat r(ad\phi dz) \\
+                                                      &= -\frac{I^2}{2\pi^2 a^2\sigma} \times l \times 2\pi \\
+                                                      &= -I^2 \times \frac{l}{\pi a^2\sigma} \\
+                                                      &= -I^2R
+    \end{align*}
+    This intuitiively makes sense. Power loss is $I^2R$ for a "nice" cylindrical wire with uniform current density, $\varepsilon,\mu,\sigma$.
+\end{ex}
+
+\subsection{Phasor Form}
+
+$$\vec S = \Re\{\tilde{\vec E}e^{j\omega t}\} \times \Re\{\tilde{\vec H}e^{j\omega t}\}$$
+
+\begin{ex}
+    For
+    \begin{align*}
+        \vec E &= |E_x|e^{-az}\cos(\omega t - \beta z + \phi_E)\hat x \\
+        \vec H &= |H_y|e^{-az}\cos(\omega t - \beta z + \phi_H)\hat y
+    \end{align*}
+    We have the Poynting vector
+    \begin{align*}
+        \vec S &= |E_x||H_y|e^{-2az}\cos(\omega t - \beta z + \phi_E)\cos(\omega t - \beta z + \phi_H) \\
+               &= \frac{|E_x||H_y|}{2}e^{-2az} \left(\cos(2\omega t - 2\beta z + \phi_E + \phi_H) + \cos(\phi_E - \phi_H)\right)
+    \end{align*}
+\end{ex}
+
+\subsection{Time-averaged value of Poynting Vector}
+
+\begin{align*}
+    \vec S_{\text{avg}} &= \frac{1}{T} \int_0^T \vec S dt \\
+                        &= \frac{1}{2} |E_x||H_y|e^{-2az}\cos\theta_\eta \hat z \\
+                        &= \frac{1}{2} \frac{|E_x|^2}{|\eta_c|}e^{-2az}\cos\theta_\eta \hat z
+\end{align*}
+
+where we note that the angle of the complex impedance is also $\theta_\eta = \phi_E - \phi_H$. Alternatively, note that
+\begin{align*}
+    \tilde{\vec E} &= |E_x|e^{-az}e^{-j\beta z}e^{j\phi_E}\hat x \\
+    \tilde{\vec H} &= \frac{|E_x|}{|\eta_c|} e^{-az}e^{-j\beta z}e^{j\phi_H}\hat y
+\end{align*}
+
+and so
+
+\begin{align*}
+    \frac{1}{2} \tilde{\vec E} \times \tilde{\vec H}^* &= \frac{1}{2} \frac{|E_x|^2}{|\eta_c|} e^{-2az}e^{j(\phi_E - \phi_H)}\hat z \\
+    \frac{1}{2}\Re\{\tilde{\vec E} \times \tilde{\vec H}^*\} &= \frac{1}{2} \frac{|E_x|^2}{|\eta_c|} e^{-2az}\cos\theta_\eta \hat z \\
+                                                             &= \vec S_{\text{avg}}
+\end{align*}
+
+\end{document}

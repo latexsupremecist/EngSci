@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 62}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Midterm Solutions}
+
+\subsection{Question 1}
+
+For $\omega = f_1dx + f_2dy$,
+
+$$d\omega = \left(\del{f_2}{x} - \del{f_1}{y}\right)dx \wedge dy$$
+
+For $\eta = e^{x+y}dx - \sin xdy$,
+$$d\eta = \left(-\cosx - e^{x+y}\right)dx \wedge dy \neq 0$$
+$\eta$ isn't closed, so it isn't exact. \\
+If $\zeta = df$, find all $g$ such that $\zeta = dg$. \\
+Note that $d(f-g) = 0$ by linearity. Then $(f-g)$ has to be a constant by the mean value theorem, since all partial derivatives vanish.
+
+\subsection{Question 2}
+
+Let $M$ be a compact $k$ dimensional manifold of $\R^n$ without boundary. Given $f:\R^n\rightarror\R \in C^\infty$, let $\omega = df|_{TM}$. PRove that there are distinct points $A,B \in M$ where $\omega$ vanishes. If $f|_M$ is constant, this is trivial. Or else, but extreme value theorem, $f$ has a global minimum and maximum. These are distinct points since $f|_M$ is not constant. Since $\alpha,\alpha^{-1}$ are both continuous, $f\circ\alpha$ has a local extremum at $q = \alpha^{-1}(A)$. Then
+
+\begin{align*}
+    D(f\circ\alpha)_q &= 0 \\
+    Df_A \times D\alpha_q = 0 \\
+    \omega(A) &= 0
+\end{align*}
+
+Given an example where $df_A, df_B$ does not disappear, unlike $\omega$. \\
+We have established $\omega$ vanishes for 2 distinct points. It suffices to find an $f$ where $df$ does not vanish anywhere. An example is $f = x_1$, then $df = dx_1 \neq 0$. \\
+You are given $(a,b)$ where $b - a < 2\pi$. Find another $a,b$ pair with length less than $2\pi$ such that $\alpha:(a,b) \rightarrow \mathbb S^1$ with $\alpha(\theta) = (\cos\theta,\sin\theta)$ covers the circle with the 2 sets. \\
+This is trivial. Pick the midpoint $c$ and use $(c,c+2\pi)$. \\
+Show that $V = -ye_1 + xe_2$ is tangent to the circle. \\
+$D\alpha = (-\sin\theta,\cos\theta)$. Given any point $p = (\cos\theta,\sin\theta)$, we have $V(p;v) = 0$ where $v$ is a tangent vector of the form $D\alpha$.
+
+\section{Symplectic Geometry}
+
+Consider the pair $(M,\omega)$ where $M$ has dimension $2n$, and $\omega$ is a closed non-degenerate 2-form. Use the coordinates $(q_1,\dots,q_n,p_1,\dots,p_n)$. Define
+$$\theta \equiv \sum_i p_idq_i$$
+to be a 1-form on $\R^{2n}$. Define also
+$$\omega \equiv -d\theta = -\sum_i dp_i \wedge dq_i = \sum_i dq_i \wedge dp_i$$
+It is a theorem then $d\omega = 0$, $\omega$ is non-degenerate,
+$$\frac{\omega^{\wedge n}}{n!} = dq_1 \wedge dp_i \wedge \dots \wedge dq_n \wedge dp_n$$
+For every $(M,v) \exists$ a local chart such that
+$$\omega = \sum_i dq_i \wedge dp_i$$
+
+\end{document}

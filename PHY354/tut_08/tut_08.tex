@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 8}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Rotating Cone}
+
+In today's example, we look at a cone rotating on a surface. The cone has height $h$, radius $R$, angle $\alpha$, mass $m$ and rotational velocity $\omega_0$. First, recall how we can split kinetic energy as
+$$T = T_c + T_r$$
+which is the kinetic energy of the centre of mass plus the kinetic energy of the body rotating around the centre of mass. A civ can tell you that the centroid lies $\frac{h}{4}$ above the base. The position of the centre of mass is
+$$p = \left(\frac{3}{4}h\cos\alpha\cos(\omega_0t), \frac{3}{4}h\cos\alpha\sin(\omega_0t)\right)$$
+and velocity is
+$$v = (-\omega_0\frac{3}{4}h\cos\alpha\sin(\omega_0t), \omega_0\frac{3}{4}h\cos\alpha\cos(\omega_0t))$$
+So
+$$T_c = \frac{9}{32}m(\omega_0^2h^2\cos^2\alpha)$$
+
+Moment of inertia is
+$$I_{ij} = \frac{m}{V}\int(r^2\delta_{ij} - r_ir_j)dV$$
+
+For $i \neq j$, the $r_ir_j$ term is one of $\sin\phi,\cos\phi,\sin(2\phi)$, all of which vanish as we integrate along $\rho d\rho d\phi$. The cross terms all cross out.
+
+\begin{align*}
+    I_{zz} &= \frac{m}{V}\iiint (x^2+y^2)\rho d\rho d\phi dz \\
+           &= \frac{m}{V} \int_0^h \int_0^{2\pi} \frac{z^4\tan^4\alpha}{4} d\phi dz \\
+           &= \frac{m}{V} \int_0^h \frac{\pi z^4\tan^4\alpha}{2} dz \\
+           &= \frac{m}{V} \frac{\pi h^5\tan^4\alpha}{10} \\
+           &= \frac{m}{V} \frac{\pi hR^4}{10} \\
+           &= \frac{3mR^2}{10}
+\end{align*}
+
+\begin{align*}
+    I_{xx} &= \frac{m}{V} \int_0^h \int_0^{2\pi} \int_0^{z\tan\alpha} (\rho^2\cos^2\phi + z^2) \rho d\rho d\phi dz \\
+           &= \frac{m}{V} \int_0^h \int_0^{2\pi} \left(\frac{z^4\tan^4\alpha\cos^2\phi}{4} + \frac{z^4\tan^2\alpha}{2}\right) d\phi dz \\
+           &= \frac{m}{V} \int_0^h \left(\frac{\pi z^4\tan^4\alpha}{4} + \pi z^4\tan^2\alpha\right) dz \\
+           &= \frac{m}{V} \left(\frac{\pi h^5\tan^4\alpha}{20} + \frac{\pi h^5\tan^2\alpha}{5}\right) \\
+           &= \frac{m}{V} \left(\frac{\pi hR^4}{20} + \frac{\pi h^3R^2}{5}\right) \\
+           &= 3m\left(\frac{R^2}{20} + \frac{h^2}{5}\right)
+\end{align*}
+
+By symmetry, $I_{xx} = I_{yy}$. Alternatively, consider $\int_0^{2\pi} \cos^2x dx = \int_0^{2\pi} \sin^2x dx$.
+
+\end{document}

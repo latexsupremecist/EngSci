@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 58}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+Let $A \subseteq \R^n$ be open. For all $k \le n \in \N$,
+$$\Omega^k(\Omega) = \text{span of } C^\infty k-\text{forms over } A$$
+
+Then $\Omega^0(A)$ is simply the set of scalar fields, or $C^\infty$ functions over $A$. \\
+$$\Omega^1(A) = \omega = \sum_i f_i(x)dx_i, f_i \in C^\infty$$
+$$\Omega^k = \sum_I f_I(x)dx_I, f_I \in C^\infty$$
+where $I = \{i_1,\dots,i_k\}$ is an ascending $k$ tuple, and
+$$dx_I = \bigwedge_j dx_{i_j}$$
+
+$$d: \Omega^0(A) \rightarrow \Omega^1(A)$$
+where
+$$(df)(x;\vec v) = Df(x) \cdot \vec v$$
+
+\section{Generalising $d$}
+
+We want to define a linear operation $d: \Omega^k(A) \rightarrow \Omega^{k+1}(A)$ that is as close to a derivative as possible. We want an analogue of Leibnitz rule. We want the properties
+$$d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k\omega \wedge d\eta$$
+$$d(d\omega) = 0$$
+
+\begin{thm}
+    There is a unique $d: \Omega^k(A) \rightarrow \Omega^{k+1}, k \in \N$ that satisfies the above properties, and agrees with $d$ for $k = 0$.
+\end{thm}
+
+\begin{proof}
+    If such a $d$ existed,
+    $$d(dx_i) = 0$$
+    since $x_i$ is a one-form which is a form. Also
+    \begin{align*}
+        d(dx_I) &= d(dx_{i_1} \wedge \dots \wedge dx_{i_k}) \\
+                &= d(dx_{i_1}) \wedge (dx_{i_2} \wedge \dots \wedge dx_{i_k}) - dx_{i_1} \wedge d(dx_{i_2} \wedge \dots \wedge dx_{i_k})
+    \end{align*}
+    The first term disappears, since $d(d\omega) = 0$. By induction, $d(dx_I)$ vanishes too. Then
+    \begin{align*}
+        d(fdx_I) &= df \wedge dx_I + (-1)^nf \wedge d(dx_I) \\
+                         &= (D_j f dx_j) \wedge dx_I \\
+                         &= \sum_j (D_jf)(dx_j \wedge dx_I)
+    \end{align*}
+    Recall how $dx_I$ is a basis for $k$ forms. Then an arbitrary k-form can be written as $\omega = \sum_I f_I(x)dx_I$, and the formula above tells us how to compute $d\omega$, namely
+    $$d\omega = \sum_I d(f_I(x)dx_I) = \sum_I\sum_j (D_jf_I)dx_j \wedge dx_I$$
+    Taking this as the definition, we can show that it has all properties as outlined in the theorem.
+\end{proof}
+
+\begin{ex}
+    Let $\omega = f_1dx_1 + f_2dx_2$. Then
+    \begin{align*}
+        d\omega &= d(f_1dx_1) + d(f_2dx_2) \\
+                &= (D_1f_1dx_1 + D_2f_1dx_2)\wedge dx_1 + (D_1f_2dx_1 + D_2f_2dx_2) \wedge dx_2 \\
+                &= (D_1f_2 - D_2f_1) dx_1 \wedge dx_2
+    \end{align*}
+\end{ex}
+\end{document}

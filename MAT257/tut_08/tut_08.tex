@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 8}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integrals}
+
+Consider parametrised $C^1$ curve $C \subseteq \R^n, \gamma:[a,b] \rightarrow \R^n$. Except for isolated points, we require $\gamma$ to be $C^1$, 1-1 and $\gamma'(t) \ne 0$. We define the length of $C$ to be
+$$l(c) = \int_a^b |\gamma'(t)|dt$$
+We can then define the integral of a continuous $h: \R^n \rightarrow \R$ on $C$ to be
+$$\int_C hds = \int_a^b h(\gamma(t))|\gamma'(t)|dt$$
+
+\section{Vector Fields}
+
+\begin{defn}[Vector Field]
+    A vector field on $\R$ is a function
+    $$F: \R^n \rightarrow T\R^n$$
+    More explicitly,
+    $$F: a \mapsto (a; f(a)) \in T_a\R^n$$
+    where $F$ maps from a point on $a$ to a tangent based on $a$.
+\end{defn}
+
+\begin{ex}
+If we have $\gamma:[a,b] \rightarrow \R^n$ giving a $C^\infty$ parametrised curve, then we have tangent vectors $(\gamma(t), \gamma'(t)) \in T\R^n$.
+\end{ex}
+
+\begin{ex}
+    $$F = \vec\nabla f$$
+    for some smooth $f$.
+\end{ex}
+
+We define
+
+$$\int_C F(\gamma)d\gamma = \int_a^b \sum F_i(\gamma(t))\gamma'_i(t)dt$$
+
+If we define $F$ using the previous example, $F_i = \del{f}{x_i}$, so
+$$\int_C F = \int_a^b \sum_i \del{f}{x_i}(\gamma(t)) \gamma'_i(t)dt = \int_a^b (f\circ\gamma)'(t) dt = f(x(b)) - f(x(a))$$
+So $\int_C F$ depends only on the endpoints of $C$ and not on the path. This is what we call a \textit{conservative} field.
+
+\begin{ex}
+    Consider $S^1 = C$ and $F(x,y) = \left(-\frac{y}{x^2+y^2}, \frac{x}{x^2+y^2}\right)$. We want to show that $F \ne \vec\nabla f \forall f$. \\
+    To prove this, we assume the opposite. Then $\int_{S'} F = 0$ since $F$ is closed. But
+    \begin{align*}
+        \int_{S'} F &= \int_0^{2\pi} (F\circ\gamma)(\theta)\gamma'(\theta)d\theta \\
+                    &= \int_0^{2\pi} (-\sin\theta, \cos\theta) \cdot (-\sin\theta, \cos\theta) d\theta \\
+                    &= \int_0^{2\pi} \left(\sin^2\theta + \cos^2\theta\right)d\theta \\
+                    &= 2\pi \\
+                    &\ne 0
+    \end{align*}
+    This completes the proof by contradiction.
+\end{ex}
+
+\end{document}

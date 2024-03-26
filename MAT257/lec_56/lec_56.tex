@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 56}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Tensor Fields}
+
+Recall a tensor field is a function over $U \subseteq \R^n$ which returns a $k$ tensor based on that point. Then
+$$T(p;v_1,\dots,v_k) \in \R$$
+
+We can also consider elementary tensors as tensor fields. For one tensors, we define
+$$\psi_i(x;v) = \lambda_i$$
+where $v = \lambda_ie_i$. Note that this tensor field is independent of the point $x$.
+
+\begin{defn}
+    A $k$ tensor field over a manifold $M^k$ is the restriction of $k$ tensor fields over $R^n$ restricted to $M^k$, where the points $p$ must be in the manifold, and the vectors $v_1,\dots,v_k$ must be tangent to the manifold.
+\end{defn}
+
+If we define a one form $A(x;w) = \langle x,w \rangle$, note that it is not always zero (duh), but restricted to a sphere, it is, since the radius is always parallel to the normal.
+
+\begin{defn}
+    Given $f \in C^1(\R^n)$, define $df$ to be
+    $$(df)(p;v) = D_vf(p)$$
+    Then $\psi_i = dx_i$.
+\end{defn}
+
+In one dimension, we get $(df)(x;e_1) = f'(x), (dx)(x;e_1) = 1$, so $df = f'(x)dx$. In more dimensions,
+$$(df)(x;e_i) = D_if(x)$$
+Then
+$$df(x,v) = v_iD_if(x) = D_if(x)dx_i$$
+
+\end{document}

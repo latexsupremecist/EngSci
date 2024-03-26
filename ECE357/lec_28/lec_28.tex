@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 28}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Plane Wave Incidence}
+
+\subsection{Incident Wave}
+
+$$\tilde{\vec E_i} = (\cos\theta_i\hat x - \sin\theta_i\hat z)e^{-jk_0n_1\sin\theta_ix}e^{-jk_0n_1\cos\theta_iz}$$
+$$\tilde{\vec H_1} = \frac{1}{\eta_1}e^{-jk_0n_1\sin\theta_ix}e^{-jk_0n_1\cos\theta_iz}\hat y$$
+$$n_1 = \sqrt{\varepsilon_{r_1}\mu_{r_1}}, \eta_1 = \sqrt{\frac{\mu_1}{\varepsilon_1}}$$
+
+\subsection{Reflected Wave}
+
+$$\tilde{\vec E_r} = \Gamma_\parallel (\cos\theta_r\hat x + \sin\theta_r\hat z)e^{-jk_0n_1\sin\theta_rx}e^{jk_0n_1\cos\theta_rz}$$
+$$\tilde{\vec H_r} = -\frac{\Gamma_\parallel}{\eta_1}e^{-jk_0n_1\sin\theta_rx}e^{jk_0n_1\sin\theta_rz}\hat y$$
+
+\subsection{Transmitted Wave}
+
+$$\tilde{\vec E_t} = \tau_\parallel(\cos\theta_t\hat x - \sin\theta_t\hat z)e^{-jk_0n_2\sin\theta_t}e^{-jk_0n_2\cos\theta_tz}$$
+$$\tilde{\vec H_t} = \frac{\tau_\parallel}{\eta_2}e^{-jk_0n_2\sin\theta_tx}e^{-jk_0n_2\cos\theta_tz}\hat y$$
+
+\subsection{Boundary Conditions}
+
+$$E_{x,i}(z=0) + E_{x,r}(z=0) = E_{x,t}(z=0)$$
+$$H_{y,i}(z=0) + H_{y,r}(z=0) = H_{y,t}(z=0)$$
+
+In order to satisfy this $\forall x$, all exponentials have to agree by identity. This gives the law of reflection $\theta_i = \theta_r$, and also Snell's law $n_1\sin\theta_i = n_2\sin\theta_t$. Cancelling out the exponentials, we obtain
+
+$$\cos\theta_i(1 + \Gamma_\parallel) = \tau_\parallel \cos\theta_t$$
+
+For the magnetic field, we similarly have
+
+$$\frac{1}{\eta_1}(1 - \Gamma_\parallel) = \frac{\tau_\parallel}{\eta_2}$$
+
+Solving the pair of equations, we can find
+
+$$\Gamma_\parallel = \frac{\eta_2\cos\theta_t - \eta_1\cos\theta_i}{\eta_2\cos\theta_t + \eta_1\cos\theta_i}$$
+$$\tau_\parallel = \frac{2\eta_2\cos\theta_i}{\eta_2\cos\theta_t + \eta_1\cos\theta_i}$$
+
+For normal incidence, $\theta_i = \theta_r = \theta_t = 0$, so $\Gamma_\parallel = \frac{\eta_2 - \eta_1}{\eta_2 + \eta_1}, \tau_\parallel = \frac{2\eta_2}{\eta_1 + \eta_2}$. \\
+
+Note that
+
+$$\eta_1\cos\theta_i = \frac{\tilde E_{x,i}}{\tilde H_{y,i}}$$
+and
+$$\eta_2\cos\theta_t = \frac{\tilde E_{x,t}}{\tilde H_{y,t}}$$
+
+From Snell's law, $\exists \theta_i = \theta_c$ at which $\sin\theta_t = 1$. Above this angle, the transmitted wave propagagtes along the $x$ direction. Since $\sin^2\theta_t > 1$, we have $\cos\theta_t = \sqrt{1 - \sin^2\theta_t} = \pm j\alpha$ where $\alpha$ is real. It makes no physical sense to have a growing solution, so the only solution is
+
+$$\tilde E_t, \tilde H_t ~ e^{-jk_0n_2(\pm j\alpha)z} = e^{k_0n_2\alpha z}$$
+
+The exponention can be split into propogation and attenuation terms, i.e.
+$$e^{-jk_0n_1\sin\theta_ix}e^{-k_0n_2\alpha z}$$
+
+The transmitted wave has no power, so all power is transferred to the reflected wave. We call this \textbf{total internal reflection}.
+
+\end{document}

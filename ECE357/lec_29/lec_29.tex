@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 29}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Recap}
+
+For a parallel case,
+
+\subsection{Incident}
+
+\begin{align*}
+    \tilde{\vec E}_i &= (\cos\theta_i\hat x - \sin\theta_i\hat z)e^{-jk_0n_1(x\sin\theta_i + z\cos\theta_i)} \\
+    \tilde{\vec H}+_i &= \frac{1}{\eta_1}e^{-jk_0n_1(x\sin\theta_i + z\cos\theta_i)} \hat y
+\end{align*}
+
+\subsection{Reflected}
+
+\begin{align*}
+    \tilde{\vec E_r} &= \Gamma_\parallel (\cos\theta_r\hat x + \sin\theta_r\hat z)e^{-jk_0n_1(x\sin\theta_r - z\cos\theta_r)} \\
+    \tilde{\vec H_r} &= \frac{\Gamma_\parallel}{\eta_1} e^{-jk_0n_1(x\sin\theta_r - z\cos\theta_r)} \hat y
+\end{align*}
+
+\subsection{Transmitted}
+
+\begin{align*}
+    \tilde{\vec E_t} &= \tau_\parallel(\cos\theta_t \hat x - \sin\theta_t\hat z)e^{-jk_0n_2(x\sin\theta_t + z\cos\theta_t)} \\
+    \tilde{\vec H_t} &= \frac{\tau_\parallel}{\eta_2} e^{-jk_0n_2(x\sin\theta_t + z\cos\theta_t)} \hat y
+\end{align*}
+
+\section{Total Internal Reflection}
+
+For $n_1 > n_2$, there is $\theta_i = \theta_c$ where $\sin\theta_t = 1$. At an angle greater than that, $\sin\theta_t > 1$, and
+$$\cos\theta_t = \sqrt{1 - \sin^2\theta_t} = \pm j\sqrt{\left(\frac{n_1}{n_2}\sin\theta_i\right)^2 - 1}$$
+
+This is multiplied by $-jk_0n_2$ in the exponent. We cannot admit a solution that grows to infinity, so the only accepted solution is the negative $j$ solution. The reflection coefficient becomes complex and has a magnitude of 1, since
+
+$$\Gamma_\parallel = \frac{\eta_2\cos\theta_t - \eta_1\cos\theta_i}{\eta_2\cos\theta_t + \eta_1\cos\theta_i} = \frac{jx - y}{jx + y}$$
+
+\section{Perpendicular Case}
+
+The electric field is perpendicular to the plane spanned by the wavevector and the normal.
+
+\subsection{Incident}
+
+\begin{align*}
+    \tilde{\vec H_i} &= \frac{1}{\eta_1} (-\cos\theta_i\hat x + \sin\theta_i\hat z) e^{-jk_0n_1(x\sin\theta_i + z\cos\theta_i)} \\
+    \tilde{\vec E_i} &= e^{-jk_0n_1(x\sin\theta_i + z\cos\theta_i)} \hat y
+\end{align*}
+
+\subsection{Reflected}
+
+\begin{align*}
+    \tilde{\vec H_r} &= \frac{\Gamma_\perp}{\eta_1} (\cos\theta_r \hat x + \sin\theta_r\hat z)e^{-jk_0n_1(x\sin\theta_r - z\cos\theta_r)} \\
+    \tilde{\vec E_r} &= \Gamma_\perp e^{-jk_0n_1(x\sin\theta_r - z\cos\hteta_r)}\hat y
+\end{align*}
+
+\subsection{Transmitted}
+
+\begin{align*}
+    \tilde{\vec H_t} &= \frac{\tau_\perp}{\eta_2} (-\cos\theta_t \hat x + \sin\theta_t \ha z)e^{-jk_0n_2(x\sin\theta_t + z\cos\theta_t)} \\
+    \tilde{\vec E_t} &= \tau_\perp e^{-jk_0n_2(x\sin\theta_t + z\cos\theta_t)}\hat y
+\end{align*}
+
+Similar to the parallel case, we can use boundary conditions to find the coefficients
+
+$$\Gamma_\perp = \frac{\frac{\eta_2}{\cos\theta_t} - \frac{\eta_1}{\cos\theta_i}}{\frac{\eta_2}{\cos\theta_t} + \frac{\eta_1}{\cos\theta_i}}$$
+and
+$$\tau_\perp = \frac{\frac{2\eta_2}{\cos\theta_t}}{\frac{\eta_2}{\cos\theta_2} + \frac{\eta_1}{\cos\theta_i}}$$
+\end{document}

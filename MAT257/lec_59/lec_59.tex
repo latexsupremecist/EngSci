@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 59}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+Recall $\forall U \in \R^n$ open and $k \le n \in \N$, $\Omega^k(U)$ is the space of $C^\infty k$-forms over $U$. Every element can then be described as
+$$\omega = \sum_I f_I(x)dx_I, dx_I = dx_{i1} \wedge \dots \wedge dx_{ik}, i1 < i2 < \dots < ik$$
+
+Recal we wanted to define a linear $d:\Omega^k(U) \rightarrow \Omega^{k+1}(U)$ such that
+
+\begin{enumerate}
+    \item For $k=0, df = \sum_i (D_if)dx_i$
+    \item $d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k\omega \wedge d\eta$
+    \item $d(d\omega) = 0 \forall \omega$
+\end{enumerate}
+
+We have shown that if such a $d$ exists, it is unique. Defining $\omega$ as above, we have
+$$d\omega = \sum_I df_I \wedge dx_I$$
+Using this as the definition, it is trivial to show that this satisfies all properties. The first is obvious, by definition. For the second, first note that this reduces to the product rule (for $D_if$) if $k = l = 0$. If both are positive, let
+$$\omega = \sum_I f_Idx_I, \eta = \sum_J g_Jdx_J$$
+and
+
+\begin{align*}
+    d(\omega \wedge \eta) &= d\left(\sum_I f_Idx_I \wedge \sum_J g_Jdx_J\right) \\
+                          &= \sum_{I,J} d(f_Idx_I \wedge g_Jdx_J) \\
+                          &= \sum_{I,J} d(f_Ig_J) \wedge dx_I \wedge dx_J \\
+                          &= \sum_{I,J} (df_I \wedge g_J + f_I \wedge dg_J) \wedge dx_I \wedge dx_J \\
+                          &= \sum_{I,J} (df \wedge dx_I) \wedge (g \wedge dx_J) + (-1)^k(f \wedge dx_I) \wedge (dg \wedge dx_J) \\
+                          &= d\omega \wedge \eta + (-1)^k\omega \wedge d\eta
+\end{align*}
+
+Note that $g$ has order 0, and $dg$ order 1, which we use in swapping the order of wedge products. Note further that we used the property $d(dx_I) = 0$. This is trivial, since
+\begin{align*}
+    dx_I &= 1 \times dx_I \\
+    d(dx_I) &= d1 \times dx_I \\
+            &= 0 \times dx_I \\
+            &= 0
+\end{align*}
+
+By linearity, we can show that $d(d\omega) = 0$. Then what remains is to show the second where exactly one of $\omega, \eta$ is a zero form. By definition of zero forms, they are scalar functions, where the wedge product becomes a normal multiplicative product. Without loss of generality, let $\omega = f$ be a zero form. Then
+
+\begin{align*}
+    d(\omega \wedge \eta) &= d\left(\sum_J fg_J dx_J\right) \\
+                          &= \sum_J d(fg_J) \wedge dx_J \\
+                          &= \sum_J (df \wedge g_J \wedge dx_J + f \wedge dg_J \wedge dx_J) \\
+                          &= d\omega \wedge \eta + \omega \wedge d\eta
+\end{align*}
+which agrees with the above formula. The same happens if $\eta$ is a zero form.
+
+\begin{align*}
+    d(\omega \wedge \eta) &= d\left(\sum_If_Ig dx_I\right) \\
+                          &= \sum_I d(f_Ig) \wedge dx_I \\
+                          &= \sum_I df_I \wedge g \wedge dx_I + f_I \wedge dg \wedge dx_I \\
+                          &= \sum_I df_I \wedge dx_I \wedge g + (-1)^k f_I \wedge dx_I \wedge dg \\
+                          &= d\omega \wedge \eta + \omega \wedge d\eta
+\end{align*}
+
+\end{document}

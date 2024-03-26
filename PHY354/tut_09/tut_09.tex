@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 9}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+Consider a cylinder $r = a$ rolling in a semicircular surface $y = \sqrt{R^2 - x^2}$. Let $\phi$ be the angle between the vertical and the line joining the centres of the circle (surface) and cylinder. Kinetic energy from translational motion can easily be found.
+
+\begin{align*}
+    T_{tr} &= \frac{1}{2}m(\dot r^2 + r^2\dot\phi^2) \\
+           &= \frac{1}{2}m(R-a)^2\dot\phi^2
+\end{align*}
+
+For rotational motion, we need angular velocity and moments of inertia. The $z$ component suffices. Consider these two expressions which both give the velocity of the centre of mass.
+
+\begin{align*}
+    \vec\Omega \times \vec r &= (R-a)\dot\phi \\
+    |\vec\Omega| &= \frac{R-a}{a}\dot\phi
+\end{align*}
+
+Rotational kinetic energy is then
+
+\begin{align*}
+    T_{rot} &= \frac{1}{2} I\Omega^2 \\
+            &= \frac{1}{2} \times \frac{1}{2}m a^2 \times \frac{(R-a)^2}{a^2}\dot\phi^2 \\
+            &= \frac{1}{4}m (R-a)^2\dot\phi^2
+\end{align*}
+
+and total kinetic energy is
+
+$$T = \frac{3}{4}m(R-a)^2\dot\phi^2$$
+
+\end{document}

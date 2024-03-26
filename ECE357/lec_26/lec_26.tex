@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 26}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Plane Wave Incidence on Material Boundaries}
+
+For simple media, the wavenumber is in general
+
+$$k = \omega\sqrt{\varepsilon\mu} = \omega\sqrt{\varepsilon_0\varepsilon_r\mu_0\mu_r} = \omega\sqrt{\varepsilon_0\mu_0}\sqrt{\varepsilon_r\mu_r} = k_0n$$
+where we define the \textbf{refractive index} to be
+$$n = \sqrt{\varepsilon_r\mu_r}$$
+
+If the incident waves are
+\begin{align*}
+    \tilde{\vec E_i} &= E_ie^{-jk_0n_1z} \hat x \\
+    \tilde{\vec H_1} &= \frac{E_i}{\eta_1} e^{-jk_zn_1z} \hat y
+\end{align*}
+
+The reflected wave will be
+
+\begin{align*}
+    \tilde{\vec E_r} &= \Gamma E_i e^{jk_0n_1z} \hat x \\
+    \tilde{\vec H_r} &= -\Gamma \frac{E_i}{\eta_1} e^{jk_0n_1z} \hat y
+\end{align*}
+
+where $\Gamma$ is the reflection coefficient. The transmitted wave is
+\begin{align*}
+    \tilde{\vec E_t} &= \tau E_i e^{-jk_0n_2z} \hat x \\
+    \tilde{\vec H_t} &= \tau \frac{E_i}{\eta_2} e^{-jk_0n_2z} \hat y
+\end{align*}
+
+By continuity of tangential $\vec E$ at $z = 0$, we have
+\begin{align*}
+    \vec E_r + \vec E_i &= \vec E_t \\
+    \Gamma E_i \hat x + E_i \hat x &= \tau E_i \hat x \\
+    1 + \Gamma &= \tau
+\end{align*}
+
+If there is no surface current, the same applies to $\vec H$, so
+\begin{align*}
+    \frac{E_i}{\eta_1} - \Gamma \frac{E_i}{\eta_1} &= \tau \frac{E_i}{\eta_2} \\
+    \frac{1 - \Gamma}{\eta_1} &= \frac{\tau}{\eta_2}
+\end{align*}
+
+Solving,
+$$\Gamma = \frac{\eta_2-\eta_1}{\eta_2+\eta_1}, \tau = \frac{2\eta_2}{\eta_1 + \eta_2}$$
+
+In a perfect conductor, $\Gamma = -1, \tau = 0$. In the first medium,
+
+\begin{align*}
+    \tilde{\vec E}(z < 0) &= E_ie^{-jk_0n_1z} - E_ie^{jk_0n_1z} \hat x \\
+                          &= -2jE_0\sin(k_0n_1z) \hat x
+\end{align*}
+
+and similarly
+
+$$\tilde{\vec H}(z < 0) = \frac{E_i}{\eta_1} e^{-jk_0n_1z} + \frac{E_i}{\eta_1} e^{jk_0n_1z} = \frac{2E_i}{\eta_1}\cos(k_0n_1z) \hat y$$
+At $z = 0$,
+\begin{align*}
+    \hat n \times (\vec H_2 - \vec H_1) &= \vec J_s \\
+    \hat z \times (0 - \frac{2E_i}{\eta_1} \hat y) &= \vec J_s \\
+    \vec J_s &= \frac{2E_i}{\eta_1} \hat x
+\end{align*}
+
+\end{document}

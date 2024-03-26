@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 57}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Tensor Fields}
+
+Consider tensor fields which map to alternating tensors. Recall there is a natural basis for $A^k(T|_pU)$. Let $dx_1,\dots,dx_n$ be the one forms defined by the standard coordinate functions over $\R^n$. They form a basis for $A^1(T|_pU)$ at any $p \in U$.
+
+Let $[I]$ be the set of ascending $k$ sequences. Then
+$$dx_{i_1} \wedge \dots \wedge dx_{i_k}, (i_1,\dots,i_k) \in [I]$$
+form a basis for $A^k(T|_pU) \forall p \in U$. the space of $C^\infty$ antisymmetric $k$ tensor fields over $TU$ will be denoted by $\Omega^k(TU)$. Now
+$$\omega(p) = \sum_{[I]} f_{[I]}(p) dx_{i_1} \wedge \dots \wedge dx_{i_k}$$
+where $f$ maps to scalars. Recall we introduced
+$$d: \Omega^0(U) \rightarrow \Omega^1(U)$$
+where
+$$(df)(x;\vec v) = Df(x) \cdot \vec v$$
+Observer this implies
+$$dx_i(x)(x;v) = v_i$$
+and
+$$dx_I(x)((x;v_1),\dots,(x;v_k)) = \det(v_1\dots v_k)$$
+where the last property comes from a wedge product property, namely the alternating $\psi_I$ can be written using elementary $\phi_i$ by
+$$\psi_I = \phi_{i_1} \wedge \dots \wedge \phi_{i_k}, I = \{i_1,\dots,i_k\}$$
+Finally, we have
+$$df = \sum_i (D_i)fdx_i$$
+
+\begin{proof}
+    Evaluating both sides at $(x;v)$, the right hand side gives
+    $$\sum_i D_if(x)dx_i(x)(x;v) = \sum_i D_if(x)v_i = Df(x) \cdot v = df(x)(x;v)$$
+    which is equal to the left hand side.
+\end{proof}
+
+Generally, for 0-forms, we define the wedge product as multiplication. If $f$ is a zero form and $g$ is an arbitrary $k$ form,
+$$f \wedge g = f \times g$$
+Anticommutativity holds because $f$ has order 0; it is trivial to see that the other properties hold. For $k, l > 0$, we have
+
+\begin{align*}
+    \omega \wedge \eta &= \left(\sum_I f_I dx_{i_1} \wedge \dots \wedge dx_{i_k}\right) \left(\sum_J g_J dx_{j_1} \wedge \dots \wedge dx_{j_l}\right) \\
+                       &= \sum_{I,J} f_Ig_J\left(dx_{i_1} \wedge \dots \wedge dx_{i_k} \wedge dx_{j_1} \wedge \dots \wedge dx_{j_k}\right)
+\end{align*}
+
+\begin{ex}
+    For $\omega = f_1dx_1 + f_2dx_2, \eta = g_1dx_1 + g_2dx_2$, we have
+    \begin{align*}
+        \omega \wedge \eta &= (f_1dx_1 + f_2dx_2) \wedge (g_1dx_1 + g_2dx_2) \\
+                           &= f_1g_1 dx_1 \wedge dx_1 + f_1g_2dx_1 \wedge dx_2 + f_2g_1 dx_2 \wedge dx_1 + f_2g_2 dx_2 \wedge dx_2 \\
+                           &= (f_1g_2 - f_2g_1) dx_1 \wedge dx_2
+    \end{align*}
+    since $dx_i \wedge dx_i = 0$ for odd $dx_i$.
+\end{ex}
+
+\end{document}
