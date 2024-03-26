@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{tsmc}
+Taiwan Semiconductor Manufacturing~Company Limited.
+\newblock Tsmc showcases new technology developments at 2023 technology symposium.
+\newblock https://pr.tsmc.com/english/news/3021, 2023.
+
+\bibitem{nanosheet}
+N.~Loubet, T.~Hook, P.~Montanini, C.-W. Yeung, S.~Kanakasabapathy, M.~Guillom, T.~Yamashita, J.~Zhang, X.~Miao, J.~Wang, A.~Young, R.~Chao, M.~Kang, Z.~Liu, S.~Fan, B.~Hamieh, S.~Sieg, Y.~Mignot, W.~Xu, S.-C. Seo, J.~Yoo, S.~Mochizuki, M.~Sankarapandian, O.~Kwon, A.~Carr, A.~Greene, Y.~Park, J.~Frougier, R.~Galatage, R.~Bao, J.~Shearer, R.~Conti, H.~Song, D.~Lee, D.~Kong, Y.~Xu, A.~Arceo, Z.~Bi, P.~Xu, R.~Muthinti, J.~Li, R.~Wong, D.~Brown, P.~Oldiges, R.~Robison, J.~Arnold, N.~Felix, S.~Skordas, J.~Gaudiello, T.~Standaert, H.~Jagannathan, D.~Corliss, M.-H. Na, A.~Knorr, T.~Wu, D.~Gupta, S.~Lian, R.~Divakaruni, T.~Gow, C.~Labelle, S.~Lee, V.~Paruchuri, H.~Bu, and M.~Khare.
+\newblock Stacked nanosheet gate-all-around transistor to enable scaling beyond finfet.
+\newblock In {\em 2017 Symposium on VLSI Technology}, pages T230--T231, 2017.
+
+\bibitem{moore}
+Gordon~Earle Moore.
+\newblock Cramming more components onto integrated circuits.
+\newblock {\em Electronics Magazine}, 38(8), 1965.
+
+\bibitem{3nm}
+Yoongeun Seon, Jeesoo Chang, Changhyun Yoo, and Jongwook Jeon.
+\newblock Device and circuit exploration of multi-nanosheet transistor for sub-3 nm technology node.
+\newblock {\em Electronics}, 10(2), 2021.
+
+\bibitem{review}
+Sresta Valasa, Shubham Tayal, Laxman~Raju Thoutam, J.~Ajayan, and Sandip Bhattacharya.
+\newblock A critical review on performance, reliability, and fabrication challenges in nanosheet fet for future analog/digital ic applications.
+\newblock {\em Micro and Nanostructures}, 170:207374, 2022.
+
+\end{thebibliography}
