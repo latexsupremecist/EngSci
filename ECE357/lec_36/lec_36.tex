@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 36}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Waveguide Examples}
+
+\begin{ex}
+    Consider a rectangular waveguide with $a = 0.9\unit{cm}, b = 0.8\unit{cm}$ operating at $f = 10\unit{GHz}$. It is filled with a dielectric $\varepsilon_r = 9$ for $z < 0$, and air for $z > 0$. TE$_{1,0}$ mode is incident from $z < 0$. \\
+    The cutoff frequencies are
+    \begin{align*}
+        f_c &= \frac{1}{2\sqrt{\varepsilon\mu}} \sqrt{\left(\frac{m}{a}\right)^2 + \left(\frac{n}{b}\right)^2} \\
+            &= \frac{1}{2\sqrt{\varepsilon\mu}a} \\
+            &= \frac{3 \times 10^8}{2\sqrt{\varepsilon_r}a}
+    \end{align*}
+    For $z < 0$, $\varepsilon_r = 9$, so
+    $$f_c = \frac{3 \times 10^8}{2 \times 3 \times 0.009}$$
+    and for $z > 0$, $\varepsilon_r = 1$, so
+    $$f_c = \frac{3 \times 10^8}{2 \times 0.009}$$
+    Now
+    $$\beta_{1,0} = k\sqrt{1 - \left(\frac{f_c}{f}\right)^2}$$
+    Plugging in the numbers, $\beta(z < 0) = 166.3\pi, \beta(z > 0) = -j88.9\pi$, which means this is an evanescent mode. \\
+    At $z < 0$, $\vec E$ only has a $y$ component, by definition of TE.
+    $$\tilde E_y = E_0\sin\frac{\pi x}{a}e^{-j\beta_{1,0}z} + \Gamma E_0\sin\frac{\pi x}{a}e^{j\beta_{1,0}z}$$
+    As for the magnetic field,
+    $$Z_{TE} = \frac{\omega\mu}{\beta_{1,0}} \approx 48\pi\unit{\Omega}$$
+    Then
+    $$\tilde H_x = -\frac{\tilde E_y}{Z_{TE}}$$
+    \textit{Note: this is not exactly correct. The sign of the reflected wave has to be flipped, like taking the conjugate.} \\
+    For $z > 0$,
+    $$\tilde E_y(z > 0) = TE_0 \sin\frac{\pi x}{a} e^{-88.9\pi z}$$
+    $$Z_{TE} = \frac{\omega\mu}{\beta_{1,0}} = \frac{2\pi \times 10 \times 10^9 \times 4\pi \times 10^{-7}}{-j88.9\pi} = j90\pi\unit{\Omega}$$
+    Then
+    $$\tilde H_x = -\frac{\tilde E_y}{j90\pi} = \frac{jT}{90\pi}E_0\sin \frac{\pi x}{a}e^{-88.9\pi z}$$
+    Since $\tilde E_y$ is continuous at $z=0$,
+    $$E_0\sin\frac{\pi x}{a}(1+\Gamma) = TE_0\sin\frac{\pi x}{a} \Rightarrow 1 + \Gamma T$$
+    From continuity of $\tilde H_x$ at $z = 0$,
+    $$-\frac{E_0\sin\frac{\pi x}{a}}{Z^d}(1 - \Gamma) = -\frac{TE_0\sin\frac{\pi x}{a}}{Z^a} \Rightarrow \frac{1-\Gamma}{Z^d} = \frac{T}{Z^a}$$
+    Solving,
+    $$\Gamma = \frac{Z^a - Z^d}{Z^a + Z^d} = e^{j56.1^\circ}, T = \frac{2Z^a}{Z^d = Z^a} = 1.557 + j0.83$$
+    It makes sense that $|\Gamma| = 1$, since all power is reflected; this can be verified with the Poynting vector.
+    $$\bar S = \frac{1}{2}\Re\{\hat y\tilde E_y \times [\hat x\tilde H_x^* + \hat z\tilde H_z^*]\}$$
+    If we look at the $z$ component,
+    $$\tilde E_y\tilde H_x^* = \tilde E_y \times \frac{\tilde E_y^*}{Z^*} \in i\R$$
+    since $Z_{TE}$ is imaginary. Then $\bar S$ has no $z$ component. Power transmitted is $\int \vec S \cdot d\vec A$, but the normal is along $z$, so no power is transmitted.
+\end{ex}
+
+\end{document}

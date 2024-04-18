@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 37}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\begin{ex}
+    An air filled rectangular waveguide has cross-section $a = 5\unit{cm}, b = 2\unit{cm}$. A mode is
+    $$\tilde H_z = \cos(40\pi x)e^{-j\frac{40\pi\sqrt{7}}{3}z}$$
+    Since $\tilde H_z \ne 0$, it is TE. There is no attenuation along the $z$ direction, so it is propagating. Since it has no $y$ dependence, $n = 0$, and
+    $$\frac{m\pi x}{a} = 40\pi x \Rightarrow m = 2$$
+    This is the TE$_{2,0}$ mode. The frequency can be found by
+    $$\beta = k\sqrt{1 - \left(\frac{f_c}{f}\right)^2}$$
+    Cutoff frequency is
+    $$f_c = \frac{1}{2\sqrt{\varepsilon\mu}} \sqrt{\left(\frac{m}{a}\right)^2 + \left(\frac{n}{b}\right)^2} = 20c_0 = 6\unit{GHz}$$
+    Plugging into the formula above,
+    \begin{align*}
+        \frac{40\pi\sqrt{7}}{3} &= \frac{2\pi \times 6 \times 10^9}{3\times10^8} \sqrt{1 - \left(\frac{6\times10^9}{f}\right)^2} \\
+        \frac{7}{9} &= 1 - left(\frac{6\times10^9}{f}\right)^2 \\
+        \frac{\sqrt{2}}{3} &= \frac{6\times10^9}{f} \\
+        f &= 8\unit{GHz}
+    \end{align*}
+    Find the range of frequencies where the guide supports a single mode. \\
+    For $(m,n)$ pairs, the two lowest are $(1,0)$ at $3\unit{GHz}$ and $(2,0)$ at $6\unit{GHz}$. Then this is the range of frequencies.
+\end{ex}
+
+\end{document}

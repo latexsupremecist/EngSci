@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 33}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{TE/TM modes in waveguides}
+
+For guided waves, we can identify the $z$ dependance by
+$$\tilde{\vec E}(x,y,z) = \tilde{\vec e}(x,y)e^{-j\beta z}$$
+and similarly for $\tilde{\vec H}$. We can substitute into Maxwell's equations to solve for these unknowns.
+
+\begin{align*}
+    \vec\nabla \times \tilde{\vec H} &= j\omega\varepsilon \tilde{\vec E} \\
+    \del{\tilde H_z}{y} - \del{\tilde H_y}{z} &= j\omega\varepsilon \tilde E_x \\
+    \del{\tilde h_z}{y} + j\beta\tilde h_y &= j\omega\varepsilon \tilde e_x
+\end{align*}
+
+This is repeated for all 6 equations. Rearranging, $\tilde E_x, \tilde E_y, \tilde H_x, \tilde H_y$ can be rewritten as linear combinations of partial derivatives of $\tilde E_z, \tilde H_z$.
+
+\begin{ex}
+    Consider a cross section. $x \in [0,a], y \in [0,b]$, and the material outside is a perfect conductor. For rectangular waveguides in TM mode, $\tilde E_z = \tilde e_z(x,y)e^{-j\beta z}$. It has to satisfy the wave equation
+    \begin{align*}
+        \left(\del{^2}{x^2} + \del{^2}{y^2} + \del{^2}{z^2} + k^2\right) \tilde e_z(x,y)e^{-j\beta z} &= 0 \\
+        (\del{^2\tilde e_z}{x^2} + \del{^2\tilde e_z}{y^2} - \beta^2\tilde e_z + k^2\tilde e_z)e^{-j\beta z} &= 0 \\
+        \left(\del{^2}{x^2} + \del{^2}{y^2} + k^2 - \beta^2 \right) \tilde e_z(x,y) &= 0
+    \end{align*}
+    At the boundaries, $e_z$ has to vanish. The solution is then
+    $$\tilde e_z(x,y) = \sin\left(\frac{n\pi x}{a}\right)\sin\left(\frac{m\pi y}{b}\right), (n,m) \in \N^2$$
+    With
+    $$\left(\frac{n\pi}{a}\right)^2 + \left(\frac{m\pi}{b}\right)^2 = k^2 - \beta^2$$
+    Then the propogation constant is
+    $$\beta_{n,m} = \sqrt{k^2 - \left(\frac{n\pi}{a}\right)^2 - \left(\frac{m\pi}{b}\right)^2}$$
+    This can be rewritten as
+    $$\beta_{n,m} = k \sqrt{1 - \frac{\omega_{c,n,m}^2}{\omega^2}}, \omega_{c,n,m} = \frac{1}{\sqrt{\varepsilon\mu}} \sqrt{\left(\frac{n\pi}{a}\right)^2 + \left(\frac{m\pi}{b}\right)^2}$$
+\end{ex}
+
+We could likewise construct the TE mode.
+
+\end{document}

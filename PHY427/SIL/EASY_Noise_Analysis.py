@@ -79,11 +79,10 @@ def main(fname,options):
     nchan= 128
     pedestal = np.zeros(nchan)
     noise = np.zeros(nchan)
-    nevents = int(options.nevents) # default 0
+    nevents = int(options.nevents) # default 128
     minch = int(options.minch) # default 0
     maxch = int(options.maxch) + 1 # default 127 + 1
     # nch = maxch-minch
-    noiseCh = np.zeros(nevents)
    
     
     ##################################
@@ -123,7 +122,7 @@ def main(fname,options):
     ################################
     # Calculate Pedestals 
     ################################
-    pedestal = np.mean(SRAW, axis=0)
+    pedestal = np.mean(SRAW, axis=0) # vector
 
     #######################################
     # Loop over events to get common noise
@@ -132,7 +131,7 @@ def main(fname,options):
     #
     # This is to keep the common mode of each event
     #
-    C = 0
+    C = []
     #
     # Start the timersp
     #     
@@ -152,28 +151,30 @@ def main(fname,options):
     for im , ievt in enumerate(GT[0]):
        
 
-        if TT() >= 0:
-            print("\r%10d, %10d" % (im, ievt))
-            sys.stdout.flush()
-            TT.reset()
+        #if TT() >= 0:
+        #    print("\r%10d, %10d" % (im, ievt))
+        #    sys.stdout.flush()
+        #    TT.reset()
         
-        ss = np.single(SRAW[ievt,:]) - pedestal
-        cm = np.mean(ss[0:128])
-        cmsig = np.std(ss[0:128])
+        ss = np.single(SRAW[im,:]) - pedestal
+        cm = np.mean(ss) # common mode shift (scalar)
+        cmsig = np.std(ss)
         
-        for ich in range(0,nchan):
-            cc= SRAW[ievt,ich]-pedestal[ich]-cm
-            SCOR[ievt].append(cc)
-            if ich<41 and ich>39.:
-                noiseCh[ievt]=cc
+        for ich in range(nchan):
+            cc = SRAW[im,ich] - pedestal[ich] - cm
+            # cc = pedestal[ich] - cm # pc(i,k)
+            SCOR[im].append(cc)
+            if ich == 40:
+               noiseCh[im] = cc
 
-        C = np.append(C, cm)
-        nevtot= nevtot +1
+        C.append(cm)
+        nevtot += 1
         if nevents>0 and nevtot>=nevts:
-            break  
+            break
 
     TT.stop()    
     print("\nTotal time elapsed:", TG()    )
+
     #########################################
     # End Loop over events to get common noise
     #########################################
@@ -181,9 +182,8 @@ def main(fname,options):
     ########################################
     # Calculate Pedestals 
     ########################################
-    noise = np.std(SCOR,axis=0)
-       
-    
+    SCOR = np.array(SCOR)
+    noise = [np.std(SCOR[:,i], ddof=1) for i in range(nchan)]
     #########################################        
     # PLot some quantities
     ######################################### 
@@ -191,34 +191,39 @@ def main(fname,options):
     plt.figure(1)
     
     # The common mode
-    X = np.r_[-50:50:2]
+    # X = np.r_[-50:50:2]
+    # plt.subplot(2,1,1)
+    # plt.title("Common mode")  
+    # plt.xlabel("Channel number")
+    # plt.ylabel("ADC counts")
+    # plt.plot(range(128), C)
+    mu = np.mean(C)
+    sigma = np.std(C, ddof=1)
+    # n, bins, patches = plt.hist(C,X,color="mediumseagreen")
+    # mu, sigma = norm.fit(C)
+    # y = norm.pdf(bins, mu, sigma)
+    # plt.plot(bins, y, 'r-', linewidth=2)
+    # p = Rectangle((0, 0), 1, 1, fc="r")
+    # plt.legend([p], [r'$\mu$=%.3f $\sigma$=%.1f' %( mu, sigma)], loc=1)
     
-    plt.subplot(2,1,1)
-    plt.title("Common mode")  
-    plt.xlabel("Channel number")
-    plt.ylabel("ADC counts")
-    n, bins, patches = plt.hist(C,X,color="mediumseagreen")
-    mu, sigma = norm.fit(C)
-    y = norm.pdf(bins, mu, sigma)
-    l = plt.plot(bins, y, 'r-', linewidth=2)
-    p = Rectangle((0, 0), 1, 1, fc="r")
-    plt.legend([p], [r'$\mu$=%.3f $\sigma$=%.1f' %( mu, sigma)], loc=1)
-    
-    subplot(3,1,3)
+    # plt.subplot(3,1,3)
     plt.xlabel("Event number")
     plt.ylabel("ADC counts")
-    isizeC = int(size(C))
-    X = r_[0:isizeC:1]
+    isizeC = int(np.size(C))
+    X = np.r_[0:isizeC:1]
     plt.plot(X,C,color="mediumseagreen")
     plt.axhspan(mu+sigma, mu+sigma, alpha=1)
     plt.axhspan(mu, mu, alpha=1)
     plt.axhspan(mu-sigma, mu-sigma, alpha=1)
+    plt.title("Common Mode")
+    plt.show()
+    return
 
   
     plt.figure(2)
 
     # Pedestals
-    X = r_[0:128:1]
+    X = np.r_[0:128:1]
     plt.subplot(3,1,1)
     plt.title("Pedestal") 
     plt.xlabel("Channel number")
@@ -229,8 +234,8 @@ def main(fname,options):
     
 
     # Noise
-    X = r_[0:128:1]
-    subplot(2,1,2)
+    X = np.r_[0:128:1]
+    plt.subplot(2,1,2)
     plt.title("Noise vs Channel") 
     plt.xlabel("Channel number")
     plt.ylabel("ADC counts") 
@@ -252,7 +257,7 @@ def main(fname,options):
     plt.figure(3)
 
     # Pedestals
-    X = r_[0:128:1]
+    X = np.r_[0:128:1]
     plt.subplot(3,1,1)
     plt.title("Pedestal (estimation from DAC)") 
     plt.xlabel("Channel number")
@@ -284,7 +289,7 @@ def main(fname,options):
     n, bins, patches = plt.hist(noiseCh,X,density=True,color="mediumseagreen")
     mu, sigma = norm.fit(noiseCh)
     y = norm.pdf(bins, mu, sigma)
-    l = plt.plot(bins, y, 'r-', linewidth=2)
+    plt.plot(bins, y, 'r-', linewidth=2)
     p = Rectangle((0, 0), 1, 1, fc="r")
     plt.legend([p], [r'$\mu$=%.3f $\sigma$=%.1f' %( mu, sigma)], loc=1)
 
@@ -297,16 +302,16 @@ if __name__ == "__main__":
     parser.add_option("--nevents",
                       dest="nevents", action="store", type="float",
                       help="Number of events to analyze (DEFAULT ALL)",
-                      default=0.
+                      default=128.
                       )   
     parser.add_option("--maxch",
                       dest="maxch", action="store", type="float",
-                      help="Maximum channel for noise analyce (DEFAULT=127)",
+                      help="Maximum channel for noise analyze (DEFAULT=127)",
                       default=127.
                       )    
     parser.add_option("--minch",
                       dest="minch", action="store", type="float",
-                      help="Minimum channel for noise analice (DEFAULT=0)",
+                      help="Minimum channel for noise analyze (DEFAULT=0)",
                       default=0.
                       ) 
    

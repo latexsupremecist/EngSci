@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{geometry}[margins=1in]
+\usepackage{../../template}
+\title{Experiment Improvement Report}
+\author{Daniel Chua}
+\lstset{basicstyle=\ttfamily, breaklines=true}
+\begin{document}
+\maketitle
+
+The experiment selected in this report is Silicon Microstrip Detector (SIL). From the Quercus page, it is designed for students to "study the characteristics and capabilities of silicon microstrip detectors." There is no experiment write-up, but the accompanying exercise book~\cite{manual} is provided.
+
+\section{Python Code}
+
+Being an experiment under development, there are somes issues that can be improved on to optimise the learning experience for future students. The first issue is with the provided code. Since the hardware was produced some time ago, the accompanying code~\cite{code} is in Python 2(\lstinline|#!/usr/bin/env python|\footnote{EASY\_Noise\_Analysys.py, line 1}), which needs to be updated to Python 3. This involves manually going through and understanding the code provided. A minor issue is code redundancy, where more complicated expressions are used instead of simpler ones, e.g. \lstinline|if ich<41 and ich>39.:|\footnote{EASY\_Noise\_Analysys.py, line 169, where \lstinline|ich| is an integer} and \lstinline|nch = maxch-minch|\footnote{EASY\_Noise\_Analysys.py, line 88, where \lstinline|nch| was declared but never used}. Accompanied with the use of deprecated methods and options, e.g. \lstinline|n, bins, patches = hist(C,X, normed=1,color="mediumseagreen")|\footnote{EASY\_Noise\_Analysys.py, line 202, where \lstinline|normed| is deprecated}. There are more serious issues as well. Some equations used were incorrect; corrected pedestals were defined to be $P_c(i) = P(i) - D(k)$, the pedestals with common noise subtracted. However, the provided code was \lstinline|cc= SRAW[ievt,ich]-pedestal[ich]-cm|\footnote{EASY\_Noise\_Analysys.py, line 167}, which corresponds to $P_c(i) = \text{Signal}(i,k) - P(i) - D(k)$. The line should be corrected to \lstinline|cc = pedestal[ich] - cm|. \\
+
+Code redundancy and deprecated methods resulted in a time-consuming process of translating code from Python 2 to Python 3. While it is a good idea for students to learn to perform data analysis through coding in this course, the issues highlighted above made this a repetitive and cumbersome process, with less skill involved. This also took up a lot of laboratory time which could have been otherwise used. Incorrect equations applied in the sample code, if not spotted and corrected, would lead to wrong conclusions, which may carry on to later experiments. All of these pose as unnecessary difficulties, and it would be better if corrected code were provided. If necessary, I could provide revised code for this experiment. \\
+
+\section{Other Issues}
+
+There are also some minor and addressable issues. It was not clear that the activity book was meant to be the main documentation for this experiment. A suggestion such as "we strongly encourage students to reference the activity book throughout this experiment" would suffice to clarify this. Secondly, there are minor mistakes such as typos throughout the activity book. This makes it more difficult to navigate the activity book, which starts with almost 40 pages of theory and instruction. Students are expected to work through these as they progress through experiments, so a write up summarising the background theory could be immensely helpful. \\
+
+Finally, without access to a write up, students following the activity book may fail to see the bigger picture. Only by the end of the experiment did I realise most of the experiments I have been doing were mostly for calibration purposes. While these are important for accurate results, students with limited time could also focus on more interesting tasks such as finding the energy deposition of beta electrons from a Sr-90 source\footnote{Experiment 5}. Since students rarely have the chance to work with such detectors, it is arguably more important for them to experiment with the equipment, instead of performing calibration. In hindsight, I would rather perform experiments using provided calibrated values than to spend the majority of laboratory time modifying code and determining constants for calibration.
+
+% Students can select an experiment they have completed during any of the APL courses and provide a suggestion on how the experiment can be improved. The suggestion should be in a form of one-to-two-page report outlining the limitation/ issue related to the experiment and providing a supported solution (based on literature review, research of similar experiments, own experience backed up by data, creativity, etc.) together with justification for it. There are no limitations to the character of the improvement – it could be computational, procedural, equipment-based, suggestion of the extension, etc. The assignment will be assessed based on creativity, depth, sustainability, and the practicality of the outlined solution, as well as on the quality of writing and supporting documentation
+
+
+\bibliography{refs.bib}{}
+\bibliographystyle{IEEEtran}
+\end{document}

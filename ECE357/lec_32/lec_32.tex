@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 32}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Parallel Plate Waveguide}
+
+Consider a waveguide composed of parallel plates $x = 0$ and $x = a$. The wave propogates in the $z$ direction.
+
+\subsection{TE mode}
+
+\begin{align*}
+    \tilde H_y &= H_0\cos\left(\frac{n\pi x}{a}\right)e^{-j\beta_nz} \\
+    \tilde E_x &= \frac{\beta_n}{\omega\varepsilon} H_0\cos\left(\frac{n\pi x}{a}\right) e^{-j\beta_nz} \\
+    \tilde E_z &= \frac{j}{\omega\varepsilon} \frac{n\pi}{a} H_0\sin\left(\frac{n\pi x}{a}\right)e^{-j\beta_nz}
+\end{align*}
+
+$\beta_n$ is the propagation constant equal to $k\sqrt{1 - \left(\frac{f_{c,n}}{f}\right)^2}$. The cutoff frequency is
+
+$$f_{c,n} = \frac{n}{2\sqrt{\varepsilon\mu}a}$$
+
+Splitting the cosine term in $\tilde H_y$,
+$$\tilde H_y = \frac{H_0}{2}\left(e^{j\frac{n\pi}{a}x}e^{-j\beta_nz} + e^{-j\frac{n\pi}{a}x}e^{-j\beta_nz}\right)$$
+
+This can be split into an incident and reflected wave $\vec k = \pm \frac{n\pi}{a}\hat x + \beta_n\hat z$.
+
+\subsection{$\vec k_i$ as a a function of frequency}
+
+$f < f_{c,n} \Rightarrow \beta_n = -ja_n$ and we call this \textit{evanescent}. Else, $\beta_n = k\sqrt{1 - \left(\frac{f_{c,n}}{f}\right)^2}$. Replacing $f$ with $\omega$ and substituting $k = \omega\sqrt{\varepsilon\mu}$, we get
+$$\beta_n = \sqrt{\varepsilon\mu}\sqrt{\omega^2-\omega_{c,n}^2}$$
+
+\subsection{TE mode}
+
+\begin{align*}
+    \tilde E_y &= E_0\sin\left(\frac{n\pi x}{a}\right)e^{-j\beta_nz} \\
+    \tilde H_x &= -\frac{\beta_n}{\omega\mu} E_0\sin\left(\frac{n\pi x}{a}\right) e^{-j\beta_nz} \\
+    \tilde H_z &= \frac{j}{\omega\mu} \frac{n\pi}{a} E_0\cos\left(\frac{n\pi x}{a}\right)e^{-j\beta_nz}
+\end{align*}
+
+Below $f_{c,1}$, there is no TE mode. Then $\beta_0 = \omega\sqrt{\varepsilon\mu}, v = \frac{\omega}{\beta} = \frac{1}{\sqrt{\varepsilon\mu}}$. At any higher modes, $\beta$ is frequency dependent, and so is $v$, and one can show that
+$$v_{p,n} = \frac{1}{\sqrt{\varepsilon\mu}} \times \frac{1}{\sqrt{1 - \left(\frac{f_{c,n}}{f}\right)^2}} > \frac{1}{\sqrt{\varepsilon\mu}}$$
+
+\end{document}

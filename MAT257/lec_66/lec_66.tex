@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 66}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Stokes' Theorem}
+
+Recall for an orientable manifold $M^k \subseteq \R^n$, its boundary $\partial M^k$, if nonempty, inherits an orientation from $M^k$. If $k$ is even, it gets the inherited orientation, else it gets the opposite of said orientation. Recall further that on any oriented and compact manifold $N^l$, we have defined
+$$\int_{N^l}\omega \forall \omega \in \Omega^l(N^l)$$
+
+If $N^l$ is an open subset of $\R^l$, $\omega = f(x) dx_1 \wedge \dots \wedge dx_l$, we also write the integral as $\int_{N^l}f(x)$. Generally,
+$$\int_{N^l}\omega = \int_A(\alpha^*\omega)$$
+
+\begin{thm}
+    Let $M^l \subseteq \R^n$ be oriented, $l \ge 2$. For $\omega \in \Omega^{l-1}(N^l)$,
+    $$\int_{N^l}d\omega = \int_{\partial N^l} \omega$$
+\end{thm}
+
+\begin{proof}
+    Due to linearity, it suffices to prove this for $\omega = fdx_I$. It hinges on the fact that $d(\alpha^*\omega) = \alpha^*(d\omega)$.
+\end{proof}
+
+\begin{lem}
+    Let $k > 1$, $\eta$ be a $k-1$ form, and that it vanishes at the boundary of the unit cube $I_k$ except possibly at the bommon (last coordinate vanishes). Then
+    $$\int_{\text{Int}I^k} d\eta = (-1)^k\int_{\text{Int}I^{k-1}}b^*\eta$$
+    where $b$ is the projection onto the first $k-1$ coordinates.
+\end{lem}
+
+\begin{proof}
+    By linearity, we need only to prove this for $\eta = fdx_I$.
+    \begin{align*}
+        d\eta &= df \wedge dx_I \\
+              &= \sum_i D_ifdx_i \wedge dx_I \\
+              &= (-1)^{j-1} D_jf dx_1 \wedge \dots \wedge dx_k
+    \end{align*}
+    Integrating,
+    \begin{align*}
+        \int_{\text{Int}I^k} d\eta &= (-1)^{j-1}\int_{\text{Int}(I^k)} D_jf \\
+                                   &= (-1)^{j-1} \int_{I^k} D_jf \\
+                                   &= (-1)^{j-1} \int_{v \in I^{k-1}} \int_{x_j \in I} D_j f(x_1,\dots,x_k) \\
+                                   &= (-1)^{j-1} \int_{v \in I^{k-1}} f(x_1,\dots,1,\dots,x_k) - f(x_1,\dots,0,\dots,x_k) \\
+                                   &= (-1)^{k-1} \int_{v \in I^{k-1}} - f(x_1,\dots,x_{k-1},0) \\
+                                   &= (-1)^k \int_{v \in I^{k-1}} f \circ b
+    \end{align*}
+    For the other integral, obviously $Db = \begin{pmatrix} I_{k-1} \\ 0 \end{pmatrix}$. Then
+    $$b^*(dx_I) = [\det Db(\hat j)]du_1 \wedge \dots \wedge du_{k-1}$$
+    For $j < k$, the $j$th row vanishes, so the entire expression also vanishes. For $j = k$, the determinant of $I_k$ is unity. So both integrals vanish (so they agree) for $j \ne k$. For $j = k$,
+    $$\int_{\text{Int}I^{k-1}} b^*\eta = \int_{\text{Int}I^{k-1}} f \circ b$$
+    which is equal to the right hand side.
+\end{proof}
+
+\end{document}

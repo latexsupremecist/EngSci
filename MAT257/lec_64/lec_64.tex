@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 64}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Pull Backs}
+
+Recall $\alpha^*\omega \in \Omega^l(U)$ such that
+$$\alpha^*\omega(x;v_1,\dots,v_l) = \omega(x;\alpha_*(x;v_1),\dots,\alpha_*(x;v_l)) = \omega(x;D\alpha(x)\cdot v_1,\dots,D\alpha(x)\cdot v_l)$$
+
+This definition shows that
+
+\begin{align*}
+    \alpha^*dx_I(x;v_1,\dots,v_l) &= dx_{i1} \wedge \dots \wedge dx_{il}(x;D\alpha(x)\cdot v_1,\dots,D\alpha(x)\cdot v_l) \\
+                                  &= D\alpha_{i1}(x)\cdot v_1 \wedge \dots \wedge D\alpha_{il}(x)\cdot v_l \\
+    \alpha^*dx_I &= d\alpha_{i1} \wedge \dots \wedge d\alpha_{il}
+\end{align*}
+
+By linearity, we see $\alpha^*$ and $d$ commute. The next challenge is to integrate forms on manifolds. We define the integral of the form $\omega = fdx_I$ be
+$$\int_A\omega = \int_A f$$
+
+Letting $\alpha$ be the coordinate chart from $A$ to $Y$,
+$$\int_Y \omega = \int_A \alpha^*\omega = \int_A (f\circ\alpha)\det\left(\del{\alpha_I}{x}\right)$$
+
+For the general $\omega = f_Idx_I$, summation suffices.
+
+\end{document}

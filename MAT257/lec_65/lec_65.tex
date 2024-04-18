@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 65}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Integrating over Orientable Manifolds}
+
+Recall we defined
+
+$$\int_{Y_\alpha}\omega = \int_A \alpha^*\omega = \int_A h$$
+
+where $A = \alpha^{-1}(Y_\alpha)$ and $\alpha^*\omwea = hdx_1 \wedge \dots \wedge dx_k$.
+
+\begin{defn}
+    Let $M \subseteq \R^n$ be a compact oriented $k$ manifold, $\omega$ be a $k$ form defined on an open superset of $M_i$. Define $C := M \cap \text{supp}(\omega)$ compact. Suppose $\alpha: U \rightarrow V$ is a chart for $M$ in the given orientation such that $C \subseteq V$. Without loss of generality, $U$ is bounded. Then
+
+    $$\int_M\omega := \int_{\text{Int}(U)} \alpha^*\omega$$
+\end{defn}
+
+\begin{lem}
+    $\int_{\text{Int}(U)} \alpha^*\omega$ exists as an ordinary integral.
+\end{lem}
+
+\begin{proof}
+    Extend $\alpha$ to $U'$ oepn such that $U' \supseteq U$. Then $\alpha': U' \rightarrow V'$, $(\alpha')^*\omega$ is a $k$ form on $U' \subseteq \R^k$, so it can be written as
+    $$(\alpha')^*\omega = hdx_1 \wedge \dots \wedge dx_k$$
+    Then
+    $$\int_{U'}(\alpha')^*\omega = \int_{U'} h$$
+    If $U$ is open in $\R^k$, then $h$ vanishes near $\partial U$. If $U$ is open in $\mathbb H^k$, then $h$ vanishes near $\partial U - \partial \mathbb H^k$. oth are "equal", since $\partial \mathbb H^k$ has measure zero. Then $h$ is integrable over both $U$ and Int($U$).
+\end{proof}
+
+One can show that $\int_M\omega$ is independent of $\alpha$.
+
+\begin{thm}
+    If $g:A\rightarrow B$ is orientation-reversing, then
+    $$\int_{Y_\alpha}\omega = -\int_{Y_{\alpha\circ g}} \omega$$
+\end{thm}
+
+\begin{lem}
+    We claim that $\int_M\omega$ is linear, and if $-M$ denotes $M$ with the reversed orientation, then $\int_{-M}\omega = -\int_M\omega$.
+\end{lem}
+
+To define $\int_M\omega$ in general,
+
+\begin{defn}
+    Let $M$ as above. Let $\omega$ be a $k$ form over an open superset of $M$. Cover $M$ by finitely many patches belonging to the orientation. Let $\phi_1, \dots, \phi_l$ be a partition of unity dominated by this open cover. Then
+    $$\int_M\omega = \sum_i \int_M \phi_i\omega$$
+\end{defn}
+
+If $M - \bigcup_i M_i$ has measure zero, and $\alpha_i: A_i \rightarrow M_i$ are charts in the orientation of $M$, then
+$$\int_M\omega = \sum_i \int_{A_i}\alpha_i^*\omega$$
+
+\begin{thm}
+    Let $W \subset \R^n$ be a $k$ dimensional linear subspace, $a_1, \dots, a_k$ be an orthonormal frame in $W$. Let $F$ lie on alternating $k$ tensor on $W$. Then, for any $k$ tuple $x_1, \dots, x_k$ in $W$,
+    $$F(x_1,\dots,x_k) = \pm F(a_1,\dots,a_k)v(x_1,\dots,x_k)$$
+    If $x_1,\dots,x_k$ is dependent, both sides obvious vanish. Else, we take the positive sign for the same orientation, and vice versa.
+\end{thm}
+
+\end{document}

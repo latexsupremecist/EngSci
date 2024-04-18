@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 34}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Waveguides Summary and Examples}
+
+\begin{ex}
+    A TM wave propagates in a rectangular waveguide, with $H_y = 6\cos(25\p x)\sin(100\pi y)\sin(1.5\pi \times 10^{10}t - 109\pi z)\unit{mA.m^{-1}}$. Its dimensions along $x, y$ are 4 cm and 2 cm respectively. \\
+    The modes are as follows
+    $$k_x = \frac{m\pi}{a} = 25\pi \Rightarrow m = 25a = 25 \times 0.04 = 1$$
+    $$k_y = \frac{n\pi}{b} = 100\pi \Rightarrow n = 100b = 100 \times 0.02 = 2$$
+    So this is TM$_{1,2}$ mode. \\
+    If $\mu = \mu_0, \varepsilon = \varepsilon_0\varepsilon_r$, find $\varepsilon_r$. \\
+    Recall the final term has the form $\sin(\omega t - \beta z)$. Comparing, we find that the frequency is $7.5 \times 10^9$, and
+    $$\beta = 109\pi = k\sqrt{1 - \left(\frac{f_{c,1,2}}{f}\right)^2}$$
+    To find $\varepsilon_r$,
+    $$k = \omega\sqrt{\varepsilon\mu} = 2\pi f\sqrt{\varepsilon_0\varepsilon_r\mu_0} = \frac{2\pi f}{3 \times 10^8}\sqrt{\varepsilon_r} = 50\pi\sqrt{\varepsilon_r}$$
+    To find $f_c$,
+    $$f_{c,m,n} = \frac{1}{2\sqrt{\varepsilon\mu}} \sqrt{\left(\frac{m}{a}\right)^2 + \left(\frac{n}{b}\right)^2} = \frac{3\times10^8}{2\sqrt{\varepsilon_r}} \sqrt{25^2 + 100^2}$$
+    Substituting, we have
+    \begin{align*}
+        109\pi &= 50\pi\sqrt{\varepsilon_r}\sqrt{1 - \frac{25^2+100^2}{2500\varepsilon_r}} \\
+        2.18 &= \sqrt{\varepsilon_r}\sqrt{1 - \frac{1 + 16}{4\varepsilon_r}} \\
+        \varepsilon_r &= 9
+    \end{align*}
+    Find the phase velocity $v_p$. \\
+    $$v_p = \frac{\omega}{\beta} = \frac{2\pi \times 7.5 \times 10^9}{109\pi} = 1.38 \times 10^8 > \frac{1}{\sqrt{\varepsilon\mu}}$$
+    Find $E_x$. \\
+    $$Z_{\text{TM}} = \eta\sqrt{1 - \left(\frac{f_c}{f}\right)^2}$$
+    The values in the expression are
+    $$f_{c,1,2} = \frac{3\times10^8}{2\times3}\sqrt{25^2 + 100^2} = 5.15 \times 10^9$$
+    and $\eta = \frac{\mu}{\varepsilon} = \sqrt{\frac{\mu_0}{\varepsilon_0}} \div \sqrt{\varepsilon_r} = \frac{120\pi}{3} = 40\pi$. Substituting,
+    $$Z_{\text{TM}} = 40\pi\sqrt{1 - \left(\frac{5.15}{7.5}\right)^2} = 91.3$$
+    Then $\tilde E_x = Z_{\text{TM}}\tilde H_y$, or
+    $$E_x = 0.55 \cos(25\p x)\sin(100\pi y)\sin(1.5\pi \times 10^{10}t - 109\pi z)\unit{V.m^{-1}}$$
+    Analyzing this in terms of plane waves,
+    $$H_y \propto \cos(25\pi x)\sin(100\pi y)$$
+    so
+    \begin{align*}
+        \tilde H_y &= H_0\cos(25\pi x)\sin(100\pi y)e^{-j\beta z} \\
+                   &= H_0 \frac{e^{j25\pi x} + e^{-j25\pi x}}{2} \frac{e^{j100\pi y} - e^{-j100\pi y}}{2j} e^{-j\beta z} \\
+                   &= \frac{H_0}{4j} \left(e^{j(2.5\pi x + 100\pi y - \beta z)} + e^{j(25\pi x - 100\pi y - \beta z)} + e^{j(-25\pi x + 100\pi y - \beta z)} + e{j(-25\pi x - 100\pi y - \beta z)}\right)
+    \end{align*}
+\end{ex}
+
+\end{document}

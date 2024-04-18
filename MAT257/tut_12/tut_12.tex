@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 12}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Exactness of 1 forms, closedness of k forms}
+
+\begin{lem}
+    Let $M \subseteq U \subseteq \R^n$, with open $U$, be a $k$ dimensional submanifold and oriented. Equip $\R^n$ with the standard inner product. Then there is a unique $k$ form $\mu_M$ on $M$ such that $\forall p \in M$ and orthonormal, positively oriented bases $\{v_1,\dots,v_k\}$ of $T_pM$, $\mu_M(v_1,\dots,v_k) = 1$.
+\end{lem}
+
+\begin{proof}
+    Fix $p \in M, \{e_1,\dots,e_k\}$ be positively oriented orthonormal basis for $T_pM$. Let $\{\epsilon^1, \dots, \epsilon^k\}$ be the dual basis. Then
+    $$(\mu_M)_p = \epsilon^1 \wedge \dots \epsilon^k$$
+    The properties holds for this basis. For an arbitrary $\{v_1,\dots,v_k\}$, define $A(e_i) = v_i$. Then
+    \begin{align*}
+        \mu_p(v_1,\dots,v_k) &= U(A(e_1),\dots,A(e_k)) \\
+                           &= \det A U(e_1,\dots,e_k) \\
+                           &= 1 \times 1 \\
+                           &= 1
+    \end{align*}
+    \textit{Note: by definition, A has a positive determinant, due to the positive orientation. Its magnitude is unity because the vectors are orthonormal.}
+\end{proof}
+
+Let $U \subseteq \R^n$ be open, $\omega = \sum_{i=1} F_i dx_i$ on $U$ be smooth, $G\Gamma \subseteq U$ be a smooth 1 dimensional submanofiold, $T$ be the unit tangent vector, positively oriented. Then
+$$\iota^*p\omega = \langle F, T \rangle\mu_\Gamma$$
+with $iota_p: \Gamma \rightarrow U$. \\
+
+This is because for some function $f$,
+$$\iota^*\omega = f\mu_\Gamma$$
+\begin{align*}
+    f(p) &= f(p) (\mu_\Gamma)_p(T(p)) \\
+         &= \omega_p(T(p)) \\
+         &= \sum_{i=1}^n F_i(p)(dx_i)_p(T(p)) \\
+         &= \sum_{i=1}^n F_i(p) (T(p))_i \\
+         &= \langle F(p), T(p) \rangle
+\end{align*}
+
+\begin{rem}
+    $$\langle \text{grad} f, T \rangle ds = i(df)$$
+    because $\langle \text{grad} f, T \rangle ds = i\left(\sum_{i=1}^n \del{f}{x_i} dx_i\right) = i(df)$. $\mu_M = dV_M$, and $\int fdV = \int f\mu M$.
+\end{rem}
+
+\begin{rem}
+    $$\int_\Gamma \langle \text{grad} f, T \rangle ds = \in_\Gamma df = \int_{\partial\Gamma} f$$
+    This vanishes if $\Gamma$ has no boundary, else it depends only on the endpoints. Then the integral of grad $f$ depends only on line endpoints of $\Gamma$.
+\end{rem}
+
+The converse is as follows. Let $U \subseteq \R^n$ be open, $\omega = \sum_{i=1}^n F_i dx_i$ be a smooth 1 form on $U$ and suppose $\forall$ piecewise smooth 1 dimensional $\Gamma \subseteq U$, $\int_\Gamma \omega$ depends only on endpoints. Then $\omega$ is exact.
+
+\begin{proof}
+    WLOG suppose $U$ is connected, by working with one connected component at a time. Fixing $p \in U$, let $x \in U$ be arbitrary, and define $f: U \rightarrow \R$,
+    $$f(x) = \int_{\Gamma: p \rightarrow w} \omega$$
+    where $f$ is well defined, since only the endpoints matter.
+    \begin{align*}
+        f(x + he_i) &= \int_{\Gamma: p \rightarrow x + he_i} \omega \\
+                    &= \int_{\Gamma: p \rightarrow x} \omega + \int_{\Gamma: x \rightarrow x + he_i} \omega \\
+                    &= f(x) + \int_x^{x+he_i} \omega
+    \end{align*}
+    Where in the last equality we abuse notation t odefine a straight line along $e_i$. Defining $\alpha(t) = x + te_i$,
+    \begin{align*}
+        f(x+he_i) &= f(x) + \int_0^h \alpha^*\omega \\
+                  &= f(x) + \int_0^h \alpha^* \sum_j F_j dx_j \\
+                  &= f(x) + \int_0^h \sum_j=1 F_j \circ \alpha \alpha_j dt \\
+                  &= f(x) + \int_0^h F_i(x + te_i) dt
+    \end{align*}
+    The fundamental theorem of calculus gives that the right hand side is differentiable by continuity of $f_i$ as a function of $h$. Then
+    $$\del{f}{x_i} F_i(x)$$
+    so
+    $$\omega = \sum_i F_i dx_i = \sum_i \del{f}{x_i}dx_i = df$$
+\end{proof}
+
+\end{document}
+

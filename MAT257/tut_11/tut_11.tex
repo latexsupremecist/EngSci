@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Tutorial 11}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Orientable Manifolds}
+
+We want to integrate $k$ forms on the $k$ manifold $M$. If there is only a single coordinate chart $\alpha:U \rightarrow V$, define
+$$\int_M\omega = \int_{\text{Int}(U)}\alpha^*\omega$$
+
+\begin{defn}
+    Let $g:A\rightarrow B$ be a diffeomorphism of open sets in $\R^k$. We say $g$ is orientation preserving if $\det Dg > 0$. Otherwise, it is orientation-reversing.
+\end{defn}
+
+Associated there is a linear transformation
+$$g_*: T_x(\R^k) \rightarrow T_{g(x)}(\R^k)$$
+
+\begin{defn}
+    Let $M$ be a $k$ manifold in $\R^n$ with coordinate patches $\alpha_i: U_i \rightarrow V_i$ on $M$. If $M$ can be covered by a collection of coordinate charts such that each $V_i \cap V_j \ne \emptyset$, we have $\alpha_i^{-1}\circ\alpha_j$ is orientation-preserving, then we say $M$ is orientable. Otherwise it is non-orientable.
+\end{defn}
+
+\begin{defn}
+    Given a collection $A$ of orientation preserving coordinate charts for $M$, extend this collection to all coordinate charts $\beta$ such that $\beta^{-1}\circ\alpha$ is oreintation preserving $\forall \alpha \in A$. This extended collection defines an orientation on $M$. A manifold $M$ together with orientation is called an orientation manifold.
+\end{defn}
+
+\begin{defn}
+    Let $M$ be a $(n-1)$ manifold in $\R^n$. If $p \in M$, let $(p;n)$ be a unit vector in the $n$ dimensional vector space $T_p(\R^n)$ that is orthogonal to the subspace $T_p(M)$. So $n$ uniquely determined up to sign. Given orientation of $M$, choose coordinate patch $\alpha: U \rightarrow V$ on $M$ about $p$ belong to this orientation; let $\alpha(x) = p$. Then $\del{\alpha}{x_i}$ is a basis for $T_p(M)$. So $\begin{pmatrix} n & D\alpha(x)\end{pmatrix}$ gives a basis for $T_p(\R^n$) and we take $n$ such that its determinant is positive.
+\end{defn}
+
+\begin{ex}[Non Orientable Manifolds]
+    M\"obius strip.
+\end{ex}
+
+\begin{defn}
+    Let $M$ be an $n$ manifold in $\R^n$. If $\alpha: U \rightarrow V$ is a coordinate chart ons where $M$ then $D\alpha$ is an $n \times n$ matrix. Define natural orientation on $M$ to be all coordinate chart where $\det D\alpha > 0$.
+\end{defn}
+
+To check this, $M$ may be covered by such coordinate charts. Given $p \in M$, let $\alpha: U \rightarrow V$ be a coordinate patch about $p$, with $U$ open in $\R^n$ or $\mathbb H^n$. WLOG $U$ is connected, so $\det D\alpha$ is either positive or negative on all of $U$. If positive, then $\alpha$ is our coordinate chart. Else, $\alpha\circ r$ is our coordinate chart, where $r$ is the reflection
+$$r(x_1,\dots,x_n) = (-x_1,\dots,-x_n)$$
+
+\section{Induced Orientation of $\partial M$}
+
+\begin{thm}
+    Let $k > 1$. If $M$ is an orientable $k$ manifold with nonempty boundary, then $\partial M$ is orientable.
+\end{thm}
+
+\begin{proof}
+    Let $p \in \partial M$. Let $\alpha: U \rightarrow V$ be a coordinate patch about $p$. There is a corresponding coordinate patch $\alpha_0$ on $\partial M$ that is said to be obtained by restricting $\alpha$. Formally, define $b: \R^{k-1} \rightarrow \R^k$ by the equation
+    $$b(x_1,\dots,x_{k-1}) = (x_1,\dots,x_{k-1},0)$$
+    Then $\alpha_0 = \alpha \circ b$. We show that if $\alpha,\beta$ are such that $\det D(\beta^{-1}\circ\alpha) > 0$, then so is their restrictions. Let $g: W_0 \rightarrow W_1$ be the transfer function. Then $\det Dg > 0$. Now if $x \in \partial \mathbb H^k$ then the derivative $Dg$ at $x$ has the last row $Dg_k = \begin{pmatrix} 0 & 0 & \del{g_k}{x_k}\end{pmatrix}$ where the last element is positive. Changing $x_1,\dots,x_{k-1}$ by a little does not change the value of $g_k$. But increasing $x_k$ a little changes value of $g_k$ non-negatively, so $\del{g_k}{x_j} = 0$ for $j < k$ and $\del{g_k}{x_k} > 0$.
+\end{proof}
+
+\begin{defn}
+    Let $M$ be an orientable $k$ manifold with nonempty boundary. Given orientation of $M$, the corresponding orientation is: if $k$ is even, orientation is given by restrictions, else we restrict the opposite orientation.
+\end{defn}
+
+\end{document}

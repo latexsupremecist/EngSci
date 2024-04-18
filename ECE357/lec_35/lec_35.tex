@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{../../template}
+\title{Lecture 35}
+\author{niceguy}
+\begin{document}
+\maketitle
+
+\section{Group Velocity}
+
+Even if we start out with a simple sinusoidal signal, it often ends up as wavepackets, where low frequency envelopes are modulated by high frequency waves. We then get
+$$f(t) = g(t)\sin(\omega_0t)$$
+
+The bandwidth $\Delta w$ of the envelope signal is much less than $\omega_0$.
+
+\begin{ex}
+    Consider 2 waves with similar frequencies $\omega_0 \pm \frac{\Delta\omega}{2}$. The faster signal propogates with
+    $$\beta(\omega_+) \approx \beta(\omega_0) + \frac{\Delta\omega}{2} \beta'(\omega_0)$$
+    and the same holds for $\omega_-$. For the first case,
+    $$\cos(\omega_+t - \beta_+z) = \cos\left((\omega_0t - \beta(\omega_0)z) + \frac{\Delta\omega}{2}(t - \beta'(\omega_0)z)\right)$$
+    and similarly for the second case
+    $$\cos(\omega_-t - \beta_-z) = \cos\left((\omega_0t - \beta(\omega_0)z) - \frac{\Delta\omega}{2}(t - \beta'(\omega_0)z)\right)$$
+    Using the identity
+    $$\cos(x+y) + \cos(x-y) = 2\cos x\cos y$$
+    their sum becomes
+    $$2\cos(\omega_0t - \beta(\omega_0)z)\cos\left(\frac{\Delta\omega}{2}t - \frac{\Delta\omega}{2}\beta'(\omega_0)z\right)$$
+    The second term is the low frequency envelope, and the first term is the high frequency wave, which propagates at the same velocity as the initial waves.
+\end{ex}
+
+From the above example, the velocity of the envelope itself is
+$$\frac{\Delta\omega}{2} \div \frac{\Delta\omega}{2}\beta'(\omega_0) = \frac{1}{\beta'(\omega_0)}$$
+The definition becomes obvious.
+
+\begin{defn}
+    The group velocity is defined as
+    $$v_g = \frac{1}{\beta'(\omega_0)} = \frac{1}{\del{B}{\omega}(\omega_0)}$$
+\end{defn}
+
+For non-TEM waveguide modes,
+$$\beta = k\sqrt{1 - \left(\frac{f_c}{f}\right)^2} = \sqrt{\varepsilon\mu}\sqrt{\omega^2-\omega_c^2}$$
+The phase velocity is
+\begin{align*}
+    v_p &= \frac{\omega}{\beta} \\
+        &= 1/\sqrt{\varepsilon\mu} \times \frac{1}{\sqrt{1 - \left(\frac{\omega_c}{\omega}\right)^2}} > \frac{1}{\sqrt{\varepsilon\mu}}
+\end{align*}
+and the group velocity is
+\begin{align*}
+    \del{B}{\omega} &= \sqrt{\varepsilon\mu} \frac{\omega}{\sqrt{\omega^2-\omega_c^2}} \\
+                    &= \sqrt{\frac{\varepsilon\mu}{1 - \left(\frac{\omega_c}{\omega}\right)^2}} \\
+    v_g &= \frac{1}{\del{B}{\omega}} \\
+        &= \sqrt{\frac{1 - \left(\frac{\omega_c}{\omega}\right)^2}{\varepsilon\mu}}
+\end{align*}
+It is immediately seen that $v_gv_p = \frac{1}{\varepsilon\mu} = c^2$.
+
+\begin{ex}
+    For transmission lines, $\beta = \omega\sqrt{L'C'}$, so $v_p = \frac{1}{\sqrt{L'C'}} = v_g$. For a backwards wave line, $\beta = \pm \frac{1}{\omega\sqrt{L'C'}}$. In this case, $v_p = \omega^2\sqrt{L'C'}, v_g = -\omega^2\sqrt{L'C'}$. They have different directions! Similarly, we can have planar negative index lens.
+\end{ex}
+
+\end{document}
