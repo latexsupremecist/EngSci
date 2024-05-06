@@ -17,30 +17,30 @@ $$\vec k_i = k\cos\theta_i\hat x + k\sin\theta_i\hat z = k_x\hat x + \beta\hat z
 
 Then
 \begin{align*}
-    \tilde{\vec H_i} &= H_0e^{-jk_xx}e^{-j\beta z}\hat y \\
-    \tilde{\vec H_r} &= -\Gamma_\perp H_0e^{jk_xx}e^{-j\beta z}\hat y \\
+    \tilde{\vec{H_i}} &= H_0e^{-jk_xx}e^{-j\beta z}\hat y \\
+    \tilde{\vec{H_r}} &= -\Gamma_\perp H_0e^{jk_xx}e^{-j\beta z}\hat y \\
     \Gamma_\perp &= \frac{\eta_2\cos\theta_t - \eta_1\cos\theta_i}{\eta_2\cos\theta_t + \eta_1\cos\theta_i}
 \end{align*}
 
-As $\eta_2 \rightarrow 2, \Gamma_\perp \rightarrow -1$, which gives
+As $\eta_2 \rightarrow 0, \Gamma_\perp \rightarrow -1$, which gives
 
 $$\tilde{\vec H} = H_0e^{-j\beta z}\left(e^{-jk_xx} + e^{jk_xx}\right)\hat y = 2H_0\cos(k_xx)e^{-j\beta z}\hat y$$
 
 To find the electric field more quickly, we can use
 
-$$\nabla \times \tilde{\vec H} = j\omeg\varepsilon \tilde{\vec E}$$
+$$\nabla \times \tilde{\vec H} = j\omega\varepsilon \tilde{\vec E}$$
 
 Then
 
 \begin{align*}
-    \tilde{\vec E} &= -\frac{1}{\omega\varepsilon} \nabla \times \tilde{\vec H} \\
-                   &= -\frac{1}{\omega\varepsilon} \left(\hat x\del{}{x} + \hat z\del{}{z}\right) \times \tilde H_y \hat y \\
+    \tilde{\vec E} &= -\frac{j}{\omega\varepsilon} \nabla \times \tilde{\vec H} \\
+                   &= -\frac{j}{\omega\varepsilon} \left(\hat x\del{}{x} + \hat z\del{}{z}\right) \times \tilde H_y \hat y \\
                    &= \frac{2H_0e^{-j\beta z}}{\omega\varepsilon}(\beta\cos(k_xx)\hat x + jk_x\sin(k_xx)\hat z)
 \end{align*}
 
 We know that $\vec E$ has no $z$ component at the boundaries $x=0,x=a$, since there it meets a conductor, and $\vec E$ fields only penetrate perpendicularly, These conditions give $k_x = \frac{n\pi}{a}$. There is another limit, since
 
-$$\beta^2 + k_x^2 = k^2 = \oemga^2\varepsilon\mu$$
+$$\beta^2 + k_x^2 = k^2 = \omega^2\varepsilon\mu$$
 
 \begin{defn}[Cutoff Frequency]
     The cutoff frequency of the $n$th mode is
@@ -49,14 +49,14 @@ $$\beta^2 + k_x^2 = k^2 = \oemga^2\varepsilon\mu$$
 \end{defn}
 
 When $\omega_{c,n} > \omega$, then
-$$\beta = -jk\sqrt{\left(\omega_{c,n}\frac{}{\omega}\right)^2 - 1}$$
+$$\beta = -jk\sqrt{\left(\frac{\omega_{c,n}}{\omega}\right)^2 - 1}$$
 
 This is called the \textit{evanescent} mode. It attenuates with constant
-$$a_n = k\sqrt{\left(\omega_{c,n}\frac{}{\omega}\right)^2 - 1}$$
+$$a_n = k\sqrt{\left(\frac{\omega_{c,n}}{\omega}\right)^2 - 1}$$
 
 If not, we have the \textit{propagating} mode. This gives a high-pass filter, since in the evanescent mode, $\beta$ becomes imaginary, so $e^{-j\beta z}$ decays. \\
 
 For the $n = 0$ mode, $k_x = 0$, so $\tilde E_z$ vanishes, and
-$$\tilde E_x = \frac{\beta/\omega}{\varepsilon\mu} 2H_0e^{-j\beat z} = 2\etaH_0e^{-j\beta z}$$
+$$\tilde E_x = \frac{\beta}{\varepsilon\omega} 2H_0e^{-j\beta z} = 2\eta H_0e^{-j\beta z}$$
 There is no cutoff. This means for frequencies below $\omega_{c,1}$, there is only one possible $k_x$.
 \end{document}

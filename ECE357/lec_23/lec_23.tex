@@ -15,12 +15,12 @@
     $$\varepsilon_c = \varepsilon - \frac{j\sigma}{\omega} = \frac{80}{36\pi} \times 10^{-9} - \frac{j4}{2000\pi}$$
     so it is mostly imaginary. Here, seawater behaves as a good conductor, we we can use the approximation
     $$\alpha = \beta = \sqrt{\pi f\mu\sigma} = 0.126$$
-    Then $\eta_c = (1_j)\frac{\alpha}{\sigma} = 0.044e^{\frac{j\pi}{4}}$. The phasors are then
+    Then $\eta_c = (1+j)\frac{\alpha}{\sigma} = 0.044e^{\frac{j\pi}{4}}$. The phasors are then
     $$\tilde{\vec E} = |E_0|e^{j\phi_0}e^{-0.126z}e^{-j0.126z}$$
     and
     $$\tilde{\vec H} = \frac{|E_0|e^{j\phi_0}}{0.044e^{\frac{j\pi}{4}}}e^{-0.126z}e^{-j0.126z}$$
-    At $z = 0$, $\vec H = \Re\{\tilde{\vec H(z=0)}e^{j\omega t}\}$. Then
-    $$\tilde{\vec H} = \frac{|E_0|}{0.044}\cos(\omega t - 0.126z + \phi_0 - 45^\circ)$$
+    At $z = 0$, $\vec H = \Re\{\tilde{\vec{H}}(z=0)e^{j\omega t}\}$. Then
+    $$\vec H(z=0) = \frac{|E_0|}{0.044}\cos(\omega t + \phi_0 - 45^\circ)$$
     Comparing with the given $\vec H$, we see that $\phi_0 = 60^\circ$ and $|E_0| = 0.044 \times 100 = 4.4\unit{mV.m^{-1}}$. Substituting,
     $$\vec E(z,t) = 4.44e^{-0.126z}\cos(2\pi\times10^3t - 0.126z + 60^\circ)\hat x$$
     $$\vec H(z,t) = 100e^{-0.126z}\cos(2\pi\times10^3t - 0.126z + 15^\circ)\hat y$$
